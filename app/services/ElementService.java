@@ -11,6 +11,12 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
+/**
+ * @author Manas Bajaj
+ *
+ * Main service that provides CRUD operations for all SysML v2 elements
+ */
+
 public class ElementService {
     @Inject private CassandraSessionBuilder sessionBuilder;
 

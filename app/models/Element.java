@@ -2,6 +2,12 @@ package models;
 
 import java.util.UUID;
 
+/**
+ * @author Manas Bajaj
+ *
+ * Representation of Element in SysML v2 meta-model
+ */
+
 public class Element {
     private UUID identifier;
     private String name;

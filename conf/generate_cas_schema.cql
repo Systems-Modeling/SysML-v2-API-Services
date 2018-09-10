@@ -1,3 +1,5 @@
+// CQL script for generating Cassandra tables
+
 CREATE KEYSPACE IF NOT EXISTS sysml2 WITH replication = { 'class' : 'SimpleStrategy', 'replication_factor' : 1 };
 CREATE TABLE IF NOT EXISTS sysml2.elements (id timeuuid, name text, PRIMARY KEY (id));
 

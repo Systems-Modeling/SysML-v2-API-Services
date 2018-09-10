@@ -12,6 +12,12 @@ import play.inject.ApplicationLifecycle;
 import javax.inject.Inject;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * @author Manas Bajaj
+ *
+ * Main class for handling Cassandra sessions.
+ */
+
 public class CassandraSessionBuilder {
 
     private Configuration configuration;
