@@ -29,14 +29,48 @@ public class RelationshipController extends Controller {
 
     public Result byId(String id) {
         try {
-            UUID elementId = UUID.fromString(id);
-            Relationship relation = relationService.getById(elementId);
-            return ok(Json.toJson(relation).toString());
+            UUID relationshipId = UUID.fromString(id);
+            Relationship relation = relationService.getById(relationshipId);
+            return ok(Json.toJson(relation));
         }
         catch (IllegalArgumentException e) {
             return badRequest("Supplied identifier is not a UUID.");
         }
     }
+
+    public Result byElementId(String id) {
+        try {
+            UUID elementId = UUID.fromString(id);
+            Set<Relationship> relations = relationService.getByElementId(elementId);
+            return ok(Json.toJson(relations));
+        }
+        catch (IllegalArgumentException e) {
+            return badRequest("Supplied identifier is not a UUID.");
+        }
+    }
+
+    public Result bySourceElementId(String id) {
+        try {
+            UUID elementId = UUID.fromString(id);
+            Set<Relationship> relations = relationService.getBySourceElementId(elementId);
+            return ok(Json.toJson(relations));
+        }
+        catch (IllegalArgumentException e) {
+            return badRequest("Supplied identifier is not a UUID.");
+        }
+    }
+
+    public Result byTargetElementId(String id) {
+        try {
+            UUID elementId = UUID.fromString(id);
+            Set<Relationship> relations = relationService.getByTargetElementId(elementId);
+            return ok(Json.toJson(relations));
+        }
+        catch (IllegalArgumentException e) {
+            return badRequest("Supplied identifier is not a UUID.");
+        }
+    }
+
 
     public Result all() {
         Set<Relationship> relations = relationService.getAll();

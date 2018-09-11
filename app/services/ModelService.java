@@ -8,6 +8,7 @@ import models.Element;
 import models.Model;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -18,7 +19,9 @@ import java.util.UUID;
  * Main service that provides CRUD operations for all SysML v2 models
  */
 
+@Singleton
 public class ModelService {
+
     @Inject private CassandraSessionBuilder sessionBuilder;
 
     public Set<Model> getAll() {

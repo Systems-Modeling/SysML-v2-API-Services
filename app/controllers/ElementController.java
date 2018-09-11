@@ -2,6 +2,7 @@ package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import models.Element;
+import models.Relationship;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -33,6 +34,21 @@ public class ElementController extends Controller {
         }
         catch (IllegalArgumentException e) {
             return badRequest("Supplied identifier is not a UUID.");
+        }
+    }
+
+    public Result byIdAndModel(String eid, String mid) {
+        try {
+            UUID elementId = UUID.fromString(eid);
+            UUID modelId = UUID.fromString(mid);
+            Element element = elementService.getById(modelId, elementId);
+            if(element!=null)
+                return ok(Json.toJson(element).toString());
+            else
+                return notFound("Element with id " + eid + " cannot be found in model with id " + mid);
+        }
+        catch (IllegalArgumentException e) {
+            return badRequest("Supplied identifiers are not UUIDs.");
         }
     }
 

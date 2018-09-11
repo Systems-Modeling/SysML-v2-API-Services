@@ -7,6 +7,7 @@ import dao.CassandraSessionBuilder;
 import models.Element;
 
 import javax.inject.Inject;
+import javax.inject.Singleton;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -17,7 +18,9 @@ import java.util.UUID;
  * Main service that provides CRUD operations for all SysML v2 elements
  */
 
+@Singleton
 public class ElementService {
+
     @Inject private CassandraSessionBuilder sessionBuilder;
 
     public Set<Element> getAll() {
@@ -34,6 +37,14 @@ public class ElementService {
         Row result = resultSet.one();
         if(result!=null)
             return new Element(result.getUUID(0), result.getString(1), result.getString(2), result.getUUID(3),result.getString(4));
+        else
+            return null;
+    }
+
+    public Element getById(UUID modelId, UUID elementId) {
+        Element element = getById(elementId);
+        if(element.parent_model.equals(modelId))
+            return element;
         else
             return null;
     }

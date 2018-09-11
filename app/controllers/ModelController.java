@@ -2,11 +2,13 @@ package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
+import models.Element;
 import models.Model;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+import services.ElementService;
 import services.ModelService;
 
 import javax.inject.Inject;
@@ -29,9 +31,9 @@ public class ModelController extends Controller {
 
     public Result byId(String id) {
         try {
-            UUID elementId = UUID.fromString(id);
-            Model model = modelService.getById(elementId);
-            return ok(Json.toJson(model).toString());
+            UUID modelId = UUID.fromString(id);
+            Model model = modelService.getById(modelId);
+            return ok(Json.toJson(model));
         }
         catch (IllegalArgumentException e) {
             return badRequest("Supplied identifier is not a UUID.");
