@@ -13,10 +13,13 @@ public class Model {
     public String name;
     public String description;
 
-    public Model(String name) {
+    public Model() {
+        super();
+    }
+    public Model(String name, String description) {
         this.identifier = UUID.randomUUID();
         this.name = name;
-        this.description = name;
+        this.description = description;
     }
 
     public Model(UUID identifier, String name, String description) {

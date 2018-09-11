@@ -19,6 +19,10 @@ public class Relationship {
     public String target_element_role;
     public UUID target_element;
 
+    public Relationship() {
+        super();
+    }
+
     public Relationship(String name, UUID parent_model, String type, String source_element_role, UUID source_element,
                         String target_element_role, UUID target_element) {
         this.identifier = UUID.randomUUID();

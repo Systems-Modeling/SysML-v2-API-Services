@@ -23,7 +23,7 @@ public class ModelService {
 
     public Set<Model> getAll() {
         Set<Model> models = new HashSet<>();
-        ResultSet resultSet = sessionBuilder.getSession().execute("select * from sysml2.models;");
+        ResultSet resultSet = sessionBuilder.getSession().execute("select identifier, name, description from sysml2.models;");
         for(Row r: resultSet)
             models.add(new Model(r.getUUID(0), r.getString(1), r.getString(2)));
 
@@ -31,7 +31,7 @@ public class ModelService {
     }
 
     public Model getById(UUID identifier) {
-        ResultSet resultSet = sessionBuilder.getSession().execute("select * from sysml2.models where identifier = " + identifier);
+        ResultSet resultSet = sessionBuilder.getSession().execute("select identifier, name, description from sysml2.models where identifier = " + identifier);
         Row result = resultSet.one();
         if(result!=null)
             return new Model(result.getUUID(0), result.getString(1), result.getString(2));
@@ -44,11 +44,11 @@ public class ModelService {
             UUID modelIdentifier = model.identifier;
             if(modelIdentifier == null) modelIdentifier = UUIDs.timeBased();
 
-            String cqlCommand = String.format("INSERT INTO sysml2.models(identifier,name,description VALUES (%s,%s,%s,%s,%s)",
+            String cqlCommand = String.format("INSERT INTO sysml2.models(identifier,name,description) VALUES (%s,'%s','%s');",
                     modelIdentifier, model.name, model.description);
 
             sessionBuilder.getSession().execute(cqlCommand);
-            return getById(model.identifier);
+            return getById(modelIdentifier);
         }
         else
             return null;

@@ -53,8 +53,8 @@ public class RelationshipService {
             UUID identifier = relation.identifier;
             if(identifier == null) identifier = UUIDs.timeBased();
 
-            String cqlCommand = String.format("INSERT INTO sysml2.relationships(identifier,name,description, parent_model, type, source_element_role, source_element, target_element_role, target_element)" +
-                            " VALUES (%s,%s,%s, %s, %s, %s, %s, %s, %s);", identifier, relation.name, relation.description, relation.parent_model, relation.type,
+            String cqlCommand = String.format("INSERT INTO sysml2.relationships(identifier, name, description, parent_model, type, source_element_role, source_element, target_element_role, target_element)" +
+                            " VALUES (%s,'%s','%s',%s,'%s','%s',%s,'%s',%s);", identifier, relation.name, relation.description, relation.parent_model, relation.type,
                             relation.source_element_role, relation.source_element, relation.target_element_role, relation.target_element);
 
             sessionBuilder.getSession().execute(cqlCommand);

@@ -15,6 +15,10 @@ public class Element {
     public UUID parent_model;
     public String type;
 
+    public Element() {
+        super();
+    }
+
     public Element(String name, UUID parent_model, String type) {
         this.identifier = UUID.randomUUID();
         this.name = name;

@@ -1,12 +1,12 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import models.Element;
+
 import models.Model;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
-import services.ElementService;
+
 import services.ModelService;
 
 import javax.inject.Inject;
@@ -45,6 +45,7 @@ public class ModelController extends Controller {
 
     public Result create() {
         JsonNode requestBodyJson = request().body().asJson();
+        System.out.println(requestBodyJson);
         Model newModel = Json.fromJson(requestBodyJson, Model.class);
         Model createdModel = modelService.create(newModel);
         if(createdModel!=null)

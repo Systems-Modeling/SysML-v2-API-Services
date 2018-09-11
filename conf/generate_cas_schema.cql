@@ -12,6 +12,8 @@ CREATE TABLE IF NOT EXISTS sysml2.relationships (identifier timeuuid, name text,
 // Insert some test data
 INSERT INTO sysml2.models(identifier,name,description) VALUES (65df24d2-b52e-11e8-96f8-529269fb1459,'Sandbox model', 'This is a sandbox SysML v2 model.');
 
+INSERT INTO sysml2.models(identifier,name,description) VALUES (c76fde60-b562-11e8-8e53-dbf8bfefb057,'MyModel','Description of My Model');
+
 INSERT INTO sysml2.elements(identifier,name,description, parent_model, type) VALUES (65df2770-b52e-11e8-96f8-529269fb1459,'Shapes','Package of shapes',65df24d2-b52e-11e8-96f8-529269fb1459,'Package');
 INSERT INTO sysml2.elements(identifier,name,description, parent_model, type) VALUES (65df28c4-b52e-11e8-96f8-529269fb1459,'Triangle','Triangle shape',65df24d2-b52e-11e8-96f8-529269fb1459,'Class');
 INSERT INTO sysml2.elements(identifier,name,description, parent_model, type) VALUES (65df2a04-b52e-11e8-96f8-529269fb1459,'Quadrilateral','Quadrilateral shape',65df24d2-b52e-11e8-96f8-529269fb1459,'Class');

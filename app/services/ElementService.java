@@ -22,7 +22,7 @@ public class ElementService {
 
     public Set<Element> getAll() {
         Set<Element> elements = new HashSet<>();
-        ResultSet resultSet = sessionBuilder.getSession().execute("select * from sysml2.elements;");
+        ResultSet resultSet = sessionBuilder.getSession().execute("select identifier, name, description, parent_model, type from sysml2.elements;");
         for(Row r: resultSet)
             elements.add(new Element(r.getUUID(0), r.getString(1), r.getString(2), r.getUUID(3), r.getString(4)));
 
@@ -30,7 +30,7 @@ public class ElementService {
     }
 
     public Element getById(UUID identifier) {
-        ResultSet resultSet = sessionBuilder.getSession().execute("select * from sysml2.elements where identifier = " + identifier);
+        ResultSet resultSet = sessionBuilder.getSession().execute("select identifier, name, description, parent_model, type from sysml2.elements where identifier = " + identifier);
         Row result = resultSet.one();
         if(result!=null)
             return new Element(result.getUUID(0), result.getString(1), result.getString(2), result.getUUID(3),result.getString(4));
@@ -43,11 +43,12 @@ public class ElementService {
             UUID elementIdentifier = elem.identifier;
             if(elementIdentifier == null) elementIdentifier = UUIDs.timeBased();
 
-            String cqlCommand = String.format("INSERT INTO sysml2.elements(identifier,name,description, parent_model, type) VALUES (%s,%s,%s,%s,%s)",
+            String cqlCommand = String.format("INSERT INTO sysml2.elements(identifier,name,description, parent_model, type) " +
+                            "VALUES (%s,'%s','%s',%s,'%s')",
                     elementIdentifier, elem.name, elem.description, elem.parent_model, elem.type);
 
             sessionBuilder.getSession().execute(cqlCommand);
-            return getById(elem.identifier);
+            return getById(elementIdentifier);
         }
         else
             return null;
