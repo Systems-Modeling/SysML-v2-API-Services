@@ -5,40 +5,33 @@ import java.util.UUID;
 /**
  * @author Manas Bajaj
  *
- * Representation of Element in SysML v2 meta-model
+ * Representation of Model in SysML v2 meta-model
  */
 
-public class Element {
+public class Model {
     public UUID identifier;
     public String name;
     public String description;
-    public UUID parent_model;
-    public String type;
 
-    public Element(String name, UUID parent_model, String type) {
+    public Model(String name) {
         this.identifier = UUID.randomUUID();
         this.name = name;
         this.description = name;
-        this.parent_model = parent_model;
-        this.type = type;
     }
 
-    public Element(UUID identifier, String name, String description, UUID parent_model, String type) {
+    public Model(UUID identifier, String name, String description) {
         this.identifier = identifier;
         this.name = name;
         this.description = description;
-        this.parent_model = parent_model;
-        this.type = type;
     }
 
     @Override
     public boolean equals(Object other) {
-        if(other instanceof Element) {
-            Element otherElement = (Element)other;
-            if(otherElement.identifier.equals(identifier))
+        if(other instanceof Model) {
+            Model otherModel = (Model)other;
+            if(otherModel.identifier.equals(identifier))
                 return true;
         }
-
         return false;
     }
 
