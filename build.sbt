@@ -5,10 +5,14 @@ version := "1.0-SNAPSHOT"
 
 lazy val root = (project in file(".")).enablePlugins(PlayJava)
 
-scalaVersion := "2.12.6"
+scalaVersion := "2.12.7"
 
 libraryDependencies += guice
-libraryDependencies += "com.google.code.gson" % "gson" % "2.8.5"
-libraryDependencies += "com.datastax.cassandra" % "cassandra-driver-core" % "3.3.0"
-libraryDependencies += "com.datastax.cassandra" % "cassandra-driver-extras" % "3.3.0"
+libraryDependencies += "com.impetus.kundera.core" % "kundera-core" % "3.13"
+libraryDependencies += "com.impetus.kundera.client" % "kundera-cassandra" % "3.13"
 
+libraryDependencies += "javax.persistence" % "javax.persistence-api" % "2.2"
+
+libraryDependencies += "com.fasterxml.jackson.core" % "jackson-core" % "2.9.7"
+libraryDependencies += "com.fasterxml.jackson.core" % "jackson-annotations" % "2.9.7"
+libraryDependencies += "com.fasterxml.jackson.core" % "jackson-databind" % "2.9.7"

@@ -1,0 +1,999 @@
+swagger: "2.0"
+info:
+  title: graph-rest-api
+  description: A REST api for working with models, relationships, and elements.
+  version: 1.0.0
+host: localhost:9000
+tags:
+- name: elements
+- name: relationships
+- name: models
+paths:
+  /elements:
+    get:
+      tags:
+      - elements
+      operationId: getElements
+      summary: Gets a list of all elements.
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Element'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    delete:
+      tags:
+      - elements
+      operationId: deleteElements
+      summary: Deletes all elements
+      responses:
+        204:
+          $ref: '#/responses/NoContent'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    put:
+      tags:
+      - elements
+      operationId: updateElements
+      summary: Replaces all elements
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/Element'
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Element'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    post:
+      tags:
+      - elements
+      operationId: createElement
+      summary: Adds a new element
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/Element'
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/Element'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+  /elements/{id}:
+    parameters:
+    - name: id
+      in: path
+      description: The id of an element
+      type: string
+      required: true
+    get:
+      tags:
+      - elements
+      operationId: getElement
+      summary: Returns the element with the specified id.
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Element'
+        404:
+          $ref: '#/responses/NotFound'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    delete:
+      tags:
+      - elements
+      operationId: deleteElement
+      summary: Delete the element with the specified id.
+      responses:
+        204:
+          $ref: '#/responses/NoContent'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    put:
+      tags:
+      - elements
+      operationId: updateElement
+      summary: Replaces the element with the specified id.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/Element'
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Element'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+  /relationships:
+    get:
+      tags:
+      - relationships
+      operationId: getRelationships
+      summary: Gets a list of all Relationships.
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Relationship'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    delete:
+      tags:
+      - relationships
+      operationId: deleteRelationships
+      summary: Deletes all relationships.
+      responses:
+        204:
+          $ref: '#/responses/NoContent'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    put:
+      tags:
+      - relationships
+      operationId: updateRelationships
+      summary: Updates all relationships.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/Relationship'
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Relationship'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    post:
+      tags:
+      - relationships
+      operationId: createRelationship
+      summary: Adds a new relationship.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/Relationship'
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/Relationship'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+  /relationships/{id}:
+    parameters:
+    - name: id
+      in: path
+      description: The id of a relationship.
+      type: string
+      required: true
+    get:
+      tags:
+      - relationships
+      operationId: getRelationship
+      summary: Gets the relationship with the specified id.
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Relationship'
+        404:
+          $ref: '#/responses/NotFound'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    delete:
+      tags:
+      - relationships
+      operationId: deleteRelationship
+      summary: Deletes the relationship with the specified id.
+      responses:
+        204:
+          $ref: '#/responses/NoContent'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    put:
+      tags:
+      - relationships
+      operationId: updateRelationship
+      summary: Replaces the element with the specified id.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          $ref: '#/definitions/Relationship'
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Relationship'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+  /relationships/source/{source_id}:
+    parameters:
+    - name: source_id
+      in: path
+      description: The source side id of a relationship.
+      type: string
+      required: true
+    get:
+      tags:
+      - relationships
+      operationId: getRelationshipsBySource
+      summary: Gets all relationships with a given source element id.
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Relationship'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+  /relationships/target/{target_id}:
+    parameters:
+    - name: target_id
+      in: path
+      description: The target side id of a relationship.
+      type: string
+      required: true
+    get:
+      tags:
+      - relationships
+      operationId: getRelationshipsByTarget
+      summary: Gets all relationships with a given target element id.
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Relationship'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+
+  /models:
+    get:
+      tags:
+      - models
+      operationId: getModels
+      summary: Gets a list of all models.
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Model'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    delete:
+      tags:
+      - models
+      operationId: deleteModels
+      summary: Deletes all models.
+      responses:
+        204:
+          $ref: '#/responses/NoContent'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    put:
+      tags:
+      - models
+      operationId: updateModels
+      summary: Updates all models.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        required: true
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/Model'
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Model'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    post:
+      tags:
+      - models
+      operationId: createModel
+      summary: Adds a new model.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        schema:
+          $ref: '#/definitions/Model'
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/Model'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+  /models/{id}:
+    parameters:
+    - name: id
+      in: path
+      description: The id of a model
+      type: string
+      required: true
+    get:
+      tags:
+      - models
+      operationId: getModel
+      summary: Get a model by its id.
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Model'
+        404:
+          $ref: '#/responses/NotFound'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    delete:
+      tags:
+      - models
+      operationId: deleteModel
+      summary: Delete a model by its id.
+      responses:
+        204:
+          $ref: '#/responses/NoContent'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    put:
+      tags:
+      - models
+      operationId: updateModel
+      summary: Update a model by its id.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        schema:
+          $ref: '#/definitions/Model'
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Model'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+  /models/{model_id}/elements:
+    parameters:
+    - name: model_id
+      in: path
+      description: The id of a model.
+      type: string
+      required: true
+    get:
+      tags:
+      - elements
+      operationId: getElementsInModel
+      summary: Gets all elements within the specified model.
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Element'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    delete:
+      tags:
+      - elements
+      operationId: deleteElementsInModel
+      summary: Deletes all the elements within the specified model.
+      responses:
+        204:
+          $ref: '#/responses/NoContent'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    put:
+      tags:
+      - elements
+      operationId: updateElementsInModel
+      summary: Updates all the elements within the specified model.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/Element'
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Element'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    post:
+      tags:
+      - elements
+      operationId: createElementInModel
+      summary: Adds an element to the specified model.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        schema:
+          $ref: '#/definitions/Element'
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/Element'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+  /models/{model_id}/elements/{element_id}:
+    parameters:
+    - name: model_id
+      in: path
+      description: The id of the model to search within.
+      type: string
+      required: true
+    - name: element_id
+      in: path
+      description: The id of the element.
+      type: string
+      required: true
+    get:
+      tags:
+      - elements
+      operationId: getElementInModel
+      summary: Gets a specific element within the specified model.
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Element'
+        404:
+          $ref: '#/responses/NotFound'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    delete:
+      tags:
+      - elements
+      operationId: deleteElementInModel
+      summary: Deletes the element within the specified model.
+      responses:
+        204:
+          $ref: '#/responses/NoContent'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    put:
+      tags:
+      - elements
+      operationId: updateElementInModel
+      summary: Updates the element within the specified model.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        schema:
+          $ref: '#/definitions/Element'
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Element'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+  /models/{model_id}/relationships:
+    parameters:
+    - name: model_id
+      in: path
+      description: The id of the model
+      type: string
+      required: true
+    get:
+      tags:
+      - relationships
+      operationId: getRelationshipsInModel
+      summary: Gets all relationships within the specified model.
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Relationship'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    delete:
+      tags:
+      - relationships
+      operationId: deleteRelationshipsInModel
+      summary: Deletes all relationships within the specified model.
+      responses:
+        204:
+          $ref: '#/responses/NoContent'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    put:
+      tags:
+      - relationships
+      operationId: updateRelationshipsInModel
+      summary: Updates all relationships within the specified model.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/Relationship'
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Relationship'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    post:
+      tags:
+      - relationships
+      operationId: createRelationshipInModel
+      summary: Adds a relationship to the specified model.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        schema:
+          $ref: '#/definitions/Relationship'
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/Relationship'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+  /models/{model_id}/relationships/source/{source_id}:
+    parameters:
+    - name: model_id
+      in: path
+      description: The id of the model
+      type: string
+      required: true
+    - name: source_id
+      in: path
+      description: The source side id of a relationship.
+      type: string
+      required: true
+    get:
+      tags:
+      - relationships
+      operationId: getRelationshipsInModelBySource
+      summary: Gets all relationships in the specified model with a given source element id.
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Relationship'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+  /models/{model_id}/relationships/target/{target_id}:
+    parameters:
+    - name: model_id
+      in: path
+      description: The id of the model
+      type: string
+      required: true
+    - name: target_id
+      in: path
+      description: The target side id of a relationship.
+      type: string
+      required: true
+    get:
+      tags:
+      - relationships
+      operationId: getRelationshipsInModelByTarget
+      summary: Gets all relationships in the specified model with a given target element id.
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Relationship'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+  /models/{model_id}/relationships/{relationship_id}:
+    parameters:
+    - name: model_id
+      in: path
+      description: The id of the model to search within.
+      type: string
+      required: true
+    - name: relationship_id
+      in: path
+      description: The id of the relationship.
+      type: string
+      required: true
+    get:
+      tags:
+      - relationships
+      operationId: getRelationshipInModel
+      summary: Gets a specific relationship within the specified model.
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Relationship'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    delete:
+      tags:
+      - relationships
+      operationId: deleteRelationshipInModel
+      summary: Deletes a specified relationship within the specified model.
+      responses:
+        204:
+          $ref: '#/responses/NoContent'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    put:
+      tags:
+      - relationships
+      operationId: updateRelationshipInModel
+      summary: Updates a specific relationship within the specified model.
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        schema:
+          $ref: '#/definitions/Relationship'
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Relationship'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+definitions:
+  Element:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uuid
+      type:
+        type: string
+      model:
+        $ref: '#/definitions/Model'
+    required:
+    - id
+    - type
+    additionalProperties:
+      type: object
+  Relationship:
+    type: object
+    allOf:
+    - $ref: '#/definitions/Element'
+    - properties:
+        source:
+          $ref: '#/definitions/ElementIdentity'
+        target:
+          $ref: '#/definitions/ElementIdentity'
+    additionalProperties:
+      type: object
+  Model:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uuid
+      type:
+        type: string
+      elements:
+        type: array
+        items:
+          $ref: '#/definitions/Element'
+  ElementIdentity:
+    type: object
+    properties:
+      id:
+        type: string
+        format: uuid
+  Error:
+    type: object
+    properties:
+      error:
+        type: string
+responses:
+  NoContent:
+    description: No Content
+  Ok:
+    description: Ok
+  BadContentType:
+    description: The requested content type is not acceptable.
+    schema:
+      $ref: '#/definitions/Error'
+  NotFound:
+    description: Not found.
+  InternalServerError:
+    description: Internal server error.
+    schema:
+      $ref: '#/definitions/Error'
+  Default:
+    description: Unexpected response.

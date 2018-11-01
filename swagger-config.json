@@ -1,0 +1,4 @@
+{
+  "modelPackage": "models",
+  "useBeanValidation": false
+}

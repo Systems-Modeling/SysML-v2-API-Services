@@ -1,0 +1,1547 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "A REST api for working with models, relationships, and elements.",
+    "version" : "1.0.0",
+    "title" : "graph-rest-api"
+  },
+  "host" : "localhost",
+  "tags" : [ {
+    "name" : "elements"
+  }, {
+    "name" : "relationships"
+  }, {
+    "name" : "models"
+  } ],
+  "paths" : {
+    "/elements" : {
+      "get" : {
+        "tags" : [ "elements" ],
+        "summary" : "Gets a list of all elements.",
+        "operationId" : "getElements",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Element"
+              }
+            }
+          },
+          "415" : {
+            "description" : "The requested content type is not acceptable.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-get-method" : true
+      },
+      "post" : {
+        "tags" : [ "elements" ],
+        "summary" : "Adds a new element",
+        "operationId" : "createElement",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Element"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Ok",
+            "schema" : {
+              "$ref" : "#/definitions/Element"
+            }
+          },
+          "404" : {
+            "description" : "The element was not able to be retrieved after insertion."
+          },
+          "415" : {
+            "description" : "The requested content type is not acceptable.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-contentType" : "application/json",
+        "x-accepts" : "application/json",
+        "x-is-post-method" : true
+      },
+      "put" : {
+        "tags" : [ "elements" ],
+        "summary" : "Replaces all elements",
+        "operationId" : "updateElements",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/definitions/Element"
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Element"
+              }
+            }
+          },
+          "415" : {
+            "description" : "The requested content type is not acceptable.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-contentType" : "application/json",
+        "x-accepts" : "application/json",
+        "x-is-put-method" : true
+      },
+      "delete" : {
+        "tags" : [ "elements" ],
+        "summary" : "Deletes all elements",
+        "operationId" : "deleteElements",
+        "parameters" : [ ],
+        "responses" : {
+          "204" : {
+            "description" : "Ok"
+          },
+          "415" : {
+            "description" : "The requested content type is not acceptable.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-delete-method" : true
+      }
+    },
+    "/elements/{id}" : {
+      "get" : {
+        "tags" : [ "elements" ],
+        "summary" : "Returns the element with the specified id.",
+        "operationId" : "getElement",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The id of an element",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "$ref" : "#/definitions/Element"
+            }
+          },
+          "400" : {
+            "description" : "A required argument is missing.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "404" : {
+            "description" : "Not found."
+          },
+          "415" : {
+            "description" : "The requested content type is not acceptable.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-get-method" : true
+      },
+      "put" : {
+        "tags" : [ "elements" ],
+        "summary" : "Replaces the element with the specified id.",
+        "operationId" : "updateElement",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The id of an element",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Element"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "$ref" : "#/definitions/Element"
+            }
+          },
+          "400" : {
+            "description" : "A required argument is missing.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "404" : {
+            "description" : "The element could not be found after being updated"
+          },
+          "415" : {
+            "description" : "The requested content type is not acceptable.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-contentType" : "application/json",
+        "x-accepts" : "application/json",
+        "x-is-put-method" : true
+      },
+      "delete" : {
+        "tags" : [ "elements" ],
+        "summary" : "Delete the element with the specified id.",
+        "operationId" : "deleteElement",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The id of an element",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Ok"
+          },
+          "400" : {
+            "description" : "A required argument is missing.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "404" : {
+            "description" : "Not found."
+          },
+          "415" : {
+            "description" : "The requested content type is not acceptable.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-delete-method" : true
+      }
+    },
+    "/relationships" : {
+      "get" : {
+        "tags" : [ "relationships" ],
+        "summary" : "Gets a list of all Relationships.",
+        "operationId" : "getRelationships",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "source",
+          "in" : "query",
+          "description" : "The id of the source element of the relationship",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "target",
+          "in" : "query",
+          "description" : "The id of the target element of the relationship",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Relationship"
+              }
+            }
+          },
+          "415" : {
+            "description" : "The requested content type is not acceptable.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-get-method" : true
+      },
+      "post" : {
+        "tags" : [ "relationships" ],
+        "summary" : "Adds a new relationship.",
+        "operationId" : "createRelationship",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Relationship"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Ok",
+            "schema" : {
+              "$ref" : "#/definitions/Relationship"
+            }
+          },
+          "404" : {
+            "description" : "The relationship was not able to be retrieved after insertion."
+          },
+          "415" : {
+            "description" : "The requested content type is not acceptable.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-contentType" : "application/json",
+        "x-accepts" : "application/json",
+        "x-is-post-method" : true
+      },
+      "put" : {
+        "tags" : [ "relationships" ],
+        "summary" : "Updates all relationships.",
+        "operationId" : "updateRelationships",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/definitions/Relationship"
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Relationship"
+              }
+            }
+          },
+          "415" : {
+            "description" : "The requested content type is not acceptable.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-contentType" : "application/json",
+        "x-accepts" : "application/json",
+        "x-is-put-method" : true
+      },
+      "delete" : {
+        "tags" : [ "relationships" ],
+        "summary" : "Deletes all relationships.",
+        "operationId" : "deleteRelationships",
+        "parameters" : [ ],
+        "responses" : {
+          "204" : {
+            "description" : "Ok"
+          },
+          "415" : {
+            "description" : "The requested content type is not acceptable.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-delete-method" : true
+      }
+    },
+    "/relationships/{id}" : {
+      "get" : {
+        "tags" : [ "relationships" ],
+        "summary" : "Gets the relationship with the specified id.",
+        "operationId" : "getRelationship",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The id of a relationship.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "$ref" : "#/definitions/Relationship"
+            }
+          },
+          "400" : {
+            "description" : "A required argument is missing.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "404" : {
+            "description" : "Not found."
+          },
+          "415" : {
+            "description" : "The requested content type is not acceptable.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-get-method" : true
+      },
+      "put" : {
+        "tags" : [ "relationships" ],
+        "summary" : "Replaces the element with the specified id.",
+        "operationId" : "updateRelationship",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The id of a relationship.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/Relationship"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "$ref" : "#/definitions/Relationship"
+            }
+          },
+          "400" : {
+            "description" : "A required argument is missing.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "404" : {
+            "description" : "The relationship was not able to be retrieved after being updated."
+          },
+          "415" : {
+            "description" : "The requested content type is not acceptable.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "500" : {
+            "description" : "Internal server error.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-contentType" : "application/json",
+        "x-accepts" : "application/json",
+        "x-is-put-method" : true
+      },
+      "delete" : {
+        "tags" : [ "relationships" ],
+        "summary" : "Deletes the relationship with the specified id.",
+        "operationId" : "deleteRelationship",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The id of a relationship.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Ok"
+          },
+          "400" : {
+            "description" : "A required argument is missing.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "404" : {
+            "description" : "Not found."
+          },
+          "415" : {
+            "description" : "The requested content type is not acceptable.",
+            "schema" : {
+              "$ref" : "#/definitions/Error"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-delete-method" : true
+      }
+    },
+    "/relationships/source/{source_id}" : {
+      "get" : {
+        "tags" : [ "relationships" ],
+        "summary" : "Gets all relationships with a given source element id.",
+        "operationId" : "getRelationshipsBySourceId",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "source_id",
+          "in" : "path",
+          "description" : "The source side id of a relationship.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Relationship"
+              }
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-get-method" : true
+      }
+    },
+    "/relationships/target/{target_id}" : {
+      "get" : {
+        "tags" : [ "relationships" ],
+        "summary" : "Gets all relationships with a given target element id. It would like a new name.",
+        "operationId" : "getRelationshipsByTargetId",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "target_id",
+          "in" : "path",
+          "description" : "The target side id of a relationship.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Relationship"
+              }
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-get-method" : true
+      }
+    },
+    "/relationships/element/{element_id}" : {
+      "get" : {
+        "tags" : [ "relationships" ],
+        "summary" : "Gets all relationships where element_id matches either the source or target elements id. It *really* wants a new name.",
+        "operationId" : "getRelationshipsByElementId",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "element_id",
+          "in" : "path",
+          "description" : "Either the source or target id of a relationship. It would like a new name.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Relationship"
+              }
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-get-method" : true
+      }
+    },
+    "/models" : {
+      "get" : {
+        "tags" : [ "models" ],
+        "summary" : "Gets a list of all models.",
+        "operationId" : "getModels",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Model"
+              }
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-get-method" : true
+      },
+      "post" : {
+        "tags" : [ "models" ],
+        "summary" : "Adds a model.",
+        "operationId" : "createModel",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Model"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Ok",
+            "schema" : {
+              "$ref" : "#/definitions/Model"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-contentType" : "application/json",
+        "x-accepts" : "application/json",
+        "x-is-post-method" : true
+      },
+      "put" : {
+        "tags" : [ "models" ],
+        "summary" : "Updates all models.",
+        "operationId" : "updateModels",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/definitions/Model"
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Model"
+              }
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-contentType" : "application/json",
+        "x-accepts" : "application/json",
+        "x-is-put-method" : true
+      },
+      "delete" : {
+        "tags" : [ "models" ],
+        "summary" : "Deletes all models.",
+        "operationId" : "deleteModels",
+        "parameters" : [ ],
+        "responses" : {
+          "204" : {
+            "description" : "Ok"
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-delete-method" : true
+      }
+    },
+    "/models/{id}" : {
+      "get" : {
+        "tags" : [ "models" ],
+        "summary" : "Get a model by its id.",
+        "operationId" : "getModel",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The id of a model",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "$ref" : "#/definitions/Model"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-get-method" : true
+      },
+      "put" : {
+        "tags" : [ "models" ],
+        "summary" : "Update a model by its id.",
+        "operationId" : "updateModel",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The id of a model",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "$ref" : "#/definitions/Model"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-put-method" : true
+      },
+      "delete" : {
+        "tags" : [ "models" ],
+        "summary" : "Delete a model by its id.",
+        "operationId" : "deleteModel",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "path",
+          "description" : "The id of a model",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Ok"
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-delete-method" : true
+      }
+    },
+    "/models/{model_id}/elements" : {
+      "get" : {
+        "tags" : [ "elements" ],
+        "summary" : "Gets all elements within the specified model.",
+        "operationId" : "getElementsInModel",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "model_id",
+          "in" : "path",
+          "description" : "The id of a model.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Element"
+              }
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-get-method" : true
+      },
+      "post" : {
+        "tags" : [ "elements" ],
+        "summary" : "Adds an element to the specified model.",
+        "operationId" : "createElementInModel",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "model_id",
+          "in" : "path",
+          "description" : "The id of a model.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Element"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Ok",
+            "schema" : {
+              "$ref" : "#/definitions/Element"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-contentType" : "application/json",
+        "x-accepts" : "application/json",
+        "x-is-post-method" : true
+      },
+      "put" : {
+        "tags" : [ "elements" ],
+        "summary" : "Updates all the elements within the specified model.",
+        "operationId" : "updateElementsInModel",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "model_id",
+          "in" : "path",
+          "description" : "The id of a model.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/definitions/Element"
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Element"
+              }
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-contentType" : "application/json",
+        "x-accepts" : "application/json",
+        "x-is-put-method" : true
+      },
+      "delete" : {
+        "tags" : [ "elements" ],
+        "summary" : "Deletes all the elements within the specified model.",
+        "operationId" : "deleteElementsInModel",
+        "parameters" : [ {
+          "name" : "model_id",
+          "in" : "path",
+          "description" : "The id of a model.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Ok"
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-delete-method" : true
+      }
+    },
+    "/models/{model_id}/elements/{element_id}" : {
+      "get" : {
+        "tags" : [ "elements" ],
+        "summary" : "Gets a specific element within the specified model.",
+        "operationId" : "getElementInModel",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "model_id",
+          "in" : "path",
+          "description" : "The id of the model to search within.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "element_id",
+          "in" : "path",
+          "description" : "The id of the element.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "$ref" : "#/definitions/Element"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-get-method" : true
+      },
+      "put" : {
+        "tags" : [ "elements" ],
+        "summary" : "Updates the element within the specified model.",
+        "operationId" : "updateElementInModel",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "model_id",
+          "in" : "path",
+          "description" : "The id of the model to search within.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "element_id",
+          "in" : "path",
+          "description" : "The id of the element.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Element"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "$ref" : "#/definitions/Element"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-contentType" : "application/json",
+        "x-accepts" : "application/json",
+        "x-is-put-method" : true
+      },
+      "delete" : {
+        "tags" : [ "elements" ],
+        "summary" : "Deletes the element within the specified model.",
+        "operationId" : "deleteElementInModel",
+        "parameters" : [ {
+          "name" : "model_id",
+          "in" : "path",
+          "description" : "The id of the model to search within.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "element_id",
+          "in" : "path",
+          "description" : "The id of the element.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Ok"
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-delete-method" : true
+      }
+    },
+    "/models/{model_id}/relationships" : {
+      "get" : {
+        "tags" : [ "relationships" ],
+        "summary" : "Gets all relationships within the specified model.",
+        "operationId" : "getRelationshipsInModel",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "model_id",
+          "in" : "path",
+          "description" : "The id of the model",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Relationship"
+              }
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-get-method" : true
+      },
+      "post" : {
+        "tags" : [ "relationships" ],
+        "summary" : "Adds a relationship to the specified model.",
+        "operationId" : "createRelationshipInModel",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "model_id",
+          "in" : "path",
+          "description" : "The id of the model",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Relationship"
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "Ok",
+            "schema" : {
+              "$ref" : "#/definitions/Relationship"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-contentType" : "application/json",
+        "x-accepts" : "application/json",
+        "x-is-post-method" : true
+      },
+      "put" : {
+        "tags" : [ "relationships" ],
+        "summary" : "Updates all relationships within the specified model.",
+        "operationId" : "updateRelationshipsInModel",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "model_id",
+          "in" : "path",
+          "description" : "The id of the model",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/definitions/Relationship"
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Relationship"
+              }
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-contentType" : "application/json",
+        "x-accepts" : "application/json",
+        "x-is-put-method" : true
+      },
+      "delete" : {
+        "tags" : [ "relationships" ],
+        "summary" : "Deletes all relationships within the specified model.",
+        "operationId" : "deleteRelationshipsInModel",
+        "parameters" : [ {
+          "name" : "model_id",
+          "in" : "path",
+          "description" : "The id of the model",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Ok"
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-delete-method" : true
+      }
+    },
+    "/models/{model_id}/relationships/source/{source_id}" : {
+      "get" : {
+        "tags" : [ "relationships" ],
+        "summary" : "Gets all relationships in the specified model with a given source element id. It wants a new name.",
+        "operationId" : "getRelationshipsInModelBySourceId",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "model_id",
+          "in" : "path",
+          "description" : "The id of the model",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "source_id",
+          "in" : "path",
+          "description" : "The source side id of a relationship.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Relationship"
+              }
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-get-method" : true
+      }
+    },
+    "/models/{model_id}/relationships/target/{target_id}" : {
+      "get" : {
+        "tags" : [ "relationships" ],
+        "summary" : "Gets all relationships in the specified model with a given target element id. It wants a new name.",
+        "operationId" : "getRelationshipsInModelByTargetId",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "model_id",
+          "in" : "path",
+          "description" : "The id of the model",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "target_id",
+          "in" : "path",
+          "description" : "The target side id of a relationship.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Relationship"
+              }
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-get-method" : true
+      }
+    },
+    "/models/{model_id}/relationships/element/{element_id}" : {
+      "get" : {
+        "tags" : [ "relationships" ],
+        "summary" : "Gets all relationships in the specified model with a given source or target id. It *really* wants a new name.",
+        "operationId" : "getRelationshipsInModelByElementId",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "model_id",
+          "in" : "path",
+          "description" : "The id of the model",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "element_id",
+          "in" : "path",
+          "description" : "Either the source or target id of a relationship",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/Relationship"
+              }
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-get-method" : true
+      }
+    },
+    "/models/{model_id}/relationships/{relationship_id}" : {
+      "get" : {
+        "tags" : [ "relationships" ],
+        "summary" : "Gets a specific relationship within the specified model.",
+        "operationId" : "getRelationshipInModel",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "model_id",
+          "in" : "path",
+          "description" : "The id of the model to search within.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "relationship_id",
+          "in" : "path",
+          "description" : "The id of the relationship.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "$ref" : "#/definitions/Relationship"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-get-method" : true
+      },
+      "put" : {
+        "tags" : [ "relationships" ],
+        "summary" : "Updates a specific relationship within the specified model.",
+        "operationId" : "updateRelationshipInModel",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "model_id",
+          "in" : "path",
+          "description" : "The id of the model to search within.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "relationship_id",
+          "in" : "path",
+          "description" : "The id of the relationship.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/Relationship"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Ok",
+            "schema" : {
+              "$ref" : "#/definitions/Relationship"
+            }
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-contentType" : "application/json",
+        "x-accepts" : "application/json",
+        "x-is-put-method" : true
+      },
+      "delete" : {
+        "tags" : [ "relationships" ],
+        "summary" : "Deletes a specified relationship within the specified model.",
+        "operationId" : "deleteRelationshipInModel",
+        "parameters" : [ {
+          "name" : "model_id",
+          "in" : "path",
+          "description" : "The id of the model to search within.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "relationship_id",
+          "in" : "path",
+          "description" : "The id of the relationship.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "Ok"
+          },
+          "default" : {
+            "description" : "Unexpected response."
+          }
+        },
+        "x-accepts" : "application/json",
+        "x-is-delete-method" : true
+      }
+    }
+  },
+  "definitions" : {
+    "Element" : {
+      "type" : "object",
+      "required" : [ "id" ],
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "format" : "uuid"
+        },
+        "type" : {
+          "type" : "string"
+        }
+      },
+      "example" : {
+        "id" : "046b6c7f-0b8a-43b9-b35d-6489e6daee91",
+        "type" : "type"
+      },
+      "additionalProperties" : {
+        "type" : "object",
+        "properties" : { }
+      }
+    },
+    "Relationship" : {
+      "allOf" : [ {
+        "$ref" : "#/definitions/Element"
+      }, {
+        "properties" : {
+          "source" : {
+            "$ref" : "#/definitions/Element"
+          },
+          "target" : {
+            "$ref" : "#/definitions/Element"
+          }
+        }
+      } ]
+    },
+    "Model" : {
+      "allOf" : [ {
+        "$ref" : "#/definitions/Element"
+      } ]
+    },
+    "Error" : {
+      "type" : "object",
+      "properties" : {
+        "error" : {
+          "type" : "string"
+        }
+      },
+      "additionalProperties" : {
+        "type" : "object",
+        "properties" : { }
+      }
+    }
+  },
+  "responses" : {
+    "BadContentType" : {
+      "description" : "The requested content type is not acceptable.",
+      "schema" : {
+        "$ref" : "#/definitions/Error"
+      }
+    },
+    "Default" : {
+      "description" : "Unexpected response."
+    },
+    "InternalServerError" : {
+      "description" : "Internal server error.",
+      "schema" : {
+        "$ref" : "#/definitions/Error"
+      }
+    },
+    "MissingArgument" : {
+      "description" : "A required argument is missing.",
+      "schema" : {
+        "$ref" : "#/definitions/Error"
+      }
+    },
+    "NotFound" : {
+      "description" : "Not found."
+    },
+    "Ok" : {
+      "description" : "Ok"
+    }
+  }
+}
