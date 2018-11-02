@@ -49,4 +49,8 @@ public class RelationshipService {
     public List<Relationship> updateAll(UUID modelId, Collection<Relationship> deserialized) {
         return dao.updateAll(modelId, deserialized);
     }
+
+    public Relationship getBySourceAndTargetId(UUID modelUUID, UUID sourceUUID, UUID targetUUID) {
+        return dao.getBySourceAndTarget(modelUUID, sourceUUID, targetUUID);
+    }
 }

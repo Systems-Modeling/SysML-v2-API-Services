@@ -215,6 +215,38 @@ public class RelationshipsApiController extends JsonController {
     }
 
     @ApiAction
+    public Result getRelationshipBySourceAndTarget(String sourceId, String targetId) {
+        UUID sourceUUID, targetUUID;
+        try {
+            sourceUUID = UUID.fromString(sourceId);
+            targetUUID = UUID.fromString(targetId);
+        } catch (IllegalArgumentException iae) {
+            return getErrorStringAsJsonResult("The provided ids are not valid UUIDs.", Results::badRequest);
+        }
+        Relationship obj = service.getBySourceAndTargetId(null, sourceUUID, targetUUID);
+        if (obj == null) {
+            return notFound();
+        }
+        JsonNode result = Json.toJson(obj);
+        return ok(result);
+    }
+
+    @ApiAction
+    public Result getRelationshipInModelBySourceAndTarget(String modelId, String sourceId, String targetId) {
+        UUID modelUUID, sourceUUID, targetUUID;
+        try {
+            modelUUID = UUID.fromString(modelId);
+            sourceUUID = UUID.fromString(sourceId);
+            targetUUID = UUID.fromString(targetId);
+        } catch (IllegalArgumentException iae) {
+            return getErrorStringAsJsonResult("The provided ids are not valid UUIDs.", Results::badRequest);
+        }
+        Relationship obj = service.getBySourceAndTargetId(modelUUID, sourceUUID, targetUUID);
+        JsonNode result = Json.toJson(obj);
+        return ok(result);
+    }
+
+    @ApiAction
     @BodyParser.Of(BodyParser.Json.class)
     public Result updateRelationship(String id) throws Exception {
         JsonNode nodebody = request().body().asJson();

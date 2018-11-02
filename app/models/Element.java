@@ -21,16 +21,15 @@ public class Element {
     @JsonProperty(value = "@id", required = true)
     protected UUID id;
 
-    @Column
     @JsonProperty(required = true)
     private String type;
 
     @ManyToOne
     @JoinColumn(name = "model_id")
-    @JsonSerialize(using = ElementSerializer.class, as = models.Model.class)
-    @JsonDeserialize(using = ElementDeserializer.class, as = models.Model.class)
+    @JsonSerialize(using = ElementSerializer.class, as = Model.class)
+    @JsonDeserialize(using = ElementDeserializer.class, as = Model.class)
     @JsonInclude(JsonInclude.Include.ALWAYS)
-    private models.Model model;
+    private Model model;
 
     public UUID getId() {
         return id;
@@ -50,7 +49,7 @@ public class Element {
         this.type = type;
     }
 
-    public models.Model getModel() {
+    public Model getModel() {
         return model;
     }
 

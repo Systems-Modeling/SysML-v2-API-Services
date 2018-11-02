@@ -930,6 +930,73 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
+  /relationships/source/{source_id}/target/{target_id}:
+    parameters:
+    - name: source_id
+      in: path
+      description: The source side id of a relationship.
+      type: string
+      required: true
+    - name: target_id
+      in: path
+      description: The target side id of a relationship.
+      type: string
+      required: true
+    get:
+      tags:
+      - relationships
+      operationId: getRelationshipBySourceAndTarget
+      summary: Gets a specific relationship within the specified model by it's source and target.
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Relationship'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+
+  /models/{model_id}/relationships/source/{source_id}/target/{target_id}:
+    parameters:
+    - name: model_id
+      in: path
+      description: The id of the model
+      type: string
+      required: true
+    - name: source_id
+      in: path
+      description: The source side id of a relationship.
+      type: string
+      required: true
+    - name: target_id
+      in: path
+      description: The target side id of a relationship.
+      type: string
+      required: true
+    get:
+      tags:
+      - relationships
+      operationId: getRelationshipInModelBySourceAndTarget
+      summary: Gets a specific relationship within the specified model by it's source and target.
+      produces:
+      - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Relationship'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+
 definitions:
   Element:
     type: object
