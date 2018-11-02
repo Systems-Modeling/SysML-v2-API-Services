@@ -1,11 +1,4 @@
-package kundera;
-
-import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import jackson.EntityManagerHandlerInstantiator;
-import models.Element;
-import models.Model;
-import models.Relationship;
+package jpa;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -18,18 +11,17 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 
 @Singleton
-public class JPAManagerImpl implements JPAManager {
+public class KunderaManager implements JPAManager {
     private static final String DEFAULT_PERSISTENCE_UNIT_NAME = "cassandra";
     private final String persistenceUnitName;
     private final EntityManager entityManager;
-    private ObjectMapper objectMapper;
 
     @Inject
-    public JPAManagerImpl() {
+    public KunderaManager() {
         this(DEFAULT_PERSISTENCE_UNIT_NAME);
     }
 
-    public JPAManagerImpl(String persistenceUnitName) {
+    public KunderaManager(String persistenceUnitName) {
         this.persistenceUnitName = persistenceUnitName;
         try {
             Map<String, Object> kunderaConfiguration = new HashMap<>();
@@ -50,31 +42,19 @@ public class JPAManagerImpl implements JPAManager {
         }
     }
 
-    @Override
     public <R> R transact(Function<EntityManager, R> function) {
-        return function.apply(entityManager);
+        return function.apply(getEntityManager());
     }
 
-    @Override
     public void transact(Consumer<EntityManager> consumer) {
-        consumer.accept(entityManager);
+        consumer.accept(getEntityManager());
     }
 
-    @Override
     public String getPersistenceUnitName() {
         return persistenceUnitName;
     }
 
-    @Override
-    public ObjectMapper getObjectMapper() {
-        if (objectMapper == null) {
-            objectMapper = new ObjectMapper();
-            //See point #5 of https://blog.lahteenmaki.net/making-jackson-tolerable.html
-            objectMapper.configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, true);
-            objectMapper.configure(DeserializationFeature.FAIL_ON_NUMBERS_FOR_ENUMS, true);
-            objectMapper.setHandlerInstantiator(new EntityManagerHandlerInstantiator(entityManager));
-            objectMapper.registerSubtypes(Element.class, Relationship.class, Model.class);
-        }
-        return objectMapper;
+    public EntityManager getEntityManager() {
+        return entityManager;
     }
 }

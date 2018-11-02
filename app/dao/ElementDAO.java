@@ -1,7 +1,7 @@
 package dao;
 
-import kundera.Dialects;
-import kundera.JPAManager;
+import jpa.Dialects;
+import jpa.KunderaManager;
 import models.Element;
 import models.Model;
 
@@ -21,7 +21,7 @@ import java.util.function.Function;
 @Singleton
 public class ElementDAO {
     @Inject
-    private JPAManager jpa;
+    private KunderaManager jpa;
 
     public Element create(Element element) {
         if (element != null) {

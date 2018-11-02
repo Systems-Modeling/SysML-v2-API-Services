@@ -3,11 +3,12 @@ package controllers;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.google.inject.Inject;
-import dao.ElementDAO;
-import kundera.JPAManager;
 import models.Element;
+import play.libs.Json;
+import play.mvc.BodyParser;
 import play.mvc.Result;
 import play.mvc.Results;
+import services.ElementService;
 import swagger.SwaggerUtils.ApiAction;
 
 import java.util.List;
@@ -16,43 +17,32 @@ import java.util.UUID;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaPlayFrameworkCodegen", date = "2018-10-24T16:52:32.143-07:00")
 
 public class ElementsApiController extends JsonController {
-    private static final String DOESNT_ACCEPT_JSON_MESSAGE = "Cannot process non-json requests.";
-    private final ElementDAO dao;
-    private final JPAManager jpa;
-
     @Inject
-    private ElementsApiController(ElementDAO dao, JPAManager jpa) {
-        this.dao = dao;
-        this.jpa = jpa;
-    }
+    private ElementService service;
 
     @ApiAction
+    @BodyParser.Of(BodyParser.Json.class)
     public Result createElement() throws Exception {
-        if (!acceptsJson(request())) {
-            return getErrorStringAsJsonResult(DOESNT_ACCEPT_JSON_MESSAGE, Results::unsupportedMediaType);
-        }
         JsonNode nodebody = request().body().asJson();
         Element body;
         if (nodebody != null) {
-            body = jpa.getObjectMapper().readValue(nodebody.toString(), Element.class);
+            body = Json.fromJson(nodebody, Element.class);
         }
         else {
             throw new IllegalArgumentException("'body' parameter is required");
         }
-        Element obj = dao.create(body);
-        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
+        Element obj = service.create(body);
+        JsonNode result = Json.toJson(obj);
         return created(result);
     }
 
     @ApiAction
+    @BodyParser.Of(BodyParser.Json.class)
     public Result createElementInModel(String modelId) throws Exception {
-        if (!acceptsJson(request())) {
-            return getErrorStringAsJsonResult(DOESNT_ACCEPT_JSON_MESSAGE, Results::unsupportedMediaType);
-        }
         JsonNode nodebody = request().body().asJson();
         Element body;
         if (nodebody != null) {
-            body = jpa.getObjectMapper().readValue(nodebody.toString(), Element.class);
+            body = Json.fromJson(nodebody, Element.class);
         }
         else {
             body = null;
@@ -63,31 +53,25 @@ public class ElementsApiController extends JsonController {
         } catch (IllegalArgumentException iae) {
             return getErrorStringAsJsonResult("The provided id is not a valid UUID.", Results::badRequest);
         }
-        Element obj = modelUUID.equals(body.getModel().getId()) ? dao.create(body) : null;
-        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
+        Element obj = modelUUID.equals(body.getModel().getId()) ? service.create(body) : null;
+        JsonNode result = Json.toJson(obj);
         return created(result);
     }
 
     @ApiAction
     public Result deleteElement(String id) throws Exception {
-        if (!acceptsJson(request())) {
-            return getErrorStringAsJsonResult(DOESNT_ACCEPT_JSON_MESSAGE, Results::unsupportedMediaType);
-        }
         UUID uuid;
         try {
             uuid = UUID.fromString(id);
         } catch (IllegalArgumentException iae) {
             return getErrorStringAsJsonResult("The provided id is not a valid UUID.", Results::badRequest);
         }
-        dao.delete(null, uuid);
+        service.delete(null, uuid);
         return noContent();
     }
 
     @ApiAction
     public Result deleteElementInModel(String modelId, String elementId) throws Exception {
-        if (!acceptsJson(request())) {
-            return getErrorStringAsJsonResult(DOESNT_ACCEPT_JSON_MESSAGE, Results::unsupportedMediaType);
-        }
         UUID modelUUID, elementUUID;
         try {
             modelUUID = UUID.fromString(modelId);
@@ -95,59 +79,47 @@ public class ElementsApiController extends JsonController {
         } catch (IllegalArgumentException iae) {
             return getErrorStringAsJsonResult("The provided ids are not valid UUIDs.", Results::badRequest);
         }
-        dao.delete(modelUUID, elementUUID);
+        service.delete(modelUUID, elementUUID);
         return noContent();
     }
 
     @ApiAction
     public Result deleteElements() throws Exception {
-        if (!acceptsJson(request())) {
-            return getErrorStringAsJsonResult(DOESNT_ACCEPT_JSON_MESSAGE, Results::unsupportedMediaType);
-        }
-        dao.deleteAll(null);
+        service.deleteAll(null);
         return noContent();
     }
 
     @ApiAction
     public Result deleteElementsInModel(String modelId) throws Exception {
-        if (!acceptsJson(request())) {
-            return getErrorStringAsJsonResult(DOESNT_ACCEPT_JSON_MESSAGE, Results::unsupportedMediaType);
-        }
         UUID modelUUID;
         try {
             modelUUID = UUID.fromString(modelId);
         } catch (IllegalArgumentException iae) {
             return getErrorStringAsJsonResult("The provided id is not a valid UUID.", Results::badRequest);
         }
-        dao.deleteAll(modelUUID);
+        service.deleteAll(modelUUID);
         return noContent();
     }
 
     @ApiAction
     public Result getElement(String id) throws Exception {
-        if (!acceptsJson(request())) {
-            return getErrorStringAsJsonResult(DOESNT_ACCEPT_JSON_MESSAGE, Results::unsupportedMediaType);
-        }
         UUID uuid;
         try {
             uuid = UUID.fromString(id);
         } catch (IllegalArgumentException iae) {
             return getErrorStringAsJsonResult("The provided id is not a valid UUID.", Results::badRequest);
         }
-        Element obj = dao.getById(null, uuid);
+        Element obj = service.getById(null, uuid);
         if (obj == null) {
             return notFound();
         }
-        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
+        JsonNode result = Json.toJson(obj);
         return ok(result);
 
     }
 
     @ApiAction
     public Result getElementInModel(String modelId, String elementId) throws Exception {
-        if (!acceptsJson(request())) {
-            return getErrorStringAsJsonResult(DOESNT_ACCEPT_JSON_MESSAGE, Results::unsupportedMediaType);
-        }
         UUID modelUUID, elementUUID;
         try {
             modelUUID = UUID.fromString(modelId);
@@ -155,49 +127,41 @@ public class ElementsApiController extends JsonController {
         } catch (IllegalArgumentException iae) {
             return getErrorStringAsJsonResult("The provided ids are not valid UUIDs.", Results::badRequest);
         }
-        Element obj = dao.getById(modelUUID, elementUUID);
+        Element obj = service.getById(modelUUID, elementUUID);
         if (obj == null) {
             return notFound();
         }
-        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
+        JsonNode result = Json.toJson(obj);
         return ok(result);
     }
 
     @ApiAction
     public Result getElements() throws Exception {
-        if (!acceptsJson(request())) {
-            return getErrorStringAsJsonResult(DOESNT_ACCEPT_JSON_MESSAGE, Results::unsupportedMediaType);
-        }
-        List<Element> obj = dao.getAll(null);
-        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
+        List<Element> obj = service.getAll(null);
+        JsonNode result = Json.toJson(obj);
         return ok(result);
     }
 
     @ApiAction
     public Result getElementsInModel(String modelId) throws Exception {
-        if (!acceptsJson(request())) {
-            return getErrorStringAsJsonResult(DOESNT_ACCEPT_JSON_MESSAGE, Results::unsupportedMediaType);
-        }
         UUID modelUUID;
         try {
             modelUUID = UUID.fromString(modelId);
         } catch (IllegalArgumentException iae) {
             return getErrorStringAsJsonResult("The provided ids are not valid UUIDs.", Results::badRequest);
         }
-        List<Element> obj = dao.getAll(modelUUID);
-        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
+        List<Element> obj = service.getAll(modelUUID);
+        JsonNode result = Json.toJson(obj);
         return ok(result);
     }
 
     @ApiAction
+    @BodyParser.Of(BodyParser.Json.class)
     public Result updateElement(String id) throws Exception {
-        if (!acceptsJson(request())) {
-            return getErrorStringAsJsonResult(DOESNT_ACCEPT_JSON_MESSAGE, Results::unsupportedMediaType);
-        }
         JsonNode nodebody = request().body().asJson();
         Element body;
         if (nodebody != null) {
-            body = jpa.getObjectMapper().readValue(nodebody.toString(), Element.class);
+            body = Json.fromJson(nodebody, Element.class);
         }
         else {
             throw new IllegalArgumentException("'body' parameter is required");
@@ -208,20 +172,18 @@ public class ElementsApiController extends JsonController {
         } catch (IllegalArgumentException iae) {
             return getErrorStringAsJsonResult("The provided ids are not valid UUIDs.", Results::badRequest);
         }
-        Element obj = uuid.equals(body.getId()) ? dao.update(body) : null;
-        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
+        Element obj = uuid.equals(body.getId()) ? service.update(body) : null;
+        JsonNode result = Json.toJson(obj);
         return ok(result);
     }
 
     @ApiAction
+    @BodyParser.Of(BodyParser.Json.class)
     public Result updateElementInModel(String modelId, String elementId) throws Exception {
-        if (!acceptsJson(request())) {
-            return getErrorStringAsJsonResult(DOESNT_ACCEPT_JSON_MESSAGE, Results::unsupportedMediaType);
-        }
         JsonNode nodebody = request().body().asJson();
         Element body;
         if (nodebody != null) {
-            body = jpa.getObjectMapper().readValue(nodebody.toString(), Element.class);
+            body = Json.fromJson(nodebody, Element.class);
         }
         else {
             body = null;
@@ -233,39 +195,35 @@ public class ElementsApiController extends JsonController {
         } catch (IllegalArgumentException iae) {
             return getErrorStringAsJsonResult("The provided ids are not valid UUIDs.", Results::badRequest);
         }
-        Element obj = elementUUID.equals(body.getId()) && modelUUID.equals(body.getModel().getId()) ? dao.update(body) : null;
-        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
+        Element obj = elementUUID.equals(body.getId()) && modelUUID.equals(body.getModel().getId()) ? service.update(body) : null;
+        JsonNode result = Json.toJson(obj);
         return ok(result);
     }
 
     @ApiAction
+    @BodyParser.Of(BodyParser.Json.class)
     public Result updateElements() throws Exception {
-        if (!acceptsJson(request())) {
-            return getErrorStringAsJsonResult(DOESNT_ACCEPT_JSON_MESSAGE, Results::unsupportedMediaType);
-        }
         JsonNode nodebody = request().body().asJson();
         List<Element> body;
         if (nodebody != null) {
-            body = jpa.getObjectMapper().readValue(nodebody.toString(), new TypeReference<List<Element>>() {
+            body = Json.mapper().readValue(nodebody.toString(), new TypeReference<List<Element>>() {
             });
         }
         else {
             throw new IllegalArgumentException("'body' parameter is required");
         }
-        List<Element> obj = dao.updateAll(null, body);
-        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
+        List<Element> obj = service.updateAll(null, body);
+        JsonNode result = Json.toJson(obj);
         return ok(result);
     }
 
     @ApiAction
+    @BodyParser.Of(BodyParser.Json.class)
     public Result updateElementsInModel(String modelId) throws Exception {
-        if (!acceptsJson(request())) {
-            return getErrorStringAsJsonResult(DOESNT_ACCEPT_JSON_MESSAGE, Results::unsupportedMediaType);
-        }
         JsonNode nodebody = request().body().asJson();
         List<Element> body;
         if (nodebody != null) {
-            body = jpa.getObjectMapper().readValue(nodebody.toString(), new TypeReference<List<Element>>() {
+            body = Json.mapper().readValue(nodebody.toString(), new TypeReference<List<Element>>() {
             });
         }
         else {
@@ -282,8 +240,8 @@ public class ElementsApiController extends JsonController {
                 return badRequest("modelId != model id of element " + element.getId());
             }
         }
-        List<Element> obj = dao.updateAll(modelUUID, body);
-        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
+        List<Element> obj = service.updateAll(modelUUID, body);
+        JsonNode result = Json.toJson(obj);
         return ok(result);
     }
 }

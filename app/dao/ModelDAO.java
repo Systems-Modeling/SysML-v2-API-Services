@@ -1,7 +1,7 @@
 package dao;
 
-import kundera.Dialects;
-import kundera.JPAManager;
+import jpa.Dialects;
+import jpa.KunderaManager;
 import models.Element;
 import models.Model;
 
@@ -18,11 +18,10 @@ import java.util.function.Function;
 /**
  * Main service that provides CRUD operations for all SysML v2 models
  */
-
 @Singleton
 public class ModelDAO {
     @Inject
-    private JPAManager jpa;
+    private KunderaManager jpa;
 
     public Model create(Model model) {
         if (model != null) {

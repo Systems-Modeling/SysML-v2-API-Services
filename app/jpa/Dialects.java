@@ -1,4 +1,4 @@
-package kundera;
+package jpa;
 
 import com.impetus.kundera.persistence.EntityManagerFactoryImpl;
 

@@ -1,9 +1,10 @@
 package dao;
 
-import kundera.Dialects;
-import kundera.JPAManager;
+import jpa.Dialects;
+import jpa.KunderaManager;
 import models.Model;
 import models.Relationship;
+import models.RelationshipEndType;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -21,7 +22,7 @@ import java.util.function.Function;
 @Singleton
 public class RelationshipDAO {
     @Inject
-    private JPAManager jpa;
+    private KunderaManager jpa;
 
     public Relationship create(Relationship relationship) {
         if (relationship != null) {
@@ -147,14 +148,14 @@ public class RelationshipDAO {
     }
 
     public List<Relationship> getBySourceId(UUID modelId, UUID elementId) {
-        return getByEndType(modelId, elementId, EndType.SOURCE);
+        return getByEndType(modelId, elementId, RelationshipEndType.SOURCE);
     }
 
     public List<Relationship> getByTargetId(UUID modelId, UUID elementId) {
-        return getByEndType(modelId, elementId, EndType.TARGET);
+        return getByEndType(modelId, elementId, RelationshipEndType.TARGET);
     }
 
-    private List<Relationship> getByEndType(UUID modelId, UUID elementId, EndType source) {
+    private List<Relationship> getByEndType(UUID modelId, UUID elementId, RelationshipEndType source) {
         return jpa.transact((Function<EntityManager, List<Relationship>>) em -> {
             String queryString;
             Query query;
@@ -165,14 +166,14 @@ public class RelationshipDAO {
                         The preferred way would be to use bind parameters, however as of Kundera 3.13, they are not properly supported by Kundera in our use case.
                         See https://github.com/Impetus/Kundera/issues/1029
                         */
-                queryString = "SELECT * FROM relationships WHERE " + (source.equals(EndType.SOURCE) ? "source_id" : "target_id") + " = " + elementId;
+                queryString = "SELECT * FROM relationships WHERE " + (source.equals(RelationshipEndType.SOURCE) ? "source_id" : "target_id") + " = " + elementId;
                 if (modelId != null) {
                     queryString += " AND model_id = " + modelId;
                 }
                 query = em.createNativeQuery(queryString, Relationship.class);
             }
             else {
-                queryString = "SELECT r FROM Relationship r WHERE r." + (source.equals(EndType.SOURCE) ? "source" : "target") + ".id = :elementId";
+                queryString = "SELECT r FROM Relationship r WHERE r." + (source.equals(RelationshipEndType.SOURCE) ? "source" : "target") + ".id = :elementId";
                 if (modelId != null) {
                     queryString += " AND r.model.id = :modelId";
                 }
@@ -232,10 +233,5 @@ public class RelationshipDAO {
             }
         }
         query.executeUpdate();
-    }
-
-    private enum EndType {
-        SOURCE,
-        TARGET;
     }
 }

@@ -1,6 +1,4 @@
-package kundera;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
+package jpa;
 
 import javax.persistence.EntityManager;
 import java.util.function.Consumer;
@@ -13,5 +11,5 @@ public interface JPAManager {
 
     String getPersistenceUnitName();
 
-    ObjectMapper getObjectMapper();
+    EntityManager getEntityManager();
 }
