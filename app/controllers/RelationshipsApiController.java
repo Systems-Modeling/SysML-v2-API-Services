@@ -18,12 +18,12 @@ import java.util.UUID;
 public class RelationshipsApiController extends JsonController {
     private static final String DOESNT_ACCEPT_JSON_MESSAGE = "Cannot process non-json requests.";
     private final RelationshipDAO dao;
-    private final JPAManager kundera;
+    private final JPAManager jpa;
 
     @Inject
-    private RelationshipsApiController(RelationshipDAO dao, JPAManager kundera) {
+    private RelationshipsApiController(RelationshipDAO dao, JPAManager jpa) {
         this.dao = dao;
-        this.kundera = kundera;
+        this.jpa = jpa;
     }
 
     @ApiAction
@@ -34,13 +34,13 @@ public class RelationshipsApiController extends JsonController {
         JsonNode nodebody = request().body().asJson();
         Relationship body;
         if (nodebody != null) {
-            body = kundera.getObjectMapper().readValue(nodebody.toString(), Relationship.class);
+            body = jpa.getObjectMapper().readValue(nodebody.toString(), Relationship.class);
         }
         else {
             throw new IllegalArgumentException("'body' parameter is required");
         }
         Relationship obj = dao.create(body);
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return created(result);
     }
 
@@ -52,7 +52,7 @@ public class RelationshipsApiController extends JsonController {
         JsonNode nodebody = request().body().asJson();
         Relationship body;
         if (nodebody != null) {
-            body = kundera.getObjectMapper().readValue(nodebody.toString(), Relationship.class);
+            body = jpa.getObjectMapper().readValue(nodebody.toString(), Relationship.class);
         }
         else {
             body = null;
@@ -64,7 +64,7 @@ public class RelationshipsApiController extends JsonController {
             return getErrorStringAsJsonResult("The provided id is not a valid UUID.", Results::badRequest);
         }
         Relationship obj = modelUUID.equals(body.getModel().getId()) ? dao.create(body) : null;
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return created(result);
 
     }
@@ -142,7 +142,7 @@ public class RelationshipsApiController extends JsonController {
         if (obj == null) {
             return notFound();
         }
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
 
     }
@@ -163,7 +163,7 @@ public class RelationshipsApiController extends JsonController {
         if (obj == null) {
             return notFound();
         }
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
     }
 
@@ -173,7 +173,7 @@ public class RelationshipsApiController extends JsonController {
             return getErrorStringAsJsonResult(DOESNT_ACCEPT_JSON_MESSAGE, Results::unsupportedMediaType);
         }
         List<Relationship> obj = dao.getAll(null);
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
     }
 
@@ -189,7 +189,7 @@ public class RelationshipsApiController extends JsonController {
             return getErrorStringAsJsonResult("The provided id is not a valid UUID.", Results::badRequest);
         }
         List<Relationship> obj = dao.getBySourceId(null, sourceUUID);
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
     }
 
@@ -205,7 +205,7 @@ public class RelationshipsApiController extends JsonController {
             return getErrorStringAsJsonResult("The provided id is not a valid UUID.", Results::badRequest);
         }
         List<Relationship> obj = dao.getByTargetId(null, targetUUID);
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
 
     }
@@ -222,7 +222,7 @@ public class RelationshipsApiController extends JsonController {
             return getErrorStringAsJsonResult("The provided id is not a valid UUID.", Results::badRequest);
         }
         List<Relationship> obj = dao.getAll(modelUUID);
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
     }
 
@@ -239,7 +239,7 @@ public class RelationshipsApiController extends JsonController {
             return getErrorStringAsJsonResult("The provided ids are not valid UUIDs.", Results::badRequest);
         }
         List<Relationship> obj = dao.getBySourceId(modelUUID, sourceUUID);
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
     }
 
@@ -256,7 +256,7 @@ public class RelationshipsApiController extends JsonController {
             return getErrorStringAsJsonResult("The provided ids are not valid UUIDs.", Results::badRequest);
         }
         List<Relationship> obj = dao.getByTargetId(modelUUID, targetUUID);
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
     }
 
@@ -268,7 +268,7 @@ public class RelationshipsApiController extends JsonController {
         JsonNode nodebody = request().body().asJson();
         Relationship body;
         if (nodebody != null) {
-            body = kundera.getObjectMapper().readValue(nodebody.toString(), Relationship.class);
+            body = jpa.getObjectMapper().readValue(nodebody.toString(), Relationship.class);
         }
         else {
             throw new IllegalArgumentException("'body' parameter is required");
@@ -280,7 +280,7 @@ public class RelationshipsApiController extends JsonController {
             return getErrorStringAsJsonResult("The provided id is not a valid UUID.", Results::badRequest);
         }
         Relationship obj = uuid.equals(body.getId()) ? dao.update(body) : null;
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
     }
 
@@ -292,7 +292,7 @@ public class RelationshipsApiController extends JsonController {
         JsonNode nodebody = request().body().asJson();
         Relationship body;
         if (nodebody != null) {
-            body = kundera.getObjectMapper().readValue(nodebody.toString(), Relationship.class);
+            body = jpa.getObjectMapper().readValue(nodebody.toString(), Relationship.class);
         }
         else {
             body = null;
@@ -305,7 +305,7 @@ public class RelationshipsApiController extends JsonController {
             return getErrorStringAsJsonResult("The provided ids are not valid UUIDs.", Results::badRequest);
         }
         Relationship obj = relationshipUUID.equals(body.getId()) && relationshipUUID.equals(body.getModel().getId()) ? dao.update(body) : null;
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
 
     }
@@ -318,14 +318,14 @@ public class RelationshipsApiController extends JsonController {
         JsonNode nodebody = request().body().asJson();
         List<Relationship> body;
         if (nodebody != null) {
-            body = kundera.getObjectMapper().readValue(nodebody.toString(), new TypeReference<List<Relationship>>() {
+            body = jpa.getObjectMapper().readValue(nodebody.toString(), new TypeReference<List<Relationship>>() {
             });
         }
         else {
             throw new IllegalArgumentException("'body' parameter is required");
         }
         List<Relationship> obj = dao.updateAll(null, body);
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
     }
 
@@ -337,7 +337,7 @@ public class RelationshipsApiController extends JsonController {
         JsonNode nodebody = request().body().asJson();
         List<Relationship> body;
         if (nodebody != null) {
-            body = kundera.getObjectMapper().readValue(nodebody.toString(), new TypeReference<List<Relationship>>() {
+            body = jpa.getObjectMapper().readValue(nodebody.toString(), new TypeReference<List<Relationship>>() {
             });
         }
         else {
@@ -355,7 +355,7 @@ public class RelationshipsApiController extends JsonController {
             }
         }
         List<Relationship> obj = dao.updateAll(modelUUID, body);
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
     }
 }

@@ -21,11 +21,11 @@ import java.util.function.Function;
 @Singleton
 public class RelationshipDAO {
     @Inject
-    private JPAManager kundera;
+    private JPAManager jpa;
 
     public Relationship create(Relationship relationship) {
         if (relationship != null) {
-            kundera.transact(entityManager -> {
+            jpa.transact(entityManager -> {
                 entityManager.persist(relationship);
                 entityManager.flush();
             });
@@ -39,10 +39,10 @@ public class RelationshipDAO {
     }
 
     public void delete(UUID modelId, UUID relationshipId) {
-        kundera.transact(em -> {
+        jpa.transact(em -> {
             Query query;
             String queryString;
-            if (Dialects.isDialectCassandra(em.getEntityManagerFactory(), kundera.getPersistenceUnitName())) {
+            if (Dialects.isDialectCassandra(em.getEntityManagerFactory(), jpa.getPersistenceUnitName())) {
                 /*
                 TODO
                 The following query *MUST* be sanitized before being placed in production code.
@@ -72,15 +72,15 @@ public class RelationshipDAO {
     }
 
     public void deleteAll(UUID modelId) {
-        kundera.transact(em -> {
+        jpa.transact(em -> {
             deleteAll(em, modelId);
         });
     }
 
     public List<Relationship> getAll(UUID modelId) {
-        return kundera.transact((Function<EntityManager, List<Relationship>>) em -> {
+        return jpa.transact((Function<EntityManager, List<Relationship>>) em -> {
             Query query;
-            if (Dialects.isDialectCassandra(em.getEntityManagerFactory(), kundera.getPersistenceUnitName())) {
+            if (Dialects.isDialectCassandra(em.getEntityManagerFactory(), jpa.getPersistenceUnitName())) {
                 /*
                 TODO
                 The following query *MUST* be sanitized before being placed in production code.
@@ -108,9 +108,9 @@ public class RelationshipDAO {
     }
 
     public Relationship getById(UUID modelId, UUID relationshipId) {
-        return kundera.transact(em -> {
+        return jpa.transact(em -> {
             Query query;
-            if (Dialects.isDialectCassandra(em.getEntityManagerFactory(), kundera.getPersistenceUnitName())) {
+            if (Dialects.isDialectCassandra(em.getEntityManagerFactory(), jpa.getPersistenceUnitName())) {
                 /*
                 TODO
                 The following query *MUST* be sanitized before being placed in production code.
@@ -155,10 +155,10 @@ public class RelationshipDAO {
     }
 
     private List<Relationship> getByEndType(UUID modelId, UUID elementId, EndType source) {
-        return kundera.transact((Function<EntityManager, List<Relationship>>) em -> {
+        return jpa.transact((Function<EntityManager, List<Relationship>>) em -> {
             String queryString;
             Query query;
-            if (Dialects.isDialectCassandra(em.getEntityManagerFactory(), kundera.getPersistenceUnitName())) {
+            if (Dialects.isDialectCassandra(em.getEntityManagerFactory(), jpa.getPersistenceUnitName())) {
                         /*
                         TODO
                         The following query *MUST* be sanitized before being placed in production code.
@@ -187,7 +187,7 @@ public class RelationshipDAO {
     }
 
     public Relationship update(Relationship relationship) {
-        return kundera.transact((entityManager) -> {
+        return jpa.transact((entityManager) -> {
             entityManager.merge(relationship);
             entityManager.flush();
             Model relationshipModel = relationship.getModel();
@@ -199,7 +199,7 @@ public class RelationshipDAO {
     }
 
     public List<Relationship> updateAll(UUID modelId, Collection<Relationship> deserialized) {
-        return kundera.transact(em -> {
+        return jpa.transact(em -> {
             deleteAll(em, modelId);
             for (Relationship relationship : deserialized) {
                 em.persist(relationship);
@@ -211,7 +211,7 @@ public class RelationshipDAO {
     private void deleteAll(EntityManager em, UUID modelId) {
         Query query;
         String queryString;
-        if (modelId != null && Dialects.isDialectCassandra(em.getEntityManagerFactory(), kundera.getPersistenceUnitName())) {
+        if (modelId != null && Dialects.isDialectCassandra(em.getEntityManagerFactory(), jpa.getPersistenceUnitName())) {
             /*
               TODO
               The following query *MUST* be sanitized before being placed in production code.

@@ -1,7 +1,5 @@
 # SysML v2 API and Services
-Pilot implementation of SysML v2 API and Services using Play framework.
-Uses Kundera for interacting with Cassandra through JPA.
-More details coming soon...
+Pilot implementation of SysML v2 API and Services using Play framework. More details coming soon...
 
 # Setup
 Configure the following system properties via the command line or specify them as properties within persistence.xml (not recommended)

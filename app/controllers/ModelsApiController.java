@@ -19,12 +19,12 @@ public class ModelsApiController extends JsonController {
     private static final String DOESNT_ACCEPT_JSON_MESSAGE = "Cannot process non-json requests.";
 
     private final ModelDAO dao;
-    private final JPAManager kundera;
+    private final JPAManager jpa;
 
     @Inject
-    private ModelsApiController(ModelDAO dao, JPAManager kundera) {
+    private ModelsApiController(ModelDAO dao, JPAManager jpa) {
         this.dao = dao;
-        this.kundera = kundera;
+        this.jpa = jpa;
     }
 
     @ApiAction
@@ -35,13 +35,13 @@ public class ModelsApiController extends JsonController {
         JsonNode nodebody = request().body().asJson();
         Model body;
         if (nodebody != null) {
-            body = kundera.getObjectMapper().readValue(nodebody.toString(), Model.class);
+            body = jpa.getObjectMapper().readValue(nodebody.toString(), Model.class);
         }
         else {
             body = null;
         }
         Model obj = dao.create(body);
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return created(result);
     }
 
@@ -84,7 +84,7 @@ public class ModelsApiController extends JsonController {
         if (obj == null) {
             return notFound();
         }
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
     }
 
@@ -94,7 +94,7 @@ public class ModelsApiController extends JsonController {
             return getErrorStringAsJsonResult(DOESNT_ACCEPT_JSON_MESSAGE, Results::unsupportedMediaType);
         }
         List<Model> obj = dao.getAll();
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
     }
 
@@ -106,7 +106,7 @@ public class ModelsApiController extends JsonController {
         JsonNode nodebody = request().body().asJson();
         Model body;
         if (nodebody != null) {
-            body = kundera.getObjectMapper().readValue(nodebody.toString(), Model.class);
+            body = jpa.getObjectMapper().readValue(nodebody.toString(), Model.class);
         }
         else {
             throw new IllegalArgumentException("'body' parameter is required");
@@ -118,7 +118,7 @@ public class ModelsApiController extends JsonController {
             return getErrorStringAsJsonResult("The provided id is not a valid UUID.", Results::badRequest);
         }
         Model obj = uuid.equals(body.getId()) ? dao.update(body) : null;
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
     }
 
@@ -130,14 +130,14 @@ public class ModelsApiController extends JsonController {
         JsonNode nodebody = request().body().asJson();
         List<Model> body;
         if (nodebody != null) {
-            body = kundera.getObjectMapper().readValue(nodebody.toString(), new TypeReference<List<Model>>() {
+            body = jpa.getObjectMapper().readValue(nodebody.toString(), new TypeReference<List<Model>>() {
             });
         }
         else {
             throw new IllegalArgumentException("'body' parameter is required");
         }
         List<Model> obj = dao.updateAll(body);
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
     }
 }

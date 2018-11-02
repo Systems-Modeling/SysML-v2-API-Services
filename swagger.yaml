@@ -1,6 +1,6 @@
 swagger: "2.0"
 info:
-  title: graph-rest-api
+  title: SysML-v2-API-Services
   description: A REST api for working with models, relationships, and elements.
   version: 1.0.0
 host: localhost:9000
@@ -952,9 +952,9 @@ definitions:
     - $ref: '#/definitions/Element'
     - properties:
         source:
-          $ref: '#/definitions/ElementIdentity'
+          $ref: '#/definitions/ElementReference'
         target:
-          $ref: '#/definitions/ElementIdentity'
+          $ref: '#/definitions/ElementReference'
     additionalProperties:
       type: object
   Model:
@@ -969,7 +969,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Element'
-  ElementIdentity:
+  ElementReference:
     type: object
     properties:
       id:

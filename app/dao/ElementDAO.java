@@ -21,11 +21,11 @@ import java.util.function.Function;
 @Singleton
 public class ElementDAO {
     @Inject
-    private JPAManager kundera;
+    private JPAManager jpa;
 
     public Element create(Element element) {
         if (element != null) {
-            kundera.transact(em -> {
+            jpa.transact(em -> {
                 em.persist(element);
                 em.flush();
             });
@@ -39,10 +39,10 @@ public class ElementDAO {
     }
 
     public void delete(UUID modelId, UUID elementId) {
-        kundera.transact(em -> {
+        jpa.transact(em -> {
             Query query;
             String queryString;
-            if (Dialects.isDialectCassandra(em.getEntityManagerFactory(), kundera.getPersistenceUnitName())) {
+            if (Dialects.isDialectCassandra(em.getEntityManagerFactory(), jpa.getPersistenceUnitName())) {
                  /*
                 TODO
                 The following query *MUST* be sanitized before being placed in production code.
@@ -72,10 +72,10 @@ public class ElementDAO {
     }
 
     public void deleteAll(UUID modelId) {
-        kundera.transact(em -> {
+        jpa.transact(em -> {
             Query query;
             String queryString;
-            if (modelId != null && Dialects.isDialectCassandra(em.getEntityManagerFactory(), kundera.getPersistenceUnitName())) {
+            if (modelId != null && Dialects.isDialectCassandra(em.getEntityManagerFactory(), jpa.getPersistenceUnitName())) {
                 /*
                 TODO
                 The following query *MUST* be sanitized before being placed in production code.
@@ -105,10 +105,10 @@ public class ElementDAO {
      * @return The element if located, otherwise null.
      */
     public Element getById(UUID modelId, UUID elementId) {
-        List<Element> elements = kundera.transact((Function<EntityManager, List<Element>>) em -> {
+        List<Element> elements = jpa.transact((Function<EntityManager, List<Element>>) em -> {
             Query query;
             String queryString;
-            if (Dialects.isDialectCassandra(em.getEntityManagerFactory(), kundera.getPersistenceUnitName())) {
+            if (Dialects.isDialectCassandra(em.getEntityManagerFactory(), jpa.getPersistenceUnitName())) {
                 /*
                 TODO
                 The following query *MUST* be sanitized before being placed in production code.
@@ -139,10 +139,10 @@ public class ElementDAO {
     }
 
     public List<Element> getAll(UUID modelId) {
-        return kundera.transact((Function<EntityManager, List<Element>>) em -> {
+        return jpa.transact((Function<EntityManager, List<Element>>) em -> {
             Query query;
             String queryString;
-            if (Dialects.isDialectCassandra(em.getEntityManagerFactory(), kundera.getPersistenceUnitName())) {
+            if (Dialects.isDialectCassandra(em.getEntityManagerFactory(), jpa.getPersistenceUnitName())) {
                  /*
                 TODO
                 The following query *MUST* be sanitized before being placed in production code.
@@ -170,7 +170,7 @@ public class ElementDAO {
     }
 
     public Element update(Element element) {
-        return kundera.transact(em -> {
+        return jpa.transact(em -> {
             em.merge(element);
             em.flush();
             Model elementModel = element.getModel();
@@ -182,7 +182,7 @@ public class ElementDAO {
     }
 
     public List<Element> updateAll(UUID modelId, Collection<Element> deserialized) {
-        return kundera.transact(em -> {
+        return jpa.transact(em -> {
             deleteAll(modelId);
             for (Element element : deserialized) {
                 em.persist(element);

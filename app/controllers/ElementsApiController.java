@@ -18,12 +18,12 @@ import java.util.UUID;
 public class ElementsApiController extends JsonController {
     private static final String DOESNT_ACCEPT_JSON_MESSAGE = "Cannot process non-json requests.";
     private final ElementDAO dao;
-    private final JPAManager kundera;
+    private final JPAManager jpa;
 
     @Inject
-    private ElementsApiController(ElementDAO dao, JPAManager kundera) {
+    private ElementsApiController(ElementDAO dao, JPAManager jpa) {
         this.dao = dao;
-        this.kundera = kundera;
+        this.jpa = jpa;
     }
 
     @ApiAction
@@ -34,13 +34,13 @@ public class ElementsApiController extends JsonController {
         JsonNode nodebody = request().body().asJson();
         Element body;
         if (nodebody != null) {
-            body = kundera.getObjectMapper().readValue(nodebody.toString(), Element.class);
+            body = jpa.getObjectMapper().readValue(nodebody.toString(), Element.class);
         }
         else {
             throw new IllegalArgumentException("'body' parameter is required");
         }
         Element obj = dao.create(body);
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return created(result);
     }
 
@@ -52,7 +52,7 @@ public class ElementsApiController extends JsonController {
         JsonNode nodebody = request().body().asJson();
         Element body;
         if (nodebody != null) {
-            body = kundera.getObjectMapper().readValue(nodebody.toString(), Element.class);
+            body = jpa.getObjectMapper().readValue(nodebody.toString(), Element.class);
         }
         else {
             body = null;
@@ -64,7 +64,7 @@ public class ElementsApiController extends JsonController {
             return getErrorStringAsJsonResult("The provided id is not a valid UUID.", Results::badRequest);
         }
         Element obj = modelUUID.equals(body.getModel().getId()) ? dao.create(body) : null;
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return created(result);
     }
 
@@ -138,7 +138,7 @@ public class ElementsApiController extends JsonController {
         if (obj == null) {
             return notFound();
         }
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
 
     }
@@ -159,7 +159,7 @@ public class ElementsApiController extends JsonController {
         if (obj == null) {
             return notFound();
         }
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
     }
 
@@ -169,7 +169,7 @@ public class ElementsApiController extends JsonController {
             return getErrorStringAsJsonResult(DOESNT_ACCEPT_JSON_MESSAGE, Results::unsupportedMediaType);
         }
         List<Element> obj = dao.getAll(null);
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
     }
 
@@ -185,7 +185,7 @@ public class ElementsApiController extends JsonController {
             return getErrorStringAsJsonResult("The provided ids are not valid UUIDs.", Results::badRequest);
         }
         List<Element> obj = dao.getAll(modelUUID);
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
     }
 
@@ -197,7 +197,7 @@ public class ElementsApiController extends JsonController {
         JsonNode nodebody = request().body().asJson();
         Element body;
         if (nodebody != null) {
-            body = kundera.getObjectMapper().readValue(nodebody.toString(), Element.class);
+            body = jpa.getObjectMapper().readValue(nodebody.toString(), Element.class);
         }
         else {
             throw new IllegalArgumentException("'body' parameter is required");
@@ -209,7 +209,7 @@ public class ElementsApiController extends JsonController {
             return getErrorStringAsJsonResult("The provided ids are not valid UUIDs.", Results::badRequest);
         }
         Element obj = uuid.equals(body.getId()) ? dao.update(body) : null;
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
     }
 
@@ -221,7 +221,7 @@ public class ElementsApiController extends JsonController {
         JsonNode nodebody = request().body().asJson();
         Element body;
         if (nodebody != null) {
-            body = kundera.getObjectMapper().readValue(nodebody.toString(), Element.class);
+            body = jpa.getObjectMapper().readValue(nodebody.toString(), Element.class);
         }
         else {
             body = null;
@@ -234,7 +234,7 @@ public class ElementsApiController extends JsonController {
             return getErrorStringAsJsonResult("The provided ids are not valid UUIDs.", Results::badRequest);
         }
         Element obj = elementUUID.equals(body.getId()) && modelUUID.equals(body.getModel().getId()) ? dao.update(body) : null;
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
     }
 
@@ -246,14 +246,14 @@ public class ElementsApiController extends JsonController {
         JsonNode nodebody = request().body().asJson();
         List<Element> body;
         if (nodebody != null) {
-            body = kundera.getObjectMapper().readValue(nodebody.toString(), new TypeReference<List<Element>>() {
+            body = jpa.getObjectMapper().readValue(nodebody.toString(), new TypeReference<List<Element>>() {
             });
         }
         else {
             throw new IllegalArgumentException("'body' parameter is required");
         }
         List<Element> obj = dao.updateAll(null, body);
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
     }
 
@@ -265,7 +265,7 @@ public class ElementsApiController extends JsonController {
         JsonNode nodebody = request().body().asJson();
         List<Element> body;
         if (nodebody != null) {
-            body = kundera.getObjectMapper().readValue(nodebody.toString(), new TypeReference<List<Element>>() {
+            body = jpa.getObjectMapper().readValue(nodebody.toString(), new TypeReference<List<Element>>() {
             });
         }
         else {
@@ -283,7 +283,7 @@ public class ElementsApiController extends JsonController {
             }
         }
         List<Element> obj = dao.updateAll(modelUUID, body);
-        JsonNode result = kundera.getObjectMapper().valueToTree(obj);
+        JsonNode result = jpa.getObjectMapper().valueToTree(obj);
         return ok(result);
     }
 }

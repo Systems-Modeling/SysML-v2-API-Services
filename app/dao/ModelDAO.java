@@ -22,11 +22,11 @@ import java.util.function.Function;
 @Singleton
 public class ModelDAO {
     @Inject
-    private JPAManager kundera;
+    private JPAManager jpa;
 
     public Model create(Model model) {
         if (model != null) {
-            kundera.transact(entityManager -> {
+            jpa.transact(entityManager -> {
                 entityManager.persist(model);
                 entityManager.flush();
             });
@@ -36,10 +36,10 @@ public class ModelDAO {
     }
 
     public void delete(UUID modelId) {
-        kundera.transact(em -> {
+        jpa.transact(em -> {
             Query query;
             String queryString;
-            if (Dialects.isDialectCassandra(em.getEntityManagerFactory(), kundera.getPersistenceUnitName())) {
+            if (Dialects.isDialectCassandra(em.getEntityManagerFactory(), jpa.getPersistenceUnitName())) {
                 /*
                 TODO
                 The following query *MUST* be sanitized before being placed in production code.
@@ -60,14 +60,14 @@ public class ModelDAO {
     }
 
     public void deleteAll() {
-        kundera.transact((Consumer<EntityManager>) this::deleteAll);
+        jpa.transact((Consumer<EntityManager>) this::deleteAll);
     }
 
     public Model getById(UUID modelId) {
-        return kundera.transact(em -> {
+        return jpa.transact(em -> {
             Query query;
             String queryString;
-            if (Dialects.isDialectCassandra(em.getEntityManagerFactory(), kundera.getPersistenceUnitName())) {
+            if (Dialects.isDialectCassandra(em.getEntityManagerFactory(), jpa.getPersistenceUnitName())) {
                 /*
                 TODO
                 The following query *MUST* be sanitized before being placed in production code.
@@ -95,11 +95,11 @@ public class ModelDAO {
     }
 
     public List<Model> getAll() {
-        return kundera.transact((Function<EntityManager, List<Model>>) em -> em.createQuery("SELECT m FROM Model m", Model.class).getResultList());
+        return jpa.transact((Function<EntityManager, List<Model>>) em -> em.createQuery("SELECT m FROM Model m", Model.class).getResultList());
     }
 
     public Model update(Model model) {
-        return kundera.transact(em -> {
+        return jpa.transact(em -> {
             em.merge(model);
             em.flush();
             return getById(model.getId());
@@ -107,7 +107,7 @@ public class ModelDAO {
     }
 
     public List<Model> updateAll(Collection<Model> deserialized) {
-        return kundera.transact(em -> {
+        return jpa.transact(em -> {
             deleteAll(em);
             for (Element element : deserialized) {
                 em.persist(element);
