@@ -1,12 +1,10 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import models.Element;
 import models.Relationship;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
-import services.ElementService;
 import services.RelationshipService;
 
 import javax.inject.Inject;
@@ -16,7 +14,7 @@ import java.util.UUID;
 /**
  * @author Manas Bajaj
  *
- * Controller for handling all API requests related to SysML v2 elements
+ * Controller for handling all API requests related to SysML v2 relationship elements
  */
 public class RelationshipController extends Controller {
 
@@ -32,6 +30,17 @@ public class RelationshipController extends Controller {
             UUID relationshipId = UUID.fromString(id);
             Relationship relation = relationService.getById(relationshipId);
             return ok(Json.toJson(relation));
+        }
+        catch (IllegalArgumentException e) {
+            return badRequest("Supplied identifier is not a UUID.");
+        }
+    }
+
+    public Result byModel(String mid) {
+        try {
+            UUID modelId = UUID.fromString(mid);
+            Set<Relationship> elements = relationService.getByModelId(modelId);
+            return ok(Json.toJson(elements));
         }
         catch (IllegalArgumentException e) {
             return badRequest("Supplied identifier is not a UUID.");

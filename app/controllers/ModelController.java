@@ -1,14 +1,10 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-
-import models.Element;
 import models.Model;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
-
-import services.ElementService;
 import services.ModelService;
 
 import javax.inject.Inject;
@@ -18,7 +14,7 @@ import java.util.UUID;
 /**
  * @author Manas Bajaj
  *
- * Controller for handling all API requests related to SysML v2 elements
+ * Controller for handling all API requests related to SysML v2 models
  */
 public class ModelController extends Controller {
 

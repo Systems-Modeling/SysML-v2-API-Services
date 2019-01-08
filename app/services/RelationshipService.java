@@ -52,6 +52,18 @@ public class RelationshipService {
             return null;
     }
 
+    public Set<Relationship> getByModelId(UUID modelId) {
+        Set<Relationship> relationships = new HashSet<>();
+        ResultSet resultSet = sessionBuilder.getSession().execute("select identifier, name, description, parent_model, " +
+                "type, source_element_role, source_element, target_element_role, target_element from sysml2.relationships where parent_model = " + modelId + " allow filtering;");
+
+        for(Row r: resultSet)
+            relationships.add(new Relationship(r.getUUID(0), r.getString(1), r.getString(2), r.getUUID(3), r.getString(4),
+                    r.getString(5), r.getUUID(6), r.getString(7), r.getUUID(8) ));
+
+        return relationships;
+    }
+
     public Set<Relationship> getByElementId(UUID elementIdentifier) {
         Set<Relationship> relations = getByEndTypeId(elementIdentifier, EndType.source);
         relations.addAll(getByEndTypeId(elementIdentifier, EndType.target));

@@ -40,8 +40,10 @@ select * from sysml2.elements;
 select * from sysml2.relationships;
 select * from sysml2.relationships where type = 'Generalization' allow filtering;
 select * from sysml2.relationships where type = 'Membership' allow filtering;
-select * from sysml2.relationships where source_element = 65df2b3a-b52e-11e8-96f8-529269fb1459 allow filtering;
-select * from sysml2.relationships where target_element = 65df2b3a-b52e-11e8-96f8-529269fb1459 allow filtering;
+select * from sysml2.relationships where source_element = 3921f050-b565-11e8-8e53-dbf8bfefb057 allow filtering;
+select * from sysml2.relationships where target_element = 3921f050-b565-11e8-8e53-dbf8bfefb057 allow filtering;
+
+delete from sysml2.elements where identifier=5eac6de0-b5ca-11e8-8e53-dbf8bfefb057;
 
 
 

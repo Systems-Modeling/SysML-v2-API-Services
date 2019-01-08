@@ -13,6 +13,7 @@ POST     /model                    controllers.ModelController.create()
 # Element endpoints
 GET      /element                       controllers.ElementController.all()
 GET      /element/:id                   controllers.ElementController.byId(id)
+GET      /element/model/:mid            controllers.ElementController.byModel(mid)
 GET      /element/:id/model/:mid        controllers.ElementController.byIdAndModel(id,mid)
 POST     /element                       controllers.ElementController.create()
 
@@ -20,8 +21,11 @@ POST     /element                       controllers.ElementController.create()
 GET      /relationship/:id              controllers.RelationshipController.byId(id)
 GET      /relationship/element/:id      controllers.RelationshipController.byElementId(id)
 GET      /relationship/source/:id       controllers.RelationshipController.bySourceElementId(id)
+#GET      /relationship/source/:id/type:type       controllers.RelationshipController.bySourceElementId(id)
 GET      /relationship/target/:id       controllers.RelationshipController.byTargetElementId(id)
+#GET      /relationship/target/:id/type/:type       controllers.RelationshipController.byTargetElementId(id)
 GET      /relationship                  controllers.RelationshipController.all()
+GET     /relationship/model/:mid        controllers.RelationshipController.byModel(mid)
 POST     /relationship                  controllers.RelationshipController.create()
 
 # Map static resources from the /public folder to the /assets URL path

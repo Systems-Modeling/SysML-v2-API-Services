@@ -49,6 +49,15 @@ public class ElementService {
             return null;
     }
 
+    public Set<Element> getByModelId(UUID modelId) {
+        Set<Element> elements = new HashSet<>();
+        ResultSet resultSet = sessionBuilder.getSession().execute("select identifier, name, description, parent_model, type from sysml2.elements where parent_model = " + modelId + " allow filtering;");
+        for(Row r: resultSet)
+            elements.add(new Element(r.getUUID(0), r.getString(1), r.getString(2), r.getUUID(3), r.getString(4)));
+
+        return elements;
+    }
+
     public Element create(Element elem) {
         if(elem!=null) {
             UUID elementIdentifier = elem.identifier;
@@ -64,4 +73,6 @@ public class ElementService {
         else
             return null;
     }
+
+
 }
