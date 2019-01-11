@@ -33,7 +33,7 @@ public class ElementDeserializer extends StdDeserializer<Element> {
         JsonToken token;
         Element mof = null;
         while ((token = p.nextToken()) != null && token != JsonToken.END_OBJECT) {
-            if (mof == null && token == JsonToken.FIELD_NAME && "@id".equals(p.getCurrentName())) {
+            if (mof == null && token == JsonToken.FIELD_NAME && "id".equals(p.getCurrentName())) {
                 p.nextToken();
                 String id = p.getText();
                 UUID uuid = UUID.fromString(id);

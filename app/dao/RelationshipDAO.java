@@ -15,6 +15,7 @@ import javax.persistence.Query;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Function;
 
 /**
@@ -33,7 +34,6 @@ public class RelationshipDAO {
             relationship.getSourceTargetQuery();
             jpa.transact(entityManager -> {
                 entityManager.persist(relationship);
-                entityManager.flush();
             });
             Model relationshipModel = relationship.getModel();
             if (relationshipModel != null) {
@@ -249,27 +249,27 @@ public class RelationshipDAO {
     }
 
     public Relationship update(Relationship relationship) {
-        return jpa.transact((entityManager) -> {
+        AtomicReference<UUID> id = new AtomicReference<>();
+        jpa.transact((entityManager) -> {
             relationship.getSourceTargetQuery();
             entityManager.merge(relationship);
-            entityManager.flush();
             Model relationshipModel = relationship.getModel();
             if (relationshipModel != null) {
-                return getById(relationshipModel.getId(), relationship.getId());
+                id.set(relationshipModel.getId());
             }
-            return getById(null, relationship.getId());
         });
+        return getById(id.get(), relationship.getId());
     }
 
     public List<Relationship> updateAll(UUID modelId, Collection<Relationship> deserialized) {
-        return jpa.transact(em -> {
+        jpa.transact(em -> {
             deleteAll(em, modelId);
             for (Relationship relationship : deserialized) {
                 relationship.getSourceTargetQuery();
                 em.persist(relationship);
             }
-            return getAll(modelId);
         });
+        return getAll(modelId);
     }
 
     private void deleteAll(EntityManager em, UUID modelId) {

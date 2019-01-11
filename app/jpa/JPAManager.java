@@ -11,5 +11,5 @@ public interface JPAManager {
 
     String getPersistenceUnitName();
 
-    EntityManager getEntityManager();
+    EntityManager createEntityManager();
 }

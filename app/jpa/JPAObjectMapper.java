@@ -18,7 +18,7 @@ public class JPAObjectMapper extends ObjectMapper {
         //See point #5 of https://blog.lahteenmaki.net/making-jackson-tolerable.html
         configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, true);
         configure(DeserializationFeature.FAIL_ON_NUMBERS_FOR_ENUMS, true);
-        setHandlerInstantiator(new EntityManagerHandlerInstantiator(jpa.getEntityManager()));
+        setHandlerInstantiator(new EntityManagerHandlerInstantiator(jpa.createEntityManager()));
         registerSubtypes(Element.class, Relationship.class, Model.class);
         Json.setObjectMapper(this);
     }

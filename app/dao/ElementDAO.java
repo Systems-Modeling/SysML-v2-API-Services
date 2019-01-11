@@ -12,6 +12,7 @@ import javax.persistence.Query;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Function;
 
 /**
@@ -27,7 +28,6 @@ public class ElementDAO {
         if (element != null) {
             jpa.transact(em -> {
                 em.persist(element);
-                em.flush();
             });
             Model elementModel = element.getModel();
             if (elementModel != null) {
@@ -170,24 +170,24 @@ public class ElementDAO {
     }
 
     public Element update(Element element) {
-        return jpa.transact(em -> {
+        AtomicReference<UUID> id = new AtomicReference<>();
+        jpa.transact(em -> {
             em.merge(element);
-            em.flush();
             Model elementModel = element.getModel();
             if (elementModel != null) {
-                return getById(elementModel.getId(), element.getId());
+                id.set(elementModel.getId());
             }
-            return getById(null, element.getId());
         });
+        return getById(id.get(), element.getId());
     }
 
     public List<Element> updateAll(UUID modelId, Collection<Element> deserialized) {
-        return jpa.transact(em -> {
+        jpa.transact(em -> {
             deleteAll(modelId);
             for (Element element : deserialized) {
                 em.persist(element);
             }
-            return getAll(modelId);
         });
+        return getAll(modelId);
     }
 }

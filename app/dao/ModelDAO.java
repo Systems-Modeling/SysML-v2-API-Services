@@ -27,7 +27,6 @@ public class ModelDAO {
         if (model != null) {
             jpa.transact(entityManager -> {
                 entityManager.persist(model);
-                entityManager.flush();
             });
             return getById(model.getId());
         }
@@ -98,21 +97,20 @@ public class ModelDAO {
     }
 
     public Model update(Model model) {
-        return jpa.transact(em -> {
+        jpa.transact(em -> {
             em.merge(model);
-            em.flush();
-            return getById(model.getId());
         });
+        return getById(model.getId());
     }
 
     public List<Model> updateAll(Collection<Model> deserialized) {
-        return jpa.transact(em -> {
+        jpa.transact(em -> {
             deleteAll(em);
             for (Element element : deserialized) {
                 em.persist(element);
             }
-            return getAll();
         });
+        return getAll();
     }
 
     private void deleteAll(EntityManager em) {

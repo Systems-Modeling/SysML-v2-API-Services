@@ -3,6 +3,7 @@ package jpa;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +15,7 @@ import java.util.function.Function;
 public class KunderaManager implements JPAManager {
     private static final String DEFAULT_PERSISTENCE_UNIT_NAME = "cassandra";
     private final String persistenceUnitName;
-    private final EntityManager entityManager;
+    private final EntityManagerFactory entityManagerFactory;
 
     @Inject
     public KunderaManager() {
@@ -31,10 +32,10 @@ public class KunderaManager implements JPAManager {
                     kunderaConfiguration.put(propertyName, systemProperties.getProperty(propertyName));
                 }
             }
-            entityManager = Persistence.createEntityManagerFactory(persistenceUnitName, kunderaConfiguration).createEntityManager();
+            entityManagerFactory = Persistence.createEntityManagerFactory(persistenceUnitName, kunderaConfiguration);
             /*
             Do not hardcode the CQL version to 3.0.0 unless you know *exactly* what you're doing.
-            entityManager.setProperty("cql.version", "3.0.0");
+            entityManagerFactory.setProperty("cql.version", "3.0.0");
             */
         } catch (Throwable t) {
             System.err.println("Building EntityManager failed.");
@@ -43,18 +44,30 @@ public class KunderaManager implements JPAManager {
     }
 
     public <R> R transact(Function<EntityManager, R> function) {
-        return function.apply(getEntityManager());
+        EntityManager entityManager = createEntityManager();
+        try {
+            return function.apply(createEntityManager());
+        } finally {
+            entityManager.close();
+        }
+
     }
 
     public void transact(Consumer<EntityManager> consumer) {
-        consumer.accept(getEntityManager());
+        EntityManager entityManager = createEntityManager();
+        try {
+            consumer.accept(entityManager);
+        } finally {
+            entityManager.close();
+        }
+
     }
 
     public String getPersistenceUnitName() {
         return persistenceUnitName;
     }
 
-    public EntityManager getEntityManager() {
-        return entityManager;
+    public EntityManager createEntityManager() {
+        return entityManagerFactory.createEntityManager();
     }
 }

@@ -24,7 +24,7 @@ public class ElementSerializer extends StdSerializer<Element> {
             return;
         }
         gen.writeStartObject();
-        gen.writeObjectField("@id", value.getId());
+        gen.writeObjectField("id", value.getId());
         gen.writeEndObject();
     }
 
