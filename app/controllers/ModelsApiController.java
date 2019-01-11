@@ -32,6 +32,9 @@ public class ModelsApiController extends JsonController {
             body = null;
         }
         Model obj = service.create(body);
+        if (obj == null) {
+            return badRequest();
+        }
         JsonNode result = Json.toJson(obj);
         return created(result);
     }

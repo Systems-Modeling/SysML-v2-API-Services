@@ -32,6 +32,9 @@ public class RelationshipsApiController extends JsonController {
             throw new IllegalArgumentException("'body' parameter is required");
         }
         Relationship obj = service.create(body);
+        if (obj == null) {
+            return badRequest();
+        }
         JsonNode result = Json.toJson(obj);
         return created(result);
     }
