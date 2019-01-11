@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "33537182-d9fb-4136-b3d5-3f098a833058",
+		"name": "sysml2",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST Model",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"18716c40-15d3-11e9-8e4c-6d2c86545d91\",\n\t\"name\": \"MyModel\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/models",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"models"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Models",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"@type\" : \"Class\",\n\t\"@id\" : \"772a3fd3-e157-4f4e-8bba-5ffcdab35a14\",\n\t\"abstract\" : true\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/models",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"models"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Class",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"6645c852-cb47-419e-b499-153cb232ddc9\",\n\t\"model\": {\n\t\t\"id\": \"18716c40-15d3-11e9-8e4c-6d2c86545d91\"\n\t},\n\t\"name\": \"MyClass\",\n\t\"type\": \"Class\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/elements",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"elements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Feature",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"e144bbe6-c124-4fc5-929d-d2140d5bcf90\",\n\t\"model\": {\n\t\t\"id\": \"18716c40-15d3-11e9-8e4c-6d2c86545d91\"\n\t},\n\t\"name\": \"myFeature1\",\n\t\"type\": \"Feature\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/elements",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"elements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Elements",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"@type\" : \"Membership\",\n\t\"@id\" : \"9cf32f57-db9d-4367-b301-e124572d439d\",\n\t\"ownedMemberElement\" : {\n\t\t\"@id\" : \"772a3fd3-e157-4f4e-8bba-5ffcdab35a14\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/elements",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"elements"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Membership",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\" : \"137ce22d-f43e-4bb9-adf7-559e0f22584f\",\n\t\"type\": \"Membership\",\n\t\"model\": {\n        \"id\": \"18716c40-15d3-11e9-8e4c-6d2c86545d91\"\n    },\n\t\"source\": {\n\t\t\"id\": \"6645c852-cb47-419e-b499-153cb232ddc9\"\n\t},\n\t\"target\": {\n\t\t\"id\": \"e144bbe6-c124-4fc5-929d-d2140d5bcf90\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/relationships",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"relationships"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET Relationships",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\" : \"137ce22d-f43e-4bb9-adf7-559e0f22584f\",\n\t\"type\": \"Membership\",\n\t\"model\": {\n        \"id\": \"18716c40-15d3-11e9-8e4c-6d2c86545d91\"\n    },\n\t\"source\": {\n\t\t\"id\": \"6645c852-cb47-419e-b499-153cb232ddc9\"\n\t},\n\t\"target\": {\n\t\t\"id\": \"e144bbe6-c124-4fc5-929d-d2140d5bcf90\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/relationships",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"relationships"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "f6c3be7c-bfc7-4784-a107-6b46057eed40",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "e6d8127c-1846-4d12-a304-dc062dc20163",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
