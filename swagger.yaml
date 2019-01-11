@@ -1004,13 +1004,12 @@ definitions:
       id:
         type: string
         format: uuid
+      name:
+        type: string
       type:
         type: string
       model:
         $ref: '#/definitions/Model'
-    required:
-    - id
-    - type
     additionalProperties:
       type: object
   Relationship:
@@ -1030,12 +1029,12 @@ definitions:
       id:
         type: string
         format: uuid
-      type:
+      name:
         type: string
       elements:
         type: array
         items:
-          $ref: '#/definitions/Element'
+          $ref: '#/definitions/ElementReference'
   ElementReference:
     type: object
     properties:

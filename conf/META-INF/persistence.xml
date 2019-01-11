@@ -6,20 +6,14 @@
     <persistence-unit name="cassandra">
         <provider>com.impetus.kundera.KunderaPersistence</provider>
 
-        <!--
-        Due to a ClassLoader conflict between Play Framework and Kundera, Kundera is unable to locate the "models" even
-        if they are accessible on the classpath, unless they're packaged into a JAR. That's why they're being provided in a jar.
-        -->
+        <!-- Included in lib/jar due to classpath conflict. See README. -->
         <class>models.Element</class>
         <class>models.Relationship</class>
         <class>models.Model</class>
 
         <properties>
             <property name="kundera.dialect" value="cassandra"/>
-            <property name="kundera.dll.auto.prepare" value="validate"/>
-            <!--<property name="kundera.ddl.auto.prepare" value="create"/>-->
-            <property name="kundera.client.lookup.class"
-                      value="com.impetus.client.cassandra.thrift.ThriftClientFactory"/>
+            <property name="kundera.client.lookup.class" value="com.impetus.client.cassandra.thrift.ThriftClientFactory"/>
         </properties>
     </persistence-unit>
 </persistence>
