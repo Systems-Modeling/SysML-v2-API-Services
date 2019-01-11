@@ -1,13 +1,18 @@
 # SysML v2 API and Services
-Pilot implementation of SysML v2 API and Services using Play framework. More details coming soon...
+Pilot implementation of SysML v2 API and Services using Play framework.
 
 ## Setup
-Configure the following system properties via the command line or specify them as properties within persistence.xml (not recommended). An asterisks indicates required properties.
+
+### Cassandra
+This application (and Kundera under the hood) uses Cassandra's Thrift RPC server. This needs to be enabled by modifying the `start_rpc` property in `cassandra.yaml` to true. See [Cassandra documentation](https://docs.datastax.com/en/cassandra/3.0/cassandra/configuration/configCassandra_yaml.html) for details.
+
+### Application
+Configure the following system properties via the command line or specify them as properties within persistence.xml (not recommended). An asterisk indicates required properties.
 
 * \* `kundera.nodes`: Address(es) for Cassandra nodes.
-* \* `kundera.port`
-* \* `kundera.username`
-* \* `kundera.password`
+* \* `kundera.port`: The Thrift RPC server runs on port 9160 by default. The value can be found in `cassandra.yaml`.
+* \* `kundera.username`: Cassandra's default is `cassandra`.
+* \* `kundera.password`: Cassandra's default is `cassandra`.
 * \* `kundera.keyspace`: The top-level namespace under which data will be persisted in Cassandra. See [CREATE NAMESPACE documentation](https://docs.datastax.com/en/cql/3.3/cql/cql_reference/cqlCreateKeyspace.html) on how to create one before running this application. Example CQL command: `create keyspace sysml2 with replication = {'class' : 'SimpleStrategy', 'replication_factor' : 1};`
 * `kundera.ddl.auto.prepare`: Kundera can auto-generate schemas in Cassandra. A compatible schema is necessary and the auto-generated schema is what the application is tested against. For the first execution it is recommended to use `create` (clears any existing contents and generates schema), followed by `validate` on subsequent runs. See [Kundera's documentation](https://github.com/Impetus/Kundera/wiki/Schema-Generation) for details.
 * `kundera.show.query`: Shows queries as they are executed in Cassandra. Beneficial for debugging.
