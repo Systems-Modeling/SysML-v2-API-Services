@@ -11,10 +11,12 @@ import jackson.ElementSerializer;
 
 import javax.persistence.*;
 
+// TODO Jar after modification. See README.
+
 @Entity
 @Table(name = "relationships")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
-@JsonTypeName("Relationship")
+//@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
+//@JsonTypeName("Relationship")
 public final class Relationship extends Element {
     /**
      * The source of the relationship, the object that would "contain" the target in a POJO

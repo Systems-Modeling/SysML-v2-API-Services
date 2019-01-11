@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.util.UUID;
 
+// TODO Jar after modification. See README.
+
 @Entity
 @Table(name = "source_target_query")
 public class SourceTargetQuery {

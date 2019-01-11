@@ -5,6 +5,8 @@ import javax.persistence.Embeddable;
 import java.io.Serializable;
 import java.util.UUID;
 
+// TODO Jar after modification. See README.
+
 @Embeddable
 public class SourceTargetKey implements Serializable {
     @Column(name = "source_id", nullable = false)

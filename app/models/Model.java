@@ -13,10 +13,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
 
+// TODO Jar after modification. See README.
+
 @Entity
 @Table(name = "models")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
-@JsonTypeName("Model")
+//@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
+//@JsonTypeName("Model")
 public class Model extends Element {
     @OneToMany(mappedBy = "models")
     @JsonSerialize(contentUsing = ElementSerializer.class, contentAs = Element.class)
@@ -39,6 +41,6 @@ public class Model extends Element {
 
     @Override
     public void setModel(Model model) {
-        throw new UnsupportedOperationException("Cannot set a Models model");
+        throw new UnsupportedOperationException("Cannot set a Model's model");
     }
 }

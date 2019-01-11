@@ -9,19 +9,26 @@ import jackson.ElementSerializer;
 import javax.persistence.*;
 import java.util.UUID;
 
+// TODO Jar after modification. See README.
+
 @Entity
 @Table(name = "elements")
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
-@JsonTypeName("Element")
+//@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
+//@JsonTypeName("Element")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Element {
     @Id
     @Column(name = "id")
     @GeneratedValue
-    @JsonProperty(value = "@id", required = true)
+    @JsonProperty(value = "id", required = true)
     protected UUID id;
 
-    @JsonProperty(required = true)
+    @Column
+    @JsonProperty
+    private String name;
+
+    @Column
+    @JsonProperty
     private String type;
 
     @ManyToOne
@@ -39,12 +46,10 @@ public class Element {
         this.id = id;
     }
 
-    @JsonIgnore
     public String getType() {
         return type;
     }
 
-    @JsonIgnore
     public void setType(String type) {
         this.type = type;
     }
