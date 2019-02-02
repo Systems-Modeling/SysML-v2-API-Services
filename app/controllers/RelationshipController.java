@@ -1,16 +1,16 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import models.Element;
 import models.Relationship;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
-import services.ElementService;
+import play.mvc.Results;
 import services.RelationshipService;
 
 import javax.inject.Inject;
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
@@ -19,71 +19,44 @@ import java.util.UUID;
  * Controller for handling all API requests related to SysML v2 elements
  */
 public class RelationshipController extends Controller {
-
-    private RelationshipService relationService;
-
     @Inject
-    public RelationshipController(RelationshipService relationService) {
-        this.relationService = relationService;
-    }
+    private RelationshipService relationshipService;
 
     public Result byId(String id) {
-        try {
-            UUID relationshipId = UUID.fromString(id);
-            Relationship relation = relationService.getById(relationshipId);
-            return ok(Json.toJson(relation));
-        }
-        catch (IllegalArgumentException e) {
-            return badRequest("Supplied identifier is not a UUID.");
-        }
+        UUID uuid = UUID.fromString(id);
+        Optional<Relationship> relationship = relationshipService.getById(uuid);
+        return relationship.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
     }
-
-    public Result byElementId(String id) {
-        try {
-            UUID elementId = UUID.fromString(id);
-            Set<Relationship> relations = relationService.getByElementId(elementId);
-            return ok(Json.toJson(relations));
-        }
-        catch (IllegalArgumentException e) {
-            return badRequest("Supplied identifier is not a UUID.");
-        }
-    }
-
-    public Result bySourceElementId(String id) {
-        try {
-            UUID elementId = UUID.fromString(id);
-            Set<Relationship> relations = relationService.getBySourceElementId(elementId);
-            return ok(Json.toJson(relations));
-        }
-        catch (IllegalArgumentException e) {
-            return badRequest("Supplied identifier is not a UUID.");
-        }
-    }
-
-    public Result byTargetElementId(String id) {
-        try {
-            UUID elementId = UUID.fromString(id);
-            Set<Relationship> relations = relationService.getByTargetElementId(elementId);
-            return ok(Json.toJson(relations));
-        }
-        catch (IllegalArgumentException e) {
-            return badRequest("Supplied identifier is not a UUID.");
-        }
-    }
-
 
     public Result all() {
-        Set<Relationship> relations = relationService.getAll();
-        return ok(Json.toJson(relations));
+        List<Relationship> relationships = relationshipService.getAll();
+        return ok(Json.toJson(relationships));
     }
 
     public Result create() {
         JsonNode requestBodyJson = request().body().asJson();
-        Relationship newRelation = Json.fromJson(requestBodyJson, Relationship.class);
-        Relationship createdRelation = relationService.create(newRelation);
-        if(createdRelation!=null)
-            return created(Json.toJson(createdRelation));
-        else
-            return badRequest("Element with the following specification could not be created. \n " + requestBodyJson);
+        Relationship requestRelationship = Json.fromJson(requestBodyJson, Relationship.class);
+        Optional<Relationship> responseRelationship = relationshipService.create(requestRelationship);
+        return responseRelationship.map(e -> ok(Json.toJson(e))).orElseGet(Results::badRequest);
     }
+
+    public Result byRelatedElementId(String id) {
+        UUID elementUuid = UUID.fromString(id);
+        List<Relationship> relationships = relationshipService.getByRelatedElementId(elementUuid);
+        return ok(Json.toJson(relationships));
+    }
+
+    public Result bySourceElementId(String id) {
+        UUID elementUuid = UUID.fromString(id);
+        List<Relationship> relationships = relationshipService.getBySourceElementId(elementUuid);
+        return ok(Json.toJson(relationships));
+    }
+
+    public Result byTargetElementId(String id) {
+        UUID elementUuid = UUID.fromString(id);
+        List<Relationship> relationships = relationshipService.getByTargetElementId(elementUuid);
+        return ok(Json.toJson(relationships));
+    }
+
+
 }

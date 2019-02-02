@@ -2,68 +2,49 @@ package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import models.Element;
-import models.Relationship;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Results;
 import services.ElementService;
 
 import javax.inject.Inject;
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
  * @author Manas Bajaj
- *
+ * <p>
  * Controller for handling all API requests related to SysML v2 elements
  */
 public class ElementController extends Controller {
 
+    @Inject
     private ElementService elementService;
 
-    @Inject
-    public ElementController(ElementService elementService) {
-        this.elementService = elementService;
-    }
-
     public Result byId(String id) {
-        try {
-            UUID elementId = UUID.fromString(id);
-            Element element = elementService.getById(elementId);
-            return ok(Json.toJson(element).toString());
-        }
-        catch (IllegalArgumentException e) {
-            return badRequest("Supplied identifier is not a UUID.");
-        }
-    }
-
-    public Result byIdAndModel(String eid, String mid) {
-        try {
-            UUID elementId = UUID.fromString(eid);
-            UUID modelId = UUID.fromString(mid);
-            Element element = elementService.getById(modelId, elementId);
-            if(element!=null)
-                return ok(Json.toJson(element).toString());
-            else
-                return notFound("Element with id " + eid + " cannot be found in model with id " + mid);
-        }
-        catch (IllegalArgumentException e) {
-            return badRequest("Supplied identifiers are not UUIDs.");
-        }
+        UUID uuid = UUID.fromString(id);
+        Optional<Element> element = elementService.getById(uuid);
+        return element.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
     }
 
     public Result all() {
-        Set<Element> elements = elementService.getAll();
+        List<Element> elements = elementService.getAll();
         return ok(Json.toJson(elements));
     }
 
     public Result create() {
         JsonNode requestBodyJson = request().body().asJson();
-        Element newElement = Json.fromJson(requestBodyJson, Element.class);
-        Element createdElement = elementService.create(newElement);
-        if(createdElement!=null)
-            return created(Json.toJson(createdElement));
-        else
-            return badRequest("Element with the following specification could not be created. \n " + requestBodyJson);
+        Element requestElement = Json.fromJson(requestBodyJson, Element.class);
+        Optional<Element> responseElement = elementService.create(requestElement);
+        return responseElement.map(e -> ok(Json.toJson(e))).orElseGet(Results::badRequest);
+    }
+
+    public Result byModelAndId(String elementId, String modelId) {
+        UUID elementUuid = UUID.fromString(elementId);
+        UUID modelUuid = UUID.fromString(modelId);
+        Optional<Element> element = elementService.getByModelAndId(modelUuid, elementUuid);
+        return element.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
     }
 }

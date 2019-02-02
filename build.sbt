@@ -8,7 +8,11 @@ lazy val root = (project in file(".")).enablePlugins(PlayJava)
 scalaVersion := "2.12.6"
 
 libraryDependencies += guice
-libraryDependencies += "com.google.code.gson" % "gson" % "2.8.5"
-libraryDependencies += "com.datastax.cassandra" % "cassandra-driver-core" % "3.3.0"
-libraryDependencies += "com.datastax.cassandra" % "cassandra-driver-extras" % "3.3.0"
+libraryDependencies += "org.hibernate" % "hibernate-core" % "5.4.1.Final"
+libraryDependencies += "org.hibernate" % "hibernate-jpamodelgen" % "5.4.1.Final"
+libraryDependencies += "org.postgresql" % "postgresql" % "42.2.5"
+libraryDependencies += "com.fasterxml.jackson.core" % "jackson-annotations" % "2.9.8"
+libraryDependencies += "com.fasterxml.jackson.core" % "jackson-databind" % "2.9.8"
+libraryDependencies += "com.fasterxml.jackson.datatype" % "jackson-datatype-hibernate5" % "2.9.8"
 
+javacOptions ++= Seq("-s", "app")
