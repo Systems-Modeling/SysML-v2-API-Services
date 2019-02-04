@@ -14,7 +14,7 @@ paths:
       tags:
         - Model
       operationId: getModels
-      summary: Gets a list of all models.
+      summary: Get all models
       produces:
         - application/json
       responses:
@@ -34,7 +34,7 @@ paths:
       tags:
         - Model
       operationId: createModel
-      summary: Adds a new model.
+      summary: Add a new model
       consumes:
         - application/json
       produces:
@@ -59,14 +59,14 @@ paths:
     parameters:
       - name: id
         in: path
-        description: The id of a model
+        description: ID of the model
         type: string
         required: true
     get:
       tags:
         - Model
       operationId: getModel
-      summary: Get a model by its id.
+      summary: Get model by its ID
       produces:
         - application/json
       responses:
@@ -89,7 +89,7 @@ paths:
       tags:
       - Element
       operationId: getElements
-      summary: Gets a list of all elements.
+      summary: Get all elements
       produces:
       - application/json
       responses:
@@ -109,7 +109,7 @@ paths:
       tags:
       - Element
       operationId: createElement
-      summary: Adds a new element
+      summary: Add a new element
       consumes:
       - application/json
       produces:
@@ -135,14 +135,14 @@ paths:
     parameters:
     - name: id
       in: path
-      description: The id of an element
+      description: ID of the element
       type: string
       required: true
     get:
       tags:
       - Element
       operationId: getElement
-      summary: Returns the element with the specified id.
+      summary: Get element by its ID
       produces:
       - application/json
       responses:
@@ -158,23 +158,18 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-  /element/{element_id}/model/{model_id}:
+  /element/model/{model_id}:
     parameters:
       - name: model_id
         in: path
-        description: The id of the model to search within.
-        type: string
-        required: true
-      - name: element_id
-        in: path
-        description: The id of the element.
+        description: ID of the model
         type: string
         required: true
     get:
       tags:
         - Element
-      operationId: getElementInModel
-      summary: Gets a specific element within the specified model.
+      operationId: getElementsInModel
+      summary: Get all elements in the model
       produces:
         - application/json
       responses:
@@ -196,7 +191,7 @@ paths:
       tags:
       - Relationship
       operationId: getRelationships
-      summary: Gets a list of all Relationships.
+      summary: Get all relationships
       produces:
       - application/json
       responses:
@@ -216,7 +211,7 @@ paths:
       tags:
       - Relationship
       operationId: createRelationship
-      summary: Adds a new relationship.
+      summary: Add a new relationship
       consumes:
       - application/json
       produces:
@@ -242,14 +237,14 @@ paths:
     parameters:
     - name: id
       in: path
-      description: The id of a relationship.
+      description: ID of the relationship
       type: string
       required: true
     get:
       tags:
       - Relationship
       operationId: getRelationship
-      summary: Gets the relationship with the specified id.
+      summary: Get relationship by its ID
       produces:
       - application/json
       responses:
@@ -269,14 +264,14 @@ paths:
     parameters:
     - name: element_id
       in: path
-      description: The element id on either side of a relationship.
+      description: ID of the element that is the source or target of relationships
       type: string
       required: true
     get:
       tags:
       - Relationship
       operationId: getRelationshipsByElement
-      summary: Gets all relationships with a given element id on either side.
+      summary: Get all relationships with the given element as either source or target
       produces:
       - application/json
       responses:
@@ -296,14 +291,14 @@ paths:
     parameters:
     - name: source_id
       in: path
-      description: The source side id of a relationship.
+      description: ID of the element that is the source of relationships
       type: string
       required: true
     get:
       tags:
       - Relationship
       operationId: getRelationshipsBySource
-      summary: Gets all relationships with a given source element id.
+      summary: Get all relationships with the given element as the source
       produces:
       - application/json
       responses:
@@ -323,14 +318,14 @@ paths:
     parameters:
     - name: target_id
       in: path
-      description: The target side id of a relationship.
+      description: ID of the element that is the target of relationships
       type: string
       required: true
     get:
       tags:
       - Relationship
       operationId: getRelationshipsByTarget
-      summary: Gets all relationships with a given target element id.
+      summary: Get all relationships with the given element as the target
       produces:
       - application/json
       responses:
@@ -393,6 +388,7 @@ definitions:
     properties:
       error:
         type: string
+openapi:
 responses:
   NoContent:
     description: No Content
