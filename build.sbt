@@ -1,7 +1,7 @@
 name := """SysML-v2-API-Services"""
 organization := "org.omg"
 
-version := "1.0-SNAPSHOT"
+version := "2019-02-04"
 
 lazy val root = (project in file(".")).enablePlugins(PlayJava)
 
