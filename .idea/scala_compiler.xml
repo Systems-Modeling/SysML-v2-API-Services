@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ScalaCompilerConfiguration">
     <profile name="sbt 1" modules="sysml-v2-api-services_8064" />
-    <profile name="sbt 2" modules="root">
+    <profile name="sbt 2" modules="SysML-v2-API-Services,root">
       <option name="deprecationWarnings" value="true" />
       <option name="uncheckedWarnings" value="true" />
       <parameters>

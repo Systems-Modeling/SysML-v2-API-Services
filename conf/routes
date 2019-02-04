@@ -14,7 +14,7 @@ POST     /model                    controllers.ModelController.create()
 GET      /element                       controllers.ElementController.all()
 GET      /element/:id                   controllers.ElementController.byId(id)
 GET      /element/model/:mid            controllers.ElementController.byModel(mid)
-GET      /element/:id/model/:mid        controllers.ElementController.byIdAndModel(id,mid)
+#GET      /element/:id/model/:mid        controllers.ElementController.byIdAndModel(id,mid)
 POST     /element                       controllers.ElementController.create()
 
 # Relationship endpoints
@@ -30,3 +30,6 @@ POST     /relationship                  controllers.RelationshipController.creat
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                   controllers.Assets.versioned(path="/public", file: Asset)
+
+GET        /docs/               controllers.Assets.at(path="/public/swagger",file="index.html")
+GET        /docs/*file          controllers.Assets.at(path="/public/swagger",file)
