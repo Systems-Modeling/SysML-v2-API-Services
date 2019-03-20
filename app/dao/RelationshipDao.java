@@ -1,6 +1,7 @@
 package dao;
 
 import models.Element;
+import models.Model;
 import models.Relationship;
 
 import java.util.List;
@@ -25,4 +26,6 @@ public interface RelationshipDao extends Dao<Relationship> {
     List<Relationship> findAllBySourceElement(Element element);
 
     List<Relationship> findAllByTargetElement(Element element);
+
+    List<Relationship> findAllByModel(Model model);
 }

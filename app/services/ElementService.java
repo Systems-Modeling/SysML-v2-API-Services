@@ -6,6 +6,7 @@ import models.Element;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -26,7 +27,11 @@ public class ElementService {
         return elementDao.findById(id);
     }
 
-    public Optional<Element> getByModelAndId(UUID modelId, UUID elementId) {
+    public List<Element> getByModelId(UUID modelId) {
+        return modelDao.findById(modelId).map(m -> elementDao.findAllByModel(m)).orElse(Collections.emptyList());
+    }
+
+    public Optional<Element> getByModelIdAndId(UUID modelId, UUID elementId) {
         return modelDao.findById(modelId).flatMap(m -> elementDao.findByModelAndId(m, elementId));
     }
 

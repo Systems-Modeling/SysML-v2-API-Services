@@ -2,9 +2,7 @@ package dao.impl.jpa;
 
 import dao.RelationshipDao;
 import jpa.manager.JPAManager;
-import models.Element;
-import models.Relationship;
-import models.Relationship_;
+import models.*;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -91,6 +89,17 @@ public class JpaRelationshipDao extends JpaDao<Relationship> implements Relation
             CriteriaQuery<Relationship> query = builder.createQuery(Relationship.class);
             Root<Relationship> root = query.from(Relationship.class);
             query.select(root).where(builder.equal(root.get(Relationship_.target), element));
+            return em.createQuery(query).getResultList();
+        });
+    }
+
+    @Override
+    public List<Relationship> findAllByModel(Model model) {
+        return jpa.transact(em -> {
+            CriteriaBuilder builder = em.getCriteriaBuilder();
+            CriteriaQuery<Relationship> query = builder.createQuery(Relationship.class);
+            Root<Relationship> root = query.from(Relationship.class);
+            query.select(root).where(builder.equal(root.get(Relationship_.model), model));
             return em.createQuery(query).getResultList();
         });
     }

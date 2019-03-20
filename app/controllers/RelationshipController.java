@@ -1,6 +1,7 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import models.Element;
 import models.Relationship;
 import play.libs.Json;
 import play.mvc.Controller;
@@ -58,5 +59,9 @@ public class RelationshipController extends Controller {
         return ok(Json.toJson(relationships));
     }
 
-
+    public Result byModel(String modelId) {
+        UUID modelUuid = UUID.fromString(modelId);
+        List<Relationship> relationships = relationshipService.getByModelId(modelUuid);
+        return ok(Json.toJson(relationships));
+    }
 }

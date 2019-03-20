@@ -41,10 +41,16 @@ public class ElementController extends Controller {
         return responseElement.map(e -> ok(Json.toJson(e))).orElseGet(Results::badRequest);
     }
 
+    public Result byModel(String modelId) {
+        UUID modelUuid = UUID.fromString(modelId);
+        List<Element> elements = elementService.getByModelId(modelUuid);
+        return ok(Json.toJson(elements));
+    }
+
     public Result byModelAndId(String elementId, String modelId) {
         UUID elementUuid = UUID.fromString(elementId);
         UUID modelUuid = UUID.fromString(modelId);
-        Optional<Element> element = elementService.getByModelAndId(modelUuid, elementUuid);
+        Optional<Element> element = elementService.getByModelIdAndId(modelUuid, elementUuid);
         return element.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
     }
 }

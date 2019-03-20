@@ -1,19 +1,95 @@
 swagger: "2.0"
 info:
-  title: SysML-v2-API-Services
-  description: A REST API for SysML v2.
+  title: SysML v2 API and Services
+  description: REST/HTTP binding (PSM) for the SysML v2 standard API.
   version: 1.0.0
 tags:
-- name: elements
-- name: relationships
-- name: models
+- name: Model
+- name: Element
+- name: Relationship
+
 paths:
+  /model:
+    get:
+      tags:
+        - Model
+      operationId: getModels
+      summary: Get all models
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Model'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    post:
+      tags:
+        - Model
+      operationId: createModel
+      summary: Add a new model
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          schema:
+            $ref: '#/definitions/Model'
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/Model'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+  /model/{id}:
+    parameters:
+      - name: id
+        in: path
+        description: ID of the model
+        type: string
+        required: true
+    get:
+      tags:
+        - Model
+      operationId: getModel
+      summary: Get model by its ID
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Model'
+        404:
+          $ref: '#/responses/NotFound'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+
+
   /element:
     get:
       tags:
-      - elements
+      - Element
       operationId: getElements
-      summary: Gets a list of all elements.
+      summary: Get all elements
       produces:
       - application/json
       responses:
@@ -31,9 +107,9 @@ paths:
           $ref: '#/responses/Default'
     post:
       tags:
-      - elements
+      - Element
       operationId: createElement
-      summary: Adds a new element
+      summary: Add a new element
       consumes:
       - application/json
       produces:
@@ -55,18 +131,18 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-  /elements/{id}:
+  /element/{id}:
     parameters:
     - name: id
       in: path
-      description: The id of an element
+      description: ID of the element
       type: string
       required: true
     get:
       tags:
-      - elements
+      - Element
       operationId: getElement
-      summary: Returns the element with the specified id.
+      summary: Get element by its ID
       produces:
       - application/json
       responses:
@@ -82,12 +158,40 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
+  /element/model/{model_id}:
+    parameters:
+      - name: model_id
+        in: path
+        description: ID of the model
+        type: string
+        required: true
+    get:
+      tags:
+        - Element
+      operationId: getElementsInModel
+      summary: Get all elements in the model
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Element'
+        404:
+          $ref: '#/responses/NotFound'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+
   /relationship:
     get:
       tags:
-      - relationships
+      - Relationship
       operationId: getRelationships
-      summary: Gets a list of all Relationships.
+      summary: Get all relationships
       produces:
       - application/json
       responses:
@@ -105,9 +209,9 @@ paths:
           $ref: '#/responses/Default'
     post:
       tags:
-      - relationships
+      - Relationship
       operationId: createRelationship
-      summary: Adds a new relationship.
+      summary: Add a new relationship
       consumes:
       - application/json
       produces:
@@ -133,14 +237,14 @@ paths:
     parameters:
     - name: id
       in: path
-      description: The id of a relationship.
+      description: ID of the relationship
       type: string
       required: true
     get:
       tags:
-      - relationships
+      - Relationship
       operationId: getRelationship
-      summary: Gets the relationship with the specified id.
+      summary: Get relationship by its ID
       produces:
       - application/json
       responses:
@@ -160,14 +264,14 @@ paths:
     parameters:
     - name: element_id
       in: path
-      description: The element id on either side of a relationship.
+      description: ID of the element that is the source or target of relationships
       type: string
       required: true
     get:
       tags:
-      - relationships
+      - Relationship
       operationId: getRelationshipsByElement
-      summary: Gets all relationships with a given element id on either side.
+      summary: Get all relationships with the given element as either source or target
       produces:
       - application/json
       responses:
@@ -187,14 +291,14 @@ paths:
     parameters:
     - name: source_id
       in: path
-      description: The source side id of a relationship.
+      description: ID of the element that is the source of relationships
       type: string
       required: true
     get:
       tags:
-      - relationships
+      - Relationship
       operationId: getRelationshipsBySource
-      summary: Gets all relationships with a given source element id.
+      summary: Get all relationships with the given element as the source
       produces:
       - application/json
       responses:
@@ -214,14 +318,14 @@ paths:
     parameters:
     - name: target_id
       in: path
-      description: The target side id of a relationship.
+      description: ID of the element that is the target of relationships
       type: string
       required: true
     get:
       tags:
-      - relationships
+      - Relationship
       operationId: getRelationshipsByTarget
-      summary: Gets all relationships with a given target element id.
+      summary: Get all relationships with the given element as the target
       produces:
       - application/json
       responses:
@@ -238,112 +342,17 @@ paths:
         default:
           $ref: '#/responses/Default'
 
-  /model:
-    get:
-      tags:
-      - models
-      operationId: getModels
-      summary: Gets a list of all models.
-      produces:
-      - application/json
-      responses:
-        200:
-          description: Ok
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Model'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
-    post:
-      tags:
-      - models
-      operationId: createModel
-      summary: Adds a new model.
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: body
-        schema:
-          $ref: '#/definitions/Model'
-      responses:
-        201:
-          description: Created
-          schema:
-            $ref: '#/definitions/Model'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
-  /model/{id}:
-    parameters:
-    - name: id
-      in: path
-      description: The id of a model
-      type: string
-      required: true
-    get:
-      tags:
-      - models
-      operationId: getModel
-      summary: Get a model by its id.
-      produces:
-      - application/json
-      responses:
-        200:
-          description: Ok
-          schema:
-            $ref: '#/definitions/Model'
-        404:
-          $ref: '#/responses/NotFound'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
-  /element/{element_id}/model/{model_id}:
-    parameters:
-    - name: model_id
-      in: path
-      description: The id of the model to search within.
-      type: string
-      required: true
-    - name: element_id
-      in: path
-      description: The id of the element.
-      type: string
-      required: true
-    get:
-      tags:
-      - elements
-      operationId: getElementInModel
-      summary: Gets a specific element within the specified model.
-      produces:
-      - application/json
-      responses:
-        200:
-          description: Ok
-          schema:
-            $ref: '#/definitions/Element'
-        404:
-          $ref: '#/responses/NotFound'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
 definitions:
+  Model:
+    type: object
+    properties:
+      identifier:
+        type: string
+        format: uuid
+      name:
+        type: string
+      description:
+        type: string
   Element:
     type: object
     properties:
@@ -374,21 +383,12 @@ definitions:
         target_element:
           type: string
           format: uuid
-  Model:
-    type: object
-    properties:
-      identifier:
-        type: string
-        format: uuid
-      name:
-        type: string
-      description:
-        type: string
   Error:
     type: object
     properties:
       error:
         type: string
+openapi:
 responses:
   NoContent:
     description: No Content

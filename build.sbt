@@ -1,7 +1,7 @@
 name := """SysML-v2-API-Services"""
 organization := "org.omg"
 
-version := "1.0-SNAPSHOT"
+version := "2019-02-04"
 
 lazy val root = (project in file(".")).enablePlugins(PlayJava)
 
@@ -14,6 +14,7 @@ libraryDependencies += "org.postgresql" % "postgresql" % "42.2.5"
 libraryDependencies += "com.fasterxml.jackson.core" % "jackson-annotations" % "2.9.8"
 libraryDependencies += "com.fasterxml.jackson.core" % "jackson-databind" % "2.9.8"
 libraryDependencies += "com.fasterxml.jackson.datatype" % "jackson-datatype-hibernate5" % "2.9.8"
+libraryDependencies += "io.swagger" % "swagger-play2_2.12" % "1.6.0"
 
 javacOptions ++= Seq("-s", "app")
 

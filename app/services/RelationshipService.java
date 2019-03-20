@@ -2,6 +2,7 @@ package services;
 
 
 import dao.ElementDao;
+import dao.ModelDao;
 import dao.RelationshipDao;
 import models.Relationship;
 
@@ -16,6 +17,9 @@ public class RelationshipService {
 
     @Inject
     private ElementDao elementDao;
+
+    @Inject
+    private ModelDao modelDao;
 
     public List<Relationship> getAll() {
         return relationshipDao.findAll();
@@ -39,5 +43,9 @@ public class RelationshipService {
 
     public List<Relationship> getByTargetElementId(UUID elementId) {
         return elementDao.findById(elementId).map(e -> relationshipDao.findAllByTargetElement(e)).orElse(Collections.emptyList());
+    }
+
+    public List<Relationship> getByModelId(UUID modelId) {
+        return modelDao.findById(modelId).map(m -> relationshipDao.findAllByModel(m)).orElse(Collections.emptyList());
     }
 }
