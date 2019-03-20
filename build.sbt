@@ -3,6 +3,8 @@ organization := "org.omg"
 
 version := "2019-02-04"
 
+javacOptions ++= Seq("-source", "11", "-target", "11", "-Xlint")
+
 lazy val root = (project in file(".")).enablePlugins(PlayJava)
 
 scalaVersion := "2.12.6"
