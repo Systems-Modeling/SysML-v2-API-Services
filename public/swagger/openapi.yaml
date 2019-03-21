@@ -416,7 +416,7 @@ definitions:
     properties:
       name:
         type: string
-      parent_model:
+      model:
         $ref: '#/definitions/Identified'
       type:
         type: string
@@ -425,9 +425,9 @@ definitions:
     allOf:
       - $ref: '#/definitions/Element'
       - properties:
-          source_element:
+          source:
             $ref: '#/definitions/Identified'
-          target_element:
+          target:
             $ref: '#/definitions/Identified'
   Identified:
     type: object
