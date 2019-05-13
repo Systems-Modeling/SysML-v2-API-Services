@@ -43,12 +43,11 @@ public class ModelController extends Controller {
 
     public Result create() {
         JsonNode requestBodyJson = request().body().asJson();
-        System.out.println(requestBodyJson);
         Model newModel = Json.fromJson(requestBodyJson, Model.class);
         Model createdModel = modelService.create(newModel);
         if(createdModel!=null)
             return created(Json.toJson(createdModel));
         else
-            return badRequest("Mode with the following specification could not be created. \n " + requestBodyJson);
+            return badRequest("Model with the following specification could not be created. \n " + requestBodyJson);
     }
 }

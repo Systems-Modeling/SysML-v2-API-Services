@@ -63,9 +63,14 @@ public class ElementService {
             UUID elementIdentifier = elem.identifier;
             if(elementIdentifier == null) elementIdentifier = UUIDs.timeBased();
 
+            if(elem.name.startsWith("'"))
+                elem.name = "'" + elem.name;
+
+            if(elem.name.endsWith("'"))
+                elem.name = elem.name + "'";
+
             String cqlCommand = String.format("INSERT INTO sysml2.elements(identifier,name,description, parent_model, type) " +
-                            "VALUES (%s,'%s','%s',%s,'%s')",
-                    elementIdentifier, elem.name, elem.description, elem.parent_model, elem.type);
+                            "VALUES (%s,'%s','%s',%s,'%s')", elementIdentifier, elem.name, elem.description, elem.parent_model, elem.type);
 
             sessionBuilder.getSession().execute(cqlCommand);
             return getById(elementIdentifier);
