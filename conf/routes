@@ -13,13 +13,13 @@ POST     /model                    controllers.ModelController.create()
 # Element endpoints
 GET      /element                       controllers.ElementController.all()
 GET      /element/:id                   controllers.ElementController.byId(id)
+GET      /element/:id/model/:mid        controllers.ElementController.byModelAndId(id, mid)
 GET      /element/model/:mid            controllers.ElementController.byModel(mid)
-#GET      /element/:id/model/:mid        controllers.ElementController.byIdAndModel(id,mid)
 POST     /element                       controllers.ElementController.create()
 
 # Relationship endpoints
 GET      /relationship/:id              controllers.RelationshipController.byId(id)
-GET      /relationship/element/:id      controllers.RelationshipController.byElementId(id)
+GET      /relationship/element/:id      controllers.RelationshipController.byRelatedElementId(id)
 GET      /relationship/source/:id       controllers.RelationshipController.bySourceElementId(id)
 #GET      /relationship/source/:id/type:type       controllers.RelationshipController.bySourceElementId(id)
 GET      /relationship/target/:id       controllers.RelationshipController.byTargetElementId(id)

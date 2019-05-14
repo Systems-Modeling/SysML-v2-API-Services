@@ -1,46 +1,42 @@
 package models;
 
-import java.util.UUID;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import jackson.ElementDeserializer;
+import jackson.ElementSerializer;
 
-/**
- * @author Manas Bajaj
- *
- * Representation of Model in SysML v2 meta-model
- */
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import java.util.List;
 
-public class Model {
-    public UUID identifier;
-    public String name;
-    public String description;
+// TODO Jar after modification. See README.
 
-    public Model() {
-        super();
+@Entity
+//@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY)
+//@JsonTypeName("Model")
+public class Model extends Element {
+    @OneToMany(mappedBy = "model")
+    @JsonSerialize(contentUsing = ElementSerializer.class, contentAs = Element.class)
+    @JsonDeserialize(contentUsing = ElementDeserializer.class, contentAs = Element.class)
+    private List<Element> elements;
+
+    public List<Element> getElements() {
+        return elements;
     }
-    public Model(String name, String description) {
-        this.identifier = UUID.randomUUID();
-        this.name = name;
-        this.description = description;
+
+    public void setElements(List<Element> elements) {
+        this.elements = elements;
     }
 
-    public Model(UUID identifier, String name, String description) {
-        this.identifier = identifier;
-        this.name = name;
-        this.description = description;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    @Override
+    public Model getModel() {
+        return this;
     }
 
     @Override
-    public boolean equals(Object other) {
-        if(other instanceof Model) {
-            Model otherModel = (Model)other;
-            if(otherModel.identifier.equals(identifier))
-                return true;
-        }
-        return false;
+    public void setModel(Model model) {
+        throw new UnsupportedOperationException("Cannot set a Model's model");
     }
-
-    @Override
-    public int hashCode() {
-        return (int) identifier.hashCode();
-    }
-
 }

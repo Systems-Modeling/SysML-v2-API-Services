@@ -5,49 +5,48 @@ import models.Model;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Result;
+import play.mvc.Results;
 import services.ModelService;
 
 import javax.inject.Inject;
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
  * @author Manas Bajaj
  *
- * Controller for handling all API requests related to SysML v2 models
+ * Controller for handling all API requests related to SysML v2 elements
  */
 public class ModelController extends Controller {
 
+    @Inject
     private ModelService modelService;
 
-    @Inject
-    public ModelController(ModelService modelService) {
-        this.modelService = modelService;
-    }
-
     public Result byId(String id) {
-        try {
-            UUID modelId = UUID.fromString(id);
-            Model model = modelService.getById(modelId);
-            return ok(Json.toJson(model));
-        }
-        catch (IllegalArgumentException e) {
-            return badRequest("Supplied identifier is not a UUID.");
-        }
+        UUID uuid = UUID.fromString(id);
+        Optional<Model> model = modelService.getById(uuid);
+        return model.map(m -> ok(Json.toJson(m))).orElseGet(Results::notFound);
     }
 
     public Result all() {
-        Set<Model> models = modelService.getAll();
+        List<Model> models = modelService.getAll();
         return ok(Json.toJson(models));
     }
 
     public Result create() {
         JsonNode requestBodyJson = request().body().asJson();
+<<<<<<< HEAD
         Model newModel = Json.fromJson(requestBodyJson, Model.class);
         Model createdModel = modelService.create(newModel);
         if(createdModel!=null)
             return created(Json.toJson(createdModel));
         else
             return badRequest("Model with the following specification could not be created. \n " + requestBodyJson);
+=======
+        Model requestModel = Json.fromJson(requestBodyJson, Model.class);
+        Optional<Model> responseModel = modelService.create(requestModel);
+        return responseModel.map(e -> ok(Json.toJson(e))).orElseGet(Results::badRequest);
+>>>>>>> feature/hibernate
     }
 }

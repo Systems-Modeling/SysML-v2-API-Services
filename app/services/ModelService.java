@@ -1,59 +1,34 @@
 package services;
 
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.Row;
-import com.datastax.driver.core.utils.UUIDs;
-import dao.CassandraSessionBuilder;
-import models.Element;
+import dao.ModelDao;
 import models.Model;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
  * @author Manas Bajaj
- *
+ * <p>
  * Main service that provides CRUD operations for all SysML v2 models
  */
 
 @Singleton
 public class ModelService {
+    @Inject
+    private ModelDao dao;
 
-    @Inject private CassandraSessionBuilder sessionBuilder;
-
-    public Set<Model> getAll() {
-        Set<Model> models = new HashSet<>();
-        ResultSet resultSet = sessionBuilder.getSession().execute("select identifier, name, description from sysml2.models;");
-        for(Row r: resultSet)
-            models.add(new Model(r.getUUID(0), r.getString(1), r.getString(2)));
-
-        return models;
+    public List<Model> getAll() {
+        return dao.findAll();
     }
 
-    public Model getById(UUID identifier) {
-        ResultSet resultSet = sessionBuilder.getSession().execute("select identifier, name, description from sysml2.models where identifier = " + identifier);
-        Row result = resultSet.one();
-        if(result!=null)
-            return new Model(result.getUUID(0), result.getString(1), result.getString(2));
-        else
-            return null;
+    public Optional<Model> getById(UUID id) {
+        return dao.findById(id);
     }
 
-    public Model create(Model model) {
-        if(model!=null) {
-            UUID modelIdentifier = model.identifier;
-            if(modelIdentifier == null) modelIdentifier = UUIDs.timeBased();
-
-            String cqlCommand = String.format("INSERT INTO sysml2.models(identifier,name,description) VALUES (%s,'%s','%s');",
-                    modelIdentifier, model.name, model.description);
-
-            sessionBuilder.getSession().execute(cqlCommand);
-            return getById(modelIdentifier);
-        }
-        else
-            return null;
+    public Optional<Model> create(Model model) {
+        return model.getId() != null ? dao.update(model) : dao.persist(model);
     }
 }

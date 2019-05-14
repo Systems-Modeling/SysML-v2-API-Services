@@ -3,13 +3,29 @@ organization := "org.omg"
 
 version := "2019-02-04"
 
+javacOptions ++= Seq("-source", "11", "-target", "11", "-Xlint")
+
 lazy val root = (project in file(".")).enablePlugins(PlayJava)
 
 scalaVersion := "2.12.6"
 
 libraryDependencies += guice
-libraryDependencies += "com.google.code.gson" % "gson" % "2.8.5"
-libraryDependencies += "com.datastax.cassandra" % "cassandra-driver-core" % "3.3.0"
-libraryDependencies += "com.datastax.cassandra" % "cassandra-driver-extras" % "3.3.0"
+libraryDependencies += "org.hibernate" % "hibernate-core" % "5.4.1.Final"
+libraryDependencies += "org.hibernate" % "hibernate-jpamodelgen" % "5.4.1.Final"
+libraryDependencies += "org.postgresql" % "postgresql" % "42.2.5"
+libraryDependencies += "com.fasterxml.jackson.core" % "jackson-annotations" % "2.9.8"
+libraryDependencies += "com.fasterxml.jackson.core" % "jackson-databind" % "2.9.8"
+libraryDependencies += "com.fasterxml.jackson.datatype" % "jackson-datatype-hibernate5" % "2.9.8"
 libraryDependencies += "io.swagger" % "swagger-play2_2.12" % "1.6.0"
 
+javacOptions ++= Seq("-s", "app")
+
+// https://stackoverflow.com/questions/42568234/intellij-idea-support-for-immutables-with-sbt
+// tell sbt (and by extension IDEA) that there is source code in target/generated_sources
+managedSourceDirectories in Compile += baseDirectory.value / "generated"
+// before compilation happens, create the target/generated_sources directory
+compile in Compile := (compile in Compile).dependsOn(Def.task({
+  (baseDirectory.value / "generated").mkdirs()
+})).value
+// tell the java compiler to output generated source files to target/generated_sources
+javacOptions in Compile ++= Seq("-s", "generated")

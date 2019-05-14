@@ -1,0 +1,197 @@
+{
+	"info": {
+		"_postman_id": "ff8ee999-220e-492b-8281-f6c35bde3295",
+		"name": "SysML2 Hibernate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Model",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"18716c40-15d3-11e9-8e4c-6d2c86545d93\",\n\t\"name\": \"MyModel\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/model",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"model"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Element (General)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"9ddee86d-3b58-4ef8-996e-e017cb4e39fe\",\n\t\"name\": \"GeneralElement\",\n\t\"model\": {\n\t\t\"id\": \"18716c40-15d3-11e9-8e4c-6d2c86545d93\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/element",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"element"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Element (Special)",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"73543ef0-9ff1-4261-b965-efdb7dff8c9e\",\n\t\"name\": \"SpecialElement\",\n\t\"model\": {\n\t\t\"id\": \"18716c40-15d3-11e9-8e4c-6d2c86545d93\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/element",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"element"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Relationship",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\": \"49b8a9fe-2b0d-49d5-a84c-9b5b7c856daf\",\n\t\"name\": \"MyRelationship\",\n\t\"type\": \"Generalization\",\n\t\"model\": {\n\t\t\"id\": \"18716c40-15d3-11e9-8e4c-6d2c86545d93\"\n\t},\n\t\"source\": {\n\t\t\"id\": \"73543ef0-9ff1-4261-b965-efdb7dff8c9e\"\n\t},\n\t\"target\": {\n\t\t\"id\": \"9ddee86d-3b58-4ef8-996e-e017cb4e39fe\"\n\t}\n}"
+				},
+				"url": {
+					"raw": "http://localhost:9000/relationship",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"relationship"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Elements",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9000/element",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"element"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Relationship By Target Element",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:9000/relationship/target/9ddee86d-3b58-4ef8-996e-e017cb4e39fe",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9000",
+					"path": [
+						"relationship",
+						"target",
+						"9ddee86d-3b58-4ef8-996e-e017cb4e39fe"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
