@@ -36,17 +36,8 @@ public class ModelController extends Controller {
 
     public Result create() {
         JsonNode requestBodyJson = request().body().asJson();
-<<<<<<< HEAD
-        Model newModel = Json.fromJson(requestBodyJson, Model.class);
-        Model createdModel = modelService.create(newModel);
-        if(createdModel!=null)
-            return created(Json.toJson(createdModel));
-        else
-            return badRequest("Model with the following specification could not be created. \n " + requestBodyJson);
-=======
         Model requestModel = Json.fromJson(requestBodyJson, Model.class);
         Optional<Model> responseModel = modelService.create(requestModel);
         return responseModel.map(e -> ok(Json.toJson(e))).orElseGet(Results::badRequest);
->>>>>>> feature/hibernate
     }
 }
