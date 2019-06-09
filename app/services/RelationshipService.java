@@ -4,7 +4,7 @@ package services;
 import dao.ElementDao;
 import dao.ModelDao;
 import dao.RelationshipDao;
-import models.Relationship;
+import org.omg.sysml.metamodel.Relationship;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -30,7 +30,7 @@ public class RelationshipService {
     }
 
     public Optional<Relationship> create(Relationship relationship) {
-        return relationship.getId() != null ? relationshipDao.update(relationship) : relationshipDao.persist(relationship);
+        return relationship.getIdentifier() != null ? relationshipDao.update(relationship) : relationshipDao.persist(relationship);
     }
 
     public List<Relationship> getByRelatedElementId(UUID elementId) {

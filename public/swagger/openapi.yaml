@@ -9,7 +9,7 @@ tags:
   - name: Relationship
 
 paths:
-  /model:
+  /models:
     get:
       tags:
         - Model
@@ -55,9 +55,9 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-  /model/{id}:
+  /models/{identifier}:
     parameters:
-      - name: id
+      - name: identifier
         in: path
         description: ID of the model
         type: string
@@ -84,7 +84,7 @@ paths:
           $ref: '#/responses/Default'
 
 
-  /element:
+  /elements:
     get:
       tags:
         - Element
@@ -131,9 +131,9 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-  /element/{id}:
+  /elements/{identifier}:
     parameters:
-      - name: id
+      - name: identifier
         in: path
         description: ID of the element
         type: string
@@ -158,14 +158,14 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-  /element/{element_id}/model/{model_id}:
+  /models/{model_identifier}/elements/{element_identifier}:
     parameters:
-      - name: element_id
+      - name: element_identifier
         in: path
         description: ID of the element
         type: string
         required: true
-      - name: model_id
+      - name: model_identifier
         in: path
         description: ID of the model
         type: string
@@ -190,9 +190,9 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-  /element/model/{model_id}:
+  /models/{model_identifier}/elements:
     parameters:
-      - name: model_id
+      - name: model_identifier
         in: path
         description: ID of the model
         type: string
@@ -218,7 +218,7 @@ paths:
         default:
           $ref: '#/responses/Default'
 
-  /relationship:
+  /relationships:
     get:
       tags:
         - Relationship
@@ -265,9 +265,9 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-  /relationship/{id}:
+  /relationships/{identifier}:
     parameters:
-      - name: id
+      - name: identifier
         in: path
         description: ID of the relationship
         type: string
@@ -292,90 +292,90 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-  /relationship/element/{element_id}:
+  # /relationships/elements/{element_identifier}:
+  #   parameters:
+  #     - name: element_identifier
+  #       in: path
+  #       description: ID of the element that is the source or target of relationships
+  #       type: string
+  #       required: true
+  #   get:
+  #     tags:
+  #       - Relationship
+  #     operationId: getRelationshipsByElement
+  #     summary: Get all relationships with the given element as either source or target
+  #     produces:
+  #       - application/json
+  #     responses:
+  #       200:
+  #         description: Ok
+  #         schema:
+  #           type: array
+  #           items:
+  #             $ref: '#/definitions/Relationship'
+  #       415:
+  #         $ref: '#/responses/BadContentType'
+  #       500:
+  #         $ref: '#/responses/InternalServerError'
+  #       default:
+  #         $ref: '#/responses/Default'
+  # /relationship/source/{source_identifier}:
+  #   parameters:
+  #     - name: source_identifier
+  #       in: path
+  #       description: ID of the element that is the source of relationships
+  #       type: string
+  #       required: true
+  #   get:
+  #     tags:
+  #       - Relationship
+  #     operationId: getRelationshipsBySource
+  #     summary: Get all relationships with the given element as the source
+  #     produces:
+  #       - application/json
+  #     responses:
+  #       200:
+  #         description: Ok
+  #         schema:
+  #           type: array
+  #           items:
+  #             $ref: '#/definitions/Relationship'
+  #       415:
+  #         $ref: '#/responses/BadContentType'
+  #       500:
+  #           $ref: '#/responses/InternalServerError'
+  #       default:
+  #           $ref: '#/responses/Default'
+  # /relationship/target/{target_identifier}:
+  #     parameters:
+  #       - name: target_identifier
+  #         in: path
+  #         description: ID of the element that is the target of relationships
+  #         type: string
+  #         required: true
+  #     get:
+  #       tags:
+  #         - Relationship
+  #       operationId: getRelationshipsByTarget
+  #       summary: Get all relationships with the given element as the target
+  #       produces:
+  #         - application/json
+  #       responses:
+  #         200:
+  #           description: Ok
+  #           schema:
+  #             type: array
+  #             items:
+  #               $ref: '#/definitions/Relationship'
+  #         415:
+  #           $ref: '#/responses/BadContentType'
+  #         500:
+  #           $ref: '#/responses/InternalServerError'
+  #         default:
+  #           $ref: '#/responses/Default'
+  /models/{model_identifier}/relationships:
     parameters:
-      - name: element_id
-        in: path
-        description: ID of the element that is the source or target of relationships
-        type: string
-        required: true
-    get:
-      tags:
-        - Relationship
-      operationId: getRelationshipsByElement
-      summary: Get all relationships with the given element as either source or target
-      produces:
-        - application/json
-      responses:
-        200:
-          description: Ok
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Relationship'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
-  /relationship/source/{source_id}:
-    parameters:
-      - name: source_id
-        in: path
-        description: ID of the element that is the source of relationships
-        type: string
-        required: true
-    get:
-      tags:
-        - Relationship
-      operationId: getRelationshipsBySource
-      summary: Get all relationships with the given element as the source
-      produces:
-        - application/json
-      responses:
-        200:
-          description: Ok
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Relationship'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
-  /relationship/target/{target_id}:
-    parameters:
-      - name: target_id
-        in: path
-        description: ID of the element that is the target of relationships
-        type: string
-        required: true
-    get:
-      tags:
-        - Relationship
-      operationId: getRelationshipsByTarget
-      summary: Get all relationships with the given element as the target
-      produces:
-        - application/json
-      responses:
-        200:
-          description: Ok
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Relationship'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
-  /relationship/model/{model_id}:
-    parameters:
-      - name: model_id
+      - name: model_identifier
         in: path
         description: ID of the model
         type: string
@@ -407,6 +407,8 @@ definitions:
     allOf:
       - $ref: '#/definitions/Identified'
     properties:
+      '@type':
+        type: string
       name:
         type: string
   Element:
@@ -414,25 +416,29 @@ definitions:
     allOf:
       - $ref: '#/definitions/Identified'
     properties:
-      name:
-        type: string
-      model:
+      containingModel:
         $ref: '#/definitions/Identified'
-      type:
+      '@type':
         type: string
+    additionalProperties:
+      type: object
   Relationship:
     type: object
     allOf:
       - $ref: '#/definitions/Element'
       - properties:
           source:
-            $ref: '#/definitions/Identified'
+            type: array
+            items:
+              $ref: '#/definitions/Identified'
           target:
-            $ref: '#/definitions/Identified'
+            type: array
+            items:
+              $ref: '#/definitions/Identified'
   Identified:
     type: object
     properties:
-      id:
+      identifier:
         type: string
         format: uuid
   Error:

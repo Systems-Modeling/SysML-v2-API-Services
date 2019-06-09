@@ -1,7 +1,7 @@
 package dao;
 
-import models.Element;
-import models.Model;
+import org.omg.sysml.metamodel.Element;
+import org.omg.sysml.extension.Model;
 
 import java.util.List;
 import java.util.Optional;

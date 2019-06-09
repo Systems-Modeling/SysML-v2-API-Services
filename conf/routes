@@ -3,33 +3,33 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.index
+GET         /                                 controllers.HomeController.index
 
 # Model endpoints
-GET      /model                    controllers.ModelController.all()
-GET      /model/:id                controllers.ModelController.byId(id)
-POST     /model                    controllers.ModelController.create()
+GET         /models                           controllers.ModelController.all()
+GET         /models/:id                       controllers.ModelController.byId(id : String)
+POST        /models                           controllers.ModelController.create(request : Request)
 
 # Element endpoints
-GET      /element                       controllers.ElementController.all()
-GET      /element/:id                   controllers.ElementController.byId(id)
-GET      /element/:id/model/:mid        controllers.ElementController.byModelAndId(id, mid)
-GET      /element/model/:mid            controllers.ElementController.byModel(mid)
-POST     /element                       controllers.ElementController.create()
+GET         /elements                         controllers.ElementController.all()
+GET         /elements/:id                     controllers.ElementController.byId(id : String)
+GET         /models/:mid/elements/:id         controllers.ElementController.byModelAndId(id : String, mid : String)
+GET         /models/:mid/elements             controllers.ElementController.byModel(mid : String)
+POST        /elements                         controllers.ElementController.create(request : Request)
 
 # Relationship endpoints
-GET      /relationship/:id              controllers.RelationshipController.byId(id)
-GET      /relationship/element/:id      controllers.RelationshipController.byRelatedElementId(id)
-GET      /relationship/source/:id       controllers.RelationshipController.bySourceElementId(id)
-#GET      /relationship/source/:id/type:type       controllers.RelationshipController.bySourceElementId(id)
-GET      /relationship/target/:id       controllers.RelationshipController.byTargetElementId(id)
-#GET      /relationship/target/:id/type/:type       controllers.RelationshipController.byTargetElementId(id)
-GET      /relationship                  controllers.RelationshipController.all()
-GET     /relationship/model/:mid        controllers.RelationshipController.byModel(mid)
-POST     /relationship                  controllers.RelationshipController.create()
+GET         /relationships/:id                controllers.RelationshipController.byId(id : String)
+# GET         /relationship/element/:id                  controllers.RelationshipController.byRelatedElementId(id : String)
+# GET         /relationship/source/:id                   controllers.RelationshipController.bySourceElementId(id : String)
+# GET         /relationship/source/:id/type/:type        controllers.RelationshipController.bySourceElementId(id : String)
+# GET         /relationship/target/:id                   controllers.RelationshipController.byTargetElementId(id : String)
+# GET         /relationship/target/:id/type/:type        controllers.RelationshipController.byTargetElementId(id : String)
+GET         /relationships                    controllers.RelationshipController.all()
+GET         /models/:mid/relationships        controllers.RelationshipController.byModel(mid : String)
+POST        /relationships                    controllers.RelationshipController.create(request : Request)
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file                   controllers.Assets.versioned(path="/public", file: Asset)
+GET         /assets/*file                     controllers.Assets.versioned(path="/public", file: Asset)
 
-GET        /docs/               controllers.Assets.at(path="/public/swagger",file="index.html")
-GET        /docs/*file          controllers.Assets.at(path="/public/swagger",file)
+GET         /docs/                            controllers.Assets.at(path="/public/swagger",file="index.html")
+GET         /docs/*file                       controllers.Assets.at(path="/public/swagger",file)

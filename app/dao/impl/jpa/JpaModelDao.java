@@ -2,8 +2,9 @@ package dao.impl.jpa;
 
 import dao.ModelDao;
 import jpa.manager.JPAManager;
-import models.Model;
-import models.Model_;
+import org.omg.sysml.extension.Model;
+import org.omg.sysml.extension.impl.ModelImpl;
+import org.omg.sysml.extension.impl.ModelImpl_;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -30,9 +31,9 @@ public class JpaModelDao extends JpaDao<Model> implements ModelDao {
     public Optional<Model> findById(UUID id) {
         return jpa.transact(em -> {
             CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaQuery<Model> query = builder.createQuery(Model.class);
-            Root<Model> root = query.from(Model.class);
-            query.select(root).where(builder.equal(root.get(Model_.id), id));
+            CriteriaQuery<ModelImpl> query = builder.createQuery(ModelImpl.class);
+            Root<ModelImpl> root = query.from(ModelImpl.class);
+            query.select(root).where(builder.equal(root.get(ModelImpl_.identifier), id));
             try {
                 return Optional.of(em.createQuery(query).getSingleResult());
             } catch (NoResultException e) {
@@ -46,7 +47,7 @@ public class JpaModelDao extends JpaDao<Model> implements ModelDao {
         return jpa.transact(em -> {
             CriteriaBuilder cb = em.getCriteriaBuilder();
             CriteriaQuery<Model> query = cb.createQuery(Model.class);
-            Root<Model> root = query.from(Model.class);
+            Root<ModelImpl> root = query.from(ModelImpl.class);
             query.select(root);
             return em.createQuery(query).getResultList();
         });

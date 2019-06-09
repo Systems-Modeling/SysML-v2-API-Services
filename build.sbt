@@ -17,6 +17,7 @@ libraryDependencies += "com.fasterxml.jackson.core" % "jackson-annotations" % "2
 libraryDependencies += "com.fasterxml.jackson.core" % "jackson-databind" % "2.9.8"
 libraryDependencies += "com.fasterxml.jackson.datatype" % "jackson-datatype-hibernate5" % "2.9.8"
 libraryDependencies += "io.swagger" % "swagger-play2_2.12" % "1.6.0"
+libraryDependencies += "org.reflections" % "reflections" % "0.9.10"
 
 javacOptions ++= Seq("-s", "app")
 

@@ -1,4 +1,6 @@
 import com.google.inject.AbstractModule;
+import config.MetamodelProvider;
+import config.impl.JPAMetamodelProvider;
 import dao.ElementDao;
 import dao.ModelDao;
 import dao.RelationshipDao;
@@ -14,6 +16,7 @@ public class Module extends AbstractModule {
 
     @Override
     protected void configure() {
+        bind(MetamodelProvider.class).to(JPAMetamodelProvider.class).asEagerSingleton();
         bind(JPAManager.class).to(HibernateManager.class).asEagerSingleton();
         bind(ObjectMapperFactory.class).to(HibernateObjectMapperFactory.class).asEagerSingleton();
         bind(ElementDao.class).to(JpaElementDao.class);

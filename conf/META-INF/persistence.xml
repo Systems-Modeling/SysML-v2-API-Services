@@ -5,10 +5,6 @@
     <persistence-unit name="sysml2-hibernate" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>models.Element</class>
-        <class>models.Relationship</class>
-        <class>models.Model</class>
-
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/sysml2"/>

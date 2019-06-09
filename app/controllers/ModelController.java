@@ -1,9 +1,11 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import models.Model;
+import config.MetamodelProvider;
+import org.omg.sysml.extension.Model;
 import play.libs.Json;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Results;
 import services.ModelService;
@@ -19,6 +21,8 @@ import java.util.UUID;
  * Controller for handling all API requests related to SysML v2 elements
  */
 public class ModelController extends Controller {
+    @Inject
+    private MetamodelProvider metamodelProvider;
 
     @Inject
     private ModelService modelService;
@@ -34,10 +38,10 @@ public class ModelController extends Controller {
         return ok(Json.toJson(models));
     }
 
-    public Result create() {
-        JsonNode requestBodyJson = request().body().asJson();
-        Model requestModel = Json.fromJson(requestBodyJson, Model.class);
+    public Result create(Http.Request request) {
+        JsonNode requestBodyJson = request.body().asJson();
+        Model requestModel = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Model.class));
         Optional<Model> responseModel = modelService.create(requestModel);
-        return responseModel.map(e -> ok(Json.toJson(e))).orElseGet(Results::badRequest);
+        return responseModel.map(e -> created(Json.toJson(e))).orElseGet(Results::badRequest);
     }
 }

@@ -1,14 +1,16 @@
 package jackson.databind.impl;
 
+import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
+import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.fasterxml.jackson.databind.type.ClassKey;
 import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
+import config.MetamodelProvider;
 import jackson.EntityManagerHandlerInstantiator;
 import jackson.databind.ObjectMapperFactory;
 import jpa.manager.JPAManager;
-import models.Element;
-import models.Model;
-import models.Relationship;
 import org.hibernate.SessionFactory;
 import play.libs.Json;
 
@@ -17,10 +19,12 @@ import javax.inject.Singleton;
 
 @Singleton
 public class HibernateObjectMapperFactory implements ObjectMapperFactory {
+    private final MetamodelProvider metamodelProvider;
     private final JPAManager jpaManager;
 
     @Inject
-    public HibernateObjectMapperFactory(JPAManager jpaManager) {
+    public HibernateObjectMapperFactory(MetamodelProvider metamodelProvider, JPAManager jpaManager) {
+        this.metamodelProvider = metamodelProvider;
         this.jpaManager = jpaManager;
         Json.setObjectMapper(getObjectMapper());
     }
@@ -37,7 +41,24 @@ public class HibernateObjectMapperFactory implements ObjectMapperFactory {
         objectMapper.configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, true);
         objectMapper.configure(DeserializationFeature.FAIL_ON_NUMBERS_FOR_ENUMS, true);
         objectMapper.setHandlerInstantiator(new EntityManagerHandlerInstantiator(jpaManager.getEntityManagerFactory().createEntityManager()));
-        objectMapper.registerSubtypes(Element.class, Relationship.class, Model.class);
+        SimpleModule module = new SimpleModule("InterfaceMapping", Version.unknownVersion());
+        SimpleAbstractTypeResolver resolver = new SimpleAbstractTypeResolver() {
+            {
+                for (Class<?> clazz : metamodelProvider.getAllImplementationClasses()) {
+                    Class<?> intrface;
+                    try {
+                        intrface = metamodelProvider.getInterface(clazz);
+                    } catch (ClassNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
+                    _mappings.put(new ClassKey(intrface), clazz);
+                    module.registerSubtypes(intrface, clazz);
+                    objectMapper.registerSubtypes(intrface, clazz);
+                }
+            }
+        };
+        module.setAbstractTypes(resolver);
+        //objectMapper.registerModule(module);
         return objectMapper;
     }
 }

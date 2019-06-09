@@ -1,7 +1,7 @@
 package services;
 
 import dao.ModelDao;
-import models.Model;
+import org.omg.sysml.extension.Model;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -29,6 +29,6 @@ public class ModelService {
     }
 
     public Optional<Model> create(Model model) {
-        return model.getId() != null ? dao.update(model) : dao.persist(model);
+        return model.getIdentifier() != null ? dao.update(model) : dao.persist(model);
     }
 }

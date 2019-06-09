@@ -1,10 +1,12 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import models.Element;
-import models.Relationship;
+import config.MetamodelProvider;
+import org.omg.sysml.metamodel.MofObject;
+import org.omg.sysml.metamodel.Relationship;
 import play.libs.Json;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Results;
 import services.RelationshipService;
@@ -21,6 +23,9 @@ import java.util.UUID;
  */
 public class RelationshipController extends Controller {
     @Inject
+    private MetamodelProvider metamodelProvider;
+
+    @Inject
     private RelationshipService relationshipService;
 
     public Result byId(String id) {
@@ -34,11 +39,14 @@ public class RelationshipController extends Controller {
         return ok(Json.toJson(relationships));
     }
 
-    public Result create() {
-        JsonNode requestBodyJson = request().body().asJson();
-        Relationship requestRelationship = Json.fromJson(requestBodyJson, Relationship.class);
-        Optional<Relationship> responseRelationship = relationshipService.create(requestRelationship);
-        return responseRelationship.map(e -> ok(Json.toJson(e))).orElseGet(Results::badRequest);
+    public Result create(Http.Request request) {
+        JsonNode requestBodyJson = request.body().asJson();
+        MofObject requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(MofObject.class));
+        if (!(requestedObject instanceof Relationship)) {
+            return Results.badRequest();
+        }
+        Optional<Relationship> responseRelationship = relationshipService.create((Relationship) requestedObject);
+        return responseRelationship.map(e -> created(Json.toJson(e))).orElseGet(Results::badRequest);
     }
 
     public Result byRelatedElementId(String id) {

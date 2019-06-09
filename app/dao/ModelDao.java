@@ -1,6 +1,6 @@
 package dao;
 
-import models.Model;
+import org.omg.sysml.extension.Model;
 
 import java.util.List;
 import java.util.Optional;

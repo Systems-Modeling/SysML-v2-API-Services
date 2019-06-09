@@ -1,9 +1,12 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import models.Element;
+import config.MetamodelProvider;
+import org.omg.sysml.metamodel.Element;
+import org.omg.sysml.metamodel.MofObject;
 import play.libs.Json;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Results;
 import services.ElementService;
@@ -19,6 +22,8 @@ import java.util.UUID;
  * Controller for handling all API requests related to SysML v2 elements
  */
 public class ElementController extends Controller {
+    @Inject
+    private MetamodelProvider metamodelProvider;
 
     @Inject
     private ElementService elementService;
@@ -34,11 +39,14 @@ public class ElementController extends Controller {
         return ok(Json.toJson(elements));
     }
 
-    public Result create() {
-        JsonNode requestBodyJson = request().body().asJson();
-        Element requestElement = Json.fromJson(requestBodyJson, Element.class);
-        Optional<Element> responseElement = elementService.create(requestElement);
-        return responseElement.map(e -> ok(Json.toJson(e))).orElseGet(Results::badRequest);
+    public Result create(Http.Request request) {
+        JsonNode requestBodyJson = request.body().asJson();
+        MofObject requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(MofObject.class));
+        if (!(requestedObject instanceof Element)) {
+            return Results.badRequest();
+        }
+        Optional<Element> responseElement = elementService.create(((Element) requestedObject));
+        return responseElement.map(e -> created(Json.toJson(e))).orElseGet(Results::badRequest);
     }
 
     public Result byModel(String modelId) {

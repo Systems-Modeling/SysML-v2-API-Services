@@ -2,7 +2,7 @@ package services;
 
 import dao.ElementDao;
 import dao.ModelDao;
-import models.Element;
+import org.omg.sysml.metamodel.Element;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -36,6 +36,6 @@ public class ElementService {
     }
 
     public Optional<Element> create(Element element) {
-        return element.getId() != null ? elementDao.update(element) : elementDao.persist(element);
+        return element.getIdentifier() != null ? elementDao.update(element) : elementDao.persist(element);
     }
 }
