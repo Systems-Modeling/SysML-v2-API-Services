@@ -35,6 +35,7 @@ public class HibernateObjectMapperFactory implements ObjectMapperFactory {
 
         Hibernate5Module hibernate5Module = new Hibernate5Module(jpaManager.getEntityManagerFactory().unwrap(SessionFactory.class));
         hibernate5Module.enable(Hibernate5Module.Feature.FORCE_LAZY_LOADING);
+        hibernate5Module.disable(Hibernate5Module.Feature.USE_TRANSIENT_ANNOTATION);
         objectMapper.registerModule(hibernate5Module);
 
         //See point #5 of https://blog.lahteenmaki.net/making-jackson-tolerable.html
