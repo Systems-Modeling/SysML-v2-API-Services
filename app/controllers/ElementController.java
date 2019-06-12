@@ -1,7 +1,11 @@
 package controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.type.TypeFactory;
 import config.MetamodelProvider;
+import jackson.JacksonHelper;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.MofObject;
 import play.libs.Json;
@@ -12,6 +16,8 @@ import play.mvc.Results;
 import services.ElementService;
 
 import javax.inject.Inject;
+import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -36,7 +42,7 @@ public class ElementController extends Controller {
 
     public Result all() {
         List<Element> elements = elementService.getAll();
-        return ok(Json.toJson(elements));
+        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Element.class), elements));
     }
 
     public Result create(Http.Request request) {
@@ -52,7 +58,7 @@ public class ElementController extends Controller {
     public Result byModel(String modelId) {
         UUID modelUuid = UUID.fromString(modelId);
         List<Element> elements = elementService.getByModelId(modelUuid);
-        return ok(Json.toJson(elements));
+        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Element.class), elements));
     }
 
     public Result byModelAndId(String elementId, String modelId) {

@@ -2,6 +2,8 @@ package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import config.MetamodelProvider;
+import jackson.JacksonHelper;
+import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.MofObject;
 import org.omg.sysml.metamodel.Relationship;
 import play.libs.Json;
@@ -36,7 +38,7 @@ public class RelationshipController extends Controller {
 
     public Result all() {
         List<Relationship> relationships = relationshipService.getAll();
-        return ok(Json.toJson(relationships));
+        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
     }
 
     public Result create(Http.Request request) {
@@ -52,24 +54,24 @@ public class RelationshipController extends Controller {
     public Result byRelatedElementId(String id) {
         UUID elementUuid = UUID.fromString(id);
         List<Relationship> relationships = relationshipService.getByRelatedElementId(elementUuid);
-        return ok(Json.toJson(relationships));
+        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
     }
 
     public Result bySourceElementId(String id) {
         UUID elementUuid = UUID.fromString(id);
         List<Relationship> relationships = relationshipService.getBySourceElementId(elementUuid);
-        return ok(Json.toJson(relationships));
+        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
     }
 
     public Result byTargetElementId(String id) {
         UUID elementUuid = UUID.fromString(id);
         List<Relationship> relationships = relationshipService.getByTargetElementId(elementUuid);
-        return ok(Json.toJson(relationships));
+        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
     }
 
     public Result byModel(String modelId) {
         UUID modelUuid = UUID.fromString(modelId);
         List<Relationship> relationships = relationshipService.getByModelId(modelUuid);
-        return ok(Json.toJson(relationships));
+        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
     }
 }

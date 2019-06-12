@@ -2,7 +2,9 @@ package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import config.MetamodelProvider;
+import jackson.JacksonHelper;
 import org.omg.sysml.extension.Model;
+import org.omg.sysml.metamodel.Element;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Http;
@@ -35,7 +37,7 @@ public class ModelController extends Controller {
 
     public Result all() {
         List<Model> models = modelService.getAll();
-        return ok(Json.toJson(models));
+        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Model.class), models));
     }
 
     public Result create(Http.Request request) {
