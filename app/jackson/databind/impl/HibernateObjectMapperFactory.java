@@ -2,6 +2,7 @@ package jackson.databind.impl;
 
 import com.fasterxml.jackson.core.Version;
 import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
 import com.fasterxml.jackson.databind.module.SimpleModule;
@@ -32,6 +33,7 @@ public class HibernateObjectMapperFactory implements ObjectMapperFactory {
     @Override
     public ObjectMapper getObjectMapper() {
         ObjectMapper objectMapper = Json.newDefaultMapper();
+        objectMapper.configure(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY, true);
 
         Hibernate5Module hibernate5Module = new Hibernate5Module(jpaManager.getEntityManagerFactory().unwrap(SessionFactory.class));
         hibernate5Module.enable(Hibernate5Module.Feature.FORCE_LAZY_LOADING);
