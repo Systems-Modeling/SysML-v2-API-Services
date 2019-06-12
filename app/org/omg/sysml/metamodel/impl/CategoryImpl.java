@@ -1,8 +1,9 @@
 package org.omg.sysml.metamodel.impl;
 
 import org.omg.sysml.metamodel.*;
+
 import org.omg.sysml.metamodel.Package;
-import org.omg.sysml.metamodel.*;
+import org.omg.sysml.metamodel.Class;
 
 import jackson.MofObjectSerializer;
 import jackson.MofObjectDeserializer;
@@ -18,17 +19,26 @@ import org.hibernate.annotations.FetchMode;
 // import info.archinnov.achilles.annotations.UDT;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.EnumType;
+import javax.persistence.ElementCollection;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.FetchType;
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Table;
 import javax.persistence.SecondaryTable;
+import javax.persistence.CollectionTable;
 
 import java.util.Collection;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Set;
+import java.util.HashSet;
 @Entity(name = "CategoryImpl")
 @SecondaryTable(name = "Category")
 @org.hibernate.annotations.Table(appliesTo = "Category", fetch = FetchMode.SELECT, optional = false)
@@ -41,7 +51,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("ownedFeatureMembership")
     private List<FeatureMembership> ownedFeatureMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -52,7 +61,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
         return ownedFeatureMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureMembershipImpl.class)
     public void setOwnedFeatureMembership(List<FeatureMembership> ownedFeatureMembership) {
@@ -65,7 +73,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("input")
     private Collection<Feature> input;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -76,7 +83,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
         return input;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
     public void setInput(Collection<Feature> input) {
@@ -89,7 +95,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("feature")
     private Collection<Feature> feature;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -100,7 +105,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
         return feature;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
     public void setFeature(Collection<Feature> feature) {
@@ -113,7 +117,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("ownedImport")
     private List<Import> ownedImport;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -124,7 +127,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
         return ownedImport;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ImportImpl.class)
     public void setOwnedImport(List<Import> ownedImport) {
@@ -136,13 +138,11 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("identifier")
     private java.util.UUID identifier;
 
-    @JsonProperty(required = true)
     @JsonGetter
     public java.util.UUID getIdentifier() {
         return identifier;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIdentifier(java.util.UUID identifier) {
         this.identifier = identifier;
@@ -154,7 +154,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("ownedGeneralization")
     private List<Generalization> ownedGeneralization;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -165,7 +164,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
         return ownedGeneralization;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = GeneralizationImpl.class)
     public void setOwnedGeneralization(List<Generalization> ownedGeneralization) {
@@ -178,7 +176,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("importedMembership")
     private List<Membership> importedMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -189,7 +186,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
         return importedMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
     public void setImportedMembership(List<Membership> importedMembership) {
@@ -201,14 +197,12 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("isAbstract")
     private Boolean isAbstract;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @javax.persistence.Column(name = "isAbstract", table = "Category")
     public Boolean getIsAbstract() {
         return isAbstract;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIsAbstract(Boolean isAbstract) {
         this.isAbstract = isAbstract;
@@ -220,7 +214,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private Membership owningMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -228,7 +221,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
         return owningMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = MembershipImpl.class)
     public void setOwningMembership(Membership owningMembership) {
@@ -241,7 +233,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("owningNamespace")
     private Package owningNamespace;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -249,7 +240,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
         return owningNamespace;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
     public void setOwningNamespace(Package owningNamespace) {
@@ -262,7 +252,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("ownedFeature")
     private Collection<Feature> ownedFeature;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -273,7 +262,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
         return ownedFeature;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
     public void setOwnedFeature(Collection<Feature> ownedFeature) {
@@ -286,7 +274,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("ownedMember")
     private List<Element> ownedMember;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -297,7 +284,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
         return ownedMember;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedMember(List<Element> ownedMember) {
@@ -309,7 +295,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("owningRelationship")
     private Relationship owningRelationship;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
@@ -318,7 +303,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
         return owningRelationship;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
     public void setOwningRelationship(Relationship owningRelationship) {
@@ -331,7 +315,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("inheritedMembership")
     private List<Membership> inheritedMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -342,7 +325,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
         return inheritedMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
     public void setInheritedMembership(List<Membership> inheritedMembership) {
@@ -354,7 +336,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("ownedRelationship")
     private Collection<Relationship> ownedRelationship;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelationshipType"), fetch = FetchType.LAZY)
@@ -368,7 +349,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
         return ownedRelationship;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
     public void setOwnedRelationship(Collection<Relationship> ownedRelationship) {
@@ -381,7 +361,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("name")
     private String name;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
@@ -390,7 +369,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
         return name;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setName(String name) {
         this.name = name;
@@ -402,7 +380,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("member")
     private List<Element> member;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -413,7 +390,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
         return member;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setMember(List<Element> member) {
@@ -426,7 +402,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("output")
     private Collection<Feature> output;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -437,7 +412,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
         return output;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
     public void setOutput(Collection<Feature> output) {
@@ -450,7 +424,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("membership")
     private List<Membership> membership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -461,7 +434,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
         return membership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
     public void setMembership(List<Membership> membership) {
@@ -474,7 +446,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("ownedElement")
     private Collection<Element> ownedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -485,7 +456,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
         return ownedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedElement(Collection<Element> ownedElement) {
@@ -498,7 +468,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("ownedMembership")
     private List<Membership> ownedMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -509,7 +478,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
         return ownedMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
     public void setOwnedMembership(List<Membership> ownedMembership) {
@@ -522,7 +490,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     // @info.archinnov.achilles.annotations.Column("owner")
     private Element owner;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -530,7 +497,6 @@ public class CategoryImpl extends MofObjectImpl implements Category {
         return owner;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
     public void setOwner(Element owner) {

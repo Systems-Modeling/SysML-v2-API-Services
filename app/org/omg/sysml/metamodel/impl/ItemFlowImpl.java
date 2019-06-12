@@ -1,9 +1,9 @@
 package org.omg.sysml.metamodel.impl;
 
 import org.omg.sysml.metamodel.*;
-import org.omg.sysml.metamodel.Class;
+
 import org.omg.sysml.metamodel.Package;
-import org.omg.sysml.metamodel.*;
+import org.omg.sysml.metamodel.Class;
 
 import jackson.MofObjectSerializer;
 import jackson.MofObjectDeserializer;
@@ -19,17 +19,26 @@ import org.hibernate.annotations.FetchMode;
 // import info.archinnov.achilles.annotations.UDT;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.EnumType;
+import javax.persistence.ElementCollection;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.FetchType;
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Table;
 import javax.persistence.SecondaryTable;
+import javax.persistence.CollectionTable;
 
 import java.util.Collection;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Set;
+import java.util.HashSet;
 @Entity(name = "ItemFlowImpl")
 @SecondaryTable(name = "ItemFlow")
 @org.hibernate.annotations.Table(appliesTo = "ItemFlow", fetch = FetchMode.SELECT, optional = false)
@@ -42,7 +51,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("ownedFeatureMembership")
     private List<FeatureMembership> ownedFeatureMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -53,7 +61,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return ownedFeatureMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureMembershipImpl.class)
     public void setOwnedFeatureMembership(List<FeatureMembership> ownedFeatureMembership) {
@@ -65,7 +72,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("sourceOutputFeature")
     private List<Feature> sourceOutputFeature;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "sourceOutputFeatureType"), fetch = FetchType.LAZY)
@@ -79,7 +85,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return sourceOutputFeature;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
     public void setSourceOutputFeature(List<Feature> sourceOutputFeature) {
@@ -92,7 +97,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("importedMembership")
     private List<Membership> importedMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -103,7 +107,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return importedMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
     public void setImportedMembership(List<Membership> importedMembership) {
@@ -116,7 +119,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("ownedType")
     private Collection<Category> ownedType;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -127,7 +129,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return ownedType;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CategoryImpl.class)
     public void setOwnedType(Collection<Category> ownedType) {
@@ -139,7 +140,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("owningRelationship")
     private Relationship owningRelationship;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
@@ -148,7 +148,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return owningRelationship;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
     public void setOwningRelationship(Relationship owningRelationship) {
@@ -160,14 +159,12 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("isUnique")
     private Boolean isUnique;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @javax.persistence.Column(name = "isUnique", table = "ItemFlow")
     public Boolean getIsUnique() {
         return isUnique;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIsUnique(Boolean isUnique) {
         this.isUnique = isUnique;
@@ -179,7 +176,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("relatedFeature")
     private Collection<Feature> relatedFeature;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -190,7 +186,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return relatedFeature;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
     public void setRelatedFeature(Collection<Feature> relatedFeature) {
@@ -203,7 +198,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("valuation")
     private FeatureValue valuation;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -211,7 +205,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return valuation;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureValueImpl.class)
     public void setValuation(FeatureValue valuation) {
@@ -224,7 +217,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("name")
     private String name;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
@@ -233,7 +225,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return name;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setName(String name) {
         this.name = name;
@@ -245,7 +236,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("output")
     private Collection<Feature> output;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -256,7 +246,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return output;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
     public void setOutput(Collection<Feature> output) {
@@ -269,7 +258,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("ownedElement")
     private Collection<Element> ownedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -280,7 +268,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return ownedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedElement(Collection<Element> ownedElement) {
@@ -293,7 +280,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("owner")
     private Element owner;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -301,7 +287,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return owner;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
     public void setOwner(Element owner) {
@@ -314,7 +299,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("multiplicity")
     private Multiplicity multiplicity;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -322,7 +306,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return multiplicity;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = MultiplicityImpl.class)
     public void setMultiplicity(Multiplicity multiplicity) {
@@ -334,14 +317,12 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("isAbstract")
     private Boolean isAbstract;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @javax.persistence.Column(name = "isAbstract", table = "ItemFlow")
     public Boolean getIsAbstract() {
         return isAbstract;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIsAbstract(Boolean isAbstract) {
         this.isAbstract = isAbstract;
@@ -353,7 +334,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("owningNamespace")
     private Package owningNamespace;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -361,7 +341,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return owningNamespace;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
     public void setOwningNamespace(Package owningNamespace) {
@@ -374,7 +353,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("connectorEnd")
     private Collection<Feature> connectorEnd;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -385,7 +363,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return connectorEnd;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
     public void setConnectorEnd(Collection<Feature> connectorEnd) {
@@ -398,7 +375,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("referencedType")
     private Collection<Category> referencedType;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -409,7 +385,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return referencedType;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CategoryImpl.class)
     public void setReferencedType(Collection<Category> referencedType) {
@@ -422,7 +397,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("membership")
     private List<Membership> membership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -433,7 +407,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return membership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
     public void setMembership(List<Membership> membership) {
@@ -446,7 +419,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("type")
     private Collection<Behavior> type;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -457,7 +429,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return type;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = BehaviorImpl.class)
     public void setType(Collection<Behavior> type) {
@@ -470,7 +441,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("ownedMembership")
     private List<Membership> ownedMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -481,7 +451,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return ownedMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
     public void setOwnedMembership(List<Membership> ownedMembership) {
@@ -493,7 +462,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("targetInputFeature")
     private List<Feature> targetInputFeature;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "targetInputFeatureType"), fetch = FetchType.LAZY)
@@ -507,7 +475,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return targetInputFeature;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
     public void setTargetInputFeature(List<Feature> targetInputFeature) {
@@ -520,14 +487,12 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("isComposite")
     private Boolean isComposite;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @javax.persistence.Transient
     public Boolean getIsComposite() {
         return isComposite;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIsComposite(Boolean isComposite) {
         this.isComposite = isComposite;
@@ -539,7 +504,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("ownedSubsetting")
     private Collection<Subsetting> ownedSubsetting;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -550,7 +514,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return ownedSubsetting;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SubsettingImpl.class)
     public void setOwnedSubsetting(Collection<Subsetting> ownedSubsetting) {
@@ -563,7 +526,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("owningCategory")
     private Category owningCategory;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -571,7 +533,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return owningCategory;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = CategoryImpl.class)
     public void setOwningCategory(Category owningCategory) {
@@ -584,7 +545,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("feature")
     private Collection<Feature> feature;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -595,7 +555,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return feature;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
     public void setFeature(Collection<Feature> feature) {
@@ -608,7 +567,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("ownedImport")
     private List<Import> ownedImport;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -619,7 +577,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return ownedImport;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ImportImpl.class)
     public void setOwnedImport(List<Import> ownedImport) {
@@ -632,7 +589,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("ownedGeneralization")
     private List<Generalization> ownedGeneralization;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -643,7 +599,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return ownedGeneralization;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = GeneralizationImpl.class)
     public void setOwnedGeneralization(List<Generalization> ownedGeneralization) {
@@ -656,7 +611,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("ownedAssociationType")
     private Association ownedAssociationType;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -664,7 +618,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return ownedAssociationType;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = AssociationImpl.class)
     public void setOwnedAssociationType(Association ownedAssociationType) {
@@ -677,7 +630,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("owningFeatureMembership")
     private FeatureMembership owningFeatureMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -685,7 +637,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return owningFeatureMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureMembershipImpl.class)
     public void setOwningFeatureMembership(FeatureMembership owningFeatureMembership) {
@@ -698,7 +649,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("ownedFeature")
     private Collection<Feature> ownedFeature;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -709,7 +659,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return ownedFeature;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
     public void setOwnedFeature(Collection<Feature> ownedFeature) {
@@ -721,7 +670,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("target")
     private Collection<Element> target;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "targetType"), fetch = FetchType.LAZY)
@@ -735,7 +683,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return target;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setTarget(Collection<Element> target) {
@@ -748,7 +695,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("ownedMember")
     private List<Element> ownedMember;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -759,7 +705,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return ownedMember;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedMember(List<Element> ownedMember) {
@@ -771,7 +716,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("ownedRelationship")
     private Collection<Relationship> ownedRelationship;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelationshipType"), fetch = FetchType.LAZY)
@@ -785,7 +729,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return ownedRelationship;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
     public void setOwnedRelationship(Collection<Relationship> ownedRelationship) {
@@ -797,7 +740,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("owningRelatedElement")
     private Element owningRelatedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElementType"), fetch = FetchType.LAZY)
@@ -806,7 +748,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return owningRelatedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
     public void setOwningRelatedElement(Element owningRelatedElement) {
@@ -819,7 +760,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("input")
     private Collection<Feature> input;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -830,7 +770,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return input;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
     public void setInput(Collection<Feature> input) {
@@ -843,7 +782,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("relatedElement")
     private Collection<Element> relatedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -854,7 +792,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return relatedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setRelatedElement(Collection<Element> relatedElement) {
@@ -866,7 +803,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("itemType")
     private List<Class> itemType;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ClassMetaDef", metaColumn = @javax.persistence.Column(name = "itemTypeType"), fetch = FetchType.LAZY)
@@ -880,7 +816,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return itemType;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ClassImpl.class)
     public void setItemType(List<Class> itemType) {
@@ -892,13 +827,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("identifier")
     private java.util.UUID identifier;
 
-    @JsonProperty(required = true)
     @JsonGetter
     public java.util.UUID getIdentifier() {
         return identifier;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIdentifier(java.util.UUID identifier) {
         this.identifier = identifier;
@@ -909,14 +842,12 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("isOrdered")
     private Boolean isOrdered;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @javax.persistence.Column(name = "isOrdered", table = "ItemFlow")
     public Boolean getIsOrdered() {
         return isOrdered;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIsOrdered(Boolean isOrdered) {
         this.isOrdered = isOrdered;
@@ -927,14 +858,12 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("isDirected")
     private Boolean isDirected;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @javax.persistence.Column(name = "isDirected", table = "ItemFlow")
     public Boolean getIsDirected() {
         return isDirected;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIsDirected(Boolean isDirected) {
         this.isDirected = isDirected;
@@ -946,7 +875,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private Membership owningMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -954,7 +882,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return owningMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = MembershipImpl.class)
     public void setOwningMembership(Membership owningMembership) {
@@ -966,7 +893,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("ownedRelatedElement")
     private Collection<Element> ownedRelatedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelatedElementType"), fetch = FetchType.LAZY)
@@ -980,7 +906,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return ownedRelatedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedRelatedElement(Collection<Element> ownedRelatedElement) {
@@ -993,14 +918,12 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("isNonunique")
     private Boolean isNonunique;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @javax.persistence.Transient
     public Boolean getIsNonunique() {
         return isNonunique;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIsNonunique(Boolean isNonunique) {
         this.isNonunique = isNonunique;
@@ -1012,7 +935,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("inheritedMembership")
     private List<Membership> inheritedMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -1023,7 +945,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return inheritedMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
     public void setInheritedMembership(List<Membership> inheritedMembership) {
@@ -1035,7 +956,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("typing")
     private Collection<FeatureTyping> typing;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "typingType"), fetch = FetchType.LAZY)
@@ -1049,7 +969,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return typing;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureTypingImpl.class)
     public void setTyping(Collection<FeatureTyping> typing) {
@@ -1062,7 +981,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("member")
     private List<Element> member;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -1073,7 +991,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return member;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setMember(List<Element> member) {
@@ -1085,7 +1002,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("source")
     private Collection<Element> source;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "sourceType"), fetch = FetchType.LAZY)
@@ -1099,7 +1015,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return source;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setSource(Collection<Element> source) {
@@ -1112,7 +1027,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("ownedRedefinition")
     private Collection<Redefinition> ownedRedefinition;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -1123,7 +1037,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return ownedRedefinition;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RedefinitionImpl.class)
     public void setOwnedRedefinition(Collection<Redefinition> ownedRedefinition) {
@@ -1136,7 +1049,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     // @info.archinnov.achilles.annotations.Column("association")
     private Association association;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -1144,7 +1056,6 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
         return association;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = AssociationImpl.class)
     public void setAssociation(Association association) {

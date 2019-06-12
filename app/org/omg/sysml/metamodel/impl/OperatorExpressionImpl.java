@@ -1,8 +1,9 @@
 package org.omg.sysml.metamodel.impl;
 
 import org.omg.sysml.metamodel.*;
+
 import org.omg.sysml.metamodel.Package;
-import org.omg.sysml.metamodel.*;
+import org.omg.sysml.metamodel.Class;
 
 import jackson.MofObjectSerializer;
 import jackson.MofObjectDeserializer;
@@ -18,17 +19,26 @@ import org.hibernate.annotations.FetchMode;
 // import info.archinnov.achilles.annotations.UDT;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.EnumType;
+import javax.persistence.ElementCollection;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.FetchType;
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Table;
 import javax.persistence.SecondaryTable;
+import javax.persistence.CollectionTable;
 
 import java.util.Collection;
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Set;
+import java.util.HashSet;
 @Entity(name = "OperatorExpressionImpl")
 @SecondaryTable(name = "OperatorExpression")
 @org.hibernate.annotations.Table(appliesTo = "OperatorExpression", fetch = FetchMode.SELECT, optional = false)
@@ -41,14 +51,12 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("isComposite")
     private Boolean isComposite;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @javax.persistence.Transient
     public Boolean getIsComposite() {
         return isComposite;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIsComposite(Boolean isComposite) {
         this.isComposite = isComposite;
@@ -60,7 +68,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("ownedFeatureMembership")
     private List<FeatureMembership> ownedFeatureMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -71,7 +78,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return ownedFeatureMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureMembershipImpl.class)
     public void setOwnedFeatureMembership(List<FeatureMembership> ownedFeatureMembership) {
@@ -84,7 +90,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("ownedSubsetting")
     private Collection<Subsetting> ownedSubsetting;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -95,7 +100,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return ownedSubsetting;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SubsettingImpl.class)
     public void setOwnedSubsetting(Collection<Subsetting> ownedSubsetting) {
@@ -108,7 +112,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("owningCategory")
     private Category owningCategory;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -116,7 +119,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return owningCategory;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = CategoryImpl.class)
     public void setOwningCategory(Category owningCategory) {
@@ -129,7 +131,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("feature")
     private Collection<Feature> feature;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -140,7 +141,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return feature;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
     public void setFeature(Collection<Feature> feature) {
@@ -153,7 +153,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("ownedImport")
     private List<Import> ownedImport;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -164,7 +163,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return ownedImport;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ImportImpl.class)
     public void setOwnedImport(List<Import> ownedImport) {
@@ -177,7 +175,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("ownedGeneralization")
     private List<Generalization> ownedGeneralization;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -188,7 +185,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return ownedGeneralization;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = GeneralizationImpl.class)
     public void setOwnedGeneralization(List<Generalization> ownedGeneralization) {
@@ -201,7 +197,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("importedMembership")
     private List<Membership> importedMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -212,7 +207,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return importedMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
     public void setImportedMembership(List<Membership> importedMembership) {
@@ -225,7 +219,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("owningFeatureMembership")
     private FeatureMembership owningFeatureMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -233,7 +226,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return owningFeatureMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureMembershipImpl.class)
     public void setOwningFeatureMembership(FeatureMembership owningFeatureMembership) {
@@ -246,7 +238,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("ownedType")
     private Collection<Category> ownedType;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -257,7 +248,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return ownedType;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CategoryImpl.class)
     public void setOwnedType(Collection<Category> ownedType) {
@@ -270,7 +260,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("ownedFeature")
     private Collection<Feature> ownedFeature;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -281,7 +270,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return ownedFeature;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
     public void setOwnedFeature(Collection<Feature> ownedFeature) {
@@ -293,7 +281,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("operator")
     private String operator;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
@@ -302,7 +289,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return operator;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setOperator(String operator) {
         this.operator = operator;
@@ -313,14 +299,12 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("isUnique")
     private Boolean isUnique;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @javax.persistence.Column(name = "isUnique", table = "OperatorExpression")
     public Boolean getIsUnique() {
         return isUnique;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIsUnique(Boolean isUnique) {
         this.isUnique = isUnique;
@@ -332,7 +316,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("ownedMember")
     private List<Element> ownedMember;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -343,7 +326,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return ownedMember;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedMember(List<Element> ownedMember) {
@@ -355,7 +337,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("owningRelationship")
     private Relationship owningRelationship;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
@@ -364,7 +345,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return owningRelationship;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
     public void setOwningRelationship(Relationship owningRelationship) {
@@ -377,7 +357,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("valuation")
     private FeatureValue valuation;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -385,7 +364,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return valuation;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureValueImpl.class)
     public void setValuation(FeatureValue valuation) {
@@ -397,7 +375,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("ownedRelationship")
     private Collection<Relationship> ownedRelationship;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelationshipType"), fetch = FetchType.LAZY)
@@ -411,7 +388,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return ownedRelationship;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
     public void setOwnedRelationship(Collection<Relationship> ownedRelationship) {
@@ -424,7 +400,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("name")
     private String name;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
@@ -433,7 +408,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return name;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setName(String name) {
         this.name = name;
@@ -445,7 +419,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("output")
     private Collection<Feature> output;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -456,7 +429,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return output;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
     public void setOutput(Collection<Feature> output) {
@@ -469,7 +441,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("ownedElement")
     private Collection<Element> ownedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -480,7 +451,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return ownedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedElement(Collection<Element> ownedElement) {
@@ -493,7 +463,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("owner")
     private Element owner;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -501,7 +470,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return owner;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
     public void setOwner(Element owner) {
@@ -514,7 +482,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("input")
     private Collection<Feature> input;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -525,7 +492,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return input;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
     public void setInput(Collection<Feature> input) {
@@ -537,13 +503,11 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("identifier")
     private java.util.UUID identifier;
 
-    @JsonProperty(required = true)
     @JsonGetter
     public java.util.UUID getIdentifier() {
         return identifier;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIdentifier(java.util.UUID identifier) {
         this.identifier = identifier;
@@ -555,7 +519,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("multiplicity")
     private Multiplicity multiplicity;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -563,7 +526,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return multiplicity;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = MultiplicityImpl.class)
     public void setMultiplicity(Multiplicity multiplicity) {
@@ -575,14 +537,12 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("isAbstract")
     private Boolean isAbstract;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @javax.persistence.Column(name = "isAbstract", table = "OperatorExpression")
     public Boolean getIsAbstract() {
         return isAbstract;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIsAbstract(Boolean isAbstract) {
         this.isAbstract = isAbstract;
@@ -593,14 +553,12 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("isOrdered")
     private Boolean isOrdered;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @javax.persistence.Column(name = "isOrdered", table = "OperatorExpression")
     public Boolean getIsOrdered() {
         return isOrdered;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIsOrdered(Boolean isOrdered) {
         this.isOrdered = isOrdered;
@@ -611,7 +569,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("operand")
     private List<Expression> operand;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "operandType"), fetch = FetchType.LAZY)
@@ -625,7 +582,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return operand;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ExpressionImpl.class)
     public void setOperand(List<Expression> operand) {
@@ -638,7 +594,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private Membership owningMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -646,7 +601,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return owningMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = MembershipImpl.class)
     public void setOwningMembership(Membership owningMembership) {
@@ -657,17 +611,15 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningNamespace")
-    private org.omg.sysml.metamodel.Package owningNamespace;
+    private Package owningNamespace;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
-    public org.omg.sysml.metamodel.Package getOwningNamespace() {
+    public Package getOwningNamespace() {
         return owningNamespace;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
     public void setOwningNamespace(Package owningNamespace) {
@@ -680,14 +632,12 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("isNonunique")
     private Boolean isNonunique;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @javax.persistence.Transient
     public Boolean getIsNonunique() {
         return isNonunique;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIsNonunique(Boolean isNonunique) {
         this.isNonunique = isNonunique;
@@ -699,7 +649,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("referencedType")
     private Collection<Category> referencedType;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -710,7 +659,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return referencedType;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CategoryImpl.class)
     public void setReferencedType(Collection<Category> referencedType) {
@@ -723,7 +671,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("inheritedMembership")
     private List<Membership> inheritedMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -734,7 +681,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return inheritedMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
     public void setInheritedMembership(List<Membership> inheritedMembership) {
@@ -746,7 +692,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("typing")
     private Collection<FeatureTyping> typing;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "typingType"), fetch = FetchType.LAZY)
@@ -760,7 +705,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return typing;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureTypingImpl.class)
     public void setTyping(Collection<FeatureTyping> typing) {
@@ -773,7 +717,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("member")
     private List<Element> member;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -784,7 +727,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return member;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setMember(List<Element> member) {
@@ -797,7 +739,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("type")
     private Collection<Function> type;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -808,7 +749,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return type;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FunctionImpl.class)
     public void setType(Collection<Function> type) {
@@ -821,7 +761,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("ownedRedefinition")
     private Collection<Redefinition> ownedRedefinition;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -832,7 +771,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return ownedRedefinition;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RedefinitionImpl.class)
     public void setOwnedRedefinition(Collection<Redefinition> ownedRedefinition) {
@@ -845,7 +783,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("membership")
     private List<Membership> membership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -856,7 +793,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return membership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
     public void setMembership(List<Membership> membership) {
@@ -869,7 +805,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     // @info.archinnov.achilles.annotations.Column("ownedMembership")
     private List<Membership> ownedMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -880,7 +815,6 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
         return ownedMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
     public void setOwnedMembership(List<Membership> ownedMembership) {

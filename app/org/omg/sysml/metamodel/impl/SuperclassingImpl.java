@@ -1,9 +1,9 @@
 package org.omg.sysml.metamodel.impl;
 
 import org.omg.sysml.metamodel.*;
-import org.omg.sysml.metamodel.Class;
+
 import org.omg.sysml.metamodel.Package;
-import org.omg.sysml.metamodel.*;
+import org.omg.sysml.metamodel.Class;
 
 import jackson.MofObjectSerializer;
 import jackson.MofObjectDeserializer;
@@ -19,16 +19,26 @@ import org.hibernate.annotations.FetchMode;
 // import info.archinnov.achilles.annotations.UDT;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.EnumType;
+import javax.persistence.ElementCollection;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.FetchType;
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Table;
 import javax.persistence.SecondaryTable;
+import javax.persistence.CollectionTable;
 
 import java.util.Collection;
 import java.util.ArrayList;
-
+import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 @Entity(name = "SuperclassingImpl")
 @SecondaryTable(name = "Superclassing")
 @org.hibernate.annotations.Table(appliesTo = "Superclassing", fetch = FetchMode.SELECT, optional = false)
@@ -40,7 +50,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     // @info.archinnov.achilles.annotations.Column("owningRelatedElement")
     private Element owningRelatedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElementType"), fetch = FetchType.LAZY)
@@ -49,7 +58,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
         return owningRelatedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
     public void setOwningRelatedElement(Element owningRelatedElement) {
@@ -62,7 +70,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     // @info.archinnov.achilles.annotations.Column("owningClass")
     private Class owningClass;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -70,7 +77,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
         return owningClass;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ClassImpl.class)
     public void setOwningClass(Class owningClass) {
@@ -83,7 +89,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     // @info.archinnov.achilles.annotations.Column("relatedElement")
     private Collection<Element> relatedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -94,7 +99,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
         return relatedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setRelatedElement(Collection<Element> relatedElement) {
@@ -106,7 +110,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     // @info.archinnov.achilles.annotations.Column("specific")
     private Category specific;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "CategoryMetaDef", metaColumn = @javax.persistence.Column(name = "specificType"), fetch = FetchType.LAZY)
@@ -115,7 +118,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
         return specific;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = CategoryImpl.class)
     public void setSpecific(Category specific) {
@@ -127,13 +129,11 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     // @info.archinnov.achilles.annotations.Column("identifier")
     private java.util.UUID identifier;
 
-    @JsonProperty(required = true)
     @JsonGetter
     public java.util.UUID getIdentifier() {
         return identifier;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIdentifier(java.util.UUID identifier) {
         this.identifier = identifier;
@@ -145,7 +145,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     // @info.archinnov.achilles.annotations.Column("owningCategory")
     private Category owningCategory;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -153,7 +152,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
         return owningCategory;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = CategoryImpl.class)
     public void setOwningCategory(Category owningCategory) {
@@ -165,7 +163,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     // @info.archinnov.achilles.annotations.Column("general")
     private Category general;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "CategoryMetaDef", metaColumn = @javax.persistence.Column(name = "generalType"), fetch = FetchType.LAZY)
@@ -174,7 +171,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
         return general;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = CategoryImpl.class)
     public void setGeneral(Category general) {
@@ -187,7 +183,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private Membership owningMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -195,7 +190,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
         return owningMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = MembershipImpl.class)
     public void setOwningMembership(Membership owningMembership) {
@@ -207,7 +201,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     // @info.archinnov.achilles.annotations.Column("subclass")
     private Class subclass;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "ClassMetaDef", metaColumn = @javax.persistence.Column(name = "subclassType"), fetch = FetchType.LAZY)
@@ -216,7 +209,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
         return subclass;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ClassImpl.class)
     public void setSubclass(Class subclass) {
@@ -229,7 +221,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     // @info.archinnov.achilles.annotations.Column("owningNamespace")
     private Package owningNamespace;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -237,7 +228,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
         return owningNamespace;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
     public void setOwningNamespace(Package owningNamespace) {
@@ -249,7 +239,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     // @info.archinnov.achilles.annotations.Column("ownedRelatedElement")
     private Collection<Element> ownedRelatedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelatedElementType"), fetch = FetchType.LAZY)
@@ -263,7 +252,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
         return ownedRelatedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedRelatedElement(Collection<Element> ownedRelatedElement) {
@@ -275,7 +263,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     // @info.archinnov.achilles.annotations.Column("target")
     private Collection<Element> target;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "targetType"), fetch = FetchType.LAZY)
@@ -289,7 +276,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
         return target;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setTarget(Collection<Element> target) {
@@ -301,7 +287,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     // @info.archinnov.achilles.annotations.Column("owningRelationship")
     private Relationship owningRelationship;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
@@ -310,7 +295,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
         return owningRelationship;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
     public void setOwningRelationship(Relationship owningRelationship) {
@@ -322,7 +306,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     // @info.archinnov.achilles.annotations.Column("superclass")
     private Class superclass;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "ClassMetaDef", metaColumn = @javax.persistence.Column(name = "superclassType"), fetch = FetchType.LAZY)
@@ -331,7 +314,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
         return superclass;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ClassImpl.class)
     public void setSuperclass(Class superclass) {
@@ -343,7 +325,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     // @info.archinnov.achilles.annotations.Column("ownedRelationship")
     private Collection<Relationship> ownedRelationship;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelationshipType"), fetch = FetchType.LAZY)
@@ -357,7 +338,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
         return ownedRelationship;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
     public void setOwnedRelationship(Collection<Relationship> ownedRelationship) {
@@ -370,7 +350,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     // @info.archinnov.achilles.annotations.Column("name")
     private String name;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
@@ -379,7 +358,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
         return name;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setName(String name) {
         this.name = name;
@@ -390,7 +368,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     // @info.archinnov.achilles.annotations.Column("source")
     private Collection<Element> source;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "sourceType"), fetch = FetchType.LAZY)
@@ -404,7 +381,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
         return source;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setSource(Collection<Element> source) {
@@ -417,7 +393,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     // @info.archinnov.achilles.annotations.Column("ownedElement")
     private Collection<Element> ownedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -428,7 +403,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
         return ownedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedElement(Collection<Element> ownedElement) {
@@ -441,7 +415,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     // @info.archinnov.achilles.annotations.Column("owner")
     private Element owner;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -449,7 +422,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
         return owner;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
     public void setOwner(Element owner) {

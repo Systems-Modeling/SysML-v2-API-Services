@@ -2,8 +2,6 @@ package org.omg.sysml.metamodel.impl;
 
 import com.fasterxml.jackson.annotation.*;
 
-import org.omg.sysml.extension.Model;
-import org.omg.sysml.extension.impl.ModelImpl;
 import org.omg.sysml.metamodel.MofObject;
 
 //import info.archinnov.achilles.annotations.PartitionKey;
@@ -41,21 +39,19 @@ public abstract class MofObjectImpl implements MofObject {
 
     // TODO Remove temporary modification for prototyping Model concept
 
-    private Model containingModel;
+    private org.omg.sysml.extension.Model containingModel;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "ModelMetaDef", metaColumn = @javax.persistence.Column(name = "containingModelType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "containingModelId", table = "MofObject")
-    public Model getContainingModel() {
+    public org.omg.sysml.extension.Model getContainingModel() {
         return containingModel;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ModelImpl.class)
-    public void setContainingModel(Model containingModel) {
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = org.omg.sysml.extension.impl.ModelImpl.class)
+    public void setContainingModel(org.omg.sysml.extension.Model containingModel) {
         this.containingModel = containingModel;
     }
 }

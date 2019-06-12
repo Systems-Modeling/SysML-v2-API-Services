@@ -1,8 +1,9 @@
 package org.omg.sysml.metamodel.impl;
 
 import org.omg.sysml.metamodel.*;
+
 import org.omg.sysml.metamodel.Package;
-import org.omg.sysml.metamodel.*;
+import org.omg.sysml.metamodel.Class;
 
 import jackson.MofObjectSerializer;
 import jackson.MofObjectDeserializer;
@@ -18,16 +19,26 @@ import org.hibernate.annotations.FetchMode;
 // import info.archinnov.achilles.annotations.UDT;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.EnumType;
+import javax.persistence.ElementCollection;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.FetchType;
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Table;
 import javax.persistence.SecondaryTable;
+import javax.persistence.CollectionTable;
 
 import java.util.Collection;
 import java.util.ArrayList;
-
+import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 @Entity(name = "CommentImpl")
 @SecondaryTable(name = "Comment")
 @org.hibernate.annotations.Table(appliesTo = "Comment", fetch = FetchMode.SELECT, optional = false)
@@ -40,7 +51,6 @@ public class CommentImpl extends MofObjectImpl implements Comment {
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private Membership owningMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -48,7 +58,6 @@ public class CommentImpl extends MofObjectImpl implements Comment {
         return owningMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = MembershipImpl.class)
     public void setOwningMembership(Membership owningMembership) {
@@ -61,7 +70,6 @@ public class CommentImpl extends MofObjectImpl implements Comment {
     // @info.archinnov.achilles.annotations.Column("commentedElement")
     private Element commentedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -69,7 +77,6 @@ public class CommentImpl extends MofObjectImpl implements Comment {
         return commentedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
     public void setCommentedElement(Element commentedElement) {
@@ -82,7 +89,6 @@ public class CommentImpl extends MofObjectImpl implements Comment {
     // @info.archinnov.achilles.annotations.Column("owningNamespace")
     private Package owningNamespace;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -90,7 +96,6 @@ public class CommentImpl extends MofObjectImpl implements Comment {
         return owningNamespace;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
     public void setOwningNamespace(Package owningNamespace) {
@@ -102,7 +107,6 @@ public class CommentImpl extends MofObjectImpl implements Comment {
     // @info.archinnov.achilles.annotations.Column("owningRelationship")
     private Relationship owningRelationship;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
@@ -111,7 +115,6 @@ public class CommentImpl extends MofObjectImpl implements Comment {
         return owningRelationship;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
     public void setOwningRelationship(Relationship owningRelationship) {
@@ -123,7 +126,6 @@ public class CommentImpl extends MofObjectImpl implements Comment {
     // @info.archinnov.achilles.annotations.Column("body")
     private String body;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
@@ -132,7 +134,6 @@ public class CommentImpl extends MofObjectImpl implements Comment {
         return body;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setBody(String body) {
         this.body = body;
@@ -143,13 +144,11 @@ public class CommentImpl extends MofObjectImpl implements Comment {
     // @info.archinnov.achilles.annotations.Column("identifier")
     private java.util.UUID identifier;
 
-    @JsonProperty(required = true)
     @JsonGetter
     public java.util.UUID getIdentifier() {
         return identifier;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIdentifier(java.util.UUID identifier) {
         this.identifier = identifier;
@@ -160,7 +159,6 @@ public class CommentImpl extends MofObjectImpl implements Comment {
     // @info.archinnov.achilles.annotations.Column("annotationForComment")
     private Annotation annotationForComment;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "annotationForCommentType"), fetch = FetchType.LAZY)
@@ -169,7 +167,6 @@ public class CommentImpl extends MofObjectImpl implements Comment {
         return annotationForComment;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = AnnotationImpl.class)
     public void setAnnotationForComment(Annotation annotationForComment) {
@@ -181,7 +178,6 @@ public class CommentImpl extends MofObjectImpl implements Comment {
     // @info.archinnov.achilles.annotations.Column("ownedRelationship")
     private Collection<Relationship> ownedRelationship;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelationshipType"), fetch = FetchType.LAZY)
@@ -195,7 +191,6 @@ public class CommentImpl extends MofObjectImpl implements Comment {
         return ownedRelationship;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
     public void setOwnedRelationship(Collection<Relationship> ownedRelationship) {
@@ -208,7 +203,6 @@ public class CommentImpl extends MofObjectImpl implements Comment {
     // @info.archinnov.achilles.annotations.Column("name")
     private String name;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
@@ -217,7 +211,6 @@ public class CommentImpl extends MofObjectImpl implements Comment {
         return name;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setName(String name) {
         this.name = name;
@@ -229,7 +222,6 @@ public class CommentImpl extends MofObjectImpl implements Comment {
     // @info.archinnov.achilles.annotations.Column("ownedElement")
     private Collection<Element> ownedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -240,7 +232,6 @@ public class CommentImpl extends MofObjectImpl implements Comment {
         return ownedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedElement(Collection<Element> ownedElement) {
@@ -253,7 +244,6 @@ public class CommentImpl extends MofObjectImpl implements Comment {
     // @info.archinnov.achilles.annotations.Column("owner")
     private Element owner;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -261,7 +251,6 @@ public class CommentImpl extends MofObjectImpl implements Comment {
         return owner;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
     public void setOwner(Element owner) {

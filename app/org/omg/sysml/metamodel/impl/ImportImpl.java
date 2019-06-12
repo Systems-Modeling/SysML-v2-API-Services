@@ -1,8 +1,9 @@
 package org.omg.sysml.metamodel.impl;
 
 import org.omg.sysml.metamodel.*;
+
 import org.omg.sysml.metamodel.Package;
-import org.omg.sysml.metamodel.*;
+import org.omg.sysml.metamodel.Class;
 
 import jackson.MofObjectSerializer;
 import jackson.MofObjectDeserializer;
@@ -18,17 +19,26 @@ import org.hibernate.annotations.FetchMode;
 // import info.archinnov.achilles.annotations.UDT;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.EnumType;
+import javax.persistence.ElementCollection;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.FetchType;
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Table;
 import javax.persistence.SecondaryTable;
+import javax.persistence.CollectionTable;
 
 import java.util.Collection;
 import java.util.ArrayList;
-
+import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 @Entity(name = "ImportImpl")
 @SecondaryTable(name = "Import")
 @org.hibernate.annotations.Table(appliesTo = "Import", fetch = FetchMode.SELECT, optional = false)
@@ -40,7 +50,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
     // @info.archinnov.achilles.annotations.Column("owningRelatedElement")
     private Element owningRelatedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElementType"), fetch = FetchType.LAZY)
@@ -49,7 +58,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
         return owningRelatedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
     public void setOwningRelatedElement(Element owningRelatedElement) {
@@ -62,7 +70,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
     // @info.archinnov.achilles.annotations.Column("relatedElement")
     private Collection<Element> relatedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -73,7 +80,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
         return relatedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setRelatedElement(Collection<Element> relatedElement) {
@@ -86,7 +92,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
     // @info.archinnov.achilles.annotations.Column("importOwningPackage")
     private Package importOwningPackage;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -94,7 +99,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
         return importOwningPackage;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
     public void setImportOwningPackage(Package importOwningPackage) {
@@ -106,13 +110,11 @@ public class ImportImpl extends MofObjectImpl implements Import {
     // @info.archinnov.achilles.annotations.Column("identifier")
     private java.util.UUID identifier;
 
-    @JsonProperty(required = true)
     @JsonGetter
     public java.util.UUID getIdentifier() {
         return identifier;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIdentifier(java.util.UUID identifier) {
         this.identifier = identifier;
@@ -124,7 +126,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private Membership owningMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -132,7 +133,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
         return owningMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = MembershipImpl.class)
     public void setOwningMembership(Membership owningMembership) {
@@ -145,7 +145,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
     // @info.archinnov.achilles.annotations.Column("selecter")
     private Predicate selecter;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -153,7 +152,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
         return selecter;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = PredicateImpl.class)
     public void setSelecter(Predicate selecter) {
@@ -166,7 +164,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
     // @info.archinnov.achilles.annotations.Column("owningNamespace")
     private Package owningNamespace;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -174,7 +171,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
         return owningNamespace;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
     public void setOwningNamespace(Package owningNamespace) {
@@ -186,7 +182,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
     // @info.archinnov.achilles.annotations.Column("ownedRelatedElement")
     private Collection<Element> ownedRelatedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelatedElementType"), fetch = FetchType.LAZY)
@@ -200,7 +195,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
         return ownedRelatedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedRelatedElement(Collection<Element> ownedRelatedElement) {
@@ -212,7 +206,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
     // @info.archinnov.achilles.annotations.Column("target")
     private Collection<Element> target;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "targetType"), fetch = FetchType.LAZY)
@@ -226,7 +219,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
         return target;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setTarget(Collection<Element> target) {
@@ -238,7 +230,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
     // @info.archinnov.achilles.annotations.Column("owningRelationship")
     private Relationship owningRelationship;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
@@ -247,7 +238,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
         return owningRelationship;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
     public void setOwningRelationship(Relationship owningRelationship) {
@@ -259,7 +249,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
     // @info.archinnov.achilles.annotations.Column("importedPackage")
     private Package importedPackage;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "importedPackageType"), fetch = FetchType.LAZY)
@@ -268,7 +257,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
         return importedPackage;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
     public void setImportedPackage(Package importedPackage) {
@@ -281,14 +269,12 @@ public class ImportImpl extends MofObjectImpl implements Import {
     // @info.archinnov.achilles.annotations.Enumerated(info.archinnov.achilles.annotations.Enumerated.Encoding.NAME)
     private VisibilityKind visibility;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
     public VisibilityKind getVisibility() {
         return visibility;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setVisibility(VisibilityKind visibility) {
         this.visibility = visibility;
@@ -299,7 +285,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
     // @info.archinnov.achilles.annotations.Column("ownedRelationship")
     private Collection<Relationship> ownedRelationship;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelationshipType"), fetch = FetchType.LAZY)
@@ -313,7 +298,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
         return ownedRelationship;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
     public void setOwnedRelationship(Collection<Relationship> ownedRelationship) {
@@ -326,7 +310,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
     // @info.archinnov.achilles.annotations.Column("name")
     private String name;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
@@ -335,7 +318,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
         return name;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setName(String name) {
         this.name = name;
@@ -346,7 +328,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
     // @info.archinnov.achilles.annotations.Column("source")
     private Collection<Element> source;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "sourceType"), fetch = FetchType.LAZY)
@@ -360,7 +341,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
         return source;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setSource(Collection<Element> source) {
@@ -373,7 +353,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
     // @info.archinnov.achilles.annotations.Column("ownedElement")
     private Collection<Element> ownedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -384,7 +363,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
         return ownedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedElement(Collection<Element> ownedElement) {
@@ -397,7 +375,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
     // @info.archinnov.achilles.annotations.Column("owner")
     private Element owner;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -405,7 +382,6 @@ public class ImportImpl extends MofObjectImpl implements Import {
         return owner;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
     public void setOwner(Element owner) {

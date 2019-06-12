@@ -1,8 +1,9 @@
 package org.omg.sysml.metamodel.impl;
 
 import org.omg.sysml.metamodel.*;
+
 import org.omg.sysml.metamodel.Package;
-import org.omg.sysml.metamodel.*;
+import org.omg.sysml.metamodel.Class;
 
 import jackson.MofObjectSerializer;
 import jackson.MofObjectDeserializer;
@@ -18,19 +19,26 @@ import org.hibernate.annotations.FetchMode;
 // import info.archinnov.achilles.annotations.UDT;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.EnumType;
 import javax.persistence.ElementCollection;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.FetchType;
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Table;
 import javax.persistence.SecondaryTable;
 import javax.persistence.CollectionTable;
 
 import java.util.Collection;
 import java.util.ArrayList;
-
+import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 @Entity(name = "EndFeatureMembershipImpl")
 @SecondaryTable(name = "EndFeatureMembership")
 @org.hibernate.annotations.Table(appliesTo = "EndFeatureMembership", fetch = FetchMode.SELECT, optional = false)
@@ -43,7 +51,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("owningCategory")
     private Category owningCategory;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -51,7 +58,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
         return owningCategory;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = CategoryImpl.class)
     public void setOwningCategory(Category owningCategory) {
@@ -63,14 +69,12 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("isReadOnly")
     private Boolean isReadOnly;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @javax.persistence.Column(name = "isReadOnly", table = "EndFeatureMembership")
     public Boolean getIsReadOnly() {
         return isReadOnly;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIsReadOnly(Boolean isReadOnly) {
         this.isReadOnly = isReadOnly;
@@ -81,7 +85,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("target")
     private Collection<Element> target;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "targetType"), fetch = FetchType.LAZY)
@@ -95,7 +98,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
         return target;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setTarget(Collection<Element> target) {
@@ -107,7 +109,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("owningRelationship")
     private Relationship owningRelationship;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
@@ -116,7 +117,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
         return owningRelationship;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
     public void setOwningRelationship(Relationship owningRelationship) {
@@ -128,7 +128,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("memberFeature")
     private Feature memberFeature;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "memberFeatureType"), fetch = FetchType.LAZY)
@@ -137,7 +136,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
         return memberFeature;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
     public void setMemberFeature(Feature memberFeature) {
@@ -149,7 +147,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("owningAssociation")
     private Association owningAssociation;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "AssociationMetaDef", metaColumn = @javax.persistence.Column(name = "owningAssociationType"), fetch = FetchType.LAZY)
@@ -158,7 +155,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
         return owningAssociation;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = AssociationImpl.class)
     public void setOwningAssociation(Association owningAssociation) {
@@ -170,14 +166,12 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("isDerived")
     private Boolean isDerived;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @javax.persistence.Column(name = "isDerived", table = "EndFeatureMembership")
     public Boolean getIsDerived() {
         return isDerived;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIsDerived(Boolean isDerived) {
         this.isDerived = isDerived;
@@ -188,7 +182,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("ownedRelationship")
     private Collection<Relationship> ownedRelationship;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelationshipType"), fetch = FetchType.LAZY)
@@ -202,7 +195,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
         return ownedRelationship;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
     public void setOwnedRelationship(Collection<Relationship> ownedRelationship) {
@@ -215,7 +207,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("name")
     private String name;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
@@ -224,7 +215,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
         return name;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setName(String name) {
         this.name = name;
@@ -236,7 +226,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("ownedElement")
     private Collection<Element> ownedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -247,7 +236,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
         return ownedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedElement(Collection<Element> ownedElement) {
@@ -259,7 +247,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("memberName")
     private String memberName;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
@@ -268,7 +255,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
         return memberName;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setMemberName(String memberName) {
         this.memberName = memberName;
@@ -280,7 +266,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("owner")
     private Element owner;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -288,7 +273,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
         return owner;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
     public void setOwner(Element owner) {
@@ -301,14 +285,12 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Enumerated(info.archinnov.achilles.annotations.Enumerated.Encoding.NAME)
     private FeatureDirectionKind direction;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
     public FeatureDirectionKind getDirection() {
         return direction;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setDirection(FeatureDirectionKind direction) {
         this.direction = direction;
@@ -319,7 +301,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("owningRelatedElement")
     private Element owningRelatedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElementType"), fetch = FetchType.LAZY)
@@ -328,7 +309,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
         return owningRelatedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
     public void setOwningRelatedElement(Element owningRelatedElement) {
@@ -341,7 +321,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("relatedElement")
     private Collection<Element> relatedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -352,7 +331,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
         return relatedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setRelatedElement(Collection<Element> relatedElement) {
@@ -364,13 +342,11 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("identifier")
     private java.util.UUID identifier;
 
-    @JsonProperty(required = true)
     @JsonGetter
     public java.util.UUID getIdentifier() {
         return identifier;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIdentifier(java.util.UUID identifier) {
         this.identifier = identifier;
@@ -381,14 +357,12 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("isPart")
     private Boolean isPart;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @javax.persistence.Column(name = "isPart", table = "EndFeatureMembership")
     public Boolean getIsPart() {
         return isPart;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIsPart(Boolean isPart) {
         this.isPart = isPart;
@@ -400,7 +374,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("membershipOwningPackage")
     private Package membershipOwningPackage;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -408,7 +381,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
         return membershipOwningPackage;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
     public void setMembershipOwningPackage(Package membershipOwningPackage) {
@@ -420,7 +392,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("memberElement")
     private Element memberElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "memberElementType"), fetch = FetchType.LAZY)
@@ -429,7 +400,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
         return memberElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
     public void setMemberElement(Element memberElement) {
@@ -442,7 +412,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private Membership owningMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -450,7 +419,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
         return owningMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = MembershipImpl.class)
     public void setOwningMembership(Membership owningMembership) {
@@ -463,7 +431,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("owningNamespace")
     private Package owningNamespace;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -471,7 +438,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
         return owningNamespace;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
     public void setOwningNamespace(Package owningNamespace) {
@@ -483,7 +449,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("aliases")
     private Collection<String> aliases;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
@@ -497,7 +462,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
         return aliases;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setAliases(Collection<String> aliases) {
         this.aliases = aliases;
@@ -508,7 +472,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("ownedRelatedElement")
     private Collection<Element> ownedRelatedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelatedElementType"), fetch = FetchType.LAZY)
@@ -522,7 +485,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
         return ownedRelatedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedRelatedElement(Collection<Element> ownedRelatedElement) {
@@ -534,14 +496,12 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("isPort")
     private Boolean isPort;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @javax.persistence.Column(name = "isPort", table = "EndFeatureMembership")
     public Boolean getIsPort() {
         return isPort;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIsPort(Boolean isPort) {
         this.isPort = isPort;
@@ -553,14 +513,12 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Enumerated(info.archinnov.achilles.annotations.Enumerated.Encoding.NAME)
     private VisibilityKind visibility;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
     public VisibilityKind getVisibility() {
         return visibility;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setVisibility(VisibilityKind visibility) {
         this.visibility = visibility;
@@ -571,7 +529,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("source")
     private Collection<Element> source;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "sourceType"), fetch = FetchType.LAZY)
@@ -585,7 +542,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
         return source;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setSource(Collection<Element> source) {
@@ -598,7 +554,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("ownedMemberElement")
     private Element ownedMemberElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -606,7 +561,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
         return ownedMemberElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
     public void setOwnedMemberElement(Element ownedMemberElement) {
@@ -619,7 +573,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     // @info.archinnov.achilles.annotations.Column("ownedMemberFeature")
     private Feature ownedMemberFeature;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -627,7 +580,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
         return ownedMemberFeature;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
     public void setOwnedMemberFeature(Feature ownedMemberFeature) {

@@ -1,10 +1,9 @@
 package org.omg.sysml.metamodel.impl;
 
-import org.omg.sysml.metamodel.Element;
-import org.omg.sysml.metamodel.Membership;
-import org.omg.sysml.metamodel.Package;
-import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.*;
+
+import org.omg.sysml.metamodel.Package;
+import org.omg.sysml.metamodel.Class;
 
 import jackson.MofObjectSerializer;
 import jackson.MofObjectDeserializer;
@@ -20,16 +19,26 @@ import org.hibernate.annotations.FetchMode;
 // import info.archinnov.achilles.annotations.UDT;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.EnumType;
+import javax.persistence.ElementCollection;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.FetchType;
 import javax.persistence.DiscriminatorValue;
+import javax.persistence.Table;
 import javax.persistence.SecondaryTable;
+import javax.persistence.CollectionTable;
 
 import java.util.Collection;
 import java.util.ArrayList;
-
+import java.util.List;
+import java.util.Set;
+import java.util.HashSet;
 @Entity(name = "RelationshipImpl")
 @SecondaryTable(name = "Relationship")
 @org.hibernate.annotations.Table(appliesTo = "Relationship", fetch = FetchMode.SELECT, optional = false)
@@ -41,7 +50,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
     // @info.archinnov.achilles.annotations.Column("owningRelatedElement")
     private Element owningRelatedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElementType"), fetch = FetchType.LAZY)
@@ -50,7 +58,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
         return owningRelatedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
     public void setOwningRelatedElement(Element owningRelatedElement) {
@@ -63,7 +70,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
     // @info.archinnov.achilles.annotations.Column("relatedElement")
     private Collection<Element> relatedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -74,7 +80,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
         return relatedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setRelatedElement(Collection<Element> relatedElement) {
@@ -86,13 +91,11 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
     // @info.archinnov.achilles.annotations.Column("identifier")
     private java.util.UUID identifier;
 
-    @JsonProperty(required = true)
     @JsonGetter
     public java.util.UUID getIdentifier() {
         return identifier;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setIdentifier(java.util.UUID identifier) {
         this.identifier = identifier;
@@ -104,7 +107,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private Membership owningMembership;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -112,7 +114,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
         return owningMembership;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = MembershipImpl.class)
     public void setOwningMembership(Membership owningMembership) {
@@ -125,7 +126,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
     // @info.archinnov.achilles.annotations.Column("owningNamespace")
     private Package owningNamespace;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -133,7 +133,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
         return owningNamespace;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
     public void setOwningNamespace(Package owningNamespace) {
@@ -145,7 +144,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
     // @info.archinnov.achilles.annotations.Column("ownedRelatedElement")
     private Collection<Element> ownedRelatedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelatedElementType"), fetch = FetchType.LAZY)
@@ -159,7 +157,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
         return ownedRelatedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedRelatedElement(Collection<Element> ownedRelatedElement) {
@@ -171,7 +168,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
     // @info.archinnov.achilles.annotations.Column("target")
     private Collection<Element> target;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "targetType"), fetch = FetchType.LAZY)
@@ -185,7 +181,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
         return target;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setTarget(Collection<Element> target) {
@@ -197,7 +192,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
     // @info.archinnov.achilles.annotations.Column("owningRelationship")
     private Relationship owningRelationship;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
@@ -206,7 +200,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
         return owningRelationship;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
     public void setOwningRelationship(Relationship owningRelationship) {
@@ -218,7 +211,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
     // @info.archinnov.achilles.annotations.Column("ownedRelationship")
     private Collection<Relationship> ownedRelationship;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelationshipType"), fetch = FetchType.LAZY)
@@ -232,7 +224,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
         return ownedRelationship;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
     public void setOwnedRelationship(Collection<Relationship> ownedRelationship) {
@@ -245,7 +236,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
     // @info.archinnov.achilles.annotations.Column("name")
     private String name;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
@@ -254,7 +244,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
         return name;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     public void setName(String name) {
         this.name = name;
@@ -265,7 +254,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
     // @info.archinnov.achilles.annotations.Column("source")
     private Collection<Element> source;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "sourceType"), fetch = FetchType.LAZY)
@@ -279,7 +267,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
         return source;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setSource(Collection<Element> source) {
@@ -292,7 +279,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
     // @info.archinnov.achilles.annotations.Column("ownedElement")
     private Collection<Element> ownedElement;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -303,7 +289,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
         return ownedElement;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedElement(Collection<Element> ownedElement) {
@@ -316,7 +301,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
     // @info.archinnov.achilles.annotations.Column("owner")
     private Element owner;
 
-    @JsonProperty(required = true)
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @javax.persistence.Transient
@@ -324,7 +308,6 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
         return owner;
     }
 
-    @JsonProperty(required = true)
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
     public void setOwner(Element owner) {
