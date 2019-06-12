@@ -1,19 +1,16 @@
 package jpa;
 
-import org.omg.sysml.metamodel.Element;
 import org.hibernate.HibernateException;
+import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.engine.spi.SharedSessionContractImplementor;
 import org.hibernate.id.UUIDGenerator;
 
 import java.io.Serializable;
 
-public class MyUUIDGenerator extends UUIDGenerator {
+public class UseExistingOrGenerateUUIDGenerator extends UUIDGenerator {
     @Override
     public Serializable generate(SharedSessionContractImplementor session, Object object) throws HibernateException {
-        Element element;
-        if (object instanceof Element && (element = (Element) object).getIdentifier() != null) {
-            return element.getIdentifier();
-        }
-        return super.generate(session, object);
+        Serializable id = session.getEntityPersister(null, object).getClassMetadata().getIdentifier(object, session);
+        return id != null ? id : super.generate(session, object);
     }
 }

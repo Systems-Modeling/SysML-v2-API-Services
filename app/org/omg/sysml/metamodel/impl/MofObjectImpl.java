@@ -26,6 +26,8 @@ public abstract class MofObjectImpl implements MofObject {
     public java.util.UUID identifier;
 
     @Id
+    // TODO Abstract this concept to cli option
+    @GeneratedValue(generator = "UseExistingOrGenerateUUIDGenerator")
     @Column(name = "identifier")
     @JsonGetter(value = "identifier")
     public java.util.UUID getIdentifier() {
