@@ -11,6 +11,8 @@ import org.omg.sysml.metamodel.impl.MofObjectImpl;
 import java.io.IOException;
 
 public class MofObjectDeserializer extends StdDeserializer<MofObjectImpl> {
+    private static final long serialVersionUID = 1L;
+
     private EntityManager entityManager;
 
     public MofObjectDeserializer(EntityManager entityManager) {
