@@ -30,3 +30,6 @@ compile in Compile := (compile in Compile).dependsOn(Def.task({
 })).value
 // tell the java compiler to output generated source files to target/generated_sources
 javacOptions in Compile ++= Seq("-s", "generated")
+
+sources in(Compile, doc) := Seq.empty
+publishArtifact in(Compile, packageDoc) := false
