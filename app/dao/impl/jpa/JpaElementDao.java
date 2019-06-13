@@ -6,7 +6,7 @@ import jpa.manager.JPAManager;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
-import org.omg.sysml.extension.Model;
+import org.omg.sysml.extension.Project;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
 import org.omg.sysml.metamodel.impl.MofObjectImpl_;
@@ -75,20 +75,20 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
     }
 
     @Override
-    public List<Element> findAllByModel(Model model) {
+    public List<Element> findAllByProject(Project project) {
         try (Session session = jpa.getEntityManagerFactory().unwrap(SessionFactory.class).openSession()) {
-            Query<Element> query = session.createQuery("FROM org.omg.sysml.metamodel.Element WHERE containingModel = :model", Element.class);
-            query.setParameter("model", model);
+            Query<Element> query = session.createQuery("FROM org.omg.sysml.metamodel.Element WHERE containingProject = :project", Element.class);
+            query.setParameter("project", project);
             return query.getResultList();
         }
     }
 
     @Override
-    public Optional<Element> findByModelAndId(Model model, UUID id) {
+    public Optional<Element> findByProjectAndId(Project project, UUID id) {
         try (Session session = jpa.getEntityManagerFactory().unwrap(SessionFactory.class).openSession()) {
-            Query<Element> query = session.createQuery("FROM org.omg.sysml.metamodel.Element WHERE identifier = :identifier AND containingModel = :model", Element.class);
+            Query<Element> query = session.createQuery("FROM org.omg.sysml.metamodel.Element WHERE identifier = :identifier AND containingProject = :project", Element.class);
             query.setParameter("identifier", id);
-            query.setParameter("model", model);
+            query.setParameter("project", project);
             try {
                 return Optional.of(query.getSingleResult());
             } catch (NoResultException e) {

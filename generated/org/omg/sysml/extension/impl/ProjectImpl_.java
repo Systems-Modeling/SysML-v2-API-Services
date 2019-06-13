@@ -5,10 +5,10 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
-@StaticMetamodel(ModelImpl.class)
-public abstract class ModelImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
+@StaticMetamodel(ProjectImpl.class)
+public abstract class ProjectImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
-	public static volatile SingularAttribute<ModelImpl, String> name;
+	public static volatile SingularAttribute<ProjectImpl, String> name;
 
 	public static final String NAME = "name";
 

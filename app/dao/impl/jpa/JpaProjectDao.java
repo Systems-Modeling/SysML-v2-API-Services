@@ -1,10 +1,10 @@
 package dao.impl.jpa;
 
-import dao.ModelDao;
+import dao.ProjectDao;
 import jpa.manager.JPAManager;
-import org.omg.sysml.extension.Model;
-import org.omg.sysml.extension.impl.ModelImpl;
-import org.omg.sysml.extension.impl.ModelImpl_;
+import org.omg.sysml.extension.Project;
+import org.omg.sysml.extension.impl.ProjectImpl;
+import org.omg.sysml.extension.impl.ProjectImpl_;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -18,7 +18,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Singleton
-public class JpaModelDao extends JpaDao<Model> implements ModelDao {
+public class JpaProjectDao extends JpaDao<Project> implements ProjectDao {
     @Inject
     private JPAManager jpa;
 
@@ -28,12 +28,12 @@ public class JpaModelDao extends JpaDao<Model> implements ModelDao {
     }
 
     @Override
-    public Optional<Model> findById(UUID id) {
+    public Optional<Project> findById(UUID id) {
         return jpa.transact(em -> {
             CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaQuery<ModelImpl> query = builder.createQuery(ModelImpl.class);
-            Root<ModelImpl> root = query.from(ModelImpl.class);
-            query.select(root).where(builder.equal(root.get(ModelImpl_.identifier), id));
+            CriteriaQuery<ProjectImpl> query = builder.createQuery(ProjectImpl.class);
+            Root<ProjectImpl> root = query.from(ProjectImpl.class);
+            query.select(root).where(builder.equal(root.get(ProjectImpl_.identifier), id));
             try {
                 return Optional.of(em.createQuery(query).getSingleResult());
             } catch (NoResultException e) {
@@ -43,11 +43,11 @@ public class JpaModelDao extends JpaDao<Model> implements ModelDao {
     }
 
     @Override
-    public List<Model> findAll() {
+    public List<Project> findAll() {
         return jpa.transact(em -> {
             CriteriaBuilder cb = em.getCriteriaBuilder();
-            CriteriaQuery<Model> query = cb.createQuery(Model.class);
-            Root<ModelImpl> root = query.from(ModelImpl.class);
+            CriteriaQuery<Project> query = cb.createQuery(Project.class);
+            Root<ProjectImpl> root = query.from(ProjectImpl.class);
             query.select(root);
             return em.createQuery(query).getResultList();
         });
@@ -57,7 +57,7 @@ public class JpaModelDao extends JpaDao<Model> implements ModelDao {
     public void deleteAll() {
         jpa.transact(em -> {
             CriteriaBuilder cb = em.getCriteriaBuilder();
-            CriteriaDelete<Model> query = cb.createCriteriaDelete(Model.class);
+            CriteriaDelete<Project> query = cb.createCriteriaDelete(Project.class);
             return em.createQuery(query).getResultList();
         });
     }

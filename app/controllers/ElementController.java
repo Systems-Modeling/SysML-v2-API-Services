@@ -1,9 +1,6 @@
 package controllers;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.type.TypeFactory;
 import config.MetamodelProvider;
 import jackson.JacksonHelper;
 import org.omg.sysml.metamodel.Element;
@@ -16,8 +13,6 @@ import play.mvc.Results;
 import services.ElementService;
 
 import javax.inject.Inject;
-import java.io.IOException;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -55,16 +50,16 @@ public class ElementController extends Controller {
         return responseElement.map(e -> created(Json.toJson(e))).orElseGet(Results::badRequest);
     }
 
-    public Result byModel(String modelId) {
-        UUID modelUuid = UUID.fromString(modelId);
-        List<Element> elements = elementService.getByModelId(modelUuid);
+    public Result byProject(String projectId) {
+        UUID projectUuid = UUID.fromString(projectId);
+        List<Element> elements = elementService.getByProjectId(projectUuid);
         return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Element.class), elements));
     }
 
-    public Result byModelAndId(String elementId, String modelId) {
+    public Result byProjectAndId(String elementId, String projectId) {
         UUID elementUuid = UUID.fromString(elementId);
-        UUID modelUuid = UUID.fromString(modelId);
-        Optional<Element> element = elementService.getByModelIdAndId(modelUuid, elementUuid);
+        UUID projectUuid = UUID.fromString(projectId);
+        Optional<Element> element = elementService.getByProjectIdAndId(projectUuid, elementUuid);
         return element.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
     }
 }

@@ -5,16 +5,16 @@
 # An example controller showing a sample home page
 GET         /                                 controllers.HomeController.index
 
-# Model endpoints
-GET         /models                           controllers.ModelController.all()
-GET         /models/:id                       controllers.ModelController.byId(id : String)
-POST        /models                           controllers.ModelController.create(request : Request)
+# Project endpoints
+GET         /projects                           controllers.ProjectController.all()
+GET         /projects/:id                       controllers.ProjectController.byId(id : String)
+POST        /projects                           controllers.ProjectController.create(request : Request)
 
 # Element endpoints
 GET         /elements                         controllers.ElementController.all()
 GET         /elements/:id                     controllers.ElementController.byId(id : String)
-GET         /models/:mid/elements/:id         controllers.ElementController.byModelAndId(id : String, mid : String)
-GET         /models/:mid/elements             controllers.ElementController.byModel(mid : String)
+GET         /projects/:mid/elements/:id         controllers.ElementController.byProjectAndId(id : String, mid : String)
+GET         /projects/:mid/elements             controllers.ElementController.byProject(mid : String)
 POST        /elements                         controllers.ElementController.create(request : Request)
 
 # Relationship endpoints
@@ -25,7 +25,7 @@ GET         /relationships/:id                controllers.RelationshipController
 # GET         /relationship/target/:id                   controllers.RelationshipController.byTargetElementId(id : String)
 # GET         /relationship/target/:id/type/:type        controllers.RelationshipController.byTargetElementId(id : String)
 GET         /relationships                    controllers.RelationshipController.all()
-GET         /models/:mid/relationships        controllers.RelationshipController.byModel(mid : String)
+GET         /projects/:mid/relationships        controllers.RelationshipController.byProject(mid : String)
 POST        /relationships                    controllers.RelationshipController.create(request : Request)
 
 # Map static resources from the /public folder to the /assets URL path

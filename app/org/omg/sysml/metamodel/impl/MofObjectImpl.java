@@ -8,7 +8,7 @@ import org.omg.sysml.metamodel.MofObject;
 
 import javax.persistence.*;
 
-// TODO Remove temporary modification for prototyping Model concept
+// TODO Remove temporary modification for prototyping Project concept
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -39,21 +39,21 @@ public abstract class MofObjectImpl implements MofObject {
         this.identifier = identifier;
     }
 
-    // TODO Remove temporary modification for prototyping Model concept
+    // TODO Remove temporary modification for prototyping Project concept
 
-    private org.omg.sysml.extension.Model containingModel;
+    private org.omg.sysml.extension.Project containingProject;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "ModelMetaDef", metaColumn = @javax.persistence.Column(name = "containingModelType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "containingModelId", table = "MofObject")
-    public org.omg.sysml.extension.Model getContainingModel() {
-        return containingModel;
+    @Any(metaDef = "ProjectMetaDef", metaColumn = @javax.persistence.Column(name = "containingProjectType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "containingProjectId", table = "MofObject")
+    public org.omg.sysml.extension.Project getContainingProject() {
+        return containingProject;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = org.omg.sysml.extension.impl.ModelImpl.class)
-    public void setContainingModel(org.omg.sysml.extension.Model containingModel) {
-        this.containingModel = containingModel;
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = org.omg.sysml.extension.impl.ProjectImpl.class)
+    public void setContainingProject(org.omg.sysml.extension.Project containingProject) {
+        this.containingProject = containingProject;
     }
 }

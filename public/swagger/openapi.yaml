@@ -4,17 +4,17 @@ info:
   description: REST/HTTP binding (PSM) for the SysML v2 standard API.
   version: 1.0.0
 tags:
-  - name: Model
+  - name: Project
   - name: Element
   - name: Relationship
 
 paths:
-  /models:
+  /projects:
     get:
       tags:
-        - Model
-      operationId: getModels
-      summary: Get all models
+        - Project
+      operationId: getProjects
+      summary: Get all projects
       produces:
         - application/json
       responses:
@@ -23,7 +23,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/Model'
+              $ref: '#/definitions/Project'
         415:
           $ref: '#/responses/BadContentType'
         500:
@@ -32,9 +32,9 @@ paths:
           $ref: '#/responses/Default'
     post:
       tags:
-        - Model
-      operationId: createModel
-      summary: Add a new model
+        - Project
+      operationId: createProject
+      summary: Add a new project
       consumes:
         - application/json
       produces:
@@ -43,37 +43,37 @@ paths:
         - in: body
           name: body
           schema:
-            $ref: '#/definitions/Model'
+            $ref: '#/definitions/Project'
       responses:
         201:
           description: Created
           schema:
-            $ref: '#/definitions/Model'
+            $ref: '#/definitions/Project'
         415:
           $ref: '#/responses/BadContentType'
         500:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-  /models/{identifier}:
+  /projects/{identifier}:
     parameters:
       - name: identifier
         in: path
-        description: ID of the model
+        description: ID of the project
         type: string
         required: true
     get:
       tags:
-        - Model
-      operationId: getModel
-      summary: Get model by its ID
+        - Project
+      operationId: getProject
+      summary: Get project by its ID
       produces:
         - application/json
       responses:
         200:
           description: Ok
           schema:
-            $ref: '#/definitions/Model'
+            $ref: '#/definitions/Project'
         404:
           $ref: '#/responses/NotFound'
         415:
@@ -158,23 +158,23 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-  /models/{model_identifier}/elements/{element_identifier}:
+  /projects/{project_identifier}/elements/{element_identifier}:
     parameters:
+      - name: project_identifier
+        in: path
+        description: ID of the project
+        type: string
+        required: true
       - name: element_identifier
         in: path
         description: ID of the element
         type: string
         required: true
-      - name: model_identifier
-        in: path
-        description: ID of the model
-        type: string
-        required: true
     get:
       tags:
         - Element
-      operationId: getElementByModelAndId
-      summary: Get element by model ID and its ID
+      operationId: getElementByProjectAndId
+      summary: Get element by project ID and its ID
       produces:
         - application/json
       responses:
@@ -190,18 +190,18 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-  /models/{model_identifier}/elements:
+  /projects/{project_identifier}/elements:
     parameters:
-      - name: model_identifier
+      - name: project_identifier
         in: path
-        description: ID of the model
+        description: ID of the project
         type: string
         required: true
     get:
       tags:
         - Element
-      operationId: getElementsInModel
-      summary: Get all elements in the model
+      operationId: getElementsInProject
+      summary: Get all elements in the project
       produces:
         - application/json
       responses:
@@ -373,18 +373,18 @@ paths:
   #           $ref: '#/responses/InternalServerError'
   #         default:
   #           $ref: '#/responses/Default'
-  /models/{model_identifier}/relationships:
+  /projects/{project_identifier}/relationships:
     parameters:
-      - name: model_identifier
+      - name: project_identifier
         in: path
-        description: ID of the model
+        description: ID of the project
         type: string
         required: true
     get:
       tags:
         - Relationship
-      operationId: getRelationshipsByModel
-      summary: Get all relationships in the model
+      operationId: getRelationshipsByProject
+      summary: Get all relationships in the project
       produces:
         - application/json
       responses:
@@ -402,7 +402,7 @@ paths:
           $ref: '#/responses/Default'
 
 definitions:
-  Model:
+  Project:
     type: object
     allOf:
       - $ref: '#/definitions/Identified'
@@ -416,7 +416,7 @@ definitions:
     allOf:
       - $ref: '#/definitions/Identified'
     properties:
-      containingModel:
+      containingProject:
         $ref: '#/definitions/Identified'
       '@type':
         type: string

@@ -5,7 +5,7 @@ import dao.RelationshipDao;
 import jpa.manager.JPAManager;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.omg.sysml.extension.Model;
+import org.omg.sysml.extension.Project;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
@@ -167,10 +167,10 @@ public class JpaRelationshipDao extends JpaDao<Relationship> implements Relation
     }
 
     @Override
-    public List<Relationship> findAllByModel(Model model) {
+    public List<Relationship> findAllByProject(Project project) {
         try (Session session = jpa.getEntityManagerFactory().unwrap(SessionFactory.class).openSession()) {
-            org.hibernate.query.Query<Relationship> query = session.createQuery("FROM org.omg.sysml.metamodel.Relationship WHERE containingModel = :model", Relationship.class);
-            query.setParameter("model", model);
+            org.hibernate.query.Query<Relationship> query = session.createQuery("FROM org.omg.sysml.metamodel.Relationship WHERE containingProject = :project", Relationship.class);
+            query.setParameter("project", project);
             return query.getResultList();
         }
     }

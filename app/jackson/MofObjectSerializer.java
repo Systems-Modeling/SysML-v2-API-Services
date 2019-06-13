@@ -8,8 +8,6 @@ import org.omg.sysml.metamodel.MofObject;
 import java.io.IOException;
 
 public class MofObjectSerializer extends StdSerializer<MofObject> {
-    private static final long serialVersionUID = 1L;
-
     public MofObjectSerializer() {
         this(null);
     }

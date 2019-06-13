@@ -2,7 +2,7 @@ package services;
 
 
 import dao.ElementDao;
-import dao.ModelDao;
+import dao.ProjectDao;
 import dao.RelationshipDao;
 import org.omg.sysml.metamodel.Relationship;
 
@@ -19,7 +19,7 @@ public class RelationshipService {
     private ElementDao elementDao;
 
     @Inject
-    private ModelDao modelDao;
+    private ProjectDao projectDao;
 
     public List<Relationship> getAll() {
         return relationshipDao.findAll();
@@ -45,7 +45,7 @@ public class RelationshipService {
         return elementDao.findById(elementId).map(e -> relationshipDao.findAllByTargetElement(e)).orElse(Collections.emptyList());
     }
 
-    public List<Relationship> getByModelId(UUID modelId) {
-        return modelDao.findById(modelId).map(m -> relationshipDao.findAllByModel(m)).orElse(Collections.emptyList());
+    public List<Relationship> getByProjectId(UUID projectId) {
+        return projectDao.findById(projectId).map(m -> relationshipDao.findAllByProject(m)).orElse(Collections.emptyList());
     }
 }

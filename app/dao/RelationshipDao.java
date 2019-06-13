@@ -1,7 +1,7 @@
 package dao;
 
 import org.omg.sysml.metamodel.Element;
-import org.omg.sysml.extension.Model;
+import org.omg.sysml.extension.Project;
 import org.omg.sysml.metamodel.Relationship;
 
 import java.util.List;
@@ -27,5 +27,5 @@ public interface RelationshipDao extends Dao<Relationship> {
 
     List<Relationship> findAllByTargetElement(Element element);
 
-    List<Relationship> findAllByModel(Model model);
+    List<Relationship> findAllByProject(Project project);
 }

@@ -3,7 +3,6 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import config.MetamodelProvider;
 import jackson.JacksonHelper;
-import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.MofObject;
 import org.omg.sysml.metamodel.Relationship;
 import play.libs.Json;
@@ -69,9 +68,9 @@ public class RelationshipController extends Controller {
         return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
     }
 
-    public Result byModel(String modelId) {
-        UUID modelUuid = UUID.fromString(modelId);
-        List<Relationship> relationships = relationshipService.getByModelId(modelUuid);
+    public Result byProject(String projectId) {
+        UUID projectUuid = UUID.fromString(projectId);
+        List<Relationship> relationships = relationshipService.getByProjectId(projectUuid);
         return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
     }
 }

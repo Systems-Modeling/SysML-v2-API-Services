@@ -1,7 +1,7 @@
 @AnyMetaDefs(value = {
-        @AnyMetaDef(name = "ModelMetaDef", metaType = "string", idType = "java.util.UUID",
+        @AnyMetaDef(name = "ProjectMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
-                        @MetaValue(value = "Model", targetEntity = ModelImpl.class),
+                        @MetaValue(value = "Project", targetEntity = ProjectImpl.class),
                 }),
 })
 

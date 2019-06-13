@@ -1,8 +1,6 @@
 package org.omg.sysml.extension.impl;
 
-import org.omg.sysml.extension.Model;
-import org.omg.sysml.metamodel.*;
-import org.omg.sysml.metamodel.impl.*;
+import org.omg.sysml.extension.Project;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
@@ -20,19 +18,19 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.SecondaryTable;
 
 @Entity
-@SecondaryTable(name = "Model")
-@org.hibernate.annotations.Table(appliesTo = "Model", fetch = FetchMode.SELECT, optional = false)
-// @info.archinnov.achilles.annotations.Table(table = "Model")
-@DiscriminatorValue(value = "Model")
-@JsonTypeName(value = "Model")
-public class ModelImpl extends MofObjectImpl implements Model {
+@SecondaryTable(name = "Project")
+@org.hibernate.annotations.Table(appliesTo = "Project", fetch = FetchMode.SELECT, optional = false)
+// @info.archinnov.achilles.annotations.Table(table = "Project")
+@DiscriminatorValue(value = "Project")
+@JsonTypeName(value = "Project")
+public class ProjectImpl extends MofObjectImpl implements Project {
     private String name;
 
     @JsonProperty(required = true)
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "name", table = "Model")
+    @javax.persistence.Column(name = "name", table = "Project")
     public String getName() {
         return name;
     }
