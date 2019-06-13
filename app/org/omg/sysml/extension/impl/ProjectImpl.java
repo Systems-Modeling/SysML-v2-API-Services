@@ -1,11 +1,7 @@
 package org.omg.sysml.extension.impl;
 
+import com.fasterxml.jackson.annotation.*;
 import org.omg.sysml.extension.Project;
-
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 
 import org.hibernate.annotations.FetchMode;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
@@ -40,6 +36,13 @@ public class ProjectImpl extends MofObjectImpl implements Project {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    @JsonIgnore
+    public Project getContainingProject() {
+        return null;
+    }
+
     /*
 
     // @info.archinnov.achilles.annotations.Column("ownedRelationship")
