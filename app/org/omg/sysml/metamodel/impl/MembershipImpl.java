@@ -72,7 +72,11 @@ public class MembershipImpl extends MofObjectImpl implements Membership {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "relatedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Membership_relatedElement",
+            joinColumns = @JoinColumn(name = "MembershipId"),
+            inverseJoinColumns = @JoinColumn(name = "relatedElementId"))
     public Collection<Element> getRelatedElement() {
         if (relatedElement == null) {
             relatedElement = new ArrayList<>();
@@ -109,7 +113,9 @@ public class MembershipImpl extends MofObjectImpl implements Membership {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "membershipOwningPackageType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "membershipOwningPackageId", table = "Membership")
     public Package getMembershipOwningPackage() {
         return membershipOwningPackage;
     }
@@ -147,7 +153,9 @@ public class MembershipImpl extends MofObjectImpl implements Membership {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningMembershipId", table = "Membership")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -166,7 +174,9 @@ public class MembershipImpl extends MofObjectImpl implements Membership {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningNamespaceId", table = "Membership")
     public Package getOwningNamespace() {
         return owningNamespace;
     }
@@ -300,7 +310,8 @@ public class MembershipImpl extends MofObjectImpl implements Membership {
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "name", table = "Membership")
     public String getName() {
         return name;
     }
@@ -359,7 +370,11 @@ public class MembershipImpl extends MofObjectImpl implements Membership {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Membership_ownedElement",
+            joinColumns = @JoinColumn(name = "MembershipId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedElementId"))
     public Collection<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
@@ -399,7 +414,9 @@ public class MembershipImpl extends MofObjectImpl implements Membership {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberElementType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedMemberElementId", table = "Membership")
     public Element getOwnedMemberElement() {
         return ownedMemberElement;
     }
@@ -418,7 +435,9 @@ public class MembershipImpl extends MofObjectImpl implements Membership {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownerId", table = "Membership")
     public Element getOwner() {
         return owner;
     }

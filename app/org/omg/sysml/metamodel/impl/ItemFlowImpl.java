@@ -53,7 +53,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedFeatureMembershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_ownedFeatureMembership",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedFeatureMembershipId"))
     public List<FeatureMembership> getOwnedFeatureMembership() {
         if (ownedFeatureMembership == null) {
             ownedFeatureMembership = new ArrayList<>();
@@ -99,7 +103,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "importedMembershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_importedMembership",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "importedMembershipId"))
     public List<Membership> getImportedMembership() {
         if (importedMembership == null) {
             importedMembership = new ArrayList<>();
@@ -121,7 +129,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "CategoryMetaDef", metaColumn = @javax.persistence.Column(name = "ownedTypeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_ownedType",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedTypeId"))
     public Collection<Category> getOwnedType() {
         if (ownedType == null) {
             ownedType = new ArrayList<>();
@@ -178,7 +190,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "relatedFeatureType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_relatedFeature",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "relatedFeatureId"))
     public Collection<Feature> getRelatedFeature() {
         if (relatedFeature == null) {
             relatedFeature = new ArrayList<>();
@@ -200,7 +216,9 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "FeatureValueMetaDef", metaColumn = @javax.persistence.Column(name = "valuationType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "valuationId", table = "ItemFlow")
     public FeatureValue getValuation() {
         return valuation;
     }
@@ -220,7 +238,8 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "name", table = "ItemFlow")
     public String getName() {
         return name;
     }
@@ -238,7 +257,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "outputType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_output",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "outputId"))
     public Collection<Feature> getOutput() {
         if (output == null) {
             output = new ArrayList<>();
@@ -260,7 +283,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_ownedElement",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedElementId"))
     public Collection<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
@@ -282,7 +309,9 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownerId", table = "ItemFlow")
     public Element getOwner() {
         return owner;
     }
@@ -301,7 +330,9 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "multiplicityId", table = "ItemFlow")
     public Multiplicity getMultiplicity() {
         return multiplicity;
     }
@@ -336,7 +367,9 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningNamespaceId", table = "ItemFlow")
     public Package getOwningNamespace() {
         return owningNamespace;
     }
@@ -355,7 +388,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "connectorEndType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_connectorEnd",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "connectorEndId"))
     public Collection<Feature> getConnectorEnd() {
         if (connectorEnd == null) {
             connectorEnd = new ArrayList<>();
@@ -377,7 +414,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "CategoryMetaDef", metaColumn = @javax.persistence.Column(name = "referencedTypeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_referencedType",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "referencedTypeId"))
     public Collection<Category> getReferencedType() {
         if (referencedType == null) {
             referencedType = new ArrayList<>();
@@ -399,7 +440,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "membershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_membership",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "membershipId"))
     public List<Membership> getMembership() {
         if (membership == null) {
             membership = new ArrayList<>();
@@ -421,7 +466,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "BehaviorMetaDef", metaColumn = @javax.persistence.Column(name = "typeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_type",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "typeId"))
     public Collection<Behavior> getType() {
         if (type == null) {
             type = new ArrayList<>();
@@ -443,7 +492,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMembershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_ownedMembership",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedMembershipId"))
     public List<Membership> getOwnedMembership() {
         if (ownedMembership == null) {
             ownedMembership = new ArrayList<>();
@@ -488,7 +541,8 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     private Boolean isComposite;
 
     @JsonGetter
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "isComposite", table = "ItemFlow")
     public Boolean getIsComposite() {
         return isComposite;
     }
@@ -506,7 +560,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "SubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "ownedSubsettingType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_ownedSubsetting",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedSubsettingId"))
     public Collection<Subsetting> getOwnedSubsetting() {
         if (ownedSubsetting == null) {
             ownedSubsetting = new ArrayList<>();
@@ -528,7 +586,9 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "CategoryMetaDef", metaColumn = @javax.persistence.Column(name = "owningCategoryType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningCategoryId", table = "ItemFlow")
     public Category getOwningCategory() {
         return owningCategory;
     }
@@ -547,7 +607,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "featureType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_feature",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "featureId"))
     public Collection<Feature> getFeature() {
         if (feature == null) {
             feature = new ArrayList<>();
@@ -569,7 +633,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "ownedImportType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_ownedImport",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedImportId"))
     public List<Import> getOwnedImport() {
         if (ownedImport == null) {
             ownedImport = new ArrayList<>();
@@ -591,7 +659,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "GeneralizationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedGeneralizationType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_ownedGeneralization",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedGeneralizationId"))
     public List<Generalization> getOwnedGeneralization() {
         if (ownedGeneralization == null) {
             ownedGeneralization = new ArrayList<>();
@@ -613,7 +685,9 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "AssociationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedAssociationTypeType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedAssociationTypeId", table = "ItemFlow")
     public Association getOwnedAssociationType() {
         return ownedAssociationType;
     }
@@ -632,7 +706,9 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureMembershipType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningFeatureMembershipId", table = "ItemFlow")
     public FeatureMembership getOwningFeatureMembership() {
         return owningFeatureMembership;
     }
@@ -651,7 +727,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedFeatureType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_ownedFeature",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedFeatureId"))
     public Collection<Feature> getOwnedFeature() {
         if (ownedFeature == null) {
             ownedFeature = new ArrayList<>();
@@ -697,7 +777,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_ownedMember",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedMemberId"))
     public List<Element> getOwnedMember() {
         if (ownedMember == null) {
             ownedMember = new ArrayList<>();
@@ -762,7 +846,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "inputType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_input",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "inputId"))
     public Collection<Feature> getInput() {
         if (input == null) {
             input = new ArrayList<>();
@@ -784,7 +872,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "relatedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_relatedElement",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "relatedElementId"))
     public Collection<Element> getRelatedElement() {
         if (relatedElement == null) {
             relatedElement = new ArrayList<>();
@@ -877,7 +969,9 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningMembershipId", table = "ItemFlow")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -919,7 +1013,8 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     private Boolean isNonunique;
 
     @JsonGetter
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "isNonunique", table = "ItemFlow")
     public Boolean getIsNonunique() {
         return isNonunique;
     }
@@ -937,7 +1032,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "inheritedMembershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_inheritedMembership",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "inheritedMembershipId"))
     public List<Membership> getInheritedMembership() {
         if (inheritedMembership == null) {
             inheritedMembership = new ArrayList<>();
@@ -983,7 +1082,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "memberType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_member",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "memberId"))
     public List<Element> getMember() {
         if (member == null) {
             member = new ArrayList<>();
@@ -1029,7 +1132,11 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "RedefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRedefinitionType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ItemFlow_ownedRedefinition",
+            joinColumns = @JoinColumn(name = "ItemFlowId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedRedefinitionId"))
     public Collection<Redefinition> getOwnedRedefinition() {
         if (ownedRedefinition == null) {
             ownedRedefinition = new ArrayList<>();
@@ -1051,7 +1158,9 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "AssociationMetaDef", metaColumn = @javax.persistence.Column(name = "associationType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "associationId", table = "ItemFlow")
     public Association getAssociation() {
         return association;
     }

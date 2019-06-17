@@ -53,7 +53,9 @@ public class MultiplicityImpl extends MofObjectImpl implements Multiplicity {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "upperType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "upperId", table = "Multiplicity")
     public Expression getUpper() {
         return upper;
     }
@@ -91,7 +93,11 @@ public class MultiplicityImpl extends MofObjectImpl implements Multiplicity {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "relatedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Multiplicity_relatedElement",
+            joinColumns = @JoinColumn(name = "MultiplicityId"),
+            inverseJoinColumns = @JoinColumn(name = "relatedElementId"))
     public Collection<Element> getRelatedElement() {
         if (relatedElement == null) {
             relatedElement = new ArrayList<>();
@@ -113,7 +119,9 @@ public class MultiplicityImpl extends MofObjectImpl implements Multiplicity {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "featureWithMultiplicityType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "featureWithMultiplicityId", table = "Multiplicity")
     public Feature getFeatureWithMultiplicity() {
         return featureWithMultiplicity;
     }
@@ -147,7 +155,9 @@ public class MultiplicityImpl extends MofObjectImpl implements Multiplicity {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningMembershipId", table = "Multiplicity")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -166,7 +176,9 @@ public class MultiplicityImpl extends MofObjectImpl implements Multiplicity {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningNamespaceId", table = "Multiplicity")
     public Package getOwningNamespace() {
         return owningNamespace;
     }
@@ -252,7 +264,9 @@ public class MultiplicityImpl extends MofObjectImpl implements Multiplicity {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "lowerType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "lowerId", table = "Multiplicity")
     public Expression getLower() {
         return lower;
     }
@@ -296,7 +310,8 @@ public class MultiplicityImpl extends MofObjectImpl implements Multiplicity {
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "name", table = "Multiplicity")
     public String getName() {
         return name;
     }
@@ -338,7 +353,11 @@ public class MultiplicityImpl extends MofObjectImpl implements Multiplicity {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Multiplicity_ownedElement",
+            joinColumns = @JoinColumn(name = "MultiplicityId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedElementId"))
     public Collection<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
@@ -360,7 +379,9 @@ public class MultiplicityImpl extends MofObjectImpl implements Multiplicity {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownerId", table = "Multiplicity")
     public Element getOwner() {
         return owner;
     }

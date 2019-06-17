@@ -72,7 +72,11 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "relatedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "FeatureValue_relatedElement",
+            joinColumns = @JoinColumn(name = "FeatureValueId"),
+            inverseJoinColumns = @JoinColumn(name = "relatedElementId"))
     public Collection<Element> getRelatedElement() {
         if (relatedElement == null) {
             relatedElement = new ArrayList<>();
@@ -109,7 +113,9 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningMembershipId", table = "FeatureValue")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -128,7 +134,9 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningNamespaceId", table = "FeatureValue")
     public Package getOwningNamespace() {
         return owningNamespace;
     }
@@ -238,7 +246,9 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "valueType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "valueId", table = "FeatureValue")
     public Expression getValue() {
         return value;
     }
@@ -258,7 +268,8 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "name", table = "FeatureValue")
     public String getName() {
         return name;
     }
@@ -300,7 +311,11 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "FeatureValue_ownedElement",
+            joinColumns = @JoinColumn(name = "FeatureValueId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedElementId"))
     public Collection<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
@@ -322,7 +337,9 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownerId", table = "FeatureValue")
     public Element getOwner() {
         return owner;
     }
@@ -341,7 +358,9 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "featureWithValueType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "featureWithValueId", table = "FeatureValue")
     public Feature getFeatureWithValue() {
         return featureWithValue;
     }

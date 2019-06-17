@@ -53,7 +53,9 @@ public class FeatureMembershipImpl extends MofObjectImpl implements FeatureMembe
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "CategoryMetaDef", metaColumn = @javax.persistence.Column(name = "owningCategoryType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningCategoryId", table = "FeatureMembership")
     public Category getOwningCategory() {
         return owningCategory;
     }
@@ -191,7 +193,8 @@ public class FeatureMembershipImpl extends MofObjectImpl implements FeatureMembe
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "name", table = "FeatureMembership")
     public String getName() {
         return name;
     }
@@ -209,7 +212,11 @@ public class FeatureMembershipImpl extends MofObjectImpl implements FeatureMembe
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "FeatureMembership_ownedElement",
+            joinColumns = @JoinColumn(name = "FeatureMembershipId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedElementId"))
     public Collection<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
@@ -249,7 +256,9 @@ public class FeatureMembershipImpl extends MofObjectImpl implements FeatureMembe
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownerId", table = "FeatureMembership")
     public Element getOwner() {
         return owner;
     }
@@ -304,7 +313,11 @@ public class FeatureMembershipImpl extends MofObjectImpl implements FeatureMembe
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "relatedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "FeatureMembership_relatedElement",
+            joinColumns = @JoinColumn(name = "FeatureMembershipId"),
+            inverseJoinColumns = @JoinColumn(name = "relatedElementId"))
     public Collection<Element> getRelatedElement() {
         if (relatedElement == null) {
             relatedElement = new ArrayList<>();
@@ -357,7 +370,9 @@ public class FeatureMembershipImpl extends MofObjectImpl implements FeatureMembe
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "membershipOwningPackageType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "membershipOwningPackageId", table = "FeatureMembership")
     public Package getMembershipOwningPackage() {
         return membershipOwningPackage;
     }
@@ -395,7 +410,9 @@ public class FeatureMembershipImpl extends MofObjectImpl implements FeatureMembe
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningMembershipId", table = "FeatureMembership")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -414,7 +431,9 @@ public class FeatureMembershipImpl extends MofObjectImpl implements FeatureMembe
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningNamespaceId", table = "FeatureMembership")
     public Package getOwningNamespace() {
         return owningNamespace;
     }
@@ -537,7 +556,9 @@ public class FeatureMembershipImpl extends MofObjectImpl implements FeatureMembe
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberElementType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedMemberElementId", table = "FeatureMembership")
     public Element getOwnedMemberElement() {
         return ownedMemberElement;
     }
@@ -556,7 +577,9 @@ public class FeatureMembershipImpl extends MofObjectImpl implements FeatureMembe
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberFeatureType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedMemberFeatureId", table = "FeatureMembership")
     public Feature getOwnedMemberFeature() {
         return ownedMemberFeature;
     }

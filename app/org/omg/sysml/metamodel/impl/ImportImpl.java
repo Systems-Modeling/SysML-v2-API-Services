@@ -72,7 +72,11 @@ public class ImportImpl extends MofObjectImpl implements Import {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "relatedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Import_relatedElement",
+            joinColumns = @JoinColumn(name = "ImportId"),
+            inverseJoinColumns = @JoinColumn(name = "relatedElementId"))
     public Collection<Element> getRelatedElement() {
         if (relatedElement == null) {
             relatedElement = new ArrayList<>();
@@ -94,7 +98,9 @@ public class ImportImpl extends MofObjectImpl implements Import {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "importOwningPackageType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "importOwningPackageId", table = "Import")
     public Package getImportOwningPackage() {
         return importOwningPackage;
     }
@@ -128,7 +134,9 @@ public class ImportImpl extends MofObjectImpl implements Import {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningMembershipId", table = "Import")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -147,7 +155,9 @@ public class ImportImpl extends MofObjectImpl implements Import {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "PredicateMetaDef", metaColumn = @javax.persistence.Column(name = "selecterType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "selecterId", table = "Import")
     public Predicate getSelecter() {
         return selecter;
     }
@@ -166,7 +176,9 @@ public class ImportImpl extends MofObjectImpl implements Import {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningNamespaceId", table = "Import")
     public Package getOwningNamespace() {
         return owningNamespace;
     }
@@ -313,7 +325,8 @@ public class ImportImpl extends MofObjectImpl implements Import {
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "name", table = "Import")
     public String getName() {
         return name;
     }
@@ -355,7 +368,11 @@ public class ImportImpl extends MofObjectImpl implements Import {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Import_ownedElement",
+            joinColumns = @JoinColumn(name = "ImportId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedElementId"))
     public Collection<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
@@ -377,7 +394,9 @@ public class ImportImpl extends MofObjectImpl implements Import {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownerId", table = "Import")
     public Element getOwner() {
         return owner;
     }

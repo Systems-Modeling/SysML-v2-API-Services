@@ -72,7 +72,11 @@ public class OwnershipImpl extends MofObjectImpl implements Ownership {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "relatedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Ownership_relatedElement",
+            joinColumns = @JoinColumn(name = "OwnershipId"),
+            inverseJoinColumns = @JoinColumn(name = "relatedElementId"))
     public Collection<Element> getRelatedElement() {
         if (relatedElement == null) {
             relatedElement = new ArrayList<>();
@@ -109,7 +113,9 @@ public class OwnershipImpl extends MofObjectImpl implements Ownership {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningMembershipId", table = "Ownership")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -128,7 +134,9 @@ public class OwnershipImpl extends MofObjectImpl implements Ownership {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningNamespaceId", table = "Ownership")
     public Package getOwningNamespace() {
         return owningNamespace;
     }
@@ -214,7 +222,11 @@ public class OwnershipImpl extends MofObjectImpl implements Ownership {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "targetType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Ownership_target",
+            joinColumns = @JoinColumn(name = "OwnershipId"),
+            inverseJoinColumns = @JoinColumn(name = "targetId"))
     public Collection<Element> getTarget() {
         if (target == null) {
             target = new ArrayList<>();
@@ -261,7 +273,8 @@ public class OwnershipImpl extends MofObjectImpl implements Ownership {
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "name", table = "Ownership")
     public String getName() {
         return name;
     }
@@ -279,7 +292,11 @@ public class OwnershipImpl extends MofObjectImpl implements Ownership {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Ownership_ownedElement",
+            joinColumns = @JoinColumn(name = "OwnershipId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedElementId"))
     public Collection<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
@@ -301,7 +318,9 @@ public class OwnershipImpl extends MofObjectImpl implements Ownership {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownerId", table = "Ownership")
     public Element getOwner() {
         return owner;
     }

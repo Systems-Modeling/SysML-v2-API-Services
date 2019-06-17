@@ -53,7 +53,11 @@ public class PackageImpl extends MofObjectImpl implements Package {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "ownedImportType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Package_ownedImport",
+            joinColumns = @JoinColumn(name = "PackageId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedImportId"))
     public List<Import> getOwnedImport() {
         if (ownedImport == null) {
             ownedImport = new ArrayList<>();
@@ -90,7 +94,11 @@ public class PackageImpl extends MofObjectImpl implements Package {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "importedMembershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Package_importedMembership",
+            joinColumns = @JoinColumn(name = "PackageId"),
+            inverseJoinColumns = @JoinColumn(name = "importedMembershipId"))
     public List<Membership> getImportedMembership() {
         if (importedMembership == null) {
             importedMembership = new ArrayList<>();
@@ -112,7 +120,9 @@ public class PackageImpl extends MofObjectImpl implements Package {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningMembershipId", table = "Package")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -131,7 +141,9 @@ public class PackageImpl extends MofObjectImpl implements Package {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningNamespaceId", table = "Package")
     public Package getOwningNamespace() {
         return owningNamespace;
     }
@@ -150,7 +162,11 @@ public class PackageImpl extends MofObjectImpl implements Package {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Package_ownedMember",
+            joinColumns = @JoinColumn(name = "PackageId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedMemberId"))
     public List<Element> getOwnedMember() {
         if (ownedMember == null) {
             ownedMember = new ArrayList<>();
@@ -216,7 +232,8 @@ public class PackageImpl extends MofObjectImpl implements Package {
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "name", table = "Package")
     public String getName() {
         return name;
     }
@@ -234,7 +251,11 @@ public class PackageImpl extends MofObjectImpl implements Package {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "memberType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Package_member",
+            joinColumns = @JoinColumn(name = "PackageId"),
+            inverseJoinColumns = @JoinColumn(name = "memberId"))
     public List<Element> getMember() {
         if (member == null) {
             member = new ArrayList<>();
@@ -256,7 +277,11 @@ public class PackageImpl extends MofObjectImpl implements Package {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "membershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Package_membership",
+            joinColumns = @JoinColumn(name = "PackageId"),
+            inverseJoinColumns = @JoinColumn(name = "membershipId"))
     public List<Membership> getMembership() {
         if (membership == null) {
             membership = new ArrayList<>();
@@ -278,7 +303,11 @@ public class PackageImpl extends MofObjectImpl implements Package {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Package_ownedElement",
+            joinColumns = @JoinColumn(name = "PackageId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedElementId"))
     public Collection<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
@@ -300,7 +329,11 @@ public class PackageImpl extends MofObjectImpl implements Package {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMembershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Package_ownedMembership",
+            joinColumns = @JoinColumn(name = "PackageId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedMembershipId"))
     public List<Membership> getOwnedMembership() {
         if (ownedMembership == null) {
             ownedMembership = new ArrayList<>();
@@ -322,7 +355,9 @@ public class PackageImpl extends MofObjectImpl implements Package {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownerId", table = "Package")
     public Element getOwner() {
         return owner;
     }

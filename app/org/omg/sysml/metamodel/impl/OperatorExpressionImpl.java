@@ -52,7 +52,8 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     private Boolean isComposite;
 
     @JsonGetter
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "isComposite", table = "OperatorExpression")
     public Boolean getIsComposite() {
         return isComposite;
     }
@@ -70,7 +71,11 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedFeatureMembershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "OperatorExpression_ownedFeatureMembership",
+            joinColumns = @JoinColumn(name = "OperatorExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedFeatureMembershipId"))
     public List<FeatureMembership> getOwnedFeatureMembership() {
         if (ownedFeatureMembership == null) {
             ownedFeatureMembership = new ArrayList<>();
@@ -92,7 +97,11 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "SubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "ownedSubsettingType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "OperatorExpression_ownedSubsetting",
+            joinColumns = @JoinColumn(name = "OperatorExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedSubsettingId"))
     public Collection<Subsetting> getOwnedSubsetting() {
         if (ownedSubsetting == null) {
             ownedSubsetting = new ArrayList<>();
@@ -114,7 +123,9 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "CategoryMetaDef", metaColumn = @javax.persistence.Column(name = "owningCategoryType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningCategoryId", table = "OperatorExpression")
     public Category getOwningCategory() {
         return owningCategory;
     }
@@ -133,7 +144,11 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "featureType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "OperatorExpression_feature",
+            joinColumns = @JoinColumn(name = "OperatorExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "featureId"))
     public Collection<Feature> getFeature() {
         if (feature == null) {
             feature = new ArrayList<>();
@@ -155,7 +170,11 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "ownedImportType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "OperatorExpression_ownedImport",
+            joinColumns = @JoinColumn(name = "OperatorExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedImportId"))
     public List<Import> getOwnedImport() {
         if (ownedImport == null) {
             ownedImport = new ArrayList<>();
@@ -177,7 +196,11 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "GeneralizationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedGeneralizationType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "OperatorExpression_ownedGeneralization",
+            joinColumns = @JoinColumn(name = "OperatorExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedGeneralizationId"))
     public List<Generalization> getOwnedGeneralization() {
         if (ownedGeneralization == null) {
             ownedGeneralization = new ArrayList<>();
@@ -199,7 +222,11 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "importedMembershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "OperatorExpression_importedMembership",
+            joinColumns = @JoinColumn(name = "OperatorExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "importedMembershipId"))
     public List<Membership> getImportedMembership() {
         if (importedMembership == null) {
             importedMembership = new ArrayList<>();
@@ -221,7 +248,9 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureMembershipType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningFeatureMembershipId", table = "OperatorExpression")
     public FeatureMembership getOwningFeatureMembership() {
         return owningFeatureMembership;
     }
@@ -240,7 +269,11 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "CategoryMetaDef", metaColumn = @javax.persistence.Column(name = "ownedTypeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "OperatorExpression_ownedType",
+            joinColumns = @JoinColumn(name = "OperatorExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedTypeId"))
     public Collection<Category> getOwnedType() {
         if (ownedType == null) {
             ownedType = new ArrayList<>();
@@ -262,7 +295,11 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedFeatureType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "OperatorExpression_ownedFeature",
+            joinColumns = @JoinColumn(name = "OperatorExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedFeatureId"))
     public Collection<Feature> getOwnedFeature() {
         if (ownedFeature == null) {
             ownedFeature = new ArrayList<>();
@@ -318,7 +355,11 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "OperatorExpression_ownedMember",
+            joinColumns = @JoinColumn(name = "OperatorExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedMemberId"))
     public List<Element> getOwnedMember() {
         if (ownedMember == null) {
             ownedMember = new ArrayList<>();
@@ -359,7 +400,9 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "FeatureValueMetaDef", metaColumn = @javax.persistence.Column(name = "valuationType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "valuationId", table = "OperatorExpression")
     public FeatureValue getValuation() {
         return valuation;
     }
@@ -403,7 +446,8 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "name", table = "OperatorExpression")
     public String getName() {
         return name;
     }
@@ -421,7 +465,11 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "outputType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "OperatorExpression_output",
+            joinColumns = @JoinColumn(name = "OperatorExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "outputId"))
     public Collection<Feature> getOutput() {
         if (output == null) {
             output = new ArrayList<>();
@@ -443,7 +491,11 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "OperatorExpression_ownedElement",
+            joinColumns = @JoinColumn(name = "OperatorExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedElementId"))
     public Collection<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
@@ -465,7 +517,9 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownerId", table = "OperatorExpression")
     public Element getOwner() {
         return owner;
     }
@@ -484,7 +538,11 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "inputType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "OperatorExpression_input",
+            joinColumns = @JoinColumn(name = "OperatorExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "inputId"))
     public Collection<Feature> getInput() {
         if (input == null) {
             input = new ArrayList<>();
@@ -521,7 +579,9 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "multiplicityId", table = "OperatorExpression")
     public Multiplicity getMultiplicity() {
         return multiplicity;
     }
@@ -596,7 +656,9 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningMembershipId", table = "OperatorExpression")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -615,7 +677,9 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningNamespaceId", table = "OperatorExpression")
     public Package getOwningNamespace() {
         return owningNamespace;
     }
@@ -633,7 +697,8 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     private Boolean isNonunique;
 
     @JsonGetter
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "isNonunique", table = "OperatorExpression")
     public Boolean getIsNonunique() {
         return isNonunique;
     }
@@ -651,7 +716,11 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "CategoryMetaDef", metaColumn = @javax.persistence.Column(name = "referencedTypeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "OperatorExpression_referencedType",
+            joinColumns = @JoinColumn(name = "OperatorExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "referencedTypeId"))
     public Collection<Category> getReferencedType() {
         if (referencedType == null) {
             referencedType = new ArrayList<>();
@@ -673,7 +742,11 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "inheritedMembershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "OperatorExpression_inheritedMembership",
+            joinColumns = @JoinColumn(name = "OperatorExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "inheritedMembershipId"))
     public List<Membership> getInheritedMembership() {
         if (inheritedMembership == null) {
             inheritedMembership = new ArrayList<>();
@@ -719,7 +792,11 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "memberType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "OperatorExpression_member",
+            joinColumns = @JoinColumn(name = "OperatorExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "memberId"))
     public List<Element> getMember() {
         if (member == null) {
             member = new ArrayList<>();
@@ -741,7 +818,11 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FunctionMetaDef", metaColumn = @javax.persistence.Column(name = "typeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "OperatorExpression_type",
+            joinColumns = @JoinColumn(name = "OperatorExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "typeId"))
     public Collection<Function> getType() {
         if (type == null) {
             type = new ArrayList<>();
@@ -763,7 +844,11 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "RedefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRedefinitionType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "OperatorExpression_ownedRedefinition",
+            joinColumns = @JoinColumn(name = "OperatorExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedRedefinitionId"))
     public Collection<Redefinition> getOwnedRedefinition() {
         if (ownedRedefinition == null) {
             ownedRedefinition = new ArrayList<>();
@@ -785,7 +870,11 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "membershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "OperatorExpression_membership",
+            joinColumns = @JoinColumn(name = "OperatorExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "membershipId"))
     public List<Membership> getMembership() {
         if (membership == null) {
             membership = new ArrayList<>();
@@ -807,7 +896,11 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMembershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "OperatorExpression_ownedMembership",
+            joinColumns = @JoinColumn(name = "OperatorExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedMembershipId"))
     public List<Membership> getOwnedMembership() {
         if (ownedMembership == null) {
             ownedMembership = new ArrayList<>();

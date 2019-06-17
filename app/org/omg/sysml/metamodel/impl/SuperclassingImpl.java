@@ -72,7 +72,9 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "ClassMetaDef", metaColumn = @javax.persistence.Column(name = "owningClassType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningClassId", table = "Superclassing")
     public Class getOwningClass() {
         return owningClass;
     }
@@ -91,7 +93,11 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "relatedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Superclassing_relatedElement",
+            joinColumns = @JoinColumn(name = "SuperclassingId"),
+            inverseJoinColumns = @JoinColumn(name = "relatedElementId"))
     public Collection<Element> getRelatedElement() {
         if (relatedElement == null) {
             relatedElement = new ArrayList<>();
@@ -147,7 +153,9 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "CategoryMetaDef", metaColumn = @javax.persistence.Column(name = "owningCategoryType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningCategoryId", table = "Superclassing")
     public Category getOwningCategory() {
         return owningCategory;
     }
@@ -185,7 +193,9 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningMembershipId", table = "Superclassing")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -223,7 +233,9 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningNamespaceId", table = "Superclassing")
     public Package getOwningNamespace() {
         return owningNamespace;
     }
@@ -353,7 +365,8 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "name", table = "Superclassing")
     public String getName() {
         return name;
     }
@@ -395,7 +408,11 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Superclassing_ownedElement",
+            joinColumns = @JoinColumn(name = "SuperclassingId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedElementId"))
     public Collection<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
@@ -417,7 +434,9 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownerId", table = "Superclassing")
     public Element getOwner() {
         return owner;
     }

@@ -53,7 +53,9 @@ public class CommentImpl extends MofObjectImpl implements Comment {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningMembershipId", table = "Comment")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -72,7 +74,9 @@ public class CommentImpl extends MofObjectImpl implements Comment {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "commentedElementType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "commentedElementId", table = "Comment")
     public Element getCommentedElement() {
         return commentedElement;
     }
@@ -91,7 +95,9 @@ public class CommentImpl extends MofObjectImpl implements Comment {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningNamespaceId", table = "Comment")
     public Package getOwningNamespace() {
         return owningNamespace;
     }
@@ -206,7 +212,8 @@ public class CommentImpl extends MofObjectImpl implements Comment {
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "name", table = "Comment")
     public String getName() {
         return name;
     }
@@ -224,7 +231,11 @@ public class CommentImpl extends MofObjectImpl implements Comment {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Comment_ownedElement",
+            joinColumns = @JoinColumn(name = "CommentId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedElementId"))
     public Collection<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
@@ -246,7 +257,9 @@ public class CommentImpl extends MofObjectImpl implements Comment {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownerId", table = "Comment")
     public Element getOwner() {
         return owner;
     }

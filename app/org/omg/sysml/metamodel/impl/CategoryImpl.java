@@ -53,7 +53,11 @@ public class CategoryImpl extends MofObjectImpl implements Category {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedFeatureMembershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Category_ownedFeatureMembership",
+            joinColumns = @JoinColumn(name = "CategoryId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedFeatureMembershipId"))
     public List<FeatureMembership> getOwnedFeatureMembership() {
         if (ownedFeatureMembership == null) {
             ownedFeatureMembership = new ArrayList<>();
@@ -75,7 +79,11 @@ public class CategoryImpl extends MofObjectImpl implements Category {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "inputType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Category_input",
+            joinColumns = @JoinColumn(name = "CategoryId"),
+            inverseJoinColumns = @JoinColumn(name = "inputId"))
     public Collection<Feature> getInput() {
         if (input == null) {
             input = new ArrayList<>();
@@ -97,7 +105,11 @@ public class CategoryImpl extends MofObjectImpl implements Category {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "featureType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Category_feature",
+            joinColumns = @JoinColumn(name = "CategoryId"),
+            inverseJoinColumns = @JoinColumn(name = "featureId"))
     public Collection<Feature> getFeature() {
         if (feature == null) {
             feature = new ArrayList<>();
@@ -119,7 +131,11 @@ public class CategoryImpl extends MofObjectImpl implements Category {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "ownedImportType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Category_ownedImport",
+            joinColumns = @JoinColumn(name = "CategoryId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedImportId"))
     public List<Import> getOwnedImport() {
         if (ownedImport == null) {
             ownedImport = new ArrayList<>();
@@ -156,7 +172,11 @@ public class CategoryImpl extends MofObjectImpl implements Category {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "GeneralizationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedGeneralizationType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Category_ownedGeneralization",
+            joinColumns = @JoinColumn(name = "CategoryId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedGeneralizationId"))
     public List<Generalization> getOwnedGeneralization() {
         if (ownedGeneralization == null) {
             ownedGeneralization = new ArrayList<>();
@@ -178,7 +198,11 @@ public class CategoryImpl extends MofObjectImpl implements Category {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "importedMembershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Category_importedMembership",
+            joinColumns = @JoinColumn(name = "CategoryId"),
+            inverseJoinColumns = @JoinColumn(name = "importedMembershipId"))
     public List<Membership> getImportedMembership() {
         if (importedMembership == null) {
             importedMembership = new ArrayList<>();
@@ -216,7 +240,9 @@ public class CategoryImpl extends MofObjectImpl implements Category {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningMembershipId", table = "Category")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -235,7 +261,9 @@ public class CategoryImpl extends MofObjectImpl implements Category {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningNamespaceId", table = "Category")
     public Package getOwningNamespace() {
         return owningNamespace;
     }
@@ -254,7 +282,11 @@ public class CategoryImpl extends MofObjectImpl implements Category {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedFeatureType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Category_ownedFeature",
+            joinColumns = @JoinColumn(name = "CategoryId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedFeatureId"))
     public Collection<Feature> getOwnedFeature() {
         if (ownedFeature == null) {
             ownedFeature = new ArrayList<>();
@@ -276,7 +308,11 @@ public class CategoryImpl extends MofObjectImpl implements Category {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Category_ownedMember",
+            joinColumns = @JoinColumn(name = "CategoryId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedMemberId"))
     public List<Element> getOwnedMember() {
         if (ownedMember == null) {
             ownedMember = new ArrayList<>();
@@ -317,7 +353,11 @@ public class CategoryImpl extends MofObjectImpl implements Category {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "inheritedMembershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Category_inheritedMembership",
+            joinColumns = @JoinColumn(name = "CategoryId"),
+            inverseJoinColumns = @JoinColumn(name = "inheritedMembershipId"))
     public List<Membership> getInheritedMembership() {
         if (inheritedMembership == null) {
             inheritedMembership = new ArrayList<>();
@@ -364,7 +404,8 @@ public class CategoryImpl extends MofObjectImpl implements Category {
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "name", table = "Category")
     public String getName() {
         return name;
     }
@@ -382,7 +423,11 @@ public class CategoryImpl extends MofObjectImpl implements Category {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "memberType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Category_member",
+            joinColumns = @JoinColumn(name = "CategoryId"),
+            inverseJoinColumns = @JoinColumn(name = "memberId"))
     public List<Element> getMember() {
         if (member == null) {
             member = new ArrayList<>();
@@ -404,7 +449,11 @@ public class CategoryImpl extends MofObjectImpl implements Category {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "outputType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Category_output",
+            joinColumns = @JoinColumn(name = "CategoryId"),
+            inverseJoinColumns = @JoinColumn(name = "outputId"))
     public Collection<Feature> getOutput() {
         if (output == null) {
             output = new ArrayList<>();
@@ -426,7 +475,11 @@ public class CategoryImpl extends MofObjectImpl implements Category {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "membershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Category_membership",
+            joinColumns = @JoinColumn(name = "CategoryId"),
+            inverseJoinColumns = @JoinColumn(name = "membershipId"))
     public List<Membership> getMembership() {
         if (membership == null) {
             membership = new ArrayList<>();
@@ -448,7 +501,11 @@ public class CategoryImpl extends MofObjectImpl implements Category {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Category_ownedElement",
+            joinColumns = @JoinColumn(name = "CategoryId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedElementId"))
     public Collection<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
@@ -470,7 +527,11 @@ public class CategoryImpl extends MofObjectImpl implements Category {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMembershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Category_ownedMembership",
+            joinColumns = @JoinColumn(name = "CategoryId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedMembershipId"))
     public List<Membership> getOwnedMembership() {
         if (ownedMembership == null) {
             ownedMembership = new ArrayList<>();
@@ -492,7 +553,9 @@ public class CategoryImpl extends MofObjectImpl implements Category {
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownerId", table = "Category")
     public Element getOwner() {
         return owner;
     }

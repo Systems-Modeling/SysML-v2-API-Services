@@ -52,7 +52,8 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
     private Boolean isComposite;
 
     @JsonGetter
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "isComposite", table = "InstanceCreationExpression")
     public Boolean getIsComposite() {
         return isComposite;
     }
@@ -70,7 +71,11 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedFeatureMembershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InstanceCreationExpression_ownedFeatureMembership",
+            joinColumns = @JoinColumn(name = "InstanceCreationExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedFeatureMembershipId"))
     public List<FeatureMembership> getOwnedFeatureMembership() {
         if (ownedFeatureMembership == null) {
             ownedFeatureMembership = new ArrayList<>();
@@ -92,7 +97,11 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "SubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "ownedSubsettingType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InstanceCreationExpression_ownedSubsetting",
+            joinColumns = @JoinColumn(name = "InstanceCreationExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedSubsettingId"))
     public Collection<Subsetting> getOwnedSubsetting() {
         if (ownedSubsetting == null) {
             ownedSubsetting = new ArrayList<>();
@@ -114,7 +123,9 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "CategoryMetaDef", metaColumn = @javax.persistence.Column(name = "owningCategoryType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningCategoryId", table = "InstanceCreationExpression")
     public Category getOwningCategory() {
         return owningCategory;
     }
@@ -133,7 +144,11 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "featureType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InstanceCreationExpression_feature",
+            joinColumns = @JoinColumn(name = "InstanceCreationExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "featureId"))
     public Collection<Feature> getFeature() {
         if (feature == null) {
             feature = new ArrayList<>();
@@ -155,7 +170,11 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "ownedImportType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InstanceCreationExpression_ownedImport",
+            joinColumns = @JoinColumn(name = "InstanceCreationExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedImportId"))
     public List<Import> getOwnedImport() {
         if (ownedImport == null) {
             ownedImport = new ArrayList<>();
@@ -177,7 +196,11 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "GeneralizationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedGeneralizationType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InstanceCreationExpression_ownedGeneralization",
+            joinColumns = @JoinColumn(name = "InstanceCreationExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedGeneralizationId"))
     public List<Generalization> getOwnedGeneralization() {
         if (ownedGeneralization == null) {
             ownedGeneralization = new ArrayList<>();
@@ -199,7 +222,11 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "importedMembershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InstanceCreationExpression_importedMembership",
+            joinColumns = @JoinColumn(name = "InstanceCreationExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "importedMembershipId"))
     public List<Membership> getImportedMembership() {
         if (importedMembership == null) {
             importedMembership = new ArrayList<>();
@@ -240,7 +267,9 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureMembershipType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningFeatureMembershipId", table = "InstanceCreationExpression")
     public FeatureMembership getOwningFeatureMembership() {
         return owningFeatureMembership;
     }
@@ -259,7 +288,11 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "CategoryMetaDef", metaColumn = @javax.persistence.Column(name = "ownedTypeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InstanceCreationExpression_ownedType",
+            joinColumns = @JoinColumn(name = "InstanceCreationExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedTypeId"))
     public Collection<Category> getOwnedType() {
         if (ownedType == null) {
             ownedType = new ArrayList<>();
@@ -281,7 +314,11 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedFeatureType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InstanceCreationExpression_ownedFeature",
+            joinColumns = @JoinColumn(name = "InstanceCreationExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedFeatureId"))
     public Collection<Feature> getOwnedFeature() {
         if (ownedFeature == null) {
             ownedFeature = new ArrayList<>();
@@ -319,7 +356,11 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InstanceCreationExpression_ownedMember",
+            joinColumns = @JoinColumn(name = "InstanceCreationExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedMemberId"))
     public List<Element> getOwnedMember() {
         if (ownedMember == null) {
             ownedMember = new ArrayList<>();
@@ -360,7 +401,9 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "FeatureValueMetaDef", metaColumn = @javax.persistence.Column(name = "valuationType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "valuationId", table = "InstanceCreationExpression")
     public FeatureValue getValuation() {
         return valuation;
     }
@@ -404,7 +447,8 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "name", table = "InstanceCreationExpression")
     public String getName() {
         return name;
     }
@@ -422,7 +466,11 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "outputType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InstanceCreationExpression_output",
+            joinColumns = @JoinColumn(name = "InstanceCreationExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "outputId"))
     public Collection<Feature> getOutput() {
         if (output == null) {
             output = new ArrayList<>();
@@ -444,7 +492,11 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InstanceCreationExpression_ownedElement",
+            joinColumns = @JoinColumn(name = "InstanceCreationExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedElementId"))
     public Collection<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
@@ -466,7 +518,9 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownerId", table = "InstanceCreationExpression")
     public Element getOwner() {
         return owner;
     }
@@ -485,7 +539,11 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "inputType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InstanceCreationExpression_input",
+            joinColumns = @JoinColumn(name = "InstanceCreationExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "inputId"))
     public Collection<Feature> getInput() {
         if (input == null) {
             input = new ArrayList<>();
@@ -522,7 +580,9 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "multiplicityId", table = "InstanceCreationExpression")
     public Multiplicity getMultiplicity() {
         return multiplicity;
     }
@@ -573,7 +633,9 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningMembershipId", table = "InstanceCreationExpression")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -592,7 +654,9 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningNamespaceId", table = "InstanceCreationExpression")
     public Package getOwningNamespace() {
         return owningNamespace;
     }
@@ -610,7 +674,8 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
     private Boolean isNonunique;
 
     @JsonGetter
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "isNonunique", table = "InstanceCreationExpression")
     public Boolean getIsNonunique() {
         return isNonunique;
     }
@@ -628,7 +693,11 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "CategoryMetaDef", metaColumn = @javax.persistence.Column(name = "referencedTypeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InstanceCreationExpression_referencedType",
+            joinColumns = @JoinColumn(name = "InstanceCreationExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "referencedTypeId"))
     public Collection<Category> getReferencedType() {
         if (referencedType == null) {
             referencedType = new ArrayList<>();
@@ -650,7 +719,11 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "inheritedMembershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InstanceCreationExpression_inheritedMembership",
+            joinColumns = @JoinColumn(name = "InstanceCreationExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "inheritedMembershipId"))
     public List<Membership> getInheritedMembership() {
         if (inheritedMembership == null) {
             inheritedMembership = new ArrayList<>();
@@ -696,7 +769,11 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "memberType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InstanceCreationExpression_member",
+            joinColumns = @JoinColumn(name = "InstanceCreationExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "memberId"))
     public List<Element> getMember() {
         if (member == null) {
             member = new ArrayList<>();
@@ -718,7 +795,11 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FunctionMetaDef", metaColumn = @javax.persistence.Column(name = "typeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InstanceCreationExpression_type",
+            joinColumns = @JoinColumn(name = "InstanceCreationExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "typeId"))
     public Collection<Function> getType() {
         if (type == null) {
             type = new ArrayList<>();
@@ -740,7 +821,11 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "RedefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRedefinitionType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InstanceCreationExpression_ownedRedefinition",
+            joinColumns = @JoinColumn(name = "InstanceCreationExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedRedefinitionId"))
     public Collection<Redefinition> getOwnedRedefinition() {
         if (ownedRedefinition == null) {
             ownedRedefinition = new ArrayList<>();
@@ -762,7 +847,11 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "membershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InstanceCreationExpression_membership",
+            joinColumns = @JoinColumn(name = "InstanceCreationExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "membershipId"))
     public List<Membership> getMembership() {
         if (membership == null) {
             membership = new ArrayList<>();
@@ -784,7 +873,11 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @javax.persistence.Transient
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMembershipType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InstanceCreationExpression_ownedMembership",
+            joinColumns = @JoinColumn(name = "InstanceCreationExpressionId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedMembershipId"))
     public List<Membership> getOwnedMembership() {
         if (ownedMembership == null) {
             ownedMembership = new ArrayList<>();

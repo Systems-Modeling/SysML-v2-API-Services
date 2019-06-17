@@ -16,6 +16,7 @@ public abstract class EndFeatureMembershipImpl_ extends org.omg.sysml.metamodel.
 
 	public static volatile SingularAttribute<EndFeatureMembershipImpl, UUID> identifier;
 	public static volatile SingularAttribute<EndFeatureMembershipImpl, Boolean> isDerived;
+	public static volatile CollectionAttribute<EndFeatureMembershipImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<EndFeatureMembershipImpl, String> aliases;
 	public static volatile SingularAttribute<EndFeatureMembershipImpl, VisibilityKind> visibility;
 	public static volatile CollectionAttribute<EndFeatureMembershipImpl, Relationship> ownedRelationship;
@@ -25,11 +26,14 @@ public abstract class EndFeatureMembershipImpl_ extends org.omg.sysml.metamodel.
 	public static volatile SingularAttribute<EndFeatureMembershipImpl, Boolean> isPort;
 	public static volatile CollectionAttribute<EndFeatureMembershipImpl, Element> target;
 	public static volatile SingularAttribute<EndFeatureMembershipImpl, Boolean> isReadOnly;
+	public static volatile CollectionAttribute<EndFeatureMembershipImpl, Element> relatedElement;
+	public static volatile SingularAttribute<EndFeatureMembershipImpl, String> name;
 	public static volatile SingularAttribute<EndFeatureMembershipImpl, Boolean> isPart;
 	public static volatile SingularAttribute<EndFeatureMembershipImpl, FeatureDirectionKind> direction;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
+	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIASES = "aliases";
 	public static final String VISIBILITY = "visibility";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
@@ -39,6 +43,8 @@ public abstract class EndFeatureMembershipImpl_ extends org.omg.sysml.metamodel.
 	public static final String IS_PORT = "isPort";
 	public static final String TARGET = "target";
 	public static final String IS_READ_ONLY = "isReadOnly";
+	public static final String RELATED_ELEMENT = "relatedElement";
+	public static final String NAME = "name";
 	public static final String IS_PART = "isPart";
 	public static final String DIRECTION = "direction";
 

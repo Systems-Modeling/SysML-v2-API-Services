@@ -16,6 +16,7 @@ public abstract class FeatureMembershipImpl_ extends org.omg.sysml.metamodel.imp
 
 	public static volatile SingularAttribute<FeatureMembershipImpl, UUID> identifier;
 	public static volatile SingularAttribute<FeatureMembershipImpl, Boolean> isDerived;
+	public static volatile CollectionAttribute<FeatureMembershipImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<FeatureMembershipImpl, String> aliases;
 	public static volatile SingularAttribute<FeatureMembershipImpl, VisibilityKind> visibility;
 	public static volatile CollectionAttribute<FeatureMembershipImpl, Relationship> ownedRelationship;
@@ -25,11 +26,14 @@ public abstract class FeatureMembershipImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile SingularAttribute<FeatureMembershipImpl, Boolean> isPort;
 	public static volatile CollectionAttribute<FeatureMembershipImpl, Element> target;
 	public static volatile SingularAttribute<FeatureMembershipImpl, Boolean> isReadOnly;
+	public static volatile CollectionAttribute<FeatureMembershipImpl, Element> relatedElement;
+	public static volatile SingularAttribute<FeatureMembershipImpl, String> name;
 	public static volatile SingularAttribute<FeatureMembershipImpl, Boolean> isPart;
 	public static volatile SingularAttribute<FeatureMembershipImpl, FeatureDirectionKind> direction;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
+	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIASES = "aliases";
 	public static final String VISIBILITY = "visibility";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
@@ -39,6 +43,8 @@ public abstract class FeatureMembershipImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String IS_PORT = "isPort";
 	public static final String TARGET = "target";
 	public static final String IS_READ_ONLY = "isReadOnly";
+	public static final String RELATED_ELEMENT = "relatedElement";
+	public static final String NAME = "name";
 	public static final String IS_PART = "isPart";
 	public static final String DIRECTION = "direction";
 
