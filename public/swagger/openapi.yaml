@@ -404,22 +404,24 @@ paths:
 definitions:
   Project:
     type: object
-    allOf:
-      - $ref: '#/definitions/Identified'
     properties:
       '@type':
         type: string
       name:
         type: string
+      identifier:
+        type: string
+        format: uuid
   Element:
     type: object
-    allOf:
-      - $ref: '#/definitions/Identified'
     properties:
-      containingProject:
-        $ref: '#/definitions/Identified'
       '@type':
         type: string
+      containingProject:
+        $ref: '#/definitions/Identified'
+      identifier:
+        type: string
+        format: uuid
     additionalProperties:
       type: object
   Relationship:
