@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Set;
 
 public interface Superclassing extends Generalization, MofObject {
-    Class getSuperclass();
+    Classifier getSuperclass();
 
-    Class getSubclass();
+    Classifier getSubclass();
 
-    Class getOwningClass();
+    Classifier getOwningClassifier();
 }

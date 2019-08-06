@@ -47,6 +47,25 @@ import java.util.HashSet;
 @JsonTypeName(value = "Superclassing")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
+    // @info.archinnov.achilles.annotations.Column("owningClassifier")
+    private Classifier owningClassifier;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    @Any(metaDef = "ClassifierMetaDef", metaColumn = @javax.persistence.Column(name = "owningClassifierType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningClassifierId", table = "Superclassing")
+    public Classifier getOwningClassifier() {
+        return owningClassifier;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ClassifierImpl.class)
+    public void setOwningClassifier(Classifier owningClassifier) {
+        this.owningClassifier = owningClassifier;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("owningRelatedElement")
     private Element owningRelatedElement;
 
@@ -66,68 +85,58 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("owningClass")
-    private Class owningClass;
+    // @info.archinnov.achilles.annotations.Column("owningType")
+    private Type owningType;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "ClassMetaDef", metaColumn = @javax.persistence.Column(name = "owningClassType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningClassId", table = "Superclassing")
-    public Class getOwningClass() {
-        return owningClass;
+    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningTypeId", table = "Superclassing")
+    public Type getOwningType() {
+        return owningType;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ClassImpl.class)
-    public void setOwningClass(Class owningClass) {
-        this.owningClass = owningClass;
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
+    public void setOwningType(Type owningType) {
+        this.owningType = owningType;
     }
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("relatedElement")
-    private Collection<Element> relatedElement;
+    // @info.archinnov.achilles.annotations.Column("name")
+    private String name;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "relatedElementType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Superclassing_relatedElement",
-            joinColumns = @JoinColumn(name = "SuperclassingId"),
-            inverseJoinColumns = @JoinColumn(name = "relatedElementId"))
-    public Collection<Element> getRelatedElement() {
-        if (relatedElement == null) {
-            relatedElement = new ArrayList<>();
-        }
-        return relatedElement;
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "name", table = "Superclassing")
+    public String getName() {
+        return name;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
-    public void setRelatedElement(Collection<Element> relatedElement) {
-        this.relatedElement = relatedElement;
+    public void setName(String name) {
+        this.name = name;
     }
 
 
 
-    // @info.archinnov.achilles.annotations.Column("specific")
-    private Category specific;
+    // @info.archinnov.achilles.annotations.Column("superclass")
+    private Classifier superclass;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "CategoryMetaDef", metaColumn = @javax.persistence.Column(name = "specificType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "specificId", table = "Superclassing")
-    public Category getSpecific() {
-        return specific;
+    @Any(metaDef = "ClassifierMetaDef", metaColumn = @javax.persistence.Column(name = "superclassType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "superclassId", table = "Superclassing")
+    public Classifier getSuperclass() {
+        return superclass;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = CategoryImpl.class)
-    public void setSpecific(Category specific) {
-        this.specific = specific;
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ClassifierImpl.class)
+    public void setSuperclass(Classifier superclass) {
+        this.superclass = superclass;
     }
 
 
@@ -147,53 +156,54 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("owningCategory")
-    private Category owningCategory;
+    // @info.archinnov.achilles.annotations.Column("owner")
+    private Element owner;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "CategoryMetaDef", metaColumn = @javax.persistence.Column(name = "owningCategoryType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningCategoryId", table = "Superclassing")
-    public Category getOwningCategory() {
-        return owningCategory;
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownerId", table = "Superclassing")
+    public Element getOwner() {
+        return owner;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = CategoryImpl.class)
-    public void setOwningCategory(Category owningCategory) {
-        this.owningCategory = owningCategory;
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
+    public void setOwner(Element owner) {
+        this.owner = owner;
     }
 
 
 
-    // @info.archinnov.achilles.annotations.Column("general")
-    private Category general;
+    // @info.archinnov.achilles.annotations.Column("ownedElement")
+    private Collection<Element> ownedElement;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "CategoryMetaDef", metaColumn = @javax.persistence.Column(name = "generalType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "generalId", table = "Superclassing")
-    public Category getGeneral() {
-        return general;
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Superclassing_ownedElement",
+            joinColumns = @JoinColumn(name = "SuperclassingId"),
+            inverseJoinColumns = @JoinColumn(name = "ownedElementId"))
+    public Collection<Element> getOwnedElement() {
+        if (ownedElement == null) {
+            ownedElement = new ArrayList<>();
+        }
+        return ownedElement;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = CategoryImpl.class)
-    public void setGeneral(Category general) {
-        this.general = general;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    public void setOwnedElement(Collection<Element> ownedElement) {
+        this.ownedElement = ownedElement;
     }
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private Membership owningMembership;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningMembershipId", table = "Superclassing")
     public Membership getOwningMembership() {
@@ -204,46 +214,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     @JsonDeserialize(using = MofObjectDeserializer.class, as = MembershipImpl.class)
     public void setOwningMembership(Membership owningMembership) {
         this.owningMembership = owningMembership;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("subclass")
-    private Class subclass;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "ClassMetaDef", metaColumn = @javax.persistence.Column(name = "subclassType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "subclassId", table = "Superclassing")
-    public Class getSubclass() {
-        return subclass;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ClassImpl.class)
-    public void setSubclass(Class subclass) {
-        this.subclass = subclass;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("owningNamespace")
-    private Package owningNamespace;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "Superclassing")
-    public Package getOwningNamespace() {
-        return owningNamespace;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
-    public void setOwningNamespace(Package owningNamespace) {
-        this.owningNamespace = owningNamespace;
     }
 
 
@@ -315,21 +285,21 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
 
 
 
-    // @info.archinnov.achilles.annotations.Column("superclass")
-    private Class superclass;
+    // @info.archinnov.achilles.annotations.Column("subclass")
+    private Classifier subclass;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "ClassMetaDef", metaColumn = @javax.persistence.Column(name = "superclassType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "superclassId", table = "Superclassing")
-    public Class getSuperclass() {
-        return superclass;
+    @Any(metaDef = "ClassifierMetaDef", metaColumn = @javax.persistence.Column(name = "subclassType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "subclassId", table = "Superclassing")
+    public Classifier getSubclass() {
+        return subclass;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ClassImpl.class)
-    public void setSuperclass(Class superclass) {
-        this.superclass = superclass;
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ClassifierImpl.class)
+    public void setSubclass(Classifier subclass) {
+        this.subclass = subclass;
     }
 
 
@@ -358,22 +328,83 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("name")
-    private String name;
+    // @info.archinnov.achilles.annotations.Column("general")
+    private Type general;
 
     @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    // @javax.persistence.Transient
-    @javax.persistence.Column(name = "name", table = "Superclassing")
-    public String getName() {
-        return name;
+    @JsonSerialize(using = MofObjectSerializer.class)
+    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "generalType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "generalId", table = "Superclassing")
+    public Type getGeneral() {
+        return general;
     }
 
     @JsonSetter
-    public void setName(String name) {
-        this.name = name;
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
+    public void setGeneral(Type general) {
+        this.general = general;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("relatedElement")
+    private Collection<Element> relatedElement;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "relatedElementType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Superclassing_relatedElement",
+            joinColumns = @JoinColumn(name = "SuperclassingId"),
+            inverseJoinColumns = @JoinColumn(name = "relatedElementId"))
+    public Collection<Element> getRelatedElement() {
+        if (relatedElement == null) {
+            relatedElement = new ArrayList<>();
+        }
+        return relatedElement;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    public void setRelatedElement(Collection<Element> relatedElement) {
+        this.relatedElement = relatedElement;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("specific")
+    private Type specific;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "specificType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "specificId", table = "Superclassing")
+    public Type getSpecific() {
+        return specific;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
+    public void setSpecific(Type specific) {
+        this.specific = specific;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("owningNamespace")
+    private Package owningNamespace;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningNamespaceId", table = "Superclassing")
+    public Package getOwningNamespace() {
+        return owningNamespace;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
+    public void setOwningNamespace(Package owningNamespace) {
+        this.owningNamespace = owningNamespace;
     }
 
 
@@ -398,53 +429,6 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setSource(Collection<Element> source) {
         this.source = source;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedElement")
-    private Collection<Element> ownedElement;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedElementType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Superclassing_ownedElement",
-            joinColumns = @JoinColumn(name = "SuperclassingId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedElementId"))
-    public Collection<Element> getOwnedElement() {
-        if (ownedElement == null) {
-            ownedElement = new ArrayList<>();
-        }
-        return ownedElement;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
-    public void setOwnedElement(Collection<Element> ownedElement) {
-        this.ownedElement = ownedElement;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("owner")
-    private Element owner;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownerId", table = "Superclassing")
-    public Element getOwner() {
-        return owner;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
-    public void setOwner(Element owner) {
-        this.owner = owner;
     }
 
 

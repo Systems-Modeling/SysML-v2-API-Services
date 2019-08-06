@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface FeatureMembership extends Membership, MofObject {
-    Category getOwningCategory();
+    Type getOwningType();
 
     Boolean getIsDerived();
 
@@ -16,6 +16,8 @@ public interface FeatureMembership extends Membership, MofObject {
     Feature getOwnedMemberFeature();
 
     Boolean getIsPart();
+
+    Boolean getIsPortion();
 
     Boolean getIsPort();
 

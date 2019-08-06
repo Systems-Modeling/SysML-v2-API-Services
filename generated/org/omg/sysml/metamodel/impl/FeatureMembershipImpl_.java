@@ -23,6 +23,7 @@ public abstract class FeatureMembershipImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile SingularAttribute<FeatureMembershipImpl, String> memberName;
 	public static volatile CollectionAttribute<FeatureMembershipImpl, Element> ownedRelatedElement;
 	public static volatile CollectionAttribute<FeatureMembershipImpl, Element> source;
+	public static volatile SingularAttribute<FeatureMembershipImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<FeatureMembershipImpl, Boolean> isPort;
 	public static volatile CollectionAttribute<FeatureMembershipImpl, Element> target;
 	public static volatile SingularAttribute<FeatureMembershipImpl, Boolean> isReadOnly;
@@ -40,6 +41,7 @@ public abstract class FeatureMembershipImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String MEMBER_NAME = "memberName";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
+	public static final String IS_PORTION = "isPortion";
 	public static final String IS_PORT = "isPort";
 	public static final String TARGET = "target";
 	public static final String IS_READ_ONLY = "isReadOnly";

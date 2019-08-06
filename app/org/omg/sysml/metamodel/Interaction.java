@@ -5,5 +5,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface Interaction extends Behavior, Association, MofObject {
-    Collection<? extends Feature> getParticipantFeature();
+
 }

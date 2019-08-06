@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Set;
 
 public interface Generalization extends Relationship, MofObject {
-    Category getOwningCategory();
+    Type getOwningType();
 
-    Category getGeneral();
+    Type getGeneral();
 
-    Category getSpecific();
+    Type getSpecific();
 }

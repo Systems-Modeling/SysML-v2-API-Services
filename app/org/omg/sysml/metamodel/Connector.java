@@ -7,11 +7,11 @@ import java.util.Set;
 public interface Connector extends Feature, Relationship, MofObject {
     Collection<? extends Feature> getRelatedFeature();
 
-    Association getAssociation();
+    Collection<? extends Association> getAssociation();
 
     Boolean getIsDirected();
 
-    Association getOwnedAssociationType();
+    Collection<? extends Association> getOwnedAssociationType();
 
     Collection<? extends Feature> getConnectorEnd();
 }

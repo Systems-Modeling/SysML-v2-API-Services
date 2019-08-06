@@ -14,8 +14,8 @@ public abstract class MultiplicityImpl_ extends org.omg.sysml.metamodel.impl.Mof
 
 	public static volatile SingularAttribute<MultiplicityImpl, UUID> identifier;
 	public static volatile CollectionAttribute<MultiplicityImpl, Element> ownedElement;
-	public static volatile CollectionAttribute<MultiplicityImpl, Element> relatedElement;
 	public static volatile CollectionAttribute<MultiplicityImpl, Relationship> ownedRelationship;
+	public static volatile CollectionAttribute<MultiplicityImpl, Element> relatedElement;
 	public static volatile SingularAttribute<MultiplicityImpl, String> name;
 	public static volatile CollectionAttribute<MultiplicityImpl, Element> ownedRelatedElement;
 	public static volatile CollectionAttribute<MultiplicityImpl, Element> source;
@@ -23,8 +23,8 @@ public abstract class MultiplicityImpl_ extends org.omg.sysml.metamodel.impl.Mof
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ELEMENT = "ownedElement";
-	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NAME = "name";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
