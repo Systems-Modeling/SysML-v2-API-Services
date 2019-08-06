@@ -1,8 +1,8 @@
 package services;
 
 import dao.ElementDao;
-import dao.ModelDao;
-import models.Element;
+import dao.ProjectDao;
+import org.omg.sysml.metamodel.Element;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -17,7 +17,7 @@ public class ElementService {
     private ElementDao elementDao;
 
     @Inject
-    private ModelDao modelDao;
+    private ProjectDao projectDao;
 
     public List<Element> getAll() {
         return elementDao.findAll();
@@ -27,15 +27,15 @@ public class ElementService {
         return elementDao.findById(id);
     }
 
-    public List<Element> getByModelId(UUID modelId) {
-        return modelDao.findById(modelId).map(m -> elementDao.findAllByModel(m)).orElse(Collections.emptyList());
+    public List<Element> getByProjectId(UUID projectId) {
+        return projectDao.findById(projectId).map(m -> elementDao.findAllByProject(m)).orElse(Collections.emptyList());
     }
 
-    public Optional<Element> getByModelIdAndId(UUID modelId, UUID elementId) {
-        return modelDao.findById(modelId).flatMap(m -> elementDao.findByModelAndId(m, elementId));
+    public Optional<Element> getByProjectIdAndId(UUID projectId, UUID elementId) {
+        return projectDao.findById(projectId).flatMap(m -> elementDao.findByProjectAndId(m, elementId));
     }
 
     public Optional<Element> create(Element element) {
-        return element.getId() != null ? elementDao.update(element) : elementDao.persist(element);
+        return element.getIdentifier() != null ? elementDao.update(element) : elementDao.persist(element);
     }
 }

@@ -5,10 +5,66 @@
     <persistence-unit name="sysml2-hibernate" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>models.Element</class>
-        <class>models.Relationship</class>
-        <class>models.Model</class>
+        <class>org.omg.sysml.metamodel.impl</class>
+        <class>org.omg.sysml.metamodel.impl.AnnotationImpl</class>
+        <class>org.omg.sysml.metamodel.impl.AssociationImpl</class>
+        <class>org.omg.sysml.metamodel.impl.AtomicInteractionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.BehaviorImpl</class>
+        <class>org.omg.sysml.metamodel.impl.BindingConnectorImpl</class>
+        <class>org.omg.sysml.metamodel.impl.BlockExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.CategoryImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ClassImpl</class>
+        <class>org.omg.sysml.metamodel.impl.CommentImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ConnectorImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ElementImpl</class>
+        <class>org.omg.sysml.metamodel.impl.EndFeatureMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FeatureImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FeatureMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FeatureReferenceExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FeatureTypingImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FeatureValueImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FunctionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.GeneralizationImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ImportImpl</class>
+        <class>org.omg.sysml.metamodel.impl.InstanceCreationExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.InteractionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.InvocationExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ItemFlowImpl</class>
+        <class>org.omg.sysml.metamodel.impl.LiteralBooleanImpl</class>
+        <class>org.omg.sysml.metamodel.impl.LiteralExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.LiteralIntegerImpl</class>
+        <class>org.omg.sysml.metamodel.impl.LiteralRealImpl</class>
+        <class>org.omg.sysml.metamodel.impl.LiteralStringImpl</class>
+        <class>org.omg.sysml.metamodel.impl.LiteralUnboundedImpl</class>
+        <class>org.omg.sysml.metamodel.impl.MembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.MofObjectImpl</class>
+        <class>org.omg.sysml.metamodel.impl.MultiplicityImpl</class>
+        <class>org.omg.sysml.metamodel.impl.NullExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ObjectClassImpl</class>
+        <class>org.omg.sysml.metamodel.impl.OFSuccessionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.OperatorExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.OrderedFeatureImpl</class>
+        <class>org.omg.sysml.metamodel.impl.OwnershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.PackageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ParameterImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ParameterMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.PredicateImpl</class>
+        <class>org.omg.sysml.metamodel.impl.RedefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.RelationshipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ReturnParameterMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.SequenceConstructionExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.StepImpl</class>
+        <class>org.omg.sysml.metamodel.impl.StructuredFeatureImpl</class>
+        <class>org.omg.sysml.metamodel.impl.SubsettingImpl</class>
+        <class>org.omg.sysml.metamodel.impl.SuccessionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.SuccessionItemFlowImpl</class>
+        <class>org.omg.sysml.metamodel.impl.SuperclassingImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ValueClassImpl</class>
 
+        <class>org.omg.sysml.extension.impl</class>
+        <class>org.omg.sysml.extension.impl.ProjectImpl</class>
+        
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/sysml2"/>

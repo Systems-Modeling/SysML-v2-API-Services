@@ -1,9 +1,13 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import models.Element;
+import config.MetamodelProvider;
+import jackson.JacksonHelper;
+import org.omg.sysml.metamodel.Element;
+import org.omg.sysml.metamodel.MofObject;
 import play.libs.Json;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Results;
 import services.ElementService;
@@ -19,6 +23,8 @@ import java.util.UUID;
  * Controller for handling all API requests related to SysML v2 elements
  */
 public class ElementController extends Controller {
+    @Inject
+    private MetamodelProvider metamodelProvider;
 
     @Inject
     private ElementService elementService;
@@ -31,26 +37,29 @@ public class ElementController extends Controller {
 
     public Result all() {
         List<Element> elements = elementService.getAll();
-        return ok(Json.toJson(elements));
+        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Element.class), elements));
     }
 
-    public Result create() {
-        JsonNode requestBodyJson = request().body().asJson();
-        Element requestElement = Json.fromJson(requestBodyJson, Element.class);
-        Optional<Element> responseElement = elementService.create(requestElement);
-        return responseElement.map(e -> ok(Json.toJson(e))).orElseGet(Results::badRequest);
+    public Result create(Http.Request request) {
+        JsonNode requestBodyJson = request.body().asJson();
+        MofObject requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(MofObject.class));
+        if (!(requestedObject instanceof Element)) {
+            return Results.badRequest();
+        }
+        Optional<Element> responseElement = elementService.create(((Element) requestedObject));
+        return responseElement.map(e -> created(Json.toJson(e))).orElseGet(Results::badRequest);
     }
 
-    public Result byModel(String modelId) {
-        UUID modelUuid = UUID.fromString(modelId);
-        List<Element> elements = elementService.getByModelId(modelUuid);
-        return ok(Json.toJson(elements));
+    public Result byProject(String projectId) {
+        UUID projectUuid = UUID.fromString(projectId);
+        List<Element> elements = elementService.getByProjectId(projectUuid);
+        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Element.class), elements));
     }
 
-    public Result byModelAndId(String elementId, String modelId) {
+    public Result byProjectAndId(String elementId, String projectId) {
         UUID elementUuid = UUID.fromString(elementId);
-        UUID modelUuid = UUID.fromString(modelId);
-        Optional<Element> element = elementService.getByModelIdAndId(modelUuid, elementUuid);
+        UUID projectUuid = UUID.fromString(projectId);
+        Optional<Element> element = elementService.getByProjectIdAndId(projectUuid, elementUuid);
         return element.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
     }
 }

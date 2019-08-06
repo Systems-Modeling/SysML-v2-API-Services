@@ -21,15 +21,15 @@ public class EntityManagerHandlerInstantiator extends HandlerInstantiator {
     @Override
     public JsonDeserializer<?> deserializerInstance(DeserializationConfig config, Annotated annotated, Class<?> deserClass) {
         try {
-            Constructor constructor = deserClass.getConstructor(EntityManager.class);
+            Constructor<?> constructor = deserClass.getConstructor(EntityManager.class);
             if (constructor != null) {
                 return (JsonDeserializer<?>) constructor.newInstance(entityManager);
             }
         } catch (ReflectiveOperationException ignored) {
         }
         try {
-            return (JsonDeserializer<?>) deserClass.newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
+            return (JsonDeserializer<?>) deserClass.getDeclaredConstructor().newInstance();
+        } catch (ReflectiveOperationException  e) {
             throw new RuntimeException("Failed to build the JsonDeserializer", e);
         }
     }
@@ -42,8 +42,8 @@ public class EntityManagerHandlerInstantiator extends HandlerInstantiator {
     @Override
     public JsonSerializer<?> serializerInstance(SerializationConfig config, Annotated annotated, Class<?> serClass) {
         try {
-            return (JsonSerializer<?>) serClass.newInstance();
-        } catch (InstantiationException | IllegalAccessException e) {
+            return (JsonSerializer<?>) serClass.getDeclaredConstructor().newInstance();
+        } catch (ReflectiveOperationException e) {
             throw new RuntimeException("Failed to build the JsonSerializer", e);
         }
     }
@@ -61,7 +61,7 @@ public class EntityManagerHandlerInstantiator extends HandlerInstantiator {
     @Override
     public ObjectIdResolver resolverIdGeneratorInstance(MapperConfig<?> config, Annotated annotated, Class<?> implClass) {
         try {
-            Constructor constructor = implClass.getConstructor(EntityManager.class);
+            Constructor<?> constructor = implClass.getConstructor(EntityManager.class);
             if (constructor != null) {
                 return (ObjectIdResolver) constructor.newInstance(entityManager);
             }

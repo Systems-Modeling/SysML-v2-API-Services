@@ -1,7 +1,7 @@
 package dao;
 
-import models.Element;
-import models.Model;
+import org.omg.sysml.extension.Project;
+import org.omg.sysml.metamodel.Element;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,7 +20,7 @@ public interface ElementDao extends Dao<Element> {
 
     void deleteAll();
 
-    List<Element> findAllByModel(Model model);
+    List<Element> findAllByProject(Project project);
 
-    Optional<Element> findByModelAndId(Model model, UUID id);
+    Optional<Element> findByProjectAndId(Project project, UUID id);
 }
