@@ -5,5 +5,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface InstanceCreationExpression extends InvocationExpression, MofObject {
-    Category getCategory();
+    Type getInstantiatedType();
 }

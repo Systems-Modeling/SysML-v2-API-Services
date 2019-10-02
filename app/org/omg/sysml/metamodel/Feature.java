@@ -4,18 +4,18 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Feature extends Category, MofObject {
-    Collection<? extends Category> getReferencedType();
+public interface Feature extends Type, MofObject {
+    Collection<? extends Type> getReferencedType();
 
-    Category getOwningCategory();
+    Type getOwningType();
 
     Boolean getIsUnique();
 
     Boolean getIsOrdered();
 
-    Collection<? extends Category> getType();
+    Collection<? extends Type> getType();
 
-    Collection<? extends Category> getOwnedType();
+    Collection<? extends Type> getOwnedType();
 
     Collection<? extends Redefinition> getOwnedRedefinition();
 
@@ -30,6 +30,8 @@ public interface Feature extends Category, MofObject {
     Multiplicity getMultiplicity();
 
     Collection<? extends FeatureTyping> getTyping();
+
+    Boolean getIsEnd();
 
     Boolean getIsNonunique();
 }

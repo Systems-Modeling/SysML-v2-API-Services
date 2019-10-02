@@ -23,6 +23,7 @@ public abstract class ParameterMembershipImpl_ extends org.omg.sysml.metamodel.i
 	public static volatile SingularAttribute<ParameterMembershipImpl, String> memberName;
 	public static volatile CollectionAttribute<ParameterMembershipImpl, Element> ownedRelatedElement;
 	public static volatile CollectionAttribute<ParameterMembershipImpl, Element> source;
+	public static volatile SingularAttribute<ParameterMembershipImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<ParameterMembershipImpl, Boolean> isPort;
 	public static volatile CollectionAttribute<ParameterMembershipImpl, Element> target;
 	public static volatile SingularAttribute<ParameterMembershipImpl, Boolean> isReadOnly;
@@ -40,6 +41,7 @@ public abstract class ParameterMembershipImpl_ extends org.omg.sysml.metamodel.i
 	public static final String MEMBER_NAME = "memberName";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
+	public static final String IS_PORTION = "isPortion";
 	public static final String IS_PORT = "isPort";
 	public static final String TARGET = "target";
 	public static final String IS_READ_ONLY = "isReadOnly";

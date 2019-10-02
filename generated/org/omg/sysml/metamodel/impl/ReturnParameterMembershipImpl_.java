@@ -23,6 +23,7 @@ public abstract class ReturnParameterMembershipImpl_ extends org.omg.sysml.metam
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, String> memberName;
 	public static volatile CollectionAttribute<ReturnParameterMembershipImpl, Element> ownedRelatedElement;
 	public static volatile CollectionAttribute<ReturnParameterMembershipImpl, Element> source;
+	public static volatile SingularAttribute<ReturnParameterMembershipImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, Boolean> isPort;
 	public static volatile CollectionAttribute<ReturnParameterMembershipImpl, Element> target;
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, Boolean> isReadOnly;
@@ -40,6 +41,7 @@ public abstract class ReturnParameterMembershipImpl_ extends org.omg.sysml.metam
 	public static final String MEMBER_NAME = "memberName";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
+	public static final String IS_PORTION = "isPortion";
 	public static final String IS_PORT = "isPort";
 	public static final String TARGET = "target";
 	public static final String IS_READ_ONLY = "isReadOnly";

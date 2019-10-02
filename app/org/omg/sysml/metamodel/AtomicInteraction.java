@@ -5,5 +5,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface AtomicInteraction extends MofObject {
-    Collection<? extends Class> getItemType();
+    Collection<? extends Classifier> getItemType();
 }

@@ -48,15 +48,15 @@ import java.util.HashSet;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public class AtomicInteractionImpl extends MofObjectImpl implements AtomicInteraction {
     // @info.archinnov.achilles.annotations.Column("itemType")
-    private Collection<Class> itemType;
+    private Collection<Classifier> itemType;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "ClassMetaDef", metaColumn = @javax.persistence.Column(name = "itemTypeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ClassifierMetaDef", metaColumn = @javax.persistence.Column(name = "itemTypeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "AtomicInteraction_itemType",
             joinColumns = @JoinColumn(name = "AtomicInteractionId"),
             inverseJoinColumns = @JoinColumn(name = "itemTypeId"))
-    public Collection<Class> getItemType() {
+    public Collection<Classifier> getItemType() {
         if (itemType == null) {
             itemType = new ArrayList<>();
         }
@@ -64,8 +64,8 @@ public class AtomicInteractionImpl extends MofObjectImpl implements AtomicIntera
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ClassImpl.class)
-    public void setItemType(Collection<Class> itemType) {
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ClassifierImpl.class)
+    public void setItemType(Collection<Classifier> itemType) {
         this.itemType = itemType;
     }
 

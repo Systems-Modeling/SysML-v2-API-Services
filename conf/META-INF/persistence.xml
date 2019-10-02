@@ -12,10 +12,11 @@
         <class>org.omg.sysml.metamodel.impl.BehaviorImpl</class>
         <class>org.omg.sysml.metamodel.impl.BindingConnectorImpl</class>
         <class>org.omg.sysml.metamodel.impl.BlockExpressionImpl</class>
-        <class>org.omg.sysml.metamodel.impl.CategoryImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ClassifierImpl</class>
         <class>org.omg.sysml.metamodel.impl.ClassImpl</class>
         <class>org.omg.sysml.metamodel.impl.CommentImpl</class>
         <class>org.omg.sysml.metamodel.impl.ConnectorImpl</class>
+        <class>org.omg.sysml.metamodel.impl.DataTypeImpl</class>
         <class>org.omg.sysml.metamodel.impl.ElementImpl</class>
         <class>org.omg.sysml.metamodel.impl.EndFeatureMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.ExpressionImpl</class>
@@ -30,6 +31,9 @@
         <class>org.omg.sysml.metamodel.impl.InstanceCreationExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.InteractionImpl</class>
         <class>org.omg.sysml.metamodel.impl.InvocationExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ItemFeatureImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ItemFlowEndImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ItemFlowFeatureImpl</class>
         <class>org.omg.sysml.metamodel.impl.ItemFlowImpl</class>
         <class>org.omg.sysml.metamodel.impl.LiteralBooleanImpl</class>
         <class>org.omg.sysml.metamodel.impl.LiteralExpressionImpl</class>
@@ -41,7 +45,6 @@
         <class>org.omg.sysml.metamodel.impl.MofObjectImpl</class>
         <class>org.omg.sysml.metamodel.impl.MultiplicityImpl</class>
         <class>org.omg.sysml.metamodel.impl.NullExpressionImpl</class>
-        <class>org.omg.sysml.metamodel.impl.ObjectClassImpl</class>
         <class>org.omg.sysml.metamodel.impl.OFSuccessionImpl</class>
         <class>org.omg.sysml.metamodel.impl.OperatorExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.OrderedFeatureImpl</class>
@@ -50,17 +53,22 @@
         <class>org.omg.sysml.metamodel.impl.ParameterImpl</class>
         <class>org.omg.sysml.metamodel.impl.ParameterMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.PredicateImpl</class>
+        <class>org.omg.sysml.metamodel.impl.QueryPathExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.QueryPathStepExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.QueryQualifierExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.RedefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.RelationshipImpl</class>
         <class>org.omg.sysml.metamodel.impl.ReturnParameterMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.SequenceConstructionExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.SourceEndImpl</class>
         <class>org.omg.sysml.metamodel.impl.StepImpl</class>
         <class>org.omg.sysml.metamodel.impl.StructuredFeatureImpl</class>
         <class>org.omg.sysml.metamodel.impl.SubsettingImpl</class>
         <class>org.omg.sysml.metamodel.impl.SuccessionImpl</class>
         <class>org.omg.sysml.metamodel.impl.SuccessionItemFlowImpl</class>
         <class>org.omg.sysml.metamodel.impl.SuperclassingImpl</class>
-        <class>org.omg.sysml.metamodel.impl.ValueClassImpl</class>
+        <class>org.omg.sysml.metamodel.impl.TargetEndImpl</class>
+        <class>org.omg.sysml.metamodel.impl.TypeImpl</class>
 
         <class>org.omg.sysml.extension.impl</class>
         <class>org.omg.sysml.extension.impl.ProjectImpl</class>
