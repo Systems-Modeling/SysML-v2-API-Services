@@ -38,10 +38,11 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile CollectionAttribute<BindingConnectorImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<BindingConnectorImpl, Element> member;
 	public static volatile ListAttribute<BindingConnectorImpl, FeatureMembership> ownedFeatureMembership;
-	public static volatile CollectionAttribute<BindingConnectorImpl, Redefinition> ownedRedefinition;
+	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isOrdered;
-	public static volatile SingularAttribute<BindingConnectorImpl, UUID> identifier;
+	public static volatile CollectionAttribute<BindingConnectorImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<BindingConnectorImpl, Membership> importedMembership;
+	public static volatile SingularAttribute<BindingConnectorImpl, UUID> identifier;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Relationship> ownedRelationship;
@@ -50,8 +51,8 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile ListAttribute<BindingConnectorImpl, Import> ownedImport;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Association> ownedAssociationType;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Feature> relatedFeature;
-	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isEnd;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isAbstract;
+	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isEnd;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Element> target;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Feature> input;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isDirected;
@@ -79,10 +80,11 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
-	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
-	public static final String IDENTIFIER = "identifier";
+	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
+	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
@@ -91,8 +93,8 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String OWNED_ASSOCIATION_TYPE = "ownedAssociationType";
 	public static final String RELATED_FEATURE = "relatedFeature";
-	public static final String IS_END = "isEnd";
 	public static final String IS_ABSTRACT = "isAbstract";
+	public static final String IS_END = "isEnd";
 	public static final String TARGET = "target";
 	public static final String INPUT = "input";
 	public static final String IS_DIRECTED = "isDirected";

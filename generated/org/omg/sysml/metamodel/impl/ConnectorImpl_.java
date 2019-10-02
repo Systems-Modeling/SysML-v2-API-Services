@@ -38,10 +38,11 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile CollectionAttribute<ConnectorImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<ConnectorImpl, Element> member;
 	public static volatile ListAttribute<ConnectorImpl, FeatureMembership> ownedFeatureMembership;
-	public static volatile CollectionAttribute<ConnectorImpl, Redefinition> ownedRedefinition;
+	public static volatile SingularAttribute<ConnectorImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isOrdered;
-	public static volatile SingularAttribute<ConnectorImpl, UUID> identifier;
+	public static volatile CollectionAttribute<ConnectorImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<ConnectorImpl, Membership> importedMembership;
+	public static volatile SingularAttribute<ConnectorImpl, UUID> identifier;
 	public static volatile CollectionAttribute<ConnectorImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<ConnectorImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<ConnectorImpl, Relationship> ownedRelationship;
@@ -50,8 +51,8 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile ListAttribute<ConnectorImpl, Import> ownedImport;
 	public static volatile CollectionAttribute<ConnectorImpl, Association> ownedAssociationType;
 	public static volatile CollectionAttribute<ConnectorImpl, Feature> relatedFeature;
-	public static volatile SingularAttribute<ConnectorImpl, Boolean> isEnd;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isAbstract;
+	public static volatile SingularAttribute<ConnectorImpl, Boolean> isEnd;
 	public static volatile CollectionAttribute<ConnectorImpl, Element> target;
 	public static volatile CollectionAttribute<ConnectorImpl, Feature> input;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isDirected;
@@ -79,10 +80,11 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
-	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
-	public static final String IDENTIFIER = "identifier";
+	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
+	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
@@ -91,8 +93,8 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String OWNED_ASSOCIATION_TYPE = "ownedAssociationType";
 	public static final String RELATED_FEATURE = "relatedFeature";
-	public static final String IS_END = "isEnd";
 	public static final String IS_ABSTRACT = "isAbstract";
+	public static final String IS_END = "isEnd";
 	public static final String TARGET = "target";
 	public static final String INPUT = "input";
 	public static final String IS_DIRECTED = "isDirected";

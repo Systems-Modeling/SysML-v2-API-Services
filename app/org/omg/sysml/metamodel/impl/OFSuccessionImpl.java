@@ -39,6 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
+
 @Entity(name = "OFSuccessionImpl")
 @SecondaryTable(name = "OFSuccession")
 @org.hibernate.annotations.Table(appliesTo = "OFSuccession", fetch = FetchMode.SELECT, optional = false)

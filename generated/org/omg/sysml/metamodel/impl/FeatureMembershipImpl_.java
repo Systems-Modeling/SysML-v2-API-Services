@@ -27,9 +27,9 @@ public abstract class FeatureMembershipImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile SingularAttribute<FeatureMembershipImpl, Boolean> isPort;
 	public static volatile CollectionAttribute<FeatureMembershipImpl, Element> target;
 	public static volatile SingularAttribute<FeatureMembershipImpl, Boolean> isReadOnly;
+	public static volatile SingularAttribute<FeatureMembershipImpl, Boolean> isComposite;
 	public static volatile CollectionAttribute<FeatureMembershipImpl, Element> relatedElement;
 	public static volatile SingularAttribute<FeatureMembershipImpl, String> name;
-	public static volatile SingularAttribute<FeatureMembershipImpl, Boolean> isPart;
 	public static volatile SingularAttribute<FeatureMembershipImpl, FeatureDirectionKind> direction;
 
 	public static final String IDENTIFIER = "identifier";
@@ -45,9 +45,9 @@ public abstract class FeatureMembershipImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String IS_PORT = "isPort";
 	public static final String TARGET = "target";
 	public static final String IS_READ_ONLY = "isReadOnly";
+	public static final String IS_COMPOSITE = "isComposite";
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NAME = "name";
-	public static final String IS_PART = "isPart";
 	public static final String DIRECTION = "direction";
 
 }

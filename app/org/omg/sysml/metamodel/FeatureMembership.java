@@ -15,7 +15,7 @@ public interface FeatureMembership extends Membership, MofObject {
 
     Feature getOwnedMemberFeature();
 
-    Boolean getIsPart();
+    Boolean getIsComposite();
 
     Boolean getIsPortion();
 
