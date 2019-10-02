@@ -5,5 +5,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface Step extends Feature, MofObject {
-    Collection<? extends Behavior> getType();
+    Collection<? extends Behavior> getBehavior();
 }

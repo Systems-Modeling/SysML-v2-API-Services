@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface Ownership extends Relationship, MofObject {
-    Collection<? extends Element> getSource();
+    Element getOwningSource();
 
-    Collection<? extends Element> getTarget();
+    Element getOwnedTarget();
 }

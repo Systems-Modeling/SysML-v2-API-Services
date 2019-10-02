@@ -27,9 +27,9 @@ public abstract class ReturnParameterMembershipImpl_ extends org.omg.sysml.metam
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, Boolean> isPort;
 	public static volatile CollectionAttribute<ReturnParameterMembershipImpl, Element> target;
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, Boolean> isReadOnly;
+	public static volatile SingularAttribute<ReturnParameterMembershipImpl, Boolean> isComposite;
 	public static volatile CollectionAttribute<ReturnParameterMembershipImpl, Element> relatedElement;
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, String> name;
-	public static volatile SingularAttribute<ReturnParameterMembershipImpl, Boolean> isPart;
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, FeatureDirectionKind> direction;
 
 	public static final String IDENTIFIER = "identifier";
@@ -45,9 +45,9 @@ public abstract class ReturnParameterMembershipImpl_ extends org.omg.sysml.metam
 	public static final String IS_PORT = "isPort";
 	public static final String TARGET = "target";
 	public static final String IS_READ_ONLY = "isReadOnly";
+	public static final String IS_COMPOSITE = "isComposite";
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NAME = "name";
-	public static final String IS_PART = "isPart";
 	public static final String DIRECTION = "direction";
 
 }

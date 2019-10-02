@@ -5,5 +5,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface Expression extends Step, MofObject {
-    Collection<? extends Function> getType();
+    Function getFunction();
 }

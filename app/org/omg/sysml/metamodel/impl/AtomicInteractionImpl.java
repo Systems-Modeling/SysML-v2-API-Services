@@ -39,6 +39,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
+
 @Entity(name = "AtomicInteractionImpl")
 @SecondaryTable(name = "AtomicInteraction")
 @org.hibernate.annotations.Table(appliesTo = "AtomicInteraction", fetch = FetchMode.SELECT, optional = false)

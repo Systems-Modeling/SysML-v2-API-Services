@@ -24,4 +24,6 @@ public interface Type extends Package, MofObject {
     Collection<? extends Feature> getEndFeature();
 
     Collection<? extends Feature> getOwnedEndFeature();
+
+    Boolean getIsSufficient();
 }

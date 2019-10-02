@@ -33,5 +33,7 @@ public interface Feature extends Type, MofObject {
 
     Boolean getIsEnd();
 
+    Type getEndOwningType();
+
     Boolean getIsNonunique();
 }

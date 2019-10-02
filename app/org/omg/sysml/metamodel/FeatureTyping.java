@@ -7,5 +7,5 @@ import java.util.Set;
 public interface FeatureTyping extends Generalization, MofObject {
     Feature getTypedFeature();
 
-    Collection<? extends Type> getType();
+    Type getType();
 }
