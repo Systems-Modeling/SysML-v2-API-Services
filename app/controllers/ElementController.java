@@ -1,79 +1,65 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import models.Element;
+import config.MetamodelProvider;
+import jackson.JacksonHelper;
+import org.omg.sysml.metamodel.Element;
+import org.omg.sysml.metamodel.MofObject;
 import play.libs.Json;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
+import play.mvc.Results;
 import services.ElementService;
 
 import javax.inject.Inject;
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
  * @author Manas Bajaj
- *
+ * <p>
  * Controller for handling all API requests related to SysML v2 elements
  */
 public class ElementController extends Controller {
-
-    private ElementService elementService;
+    @Inject
+    private MetamodelProvider metamodelProvider;
 
     @Inject
-    public ElementController(ElementService elementService) {
-        this.elementService = elementService;
-    }
+    private ElementService elementService;
 
     public Result byId(String id) {
-        try {
-            UUID elementId = UUID.fromString(id);
-            Element element = elementService.getById(elementId);
-            return ok(Json.toJson(element));
-        }
-        catch (IllegalArgumentException e) {
-            return badRequest("Supplied identifier is not a UUID.");
-        }
-    }
-
-    public Result byModel(String mid) {
-        try {
-            UUID modelId = UUID.fromString(mid);
-            Set<Element> elements = elementService.getByModelId(modelId);
-            return ok(Json.toJson(elements));
-        }
-        catch (IllegalArgumentException e) {
-            return badRequest("Supplied identifier is not a UUID.");
-        }
-    }
-
-    public Result byIdAndModel(String eid, String mid) {
-        try {
-            UUID elementId = UUID.fromString(eid);
-            UUID modelId = UUID.fromString(mid);
-            Element element = elementService.getById(modelId, elementId);
-            if(element!=null)
-                return ok(Json.toJson(element));
-            else
-                return notFound("Element with id " + eid + " cannot be found in model with id " + mid);
-        }
-        catch (IllegalArgumentException e) {
-            return badRequest("Supplied identifiers are not UUIDs.");
-        }
+        UUID uuid = UUID.fromString(id);
+        Optional<Element> element = elementService.getById(uuid);
+        return element.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
     }
 
     public Result all() {
-        Set<Element> elements = elementService.getAll();
-        return ok(Json.toJson(elements));
+        List<Element> elements = elementService.getAll();
+        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Element.class), elements));
     }
 
-    public Result create() {
-        JsonNode requestBodyJson = request().body().asJson();
-        Element newElement = Json.fromJson(requestBodyJson, Element.class);
-        Element createdElement = elementService.create(newElement);
-        if(createdElement!=null)
-            return created(Json.toJson(createdElement));
-        else
-            return badRequest("Element with the following specification could not be created. \n " + requestBodyJson);
+    public Result create(Http.Request request) {
+        JsonNode requestBodyJson = request.body().asJson();
+        MofObject requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(MofObject.class));
+        if (!(requestedObject instanceof Element)) {
+            return Results.badRequest();
+        }
+        Optional<Element> responseElement = elementService.create(((Element) requestedObject));
+        return responseElement.map(e -> created(Json.toJson(e))).orElseGet(Results::badRequest);
+    }
+
+    public Result byProject(String projectId) {
+        UUID projectUuid = UUID.fromString(projectId);
+        List<Element> elements = elementService.getByProjectId(projectUuid);
+        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Element.class), elements));
+    }
+
+    public Result byProjectAndId(String elementId, String projectId) {
+        UUID elementUuid = UUID.fromString(elementId);
+        UUID projectUuid = UUID.fromString(projectId);
+        Optional<Element> element = elementService.getByProjectIdAndId(projectUuid, elementUuid);
+        return element.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
     }
 }

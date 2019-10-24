@@ -1,98 +1,76 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import models.Relationship;
+import config.MetamodelProvider;
+import jackson.JacksonHelper;
+import org.omg.sysml.metamodel.MofObject;
+import org.omg.sysml.metamodel.Relationship;
 import play.libs.Json;
 import play.mvc.Controller;
+import play.mvc.Http;
 import play.mvc.Result;
+import play.mvc.Results;
 import services.RelationshipService;
 
 import javax.inject.Inject;
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 /**
  * @author Manas Bajaj
  *
- * Controller for handling all API requests related to SysML v2 relationship elements
+ * Controller for handling all API requests related to SysML v2 elements
  */
 public class RelationshipController extends Controller {
-
-    private RelationshipService relationService;
+    @Inject
+    private MetamodelProvider metamodelProvider;
 
     @Inject
-    public RelationshipController(RelationshipService relationService) {
-        this.relationService = relationService;
-    }
+    private RelationshipService relationshipService;
 
     public Result byId(String id) {
-        try {
-            UUID relationshipId = UUID.fromString(id);
-            Relationship relation = relationService.getById(relationshipId);
-            return ok(Json.toJson(relation));
-        }
-        catch (IllegalArgumentException e) {
-            return badRequest("Supplied identifier is not a UUID.");
-        }
+        UUID uuid = UUID.fromString(id);
+        Optional<Relationship> relationship = relationshipService.getById(uuid);
+        return relationship.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
     }
 
-    public Result byModel(String mid) {
-        try {
-            UUID modelId = UUID.fromString(mid);
-            Set<Relationship> elements = relationService.getByModelId(modelId);
-            return ok(Json.toJson(elements));
-        }
-        catch (IllegalArgumentException e) {
-            return badRequest("Supplied identifier is not a UUID.");
-        }
+    public Result all() {
+        List<Relationship> relationships = relationshipService.getAll();
+        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
     }
 
-    public Result byElementId(String id) {
-        try {
-            UUID elementId = UUID.fromString(id);
-            Set<Relationship> relations = relationService.getByElementId(elementId);
-            return ok(Json.toJson(relations));
+    public Result create(Http.Request request) {
+        JsonNode requestBodyJson = request.body().asJson();
+        MofObject requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(MofObject.class));
+        if (!(requestedObject instanceof Relationship)) {
+            return Results.badRequest();
         }
-        catch (IllegalArgumentException e) {
-            return badRequest("Supplied identifier is not a UUID.");
-        }
+        Optional<Relationship> responseRelationship = relationshipService.create((Relationship) requestedObject);
+        return responseRelationship.map(e -> created(Json.toJson(e))).orElseGet(Results::badRequest);
+    }
+
+    public Result byRelatedElementId(String id) {
+        UUID elementUuid = UUID.fromString(id);
+        List<Relationship> relationships = relationshipService.getByRelatedElementId(elementUuid);
+        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
     }
 
     public Result bySourceElementId(String id) {
-        try {
-            UUID elementId = UUID.fromString(id);
-            Set<Relationship> relations = relationService.getBySourceElementId(elementId);
-            return ok(Json.toJson(relations));
-        }
-        catch (IllegalArgumentException e) {
-            return badRequest("Supplied identifier is not a UUID.");
-        }
+        UUID elementUuid = UUID.fromString(id);
+        List<Relationship> relationships = relationshipService.getBySourceElementId(elementUuid);
+        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
     }
 
     public Result byTargetElementId(String id) {
-        try {
-            UUID elementId = UUID.fromString(id);
-            Set<Relationship> relations = relationService.getByTargetElementId(elementId);
-            return ok(Json.toJson(relations));
-        }
-        catch (IllegalArgumentException e) {
-            return badRequest("Supplied identifier is not a UUID.");
-        }
+        UUID elementUuid = UUID.fromString(id);
+        List<Relationship> relationships = relationshipService.getByTargetElementId(elementUuid);
+        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
     }
 
-
-    public Result all() {
-        Set<Relationship> relations = relationService.getAll();
-        return ok(Json.toJson(relations));
-    }
-
-    public Result create() {
-        JsonNode requestBodyJson = request().body().asJson();
-        Relationship newRelation = Json.fromJson(requestBodyJson, Relationship.class);
-        Relationship createdRelation = relationService.create(newRelation);
-        if(createdRelation!=null)
-            return created(Json.toJson(createdRelation));
-        else
-            return badRequest("Element with the following specification could not be created. \n " + requestBodyJson);
+    public Result byProject(String projectId) {
+        UUID projectUuid = UUID.fromString(projectId);
+        List<Relationship> relationships = relationshipService.getByProjectId(projectUuid);
+        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
     }
 }

@@ -4,17 +4,17 @@ info:
   description: REST/HTTP binding (PSM) for the SysML v2 standard API.
   version: 1.0.0
 tags:
-- name: Model
-- name: Element
-- name: Relationship
+  - name: Project
+  - name: Element
+  - name: Relationship
 
 paths:
-  /model:
+  /projects:
     get:
       tags:
-        - Model
-      operationId: getModels
-      summary: Get all models
+        - Project
+      operationId: getProjects
+      summary: Get all projects
       produces:
         - application/json
       responses:
@@ -23,7 +23,7 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/Model'
+              $ref: '#/definitions/Project'
         415:
           $ref: '#/responses/BadContentType'
         500:
@@ -32,9 +32,9 @@ paths:
           $ref: '#/responses/Default'
     post:
       tags:
-        - Model
-      operationId: createModel
-      summary: Add a new model
+        - Project
+      operationId: createProject
+      summary: Add a new project
       consumes:
         - application/json
       produces:
@@ -43,37 +43,37 @@ paths:
         - in: body
           name: body
           schema:
-            $ref: '#/definitions/Model'
+            $ref: '#/definitions/Project'
       responses:
         201:
           description: Created
           schema:
-            $ref: '#/definitions/Model'
+            $ref: '#/definitions/Project'
         415:
           $ref: '#/responses/BadContentType'
         500:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-  /model/{id}:
+  /projects/{identifier}:
     parameters:
-      - name: id
+      - name: identifier
         in: path
-        description: ID of the model
+        description: ID of the project
         type: string
         required: true
     get:
       tags:
-        - Model
-      operationId: getModel
-      summary: Get model by its ID
+        - Project
+      operationId: getProject
+      summary: Get project by its ID
       produces:
         - application/json
       responses:
         200:
           description: Ok
           schema:
-            $ref: '#/definitions/Model'
+            $ref: '#/definitions/Project'
         404:
           $ref: '#/responses/NotFound'
         415:
@@ -84,14 +84,14 @@ paths:
           $ref: '#/responses/Default'
 
 
-  /element:
+  /elements:
     get:
       tags:
-      - Element
+        - Element
       operationId: getElements
       summary: Get all elements
       produces:
-      - application/json
+        - application/json
       responses:
         200:
           description: Ok
@@ -107,19 +107,19 @@ paths:
           $ref: '#/responses/Default'
     post:
       tags:
-      - Element
+        - Element
       operationId: createElement
       summary: Add a new element
       consumes:
-      - application/json
+        - application/json
       produces:
-      - application/json
+        - application/json
       parameters:
-      - in: body
-        name: body
-        required: true
-        schema:
-          $ref: '#/definitions/Element'
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/Element'
       responses:
         201:
           description: Created
@@ -131,20 +131,20 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-  /element/{id}:
+  /elements/{identifier}:
     parameters:
-    - name: id
-      in: path
-      description: ID of the element
-      type: string
-      required: true
+      - name: identifier
+        in: path
+        description: ID of the element
+        type: string
+        required: true
     get:
       tags:
-      - Element
+        - Element
       operationId: getElement
       summary: Get element by its ID
       produces:
-      - application/json
+        - application/json
       responses:
         200:
           description: Ok
@@ -158,18 +158,50 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-  /element/model/{model_id}:
+  /projects/{project_identifier}/elements/{element_identifier}:
     parameters:
-      - name: model_id
+      - name: project_identifier
         in: path
-        description: ID of the model
+        description: ID of the project
+        type: string
+        required: true
+      - name: element_identifier
+        in: path
+        description: ID of the element
         type: string
         required: true
     get:
       tags:
         - Element
-      operationId: getElementsInModel
-      summary: Get all elements in the model
+      operationId: getElementByProjectAndId
+      summary: Get element by project ID and its ID
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Element'
+        404:
+          $ref: '#/responses/NotFound'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+  /projects/{project_identifier}/elements:
+    parameters:
+      - name: project_identifier
+        in: path
+        description: ID of the project
+        type: string
+        required: true
+    get:
+      tags:
+        - Element
+      operationId: getElementsInProject
+      summary: Get all elements in the project
       produces:
         - application/json
       responses:
@@ -186,14 +218,14 @@ paths:
         default:
           $ref: '#/responses/Default'
 
-  /relationship:
+  /relationships:
     get:
       tags:
-      - Relationship
+        - Relationship
       operationId: getRelationships
       summary: Get all relationships
       produces:
-      - application/json
+        - application/json
       responses:
         200:
           description: Ok
@@ -209,19 +241,19 @@ paths:
           $ref: '#/responses/Default'
     post:
       tags:
-      - Relationship
+        - Relationship
       operationId: createRelationship
       summary: Add a new relationship
       consumes:
-      - application/json
+        - application/json
       produces:
-      - application/json
+        - application/json
       parameters:
-      - in: body
-        name: body
-        required: true
-        schema:
-          $ref: '#/definitions/Relationship'
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/Relationship'
       responses:
         201:
           description: Created
@@ -233,20 +265,20 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-  /relationship/{id}:
+  /relationships/{identifier}:
     parameters:
-    - name: id
-      in: path
-      description: ID of the relationship
-      type: string
-      required: true
+      - name: identifier
+        in: path
+        description: ID of the relationship
+        type: string
+        required: true
     get:
       tags:
-      - Relationship
+        - Relationship
       operationId: getRelationship
       summary: Get relationship by its ID
       produces:
-      - application/json
+        - application/json
       responses:
         200:
           description: Ok
@@ -260,74 +292,101 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-  /relationship/element/{element_id}:
+  # /relationships/elements/{element_identifier}:
+  #   parameters:
+  #     - name: element_identifier
+  #       in: path
+  #       description: ID of the element that is the source or target of relationships
+  #       type: string
+  #       required: true
+  #   get:
+  #     tags:
+  #       - Relationship
+  #     operationId: getRelationshipsByElement
+  #     summary: Get all relationships with the given element as either source or target
+  #     produces:
+  #       - application/json
+  #     responses:
+  #       200:
+  #         description: Ok
+  #         schema:
+  #           type: array
+  #           items:
+  #             $ref: '#/definitions/Relationship'
+  #       415:
+  #         $ref: '#/responses/BadContentType'
+  #       500:
+  #         $ref: '#/responses/InternalServerError'
+  #       default:
+  #         $ref: '#/responses/Default'
+  # /relationship/source/{source_identifier}:
+  #   parameters:
+  #     - name: source_identifier
+  #       in: path
+  #       description: ID of the element that is the source of relationships
+  #       type: string
+  #       required: true
+  #   get:
+  #     tags:
+  #       - Relationship
+  #     operationId: getRelationshipsBySource
+  #     summary: Get all relationships with the given element as the source
+  #     produces:
+  #       - application/json
+  #     responses:
+  #       200:
+  #         description: Ok
+  #         schema:
+  #           type: array
+  #           items:
+  #             $ref: '#/definitions/Relationship'
+  #       415:
+  #         $ref: '#/responses/BadContentType'
+  #       500:
+  #           $ref: '#/responses/InternalServerError'
+  #       default:
+  #           $ref: '#/responses/Default'
+  # /relationship/target/{target_identifier}:
+  #     parameters:
+  #       - name: target_identifier
+  #         in: path
+  #         description: ID of the element that is the target of relationships
+  #         type: string
+  #         required: true
+  #     get:
+  #       tags:
+  #         - Relationship
+  #       operationId: getRelationshipsByTarget
+  #       summary: Get all relationships with the given element as the target
+  #       produces:
+  #         - application/json
+  #       responses:
+  #         200:
+  #           description: Ok
+  #           schema:
+  #             type: array
+  #             items:
+  #               $ref: '#/definitions/Relationship'
+  #         415:
+  #           $ref: '#/responses/BadContentType'
+  #         500:
+  #           $ref: '#/responses/InternalServerError'
+  #         default:
+  #           $ref: '#/responses/Default'
+  /projects/{project_identifier}/relationships:
     parameters:
-    - name: element_id
-      in: path
-      description: ID of the element that is the source or target of relationships
-      type: string
-      required: true
+      - name: project_identifier
+        in: path
+        description: ID of the project
+        type: string
+        required: true
     get:
       tags:
-      - Relationship
-      operationId: getRelationshipsByElement
-      summary: Get all relationships with the given element as either source or target
+        - Relationship
+      operationId: getRelationshipsByProject
+      summary: Get all relationships in the project
       produces:
-      - application/json
-      responses:
-        200:
-          description: Ok
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Relationship'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
-  /relationship/source/{source_id}:
-    parameters:
-    - name: source_id
-      in: path
-      description: ID of the element that is the source of relationships
-      type: string
-      required: true
-    get:
-      tags:
-      - Relationship
-      operationId: getRelationshipsBySource
-      summary: Get all relationships with the given element as the source
-      produces:
-      - application/json
-      responses:
-        200:
-          description: Ok
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Relationship'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
-  /relationship/target/{target_id}:
-    parameters:
-    - name: target_id
-      in: path
-      description: ID of the element that is the target of relationships
-      type: string
-      required: true
-    get:
-      tags:
-      - Relationship
-      operationId: getRelationshipsByTarget
-      summary: Get all relationships with the given element as the target
-      produces:
-      - application/json
+        - application/json
       responses:
         200:
           description: Ok
@@ -343,52 +402,52 @@ paths:
           $ref: '#/responses/Default'
 
 definitions:
-  Model:
+  Project:
     type: object
     properties:
+      '@type':
+        type: string
+      name:
+        type: string
       identifier:
         type: string
         format: uuid
-      name:
-        type: string
-      description:
-        type: string
   Element:
     type: object
     properties:
+      '@type':
+        type: string
+      containingProject:
+        $ref: '#/definitions/Identified'
       identifier:
         type: string
         format: uuid
-      name:
-        type: string
-      description:
-        type: string
-      parent_model:
-        type: string
-        format: uuid
-      type:
-        type: string
+    additionalProperties:
+      type: object
   Relationship:
     type: object
     allOf:
-    - $ref: '#/definitions/Element'
-    - properties:
-        source_element_role:
-          type: string
-        source_element:
-          type: string
-          format: uuid
-        target_element_role:
-          type: string
-        target_element:
-          type: string
-          format: uuid
+      - $ref: '#/definitions/Element'
+      - properties:
+          source:
+            type: array
+            items:
+              $ref: '#/definitions/Identified'
+          target:
+            type: array
+            items:
+              $ref: '#/definitions/Identified'
+  Identified:
+    type: object
+    properties:
+      identifier:
+        type: string
+        format: uuid
   Error:
     type: object
     properties:
       error:
         type: string
-openapi:
 responses:
   NoContent:
     description: No Content
