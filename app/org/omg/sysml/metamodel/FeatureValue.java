@@ -4,8 +4,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface FeatureValue extends Relationship, MofObject {
-    Expression getValue();
-
+public interface FeatureValue extends FeatureMembership, MofObject {
     Feature getFeatureWithValue();
+
+    BindingConnector getValueConnector();
+
+    Expression getValue();
 }

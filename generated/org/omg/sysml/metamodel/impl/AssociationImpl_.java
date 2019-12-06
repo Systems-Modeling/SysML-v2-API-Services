@@ -21,9 +21,9 @@ import org.omg.sysml.metamodel.Type;
 public abstract class AssociationImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<AssociationImpl, Generalization> ownedGeneralization;
-	public static volatile CollectionAttribute<AssociationImpl, Superclassing> ownedSuperclassing;
-	public static volatile CollectionAttribute<AssociationImpl, Element> ownedRelatedElement;
 	public static volatile CollectionAttribute<AssociationImpl, Element> source;
+	public static volatile CollectionAttribute<AssociationImpl, Element> ownedRelatedElement;
+	public static volatile CollectionAttribute<AssociationImpl, Superclassing> ownedSuperclassing;
 	public static volatile ListAttribute<AssociationImpl, Membership> membership;
 	public static volatile CollectionAttribute<AssociationImpl, Feature> output;
 	public static volatile CollectionAttribute<AssociationImpl, Type> relatedType;
@@ -33,8 +33,8 @@ public abstract class AssociationImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static volatile ListAttribute<AssociationImpl, Element> member;
 	public static volatile ListAttribute<AssociationImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile SingularAttribute<AssociationImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<AssociationImpl, Membership> importedMembership;
 	public static volatile SingularAttribute<AssociationImpl, UUID> identifier;
+	public static volatile ListAttribute<AssociationImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<AssociationImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<AssociationImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<AssociationImpl, Relationship> ownedRelationship;
@@ -50,9 +50,9 @@ public abstract class AssociationImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static volatile ListAttribute<AssociationImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
-	public static final String OWNED_SUPERCLASSING = "ownedSuperclassing";
-	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
+	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
+	public static final String OWNED_SUPERCLASSING = "ownedSuperclassing";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OUTPUT = "output";
 	public static final String RELATED_TYPE = "relatedType";
@@ -62,8 +62,8 @@ public abstract class AssociationImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String IDENTIFIER = "identifier";
+	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";

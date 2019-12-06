@@ -30,8 +30,8 @@ public abstract class DefinitionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile CollectionAttribute<DefinitionImpl, Feature> output;
 	public static volatile CollectionAttribute<DefinitionImpl, Feature> feature;
 	public static volatile ListAttribute<DefinitionImpl, Membership> inheritedMembership;
-	public static volatile CollectionAttribute<DefinitionImpl, Feature> ownedEndFeature;
 	public static volatile CollectionAttribute<DefinitionImpl, Property> property;
+	public static volatile CollectionAttribute<DefinitionImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<DefinitionImpl, Element> member;
 	public static volatile ListAttribute<DefinitionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile SingularAttribute<DefinitionImpl, Boolean> isSufficient;
@@ -59,8 +59,8 @@ public abstract class DefinitionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String OUTPUT = "output";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
-	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String PROPERTY = "property";
+	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String IS_SUFFICIENT = "isSufficient";

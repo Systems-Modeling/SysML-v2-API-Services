@@ -24,8 +24,8 @@ import org.omg.sysml.metamodel.Type;
 public abstract class QueryPathExpressionImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<QueryPathExpressionImpl, Generalization> ownedGeneralization;
-	public static volatile CollectionAttribute<QueryPathExpressionImpl, Subsetting> ownedSubsetting;
 	public static volatile SingularAttribute<QueryPathExpressionImpl, Boolean> isUnique;
+	public static volatile CollectionAttribute<QueryPathExpressionImpl, Subsetting> ownedSubsetting;
 	public static volatile ListAttribute<QueryPathExpressionImpl, Membership> membership;
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, Type> type;
 	public static volatile SingularAttribute<QueryPathExpressionImpl, Boolean> isNonunique;
@@ -35,8 +35,8 @@ public abstract class QueryPathExpressionImpl_ extends org.omg.sysml.metamodel.i
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<QueryPathExpressionImpl, Element> member;
 	public static volatile ListAttribute<QueryPathExpressionImpl, FeatureMembership> ownedFeatureMembership;
-	public static volatile SingularAttribute<QueryPathExpressionImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, Behavior> behavior;
+	public static volatile SingularAttribute<QueryPathExpressionImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<QueryPathExpressionImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<QueryPathExpressionImpl, Membership> importedMembership;
@@ -47,19 +47,19 @@ public abstract class QueryPathExpressionImpl_ extends org.omg.sysml.metamodel.i
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, Type> referencedType;
 	public static volatile ListAttribute<QueryPathExpressionImpl, Import> ownedImport;
-	public static volatile SingularAttribute<QueryPathExpressionImpl, Boolean> isAbstract;
 	public static volatile SingularAttribute<QueryPathExpressionImpl, Boolean> isEnd;
+	public static volatile SingularAttribute<QueryPathExpressionImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, Feature> input;
 	public static volatile SingularAttribute<QueryPathExpressionImpl, Boolean> isComposite;
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, Type> ownedType;
-	public static volatile SingularAttribute<QueryPathExpressionImpl, String> name;
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, FeatureTyping> typing;
+	public static volatile SingularAttribute<QueryPathExpressionImpl, String> name;
 	public static volatile ListAttribute<QueryPathExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<QueryPathExpressionImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
-	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String IS_UNIQUE = "isUnique";
+	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String MEMBERSHIP = "membership";
 	public static final String TYPE = "type";
 	public static final String IS_NONUNIQUE = "isNonunique";
@@ -69,8 +69,8 @@ public abstract class QueryPathExpressionImpl_ extends org.omg.sysml.metamodel.i
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
-	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String BEHAVIOR = "behavior";
+	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
@@ -81,13 +81,13 @@ public abstract class QueryPathExpressionImpl_ extends org.omg.sysml.metamodel.i
 	public static final String END_FEATURE = "endFeature";
 	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String OWNED_IMPORT = "ownedImport";
-	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String IS_END = "isEnd";
+	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String INPUT = "input";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String OWNED_TYPE = "ownedType";
-	public static final String NAME = "name";
 	public static final String TYPING = "typing";
+	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 

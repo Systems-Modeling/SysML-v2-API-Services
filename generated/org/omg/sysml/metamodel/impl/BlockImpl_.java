@@ -30,8 +30,8 @@ public abstract class BlockImpl_ extends org.omg.sysml.metamodel.impl.MofObjectI
 	public static volatile CollectionAttribute<BlockImpl, Feature> output;
 	public static volatile CollectionAttribute<BlockImpl, Feature> feature;
 	public static volatile ListAttribute<BlockImpl, Membership> inheritedMembership;
-	public static volatile CollectionAttribute<BlockImpl, Feature> ownedEndFeature;
 	public static volatile CollectionAttribute<BlockImpl, Property> property;
+	public static volatile CollectionAttribute<BlockImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<BlockImpl, Element> member;
 	public static volatile ListAttribute<BlockImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile SingularAttribute<BlockImpl, Boolean> isSufficient;
@@ -59,8 +59,8 @@ public abstract class BlockImpl_ extends org.omg.sysml.metamodel.impl.MofObjectI
 	public static final String OUTPUT = "output";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
-	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String PROPERTY = "property";
+	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String IS_SUFFICIENT = "isSufficient";

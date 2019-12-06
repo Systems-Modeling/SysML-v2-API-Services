@@ -4,10 +4,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Multiplicity extends Relationship, MofObject {
-    Expression getLower();
+public interface Multiplicity extends Feature, MofObject {
 
-    Expression getUpper();
-
-    Feature getFeatureWithMultiplicity();
 }

@@ -17,8 +17,8 @@ public abstract class SubsettingImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile CollectionAttribute<SubsettingImpl, Element> relatedElement;
 	public static volatile CollectionAttribute<SubsettingImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<SubsettingImpl, String> name;
-	public static volatile CollectionAttribute<SubsettingImpl, Element> ownedRelatedElement;
 	public static volatile CollectionAttribute<SubsettingImpl, Element> source;
+	public static volatile CollectionAttribute<SubsettingImpl, Element> ownedRelatedElement;
 	public static volatile CollectionAttribute<SubsettingImpl, Element> target;
 
 	public static final String IDENTIFIER = "identifier";
@@ -26,8 +26,8 @@ public abstract class SubsettingImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String NAME = "name";
-	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
+	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String TARGET = "target";
 
 }
