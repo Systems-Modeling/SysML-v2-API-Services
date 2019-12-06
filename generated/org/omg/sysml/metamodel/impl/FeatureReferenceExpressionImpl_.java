@@ -24,8 +24,8 @@ import org.omg.sysml.metamodel.Type;
 public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Generalization> ownedGeneralization;
-	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, Subsetting> ownedSubsetting;
 	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isUnique;
+	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, Subsetting> ownedSubsetting;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Membership> membership;
 	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, Type> type;
 	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isNonunique;
@@ -35,8 +35,8 @@ public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.meta
 	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Element> member;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, FeatureMembership> ownedFeatureMembership;
-	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, Behavior> behavior;
+	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Membership> importedMembership;
@@ -47,19 +47,19 @@ public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.meta
 	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, Type> referencedType;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Import> ownedImport;
-	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isAbstract;
 	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isEnd;
+	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, Feature> input;
 	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isComposite;
 	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, Type> ownedType;
-	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, String> name;
 	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, FeatureTyping> typing;
+	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, String> name;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
-	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String IS_UNIQUE = "isUnique";
+	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String MEMBERSHIP = "membership";
 	public static final String TYPE = "type";
 	public static final String IS_NONUNIQUE = "isNonunique";
@@ -69,8 +69,8 @@ public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.meta
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
-	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String BEHAVIOR = "behavior";
+	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
@@ -81,13 +81,13 @@ public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.meta
 	public static final String END_FEATURE = "endFeature";
 	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String OWNED_IMPORT = "ownedImport";
-	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String IS_END = "isEnd";
+	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String INPUT = "input";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String OWNED_TYPE = "ownedType";
-	public static final String NAME = "name";
 	public static final String TYPING = "typing";
+	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 

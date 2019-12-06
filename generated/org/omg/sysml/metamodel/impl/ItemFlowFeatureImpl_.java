@@ -23,8 +23,8 @@ import org.omg.sysml.metamodel.Type;
 public abstract class ItemFlowFeatureImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<ItemFlowFeatureImpl, Generalization> ownedGeneralization;
-	public static volatile CollectionAttribute<ItemFlowFeatureImpl, Subsetting> ownedSubsetting;
 	public static volatile SingularAttribute<ItemFlowFeatureImpl, Boolean> isUnique;
+	public static volatile CollectionAttribute<ItemFlowFeatureImpl, Subsetting> ownedSubsetting;
 	public static volatile ListAttribute<ItemFlowFeatureImpl, Membership> membership;
 	public static volatile CollectionAttribute<ItemFlowFeatureImpl, Type> type;
 	public static volatile SingularAttribute<ItemFlowFeatureImpl, Boolean> isNonunique;
@@ -45,19 +45,19 @@ public abstract class ItemFlowFeatureImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<ItemFlowFeatureImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<ItemFlowFeatureImpl, Type> referencedType;
 	public static volatile ListAttribute<ItemFlowFeatureImpl, Import> ownedImport;
-	public static volatile SingularAttribute<ItemFlowFeatureImpl, Boolean> isAbstract;
 	public static volatile SingularAttribute<ItemFlowFeatureImpl, Boolean> isEnd;
+	public static volatile SingularAttribute<ItemFlowFeatureImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<ItemFlowFeatureImpl, Feature> input;
 	public static volatile SingularAttribute<ItemFlowFeatureImpl, Boolean> isComposite;
 	public static volatile CollectionAttribute<ItemFlowFeatureImpl, Type> ownedType;
-	public static volatile SingularAttribute<ItemFlowFeatureImpl, String> name;
 	public static volatile CollectionAttribute<ItemFlowFeatureImpl, FeatureTyping> typing;
+	public static volatile SingularAttribute<ItemFlowFeatureImpl, String> name;
 	public static volatile ListAttribute<ItemFlowFeatureImpl, Element> ownedMember;
 	public static volatile ListAttribute<ItemFlowFeatureImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
-	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String IS_UNIQUE = "isUnique";
+	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String MEMBERSHIP = "membership";
 	public static final String TYPE = "type";
 	public static final String IS_NONUNIQUE = "isNonunique";
@@ -78,13 +78,13 @@ public abstract class ItemFlowFeatureImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String END_FEATURE = "endFeature";
 	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String OWNED_IMPORT = "ownedImport";
-	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String IS_END = "isEnd";
+	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String INPUT = "input";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String OWNED_TYPE = "ownedType";
-	public static final String NAME = "name";
 	public static final String TYPING = "typing";
+	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 

@@ -21,8 +21,8 @@ public abstract class PortMembershipImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile SingularAttribute<PortMembershipImpl, VisibilityKind> visibility;
 	public static volatile CollectionAttribute<PortMembershipImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<PortMembershipImpl, String> memberName;
-	public static volatile CollectionAttribute<PortMembershipImpl, Element> ownedRelatedElement;
 	public static volatile CollectionAttribute<PortMembershipImpl, Element> source;
+	public static volatile CollectionAttribute<PortMembershipImpl, Element> ownedRelatedElement;
 	public static volatile SingularAttribute<PortMembershipImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<PortMembershipImpl, Boolean> isPort;
 	public static volatile CollectionAttribute<PortMembershipImpl, Element> target;
@@ -39,8 +39,8 @@ public abstract class PortMembershipImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String VISIBILITY = "visibility";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String MEMBER_NAME = "memberName";
-	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
+	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_PORT = "isPort";
 	public static final String TARGET = "target";

@@ -25,15 +25,13 @@ public interface Feature extends Type, MofObject {
 
     Boolean getIsComposite();
 
-    FeatureValue getValuation();
-
-    Multiplicity getMultiplicity();
-
     Collection<? extends FeatureTyping> getTyping();
 
     Boolean getIsEnd();
 
     Type getEndOwningType();
+
+    Multiplicity getMultiplicity();
 
     Boolean getIsNonunique();
 }

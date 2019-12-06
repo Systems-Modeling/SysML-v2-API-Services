@@ -21,8 +21,8 @@ public abstract class EndFeatureMembershipImpl_ extends org.omg.sysml.metamodel.
 	public static volatile SingularAttribute<EndFeatureMembershipImpl, VisibilityKind> visibility;
 	public static volatile CollectionAttribute<EndFeatureMembershipImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<EndFeatureMembershipImpl, String> memberName;
-	public static volatile CollectionAttribute<EndFeatureMembershipImpl, Element> ownedRelatedElement;
 	public static volatile CollectionAttribute<EndFeatureMembershipImpl, Element> source;
+	public static volatile CollectionAttribute<EndFeatureMembershipImpl, Element> ownedRelatedElement;
 	public static volatile SingularAttribute<EndFeatureMembershipImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<EndFeatureMembershipImpl, Boolean> isPort;
 	public static volatile CollectionAttribute<EndFeatureMembershipImpl, Element> target;
@@ -39,8 +39,8 @@ public abstract class EndFeatureMembershipImpl_ extends org.omg.sysml.metamodel.
 	public static final String VISIBILITY = "visibility";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String MEMBER_NAME = "memberName";
-	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
+	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_PORT = "isPort";
 	public static final String TARGET = "target";

@@ -23,9 +23,9 @@ import org.omg.sysml.metamodel.Type;
 public abstract class InteractionImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<InteractionImpl, Generalization> ownedGeneralization;
-	public static volatile CollectionAttribute<InteractionImpl, Superclassing> ownedSuperclassing;
-	public static volatile CollectionAttribute<InteractionImpl, Element> ownedRelatedElement;
 	public static volatile CollectionAttribute<InteractionImpl, Element> source;
+	public static volatile CollectionAttribute<InteractionImpl, Element> ownedRelatedElement;
+	public static volatile CollectionAttribute<InteractionImpl, Superclassing> ownedSuperclassing;
 	public static volatile ListAttribute<InteractionImpl, Membership> membership;
 	public static volatile CollectionAttribute<InteractionImpl, Feature> output;
 	public static volatile CollectionAttribute<InteractionImpl, Type> relatedType;
@@ -36,8 +36,8 @@ public abstract class InteractionImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static volatile ListAttribute<InteractionImpl, Element> member;
 	public static volatile ListAttribute<InteractionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile SingularAttribute<InteractionImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<InteractionImpl, Membership> importedMembership;
 	public static volatile SingularAttribute<InteractionImpl, UUID> identifier;
+	public static volatile ListAttribute<InteractionImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<InteractionImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<InteractionImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<InteractionImpl, Relationship> ownedRelationship;
@@ -54,9 +54,9 @@ public abstract class InteractionImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static volatile ListAttribute<InteractionImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
-	public static final String OWNED_SUPERCLASSING = "ownedSuperclassing";
-	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
+	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
+	public static final String OWNED_SUPERCLASSING = "ownedSuperclassing";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OUTPUT = "output";
 	public static final String RELATED_TYPE = "relatedType";
@@ -67,8 +67,8 @@ public abstract class InteractionImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String IDENTIFIER = "identifier";
+	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";

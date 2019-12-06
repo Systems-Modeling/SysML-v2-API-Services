@@ -19,8 +19,8 @@ public abstract class ImportImpl_ extends org.omg.sysml.metamodel.impl.MofObject
 	public static volatile CollectionAttribute<ImportImpl, Element> relatedElement;
 	public static volatile CollectionAttribute<ImportImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<ImportImpl, String> name;
-	public static volatile CollectionAttribute<ImportImpl, Element> ownedRelatedElement;
 	public static volatile CollectionAttribute<ImportImpl, Element> source;
+	public static volatile CollectionAttribute<ImportImpl, Element> ownedRelatedElement;
 	public static volatile CollectionAttribute<ImportImpl, Element> target;
 
 	public static final String IDENTIFIER = "identifier";
@@ -29,8 +29,8 @@ public abstract class ImportImpl_ extends org.omg.sysml.metamodel.impl.MofObject
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String NAME = "name";
-	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
+	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String TARGET = "target";
 
 }

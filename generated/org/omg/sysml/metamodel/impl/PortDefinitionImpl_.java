@@ -30,8 +30,8 @@ public abstract class PortDefinitionImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<PortDefinitionImpl, Feature> output;
 	public static volatile CollectionAttribute<PortDefinitionImpl, Feature> feature;
 	public static volatile ListAttribute<PortDefinitionImpl, Membership> inheritedMembership;
-	public static volatile CollectionAttribute<PortDefinitionImpl, Feature> ownedEndFeature;
 	public static volatile CollectionAttribute<PortDefinitionImpl, Property> property;
+	public static volatile CollectionAttribute<PortDefinitionImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<PortDefinitionImpl, Element> member;
 	public static volatile ListAttribute<PortDefinitionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile SingularAttribute<PortDefinitionImpl, Boolean> isSufficient;
@@ -59,8 +59,8 @@ public abstract class PortDefinitionImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String OUTPUT = "output";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
-	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String PROPERTY = "property";
+	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String IS_SUFFICIENT = "isSufficient";
