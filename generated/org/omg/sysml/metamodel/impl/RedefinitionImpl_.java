@@ -17,8 +17,8 @@ public abstract class RedefinitionImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static volatile CollectionAttribute<RedefinitionImpl, Element> relatedElement;
 	public static volatile CollectionAttribute<RedefinitionImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<RedefinitionImpl, String> name;
-	public static volatile CollectionAttribute<RedefinitionImpl, Element> ownedRelatedElement;
 	public static volatile CollectionAttribute<RedefinitionImpl, Element> source;
+	public static volatile CollectionAttribute<RedefinitionImpl, Element> ownedRelatedElement;
 	public static volatile CollectionAttribute<RedefinitionImpl, Element> target;
 
 	public static final String IDENTIFIER = "identifier";
@@ -26,8 +26,8 @@ public abstract class RedefinitionImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String NAME = "name";
-	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
+	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String TARGET = "target";
 
 }

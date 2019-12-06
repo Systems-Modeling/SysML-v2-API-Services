@@ -25,8 +25,8 @@ import org.omg.sysml.metamodel.Type;
 public abstract class OperatorExpressionImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<OperatorExpressionImpl, Generalization> ownedGeneralization;
-	public static volatile CollectionAttribute<OperatorExpressionImpl, Subsetting> ownedSubsetting;
 	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isUnique;
+	public static volatile CollectionAttribute<OperatorExpressionImpl, Subsetting> ownedSubsetting;
 	public static volatile ListAttribute<OperatorExpressionImpl, Membership> membership;
 	public static volatile CollectionAttribute<OperatorExpressionImpl, Type> type;
 	public static volatile SingularAttribute<OperatorExpressionImpl, String> operator;
@@ -37,8 +37,8 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.metamodel.im
 	public static volatile CollectionAttribute<OperatorExpressionImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<OperatorExpressionImpl, Element> member;
 	public static volatile ListAttribute<OperatorExpressionImpl, FeatureMembership> ownedFeatureMembership;
-	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<OperatorExpressionImpl, Behavior> behavior;
+	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<OperatorExpressionImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<OperatorExpressionImpl, Membership> importedMembership;
@@ -49,20 +49,20 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.metamodel.im
 	public static volatile CollectionAttribute<OperatorExpressionImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<OperatorExpressionImpl, Type> referencedType;
 	public static volatile ListAttribute<OperatorExpressionImpl, Import> ownedImport;
-	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isAbstract;
 	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isEnd;
+	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<OperatorExpressionImpl, Feature> input;
 	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isComposite;
 	public static volatile CollectionAttribute<OperatorExpressionImpl, Type> ownedType;
-	public static volatile SingularAttribute<OperatorExpressionImpl, String> name;
 	public static volatile CollectionAttribute<OperatorExpressionImpl, FeatureTyping> typing;
+	public static volatile SingularAttribute<OperatorExpressionImpl, String> name;
 	public static volatile ListAttribute<OperatorExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<OperatorExpressionImpl, Expression> operand;
 	public static volatile ListAttribute<OperatorExpressionImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
-	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String IS_UNIQUE = "isUnique";
+	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String MEMBERSHIP = "membership";
 	public static final String TYPE = "type";
 	public static final String OPERATOR = "operator";
@@ -73,8 +73,8 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.metamodel.im
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
-	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String BEHAVIOR = "behavior";
+	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
@@ -85,13 +85,13 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.metamodel.im
 	public static final String END_FEATURE = "endFeature";
 	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String OWNED_IMPORT = "ownedImport";
-	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String IS_END = "isEnd";
+	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String INPUT = "input";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String OWNED_TYPE = "ownedType";
-	public static final String NAME = "name";
 	public static final String TYPING = "typing";
+	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OPERAND = "operand";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";

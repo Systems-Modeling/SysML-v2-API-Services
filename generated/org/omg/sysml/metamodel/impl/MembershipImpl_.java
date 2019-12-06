@@ -21,8 +21,8 @@ public abstract class MembershipImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile CollectionAttribute<MembershipImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<MembershipImpl, String> name;
 	public static volatile SingularAttribute<MembershipImpl, String> memberName;
-	public static volatile CollectionAttribute<MembershipImpl, Element> ownedRelatedElement;
 	public static volatile CollectionAttribute<MembershipImpl, Element> source;
+	public static volatile CollectionAttribute<MembershipImpl, Element> ownedRelatedElement;
 	public static volatile CollectionAttribute<MembershipImpl, Element> target;
 
 	public static final String IDENTIFIER = "identifier";
@@ -33,8 +33,8 @@ public abstract class MembershipImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String NAME = "name";
 	public static final String MEMBER_NAME = "memberName";
-	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
+	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String TARGET = "target";
 
 }

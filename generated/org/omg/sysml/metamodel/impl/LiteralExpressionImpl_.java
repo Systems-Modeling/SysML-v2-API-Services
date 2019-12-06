@@ -24,8 +24,8 @@ import org.omg.sysml.metamodel.Type;
 public abstract class LiteralExpressionImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<LiteralExpressionImpl, Generalization> ownedGeneralization;
-	public static volatile CollectionAttribute<LiteralExpressionImpl, Subsetting> ownedSubsetting;
 	public static volatile SingularAttribute<LiteralExpressionImpl, Boolean> isUnique;
+	public static volatile CollectionAttribute<LiteralExpressionImpl, Subsetting> ownedSubsetting;
 	public static volatile ListAttribute<LiteralExpressionImpl, Membership> membership;
 	public static volatile CollectionAttribute<LiteralExpressionImpl, Type> type;
 	public static volatile SingularAttribute<LiteralExpressionImpl, Boolean> isNonunique;
@@ -35,8 +35,8 @@ public abstract class LiteralExpressionImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile CollectionAttribute<LiteralExpressionImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<LiteralExpressionImpl, Element> member;
 	public static volatile ListAttribute<LiteralExpressionImpl, FeatureMembership> ownedFeatureMembership;
-	public static volatile SingularAttribute<LiteralExpressionImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<LiteralExpressionImpl, Behavior> behavior;
+	public static volatile SingularAttribute<LiteralExpressionImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<LiteralExpressionImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<LiteralExpressionImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<LiteralExpressionImpl, Membership> importedMembership;
@@ -47,19 +47,19 @@ public abstract class LiteralExpressionImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile CollectionAttribute<LiteralExpressionImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<LiteralExpressionImpl, Type> referencedType;
 	public static volatile ListAttribute<LiteralExpressionImpl, Import> ownedImport;
-	public static volatile SingularAttribute<LiteralExpressionImpl, Boolean> isAbstract;
 	public static volatile SingularAttribute<LiteralExpressionImpl, Boolean> isEnd;
+	public static volatile SingularAttribute<LiteralExpressionImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<LiteralExpressionImpl, Feature> input;
 	public static volatile SingularAttribute<LiteralExpressionImpl, Boolean> isComposite;
 	public static volatile CollectionAttribute<LiteralExpressionImpl, Type> ownedType;
-	public static volatile SingularAttribute<LiteralExpressionImpl, String> name;
 	public static volatile CollectionAttribute<LiteralExpressionImpl, FeatureTyping> typing;
+	public static volatile SingularAttribute<LiteralExpressionImpl, String> name;
 	public static volatile ListAttribute<LiteralExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<LiteralExpressionImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
-	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String IS_UNIQUE = "isUnique";
+	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String MEMBERSHIP = "membership";
 	public static final String TYPE = "type";
 	public static final String IS_NONUNIQUE = "isNonunique";
@@ -69,8 +69,8 @@ public abstract class LiteralExpressionImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
-	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String BEHAVIOR = "behavior";
+	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
@@ -81,13 +81,13 @@ public abstract class LiteralExpressionImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String END_FEATURE = "endFeature";
 	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String OWNED_IMPORT = "ownedImport";
-	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String IS_END = "isEnd";
+	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String INPUT = "input";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String OWNED_TYPE = "ownedType";
-	public static final String NAME = "name";
 	public static final String TYPING = "typing";
+	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 

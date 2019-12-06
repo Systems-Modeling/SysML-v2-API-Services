@@ -28,9 +28,9 @@ public abstract class BehaviorImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile CollectionAttribute<BehaviorImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<BehaviorImpl, Relationship> ownedRelationship;
 	public static volatile CollectionAttribute<BehaviorImpl, Feature> endFeature;
-	public static volatile ListAttribute<BehaviorImpl, Import> ownedImport;
 	public static volatile CollectionAttribute<BehaviorImpl, Superclassing> ownedSuperclassing;
 	public static volatile ListAttribute<BehaviorImpl, Membership> membership;
+	public static volatile ListAttribute<BehaviorImpl, Import> ownedImport;
 	public static volatile SingularAttribute<BehaviorImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<BehaviorImpl, Feature> output;
 	public static volatile CollectionAttribute<BehaviorImpl, Feature> input;
@@ -38,8 +38,8 @@ public abstract class BehaviorImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile CollectionAttribute<BehaviorImpl, Parameter> parameter;
 	public static volatile ListAttribute<BehaviorImpl, Membership> inheritedMembership;
 	public static volatile CollectionAttribute<BehaviorImpl, Feature> ownedEndFeature;
-	public static volatile SingularAttribute<BehaviorImpl, String> name;
 	public static volatile ListAttribute<BehaviorImpl, Element> member;
+	public static volatile SingularAttribute<BehaviorImpl, String> name;
 	public static volatile ListAttribute<BehaviorImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<BehaviorImpl, Step> step;
 	public static volatile SingularAttribute<BehaviorImpl, Boolean> isSufficient;
@@ -53,9 +53,9 @@ public abstract class BehaviorImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String END_FEATURE = "endFeature";
-	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String OWNED_SUPERCLASSING = "ownedSuperclassing";
 	public static final String MEMBERSHIP = "membership";
+	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String OUTPUT = "output";
 	public static final String INPUT = "input";
@@ -63,8 +63,8 @@ public abstract class BehaviorImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static final String PARAMETER = "parameter";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
-	public static final String NAME = "name";
 	public static final String MEMBER = "member";
+	public static final String NAME = "name";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String STEP = "step";
 	public static final String IS_SUFFICIENT = "isSufficient";

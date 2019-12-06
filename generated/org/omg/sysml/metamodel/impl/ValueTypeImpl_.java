@@ -30,8 +30,8 @@ public abstract class ValueTypeImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile CollectionAttribute<ValueTypeImpl, Feature> output;
 	public static volatile CollectionAttribute<ValueTypeImpl, Feature> feature;
 	public static volatile ListAttribute<ValueTypeImpl, Membership> inheritedMembership;
-	public static volatile CollectionAttribute<ValueTypeImpl, Feature> ownedEndFeature;
 	public static volatile CollectionAttribute<ValueTypeImpl, Property> property;
+	public static volatile CollectionAttribute<ValueTypeImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<ValueTypeImpl, Element> member;
 	public static volatile ListAttribute<ValueTypeImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile SingularAttribute<ValueTypeImpl, Boolean> isSufficient;
@@ -59,8 +59,8 @@ public abstract class ValueTypeImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String OUTPUT = "output";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
-	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String PROPERTY = "property";
+	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String IS_SUFFICIENT = "isSufficient";

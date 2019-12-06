@@ -17,8 +17,8 @@ public abstract class AnnotationImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile CollectionAttribute<AnnotationImpl, Element> relatedElement;
 	public static volatile CollectionAttribute<AnnotationImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<AnnotationImpl, String> name;
-	public static volatile CollectionAttribute<AnnotationImpl, Element> ownedRelatedElement;
 	public static volatile CollectionAttribute<AnnotationImpl, Element> source;
+	public static volatile CollectionAttribute<AnnotationImpl, Element> ownedRelatedElement;
 	public static volatile CollectionAttribute<AnnotationImpl, Element> target;
 
 	public static final String IDENTIFIER = "identifier";
@@ -26,8 +26,8 @@ public abstract class AnnotationImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String NAME = "name";
-	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
+	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String TARGET = "target";
 
 }
