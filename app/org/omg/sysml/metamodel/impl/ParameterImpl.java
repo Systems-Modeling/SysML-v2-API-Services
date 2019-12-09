@@ -828,6 +828,7 @@ public class ParameterImpl extends MofObjectImpl implements Parameter {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Parameter")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

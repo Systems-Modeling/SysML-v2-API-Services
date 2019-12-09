@@ -229,6 +229,7 @@ public class ParameterMembershipImpl extends MofObjectImpl implements ParameterM
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "direction", table = "ParameterMembership")
     public FeatureDirectionKind getDirection() {
         return direction;
     }
@@ -264,6 +265,7 @@ public class ParameterMembershipImpl extends MofObjectImpl implements ParameterM
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "visibility", table = "ParameterMembership")
     public VisibilityKind getVisibility() {
         return visibility;
     }
@@ -514,6 +516,7 @@ public class ParameterMembershipImpl extends MofObjectImpl implements ParameterM
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "ParameterMembership")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

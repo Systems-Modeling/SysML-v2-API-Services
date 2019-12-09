@@ -891,6 +891,7 @@ public class LiteralRealImpl extends MofObjectImpl implements LiteralReal {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "LiteralReal")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

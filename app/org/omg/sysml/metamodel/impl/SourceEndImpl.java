@@ -828,6 +828,7 @@ public class SourceEndImpl extends MofObjectImpl implements SourceEnd {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "SourceEnd")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

@@ -1063,6 +1063,7 @@ public class PortUsageImpl extends MofObjectImpl implements PortUsage {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "PortUsage")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

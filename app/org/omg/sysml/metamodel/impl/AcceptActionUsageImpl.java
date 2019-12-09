@@ -1115,6 +1115,7 @@ public class AcceptActionUsageImpl extends MofObjectImpl implements AcceptAction
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "AcceptActionUsage")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

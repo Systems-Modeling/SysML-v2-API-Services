@@ -828,6 +828,7 @@ public class FeatureImpl extends MofObjectImpl implements Feature {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Feature")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

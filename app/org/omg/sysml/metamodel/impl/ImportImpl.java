@@ -92,6 +92,7 @@ public class ImportImpl extends MofObjectImpl implements Import {
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "visibility", table = "Import")
     public VisibilityKind getVisibility() {
         return visibility;
     }
@@ -262,6 +263,7 @@ public class ImportImpl extends MofObjectImpl implements Import {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Import")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

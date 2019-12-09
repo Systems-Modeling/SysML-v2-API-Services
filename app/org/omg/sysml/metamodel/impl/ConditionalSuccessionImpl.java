@@ -447,6 +447,7 @@ public class ConditionalSuccessionImpl extends MofObjectImpl implements Conditio
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "ConditionalSuccession")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

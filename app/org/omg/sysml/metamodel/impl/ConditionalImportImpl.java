@@ -132,6 +132,7 @@ public class ConditionalImportImpl extends MofObjectImpl implements ConditionalI
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "visibility", table = "ConditionalImport")
     public VisibilityKind getVisibility() {
         return visibility;
     }
@@ -302,6 +303,7 @@ public class ConditionalImportImpl extends MofObjectImpl implements ConditionalI
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "ConditionalImport")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

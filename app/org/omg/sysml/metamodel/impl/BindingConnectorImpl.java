@@ -327,6 +327,7 @@ public class BindingConnectorImpl extends MofObjectImpl implements BindingConnec
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "BindingConnector")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

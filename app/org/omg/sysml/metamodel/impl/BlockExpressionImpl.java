@@ -875,6 +875,7 @@ public class BlockExpressionImpl extends MofObjectImpl implements BlockExpressio
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "BlockExpression")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

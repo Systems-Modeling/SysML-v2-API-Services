@@ -33,7 +33,7 @@ public class JpaProjectDao extends JpaDao<Project> implements ProjectDao {
             CriteriaBuilder builder = em.getCriteriaBuilder();
             CriteriaQuery<ProjectImpl> query = builder.createQuery(ProjectImpl.class);
             Root<ProjectImpl> root = query.from(ProjectImpl.class);
-            query.select(root).where(builder.equal(root.get(ProjectImpl_.identifier), id));
+            query.select(root).where(builder.equal(root.get(ProjectImpl_.id), id));
             try {
                 return Optional.of(em.createQuery(query).getSingleResult());
             } catch (NoResultException e) {

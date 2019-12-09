@@ -191,6 +191,7 @@ public class FeatureMembershipImpl extends MofObjectImpl implements FeatureMembe
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "direction", table = "FeatureMembership")
     public FeatureDirectionKind getDirection() {
         return direction;
     }
@@ -226,6 +227,7 @@ public class FeatureMembershipImpl extends MofObjectImpl implements FeatureMembe
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "visibility", table = "FeatureMembership")
     public VisibilityKind getVisibility() {
         return visibility;
     }
@@ -476,6 +478,7 @@ public class FeatureMembershipImpl extends MofObjectImpl implements FeatureMembe
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "FeatureMembership")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

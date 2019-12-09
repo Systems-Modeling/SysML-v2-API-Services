@@ -1094,6 +1094,7 @@ public class DecisionNodeImpl extends MofObjectImpl implements DecisionNode {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "DecisionNode")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

@@ -891,6 +891,7 @@ public class LiteralIntegerImpl extends MofObjectImpl implements LiteralInteger 
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "LiteralInteger")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

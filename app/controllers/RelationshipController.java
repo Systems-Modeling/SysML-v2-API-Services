@@ -47,7 +47,7 @@ public class RelationshipController extends Controller {
             return Results.badRequest();
         }
         Optional<Relationship> responseRelationship = relationshipService.create((Relationship) requestedObject);
-        return responseRelationship.map(e -> created(Json.toJson(e))).orElseGet(Results::badRequest);
+        return responseRelationship.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 
     public Result byRelatedElementId(String id) {

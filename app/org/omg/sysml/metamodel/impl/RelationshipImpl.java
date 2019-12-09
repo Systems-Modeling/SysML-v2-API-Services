@@ -207,6 +207,7 @@ public class RelationshipImpl extends MofObjectImpl implements Relationship {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Relationship")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

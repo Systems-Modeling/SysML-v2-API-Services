@@ -854,6 +854,7 @@ public class StepImpl extends MofObjectImpl implements Step {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Step")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

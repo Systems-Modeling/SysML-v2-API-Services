@@ -766,6 +766,7 @@ public class ActivityImpl extends MofObjectImpl implements Activity {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Activity")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

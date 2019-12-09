@@ -532,6 +532,7 @@ public class ClassImpl extends MofObjectImpl implements Class {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Class")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

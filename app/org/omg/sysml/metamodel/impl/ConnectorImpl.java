@@ -327,6 +327,7 @@ public class ConnectorImpl extends MofObjectImpl implements Connector {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Connector")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

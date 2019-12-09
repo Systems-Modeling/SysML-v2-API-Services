@@ -893,6 +893,7 @@ public class LiteralStringImpl extends MofObjectImpl implements LiteralString {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "LiteralString")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

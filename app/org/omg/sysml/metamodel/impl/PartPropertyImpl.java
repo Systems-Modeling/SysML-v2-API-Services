@@ -1068,6 +1068,7 @@ public class PartPropertyImpl extends MofObjectImpl implements PartProperty {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "PartProperty")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

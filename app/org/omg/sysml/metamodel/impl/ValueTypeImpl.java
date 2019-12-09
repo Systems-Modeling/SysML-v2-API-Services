@@ -688,6 +688,7 @@ public class ValueTypeImpl extends MofObjectImpl implements ValueType {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "ValueType")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

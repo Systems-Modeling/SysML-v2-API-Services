@@ -245,6 +245,7 @@ public class OwnershipImpl extends MofObjectImpl implements Ownership {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Ownership")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

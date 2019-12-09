@@ -532,6 +532,7 @@ public class DataTypeImpl extends MofObjectImpl implements DataType {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "DataType")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

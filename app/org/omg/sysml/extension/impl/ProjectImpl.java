@@ -1,17 +1,16 @@
 package org.omg.sysml.extension.impl;
 
 import com.fasterxml.jackson.annotation.*;
-import org.omg.sysml.extension.Project;
-
 import org.hibernate.annotations.FetchMode;
+import org.omg.sysml.extension.Project;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
 
-// import info.archinnov.achilles.annotations.UDT;
-
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.SecondaryTable;
+
+// import info.archinnov.achilles.annotations.UDT;
 
 @Entity
 @SecondaryTable(name = "Project")

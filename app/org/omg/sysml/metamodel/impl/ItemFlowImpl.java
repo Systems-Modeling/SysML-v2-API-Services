@@ -483,6 +483,7 @@ public class ItemFlowImpl extends MofObjectImpl implements ItemFlow {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "ItemFlow")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

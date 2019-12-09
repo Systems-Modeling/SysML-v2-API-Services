@@ -1,9 +1,11 @@
 import com.google.inject.AbstractModule;
 import config.MetamodelProvider;
 import config.impl.JPAMetamodelProvider;
+import dao.CommitDao;
 import dao.ElementDao;
 import dao.ProjectDao;
 import dao.RelationshipDao;
+import dao.impl.jpa.JpaCommitDao;
 import dao.impl.jpa.JpaElementDao;
 import dao.impl.jpa.JpaProjectDao;
 import dao.impl.jpa.JpaRelationshipDao;
@@ -22,5 +24,6 @@ public class Module extends AbstractModule {
         bind(ElementDao.class).to(JpaElementDao.class);
         bind(ProjectDao.class).to(JpaProjectDao.class);
         bind(RelationshipDao.class).to(JpaRelationshipDao.class);
+        bind(CommitDao.class).to(JpaCommitDao.class);
     }
 }

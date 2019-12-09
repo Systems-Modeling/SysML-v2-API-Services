@@ -875,6 +875,7 @@ public class NullExpressionImpl extends MofObjectImpl implements NullExpression 
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "NullExpression")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

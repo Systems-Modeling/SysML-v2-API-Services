@@ -72,6 +72,7 @@ public class MembershipImpl extends MofObjectImpl implements Membership {
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "visibility", table = "Membership")
     public VisibilityKind getVisibility() {
         return visibility;
     }
@@ -322,6 +323,7 @@ public class MembershipImpl extends MofObjectImpl implements Membership {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Membership")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

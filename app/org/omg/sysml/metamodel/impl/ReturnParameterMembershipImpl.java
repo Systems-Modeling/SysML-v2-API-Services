@@ -229,6 +229,7 @@ public class ReturnParameterMembershipImpl extends MofObjectImpl implements Retu
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "direction", table = "ReturnParameterMembership")
     public FeatureDirectionKind getDirection() {
         return direction;
     }
@@ -264,6 +265,7 @@ public class ReturnParameterMembershipImpl extends MofObjectImpl implements Retu
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "visibility", table = "ReturnParameterMembership")
     public VisibilityKind getVisibility() {
         return visibility;
     }
@@ -514,6 +516,7 @@ public class ReturnParameterMembershipImpl extends MofObjectImpl implements Retu
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "ReturnParameterMembership")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

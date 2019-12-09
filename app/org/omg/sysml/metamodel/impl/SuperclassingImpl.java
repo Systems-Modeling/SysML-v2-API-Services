@@ -325,6 +325,7 @@ public class SuperclassingImpl extends MofObjectImpl implements Superclassing {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Superclassing")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

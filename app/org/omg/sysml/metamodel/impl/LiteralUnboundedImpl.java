@@ -875,6 +875,7 @@ public class LiteralUnboundedImpl extends MofObjectImpl implements LiteralUnboun
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "LiteralUnbounded")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

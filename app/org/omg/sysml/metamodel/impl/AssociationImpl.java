@@ -280,6 +280,7 @@ public class AssociationImpl extends MofObjectImpl implements Association {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Association")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

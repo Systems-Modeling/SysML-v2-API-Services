@@ -1094,6 +1094,7 @@ public class MergeNodeImpl extends MofObjectImpl implements MergeNode {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "MergeNode")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

@@ -280,6 +280,7 @@ public class InteractionImpl extends MofObjectImpl implements Interaction {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Interaction")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

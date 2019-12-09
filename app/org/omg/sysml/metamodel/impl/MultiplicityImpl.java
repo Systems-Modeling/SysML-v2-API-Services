@@ -828,6 +828,7 @@ public class MultiplicityImpl extends MofObjectImpl implements Multiplicity {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Multiplicity")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

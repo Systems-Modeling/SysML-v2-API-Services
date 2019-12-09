@@ -1068,6 +1068,7 @@ public class ValuePropertyImpl extends MofObjectImpl implements ValueProperty {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "ValueProperty")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

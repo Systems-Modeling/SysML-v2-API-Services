@@ -1094,6 +1094,7 @@ public abstract class ControlNodeImpl extends MofObjectImpl implements ControlNo
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "ControlNode")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

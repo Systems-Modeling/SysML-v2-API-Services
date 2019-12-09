@@ -1094,6 +1094,7 @@ public class ForkNodeImpl extends MofObjectImpl implements ForkNode {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "ForkNode")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

@@ -363,6 +363,7 @@ public class RedefinitionImpl extends MofObjectImpl implements Redefinition {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Redefinition")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

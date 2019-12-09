@@ -584,6 +584,7 @@ public class BehaviorImpl extends MofObjectImpl implements Behavior {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Behavior")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

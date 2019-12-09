@@ -43,6 +43,6 @@ public class ProjectController extends Controller {
         JsonNode requestBodyJson = request.body().asJson();
         Project requestProject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Project.class));
         Optional<Project> responseProject = projectService.create(requestProject);
-        return responseProject.map(e -> created(Json.toJson(e))).orElseGet(Results::badRequest);
+        return responseProject.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 }

@@ -30,7 +30,7 @@ public class MofObjectDeserializer extends StdDeserializer<MofObjectImpl> {
         JsonToken token;
         MofObjectImpl mof = null;
         while ((token = p.nextToken()) != null && token != JsonToken.END_OBJECT) {
-            if (mof == null && token == JsonToken.FIELD_NAME && "identifier".equals(p.getCurrentName())) {
+            if (mof == null && token == JsonToken.FIELD_NAME && "id".equals(p.getCurrentName())) {
                 p.nextToken();
                 Object id = p.getText();
                 if ("java.util.UUID".endsWith("UUID")) {

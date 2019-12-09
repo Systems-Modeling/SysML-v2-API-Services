@@ -242,6 +242,7 @@ public class PackageImpl extends MofObjectImpl implements Package {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Package")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

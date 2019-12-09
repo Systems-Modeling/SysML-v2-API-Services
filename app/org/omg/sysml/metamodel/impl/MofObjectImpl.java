@@ -23,20 +23,20 @@ import org.hibernate.annotations.Any;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public abstract class MofObjectImpl implements MofObject {
     //@PartitionKey
-    public java.util.UUID identifier;
+    public java.util.UUID id;
 
     @Id
     // TODO Abstract this concept to cli option
     @GeneratedValue(generator = "UseExistingOrGenerateUUIDGenerator")
-    @Column(name = "identifier")
-    @JsonGetter(value = "identifier")
-    public java.util.UUID getIdentifier() {
-        return identifier;
+    @Column(name = "id")
+    @JsonGetter(value = "id")
+    public java.util.UUID getId() {
+        return id;
     }
 
-    @JsonSetter(value = "identifier")
-    public void setIdentifier(java.util.UUID identifier) {
-        this.identifier = identifier;
+    @JsonSetter(value = "id")
+    public void setId(java.util.UUID id) {
+        this.id = id;
     }
 
     // TODO Remove temporary modification for prototyping Project concept
@@ -55,5 +55,21 @@ public abstract class MofObjectImpl implements MofObject {
     @JsonDeserialize(using = MofObjectDeserializer.class, as = org.omg.sysml.extension.impl.ProjectImpl.class)
     public void setContainingProject(org.omg.sysml.extension.Project containingProject) {
         this.containingProject = containingProject;
+    }
+
+    // TODO Remove hardcoding for identifier
+
+    // @info.archinnov.achilles.annotations.Column("identifier")
+    private java.util.UUID identifier;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "MofObject")
+    public java.util.UUID getIdentifier() {
+        return identifier;
+    }
+
+    @JsonSetter
+    public void setIdentifier(java.util.UUID identifier) {
+        this.identifier = identifier;
     }
 }

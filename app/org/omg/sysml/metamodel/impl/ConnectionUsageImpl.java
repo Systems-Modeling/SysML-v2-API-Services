@@ -499,6 +499,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "ConnectionUsage")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

@@ -899,6 +899,7 @@ public class SequenceConstructionExpressionImpl extends MofObjectImpl implements
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "SequenceConstructionExpression")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

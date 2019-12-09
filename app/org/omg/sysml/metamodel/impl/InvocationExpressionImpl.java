@@ -875,6 +875,7 @@ public class InvocationExpressionImpl extends MofObjectImpl implements Invocatio
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "InvocationExpression")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

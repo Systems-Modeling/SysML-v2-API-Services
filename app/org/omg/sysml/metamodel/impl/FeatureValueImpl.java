@@ -252,6 +252,7 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "direction", table = "FeatureValue")
     public FeatureDirectionKind getDirection() {
         return direction;
     }
@@ -287,6 +288,7 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "visibility", table = "FeatureValue")
     public VisibilityKind getVisibility() {
         return visibility;
     }
@@ -537,6 +539,7 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "FeatureValue")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

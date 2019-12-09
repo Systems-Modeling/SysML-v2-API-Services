@@ -426,6 +426,7 @@ public class SuccessionImpl extends MofObjectImpl implements Succession {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Succession")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

@@ -894,6 +894,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "QueryPathExpression")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

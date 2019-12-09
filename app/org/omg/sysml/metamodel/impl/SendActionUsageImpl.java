@@ -1136,6 +1136,7 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "SendActionUsage")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

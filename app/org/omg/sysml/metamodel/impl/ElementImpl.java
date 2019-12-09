@@ -90,6 +90,7 @@ public class ElementImpl extends MofObjectImpl implements Element {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Element")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

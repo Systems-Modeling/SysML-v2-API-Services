@@ -191,6 +191,7 @@ public class ConjugatedEndPortMembershipImpl extends MofObjectImpl implements Co
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "direction", table = "ConjugatedEndPortMembership")
     public FeatureDirectionKind getDirection() {
         return direction;
     }
@@ -226,6 +227,7 @@ public class ConjugatedEndPortMembershipImpl extends MofObjectImpl implements Co
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "visibility", table = "ConjugatedEndPortMembership")
     public VisibilityKind getVisibility() {
         return visibility;
     }
@@ -476,6 +478,7 @@ public class ConjugatedEndPortMembershipImpl extends MofObjectImpl implements Co
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "ConjugatedEndPortMembership")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

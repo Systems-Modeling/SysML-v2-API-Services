@@ -688,6 +688,7 @@ public class PortDefinitionImpl extends MofObjectImpl implements PortDefinition 
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "PortDefinition")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

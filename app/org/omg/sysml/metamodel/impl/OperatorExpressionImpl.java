@@ -917,6 +917,7 @@ public class OperatorExpressionImpl extends MofObjectImpl implements OperatorExp
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "OperatorExpression")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

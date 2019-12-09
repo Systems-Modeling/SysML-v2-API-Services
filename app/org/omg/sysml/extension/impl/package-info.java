@@ -11,10 +11,6 @@
 })
 package org.omg.sysml.extension.impl;
 
-import org.hibernate.annotations.AnyMetaDef;
-import org.hibernate.annotations.AnyMetaDefs;
-import org.hibernate.annotations.MetaValue;
+import org.hibernate.annotations.*;
 
 // TODO Abstract this concept to cli option
-import org.hibernate.annotations.GenericGenerators;
-import org.hibernate.annotations.GenericGenerator;

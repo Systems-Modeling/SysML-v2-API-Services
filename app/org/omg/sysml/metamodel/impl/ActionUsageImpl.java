@@ -1094,6 +1094,7 @@ public class ActionUsageImpl extends MofObjectImpl implements ActionUsage {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "ActionUsage")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

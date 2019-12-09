@@ -688,6 +688,7 @@ public class BlockImpl extends MofObjectImpl implements Block {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Block")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

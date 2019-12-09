@@ -1000,6 +1000,7 @@ public abstract class UsageImpl extends MofObjectImpl implements Usage {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Usage")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

@@ -875,6 +875,7 @@ public class ExpressionImpl extends MofObjectImpl implements Expression {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Expression")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

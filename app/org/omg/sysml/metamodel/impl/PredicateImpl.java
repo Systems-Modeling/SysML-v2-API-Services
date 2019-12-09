@@ -631,6 +631,7 @@ public class PredicateImpl extends MofObjectImpl implements Predicate {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Predicate")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

@@ -1115,6 +1115,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "TransferActionUsage")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

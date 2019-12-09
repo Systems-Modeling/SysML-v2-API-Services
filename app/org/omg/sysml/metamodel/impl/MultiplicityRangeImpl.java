@@ -891,6 +891,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "MultiplicityRange")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

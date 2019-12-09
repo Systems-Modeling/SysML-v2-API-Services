@@ -1094,6 +1094,7 @@ public class JoinNodeImpl extends MofObjectImpl implements JoinNode {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "JoinNode")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

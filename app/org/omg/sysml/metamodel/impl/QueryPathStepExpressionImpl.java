@@ -917,6 +917,7 @@ public class QueryPathStepExpressionImpl extends MofObjectImpl implements QueryP
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "QueryPathStepExpression")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

@@ -47,7 +47,7 @@ public class ElementController extends Controller {
             return Results.badRequest();
         }
         Optional<Element> responseElement = elementService.create(((Element) requestedObject));
-        return responseElement.map(e -> created(Json.toJson(e))).orElseGet(Results::badRequest);
+        return responseElement.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 
     public Result byProject(String projectId) {

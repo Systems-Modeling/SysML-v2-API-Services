@@ -306,6 +306,7 @@ public class InterfaceDefinitionImpl extends MofObjectImpl implements InterfaceD
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "InterfaceDefinition")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

@@ -29,6 +29,6 @@ public class ProjectService {
     }
 
     public Optional<Project> create(Project project) {
-        return project.getIdentifier() != null ? dao.update(project) : dao.persist(project);
+        return project.getId() != null ? dao.update(project) : dao.persist(project);
     }
 }

@@ -304,6 +304,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "FeatureTyping")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

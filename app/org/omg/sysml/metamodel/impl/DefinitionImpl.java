@@ -688,6 +688,7 @@ public abstract class DefinitionImpl extends MofObjectImpl implements Definition
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Definition")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

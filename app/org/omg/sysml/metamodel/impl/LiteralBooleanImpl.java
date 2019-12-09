@@ -891,6 +891,7 @@ public class LiteralBooleanImpl extends MofObjectImpl implements LiteralBoolean 
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "LiteralBoolean")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

@@ -894,6 +894,7 @@ public class FeatureReferenceExpressionImpl extends MofObjectImpl implements Fea
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "FeatureReferenceExpression")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

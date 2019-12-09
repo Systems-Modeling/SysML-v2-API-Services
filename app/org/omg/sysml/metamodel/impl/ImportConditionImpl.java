@@ -245,6 +245,7 @@ public class ImportConditionImpl extends MofObjectImpl implements ImportConditio
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "ImportCondition")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

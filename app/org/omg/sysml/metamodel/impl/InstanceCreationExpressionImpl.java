@@ -894,6 +894,7 @@ public class InstanceCreationExpressionImpl extends MofObjectImpl implements Ins
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "InstanceCreationExpression")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

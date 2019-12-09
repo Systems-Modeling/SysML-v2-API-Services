@@ -1,7 +1,7 @@
 package org.omg.sysml.metamodel;
 
 public interface MofObject {
-    java.util.UUID getIdentifier();
+    java.util.UUID getId();
 
     // TODO Remove temporary modification for prototyping Project concept
 

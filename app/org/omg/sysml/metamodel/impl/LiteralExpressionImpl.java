@@ -875,6 +875,7 @@ public class LiteralExpressionImpl extends MofObjectImpl implements LiteralExpre
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "LiteralExpression")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

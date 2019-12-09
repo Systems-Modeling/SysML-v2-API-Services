@@ -325,6 +325,7 @@ public class SubsettingImpl extends MofObjectImpl implements Subsetting {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Subsetting")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

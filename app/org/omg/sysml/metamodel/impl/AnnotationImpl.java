@@ -245,6 +245,7 @@ public class AnnotationImpl extends MofObjectImpl implements Annotation {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Annotation")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

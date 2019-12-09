@@ -210,6 +210,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "direction", table = "PortMembership")
     public FeatureDirectionKind getDirection() {
         return direction;
     }
@@ -245,6 +246,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "visibility", table = "PortMembership")
     public VisibilityKind getVisibility() {
         return visibility;
     }
@@ -495,6 +497,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "PortMembership")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

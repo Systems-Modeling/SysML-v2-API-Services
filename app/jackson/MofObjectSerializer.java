@@ -19,7 +19,7 @@ public class MofObjectSerializer extends StdSerializer<MofObject> {
     @Override
     public void serialize(MofObject value, JsonGenerator gen, SerializerProvider provider) throws IOException {
         try {
-            if (value == null || value.getIdentifier() == null) {
+            if (value == null || value.getId() == null) {
                 gen.writeNull();
                 return;
             }
@@ -28,7 +28,7 @@ public class MofObjectSerializer extends StdSerializer<MofObject> {
             return;
         }
         gen.writeStartObject();
-        gen.writeObjectField("identifier", value.getIdentifier());
+        gen.writeObjectField("id", value.getId());
         gen.writeEndObject();
     }
 }

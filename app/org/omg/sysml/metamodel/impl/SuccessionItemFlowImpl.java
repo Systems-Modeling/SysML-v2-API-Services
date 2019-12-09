@@ -582,6 +582,7 @@ public class SuccessionItemFlowImpl extends MofObjectImpl implements SuccessionI
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "SuccessionItemFlow")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

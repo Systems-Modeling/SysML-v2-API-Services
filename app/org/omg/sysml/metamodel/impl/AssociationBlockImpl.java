@@ -280,6 +280,7 @@ public class AssociationBlockImpl extends MofObjectImpl implements AssociationBl
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "AssociationBlock")
     public java.util.UUID getIdentifier() {
         return identifier;
     }

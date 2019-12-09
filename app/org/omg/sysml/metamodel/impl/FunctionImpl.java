@@ -631,6 +631,7 @@ public class FunctionImpl extends MofObjectImpl implements Function {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Function")
     public java.util.UUID getIdentifier() {
         return identifier;
     }
