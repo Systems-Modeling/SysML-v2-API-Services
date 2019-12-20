@@ -53,10 +53,10 @@ public class AtomicInteractionImpl extends MofObjectImpl implements AtomicIntera
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "ClassifierMetaDef", metaColumn = @javax.persistence.Column(name = "itemTypeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ClassifierMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "AtomicInteraction_itemType",
-            joinColumns = @JoinColumn(name = "AtomicInteractionId"),
-            inverseJoinColumns = @JoinColumn(name = "itemTypeId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Classifier> getItemType() {
         if (itemType == null) {
             itemType = new ArrayList<>();

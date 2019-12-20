@@ -92,6 +92,7 @@ public class ImportImpl extends MofObjectImpl implements Import {
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "visibility", table = "Import")
     public VisibilityKind getVisibility() {
         return visibility;
     }
@@ -110,10 +111,10 @@ public class ImportImpl extends MofObjectImpl implements Import {
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "relatedElementType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Import_relatedElement",
-            joinColumns = @JoinColumn(name = "ImportId"),
-            inverseJoinColumns = @JoinColumn(name = "relatedElementId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getRelatedElement() {
         if (relatedElement == null) {
             relatedElement = new ArrayList<>();
@@ -134,10 +135,10 @@ public class ImportImpl extends MofObjectImpl implements Import {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "targetType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Import_target",
-            joinColumns = @JoinColumn(name = "ImportId"),
-            inverseJoinColumns = @JoinColumn(name = "targetId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getTarget() {
         if (target == null) {
             target = new ArrayList<>();
@@ -158,10 +159,10 @@ public class ImportImpl extends MofObjectImpl implements Import {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "sourceType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Import_source",
-            joinColumns = @JoinColumn(name = "ImportId"),
-            inverseJoinColumns = @JoinColumn(name = "sourceId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getSource() {
         if (source == null) {
             source = new ArrayList<>();
@@ -201,10 +202,10 @@ public class ImportImpl extends MofObjectImpl implements Import {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelatedElementType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Import_ownedRelatedElement",
-            joinColumns = @JoinColumn(name = "ImportId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedRelatedElementId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getOwnedRelatedElement() {
         if (ownedRelatedElement == null) {
             ownedRelatedElement = new ArrayList<>();
@@ -262,6 +263,7 @@ public class ImportImpl extends MofObjectImpl implements Import {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "Import")
     public java.util.UUID getIdentifier() {
         return identifier;
     }
@@ -319,10 +321,10 @@ public class ImportImpl extends MofObjectImpl implements Import {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelationshipType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Import_ownedRelationship",
-            joinColumns = @JoinColumn(name = "ImportId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedRelationshipId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Relationship> getOwnedRelationship() {
         if (ownedRelationship == null) {
             ownedRelationship = new ArrayList<>();
@@ -366,10 +368,10 @@ public class ImportImpl extends MofObjectImpl implements Import {
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedElementType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Import_ownedElement",
-            joinColumns = @JoinColumn(name = "ImportId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedElementId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();

@@ -252,6 +252,7 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "direction", table = "FeatureValue")
     public FeatureDirectionKind getDirection() {
         return direction;
     }
@@ -287,6 +288,7 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "visibility", table = "FeatureValue")
     public VisibilityKind getVisibility() {
         return visibility;
     }
@@ -385,10 +387,10 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "relatedElementType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FeatureValue_relatedElement",
-            joinColumns = @JoinColumn(name = "FeatureValueId"),
-            inverseJoinColumns = @JoinColumn(name = "relatedElementId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getRelatedElement() {
         if (relatedElement == null) {
             relatedElement = new ArrayList<>();
@@ -409,10 +411,10 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "targetType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FeatureValue_target",
-            joinColumns = @JoinColumn(name = "FeatureValueId"),
-            inverseJoinColumns = @JoinColumn(name = "targetId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getTarget() {
         if (target == null) {
             target = new ArrayList<>();
@@ -433,10 +435,10 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "sourceType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FeatureValue_source",
-            joinColumns = @JoinColumn(name = "FeatureValueId"),
-            inverseJoinColumns = @JoinColumn(name = "sourceId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getSource() {
         if (source == null) {
             source = new ArrayList<>();
@@ -476,10 +478,10 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelatedElementType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FeatureValue_ownedRelatedElement",
-            joinColumns = @JoinColumn(name = "FeatureValueId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedRelatedElementId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getOwnedRelatedElement() {
         if (ownedRelatedElement == null) {
             ownedRelatedElement = new ArrayList<>();
@@ -537,6 +539,7 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "FeatureValue")
     public java.util.UUID getIdentifier() {
         return identifier;
     }
@@ -594,10 +597,10 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelationshipType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FeatureValue_ownedRelationship",
-            joinColumns = @JoinColumn(name = "FeatureValueId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedRelationshipId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Relationship> getOwnedRelationship() {
         if (ownedRelationship == null) {
             ownedRelationship = new ArrayList<>();
@@ -641,10 +644,10 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedElementType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FeatureValue_ownedElement",
-            joinColumns = @JoinColumn(name = "FeatureValueId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedElementId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();

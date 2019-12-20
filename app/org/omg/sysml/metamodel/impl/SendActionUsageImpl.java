@@ -97,10 +97,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "BehaviorMetaDef", metaColumn = @javax.persistence.Column(name = "activityType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "BehaviorMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_activity",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "activityId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Behavior> getActivity() {
         if (activity == null) {
             activity = new ArrayList<>();
@@ -165,10 +165,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "nestedUsageType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_nestedUsage",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "nestedUsageId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Usage> getNestedUsage() {
         if (nestedUsage == null) {
             nestedUsage = new ArrayList<>();
@@ -233,10 +233,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "PortUsageMetaDef", metaColumn = @javax.persistence.Column(name = "nestedPortType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "PortUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_nestedPort",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "nestedPortId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<PortUsage> getNestedPort() {
         if (nestedPort == null) {
             nestedPort = new ArrayList<>();
@@ -259,10 +259,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "PropertyMetaDef", metaColumn = @javax.persistence.Column(name = "nestedPropertyType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "PropertyMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_nestedProperty",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "nestedPropertyId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Property> getNestedProperty() {
         if (nestedProperty == null) {
             nestedProperty = new ArrayList<>();
@@ -285,10 +285,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "PropertyMetaDef", metaColumn = @javax.persistence.Column(name = "propertyType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "PropertyMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_property",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "propertyId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Property> getProperty() {
         if (property == null) {
             property = new ArrayList<>();
@@ -311,10 +311,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "nestedActionType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_nestedAction",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "nestedActionId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<ActionUsage> getNestedAction() {
         if (nestedAction == null) {
             nestedAction = new ArrayList<>();
@@ -337,10 +337,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "BehaviorMetaDef", metaColumn = @javax.persistence.Column(name = "behaviorType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "BehaviorMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_behavior",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "behaviorId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Behavior> getBehavior() {
         if (behavior == null) {
             behavior = new ArrayList<>();
@@ -363,10 +363,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "referencedTypeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_referencedType",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "referencedTypeId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Type> getReferencedType() {
         if (referencedType == null) {
             referencedType = new ArrayList<>();
@@ -442,10 +442,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "typeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_type",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "typeId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Type> getType() {
         if (type == null) {
             type = new ArrayList<>();
@@ -468,10 +468,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "ownedTypeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_ownedType",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedTypeId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Type> getOwnedType() {
         if (ownedType == null) {
             ownedType = new ArrayList<>();
@@ -494,10 +494,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "RedefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRedefinitionType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "RedefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_ownedRedefinition",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedRedefinitionId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Redefinition> getOwnedRedefinition() {
         if (ownedRedefinition == null) {
             ownedRedefinition = new ArrayList<>();
@@ -520,10 +520,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "SubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "ownedSubsettingType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "SubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_ownedSubsetting",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedSubsettingId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Subsetting> getOwnedSubsetting() {
         if (ownedSubsetting == null) {
             ownedSubsetting = new ArrayList<>();
@@ -581,10 +581,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "typingType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_typing",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "typingId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<FeatureTyping> getTyping() {
         if (typing == null) {
             typing = new ArrayList<>();
@@ -685,10 +685,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "GeneralizationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedGeneralizationType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "GeneralizationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_ownedGeneralization",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedGeneralizationId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Generalization> getOwnedGeneralization() {
         if (ownedGeneralization == null) {
             ownedGeneralization = new ArrayList<>();
@@ -709,10 +709,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedFeatureMembershipType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_ownedFeatureMembership",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedFeatureMembershipId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureMembership> getOwnedFeatureMembership() {
         if (ownedFeatureMembership == null) {
             ownedFeatureMembership = new ArrayList<>();
@@ -735,10 +735,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "featureType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_feature",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "featureId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getFeature() {
         if (feature == null) {
             feature = new ArrayList<>();
@@ -761,10 +761,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedFeatureType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_ownedFeature",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedFeatureId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getOwnedFeature() {
         if (ownedFeature == null) {
             ownedFeature = new ArrayList<>();
@@ -787,10 +787,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "inputType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_input",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "inputId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getInput() {
         if (input == null) {
             input = new ArrayList<>();
@@ -813,10 +813,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "outputType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_output",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "outputId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getOutput() {
         if (output == null) {
             output = new ArrayList<>();
@@ -855,10 +855,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "inheritedMembershipType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_inheritedMembership",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "inheritedMembershipId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getInheritedMembership() {
         if (inheritedMembership == null) {
             inheritedMembership = new ArrayList<>();
@@ -881,10 +881,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "endFeatureType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_endFeature",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "endFeatureId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getEndFeature() {
         if (endFeature == null) {
             endFeature = new ArrayList<>();
@@ -907,10 +907,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedEndFeatureType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_ownedEndFeature",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedEndFeatureId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getOwnedEndFeature() {
         if (ownedEndFeature == null) {
             ownedEndFeature = new ArrayList<>();
@@ -949,10 +949,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "membershipType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_membership",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "membershipId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getMembership() {
         if (membership == null) {
             membership = new ArrayList<>();
@@ -973,10 +973,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "ownedImportType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_ownedImport",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedImportId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Import> getOwnedImport() {
         if (ownedImport == null) {
             ownedImport = new ArrayList<>();
@@ -999,10 +999,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "memberType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_member",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "memberId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getMember() {
         if (member == null) {
             member = new ArrayList<>();
@@ -1025,10 +1025,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_ownedMember",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedMemberId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getOwnedMember() {
         if (ownedMember == null) {
             ownedMember = new ArrayList<>();
@@ -1049,10 +1049,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMembershipType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_ownedMembership",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedMembershipId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getOwnedMembership() {
         if (ownedMembership == null) {
             ownedMembership = new ArrayList<>();
@@ -1075,10 +1075,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "importedMembershipType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_importedMembership",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "importedMembershipId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getImportedMembership() {
         if (importedMembership == null) {
             importedMembership = new ArrayList<>();
@@ -1136,6 +1136,7 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "SendActionUsage")
     public java.util.UUID getIdentifier() {
         return identifier;
     }
@@ -1193,10 +1194,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelationshipType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_ownedRelationship",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedRelationshipId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Relationship> getOwnedRelationship() {
         if (ownedRelationship == null) {
             ownedRelationship = new ArrayList<>();
@@ -1240,10 +1241,10 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedElementType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "SendActionUsage_ownedElement",
-            joinColumns = @JoinColumn(name = "SendActionUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedElementId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
