@@ -12,10 +12,12 @@ import org.omg.sysml.extension.impl.ProjectImpl;
 public abstract class CommitImpl_ extends org.omg.sysml.versioning.impl.RecordImpl_ {
 
 	public static volatile SetAttribute<CommitImpl, ElementRecordImpl> changes;
+	public static volatile SingularAttribute<CommitImpl, CommitImpl> previousCommit;
 	public static volatile SingularAttribute<CommitImpl, ProjectImpl> containingProject;
 	public static volatile SingularAttribute<CommitImpl, ZonedDateTime> timestamp;
 
 	public static final String CHANGES = "changes";
+	public static final String PREVIOUS_COMMIT = "previousCommit";
 	public static final String CONTAINING_PROJECT = "containingProject";
 	public static final String TIMESTAMP = "timestamp";
 

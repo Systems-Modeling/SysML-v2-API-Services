@@ -103,7 +103,13 @@
 
         <class>org.omg.sysml.extension.impl</class>
         <class>org.omg.sysml.extension.impl.ProjectImpl</class>
-        
+
+        <class>org.omg.sysml.versioning.impl</class>
+        <class>org.omg.sysml.versioning.impl.CommitImpl</class>
+        <class>org.omg.sysml.versioning.impl.ElementIdentityImpl</class>
+        <class>org.omg.sysml.versioning.impl.ElementRecordImpl</class>
+        <class>org.omg.sysml.versioning.impl.RecordImpl</class>
+
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/sysml2"/>
@@ -111,7 +117,7 @@
             <property name="javax.persistence.jdbc.password" value="mysecretpassword"/>
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="none"/>
+            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
 
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>

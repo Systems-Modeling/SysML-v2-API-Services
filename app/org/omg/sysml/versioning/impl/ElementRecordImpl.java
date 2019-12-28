@@ -5,23 +5,16 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.hibernate.annotations.Any;
-import org.hibernate.annotations.CascadeType;
 import org.omg.sysml.metamodel.MofObject;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
 import org.omg.sysml.versioning.ElementIdentity;
 import org.omg.sysml.versioning.ElementRecord;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity(name = "ElementRecord")
 @JsonTypeName(value = "ElementRecord")
 public class ElementRecordImpl extends RecordImpl implements ElementRecord {
-    @JsonProperty("@type")
-    private final String type = ElementRecord.class.getSimpleName();
-
     private MofObject data;
     private ElementIdentity identity;
 
@@ -46,5 +39,11 @@ public class ElementRecordImpl extends RecordImpl implements ElementRecord {
 
     public void setIdentity(ElementIdentity identity) {
         this.identity = identity;
+    }
+
+    @Transient
+    @JsonProperty("@type")
+    public static String getType() {
+        return ElementRecord.class.getSimpleName();
     }
 }

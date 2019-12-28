@@ -16,12 +16,10 @@ import java.util.Set;
 
 @Entity(name = "Commit")
 public class CommitImpl extends RecordImpl implements Commit {
-    @JsonProperty("@type")
-    private final String type = Commit.class.getSimpleName();
-
     private Project containingProject;
     private Set<ElementRecord> changes;
     private ZonedDateTime timestamp;
+    private Commit previousCommit;
 
     @Override
     @ManyToOne(targetEntity = ProjectImpl.class, fetch = FetchType.LAZY)
@@ -55,5 +53,21 @@ public class CommitImpl extends RecordImpl implements Commit {
 
     public void setTimestamp(ZonedDateTime timestamp) {
         this.timestamp = timestamp;
+    }
+
+    @ManyToOne(targetEntity = CommitImpl.class, fetch = FetchType.LAZY)
+    @JsonDeserialize(as = CommitImpl.class)
+    public Commit getPreviousCommit() {
+        return previousCommit;
+    }
+
+    public void setPreviousCommit(Commit previousCommit) {
+        this.previousCommit = previousCommit;
+    }
+
+    @Transient
+    @JsonProperty("@type")
+    public String getType() {
+        return Commit.class.getSimpleName();
     }
 }

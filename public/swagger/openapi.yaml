@@ -591,7 +591,7 @@ definitions:
           $ref: '#/definitions/ElementRecord'
       containingProject:
         $ref: '#/definitions/Identified'
-      identifier:
+      id:
         type: string
         format: uuid
   ElementRecord:
@@ -603,7 +603,19 @@ definitions:
           - 'ElementRecord'
       data:
         $ref: '#/definitions/Element'
-      identifier:
+      id:
+        type: string
+        format: uuid
+      identity:
+        $ref: '#/definitions/ElementIdentity'
+  ElementIdentity:
+    type: object
+    properties:
+      '@type':
+        type: string
+        enum:
+          - 'ElementIdentity'
+      id:
         type: string
         format: uuid
   Error:
