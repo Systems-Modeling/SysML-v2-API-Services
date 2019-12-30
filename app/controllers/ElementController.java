@@ -15,6 +15,7 @@ import services.ElementService;
 import javax.inject.Inject;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -56,10 +57,23 @@ public class ElementController extends Controller {
         return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Element.class), elements));
     }
 
+    public Result byCommit(String commitId) {
+        UUID commitUuid = UUID.fromString(commitId);
+        Set<Element> elements = elementService.getByCommitId(commitUuid);
+        return ok(JacksonHelper.collectionValueToTree(Set.class, metamodelProvider.getImplementationClass(Element.class), elements));
+    }
+
     public Result byProjectAndId(String elementId, String projectId) {
         UUID elementUuid = UUID.fromString(elementId);
         UUID projectUuid = UUID.fromString(projectId);
         Optional<Element> element = elementService.getByProjectIdAndId(projectUuid, elementUuid);
+        return element.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
+    }
+
+    public Result byCommitAndId(String commitId, String elementId) {
+        UUID commitUuid = UUID.fromString(commitId);
+        UUID elementUuid = UUID.fromString(elementId);
+        Optional<Element> element = elementService.getByCommitIdAndId(commitUuid, elementUuid);
         return element.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
     }
 }

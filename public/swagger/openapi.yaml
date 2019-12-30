@@ -191,6 +191,65 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
+  /commits/{commit_id}/elements:
+    parameters:
+      - name: commit_id
+        in: path
+        description: ID of the commit
+        type: string
+        required: true
+    get:
+      tags:
+        - Element
+      operationId: getElementsByCommitId
+      summary: Get elements by commit ID
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Element'
+        404:
+          $ref: '#/responses/NotFound'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+  /commits/{commit_id}/elements/{element_id}:
+    parameters:
+      - name: commit_id
+        in: path
+        description: ID of the commit
+        type: string
+        required: true
+      - name: element_id
+        in: path
+        description: ID of the element
+        type: string
+        required: true
+    get:
+      tags:
+        - Element
+      operationId: getElementByCommitIdAndId
+      summary: Get element by commit ID and element ID
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Element'
+        404:
+          $ref: '#/responses/NotFound'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
   /projects/{project_identifier}/elements:
     parameters:
       - name: project_identifier

@@ -10,14 +10,14 @@ import org.omg.sysml.extension.Project;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
 import org.omg.sysml.metamodel.impl.MofObjectImpl_;
+import org.omg.sysml.versioning.Commit;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.persistence.NoResultException;
 import javax.persistence.criteria.*;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -84,6 +84,19 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
     }
 
     @Override
+    public Set<Element> findAllByCommit(Commit commit) {
+        return jpa.transact(em -> {
+            Map<UUID, Element> map = new LinkedHashMap<>();
+            // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
+            queryCommitTree(em.contains(commit) ? commit : em.find(metamodelProvider.getImplementationClass(Commit.class), commit.getId()), c -> {
+                c.getChanges().stream().filter(record -> record.getIdentity() != null && record.getIdentity().getId() != null && record.getData() instanceof Element).forEach(record -> map.put(record.getIdentity().getId(), map.computeIfAbsent(record.getIdentity().getId(), uuid -> (Element) record.getData())));
+                return null;
+            });
+            return new LinkedHashSet<>(map.values());
+        });
+    }
+
+    @Override
     public Optional<Element> findByProjectAndId(Project project, UUID id) {
         try (Session session = jpa.getEntityManagerFactory().unwrap(SessionFactory.class).openSession()) {
             Query<Element> query = session.createQuery("FROM org.omg.sysml.metamodel.Element WHERE identifier = :identifier AND containingProject = :project", Element.class);
@@ -95,6 +108,51 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
                 return Optional.empty();
             }
         }
+    }
+
+    /*@Override
+    public Optional<Element> findByCommitAndId(Commit commit, UUID id) {
+        return jpa.transact(em -> {
+            Element element = null;
+            Commit currentCommit = commit;
+            Set<Commit> visitedCommits = new HashSet<>();
+            while (element == null && currentCommit != null && !visitedCommits.contains(currentCommit)) {
+                element = currentCommit.getChanges().stream().filter(record -> record.getIdentity() != null && record.getIdentity().getId() != null && record.getData() instanceof Element).filter(record -> id.equals(record.getIdentity().getId())).map(record -> (Element) record.getData()).findAny().orElse(null);
+                visitedCommits.add(currentCommit);
+                currentCommit = currentCommit.getPreviousCommit();
+            }
+            return Optional.ofNullable(element);
+        });
+    }*/
+
+    @Override
+    public Optional<Element> findByCommitAndId(Commit commit, UUID id) {
+        return jpa.transact(em -> {
+            return queryCommitTree(em.contains(commit) ? commit : em.find(metamodelProvider.getImplementationClass(Commit.class), commit.getId()), c ->
+                    c.getChanges().stream().filter(record -> record.getIdentity() != null && record.getIdentity().getId() != null && record.getData() instanceof Element).filter(record -> id.equals(record.getIdentity().getId())).map(record -> (Element) record.getData()).findAny(),
+                    Optional::isPresent)
+                .values().stream().filter(Optional::isPresent).map(Optional::get).findAny();
+        });
+    }
+
+    protected <T> Map<Commit, T> queryCommitTree(Commit commit, Function<Commit, T> query) {
+        return queryCommitTree(commit, query, t -> false);
+    }
+
+    protected <T> Map<Commit, T> queryCommitTree(Commit commit, Function<Commit, T> query, java.util.function.Predicate<T> terminationCondition) {
+        Map<Commit, T> results = new LinkedHashMap<>();
+        Commit currentCommit = commit;
+        Set<Commit> visitedCommits = new HashSet<>();
+        while (currentCommit != null && !visitedCommits.contains(currentCommit)) {
+            T t = query.apply(currentCommit);
+            results.put(currentCommit, t);
+            if (terminationCondition.test(t)) {
+                break;
+            }
+            visitedCommits.add(currentCommit);
+            currentCommit = currentCommit.getPreviousCommit();
+        }
+        return results;
     }
 
     private Expression<Boolean> getTypeExpression(CriteriaBuilder builder, Root<?> root) {

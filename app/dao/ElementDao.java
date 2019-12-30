@@ -2,9 +2,11 @@ package dao;
 
 import org.omg.sysml.extension.Project;
 import org.omg.sysml.metamodel.Element;
+import org.omg.sysml.versioning.Commit;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 public interface ElementDao extends Dao<Element> {
@@ -22,5 +24,9 @@ public interface ElementDao extends Dao<Element> {
 
     List<Element> findAllByProject(Project project);
 
+    Set<Element> findAllByCommit(Commit commit);
+
     Optional<Element> findByProjectAndId(Project project, UUID id);
+
+    Optional<Element> findByCommitAndId(Commit commit, UUID id);
 }

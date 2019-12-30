@@ -10,6 +10,8 @@ public interface Commit extends Record {
 
     Set<ElementRecord> getChanges();
 
+    Commit getPreviousCommit();
+
     ZonedDateTime getTimestamp();
 
     void setTimestamp(ZonedDateTime timestamp);
