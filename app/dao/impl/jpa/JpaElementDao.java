@@ -6,11 +6,13 @@ import jpa.manager.JPAManager;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
-import org.omg.sysml.extension.Project;
+import org.omg.sysml.lifecycle.ElementRecord;
+import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.metamodel.Element;
+import org.omg.sysml.metamodel.MofObject;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
 import org.omg.sysml.metamodel.impl.MofObjectImpl_;
-import org.omg.sysml.versioning.Commit;
+import org.omg.sysml.lifecycle.Commit;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -86,13 +88,9 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
     @Override
     public Set<Element> findAllByCommit(Commit commit) {
         return jpa.transact(em -> {
-            Map<UUID, Element> map = new LinkedHashMap<>();
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
-            queryCommitTree(em.contains(commit) ? commit : em.find(metamodelProvider.getImplementationClass(Commit.class), commit.getId()), c -> {
-                c.getChanges().stream().filter(record -> record.getIdentity() != null && record.getIdentity().getId() != null && record.getData() instanceof Element).forEach(record -> map.put(record.getIdentity().getId(), map.computeIfAbsent(record.getIdentity().getId(), uuid -> (Element) record.getData())));
-                return null;
-            });
-            return new LinkedHashSet<>(map.values());
+            Commit c = em.contains(commit) ? commit : em.find(metamodelProvider.getImplementationClass(Commit.class), commit.getId());
+            return streamFlattenedElements(c).collect(Collectors.toSet());
         });
     }
 
@@ -153,6 +151,13 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
             currentCommit = currentCommit.getPreviousCommit();
         }
         return results;
+    }
+
+    protected Stream<Element> streamFlattenedElements(Commit commit) {
+        Set<UUID> visitedElements = new HashSet<>();
+        Map<Commit, Stream<Element>> results = queryCommitTree(commit,
+                c -> c.getChanges().stream().filter(record -> record.getIdentity() != null && record.getIdentity().getId() != null && record.getData() instanceof Element).filter(record -> !visitedElements.contains(record.getIdentity().getId())).peek(record -> visitedElements.add(record.getIdentity().getId())).map(record -> (Element) record.getData()));
+        return results.values().stream().flatMap(Function.identity());
     }
 
     private Expression<Boolean> getTypeExpression(CriteriaBuilder builder, Root<?> root) {

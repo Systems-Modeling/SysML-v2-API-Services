@@ -15,6 +15,7 @@ import services.RelationshipService;
 import javax.inject.Inject;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -72,5 +73,11 @@ public class RelationshipController extends Controller {
         UUID projectUuid = UUID.fromString(projectId);
         List<Relationship> relationships = relationshipService.getByProjectId(projectUuid);
         return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
+    }
+
+    public Result getRelationshipsByProjectIdCommitIdRelatedElementId(UUID projectId, UUID commitId, UUID elementId) {
+        System.out.println(projectId + " : " + commitId + " : " + elementId);
+        Set<Relationship> relationships = relationshipService.getRelationshipsByProjectCommitRelatedElement(projectId, commitId, elementId);
+        return ok(JacksonHelper.collectionValueToTree(Set.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
     }
 }

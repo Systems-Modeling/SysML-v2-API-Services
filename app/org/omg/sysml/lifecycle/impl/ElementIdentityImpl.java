@@ -1,8 +1,8 @@
-package org.omg.sysml.versioning.impl;
+package org.omg.sysml.lifecycle.impl;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeName;
-import org.omg.sysml.versioning.ElementIdentity;
+import org.omg.sysml.lifecycle.ElementIdentity;
 
 import javax.persistence.Entity;
 import javax.persistence.Transient;

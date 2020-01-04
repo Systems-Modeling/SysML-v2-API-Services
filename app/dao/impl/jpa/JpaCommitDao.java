@@ -2,13 +2,13 @@ package dao.impl.jpa;
 
 import dao.CommitDao;
 import jpa.manager.JPAManager;
-import org.omg.sysml.extension.Project;
+import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
-import org.omg.sysml.versioning.Commit;
-import org.omg.sysml.versioning.impl.CommitImpl;
-import org.omg.sysml.versioning.impl.CommitImpl_;
-import org.omg.sysml.versioning.impl.ElementIdentityImpl;
-import org.omg.sysml.versioning.impl.ElementRecordImpl;
+import org.omg.sysml.lifecycle.Commit;
+import org.omg.sysml.lifecycle.impl.CommitImpl;
+import org.omg.sysml.lifecycle.impl.CommitImpl_;
+import org.omg.sysml.lifecycle.impl.ElementIdentityImpl;
+import org.omg.sysml.lifecycle.impl.ElementRecordImpl;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

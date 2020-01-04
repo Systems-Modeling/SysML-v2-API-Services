@@ -1,8 +1,8 @@
 package dao;
 
-import org.omg.sysml.extension.Project;
+import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.metamodel.Element;
-import org.omg.sysml.versioning.Commit;
+import org.omg.sysml.lifecycle.Commit;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,10 +22,12 @@ public interface ElementDao extends Dao<Element> {
 
     void deleteAll();
 
+    @Deprecated
     List<Element> findAllByProject(Project project);
 
     Set<Element> findAllByCommit(Commit commit);
 
+    @Deprecated
     Optional<Element> findByProjectAndId(Project project, UUID id);
 
     Optional<Element> findByCommitAndId(Commit commit, UUID id);

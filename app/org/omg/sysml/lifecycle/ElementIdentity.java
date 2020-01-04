@@ -1,4 +1,4 @@
-package org.omg.sysml.versioning;
+package org.omg.sysml.lifecycle;
 
 public interface ElementIdentity extends Record {
 }

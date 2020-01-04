@@ -1,8 +1,8 @@
-package org.omg.sysml.extension.impl;
+package org.omg.sysml.lifecycle.impl;
 
 import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.FetchMode;
-import org.omg.sysml.extension.Project;
+import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
 
 import javax.persistence.DiscriminatorValue;

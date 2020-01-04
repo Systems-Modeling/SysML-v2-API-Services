@@ -1,4 +1,4 @@
-package org.omg.sysml.versioning.impl;
+package org.omg.sysml.lifecycle.impl;
 
 import java.util.UUID;
 import javax.annotation.processing.Generated;

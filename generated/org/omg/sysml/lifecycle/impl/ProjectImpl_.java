@@ -1,4 +1,4 @@
-package org.omg.sysml.extension.impl;
+package org.omg.sysml.lifecycle.impl;
 
 import javax.annotation.processing.Generated;
 import javax.persistence.metamodel.SingularAttribute;

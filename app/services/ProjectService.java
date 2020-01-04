@@ -1,7 +1,7 @@
 package services;
 
 import dao.ProjectDao;
-import org.omg.sysml.extension.Project;
+import org.omg.sysml.lifecycle.Project;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

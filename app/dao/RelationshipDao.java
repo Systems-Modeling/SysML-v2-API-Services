@@ -1,11 +1,13 @@
 package dao;
 
-import org.omg.sysml.extension.Project;
+import org.omg.sysml.lifecycle.Commit;
+import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Relationship;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 public interface RelationshipDao extends Dao<Relationship> {
@@ -21,11 +23,17 @@ public interface RelationshipDao extends Dao<Relationship> {
 
     void deleteAll();
 
+    @Deprecated
     List<Relationship> findAllByRelatedElement(Element element);
 
+    @Deprecated
     List<Relationship> findAllBySourceElement(Element element);
 
+    @Deprecated
     List<Relationship> findAllByTargetElement(Element element);
 
+    @Deprecated
     List<Relationship> findAllByProject(Project project);
+
+    Set<Relationship> findAllByCommitRelatedElement(Commit commit, Element relatedElement);
 }

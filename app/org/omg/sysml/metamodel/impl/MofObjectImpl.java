@@ -2,6 +2,8 @@ package org.omg.sysml.metamodel.impl;
 
 import com.fasterxml.jackson.annotation.*;
 
+import org.omg.sysml.lifecycle.Project;
+import org.omg.sysml.lifecycle.impl.ProjectImpl;
 import org.omg.sysml.metamodel.MofObject;
 
 //import info.archinnov.achilles.annotations.PartitionKey;
@@ -41,19 +43,19 @@ public abstract class MofObjectImpl implements MofObject {
 
     // TODO Remove temporary modification for prototyping Project concept
 
-    private org.omg.sysml.extension.Project containingProject;
+    private Project containingProject;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "ProjectMetaDef", metaColumn = @javax.persistence.Column(name = "containingProjectType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "containingProjectId", table = "MofObject")
-    public org.omg.sysml.extension.Project getContainingProject() {
+    public Project getContainingProject() {
         return containingProject;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = org.omg.sysml.extension.impl.ProjectImpl.class)
-    public void setContainingProject(org.omg.sysml.extension.Project containingProject) {
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ProjectImpl.class)
+    public void setContainingProject(Project containingProject) {
         this.containingProject = containingProject;
     }
 

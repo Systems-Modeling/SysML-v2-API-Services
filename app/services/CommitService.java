@@ -2,7 +2,7 @@ package services;
 
 import dao.CommitDao;
 import dao.ProjectDao;
-import org.omg.sysml.versioning.Commit;
+import org.omg.sysml.lifecycle.Commit;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -37,5 +37,10 @@ public class CommitService {
 
     public Optional<Commit> create(Commit commit) {
         return commit.getId() != null ? commitDao.update(commit) : commitDao.persist(commit);
+    }
+
+    public Optional<Commit> create(UUID projectId, Commit commit) {
+        commit.setContainingProject(projectDao.findById(projectId).orElseThrow(() -> new IllegalArgumentException("Project " + projectId + " not found.")));
+        return create(commit);
     }
 }

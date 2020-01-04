@@ -1,9 +1,12 @@
 package services;
 
 
+import dao.CommitDao;
 import dao.ElementDao;
 import dao.ProjectDao;
 import dao.RelationshipDao;
+import org.omg.sysml.lifecycle.Commit;
+import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Relationship;
 
 import javax.inject.Inject;
@@ -20,6 +23,9 @@ public class RelationshipService {
 
     @Inject
     private ProjectDao projectDao;
+
+    @Inject
+    private CommitDao commitDao;
 
     public List<Relationship> getAll() {
         return relationshipDao.findAll();
@@ -47,5 +53,11 @@ public class RelationshipService {
 
     public List<Relationship> getByProjectId(UUID projectId) {
         return projectDao.findById(projectId).map(m -> relationshipDao.findAllByProject(m)).orElse(Collections.emptyList());
+    }
+
+    public Set<Relationship> getRelationshipsByProjectCommitRelatedElement(UUID projectId, UUID commitId, UUID relatedElementId) {
+        Commit commit = projectDao.findById(projectId).flatMap(project -> commitDao.findByProjectAndId(project, commitId)).orElseThrow(() -> new IllegalArgumentException("Commit " + commitId + " not found."));
+        Element relatedElement = elementDao.findByCommitAndId(commit, relatedElementId).orElseThrow(() -> new IllegalArgumentException("Element " + relatedElementId + " not found."));
+        return relationshipDao.findAllByCommitRelatedElement(commit, relatedElement);
     }
 }

@@ -1,4 +1,4 @@
-package org.omg.sysml.versioning.impl;
+package org.omg.sysml.lifecycle.impl;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
@@ -7,8 +7,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.hibernate.annotations.Any;
 import org.omg.sysml.metamodel.MofObject;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
-import org.omg.sysml.versioning.ElementIdentity;
-import org.omg.sysml.versioning.ElementRecord;
+import org.omg.sysml.lifecycle.ElementIdentity;
+import org.omg.sysml.lifecycle.ElementRecord;
 
 import javax.persistence.*;
 

@@ -47,4 +47,12 @@ public class ElementService {
     public Optional<Element> create(Element element) {
         return element.getIdentifier() != null ? elementDao.update(element) : elementDao.persist(element);
     }
+
+    public Set<Element> getElementsByProjectIdCommitId(UUID projectId, UUID commitId) {
+        return projectDao.findById(projectId).flatMap(project -> commitDao.findByProjectAndId(project, commitId)).map(commit -> elementDao.findAllByCommit(commit)).orElse(Collections.emptySet());
+    }
+
+    public Optional<Element> getElementsByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId) {
+        return projectDao.findById(projectId).flatMap(project -> commitDao.findByProjectAndId(project, commitId)).flatMap(commit -> elementDao.findByCommitAndId(commit, elementId));
+    }
 }

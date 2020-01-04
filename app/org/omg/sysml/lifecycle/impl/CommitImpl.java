@@ -1,13 +1,14 @@
-package org.omg.sysml.versioning.impl;
+package org.omg.sysml.lifecycle.impl;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import org.omg.sysml.extension.Project;
-import org.omg.sysml.extension.impl.ProjectImpl;
-import org.omg.sysml.versioning.Commit;
-import org.omg.sysml.versioning.ElementRecord;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import jackson.MofObjectDeserializer;
+import jackson.MofObjectSerializer;
+import jackson.RecordSerialization;
+import org.omg.sysml.lifecycle.Project;
+import org.omg.sysml.lifecycle.Commit;
+import org.omg.sysml.lifecycle.ElementRecord;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
@@ -23,10 +24,12 @@ public class CommitImpl extends RecordImpl implements Commit {
 
     @Override
     @ManyToOne(targetEntity = ProjectImpl.class, fetch = FetchType.LAZY)
+    @JsonSerialize(as = ProjectImpl.class, using = MofObjectSerializer.class)
     public Project getContainingProject() {
         return containingProject;
     }
 
+    @JsonDeserialize(as = ProjectImpl.class, using = MofObjectDeserializer.class)
     public void setContainingProject(Project containingProject) {
         this.containingProject = containingProject;
     }
@@ -56,11 +59,12 @@ public class CommitImpl extends RecordImpl implements Commit {
     }
 
     @ManyToOne(targetEntity = CommitImpl.class, fetch = FetchType.LAZY)
-    @JsonDeserialize(as = CommitImpl.class)
+    @JsonSerialize(as = CommitImpl.class, using = RecordSerialization.RecordSerializer.class)
     public Commit getPreviousCommit() {
         return previousCommit;
     }
 
+    @JsonDeserialize(as = CommitImpl.class, using = RecordSerialization.CommitDeserializer.class)
     public void setPreviousCommit(Commit previousCommit) {
         this.previousCommit = previousCommit;
     }

@@ -3,7 +3,7 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import config.MetamodelProvider;
 import jackson.JacksonHelper;
-import org.omg.sysml.extension.Project;
+import org.omg.sysml.lifecycle.Project;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Http;

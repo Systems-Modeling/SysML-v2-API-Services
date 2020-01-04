@@ -1,6 +1,6 @@
-package org.omg.sysml.versioning.impl;
+package org.omg.sysml.lifecycle.impl;
 
-import org.omg.sysml.versioning.Record;
+import org.omg.sysml.lifecycle.Record;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;

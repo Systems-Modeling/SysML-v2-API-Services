@@ -3,7 +3,7 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import config.MetamodelProvider;
 import jackson.JacksonHelper;
-import org.omg.sysml.versioning.Commit;
+import org.omg.sysml.lifecycle.Commit;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Http;
@@ -43,6 +43,17 @@ public class CommitController extends Controller {
         }
         requestedObject.setTimestamp(ZonedDateTime.now());
         Optional<Commit> responseCommit = commitService.create(requestedObject);
+        return responseCommit.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
+    }
+
+    public Result createWithProjectId(UUID projectId, Http.Request request) {
+        JsonNode requestBodyJson = request.body().asJson();
+        Commit requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Commit.class));
+        if (requestedObject.getId() != null || requestedObject.getTimestamp() != null) {
+            return Results.badRequest();
+        }
+        requestedObject.setTimestamp(ZonedDateTime.now());
+        Optional<Commit> responseCommit = commitService.create(projectId, requestedObject);
         return responseCommit.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 

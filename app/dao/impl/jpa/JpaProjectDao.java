@@ -2,9 +2,9 @@ package dao.impl.jpa;
 
 import dao.ProjectDao;
 import jpa.manager.JPAManager;
-import org.omg.sysml.extension.Project;
-import org.omg.sysml.extension.impl.ProjectImpl;
-import org.omg.sysml.extension.impl.ProjectImpl_;
+import org.omg.sysml.lifecycle.Project;
+import org.omg.sysml.lifecycle.impl.ProjectImpl;
+import org.omg.sysml.lifecycle.impl.ProjectImpl_;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;

@@ -1,7 +1,7 @@
 package dao;
 
-import org.omg.sysml.extension.Project;
-import org.omg.sysml.versioning.Commit;
+import org.omg.sysml.lifecycle.Project;
+import org.omg.sysml.lifecycle.Commit;
 
 import java.util.List;
 import java.util.Optional;
