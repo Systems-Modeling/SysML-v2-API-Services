@@ -40,40 +40,61 @@ import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
-@Entity(name = "ConjugatedPortMembershipImpl")
-@SecondaryTable(name = "ConjugatedPortMembership")
-@org.hibernate.annotations.Table(appliesTo = "ConjugatedPortMembership", fetch = FetchMode.SELECT, optional = false)
-// @info.archinnov.achilles.annotations.Table(table = "ConjugatedPortMembership")
-@DiscriminatorValue(value = "ConjugatedPortMembership")
-@JsonTypeName(value = "ConjugatedPortMembership")
+@Entity(name = "ConjugationImpl")
+@SecondaryTable(name = "Conjugation")
+@org.hibernate.annotations.Table(appliesTo = "Conjugation", fetch = FetchMode.SELECT, optional = false)
+// @info.archinnov.achilles.annotations.Table(table = "Conjugation")
+@DiscriminatorValue(value = "Conjugation")
+@JsonTypeName(value = "Conjugation")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class ConjugatedPortMembershipImpl extends MofObjectImpl implements ConjugatedPortMembership {
-    // @info.archinnov.achilles.annotations.Column("memberPort")
-    private PortUsage memberPort;
+public class ConjugationImpl extends MofObjectImpl implements Conjugation {
+    // @info.archinnov.achilles.annotations.Column("originalType")
+    private Type originalType;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "PortUsageMetaDef", metaColumn = @javax.persistence.Column(name = "memberPortType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "memberPortId", table = "ConjugatedPortMembership")
-    public PortUsage getMemberPort() {
-        return memberPort;
+    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "originalTypeType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "originalTypeId", table = "Conjugation")
+    public Type getOriginalType() {
+        return originalType;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = PortUsageImpl.class)
-    public void setMemberPort(PortUsage memberPort) {
-        this.memberPort = memberPort;
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
+    public void setOriginalType(Type originalType) {
+        this.originalType = originalType;
     }
 
 
 
+    // @info.archinnov.achilles.annotations.Column("conjugatedType")
+    private Type conjugatedType;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "conjugatedTypeType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "conjugatedTypeId", table = "Conjugation")
+    public Type getConjugatedType() {
+        return conjugatedType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
+    public void setConjugatedType(Type conjugatedType) {
+        this.conjugatedType = conjugatedType;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningType")
     private Type owningType;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningTypeId", table = "ConjugatedPortMembership")
+    @JoinColumn(name = "owningTypeId", table = "Conjugation")
     public Type getOwningType() {
         return owningType;
     }
@@ -86,258 +107,6 @@ public class ConjugatedPortMembershipImpl extends MofObjectImpl implements Conju
 
 
 
-    // @info.archinnov.achilles.annotations.Column("isDerived")
-    private Boolean isDerived;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isDerived", table = "ConjugatedPortMembership")
-    public Boolean getIsDerived() {
-        return isDerived;
-    }
-
-    @JsonSetter
-    public void setIsDerived(Boolean isDerived) {
-        this.isDerived = isDerived;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("isReadOnly")
-    private Boolean isReadOnly;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isReadOnly", table = "ConjugatedPortMembership")
-    public Boolean getIsReadOnly() {
-        return isReadOnly;
-    }
-
-    @JsonSetter
-    public void setIsReadOnly(Boolean isReadOnly) {
-        this.isReadOnly = isReadOnly;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("memberFeature")
-    private Feature memberFeature;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "memberFeatureType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "memberFeatureId", table = "ConjugatedPortMembership")
-    public Feature getMemberFeature() {
-        return memberFeature;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
-    public void setMemberFeature(Feature memberFeature) {
-        this.memberFeature = memberFeature;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("ownedMemberFeature")
-    private Feature ownedMemberFeature;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberFeatureType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedMemberFeatureId", table = "ConjugatedPortMembership")
-    public Feature getOwnedMemberFeature() {
-        return ownedMemberFeature;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
-    public void setOwnedMemberFeature(Feature ownedMemberFeature) {
-        this.ownedMemberFeature = ownedMemberFeature;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("isComposite")
-    private Boolean isComposite;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isComposite", table = "ConjugatedPortMembership")
-    public Boolean getIsComposite() {
-        return isComposite;
-    }
-
-    @JsonSetter
-    public void setIsComposite(Boolean isComposite) {
-        this.isComposite = isComposite;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("isPortion")
-    private Boolean isPortion;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isPortion", table = "ConjugatedPortMembership")
-    public Boolean getIsPortion() {
-        return isPortion;
-    }
-
-    @JsonSetter
-    public void setIsPortion(Boolean isPortion) {
-        this.isPortion = isPortion;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("isPort")
-    private Boolean isPort;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isPort", table = "ConjugatedPortMembership")
-    public Boolean getIsPort() {
-        return isPort;
-    }
-
-    @JsonSetter
-    public void setIsPort(Boolean isPort) {
-        this.isPort = isPort;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("direction")
-    // @info.archinnov.achilles.annotations.Enumerated(info.archinnov.achilles.annotations.Enumerated.Encoding.NAME)
-    private FeatureDirectionKind direction;
-
-    @JsonGetter
-    @javax.persistence.Enumerated(EnumType.STRING)
-    @javax.persistence.Column(name = "direction", table = "ConjugatedPortMembership")
-    public FeatureDirectionKind getDirection() {
-        return direction;
-    }
-
-    @JsonSetter
-    public void setDirection(FeatureDirectionKind direction) {
-        this.direction = direction;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("memberName")
-    private String memberName;
-
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "memberName", table = "ConjugatedPortMembership")
-    public String getMemberName() {
-        return memberName;
-    }
-
-    @JsonSetter
-    public void setMemberName(String memberName) {
-        this.memberName = memberName;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("visibility")
-    // @info.archinnov.achilles.annotations.Enumerated(info.archinnov.achilles.annotations.Enumerated.Encoding.NAME)
-    private VisibilityKind visibility;
-
-    @JsonGetter
-    @javax.persistence.Enumerated(EnumType.STRING)
-    @javax.persistence.Column(name = "visibility", table = "ConjugatedPortMembership")
-    public VisibilityKind getVisibility() {
-        return visibility;
-    }
-
-    @JsonSetter
-    public void setVisibility(VisibilityKind visibility) {
-        this.visibility = visibility;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("aliases")
-    private Collection<String> aliases;
-
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "ConjugatedPortMembership_aliases",
-            joinColumns = @JoinColumn(name = "ConjugatedPortMembershipId"))
-    public Collection<String> getAliases() {
-        if (aliases == null) {
-            aliases = new ArrayList<>();
-        }
-        return aliases;
-    }
-
-    @JsonSetter
-    public void setAliases(Collection<String> aliases) {
-        this.aliases = aliases;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("memberElement")
-    private Element memberElement;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "memberElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "memberElementId", table = "ConjugatedPortMembership")
-    public Element getMemberElement() {
-        return memberElement;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
-    public void setMemberElement(Element memberElement) {
-        this.memberElement = memberElement;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("ownedMemberElement")
-    private Element ownedMemberElement;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedMemberElementId", table = "ConjugatedPortMembership")
-    public Element getOwnedMemberElement() {
-        return ownedMemberElement;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
-    public void setOwnedMemberElement(Element ownedMemberElement) {
-        this.ownedMemberElement = ownedMemberElement;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("membershipOwningPackage")
-    private Package membershipOwningPackage;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "membershipOwningPackageType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "membershipOwningPackageId", table = "ConjugatedPortMembership")
-    public Package getMembershipOwningPackage() {
-        return membershipOwningPackage;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
-    public void setMembershipOwningPackage(Package membershipOwningPackage) {
-        this.membershipOwningPackage = membershipOwningPackage;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("relatedElement")
     private Collection<Element> relatedElement;
@@ -346,7 +115,7 @@ public class ConjugatedPortMembershipImpl extends MofObjectImpl implements Conju
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ConjugatedPortMembership_relatedElement",
+    @JoinTable(name = "Conjugation_relatedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getRelatedElement() {
@@ -370,7 +139,7 @@ public class ConjugatedPortMembershipImpl extends MofObjectImpl implements Conju
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ConjugatedPortMembership_target",
+    @JoinTable(name = "Conjugation_target",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getTarget() {
@@ -394,7 +163,7 @@ public class ConjugatedPortMembershipImpl extends MofObjectImpl implements Conju
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ConjugatedPortMembership_source",
+    @JoinTable(name = "Conjugation_source",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getSource() {
@@ -418,7 +187,7 @@ public class ConjugatedPortMembershipImpl extends MofObjectImpl implements Conju
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelatedElementId", table = "ConjugatedPortMembership")
+    @JoinColumn(name = "owningRelatedElementId", table = "Conjugation")
     public Element getOwningRelatedElement() {
         return owningRelatedElement;
     }
@@ -437,7 +206,7 @@ public class ConjugatedPortMembershipImpl extends MofObjectImpl implements Conju
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ConjugatedPortMembership_ownedRelatedElement",
+    @JoinTable(name = "Conjugation_ownedRelatedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getOwnedRelatedElement() {
@@ -461,7 +230,7 @@ public class ConjugatedPortMembershipImpl extends MofObjectImpl implements Conju
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningMembershipId", table = "ConjugatedPortMembership")
+    @JoinColumn(name = "owningMembershipId", table = "Conjugation")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -480,7 +249,7 @@ public class ConjugatedPortMembershipImpl extends MofObjectImpl implements Conju
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelationshipId", table = "ConjugatedPortMembership")
+    @JoinColumn(name = "owningRelationshipId", table = "Conjugation")
     public Relationship getOwningRelationship() {
         return owningRelationship;
     }
@@ -497,7 +266,7 @@ public class ConjugatedPortMembershipImpl extends MofObjectImpl implements Conju
     private java.util.UUID identifier;
 
     @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "ConjugatedPortMembership")
+    @javax.persistence.Column(name = "identifier", table = "Conjugation")
     public java.util.UUID getIdentifier() {
         return identifier;
     }
@@ -517,7 +286,7 @@ public class ConjugatedPortMembershipImpl extends MofObjectImpl implements Conju
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "ConjugatedPortMembership")
+    @JoinColumn(name = "owningNamespaceId", table = "Conjugation")
     public Package getOwningNamespace() {
         return owningNamespace;
     }
@@ -538,7 +307,7 @@ public class ConjugatedPortMembershipImpl extends MofObjectImpl implements Conju
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "name", table = "ConjugatedPortMembership")
+    @javax.persistence.Column(name = "name", table = "Conjugation")
     public String getName() {
         return name;
     }
@@ -556,7 +325,7 @@ public class ConjugatedPortMembershipImpl extends MofObjectImpl implements Conju
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ConjugatedPortMembership_ownedRelationship",
+    @JoinTable(name = "Conjugation_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Relationship> getOwnedRelationship() {
@@ -582,7 +351,7 @@ public class ConjugatedPortMembershipImpl extends MofObjectImpl implements Conju
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownerId", table = "ConjugatedPortMembership")
+    @JoinColumn(name = "ownerId", table = "Conjugation")
     public Element getOwner() {
         return owner;
     }
@@ -603,7 +372,7 @@ public class ConjugatedPortMembershipImpl extends MofObjectImpl implements Conju
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ConjugatedPortMembership_ownedElement",
+    @JoinTable(name = "Conjugation_ownedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getOwnedElement() {
