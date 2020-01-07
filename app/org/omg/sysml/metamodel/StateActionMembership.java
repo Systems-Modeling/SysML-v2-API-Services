@@ -4,6 +4,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ConjugatedPortMembership extends PortMembership, MofObject {
-
+public interface StateActionMembership extends FeatureMembership, MofObject {
+    StateActionKind getKind();
 }

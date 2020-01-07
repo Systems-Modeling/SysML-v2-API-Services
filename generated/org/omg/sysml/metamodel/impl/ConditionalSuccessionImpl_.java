@@ -26,6 +26,7 @@ import org.omg.sysml.metamodel.Type;
 public abstract class ConditionalSuccessionImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<ConditionalSuccessionImpl, Generalization> ownedGeneralization;
+	public static volatile SingularAttribute<ConditionalSuccessionImpl, Boolean> isConjugated;
 	public static volatile SingularAttribute<ConditionalSuccessionImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<ConditionalSuccessionImpl, Subsetting> ownedSubsetting;
 	public static volatile CollectionAttribute<ConditionalSuccessionImpl, Association> association;
@@ -42,6 +43,7 @@ public abstract class ConditionalSuccessionImpl_ extends org.omg.sysml.metamodel
 	public static volatile CollectionAttribute<ConditionalSuccessionImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<ConditionalSuccessionImpl, Element> member;
 	public static volatile ListAttribute<ConditionalSuccessionImpl, FeatureMembership> ownedFeatureMembership;
+	public static volatile CollectionAttribute<ConditionalSuccessionImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<ConditionalSuccessionImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<ConditionalSuccessionImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<ConditionalSuccessionImpl, Redefinition> ownedRedefinition;
@@ -50,6 +52,7 @@ public abstract class ConditionalSuccessionImpl_ extends org.omg.sysml.metamodel
 	public static volatile CollectionAttribute<ConditionalSuccessionImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<ConditionalSuccessionImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<ConditionalSuccessionImpl, Relationship> ownedRelationship;
+	public static volatile ListAttribute<ConditionalSuccessionImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<ConditionalSuccessionImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<ConditionalSuccessionImpl, Association> ownedAssociationType;
 	public static volatile CollectionAttribute<ConditionalSuccessionImpl, Type> referencedType;
@@ -71,6 +74,7 @@ public abstract class ConditionalSuccessionImpl_ extends org.omg.sysml.metamodel
 	public static volatile ListAttribute<ConditionalSuccessionImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String ASSOCIATION = "association";
@@ -87,6 +91,7 @@ public abstract class ConditionalSuccessionImpl_ extends org.omg.sysml.metamodel
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
+	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
@@ -95,6 +100,7 @@ public abstract class ConditionalSuccessionImpl_ extends org.omg.sysml.metamodel
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String OWNED_ASSOCIATION_TYPE = "ownedAssociationType";
 	public static final String REFERENCED_TYPE = "referencedType";

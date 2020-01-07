@@ -40,29 +40,28 @@ import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
-@Entity(name = "PortMembershipImpl")
-@SecondaryTable(name = "PortMembership")
-@org.hibernate.annotations.Table(appliesTo = "PortMembership", fetch = FetchMode.SELECT, optional = false)
-// @info.archinnov.achilles.annotations.Table(table = "PortMembership")
-@DiscriminatorValue(value = "PortMembership")
-@JsonTypeName(value = "PortMembership")
+@Entity(name = "TransitionFeatureMembershipImpl")
+@SecondaryTable(name = "TransitionFeatureMembership")
+@org.hibernate.annotations.Table(appliesTo = "TransitionFeatureMembership", fetch = FetchMode.SELECT, optional = false)
+// @info.archinnov.achilles.annotations.Table(table = "TransitionFeatureMembership")
+@DiscriminatorValue(value = "TransitionFeatureMembership")
+@JsonTypeName(value = "TransitionFeatureMembership")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class PortMembershipImpl extends MofObjectImpl implements PortMembership {
-    // @info.archinnov.achilles.annotations.Column("memberPort")
-    private PortUsage memberPort;
+public class TransitionFeatureMembershipImpl extends MofObjectImpl implements TransitionFeatureMembership {
+    // @info.archinnov.achilles.annotations.Column("kind")
+    // @info.archinnov.achilles.annotations.Enumerated(info.archinnov.achilles.annotations.Enumerated.Encoding.NAME)
+    private TransitionFeatureKind kind;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "PortUsageMetaDef", metaColumn = @javax.persistence.Column(name = "memberPortType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "memberPortId", table = "PortMembership")
-    public PortUsage getMemberPort() {
-        return memberPort;
+    @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "kind", table = "TransitionFeatureMembership")
+    public TransitionFeatureKind getKind() {
+        return kind;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = PortUsageImpl.class)
-    public void setMemberPort(PortUsage memberPort) {
-        this.memberPort = memberPort;
+    public void setKind(TransitionFeatureKind kind) {
+        this.kind = kind;
     }
 
 
@@ -73,7 +72,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningTypeId", table = "PortMembership")
+    @JoinColumn(name = "owningTypeId", table = "TransitionFeatureMembership")
     public Type getOwningType() {
         return owningType;
     }
@@ -90,7 +89,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     private Boolean isDerived;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isDerived", table = "PortMembership")
+    @javax.persistence.Column(name = "isDerived", table = "TransitionFeatureMembership")
     public Boolean getIsDerived() {
         return isDerived;
     }
@@ -106,7 +105,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     private Boolean isReadOnly;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isReadOnly", table = "PortMembership")
+    @javax.persistence.Column(name = "isReadOnly", table = "TransitionFeatureMembership")
     public Boolean getIsReadOnly() {
         return isReadOnly;
     }
@@ -124,7 +123,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "memberFeatureType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "memberFeatureId", table = "PortMembership")
+    @JoinColumn(name = "memberFeatureId", table = "TransitionFeatureMembership")
     public Feature getMemberFeature() {
         return memberFeature;
     }
@@ -143,7 +142,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberFeatureType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedMemberFeatureId", table = "PortMembership")
+    @JoinColumn(name = "ownedMemberFeatureId", table = "TransitionFeatureMembership")
     public Feature getOwnedMemberFeature() {
         return ownedMemberFeature;
     }
@@ -160,7 +159,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     private Boolean isComposite;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isComposite", table = "PortMembership")
+    @javax.persistence.Column(name = "isComposite", table = "TransitionFeatureMembership")
     public Boolean getIsComposite() {
         return isComposite;
     }
@@ -176,7 +175,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     private Boolean isPortion;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isPortion", table = "PortMembership")
+    @javax.persistence.Column(name = "isPortion", table = "TransitionFeatureMembership")
     public Boolean getIsPortion() {
         return isPortion;
     }
@@ -192,7 +191,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     private Boolean isPort;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isPort", table = "PortMembership")
+    @javax.persistence.Column(name = "isPort", table = "TransitionFeatureMembership")
     public Boolean getIsPort() {
         return isPort;
     }
@@ -210,7 +209,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
-    @javax.persistence.Column(name = "direction", table = "PortMembership")
+    @javax.persistence.Column(name = "direction", table = "TransitionFeatureMembership")
     public FeatureDirectionKind getDirection() {
         return direction;
     }
@@ -228,7 +227,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "memberName", table = "PortMembership")
+    @javax.persistence.Column(name = "memberName", table = "TransitionFeatureMembership")
     public String getMemberName() {
         return memberName;
     }
@@ -246,7 +245,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
-    @javax.persistence.Column(name = "visibility", table = "PortMembership")
+    @javax.persistence.Column(name = "visibility", table = "TransitionFeatureMembership")
     public VisibilityKind getVisibility() {
         return visibility;
     }
@@ -265,8 +264,8 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "PortMembership_aliases",
-            joinColumns = @JoinColumn(name = "PortMembershipId"))
+    @CollectionTable(name = "TransitionFeatureMembership_aliases",
+            joinColumns = @JoinColumn(name = "TransitionFeatureMembershipId"))
     public Collection<String> getAliases() {
         if (aliases == null) {
             aliases = new ArrayList<>();
@@ -287,7 +286,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "memberElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "memberElementId", table = "PortMembership")
+    @JoinColumn(name = "memberElementId", table = "TransitionFeatureMembership")
     public Element getMemberElement() {
         return memberElement;
     }
@@ -306,7 +305,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedMemberElementId", table = "PortMembership")
+    @JoinColumn(name = "ownedMemberElementId", table = "TransitionFeatureMembership")
     public Element getOwnedMemberElement() {
         return ownedMemberElement;
     }
@@ -325,7 +324,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "membershipOwningPackageType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "membershipOwningPackageId", table = "PortMembership")
+    @JoinColumn(name = "membershipOwningPackageId", table = "TransitionFeatureMembership")
     public Package getMembershipOwningPackage() {
         return membershipOwningPackage;
     }
@@ -346,7 +345,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PortMembership_relatedElement",
+    @JoinTable(name = "TransitionFeatureMembership_relatedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getRelatedElement() {
@@ -370,7 +369,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PortMembership_target",
+    @JoinTable(name = "TransitionFeatureMembership_target",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getTarget() {
@@ -394,7 +393,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PortMembership_source",
+    @JoinTable(name = "TransitionFeatureMembership_source",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getSource() {
@@ -418,7 +417,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelatedElementId", table = "PortMembership")
+    @JoinColumn(name = "owningRelatedElementId", table = "TransitionFeatureMembership")
     public Element getOwningRelatedElement() {
         return owningRelatedElement;
     }
@@ -437,7 +436,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PortMembership_ownedRelatedElement",
+    @JoinTable(name = "TransitionFeatureMembership_ownedRelatedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getOwnedRelatedElement() {
@@ -461,7 +460,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningMembershipId", table = "PortMembership")
+    @JoinColumn(name = "owningMembershipId", table = "TransitionFeatureMembership")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -480,7 +479,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelationshipId", table = "PortMembership")
+    @JoinColumn(name = "owningRelationshipId", table = "TransitionFeatureMembership")
     public Relationship getOwningRelationship() {
         return owningRelationship;
     }
@@ -497,7 +496,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     private java.util.UUID identifier;
 
     @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "PortMembership")
+    @javax.persistence.Column(name = "identifier", table = "TransitionFeatureMembership")
     public java.util.UUID getIdentifier() {
         return identifier;
     }
@@ -517,7 +516,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "PortMembership")
+    @JoinColumn(name = "owningNamespaceId", table = "TransitionFeatureMembership")
     public Package getOwningNamespace() {
         return owningNamespace;
     }
@@ -538,7 +537,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "name", table = "PortMembership")
+    @javax.persistence.Column(name = "name", table = "TransitionFeatureMembership")
     public String getName() {
         return name;
     }
@@ -556,7 +555,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PortMembership_ownedRelationship",
+    @JoinTable(name = "TransitionFeatureMembership_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Relationship> getOwnedRelationship() {
@@ -582,7 +581,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownerId", table = "PortMembership")
+    @JoinColumn(name = "ownerId", table = "TransitionFeatureMembership")
     public Element getOwner() {
         return owner;
     }
@@ -603,7 +602,7 @@ public class PortMembershipImpl extends MofObjectImpl implements PortMembership 
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PortMembership_ownedElement",
+    @JoinTable(name = "TransitionFeatureMembership_ownedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getOwnedElement() {

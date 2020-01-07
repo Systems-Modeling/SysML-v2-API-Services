@@ -23,7 +23,9 @@ public abstract class TypeImpl_ extends org.omg.sysml.metamodel.impl.MofObjectIm
 	public static volatile SingularAttribute<TypeImpl, UUID> identifier;
 	public static volatile CollectionAttribute<TypeImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<TypeImpl, Feature> ownedFeature;
+	public static volatile SingularAttribute<TypeImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<TypeImpl, Relationship> ownedRelationship;
+	public static volatile ListAttribute<TypeImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<TypeImpl, Feature> endFeature;
 	public static volatile ListAttribute<TypeImpl, Membership> membership;
 	public static volatile ListAttribute<TypeImpl, Import> ownedImport;
@@ -36,6 +38,7 @@ public abstract class TypeImpl_ extends org.omg.sysml.metamodel.impl.MofObjectIm
 	public static volatile ListAttribute<TypeImpl, Element> member;
 	public static volatile SingularAttribute<TypeImpl, String> name;
 	public static volatile ListAttribute<TypeImpl, FeatureMembership> ownedFeatureMembership;
+	public static volatile CollectionAttribute<TypeImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<TypeImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<TypeImpl, Element> ownedMember;
 	public static volatile ListAttribute<TypeImpl, Membership> ownedMembership;
@@ -45,7 +48,9 @@ public abstract class TypeImpl_ extends org.omg.sysml.metamodel.impl.MofObjectIm
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
+	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_IMPORT = "ownedImport";
@@ -58,6 +63,7 @@ public abstract class TypeImpl_ extends org.omg.sysml.metamodel.impl.MofObjectIm
 	public static final String MEMBER = "member";
 	public static final String NAME = "name";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
+	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";

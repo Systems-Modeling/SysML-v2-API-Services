@@ -26,4 +26,14 @@ public interface Type extends Package, MofObject {
     Collection<? extends Feature> getOwnedEndFeature();
 
     Boolean getIsSufficient();
+
+    Conjugation getOwnedConjugator();
+
+    Boolean getIsConjugated();
+
+    Conjugation getConjugator();
+
+    List<? extends FeatureMembership> getFeatureMembership();
+
+    Collection<? extends Feature> getInheritedFeature();
 }

@@ -24,6 +24,7 @@ import org.omg.sysml.metamodel.Type;
 public abstract class LiteralIntegerImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<LiteralIntegerImpl, Generalization> ownedGeneralization;
+	public static volatile SingularAttribute<LiteralIntegerImpl, Boolean> isConjugated;
 	public static volatile SingularAttribute<LiteralIntegerImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<LiteralIntegerImpl, Subsetting> ownedSubsetting;
 	public static volatile ListAttribute<LiteralIntegerImpl, Membership> membership;
@@ -35,6 +36,7 @@ public abstract class LiteralIntegerImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<LiteralIntegerImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<LiteralIntegerImpl, Element> member;
 	public static volatile ListAttribute<LiteralIntegerImpl, FeatureMembership> ownedFeatureMembership;
+	public static volatile CollectionAttribute<LiteralIntegerImpl, Feature> inheritedFeature;
 	public static volatile CollectionAttribute<LiteralIntegerImpl, Behavior> behavior;
 	public static volatile SingularAttribute<LiteralIntegerImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<LiteralIntegerImpl, Integer> value;
@@ -45,6 +47,7 @@ public abstract class LiteralIntegerImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<LiteralIntegerImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<LiteralIntegerImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<LiteralIntegerImpl, Relationship> ownedRelationship;
+	public static volatile ListAttribute<LiteralIntegerImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<LiteralIntegerImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<LiteralIntegerImpl, Type> referencedType;
 	public static volatile ListAttribute<LiteralIntegerImpl, Import> ownedImport;
@@ -59,6 +62,7 @@ public abstract class LiteralIntegerImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile ListAttribute<LiteralIntegerImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String MEMBERSHIP = "membership";
@@ -70,6 +74,7 @@ public abstract class LiteralIntegerImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
+	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String VALUE = "value";
@@ -80,6 +85,7 @@ public abstract class LiteralIntegerImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String OWNED_IMPORT = "ownedImport";

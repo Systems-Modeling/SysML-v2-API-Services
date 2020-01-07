@@ -16,6 +16,7 @@ import org.omg.sysml.metamodel.Membership;
 import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.Property;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Superclassing;
 import org.omg.sysml.metamodel.Usage;
 
@@ -25,6 +26,8 @@ public abstract class DefinitionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 
 	public static volatile CollectionAttribute<DefinitionImpl, PortUsage> ownedPort;
 	public static volatile ListAttribute<DefinitionImpl, Generalization> ownedGeneralization;
+	public static volatile SingularAttribute<DefinitionImpl, Boolean> isConjugated;
+	public static volatile CollectionAttribute<DefinitionImpl, StateUsage> ownedState;
 	public static volatile CollectionAttribute<DefinitionImpl, Superclassing> ownedSuperclassing;
 	public static volatile ListAttribute<DefinitionImpl, Membership> membership;
 	public static volatile CollectionAttribute<DefinitionImpl, Feature> output;
@@ -34,6 +37,7 @@ public abstract class DefinitionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile CollectionAttribute<DefinitionImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<DefinitionImpl, Element> member;
 	public static volatile ListAttribute<DefinitionImpl, FeatureMembership> ownedFeatureMembership;
+	public static volatile CollectionAttribute<DefinitionImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<DefinitionImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<DefinitionImpl, Property> ownedProperty;
 	public static volatile ListAttribute<DefinitionImpl, Membership> importedMembership;
@@ -41,6 +45,7 @@ public abstract class DefinitionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile CollectionAttribute<DefinitionImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<DefinitionImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<DefinitionImpl, Relationship> ownedRelationship;
+	public static volatile ListAttribute<DefinitionImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<DefinitionImpl, Feature> endFeature;
 	public static volatile ListAttribute<DefinitionImpl, Import> ownedImport;
 	public static volatile SingularAttribute<DefinitionImpl, Boolean> isAbstract;
@@ -54,6 +59,8 @@ public abstract class DefinitionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 
 	public static final String OWNED_PORT = "ownedPort";
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String IS_CONJUGATED = "isConjugated";
+	public static final String OWNED_STATE = "ownedState";
 	public static final String OWNED_SUPERCLASSING = "ownedSuperclassing";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OUTPUT = "output";
@@ -63,6 +70,7 @@ public abstract class DefinitionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
+	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_PROPERTY = "ownedProperty";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
@@ -70,6 +78,7 @@ public abstract class DefinitionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";

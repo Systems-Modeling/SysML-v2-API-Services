@@ -25,6 +25,7 @@ import org.omg.sysml.metamodel.Type;
 public abstract class QueryPathStepExpressionImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<QueryPathStepExpressionImpl, Generalization> ownedGeneralization;
+	public static volatile SingularAttribute<QueryPathStepExpressionImpl, Boolean> isConjugated;
 	public static volatile SingularAttribute<QueryPathStepExpressionImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<QueryPathStepExpressionImpl, Subsetting> ownedSubsetting;
 	public static volatile ListAttribute<QueryPathStepExpressionImpl, Membership> membership;
@@ -37,6 +38,7 @@ public abstract class QueryPathStepExpressionImpl_ extends org.omg.sysml.metamod
 	public static volatile CollectionAttribute<QueryPathStepExpressionImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<QueryPathStepExpressionImpl, Element> member;
 	public static volatile ListAttribute<QueryPathStepExpressionImpl, FeatureMembership> ownedFeatureMembership;
+	public static volatile CollectionAttribute<QueryPathStepExpressionImpl, Feature> inheritedFeature;
 	public static volatile CollectionAttribute<QueryPathStepExpressionImpl, Behavior> behavior;
 	public static volatile SingularAttribute<QueryPathStepExpressionImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<QueryPathStepExpressionImpl, Boolean> isOrdered;
@@ -46,6 +48,7 @@ public abstract class QueryPathStepExpressionImpl_ extends org.omg.sysml.metamod
 	public static volatile CollectionAttribute<QueryPathStepExpressionImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<QueryPathStepExpressionImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<QueryPathStepExpressionImpl, Relationship> ownedRelationship;
+	public static volatile ListAttribute<QueryPathStepExpressionImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<QueryPathStepExpressionImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<QueryPathStepExpressionImpl, Type> referencedType;
 	public static volatile ListAttribute<QueryPathStepExpressionImpl, Import> ownedImport;
@@ -61,6 +64,7 @@ public abstract class QueryPathStepExpressionImpl_ extends org.omg.sysml.metamod
 	public static volatile ListAttribute<QueryPathStepExpressionImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String MEMBERSHIP = "membership";
@@ -73,6 +77,7 @@ public abstract class QueryPathStepExpressionImpl_ extends org.omg.sysml.metamod
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
+	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
@@ -82,6 +87,7 @@ public abstract class QueryPathStepExpressionImpl_ extends org.omg.sysml.metamod
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String OWNED_IMPORT = "ownedImport";
