@@ -7,6 +7,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Element;
+import org.omg.sysml.metamodel.Expression;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
@@ -42,6 +43,7 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile CollectionAttribute<MultiplicityRangeImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<MultiplicityRangeImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<MultiplicityRangeImpl, Relationship> ownedRelationship;
+	public static volatile ListAttribute<MultiplicityRangeImpl, Expression> bound;
 	public static volatile CollectionAttribute<MultiplicityRangeImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<MultiplicityRangeImpl, Type> referencedType;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Import> ownedImport;
@@ -75,6 +77,7 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String BOUND = "bound";
 	public static final String END_FEATURE = "endFeature";
 	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String OWNED_IMPORT = "ownedImport";

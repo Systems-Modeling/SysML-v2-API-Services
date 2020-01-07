@@ -9,5 +9,5 @@ public interface MultiplicityRange extends Multiplicity, MofObject {
 
     Expression getUpperBound();
 
-    Expression getBound();
+    List<? extends Expression> getBound();
 }

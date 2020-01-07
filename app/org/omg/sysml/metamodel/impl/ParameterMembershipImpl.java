@@ -229,6 +229,7 @@ public class ParameterMembershipImpl extends MofObjectImpl implements ParameterM
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "direction", table = "ParameterMembership")
     public FeatureDirectionKind getDirection() {
         return direction;
     }
@@ -264,6 +265,7 @@ public class ParameterMembershipImpl extends MofObjectImpl implements ParameterM
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "visibility", table = "ParameterMembership")
     public VisibilityKind getVisibility() {
         return visibility;
     }
@@ -362,10 +364,10 @@ public class ParameterMembershipImpl extends MofObjectImpl implements ParameterM
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "relatedElementType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "ParameterMembership_relatedElement",
-            joinColumns = @JoinColumn(name = "ParameterMembershipId"),
-            inverseJoinColumns = @JoinColumn(name = "relatedElementId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getRelatedElement() {
         if (relatedElement == null) {
             relatedElement = new ArrayList<>();
@@ -386,10 +388,10 @@ public class ParameterMembershipImpl extends MofObjectImpl implements ParameterM
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "targetType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "ParameterMembership_target",
-            joinColumns = @JoinColumn(name = "ParameterMembershipId"),
-            inverseJoinColumns = @JoinColumn(name = "targetId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getTarget() {
         if (target == null) {
             target = new ArrayList<>();
@@ -410,10 +412,10 @@ public class ParameterMembershipImpl extends MofObjectImpl implements ParameterM
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "sourceType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "ParameterMembership_source",
-            joinColumns = @JoinColumn(name = "ParameterMembershipId"),
-            inverseJoinColumns = @JoinColumn(name = "sourceId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getSource() {
         if (source == null) {
             source = new ArrayList<>();
@@ -453,10 +455,10 @@ public class ParameterMembershipImpl extends MofObjectImpl implements ParameterM
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelatedElementType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "ParameterMembership_ownedRelatedElement",
-            joinColumns = @JoinColumn(name = "ParameterMembershipId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedRelatedElementId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getOwnedRelatedElement() {
         if (ownedRelatedElement == null) {
             ownedRelatedElement = new ArrayList<>();
@@ -514,6 +516,7 @@ public class ParameterMembershipImpl extends MofObjectImpl implements ParameterM
     private java.util.UUID identifier;
 
     @JsonGetter
+    @javax.persistence.Column(name = "identifier", table = "ParameterMembership")
     public java.util.UUID getIdentifier() {
         return identifier;
     }
@@ -571,10 +574,10 @@ public class ParameterMembershipImpl extends MofObjectImpl implements ParameterM
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelationshipType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "ParameterMembership_ownedRelationship",
-            joinColumns = @JoinColumn(name = "ParameterMembershipId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedRelationshipId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Relationship> getOwnedRelationship() {
         if (ownedRelationship == null) {
             ownedRelationship = new ArrayList<>();
@@ -618,10 +621,10 @@ public class ParameterMembershipImpl extends MofObjectImpl implements ParameterM
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedElementType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "ParameterMembership_ownedElement",
-            joinColumns = @JoinColumn(name = "ParameterMembershipId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedElementId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
