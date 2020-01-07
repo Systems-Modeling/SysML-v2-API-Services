@@ -56,20 +56,4 @@ public abstract class MofObjectImpl implements MofObject {
     public void setContainingProject(org.omg.sysml.extension.Project containingProject) {
         this.containingProject = containingProject;
     }
-
-    // TODO Remove hardcoding for identifier
-
-    // @info.archinnov.achilles.annotations.Column("identifier")
-    private java.util.UUID identifier;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "MofObject")
-    public java.util.UUID getIdentifier() {
-        return identifier;
-    }
-
-    @JsonSetter
-    public void setIdentifier(java.util.UUID identifier) {
-        this.identifier = identifier;
-    }
 }

@@ -24,6 +24,7 @@ import org.omg.sysml.metamodel.Type;
 public abstract class LiteralStringImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<LiteralStringImpl, Generalization> ownedGeneralization;
+	public static volatile SingularAttribute<LiteralStringImpl, Boolean> isConjugated;
 	public static volatile SingularAttribute<LiteralStringImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<LiteralStringImpl, Subsetting> ownedSubsetting;
 	public static volatile ListAttribute<LiteralStringImpl, Membership> membership;
@@ -35,6 +36,7 @@ public abstract class LiteralStringImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static volatile CollectionAttribute<LiteralStringImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<LiteralStringImpl, Element> member;
 	public static volatile ListAttribute<LiteralStringImpl, FeatureMembership> ownedFeatureMembership;
+	public static volatile CollectionAttribute<LiteralStringImpl, Feature> inheritedFeature;
 	public static volatile CollectionAttribute<LiteralStringImpl, Behavior> behavior;
 	public static volatile SingularAttribute<LiteralStringImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<LiteralStringImpl, String> value;
@@ -45,6 +47,7 @@ public abstract class LiteralStringImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static volatile CollectionAttribute<LiteralStringImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<LiteralStringImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<LiteralStringImpl, Relationship> ownedRelationship;
+	public static volatile ListAttribute<LiteralStringImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<LiteralStringImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<LiteralStringImpl, Type> referencedType;
 	public static volatile ListAttribute<LiteralStringImpl, Import> ownedImport;
@@ -59,6 +62,7 @@ public abstract class LiteralStringImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static volatile ListAttribute<LiteralStringImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String MEMBERSHIP = "membership";
@@ -70,6 +74,7 @@ public abstract class LiteralStringImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
+	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String VALUE = "value";
@@ -80,6 +85,7 @@ public abstract class LiteralStringImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String OWNED_IMPORT = "ownedImport";

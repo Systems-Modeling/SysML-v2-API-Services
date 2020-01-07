@@ -24,6 +24,7 @@ import org.omg.sysml.metamodel.Type;
 public abstract class InstanceCreationExpressionImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<InstanceCreationExpressionImpl, Generalization> ownedGeneralization;
+	public static volatile SingularAttribute<InstanceCreationExpressionImpl, Boolean> isConjugated;
 	public static volatile SingularAttribute<InstanceCreationExpressionImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Subsetting> ownedSubsetting;
 	public static volatile ListAttribute<InstanceCreationExpressionImpl, Membership> membership;
@@ -35,6 +36,7 @@ public abstract class InstanceCreationExpressionImpl_ extends org.omg.sysml.meta
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<InstanceCreationExpressionImpl, Element> member;
 	public static volatile ListAttribute<InstanceCreationExpressionImpl, FeatureMembership> ownedFeatureMembership;
+	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Feature> inheritedFeature;
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Behavior> behavior;
 	public static volatile SingularAttribute<InstanceCreationExpressionImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<InstanceCreationExpressionImpl, Boolean> isOrdered;
@@ -44,6 +46,7 @@ public abstract class InstanceCreationExpressionImpl_ extends org.omg.sysml.meta
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Relationship> ownedRelationship;
+	public static volatile ListAttribute<InstanceCreationExpressionImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Type> referencedType;
 	public static volatile ListAttribute<InstanceCreationExpressionImpl, Import> ownedImport;
@@ -58,6 +61,7 @@ public abstract class InstanceCreationExpressionImpl_ extends org.omg.sysml.meta
 	public static volatile ListAttribute<InstanceCreationExpressionImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String MEMBERSHIP = "membership";
@@ -69,6 +73,7 @@ public abstract class InstanceCreationExpressionImpl_ extends org.omg.sysml.meta
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
+	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
@@ -78,6 +83,7 @@ public abstract class InstanceCreationExpressionImpl_ extends org.omg.sysml.meta
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String OWNED_IMPORT = "ownedImport";

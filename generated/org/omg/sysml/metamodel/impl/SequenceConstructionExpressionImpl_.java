@@ -25,6 +25,7 @@ import org.omg.sysml.metamodel.Type;
 public abstract class SequenceConstructionExpressionImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<SequenceConstructionExpressionImpl, Generalization> ownedGeneralization;
+	public static volatile SingularAttribute<SequenceConstructionExpressionImpl, Boolean> isConjugated;
 	public static volatile SingularAttribute<SequenceConstructionExpressionImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<SequenceConstructionExpressionImpl, Subsetting> ownedSubsetting;
 	public static volatile ListAttribute<SequenceConstructionExpressionImpl, Membership> membership;
@@ -36,6 +37,7 @@ public abstract class SequenceConstructionExpressionImpl_ extends org.omg.sysml.
 	public static volatile CollectionAttribute<SequenceConstructionExpressionImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<SequenceConstructionExpressionImpl, Element> member;
 	public static volatile ListAttribute<SequenceConstructionExpressionImpl, FeatureMembership> ownedFeatureMembership;
+	public static volatile CollectionAttribute<SequenceConstructionExpressionImpl, Feature> inheritedFeature;
 	public static volatile CollectionAttribute<SequenceConstructionExpressionImpl, Behavior> behavior;
 	public static volatile SingularAttribute<SequenceConstructionExpressionImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<SequenceConstructionExpressionImpl, Boolean> isOrdered;
@@ -46,6 +48,7 @@ public abstract class SequenceConstructionExpressionImpl_ extends org.omg.sysml.
 	public static volatile CollectionAttribute<SequenceConstructionExpressionImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<SequenceConstructionExpressionImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<SequenceConstructionExpressionImpl, Relationship> ownedRelationship;
+	public static volatile ListAttribute<SequenceConstructionExpressionImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<SequenceConstructionExpressionImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<SequenceConstructionExpressionImpl, Type> referencedType;
 	public static volatile ListAttribute<SequenceConstructionExpressionImpl, Import> ownedImport;
@@ -60,6 +63,7 @@ public abstract class SequenceConstructionExpressionImpl_ extends org.omg.sysml.
 	public static volatile ListAttribute<SequenceConstructionExpressionImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String MEMBERSHIP = "membership";
@@ -71,6 +75,7 @@ public abstract class SequenceConstructionExpressionImpl_ extends org.omg.sysml.
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
+	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
@@ -81,6 +86,7 @@ public abstract class SequenceConstructionExpressionImpl_ extends org.omg.sysml.
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String OWNED_IMPORT = "ownedImport";

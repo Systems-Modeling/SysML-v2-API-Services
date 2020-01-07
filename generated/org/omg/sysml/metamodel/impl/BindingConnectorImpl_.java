@@ -24,6 +24,7 @@ import org.omg.sysml.metamodel.Type;
 public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<BindingConnectorImpl, Generalization> ownedGeneralization;
+	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isConjugated;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Subsetting> ownedSubsetting;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Association> association;
@@ -38,6 +39,7 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile CollectionAttribute<BindingConnectorImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<BindingConnectorImpl, Element> member;
 	public static volatile ListAttribute<BindingConnectorImpl, FeatureMembership> ownedFeatureMembership;
+	public static volatile CollectionAttribute<BindingConnectorImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Redefinition> ownedRedefinition;
@@ -46,6 +48,7 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile CollectionAttribute<BindingConnectorImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Relationship> ownedRelationship;
+	public static volatile ListAttribute<BindingConnectorImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Association> ownedAssociationType;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Type> referencedType;
@@ -66,6 +69,7 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile ListAttribute<BindingConnectorImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String ASSOCIATION = "association";
@@ -80,6 +84,7 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
+	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
@@ -88,6 +93,7 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String OWNED_ASSOCIATION_TYPE = "ownedAssociationType";
 	public static final String REFERENCED_TYPE = "referencedType";
