@@ -19,6 +19,7 @@ import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.Property;
 import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.Usage;
@@ -28,6 +29,7 @@ import org.omg.sysml.metamodel.Usage;
 public abstract class PartPropertyImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<PartPropertyImpl, Generalization> ownedGeneralization;
+	public static volatile SingularAttribute<PartPropertyImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<PartPropertyImpl, Usage> nestedUsage;
 	public static volatile SingularAttribute<PartPropertyImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<PartPropertyImpl, Subsetting> ownedSubsetting;
@@ -43,6 +45,8 @@ public abstract class PartPropertyImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static volatile ListAttribute<PartPropertyImpl, Element> member;
 	public static volatile ListAttribute<PartPropertyImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<PartPropertyImpl, Class> block;
+	public static volatile CollectionAttribute<PartPropertyImpl, Feature> inheritedFeature;
+	public static volatile CollectionAttribute<PartPropertyImpl, StateUsage> nestedState;
 	public static volatile SingularAttribute<PartPropertyImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<PartPropertyImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<PartPropertyImpl, Redefinition> ownedRedefinition;
@@ -53,6 +57,7 @@ public abstract class PartPropertyImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static volatile CollectionAttribute<PartPropertyImpl, Property> nestedProperty;
 	public static volatile CollectionAttribute<PartPropertyImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<PartPropertyImpl, Relationship> ownedRelationship;
+	public static volatile ListAttribute<PartPropertyImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<PartPropertyImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<PartPropertyImpl, Type> referencedType;
 	public static volatile ListAttribute<PartPropertyImpl, Import> ownedImport;
@@ -67,6 +72,7 @@ public abstract class PartPropertyImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static volatile ListAttribute<PartPropertyImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String NESTED_USAGE = "nestedUsage";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
@@ -82,6 +88,8 @@ public abstract class PartPropertyImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String BLOCK = "block";
+	public static final String INHERITED_FEATURE = "inheritedFeature";
+	public static final String NESTED_STATE = "nestedState";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
@@ -92,6 +100,7 @@ public abstract class PartPropertyImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static final String NESTED_PROPERTY = "nestedProperty";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String OWNED_IMPORT = "ownedImport";

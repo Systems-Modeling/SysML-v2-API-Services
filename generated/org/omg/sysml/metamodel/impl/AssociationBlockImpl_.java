@@ -16,6 +16,7 @@ import org.omg.sysml.metamodel.Membership;
 import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.Property;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Superclassing;
 import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.Usage;
@@ -26,6 +27,8 @@ public abstract class AssociationBlockImpl_ extends org.omg.sysml.metamodel.impl
 
 	public static volatile CollectionAttribute<AssociationBlockImpl, PortUsage> ownedPort;
 	public static volatile ListAttribute<AssociationBlockImpl, Generalization> ownedGeneralization;
+	public static volatile SingularAttribute<AssociationBlockImpl, Boolean> isConjugated;
+	public static volatile CollectionAttribute<AssociationBlockImpl, StateUsage> ownedState;
 	public static volatile CollectionAttribute<AssociationBlockImpl, Element> source;
 	public static volatile CollectionAttribute<AssociationBlockImpl, Element> ownedRelatedElement;
 	public static volatile CollectionAttribute<AssociationBlockImpl, Superclassing> ownedSuperclassing;
@@ -38,6 +41,7 @@ public abstract class AssociationBlockImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile CollectionAttribute<AssociationBlockImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<AssociationBlockImpl, Element> member;
 	public static volatile ListAttribute<AssociationBlockImpl, FeatureMembership> ownedFeatureMembership;
+	public static volatile CollectionAttribute<AssociationBlockImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<AssociationBlockImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<AssociationBlockImpl, Property> ownedProperty;
 	public static volatile SingularAttribute<AssociationBlockImpl, UUID> identifier;
@@ -45,6 +49,7 @@ public abstract class AssociationBlockImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile CollectionAttribute<AssociationBlockImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<AssociationBlockImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<AssociationBlockImpl, Relationship> ownedRelationship;
+	public static volatile ListAttribute<AssociationBlockImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<AssociationBlockImpl, Feature> endFeature;
 	public static volatile ListAttribute<AssociationBlockImpl, Import> ownedImport;
 	public static volatile SingularAttribute<AssociationBlockImpl, Boolean> isAbstract;
@@ -61,6 +66,8 @@ public abstract class AssociationBlockImpl_ extends org.omg.sysml.metamodel.impl
 
 	public static final String OWNED_PORT = "ownedPort";
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String IS_CONJUGATED = "isConjugated";
+	public static final String OWNED_STATE = "ownedState";
 	public static final String SOURCE = "source";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String OWNED_SUPERCLASSING = "ownedSuperclassing";
@@ -73,6 +80,7 @@ public abstract class AssociationBlockImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
+	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_PROPERTY = "ownedProperty";
 	public static final String IDENTIFIER = "identifier";
@@ -80,6 +88,7 @@ public abstract class AssociationBlockImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";

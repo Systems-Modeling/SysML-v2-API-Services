@@ -19,6 +19,7 @@ import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.Property;
 import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.Usage;
@@ -29,6 +30,7 @@ public abstract class SendActionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 
 	public static volatile ListAttribute<SendActionUsageImpl, Generalization> ownedGeneralization;
 	public static volatile CollectionAttribute<SendActionUsageImpl, Behavior> activity;
+	public static volatile SingularAttribute<SendActionUsageImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<SendActionUsageImpl, Usage> nestedUsage;
 	public static volatile SingularAttribute<SendActionUsageImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<SendActionUsageImpl, Subsetting> ownedSubsetting;
@@ -43,6 +45,8 @@ public abstract class SendActionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<SendActionUsageImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<SendActionUsageImpl, Element> member;
 	public static volatile ListAttribute<SendActionUsageImpl, FeatureMembership> ownedFeatureMembership;
+	public static volatile CollectionAttribute<SendActionUsageImpl, Feature> inheritedFeature;
+	public static volatile CollectionAttribute<SendActionUsageImpl, StateUsage> nestedState;
 	public static volatile CollectionAttribute<SendActionUsageImpl, Behavior> behavior;
 	public static volatile SingularAttribute<SendActionUsageImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<SendActionUsageImpl, Boolean> isOrdered;
@@ -54,6 +58,7 @@ public abstract class SendActionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<SendActionUsageImpl, Property> nestedProperty;
 	public static volatile CollectionAttribute<SendActionUsageImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<SendActionUsageImpl, Relationship> ownedRelationship;
+	public static volatile ListAttribute<SendActionUsageImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<SendActionUsageImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<SendActionUsageImpl, Type> referencedType;
 	public static volatile ListAttribute<SendActionUsageImpl, Import> ownedImport;
@@ -69,6 +74,7 @@ public abstract class SendActionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String ACTIVITY = "activity";
+	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String NESTED_USAGE = "nestedUsage";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
@@ -83,6 +89,8 @@ public abstract class SendActionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
+	public static final String INHERITED_FEATURE = "inheritedFeature";
+	public static final String NESTED_STATE = "nestedState";
 	public static final String BEHAVIOR = "behavior";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
@@ -94,6 +102,7 @@ public abstract class SendActionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String NESTED_PROPERTY = "nestedProperty";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String OWNED_IMPORT = "ownedImport";

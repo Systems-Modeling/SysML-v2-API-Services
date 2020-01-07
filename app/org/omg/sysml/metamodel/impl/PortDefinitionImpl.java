@@ -49,6 +49,27 @@ import java.util.HashSet;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public class PortDefinitionImpl extends MofObjectImpl implements PortDefinition {
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("conjugatedPortDefinition")
+    private ConjugatedPortDefinition conjugatedPortDefinition;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "ConjugatedPortDefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "conjugatedPortDefinitionType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "conjugatedPortDefinitionId", table = "PortDefinition")
+    public ConjugatedPortDefinition getConjugatedPortDefinition() {
+        return conjugatedPortDefinition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ConjugatedPortDefinitionImpl.class)
+    public void setConjugatedPortDefinition(ConjugatedPortDefinition conjugatedPortDefinition) {
+        this.conjugatedPortDefinition = conjugatedPortDefinition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedUsage")
     private Collection<Usage> ownedUsage;
 
@@ -200,6 +221,32 @@ public class PortDefinitionImpl extends MofObjectImpl implements PortDefinition 
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ActionUsageImpl.class)
     public void setOwnedAction(Collection<ActionUsage> ownedAction) {
         this.ownedAction = ownedAction;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedState")
+    private Collection<StateUsage> ownedState;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "StateUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "PortDefinition_ownedState",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<StateUsage> getOwnedState() {
+        if (ownedState == null) {
+            ownedState = new ArrayList<>();
+        }
+        return ownedState;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StateUsageImpl.class)
+    public void setOwnedState(Collection<StateUsage> ownedState) {
+        this.ownedState = ownedState;
     }
 
 
@@ -490,6 +537,116 @@ public class PortDefinitionImpl extends MofObjectImpl implements PortDefinition 
     @JsonSetter
     public void setIsSufficient(Boolean isSufficient) {
         this.isSufficient = isSufficient;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedConjugator")
+    private Conjugation ownedConjugator;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConjugatorType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedConjugatorId", table = "PortDefinition")
+    public Conjugation getOwnedConjugator() {
+        return ownedConjugator;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ConjugationImpl.class)
+    public void setOwnedConjugator(Conjugation ownedConjugator) {
+        this.ownedConjugator = ownedConjugator;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("isConjugated")
+    private Boolean isConjugated;
+
+    @JsonGetter
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "isConjugated", table = "PortDefinition")
+    public Boolean getIsConjugated() {
+        return isConjugated;
+    }
+
+    @JsonSetter
+    public void setIsConjugated(Boolean isConjugated) {
+        this.isConjugated = isConjugated;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("conjugator")
+    private Conjugation conjugator;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "conjugatorType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "conjugatorId", table = "PortDefinition")
+    public Conjugation getConjugator() {
+        return conjugator;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ConjugationImpl.class)
+    public void setConjugator(Conjugation conjugator) {
+        this.conjugator = conjugator;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("featureMembership")
+    private List<FeatureMembership> featureMembership;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "PortDefinition_featureMembership",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<FeatureMembership> getFeatureMembership() {
+        if (featureMembership == null) {
+            featureMembership = new ArrayList<>();
+        }
+        return featureMembership;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureMembershipImpl.class)
+    public void setFeatureMembership(List<FeatureMembership> featureMembership) {
+        this.featureMembership = featureMembership;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("inheritedFeature")
+    private Collection<Feature> inheritedFeature;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "PortDefinition_inheritedFeature",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Feature> getInheritedFeature() {
+        if (inheritedFeature == null) {
+            inheritedFeature = new ArrayList<>();
+        }
+        return inheritedFeature;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    public void setInheritedFeature(Collection<Feature> inheritedFeature) {
+        this.inheritedFeature = inheritedFeature;
     }
 
 

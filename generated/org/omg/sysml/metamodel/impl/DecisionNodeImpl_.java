@@ -19,6 +19,7 @@ import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.Property;
 import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.Usage;
@@ -29,6 +30,7 @@ public abstract class DecisionNodeImpl_ extends org.omg.sysml.metamodel.impl.Mof
 
 	public static volatile ListAttribute<DecisionNodeImpl, Generalization> ownedGeneralization;
 	public static volatile CollectionAttribute<DecisionNodeImpl, Behavior> activity;
+	public static volatile SingularAttribute<DecisionNodeImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<DecisionNodeImpl, Usage> nestedUsage;
 	public static volatile SingularAttribute<DecisionNodeImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<DecisionNodeImpl, Subsetting> ownedSubsetting;
@@ -43,6 +45,8 @@ public abstract class DecisionNodeImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static volatile CollectionAttribute<DecisionNodeImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<DecisionNodeImpl, Element> member;
 	public static volatile ListAttribute<DecisionNodeImpl, FeatureMembership> ownedFeatureMembership;
+	public static volatile CollectionAttribute<DecisionNodeImpl, Feature> inheritedFeature;
+	public static volatile CollectionAttribute<DecisionNodeImpl, StateUsage> nestedState;
 	public static volatile CollectionAttribute<DecisionNodeImpl, Behavior> behavior;
 	public static volatile SingularAttribute<DecisionNodeImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<DecisionNodeImpl, Boolean> isOrdered;
@@ -54,6 +58,7 @@ public abstract class DecisionNodeImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static volatile CollectionAttribute<DecisionNodeImpl, Property> nestedProperty;
 	public static volatile CollectionAttribute<DecisionNodeImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<DecisionNodeImpl, Relationship> ownedRelationship;
+	public static volatile ListAttribute<DecisionNodeImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<DecisionNodeImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<DecisionNodeImpl, Type> referencedType;
 	public static volatile ListAttribute<DecisionNodeImpl, Import> ownedImport;
@@ -69,6 +74,7 @@ public abstract class DecisionNodeImpl_ extends org.omg.sysml.metamodel.impl.Mof
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String ACTIVITY = "activity";
+	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String NESTED_USAGE = "nestedUsage";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
@@ -83,6 +89,8 @@ public abstract class DecisionNodeImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
+	public static final String INHERITED_FEATURE = "inheritedFeature";
+	public static final String NESTED_STATE = "nestedState";
 	public static final String BEHAVIOR = "behavior";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
@@ -94,6 +102,7 @@ public abstract class DecisionNodeImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static final String NESTED_PROPERTY = "nestedProperty";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String OWNED_IMPORT = "ownedImport";
