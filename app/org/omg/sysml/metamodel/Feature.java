@@ -31,7 +31,5 @@ public interface Feature extends Type, MofObject {
 
     Type getEndOwningType();
 
-    Multiplicity getMultiplicity();
-
     Boolean getIsNonunique();
 }

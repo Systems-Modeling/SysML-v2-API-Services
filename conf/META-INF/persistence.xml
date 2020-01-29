@@ -18,6 +18,7 @@
         <class>org.omg.sysml.metamodel.impl.BlockExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.BlockImpl</class>
         <class>org.omg.sysml.metamodel.impl.BlockPropertyImpl</class>
+        <class>org.omg.sysml.metamodel.impl.BooleanExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.ClassifierImpl</class>
         <class>org.omg.sysml.metamodel.impl.ClassImpl</class>
         <class>org.omg.sysml.metamodel.impl.CommentImpl</class>
@@ -28,6 +29,8 @@
         <class>org.omg.sysml.metamodel.impl.ConjugationImpl</class>
         <class>org.omg.sysml.metamodel.impl.ConnectionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.ConnectorImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ConstraintDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ConstraintUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.ControlNodeImpl</class>
         <class>org.omg.sysml.metamodel.impl.DataTypeImpl</class>
         <class>org.omg.sysml.metamodel.impl.DecisionNodeImpl</class>
@@ -50,6 +53,7 @@
         <class>org.omg.sysml.metamodel.impl.InteractionImpl</class>
         <class>org.omg.sysml.metamodel.impl.InterfaceDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.InterfaceUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.InvariantImpl</class>
         <class>org.omg.sysml.metamodel.impl.InvocationExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.ItemFeatureImpl</class>
         <class>org.omg.sysml.metamodel.impl.ItemFlowEndImpl</class>
@@ -102,6 +106,7 @@
         <class>org.omg.sysml.metamodel.impl.TransferActionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.TransitionFeatureMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.TransitionStepImpl</class>
+        <class>org.omg.sysml.metamodel.impl.TransitionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.TypeImpl</class>
         <class>org.omg.sysml.metamodel.impl.UsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.ValuePropertyImpl</class>

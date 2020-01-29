@@ -48,21 +48,21 @@ import java.util.HashSet;
 @JsonTypeName(value = "ConjugatedPortTyping")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public class ConjugatedPortTypingImpl extends MofObjectImpl implements ConjugatedPortTyping {
-    // @info.archinnov.achilles.annotations.Column("originalPortDefinition")
-    private PortDefinition originalPortDefinition;
+    // @info.archinnov.achilles.annotations.Column("portDefinition")
+    private PortDefinition portDefinition;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "PortDefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "originalPortDefinitionType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "originalPortDefinitionId", table = "ConjugatedPortTyping")
-    public PortDefinition getOriginalPortDefinition() {
-        return originalPortDefinition;
+    @Any(metaDef = "PortDefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "portDefinitionType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "portDefinitionId", table = "ConjugatedPortTyping")
+    public PortDefinition getPortDefinition() {
+        return portDefinition;
     }
 
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = PortDefinitionImpl.class)
-    public void setOriginalPortDefinition(PortDefinition originalPortDefinition) {
-        this.originalPortDefinition = originalPortDefinition;
+    public void setPortDefinition(PortDefinition portDefinition) {
+        this.portDefinition = portDefinition;
     }
 
 

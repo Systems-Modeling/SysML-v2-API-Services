@@ -8,6 +8,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.ActionUsage;
 import org.omg.sysml.metamodel.Class;
+import org.omg.sysml.metamodel.ConstraintUsage;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
@@ -21,6 +22,7 @@ import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Subsetting;
+import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.Usage;
 
@@ -38,7 +40,9 @@ public abstract class BlockPropertyImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static volatile SingularAttribute<BlockPropertyImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<BlockPropertyImpl, Feature> output;
 	public static volatile CollectionAttribute<BlockPropertyImpl, PortUsage> nestedPort;
+	public static volatile CollectionAttribute<BlockPropertyImpl, TransitionUsage> nestedTransition;
 	public static volatile CollectionAttribute<BlockPropertyImpl, Feature> feature;
+	public static volatile CollectionAttribute<BlockPropertyImpl, ConstraintUsage> nestedConstraint;
 	public static volatile ListAttribute<BlockPropertyImpl, Membership> inheritedMembership;
 	public static volatile CollectionAttribute<BlockPropertyImpl, Property> property;
 	public static volatile CollectionAttribute<BlockPropertyImpl, Feature> ownedEndFeature;
@@ -81,7 +85,9 @@ public abstract class BlockPropertyImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OUTPUT = "output";
 	public static final String NESTED_PORT = "nestedPort";
+	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String FEATURE = "feature";
+	public static final String NESTED_CONSTRAINT = "nestedConstraint";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String PROPERTY = "property";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";

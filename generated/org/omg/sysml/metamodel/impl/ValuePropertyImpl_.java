@@ -7,6 +7,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.ActionUsage;
+import org.omg.sysml.metamodel.ConstraintUsage;
 import org.omg.sysml.metamodel.DataType;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Feature;
@@ -21,6 +22,7 @@ import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Subsetting;
+import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.Usage;
 
@@ -38,8 +40,10 @@ public abstract class ValuePropertyImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static volatile SingularAttribute<ValuePropertyImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<ValuePropertyImpl, Feature> output;
 	public static volatile CollectionAttribute<ValuePropertyImpl, PortUsage> nestedPort;
+	public static volatile CollectionAttribute<ValuePropertyImpl, TransitionUsage> nestedTransition;
 	public static volatile CollectionAttribute<ValuePropertyImpl, Feature> feature;
 	public static volatile CollectionAttribute<ValuePropertyImpl, DataType> valueType;
+	public static volatile CollectionAttribute<ValuePropertyImpl, ConstraintUsage> nestedConstraint;
 	public static volatile ListAttribute<ValuePropertyImpl, Membership> inheritedMembership;
 	public static volatile CollectionAttribute<ValuePropertyImpl, Property> property;
 	public static volatile CollectionAttribute<ValuePropertyImpl, Feature> ownedEndFeature;
@@ -81,8 +85,10 @@ public abstract class ValuePropertyImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OUTPUT = "output";
 	public static final String NESTED_PORT = "nestedPort";
+	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String FEATURE = "feature";
 	public static final String VALUE_TYPE = "valueType";
+	public static final String NESTED_CONSTRAINT = "nestedConstraint";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String PROPERTY = "property";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
