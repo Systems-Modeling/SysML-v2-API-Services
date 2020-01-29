@@ -40,358 +40,268 @@ import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
-@Entity(name = "TransitionStepImpl")
-@SecondaryTable(name = "TransitionStep")
-@org.hibernate.annotations.Table(appliesTo = "TransitionStep", fetch = FetchMode.SELECT, optional = false)
-// @info.archinnov.achilles.annotations.Table(table = "TransitionStep")
-@DiscriminatorValue(value = "TransitionStep")
-@JsonTypeName(value = "TransitionStep")
+@Entity(name = "ConstraintDefinitionImpl")
+@SecondaryTable(name = "ConstraintDefinition")
+@org.hibernate.annotations.Table(appliesTo = "ConstraintDefinition", fetch = FetchMode.SELECT, optional = false)
+// @info.archinnov.achilles.annotations.Table(table = "ConstraintDefinition")
+@DiscriminatorValue(value = "ConstraintDefinition")
+@JsonTypeName(value = "ConstraintDefinition")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class TransitionStepImpl extends MofObjectImpl implements TransitionStep {
+public class ConstraintDefinitionImpl extends MofObjectImpl implements ConstraintDefinition {
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("behavior")
-    private Collection<Behavior> behavior;
+    // @info.archinnov.achilles.annotations.Column("ownedUsage")
+    private Collection<Usage> ownedUsage;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "BehaviorMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_behavior",
+    @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConstraintDefinition_ownedUsage",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Behavior> getBehavior() {
-        if (behavior == null) {
-            behavior = new ArrayList<>();
+    public Collection<Usage> getOwnedUsage() {
+        if (ownedUsage == null) {
+            ownedUsage = new ArrayList<>();
         }
-        return behavior;
+        return ownedUsage;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = BehaviorImpl.class)
-    public void setBehavior(Collection<Behavior> behavior) {
-        this.behavior = behavior;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
+    public void setOwnedUsage(Collection<Usage> ownedUsage) {
+        this.ownedUsage = ownedUsage;
     }
 
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("referencedType")
-    private Collection<Type> referencedType;
+    // @info.archinnov.achilles.annotations.Column("ownedPort")
+    private Collection<PortUsage> ownedPort;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_referencedType",
+    @ManyToAny(metaDef = "PortUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConstraintDefinition_ownedPort",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Type> getReferencedType() {
-        if (referencedType == null) {
-            referencedType = new ArrayList<>();
+    public Collection<PortUsage> getOwnedPort() {
+        if (ownedPort == null) {
+            ownedPort = new ArrayList<>();
         }
-        return referencedType;
+        return ownedPort;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
-    public void setReferencedType(Collection<Type> referencedType) {
-        this.referencedType = referencedType;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PortUsageImpl.class)
+    public void setOwnedPort(Collection<PortUsage> ownedPort) {
+        this.ownedPort = ownedPort;
     }
 
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("owningType")
-    private Type owningType;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningTypeId", table = "TransitionStep")
-    public Type getOwningType() {
-        return owningType;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
-    public void setOwningType(Type owningType) {
-        this.owningType = owningType;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("isUnique")
-    private Boolean isUnique;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isUnique", table = "TransitionStep")
-    public Boolean getIsUnique() {
-        return isUnique;
-    }
-
-    @JsonSetter
-    public void setIsUnique(Boolean isUnique) {
-        this.isUnique = isUnique;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("isOrdered")
-    private Boolean isOrdered;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isOrdered", table = "TransitionStep")
-    public Boolean getIsOrdered() {
-        return isOrdered;
-    }
-
-    @JsonSetter
-    public void setIsOrdered(Boolean isOrdered) {
-        this.isOrdered = isOrdered;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("type")
-    private Collection<Type> type;
+    // @info.archinnov.achilles.annotations.Column("flowProperty")
+    private Collection<Property> flowProperty;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_type",
+    @ManyToAny(metaDef = "PropertyMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConstraintDefinition_flowProperty",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Type> getType() {
-        if (type == null) {
-            type = new ArrayList<>();
+    public Collection<Property> getFlowProperty() {
+        if (flowProperty == null) {
+            flowProperty = new ArrayList<>();
         }
-        return type;
+        return flowProperty;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
-    public void setType(Collection<Type> type) {
-        this.type = type;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PropertyImpl.class)
+    public void setFlowProperty(Collection<Property> flowProperty) {
+        this.flowProperty = flowProperty;
     }
 
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedType")
-    private Collection<Type> ownedType;
+    // @info.archinnov.achilles.annotations.Column("ownedProperty")
+    private Collection<Property> ownedProperty;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_ownedType",
+    @ManyToAny(metaDef = "PropertyMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConstraintDefinition_ownedProperty",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Type> getOwnedType() {
-        if (ownedType == null) {
-            ownedType = new ArrayList<>();
+    public Collection<Property> getOwnedProperty() {
+        if (ownedProperty == null) {
+            ownedProperty = new ArrayList<>();
         }
-        return ownedType;
+        return ownedProperty;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
-    public void setOwnedType(Collection<Type> ownedType) {
-        this.ownedType = ownedType;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PropertyImpl.class)
+    public void setOwnedProperty(Collection<Property> ownedProperty) {
+        this.ownedProperty = ownedProperty;
     }
 
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedRedefinition")
-    private Collection<Redefinition> ownedRedefinition;
+    // @info.archinnov.achilles.annotations.Column("property")
+    private Collection<Property> property;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "RedefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_ownedRedefinition",
+    @ManyToAny(metaDef = "PropertyMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConstraintDefinition_property",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Redefinition> getOwnedRedefinition() {
-        if (ownedRedefinition == null) {
-            ownedRedefinition = new ArrayList<>();
+    public Collection<Property> getProperty() {
+        if (property == null) {
+            property = new ArrayList<>();
         }
-        return ownedRedefinition;
+        return property;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RedefinitionImpl.class)
-    public void setOwnedRedefinition(Collection<Redefinition> ownedRedefinition) {
-        this.ownedRedefinition = ownedRedefinition;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PropertyImpl.class)
+    public void setProperty(Collection<Property> property) {
+        this.property = property;
     }
 
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedSubsetting")
-    private Collection<Subsetting> ownedSubsetting;
+    // @info.archinnov.achilles.annotations.Column("ownedAction")
+    private Collection<ActionUsage> ownedAction;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "SubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_ownedSubsetting",
+    @ManyToAny(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConstraintDefinition_ownedAction",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Subsetting> getOwnedSubsetting() {
-        if (ownedSubsetting == null) {
-            ownedSubsetting = new ArrayList<>();
+    public Collection<ActionUsage> getOwnedAction() {
+        if (ownedAction == null) {
+            ownedAction = new ArrayList<>();
         }
-        return ownedSubsetting;
+        return ownedAction;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SubsettingImpl.class)
-    public void setOwnedSubsetting(Collection<Subsetting> ownedSubsetting) {
-        this.ownedSubsetting = ownedSubsetting;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("owningFeatureMembership")
-    private FeatureMembership owningFeatureMembership;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningFeatureMembershipId", table = "TransitionStep")
-    public FeatureMembership getOwningFeatureMembership() {
-        return owningFeatureMembership;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureMembershipImpl.class)
-    public void setOwningFeatureMembership(FeatureMembership owningFeatureMembership) {
-        this.owningFeatureMembership = owningFeatureMembership;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ActionUsageImpl.class)
+    public void setOwnedAction(Collection<ActionUsage> ownedAction) {
+        this.ownedAction = ownedAction;
     }
 
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("isComposite")
-    private Boolean isComposite;
-
-    @JsonGetter
-    // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isComposite", table = "TransitionStep")
-    public Boolean getIsComposite() {
-        return isComposite;
-    }
-
-    @JsonSetter
-    public void setIsComposite(Boolean isComposite) {
-        this.isComposite = isComposite;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("typing")
-    private Collection<FeatureTyping> typing;
+    // @info.archinnov.achilles.annotations.Column("ownedState")
+    private Collection<StateUsage> ownedState;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_typing",
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "StateUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConstraintDefinition_ownedState",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<FeatureTyping> getTyping() {
-        if (typing == null) {
-            typing = new ArrayList<>();
+    public Collection<StateUsage> getOwnedState() {
+        if (ownedState == null) {
+            ownedState = new ArrayList<>();
         }
-        return typing;
+        return ownedState;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureTypingImpl.class)
-    public void setTyping(Collection<FeatureTyping> typing) {
-        this.typing = typing;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StateUsageImpl.class)
+    public void setOwnedState(Collection<StateUsage> ownedState) {
+        this.ownedState = ownedState;
     }
 
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("isEnd")
-    private Boolean isEnd;
+    // @info.archinnov.achilles.annotations.Column("ownedConstraint")
+    private Collection<ConstraintUsage> ownedConstraint;
 
     @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isEnd", table = "TransitionStep")
-    public Boolean getIsEnd() {
-        return isEnd;
+    @ManyToAny(metaDef = "ConstraintUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConstraintDefinition_ownedConstraint",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ConstraintUsage> getOwnedConstraint() {
+        if (ownedConstraint == null) {
+            ownedConstraint = new ArrayList<>();
+        }
+        return ownedConstraint;
     }
 
     @JsonSetter
-    public void setIsEnd(Boolean isEnd) {
-        this.isEnd = isEnd;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConstraintUsageImpl.class)
+    public void setOwnedConstraint(Collection<ConstraintUsage> ownedConstraint) {
+        this.ownedConstraint = ownedConstraint;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("ownedTransition")
+    private Collection<TransitionUsage> ownedTransition;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "TransitionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConstraintDefinition_ownedTransition",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<TransitionUsage> getOwnedTransition() {
+        if (ownedTransition == null) {
+            ownedTransition = new ArrayList<>();
+        }
+        return ownedTransition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TransitionUsageImpl.class)
+    public void setOwnedTransition(Collection<TransitionUsage> ownedTransition) {
+        this.ownedTransition = ownedTransition;
     }
 
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("endOwningType")
-    private Type endOwningType;
+    // @info.archinnov.achilles.annotations.Column("ownedSuperclassing")
+    private Collection<Superclassing> ownedSuperclassing;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "endOwningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "endOwningTypeId", table = "TransitionStep")
-    public Type getEndOwningType() {
-        return endOwningType;
+    @ManyToAny(metaDef = "SuperclassingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConstraintDefinition_ownedSuperclassing",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Superclassing> getOwnedSuperclassing() {
+        if (ownedSuperclassing == null) {
+            ownedSuperclassing = new ArrayList<>();
+        }
+        return ownedSuperclassing;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
-    public void setEndOwningType(Type endOwningType) {
-        this.endOwningType = endOwningType;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("multiplicity")
-    private Multiplicity multiplicity;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "multiplicityId", table = "TransitionStep")
-    public Multiplicity getMultiplicity() {
-        return multiplicity;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = MultiplicityImpl.class)
-    public void setMultiplicity(Multiplicity multiplicity) {
-        this.multiplicity = multiplicity;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("isNonunique")
-    private Boolean isNonunique;
-
-    @JsonGetter
-    // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isNonunique", table = "TransitionStep")
-    public Boolean getIsNonunique() {
-        return isNonunique;
-    }
-
-    @JsonSetter
-    public void setIsNonunique(Boolean isNonunique) {
-        this.isNonunique = isNonunique;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SuperclassingImpl.class)
+    public void setOwnedSuperclassing(Collection<Superclassing> ownedSuperclassing) {
+        this.ownedSuperclassing = ownedSuperclassing;
     }
 
 
@@ -404,7 +314,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "GeneralizationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_ownedGeneralization",
+    @JoinTable(name = "ConstraintDefinition_ownedGeneralization",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Generalization> getOwnedGeneralization() {
@@ -428,7 +338,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_ownedFeatureMembership",
+    @JoinTable(name = "ConstraintDefinition_ownedFeatureMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureMembership> getOwnedFeatureMembership() {
@@ -454,7 +364,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_feature",
+    @JoinTable(name = "ConstraintDefinition_feature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getFeature() {
@@ -480,7 +390,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_ownedFeature",
+    @JoinTable(name = "ConstraintDefinition_ownedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getOwnedFeature() {
@@ -506,7 +416,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_input",
+    @JoinTable(name = "ConstraintDefinition_input",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getInput() {
@@ -532,7 +442,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_output",
+    @JoinTable(name = "ConstraintDefinition_output",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getOutput() {
@@ -554,7 +464,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     private Boolean isAbstract;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isAbstract", table = "TransitionStep")
+    @javax.persistence.Column(name = "isAbstract", table = "ConstraintDefinition")
     public Boolean getIsAbstract() {
         return isAbstract;
     }
@@ -574,7 +484,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_inheritedMembership",
+    @JoinTable(name = "ConstraintDefinition_inheritedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getInheritedMembership() {
@@ -600,7 +510,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_endFeature",
+    @JoinTable(name = "ConstraintDefinition_endFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getEndFeature() {
@@ -626,7 +536,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_ownedEndFeature",
+    @JoinTable(name = "ConstraintDefinition_ownedEndFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getOwnedEndFeature() {
@@ -648,7 +558,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     private Boolean isSufficient;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isSufficient", table = "TransitionStep")
+    @javax.persistence.Column(name = "isSufficient", table = "ConstraintDefinition")
     public Boolean getIsSufficient() {
         return isSufficient;
     }
@@ -668,7 +578,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConjugatorType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedConjugatorId", table = "TransitionStep")
+    @JoinColumn(name = "ownedConjugatorId", table = "ConstraintDefinition")
     public Conjugation getOwnedConjugator() {
         return ownedConjugator;
     }
@@ -687,7 +597,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isConjugated", table = "TransitionStep")
+    @javax.persistence.Column(name = "isConjugated", table = "ConstraintDefinition")
     public Boolean getIsConjugated() {
         return isConjugated;
     }
@@ -705,7 +615,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "conjugatorType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "conjugatorId", table = "TransitionStep")
+    @JoinColumn(name = "conjugatorId", table = "ConstraintDefinition")
     public Conjugation getConjugator() {
         return conjugator;
     }
@@ -726,7 +636,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_featureMembership",
+    @JoinTable(name = "ConstraintDefinition_featureMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureMembership> getFeatureMembership() {
@@ -752,7 +662,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_inheritedFeature",
+    @JoinTable(name = "ConstraintDefinition_inheritedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getInheritedFeature() {
@@ -771,6 +681,27 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("multiplicity")
+    private Multiplicity multiplicity;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "multiplicityId", table = "ConstraintDefinition")
+    public Multiplicity getMultiplicity() {
+        return multiplicity;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = MultiplicityImpl.class)
+    public void setMultiplicity(Multiplicity multiplicity) {
+        this.multiplicity = multiplicity;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("membership")
     private List<Membership> membership;
 
@@ -778,7 +709,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_membership",
+    @JoinTable(name = "ConstraintDefinition_membership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getMembership() {
@@ -802,7 +733,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_ownedImport",
+    @JoinTable(name = "ConstraintDefinition_ownedImport",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Import> getOwnedImport() {
@@ -828,7 +759,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_member",
+    @JoinTable(name = "ConstraintDefinition_member",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getMember() {
@@ -854,7 +785,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_ownedMember",
+    @JoinTable(name = "ConstraintDefinition_ownedMember",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getOwnedMember() {
@@ -878,7 +809,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_ownedMembership",
+    @JoinTable(name = "ConstraintDefinition_ownedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getOwnedMembership() {
@@ -904,7 +835,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_importedMembership",
+    @JoinTable(name = "ConstraintDefinition_importedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getImportedMembership() {
@@ -928,7 +859,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningMembershipId", table = "TransitionStep")
+    @JoinColumn(name = "owningMembershipId", table = "ConstraintDefinition")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -947,7 +878,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelationshipId", table = "TransitionStep")
+    @JoinColumn(name = "owningRelationshipId", table = "ConstraintDefinition")
     public Relationship getOwningRelationship() {
         return owningRelationship;
     }
@@ -964,7 +895,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     private java.util.UUID identifier;
 
     @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "TransitionStep")
+    @javax.persistence.Column(name = "identifier", table = "ConstraintDefinition")
     public java.util.UUID getIdentifier() {
         return identifier;
     }
@@ -984,7 +915,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "TransitionStep")
+    @JoinColumn(name = "owningNamespaceId", table = "ConstraintDefinition")
     public Package getOwningNamespace() {
         return owningNamespace;
     }
@@ -1005,7 +936,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "name", table = "TransitionStep")
+    @javax.persistence.Column(name = "name", table = "ConstraintDefinition")
     public String getName() {
         return name;
     }
@@ -1023,7 +954,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_ownedRelationship",
+    @JoinTable(name = "ConstraintDefinition_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Relationship> getOwnedRelationship() {
@@ -1049,7 +980,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownerId", table = "TransitionStep")
+    @JoinColumn(name = "ownerId", table = "ConstraintDefinition")
     public Element getOwner() {
         return owner;
     }
@@ -1070,7 +1001,7 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionStep_ownedElement",
+    @JoinTable(name = "ConstraintDefinition_ownedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getOwnedElement() {
@@ -1084,6 +1015,105 @@ public class TransitionStepImpl extends MofObjectImpl implements TransitionStep 
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedElement(Collection<Element> ownedElement) {
         this.ownedElement = ownedElement;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("expression")
+    private Collection<Expression> expression;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConstraintDefinition_expression",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Expression> getExpression() {
+        if (expression == null) {
+            expression = new ArrayList<>();
+        }
+        return expression;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ExpressionImpl.class)
+    public void setExpression(Collection<Expression> expression) {
+        this.expression = expression;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("result")
+    private Parameter result;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "ParameterMetaDef", metaColumn = @javax.persistence.Column(name = "resultType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "resultId", table = "ConstraintDefinition")
+    public Parameter getResult() {
+        return result;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ParameterImpl.class)
+    public void setResult(Parameter result) {
+        this.result = result;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("step")
+    private Collection<Step> step;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "StepMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConstraintDefinition_step",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Step> getStep() {
+        if (step == null) {
+            step = new ArrayList<>();
+        }
+        return step;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StepImpl.class)
+    public void setStep(Collection<Step> step) {
+        this.step = step;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("parameter")
+    private Collection<Parameter> parameter;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ParameterMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConstraintDefinition_parameter",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Parameter> getParameter() {
+        if (parameter == null) {
+            parameter = new ArrayList<>();
+        }
+        return parameter;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ParameterImpl.class)
+    public void setParameter(Collection<Parameter> parameter) {
+        this.parameter = parameter;
     }
 
 

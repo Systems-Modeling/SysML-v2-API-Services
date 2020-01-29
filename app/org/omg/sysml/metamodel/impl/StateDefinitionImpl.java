@@ -257,6 +257,56 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedConstraint")
+    private Collection<ConstraintUsage> ownedConstraint;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ConstraintUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StateDefinition_ownedConstraint",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ConstraintUsage> getOwnedConstraint() {
+        if (ownedConstraint == null) {
+            ownedConstraint = new ArrayList<>();
+        }
+        return ownedConstraint;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConstraintUsageImpl.class)
+    public void setOwnedConstraint(Collection<ConstraintUsage> ownedConstraint) {
+        this.ownedConstraint = ownedConstraint;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("ownedTransition")
+    private Collection<TransitionUsage> ownedTransition;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "TransitionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StateDefinition_ownedTransition",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<TransitionUsage> getOwnedTransition() {
+        if (ownedTransition == null) {
+            ownedTransition = new ArrayList<>();
+        }
+        return ownedTransition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TransitionUsageImpl.class)
+    public void setOwnedTransition(Collection<TransitionUsage> ownedTransition) {
+        this.ownedTransition = ownedTransition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("step")
     private Collection<Step> step;
 
@@ -704,6 +754,27 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
     public void setInheritedFeature(Collection<Feature> inheritedFeature) {
         this.inheritedFeature = inheritedFeature;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("multiplicity")
+    private Multiplicity multiplicity;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "multiplicityId", table = "StateDefinition")
+    public Multiplicity getMultiplicity() {
+        return multiplicity;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = MultiplicityImpl.class)
+    public void setMultiplicity(Multiplicity multiplicity) {
+        this.multiplicity = multiplicity;
     }
 
 
