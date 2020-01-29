@@ -289,6 +289,58 @@ public abstract class PropertyImpl extends MofObjectImpl implements Property {
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedConstraint")
+    private Collection<ConstraintUsage> nestedConstraint;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ConstraintUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Property_nestedConstraint",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ConstraintUsage> getNestedConstraint() {
+        if (nestedConstraint == null) {
+            nestedConstraint = new ArrayList<>();
+        }
+        return nestedConstraint;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConstraintUsageImpl.class)
+    public void setNestedConstraint(Collection<ConstraintUsage> nestedConstraint) {
+        this.nestedConstraint = nestedConstraint;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedTransition")
+    private Collection<TransitionUsage> nestedTransition;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TransitionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Property_nestedTransition",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<TransitionUsage> getNestedTransition() {
+        if (nestedTransition == null) {
+            nestedTransition = new ArrayList<>();
+        }
+        return nestedTransition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TransitionUsageImpl.class)
+    public void setNestedTransition(Collection<TransitionUsage> nestedTransition) {
+        this.nestedTransition = nestedTransition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("referencedType")
     private Collection<Type> referencedType;
 
@@ -567,27 +619,6 @@ public abstract class PropertyImpl extends MofObjectImpl implements Property {
     @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
     public void setEndOwningType(Type endOwningType) {
         this.endOwningType = endOwningType;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("multiplicity")
-    private Multiplicity multiplicity;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "multiplicityId", table = "Property")
-    public Multiplicity getMultiplicity() {
-        return multiplicity;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = MultiplicityImpl.class)
-    public void setMultiplicity(Multiplicity multiplicity) {
-        this.multiplicity = multiplicity;
     }
 
 
@@ -980,6 +1011,27 @@ public abstract class PropertyImpl extends MofObjectImpl implements Property {
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
     public void setInheritedFeature(Collection<Feature> inheritedFeature) {
         this.inheritedFeature = inheritedFeature;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("multiplicity")
+    private Multiplicity multiplicity;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "multiplicityId", table = "Property")
+    public Multiplicity getMultiplicity() {
+        return multiplicity;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = MultiplicityImpl.class)
+    public void setMultiplicity(Multiplicity multiplicity) {
+        this.multiplicity = multiplicity;
     }
 
 

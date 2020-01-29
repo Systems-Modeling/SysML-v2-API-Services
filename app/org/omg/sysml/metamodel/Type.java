@@ -36,4 +36,6 @@ public interface Type extends Package, MofObject {
     List<? extends FeatureMembership> getFeatureMembership();
 
     Collection<? extends Feature> getInheritedFeature();
+
+    Multiplicity getMultiplicity();
 }

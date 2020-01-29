@@ -8,6 +8,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.ActionUsage;
 import org.omg.sysml.metamodel.Association;
+import org.omg.sysml.metamodel.ConstraintUsage;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
@@ -21,6 +22,7 @@ import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Subsetting;
+import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.Usage;
 
@@ -37,6 +39,8 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Type> type;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Feature> output;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, PortUsage> nestedPort;
+	public static volatile CollectionAttribute<InterfaceUsageImpl, TransitionUsage> nestedTransition;
+	public static volatile CollectionAttribute<InterfaceUsageImpl, ConstraintUsage> nestedConstraint;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Property> property;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, StateUsage> nestedState;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isSufficient;
@@ -88,6 +92,8 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String TYPE = "type";
 	public static final String OUTPUT = "output";
 	public static final String NESTED_PORT = "nestedPort";
+	public static final String NESTED_TRANSITION = "nestedTransition";
+	public static final String NESTED_CONSTRAINT = "nestedConstraint";
 	public static final String PROPERTY = "property";
 	public static final String NESTED_STATE = "nestedState";
 	public static final String IS_SUFFICIENT = "isSufficient";

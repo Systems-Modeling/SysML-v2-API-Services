@@ -834,27 +834,6 @@ public class SuccessionImpl extends MofObjectImpl implements Succession {
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("multiplicity")
-    private Multiplicity multiplicity;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "multiplicityId", table = "Succession")
-    public Multiplicity getMultiplicity() {
-        return multiplicity;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = MultiplicityImpl.class)
-    public void setMultiplicity(Multiplicity multiplicity) {
-        this.multiplicity = multiplicity;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("isNonunique")
     private Boolean isNonunique;
 
@@ -1242,6 +1221,27 @@ public class SuccessionImpl extends MofObjectImpl implements Succession {
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
     public void setInheritedFeature(Collection<Feature> inheritedFeature) {
         this.inheritedFeature = inheritedFeature;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("multiplicity")
+    private Multiplicity multiplicity;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "multiplicityId", table = "Succession")
+    public Multiplicity getMultiplicity() {
+        return multiplicity;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = MultiplicityImpl.class)
+    public void setMultiplicity(Multiplicity multiplicity) {
+        this.multiplicity = multiplicity;
     }
 
 

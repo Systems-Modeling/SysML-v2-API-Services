@@ -8,6 +8,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.ActionUsage;
 import org.omg.sysml.metamodel.Association;
+import org.omg.sysml.metamodel.ConstraintUsage;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
@@ -21,6 +22,7 @@ import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Subsetting;
+import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.Usage;
 
@@ -37,6 +39,8 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Type> type;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Feature> output;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, PortUsage> nestedPort;
+	public static volatile CollectionAttribute<ConnectionUsageImpl, TransitionUsage> nestedTransition;
+	public static volatile CollectionAttribute<ConnectionUsageImpl, ConstraintUsage> nestedConstraint;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Property> property;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, StateUsage> nestedState;
 	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isSufficient;
@@ -88,6 +92,8 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String TYPE = "type";
 	public static final String OUTPUT = "output";
 	public static final String NESTED_PORT = "nestedPort";
+	public static final String NESTED_TRANSITION = "nestedTransition";
+	public static final String NESTED_CONSTRAINT = "nestedConstraint";
 	public static final String PROPERTY = "property";
 	public static final String NESTED_STATE = "nestedState";
 	public static final String IS_SUFFICIENT = "isSufficient";
