@@ -23,7 +23,6 @@
         <class>org.omg.sysml.metamodel.impl.ClassImpl</class>
         <class>org.omg.sysml.metamodel.impl.CommentImpl</class>
         <class>org.omg.sysml.metamodel.impl.ConditionalImportImpl</class>
-        <class>org.omg.sysml.metamodel.impl.ConditionalSuccessionImpl</class>
         <class>org.omg.sysml.metamodel.impl.ConjugatedPortDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.ConjugatedPortTypingImpl</class>
         <class>org.omg.sysml.metamodel.impl.ConjugationImpl</class>
@@ -105,7 +104,6 @@
         <class>org.omg.sysml.metamodel.impl.TargetEndImpl</class>
         <class>org.omg.sysml.metamodel.impl.TransferActionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.TransitionFeatureMembershipImpl</class>
-        <class>org.omg.sysml.metamodel.impl.TransitionStepImpl</class>
         <class>org.omg.sysml.metamodel.impl.TransitionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.TypeImpl</class>
         <class>org.omg.sysml.metamodel.impl.UsageImpl</class>
