@@ -1,6 +1,7 @@
 package org.omg.sysml.lifecycle.impl;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jackson.MofObjectDeserializer;
@@ -25,6 +26,7 @@ public class CommitImpl extends RecordImpl implements Commit {
     @Override
     @ManyToOne(targetEntity = ProjectImpl.class, fetch = FetchType.LAZY)
     @JsonSerialize(as = ProjectImpl.class, using = MofObjectSerializer.class)
+    @JsonView(Views.Compact.class)
     public Project getContainingProject() {
         return containingProject;
     }
@@ -35,8 +37,8 @@ public class CommitImpl extends RecordImpl implements Commit {
     }
 
     @Override
-    @OneToMany(targetEntity = ElementRecordImpl.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonDeserialize(contentAs = ElementRecordImpl.class)
+    @OneToMany(targetEntity = ElementRecordImpl.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonView(Views.Complete.class)
     public Set<ElementRecord> getChanges() {
         if (changes == null) {
             changes = new HashSet<>();
@@ -44,12 +46,14 @@ public class CommitImpl extends RecordImpl implements Commit {
         return changes;
     }
 
+    @JsonDeserialize(contentAs = ElementRecordImpl.class)
     public void setChanges(Set<ElementRecord> changes) {
         this.changes = changes;
     }
 
     @Override
     @Column
+    @JsonView(Views.Compact.class)
     public ZonedDateTime getTimestamp() {
         return timestamp;
     }
@@ -60,6 +64,7 @@ public class CommitImpl extends RecordImpl implements Commit {
 
     @ManyToOne(targetEntity = CommitImpl.class, fetch = FetchType.LAZY)
     @JsonSerialize(as = CommitImpl.class, using = RecordSerialization.RecordSerializer.class)
+    @JsonView(Views.Compact.class)
     public Commit getPreviousCommit() {
         return previousCommit;
     }
@@ -71,7 +76,13 @@ public class CommitImpl extends RecordImpl implements Commit {
 
     @Transient
     @JsonProperty("@type")
+    @JsonView(Views.Compact.class)
     public String getType() {
         return Commit.class.getSimpleName();
+    }
+
+    public static class Views {
+        public interface Compact {}
+        public interface Complete extends Compact {}
     }
 }

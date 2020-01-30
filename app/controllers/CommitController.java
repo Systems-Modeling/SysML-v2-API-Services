@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import config.MetamodelProvider;
 import jackson.JacksonHelper;
 import org.omg.sysml.lifecycle.Commit;
+import org.omg.sysml.lifecycle.impl.CommitImpl;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Http;
@@ -59,7 +60,7 @@ public class CommitController extends Controller {
 
     public Result byProject(UUID projectId) {
         List<Commit> commits = commitService.getByProjectId(projectId);
-        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Commit.class), commits));
+        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Commit.class), commits, writer -> writer.withView(CommitImpl.Views.Compact.class)));
     }
 
     public Result byProjectAndId(UUID projectId, UUID commitId) {
