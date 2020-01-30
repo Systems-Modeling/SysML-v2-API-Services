@@ -7,6 +7,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Element;
+import org.omg.sysml.metamodel.Expression;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
@@ -23,6 +24,7 @@ import org.omg.sysml.metamodel.Type;
 public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<MultiplicityRangeImpl, Generalization> ownedGeneralization;
+	public static volatile SingularAttribute<MultiplicityRangeImpl, Boolean> isConjugated;
 	public static volatile SingularAttribute<MultiplicityRangeImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<MultiplicityRangeImpl, Subsetting> ownedSubsetting;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Membership> membership;
@@ -34,6 +36,7 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile CollectionAttribute<MultiplicityRangeImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Element> member;
 	public static volatile ListAttribute<MultiplicityRangeImpl, FeatureMembership> ownedFeatureMembership;
+	public static volatile CollectionAttribute<MultiplicityRangeImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<MultiplicityRangeImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<MultiplicityRangeImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<MultiplicityRangeImpl, Redefinition> ownedRedefinition;
@@ -42,6 +45,8 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile CollectionAttribute<MultiplicityRangeImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<MultiplicityRangeImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<MultiplicityRangeImpl, Relationship> ownedRelationship;
+	public static volatile ListAttribute<MultiplicityRangeImpl, Expression> bound;
+	public static volatile ListAttribute<MultiplicityRangeImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<MultiplicityRangeImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<MultiplicityRangeImpl, Type> referencedType;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Import> ownedImport;
@@ -56,6 +61,7 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile ListAttribute<MultiplicityRangeImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String MEMBERSHIP = "membership";
@@ -67,6 +73,7 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
+	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
@@ -75,6 +82,8 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String BOUND = "bound";
+	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String OWNED_IMPORT = "ownedImport";

@@ -31,6 +31,7 @@ import org.omg.sysml.metamodel.Type;
 public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Generalization> ownedGeneralization;
+	public static volatile SingularAttribute<SuccessionItemFlowImpl, Boolean> isConjugated;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Subsetting> ownedSubsetting;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Element> source;
@@ -71,11 +72,13 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.metamodel.im
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Element> member;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, FeatureMembership> ownedFeatureMembership;
+	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Feature> inheritedFeature;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Behavior> behavior;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, ItemFlowFeature> itemFlowFeature;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Relationship> ownedRelationship;
+	public static volatile ListAttribute<SuccessionItemFlowImpl, FeatureMembership> featureMembership;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Import> ownedImport;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Feature> relatedFeature;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, Boolean> isAbstract;
@@ -83,6 +86,7 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.metamodel.im
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, Boolean> isDirected;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String SOURCE = "source";
@@ -123,11 +127,13 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.metamodel.im
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
+	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
 	public static final String ITEM_FLOW_FEATURE = "itemFlowFeature";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String IS_ABSTRACT = "isAbstract";

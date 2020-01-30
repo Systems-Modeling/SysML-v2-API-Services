@@ -76,10 +76,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "relatedFeatureType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_relatedFeature",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "relatedFeatureId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getRelatedFeature() {
         if (relatedFeature == null) {
             relatedFeature = new ArrayList<>();
@@ -102,10 +102,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "AssociationMetaDef", metaColumn = @javax.persistence.Column(name = "associationType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "AssociationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_association",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "associationId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Association> getAssociation() {
         if (association == null) {
             association = new ArrayList<>();
@@ -144,10 +144,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "AssociationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedAssociationTypeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "AssociationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_ownedAssociationType",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedAssociationTypeId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Association> getOwnedAssociationType() {
         if (ownedAssociationType == null) {
             ownedAssociationType = new ArrayList<>();
@@ -170,10 +170,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "connectorEndType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_connectorEnd",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "connectorEndId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getConnectorEnd() {
         if (connectorEnd == null) {
             connectorEnd = new ArrayList<>();
@@ -196,10 +196,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "nestedUsageType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_nestedUsage",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "nestedUsageId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Usage> getNestedUsage() {
         if (nestedUsage == null) {
             nestedUsage = new ArrayList<>();
@@ -264,10 +264,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "PortUsageMetaDef", metaColumn = @javax.persistence.Column(name = "nestedPortType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "PortUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_nestedPort",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "nestedPortId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<PortUsage> getNestedPort() {
         if (nestedPort == null) {
             nestedPort = new ArrayList<>();
@@ -290,10 +290,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "PropertyMetaDef", metaColumn = @javax.persistence.Column(name = "nestedPropertyType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "PropertyMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_nestedProperty",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "nestedPropertyId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Property> getNestedProperty() {
         if (nestedProperty == null) {
             nestedProperty = new ArrayList<>();
@@ -316,10 +316,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "PropertyMetaDef", metaColumn = @javax.persistence.Column(name = "propertyType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "PropertyMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_property",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "propertyId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Property> getProperty() {
         if (property == null) {
             property = new ArrayList<>();
@@ -342,10 +342,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "nestedActionType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_nestedAction",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "nestedActionId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<ActionUsage> getNestedAction() {
         if (nestedAction == null) {
             nestedAction = new ArrayList<>();
@@ -362,16 +362,94 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedState")
+    private Collection<StateUsage> nestedState;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "StateUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InterfaceUsage_nestedState",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<StateUsage> getNestedState() {
+        if (nestedState == null) {
+            nestedState = new ArrayList<>();
+        }
+        return nestedState;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StateUsageImpl.class)
+    public void setNestedState(Collection<StateUsage> nestedState) {
+        this.nestedState = nestedState;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedConstraint")
+    private Collection<ConstraintUsage> nestedConstraint;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ConstraintUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InterfaceUsage_nestedConstraint",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ConstraintUsage> getNestedConstraint() {
+        if (nestedConstraint == null) {
+            nestedConstraint = new ArrayList<>();
+        }
+        return nestedConstraint;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConstraintUsageImpl.class)
+    public void setNestedConstraint(Collection<ConstraintUsage> nestedConstraint) {
+        this.nestedConstraint = nestedConstraint;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedTransition")
+    private Collection<TransitionUsage> nestedTransition;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TransitionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InterfaceUsage_nestedTransition",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<TransitionUsage> getNestedTransition() {
+        if (nestedTransition == null) {
+            nestedTransition = new ArrayList<>();
+        }
+        return nestedTransition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TransitionUsageImpl.class)
+    public void setNestedTransition(Collection<TransitionUsage> nestedTransition) {
+        this.nestedTransition = nestedTransition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("relatedElement")
     private Collection<Element> relatedElement;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "relatedElementType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_relatedElement",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "relatedElementId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getRelatedElement() {
         if (relatedElement == null) {
             relatedElement = new ArrayList<>();
@@ -392,10 +470,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "targetType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_target",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "targetId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getTarget() {
         if (target == null) {
             target = new ArrayList<>();
@@ -416,10 +494,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "sourceType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_source",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "sourceId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getSource() {
         if (source == null) {
             source = new ArrayList<>();
@@ -459,10 +537,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelatedElementType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_ownedRelatedElement",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedRelatedElementId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getOwnedRelatedElement() {
         if (ownedRelatedElement == null) {
             ownedRelatedElement = new ArrayList<>();
@@ -578,10 +656,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelationshipType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_ownedRelationship",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedRelationshipId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Relationship> getOwnedRelationship() {
         if (ownedRelationship == null) {
             ownedRelationship = new ArrayList<>();
@@ -625,10 +703,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedElementType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_ownedElement",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedElementId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
@@ -651,10 +729,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "referencedTypeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_referencedType",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "referencedTypeId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Type> getReferencedType() {
         if (referencedType == null) {
             referencedType = new ArrayList<>();
@@ -730,10 +808,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "typeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_type",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "typeId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Type> getType() {
         if (type == null) {
             type = new ArrayList<>();
@@ -756,10 +834,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "ownedTypeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_ownedType",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedTypeId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Type> getOwnedType() {
         if (ownedType == null) {
             ownedType = new ArrayList<>();
@@ -782,10 +860,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "RedefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRedefinitionType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "RedefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_ownedRedefinition",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedRedefinitionId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Redefinition> getOwnedRedefinition() {
         if (ownedRedefinition == null) {
             ownedRedefinition = new ArrayList<>();
@@ -808,10 +886,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "SubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "ownedSubsettingType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "SubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_ownedSubsetting",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedSubsettingId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Subsetting> getOwnedSubsetting() {
         if (ownedSubsetting == null) {
             ownedSubsetting = new ArrayList<>();
@@ -869,10 +947,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "typingType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_typing",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "typingId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<FeatureTyping> getTyping() {
         if (typing == null) {
             typing = new ArrayList<>();
@@ -928,27 +1006,6 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("multiplicity")
-    private Multiplicity multiplicity;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "multiplicityId", table = "InterfaceUsage")
-    public Multiplicity getMultiplicity() {
-        return multiplicity;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = MultiplicityImpl.class)
-    public void setMultiplicity(Multiplicity multiplicity) {
-        this.multiplicity = multiplicity;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("isNonunique")
     private Boolean isNonunique;
 
@@ -973,10 +1030,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "GeneralizationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedGeneralizationType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "GeneralizationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_ownedGeneralization",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedGeneralizationId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Generalization> getOwnedGeneralization() {
         if (ownedGeneralization == null) {
             ownedGeneralization = new ArrayList<>();
@@ -997,10 +1054,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedFeatureMembershipType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_ownedFeatureMembership",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedFeatureMembershipId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureMembership> getOwnedFeatureMembership() {
         if (ownedFeatureMembership == null) {
             ownedFeatureMembership = new ArrayList<>();
@@ -1023,10 +1080,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "featureType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_feature",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "featureId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getFeature() {
         if (feature == null) {
             feature = new ArrayList<>();
@@ -1049,10 +1106,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedFeatureType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_ownedFeature",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedFeatureId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getOwnedFeature() {
         if (ownedFeature == null) {
             ownedFeature = new ArrayList<>();
@@ -1075,10 +1132,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "inputType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_input",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "inputId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getInput() {
         if (input == null) {
             input = new ArrayList<>();
@@ -1101,10 +1158,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "outputType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_output",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "outputId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getOutput() {
         if (output == null) {
             output = new ArrayList<>();
@@ -1143,10 +1200,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "inheritedMembershipType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_inheritedMembership",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "inheritedMembershipId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getInheritedMembership() {
         if (inheritedMembership == null) {
             inheritedMembership = new ArrayList<>();
@@ -1169,10 +1226,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "endFeatureType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_endFeature",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "endFeatureId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getEndFeature() {
         if (endFeature == null) {
             endFeature = new ArrayList<>();
@@ -1195,10 +1252,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedEndFeatureType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_ownedEndFeature",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedEndFeatureId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getOwnedEndFeature() {
         if (ownedEndFeature == null) {
             ownedEndFeature = new ArrayList<>();
@@ -1231,16 +1288,147 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedConjugator")
+    private Conjugation ownedConjugator;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConjugatorType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedConjugatorId", table = "InterfaceUsage")
+    public Conjugation getOwnedConjugator() {
+        return ownedConjugator;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ConjugationImpl.class)
+    public void setOwnedConjugator(Conjugation ownedConjugator) {
+        this.ownedConjugator = ownedConjugator;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("isConjugated")
+    private Boolean isConjugated;
+
+    @JsonGetter
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "isConjugated", table = "InterfaceUsage")
+    public Boolean getIsConjugated() {
+        return isConjugated;
+    }
+
+    @JsonSetter
+    public void setIsConjugated(Boolean isConjugated) {
+        this.isConjugated = isConjugated;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("conjugator")
+    private Conjugation conjugator;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "conjugatorType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "conjugatorId", table = "InterfaceUsage")
+    public Conjugation getConjugator() {
+        return conjugator;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ConjugationImpl.class)
+    public void setConjugator(Conjugation conjugator) {
+        this.conjugator = conjugator;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("featureMembership")
+    private List<FeatureMembership> featureMembership;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InterfaceUsage_featureMembership",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<FeatureMembership> getFeatureMembership() {
+        if (featureMembership == null) {
+            featureMembership = new ArrayList<>();
+        }
+        return featureMembership;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureMembershipImpl.class)
+    public void setFeatureMembership(List<FeatureMembership> featureMembership) {
+        this.featureMembership = featureMembership;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("inheritedFeature")
+    private Collection<Feature> inheritedFeature;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InterfaceUsage_inheritedFeature",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Feature> getInheritedFeature() {
+        if (inheritedFeature == null) {
+            inheritedFeature = new ArrayList<>();
+        }
+        return inheritedFeature;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    public void setInheritedFeature(Collection<Feature> inheritedFeature) {
+        this.inheritedFeature = inheritedFeature;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("multiplicity")
+    private Multiplicity multiplicity;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "multiplicityId", table = "InterfaceUsage")
+    public Multiplicity getMultiplicity() {
+        return multiplicity;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = MultiplicityImpl.class)
+    public void setMultiplicity(Multiplicity multiplicity) {
+        this.multiplicity = multiplicity;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("membership")
     private List<Membership> membership;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "membershipType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_membership",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "membershipId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getMembership() {
         if (membership == null) {
             membership = new ArrayList<>();
@@ -1261,10 +1449,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "ownedImportType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_ownedImport",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedImportId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Import> getOwnedImport() {
         if (ownedImport == null) {
             ownedImport = new ArrayList<>();
@@ -1287,10 +1475,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "memberType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_member",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "memberId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getMember() {
         if (member == null) {
             member = new ArrayList<>();
@@ -1313,10 +1501,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_ownedMember",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedMemberId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getOwnedMember() {
         if (ownedMember == null) {
             ownedMember = new ArrayList<>();
@@ -1337,10 +1525,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMembershipType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_ownedMembership",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "ownedMembershipId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getOwnedMembership() {
         if (ownedMembership == null) {
             ownedMembership = new ArrayList<>();
@@ -1363,10 +1551,10 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "importedMembershipType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_importedMembership",
-            joinColumns = @JoinColumn(name = "InterfaceUsageId"),
-            inverseJoinColumns = @JoinColumn(name = "importedMembershipId"))
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getImportedMembership() {
         if (importedMembership == null) {
             importedMembership = new ArrayList<>();

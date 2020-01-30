@@ -18,22 +18,25 @@
         <class>org.omg.sysml.metamodel.impl.BlockExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.BlockImpl</class>
         <class>org.omg.sysml.metamodel.impl.BlockPropertyImpl</class>
+        <class>org.omg.sysml.metamodel.impl.BooleanExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.ClassifierImpl</class>
         <class>org.omg.sysml.metamodel.impl.ClassImpl</class>
         <class>org.omg.sysml.metamodel.impl.CommentImpl</class>
         <class>org.omg.sysml.metamodel.impl.ConditionalImportImpl</class>
-        <class>org.omg.sysml.metamodel.impl.ConditionalSuccessionImpl</class>
-        <class>org.omg.sysml.metamodel.impl.ConjugatedEndPortMembershipImpl</class>
-        <class>org.omg.sysml.metamodel.impl.ConjugatedPortMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ConjugatedPortDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ConjugatedPortTypingImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ConjugationImpl</class>
         <class>org.omg.sysml.metamodel.impl.ConnectionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.ConnectorImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ConstraintDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ConstraintUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.ControlNodeImpl</class>
         <class>org.omg.sysml.metamodel.impl.DataTypeImpl</class>
         <class>org.omg.sysml.metamodel.impl.DecisionNodeImpl</class>
         <class>org.omg.sysml.metamodel.impl.DefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.ElementImpl</class>
         <class>org.omg.sysml.metamodel.impl.EndFeatureMembershipImpl</class>
-        <class>org.omg.sysml.metamodel.impl.EndPortMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ExhibitStateUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.ExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.FeatureImpl</class>
         <class>org.omg.sysml.metamodel.impl.FeatureMembershipImpl</class>
@@ -49,6 +52,7 @@
         <class>org.omg.sysml.metamodel.impl.InteractionImpl</class>
         <class>org.omg.sysml.metamodel.impl.InterfaceDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.InterfaceUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.InvariantImpl</class>
         <class>org.omg.sysml.metamodel.impl.InvocationExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.ItemFeatureImpl</class>
         <class>org.omg.sysml.metamodel.impl.ItemFlowEndImpl</class>
@@ -74,8 +78,8 @@
         <class>org.omg.sysml.metamodel.impl.ParameterMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.PartPropertyImpl</class>
         <class>org.omg.sysml.metamodel.impl.PerformActionUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.PortConjugationImpl</class>
         <class>org.omg.sysml.metamodel.impl.PortDefinitionImpl</class>
-        <class>org.omg.sysml.metamodel.impl.PortMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.PortUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.PredicateImpl</class>
         <class>org.omg.sysml.metamodel.impl.PropertyImpl</class>
@@ -89,6 +93,9 @@
         <class>org.omg.sysml.metamodel.impl.SendActionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.SequenceConstructionExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.SourceEndImpl</class>
+        <class>org.omg.sysml.metamodel.impl.StateActionMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.StateDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.StateUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.StepImpl</class>
         <class>org.omg.sysml.metamodel.impl.SubsettingImpl</class>
         <class>org.omg.sysml.metamodel.impl.SuccessionImpl</class>
@@ -96,6 +103,8 @@
         <class>org.omg.sysml.metamodel.impl.SuperclassingImpl</class>
         <class>org.omg.sysml.metamodel.impl.TargetEndImpl</class>
         <class>org.omg.sysml.metamodel.impl.TransferActionUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.TransitionFeatureMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.TransitionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.TypeImpl</class>
         <class>org.omg.sysml.metamodel.impl.UsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.ValuePropertyImpl</class>

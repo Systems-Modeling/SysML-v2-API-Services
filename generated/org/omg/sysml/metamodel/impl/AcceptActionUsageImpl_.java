@@ -8,6 +8,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.ActionUsage;
 import org.omg.sysml.metamodel.Behavior;
+import org.omg.sysml.metamodel.ConstraintUsage;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
@@ -19,7 +20,9 @@ import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.Property;
 import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Subsetting;
+import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.Usage;
 
@@ -29,6 +32,7 @@ public abstract class AcceptActionUsageImpl_ extends org.omg.sysml.metamodel.imp
 
 	public static volatile ListAttribute<AcceptActionUsageImpl, Generalization> ownedGeneralization;
 	public static volatile CollectionAttribute<AcceptActionUsageImpl, Behavior> activity;
+	public static volatile SingularAttribute<AcceptActionUsageImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<AcceptActionUsageImpl, Usage> nestedUsage;
 	public static volatile SingularAttribute<AcceptActionUsageImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<AcceptActionUsageImpl, Subsetting> ownedSubsetting;
@@ -37,12 +41,16 @@ public abstract class AcceptActionUsageImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile SingularAttribute<AcceptActionUsageImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<AcceptActionUsageImpl, Feature> output;
 	public static volatile CollectionAttribute<AcceptActionUsageImpl, PortUsage> nestedPort;
+	public static volatile CollectionAttribute<AcceptActionUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile CollectionAttribute<AcceptActionUsageImpl, Feature> feature;
+	public static volatile CollectionAttribute<AcceptActionUsageImpl, ConstraintUsage> nestedConstraint;
 	public static volatile ListAttribute<AcceptActionUsageImpl, Membership> inheritedMembership;
 	public static volatile CollectionAttribute<AcceptActionUsageImpl, Property> property;
 	public static volatile CollectionAttribute<AcceptActionUsageImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<AcceptActionUsageImpl, Element> member;
 	public static volatile ListAttribute<AcceptActionUsageImpl, FeatureMembership> ownedFeatureMembership;
+	public static volatile CollectionAttribute<AcceptActionUsageImpl, Feature> inheritedFeature;
+	public static volatile CollectionAttribute<AcceptActionUsageImpl, StateUsage> nestedState;
 	public static volatile CollectionAttribute<AcceptActionUsageImpl, Behavior> behavior;
 	public static volatile SingularAttribute<AcceptActionUsageImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<AcceptActionUsageImpl, Boolean> isOrdered;
@@ -54,6 +62,7 @@ public abstract class AcceptActionUsageImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile CollectionAttribute<AcceptActionUsageImpl, Property> nestedProperty;
 	public static volatile CollectionAttribute<AcceptActionUsageImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<AcceptActionUsageImpl, Relationship> ownedRelationship;
+	public static volatile ListAttribute<AcceptActionUsageImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<AcceptActionUsageImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<AcceptActionUsageImpl, Type> referencedType;
 	public static volatile ListAttribute<AcceptActionUsageImpl, Import> ownedImport;
@@ -69,6 +78,7 @@ public abstract class AcceptActionUsageImpl_ extends org.omg.sysml.metamodel.imp
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String ACTIVITY = "activity";
+	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String NESTED_USAGE = "nestedUsage";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
@@ -77,12 +87,16 @@ public abstract class AcceptActionUsageImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OUTPUT = "output";
 	public static final String NESTED_PORT = "nestedPort";
+	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String FEATURE = "feature";
+	public static final String NESTED_CONSTRAINT = "nestedConstraint";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String PROPERTY = "property";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
+	public static final String INHERITED_FEATURE = "inheritedFeature";
+	public static final String NESTED_STATE = "nestedState";
 	public static final String BEHAVIOR = "behavior";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
@@ -94,6 +108,7 @@ public abstract class AcceptActionUsageImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String NESTED_PROPERTY = "nestedProperty";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String OWNED_IMPORT = "ownedImport";

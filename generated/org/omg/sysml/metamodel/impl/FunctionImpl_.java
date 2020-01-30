@@ -23,6 +23,7 @@ import org.omg.sysml.metamodel.Superclassing;
 public abstract class FunctionImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<FunctionImpl, Generalization> ownedGeneralization;
+	public static volatile SingularAttribute<FunctionImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<FunctionImpl, Superclassing> ownedSuperclassing;
 	public static volatile ListAttribute<FunctionImpl, Membership> membership;
 	public static volatile CollectionAttribute<FunctionImpl, Feature> output;
@@ -32,6 +33,7 @@ public abstract class FunctionImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile CollectionAttribute<FunctionImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<FunctionImpl, Element> member;
 	public static volatile ListAttribute<FunctionImpl, FeatureMembership> ownedFeatureMembership;
+	public static volatile CollectionAttribute<FunctionImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<FunctionImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<FunctionImpl, Membership> importedMembership;
 	public static volatile SingularAttribute<FunctionImpl, UUID> identifier;
@@ -39,6 +41,7 @@ public abstract class FunctionImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile CollectionAttribute<FunctionImpl, Expression> expression;
 	public static volatile CollectionAttribute<FunctionImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<FunctionImpl, Relationship> ownedRelationship;
+	public static volatile ListAttribute<FunctionImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<FunctionImpl, Feature> endFeature;
 	public static volatile ListAttribute<FunctionImpl, Import> ownedImport;
 	public static volatile SingularAttribute<FunctionImpl, Boolean> isAbstract;
@@ -49,6 +52,7 @@ public abstract class FunctionImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile ListAttribute<FunctionImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String OWNED_SUPERCLASSING = "ownedSuperclassing";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OUTPUT = "output";
@@ -58,6 +62,7 @@ public abstract class FunctionImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
+	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String IDENTIFIER = "identifier";
@@ -65,6 +70,7 @@ public abstract class FunctionImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static final String EXPRESSION = "expression";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";

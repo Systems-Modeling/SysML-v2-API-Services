@@ -18,4 +18,10 @@ public interface Usage extends Feature, MofObject {
     Collection<? extends Property> getProperty();
 
     Collection<? extends ActionUsage> getNestedAction();
+
+    Collection<? extends StateUsage> getNestedState();
+
+    Collection<? extends ConstraintUsage> getNestedConstraint();
+
+    Collection<? extends TransitionUsage> getNestedTransition();
 }

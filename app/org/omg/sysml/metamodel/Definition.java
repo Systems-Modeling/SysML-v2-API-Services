@@ -16,4 +16,10 @@ public interface Definition extends Classifier, MofObject {
     Collection<? extends Property> getProperty();
 
     Collection<? extends ActionUsage> getOwnedAction();
+
+    Collection<? extends StateUsage> getOwnedState();
+
+    Collection<? extends ConstraintUsage> getOwnedConstraint();
+
+    Collection<? extends TransitionUsage> getOwnedTransition();
 }
