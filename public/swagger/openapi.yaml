@@ -8,10 +8,6 @@ tags:
   - name: Commit
   - name: Element
   - name: Relationship
-  - name: zzProject
-  - name: zzCommit
-  - name: zzElement
-  - name: zzRelationship
 
 paths:
   /projects:
@@ -88,113 +84,6 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-
-  /commits:
-    get:
-      tags:
-        - zzCommit
-      operationId: getCommits
-      summary: Get commits
-      produces:
-        - application/json
-      responses:
-        200:
-          description: Ok
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Commit'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
-    post:
-      tags:
-        - zzCommit
-      operationId: postCommit
-      summary: Create commit
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - in: body
-          name: body
-          required: true
-          schema:
-            $ref: '#/definitions/Commit'
-      responses:
-        201:
-          description: Created
-          schema:
-            $ref: '#/definitions/Commit'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
-  /commits/{identifier}:
-    parameters:
-      - name: identifier
-        in: path
-        description: ID of the commit
-        type: string
-        required: true
-    get:
-      tags:
-        - zzCommit
-      operationId: getCommitById
-      summary: Get commit by ID
-      produces:
-        - application/json
-      responses:
-        200:
-          description: Ok
-          schema:
-            $ref: '#/definitions/Commit'
-        404:
-          $ref: '#/responses/NotFound'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
-  /projects/{project_identifier}/commits/{commit_identifier}:
-    parameters:
-      - name: project_identifier
-        in: path
-        description: ID of the project
-        type: string
-        required: true
-      - name: commit_identifier
-        in: path
-        description: ID of the commit
-        type: string
-        required: true
-    get:
-      tags:
-        - zzCommit
-      operationId: getCommitByProjectAndId
-      summary: Get commit by project ID and its ID
-      produces:
-        - application/json
-      responses:
-        200:
-          description: Ok
-          schema:
-            $ref: '#/definitions/Commit'
-        404:
-          $ref: '#/responses/NotFound'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
   /projects/{projectId}/commits:
     parameters:
       - name: projectId
@@ -249,132 +138,30 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-
-  /elements:
-    get:
-      tags:
-        - zzElement
-      operationId: getElements
-      summary: Get elements
-      produces:
-        - application/json
-      responses:
-        200:
-          description: Ok
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Element'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
-    post:
-      tags:
-        - zzElement
-      operationId: createElement
-      summary: Add a new element
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - in: body
-          name: body
-          required: true
-          schema:
-            $ref: '#/definitions/Element'
-      responses:
-        201:
-          description: Created
-          schema:
-            $ref: '#/definitions/Element'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
-  /elements/{identifier}:
+  /projects/{projectId}/commits/{commitId}:
     parameters:
-      - name: identifier
-        in: path
-        description: ID of the element
-        type: string
-        required: true
-    get:
-      tags:
-        - zzElement
-      operationId: getElement
-      summary: Get element by its ID
-      produces:
-        - application/json
-      responses:
-        200:
-          description: Ok
-          schema:
-            $ref: '#/definitions/Element'
-        404:
-          $ref: '#/responses/NotFound'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
-  /projects/{project_identifier}/elements/{element_identifier}:
-    parameters:
-      - name: project_identifier
+      - name: projectId
         in: path
         description: ID of the project
         type: string
         required: true
-      - name: element_identifier
-        in: path
-        description: ID of the element
-        type: string
-        required: true
-    get:
-      tags:
-        - zzElement
-      operationId: getElementByProjectId
-      summary: Get element by project and ID
-      produces:
-        - application/json
-      responses:
-        200:
-          description: Ok
-          schema:
-            $ref: '#/definitions/Element'
-        404:
-          $ref: '#/responses/NotFound'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
-  /commits/{commit_id}/elements:
-    parameters:
-      - name: commit_id
+      - name: commitId
         in: path
         description: ID of the commit
         type: string
         required: true
     get:
       tags:
-        - zzElement
-      operationId: getElementsByCommit
-      summary: Get elements by commit
+        - Commit
+      operationId: getCommitByProjectAndId
+      summary: Get commit by project and ID
       produces:
         - application/json
       responses:
         200:
           description: Ok
           schema:
-            $ref: '#/definitions/Element'
+            $ref: '#/definitions/Commit'
         404:
           $ref: '#/responses/NotFound'
         415:
@@ -402,38 +189,6 @@ paths:
         - Element
       operationId: getElementsByProjectCommit
       summary: Get elements by project and commit
-      produces:
-        - application/json
-      responses:
-        200:
-          description: Ok
-          schema:
-            $ref: '#/definitions/Element'
-        404:
-          $ref: '#/responses/NotFound'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
-  /commits/{commit_id}/elements/{element_id}:
-    parameters:
-      - name: commit_id
-        in: path
-        description: ID of the commit
-        type: string
-        required: true
-      - name: element_id
-        in: path
-        description: ID of the element
-        type: string
-        required: true
-    get:
-      tags:
-        - zzElement
-      operationId: getElementByCommitId
-      summary: Get element by commit and ID
       produces:
         - application/json
       responses:
@@ -489,108 +244,6 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-  /projects/{project_identifier}/elements:
-    parameters:
-      - name: project_identifier
-        in: path
-        description: ID of the project
-        type: string
-        required: true
-    get:
-      tags:
-        - zzElement
-      operationId: getElementsInProject
-      summary: Get all elements in the project
-      produces:
-        - application/json
-      responses:
-        200:
-          description: Ok
-          schema:
-            $ref: '#/definitions/Element'
-        404:
-          $ref: '#/responses/NotFound'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
-
-  /relationships:
-    get:
-      tags:
-        - zzRelationship
-      operationId: getRelationships
-      summary: Get all relationships
-      produces:
-        - application/json
-      responses:
-        200:
-          description: Ok
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Relationship'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
-    post:
-      tags:
-        - zzRelationship
-      operationId: createRelationship
-      summary: Add a new relationship
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      parameters:
-        - in: body
-          name: body
-          required: true
-          schema:
-            $ref: '#/definitions/Relationship'
-      responses:
-        201:
-          description: Created
-          schema:
-            $ref: '#/definitions/Relationship'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
-  /relationships/{identifier}:
-    parameters:
-      - name: identifier
-        in: path
-        description: ID of the relationship
-        type: string
-        required: true
-    get:
-      tags:
-        - zzRelationship
-      operationId: getRelationship
-      summary: Get relationship by its ID
-      produces:
-        - application/json
-      responses:
-        200:
-          description: Ok
-          schema:
-            $ref: '#/definitions/Relationship'
-        404:
-          $ref: '#/responses/NotFound'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
   /projects/{projectId}/commits/{commitId}/elements/{relatedElementId}/relationships:
     parameters:
       - name: projectId
@@ -631,88 +284,6 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-  # /relationship/source/{source_identifier}:
-  #   parameters:
-  #     - name: source_identifier
-  #       in: path
-  #       description: ID of the element that is the source of relationships
-  #       type: string
-  #       required: true
-  #   get:
-  #     tags:
-  #       - Relationship
-  #     operationId: getRelationshipsBySource
-  #     summary: Get all relationships with the given element as the source
-  #     produces:
-  #       - application/json
-  #     responses:
-  #       200:
-  #         description: Ok
-  #         schema:
-  #           type: array
-  #           items:
-  #             $ref: '#/definitions/Relationship'
-  #       415:
-  #         $ref: '#/responses/BadContentType'
-  #       500:
-  #           $ref: '#/responses/InternalServerError'
-  #       default:
-  #           $ref: '#/responses/Default'
-  # /relationship/target/{target_identifier}:
-  #     parameters:
-  #       - name: target_identifier
-  #         in: path
-  #         description: ID of the element that is the target of relationships
-  #         type: string
-  #         required: true
-  #     get:
-  #       tags:
-  #         - Relationship
-  #       operationId: getRelationshipsByTarget
-  #       summary: Get all relationships with the given element as the target
-  #       produces:
-  #         - application/json
-  #       responses:
-  #         200:
-  #           description: Ok
-  #           schema:
-  #             type: array
-  #             items:
-  #               $ref: '#/definitions/Relationship'
-  #         415:
-  #           $ref: '#/responses/BadContentType'
-  #         500:
-  #           $ref: '#/responses/InternalServerError'
-  #         default:
-  #           $ref: '#/responses/Default'
-  /projects/{project_identifier}/relationships:
-    parameters:
-      - name: project_identifier
-        in: path
-        description: ID of the project
-        type: string
-        required: true
-    get:
-      tags:
-        - zzRelationship
-      operationId: getRelationshipsByProject
-      summary: Get all relationships in the project
-      produces:
-        - application/json
-      responses:
-        200:
-          description: Ok
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Relationship'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
-
 definitions:
   Project:
     type: object
@@ -729,8 +300,6 @@ definitions:
     properties:
       '@type':
         type: string
-      containingProject:
-        $ref: '#/definitions/Identified'
       identifier:
         type: string
         format: uuid

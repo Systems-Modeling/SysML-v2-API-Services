@@ -28,9 +28,8 @@ public class ProjectController extends Controller {
     @Inject
     private ProjectService projectService;
 
-    public Result byId(String id) {
-        UUID uuid = UUID.fromString(id);
-        Optional<Project> project = projectService.getById(uuid);
+    public Result byId(UUID id) {
+        Optional<Project> project = projectService.getById(id);
         return project.map(m -> ok(Json.toJson(m))).orElseGet(Results::notFound);
     }
 

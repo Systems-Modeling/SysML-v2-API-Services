@@ -50,7 +50,7 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
             throw new IllegalStateException();
         }
         return jpa.transact(em -> {
-            ((CommitImpl) commit).setChanges(commit.getChanges().stream().map(em::merge).collect(Collectors.toSet()));
+            commit.setChanges(commit.getChanges().stream().map(em::merge).collect(Collectors.toSet()));
             return super.persist(commit, em);
         });
     }

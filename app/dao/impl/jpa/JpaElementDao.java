@@ -3,16 +3,10 @@ package dao.impl.jpa;
 import config.MetamodelProvider;
 import dao.ElementDao;
 import jpa.manager.JPAManager;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
-import org.omg.sysml.lifecycle.ElementRecord;
-import org.omg.sysml.lifecycle.Project;
+import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.metamodel.Element;
-import org.omg.sysml.metamodel.MofObject;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
 import org.omg.sysml.metamodel.impl.MofObjectImpl_;
-import org.omg.sysml.lifecycle.Commit;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -77,15 +71,6 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
     }
 
     @Override
-    public List<Element> findAllByProject(Project project) {
-        try (Session session = jpa.getEntityManagerFactory().unwrap(SessionFactory.class).openSession()) {
-            Query<Element> query = session.createQuery("FROM org.omg.sysml.metamodel.Element WHERE containingProject = :project", Element.class);
-            query.setParameter("project", project);
-            return query.getResultList();
-        }
-    }
-
-    @Override
     public Set<Element> findAllByCommit(Commit commit) {
         return jpa.transact(em -> {
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
@@ -93,35 +78,6 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
             return streamFlattenedElements(c).collect(Collectors.toSet());
         });
     }
-
-    @Override
-    public Optional<Element> findByProjectAndId(Project project, UUID id) {
-        try (Session session = jpa.getEntityManagerFactory().unwrap(SessionFactory.class).openSession()) {
-            Query<Element> query = session.createQuery("FROM org.omg.sysml.metamodel.Element WHERE identifier = :identifier AND containingProject = :project", Element.class);
-            query.setParameter("identifier", id);
-            query.setParameter("project", project);
-            try {
-                return Optional.of(query.getSingleResult());
-            } catch (NoResultException e) {
-                return Optional.empty();
-            }
-        }
-    }
-
-    /*@Override
-    public Optional<Element> findByCommitAndId(Commit commit, UUID id) {
-        return jpa.transact(em -> {
-            Element element = null;
-            Commit currentCommit = commit;
-            Set<Commit> visitedCommits = new HashSet<>();
-            while (element == null && currentCommit != null && !visitedCommits.contains(currentCommit)) {
-                element = currentCommit.getChanges().stream().filter(record -> record.getIdentity() != null && record.getIdentity().getId() != null && record.getData() instanceof Element).filter(record -> id.equals(record.getIdentity().getId())).map(record -> (Element) record.getData()).findAny().orElse(null);
-                visitedCommits.add(currentCommit);
-                currentCommit = currentCommit.getPreviousCommit();
-            }
-            return Optional.ofNullable(element);
-        });
-    }*/
 
     @Override
     public Optional<Element> findByCommitAndId(Commit commit, UUID id) {

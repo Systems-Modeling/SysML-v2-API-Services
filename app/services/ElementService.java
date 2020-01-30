@@ -28,16 +28,8 @@ public class ElementService {
         return elementDao.findById(id);
     }
 
-    public List<Element> getByProjectId(UUID projectId) {
-        return projectDao.findById(projectId).map(m -> elementDao.findAllByProject(m)).orElse(Collections.emptyList());
-    }
-
     public Set<Element> getByCommitId(UUID commitId) {
         return commitDao.findById(commitId).map(c -> elementDao.findAllByCommit(c)).orElse(Collections.emptySet());
-    }
-
-    public Optional<Element> getByProjectIdAndId(UUID projectId, UUID elementId) {
-        return projectDao.findById(projectId).flatMap(m -> elementDao.findByProjectAndId(m, elementId));
     }
 
     public Optional<Element> getByCommitIdAndId(UUID commitId, UUID elementId) {

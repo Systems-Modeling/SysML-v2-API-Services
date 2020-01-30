@@ -39,22 +39,6 @@ public class RelationshipService {
         return relationship.getIdentifier() != null ? relationshipDao.update(relationship) : relationshipDao.persist(relationship);
     }
 
-    public List<Relationship> getByRelatedElementId(UUID elementId) {
-        return elementDao.findById(elementId).map(e -> relationshipDao.findAllByRelatedElement(e)).orElse(Collections.emptyList());
-    }
-
-    public List<Relationship> getBySourceElementId(UUID elementId) {
-        return elementDao.findById(elementId).map(e -> relationshipDao.findAllBySourceElement(e)).orElse(Collections.emptyList());
-    }
-
-    public List<Relationship> getByTargetElementId(UUID elementId) {
-        return elementDao.findById(elementId).map(e -> relationshipDao.findAllByTargetElement(e)).orElse(Collections.emptyList());
-    }
-
-    public List<Relationship> getByProjectId(UUID projectId) {
-        return projectDao.findById(projectId).map(m -> relationshipDao.findAllByProject(m)).orElse(Collections.emptyList());
-    }
-
     public Set<Relationship> getRelationshipsByProjectCommitRelatedElement(UUID projectId, UUID commitId, UUID relatedElementId) {
         Commit commit = projectDao.findById(projectId).flatMap(project -> commitDao.findByProjectAndId(project, commitId)).orElseThrow(() -> new IllegalArgumentException("Commit " + commitId + " not found."));
         Element relatedElement = elementDao.findByCommitAndId(commit, relatedElementId).orElseThrow(() -> new IllegalArgumentException("Element " + relatedElementId + " not found."));

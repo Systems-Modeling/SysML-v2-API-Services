@@ -51,23 +51,10 @@ public class ElementController extends Controller {
         return responseElement.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 
-    public Result byProject(String projectId) {
-        UUID projectUuid = UUID.fromString(projectId);
-        List<Element> elements = elementService.getByProjectId(projectUuid);
-        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Element.class), elements));
-    }
-
     public Result byCommit(String commitId) {
         UUID commitUuid = UUID.fromString(commitId);
         Set<Element> elements = elementService.getByCommitId(commitUuid);
         return ok(JacksonHelper.collectionValueToTree(Set.class, metamodelProvider.getImplementationClass(Element.class), elements));
-    }
-
-    public Result byProjectAndId(String elementId, String projectId) {
-        UUID elementUuid = UUID.fromString(elementId);
-        UUID projectUuid = UUID.fromString(projectId);
-        Optional<Element> element = elementService.getByProjectIdAndId(projectUuid, elementUuid);
-        return element.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
     }
 
     public Result byCommitAndId(String commitId, String elementId) {

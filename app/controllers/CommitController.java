@@ -57,16 +57,13 @@ public class CommitController extends Controller {
         return responseCommit.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 
-    public Result byProject(String projectId) {
-        UUID projectUuid = UUID.fromString(projectId);
-        List<Commit> commits = commitService.getByProjectId(projectUuid);
+    public Result byProject(UUID projectId) {
+        List<Commit> commits = commitService.getByProjectId(projectId);
         return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Commit.class), commits));
     }
 
-    public Result byProjectAndId(String commitId, String projectId) {
-        UUID commitUuid = UUID.fromString(commitId);
-        UUID projectUuid = UUID.fromString(projectId);
-        Optional<Commit> commit = commitService.getByProjectIdAndId(projectUuid, commitUuid);
+    public Result byProjectAndId(UUID projectId, UUID commitId) {
+        Optional<Commit> commit = commitService.getByProjectIdAndId(projectId, commitId);
         return commit.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
     }
 }
