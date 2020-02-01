@@ -2,13 +2,15 @@ package dao.impl.jpa;
 
 import dao.CommitDao;
 import jpa.manager.JPAManager;
-import org.omg.sysml.lifecycle.Project;
-import org.omg.sysml.metamodel.impl.MofObjectImpl;
 import org.omg.sysml.lifecycle.Commit;
+import org.omg.sysml.lifecycle.ElementRecord;
+import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.lifecycle.impl.CommitImpl;
 import org.omg.sysml.lifecycle.impl.CommitImpl_;
 import org.omg.sysml.lifecycle.impl.ElementIdentityImpl;
 import org.omg.sysml.lifecycle.impl.ElementRecordImpl;
+import org.omg.sysml.metamodel.MofObject;
+import org.omg.sysml.metamodel.impl.MofObjectImpl;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -18,8 +20,10 @@ import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -35,17 +39,19 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
 
     @Override
     public Optional<Commit> persist(Commit commit) {
-        commit.getChanges().stream().filter(record -> record.getIdentity() == null).filter(record -> record instanceof ElementRecordImpl).map(record -> (ElementRecordImpl) record)
-                .forEach(record -> {
-                    ElementIdentityImpl identity = new ElementIdentityImpl();
-                    identity.setId(UUID.randomUUID());
-                    record.setIdentity(identity);
-                });
-        commit.getChanges().stream().filter(record -> record.getData() != null).filter(record -> record.getData() instanceof MofObjectImpl)
-                .forEach(record -> {
-                    ((MofObjectImpl) record.getData()).setId(UUID.randomUUID());
-                    ((MofObjectImpl) record.getData()).setIdentifier(record.getIdentity().getId());
-                });
+        UUID tombstoneUuid = UUID.randomUUID();
+
+        Supplier<Stream<ElementRecordImpl>> changeStream = () -> commit.getChanges().stream().filter(change -> change instanceof ElementRecordImpl).map(change -> (ElementRecordImpl) change);
+
+        // Give all Commit#changes an identity, if they don't already have one, and all Commit#changes#identity an id, if they don't already have one.
+        changeStream.get().peek(change -> change.setIdentity(change.getIdentity() != null ? change.getIdentity() : new ElementIdentityImpl())).map(ElementRecord::getIdentity).filter(identity -> identity instanceof ElementIdentityImpl).map(identity -> (ElementIdentityImpl) identity).forEach(identity -> identity.setId(identity.getId() != null ? identity.getId() : UUID.randomUUID()));
+
+        // Copy all Commit#changes#identity#id to Commit#changes#data#identifier and give all Commit#changes#data a random id.
+        Map<UUID, UUID> identifierToIdMap = changeStream.get().peek(change -> Optional.ofNullable(change.getData()).filter(mof -> mof instanceof MofObjectImpl).map(mof -> (MofObjectImpl) mof).ifPresent(mof -> {
+            mof.setIdentifier(change.getIdentity().getId());
+            mof.setId(UUID.randomUUID());
+        })).collect(Collectors.toMap(change -> change.getIdentity().getId(), change -> Optional.ofNullable(change.getData()).map(MofObject::getId).orElse(tombstoneUuid)));
+
         if (!(commit instanceof CommitImpl)) {
             throw new IllegalStateException();
         }
