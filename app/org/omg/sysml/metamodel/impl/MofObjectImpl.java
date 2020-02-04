@@ -1,20 +1,12 @@
 package org.omg.sysml.metamodel.impl;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import jackson.RecordSerialization;
-import org.hibernate.annotations.Any;
-import org.omg.sysml.lifecycle.Project;
-import org.omg.sysml.lifecycle.impl.ProjectImpl;
+import com.fasterxml.jackson.annotation.*;
+
 import org.omg.sysml.metamodel.MofObject;
 
-import javax.persistence.*;
-
 //import info.archinnov.achilles.annotations.PartitionKey;
-// TODO Remove temporary modification for prototyping Project concept
+
+import javax.persistence.*;
 
 @Entity(name = "MofObjectImpl")
 @Table(name = "MofObject")
@@ -37,24 +29,6 @@ public abstract class MofObjectImpl implements MofObject {
     @JsonSetter(value = "id")
     public void setId(java.util.UUID id) {
         this.id = id;
-    }
-
-    // TODO Remove temporary modification for prototyping Project concept
-
-    private Project containingProject;
-
-    @JsonGetter
-    @JsonSerialize(using = RecordSerialization.RecordSerializer.class)
-    @Any(metaDef = "ProjectMetaDef", metaColumn = @javax.persistence.Column(name = "containingProjectType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "containingProjectId", table = "MofObject")
-    public Project getContainingProject() {
-        return containingProject;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = RecordSerialization.ProjectDeserializer.class, as = ProjectImpl.class)
-    public void setContainingProject(Project containingProject) {
-        this.containingProject = containingProject;
     }
 
     // TODO Remove hardcoding for identifier
