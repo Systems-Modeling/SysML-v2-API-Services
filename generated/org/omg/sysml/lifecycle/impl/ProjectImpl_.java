@@ -6,7 +6,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(ProjectImpl.class)
-public abstract class ProjectImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
+public abstract class ProjectImpl_ extends org.omg.sysml.lifecycle.impl.RecordImpl_ {
 
 	public static volatile SingularAttribute<ProjectImpl, String> name;
 

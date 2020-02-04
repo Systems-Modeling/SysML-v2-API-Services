@@ -2,23 +2,16 @@ package org.omg.sysml.lifecycle.impl;
 
 import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.FetchMode;
+import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
 
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.SecondaryTable;
+import javax.persistence.*;
 
 // import info.archinnov.achilles.annotations.UDT;
 
-@Entity
-@SecondaryTable(name = "Project")
-@org.hibernate.annotations.Table(appliesTo = "Project", fetch = FetchMode.SELECT, optional = false)
-// @info.archinnov.achilles.annotations.Table(table = "Project")
-@DiscriminatorValue(value = "Project")
-@JsonTypeName(value = "Project")
-public class ProjectImpl extends MofObjectImpl implements Project {
+@Entity(name = "Project")
+public class ProjectImpl extends RecordImpl implements Project {
     private String name;
 
     @JsonProperty(required = true)
@@ -36,37 +29,9 @@ public class ProjectImpl extends MofObjectImpl implements Project {
         this.name = name;
     }
 
-    @Override
-    @JsonIgnore
-    public Project getContainingProject() {
-        return null;
+    @Transient
+    @JsonProperty("@type")
+    public String getType() {
+        return Project.class.getSimpleName();
     }
-
-    /*
-
-    // @info.archinnov.achilles.annotations.Column("ownedRelationship")
-    private Collection<Element> containedElement;
-
-    @JsonProperty(required = true)
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "ownedRelationshipType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Package_ownedRelationship",
-            joinColumns = @JoinColumn(name = "PackageId"),
-            inverseJoinColumns = @JoinColumn(name =  "ownedRelationshipId"))
-    public Collection<Element> getContainedElement() {
-        if (containedElement == null) {
-            containedElement = new ArrayList<>();
-        }
-        return containedElement;
-    }
-
-    @JsonProperty(required = true)
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
-    public void setContainedElement(Collection<Element> containedElement) {
-        this.containedElement = containedElement;
-    }
-
-     */
 }

@@ -285,24 +285,73 @@ paths:
         default:
           $ref: '#/responses/Default'
 definitions:
-  Project:
+  Record:
     type: object
     properties:
-      '@type':
+      id:
         type: string
-      name:
-        type: string
+        format: uuid
+  Project:
+    type: object
+    allOf:
+      - $ref: '#/definitions/Record'
+      - properties:
+          '@type':
+            type: string
+            enum:
+              - 'Project'
+          name:
+            type: string
+  Commit:
+    type: object
+    allOf:
+      - $ref: '#/definitions/Record'
+      - properties:
+          '@type':
+            type: string
+            enum:
+              - 'Commit'
+          changes:
+            type: array
+            items:
+              $ref: '#/definitions/ElementRecord'
+          containingProject:
+            $ref: '#/definitions/Record'
+  ElementRecord:
+    type: object
+    allOf:
+      - $ref: '#/definitions/Record'
+      - properties:
+          '@type':
+            type: string
+            enum:
+              - 'ElementRecord'
+          data:
+            $ref: '#/definitions/Element'
+          identity:
+            $ref: '#/definitions/ElementIdentity'
+  ElementIdentity:
+    type: object
+    allOf:
+      - $ref: '#/definitions/Record'
+      - properties:
+          '@type':
+            type: string
+            enum:
+              - 'ElementIdentity'
+  Identified:
+    type: object
+    properties:
       identifier:
         type: string
         format: uuid
   Element:
     type: object
-    properties:
-      '@type':
-        type: string
-      identifier:
-        type: string
-        format: uuid
+    allOf:
+      - $ref: '#/definitions/Identified'
+      - properties:
+          '@type':
+            type: string
     additionalProperties:
       type: object
   Relationship:
@@ -318,52 +367,6 @@ definitions:
             type: array
             items:
               $ref: '#/definitions/Identified'
-  Identified:
-    type: object
-    properties:
-      identifier:
-        type: string
-        format: uuid
-  Commit:
-    type: object
-    properties:
-      '@type':
-        type: string
-        enum:
-          - 'Commit'
-      changes:
-        type: array
-        items:
-          $ref: '#/definitions/ElementRecord'
-      containingProject:
-        $ref: '#/definitions/Identified'
-      id:
-        type: string
-        format: uuid
-  ElementRecord:
-    type: object
-    properties:
-      '@type':
-        type: string
-        enum:
-          - 'ElementRecord'
-      data:
-        $ref: '#/definitions/Element'
-      id:
-        type: string
-        format: uuid
-      identity:
-        $ref: '#/definitions/ElementIdentity'
-  ElementIdentity:
-    type: object
-    properties:
-      '@type':
-        type: string
-        enum:
-          - 'ElementIdentity'
-      id:
-        type: string
-        format: uuid
   Error:
     type: object
     properties:
