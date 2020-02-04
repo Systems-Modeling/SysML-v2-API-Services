@@ -314,10 +314,10 @@ definitions:
           changes:
             type: array
             items:
-              $ref: '#/definitions/ElementRecord'
+              $ref: '#/definitions/ElementVersion'
           containingProject:
             $ref: '#/definitions/Record'
-  ElementRecord:
+  ElementVersion:
     type: object
     allOf:
       - $ref: '#/definitions/Record'
@@ -325,7 +325,7 @@ definitions:
           '@type':
             type: string
             enum:
-              - 'ElementRecord'
+              - 'ElementVersion'
           data:
             $ref: '#/definitions/Element'
           identity:

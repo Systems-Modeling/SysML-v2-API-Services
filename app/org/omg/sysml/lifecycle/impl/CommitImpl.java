@@ -4,12 +4,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import jackson.MofObjectDeserializer;
-import jackson.MofObjectSerializer;
 import jackson.RecordSerialization;
-import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.lifecycle.Commit;
-import org.omg.sysml.lifecycle.ElementRecord;
+import org.omg.sysml.lifecycle.ElementVersion;
+import org.omg.sysml.lifecycle.Project;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
@@ -19,35 +17,35 @@ import java.util.Set;
 @Entity(name = "Commit")
 public class CommitImpl extends RecordImpl implements Commit {
     private Project containingProject;
-    private Set<ElementRecord> changes;
+    private Set<ElementVersion> changes;
     private ZonedDateTime timestamp;
     private Commit previousCommit;
 
     @Override
     @ManyToOne(targetEntity = ProjectImpl.class, fetch = FetchType.LAZY)
-    @JsonSerialize(as = ProjectImpl.class, using = MofObjectSerializer.class)
+    @JsonSerialize(as = ProjectImpl.class, using = RecordSerialization.RecordSerializer.class)
     @JsonView(Views.Compact.class)
     public Project getContainingProject() {
         return containingProject;
     }
 
-    @JsonDeserialize(as = ProjectImpl.class, using = MofObjectDeserializer.class)
+    @JsonDeserialize(as = ProjectImpl.class, using = RecordSerialization.ProjectDeserializer.class)
     public void setContainingProject(Project containingProject) {
         this.containingProject = containingProject;
     }
 
     @Override
-    @OneToMany(targetEntity = ElementRecordImpl.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = ElementVersionImpl.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonView(Views.Complete.class)
-    public Set<ElementRecord> getChanges() {
+    public Set<ElementVersion> getChanges() {
         if (changes == null) {
             changes = new HashSet<>();
         }
         return changes;
     }
 
-    @JsonDeserialize(contentAs = ElementRecordImpl.class)
-    public void setChanges(Set<ElementRecord> changes) {
+    @JsonDeserialize(contentAs = ElementVersionImpl.class)
+    public void setChanges(Set<ElementVersion> changes) {
         this.changes = changes;
     }
 
@@ -82,7 +80,10 @@ public class CommitImpl extends RecordImpl implements Commit {
     }
 
     public static class Views {
-        public interface Compact {}
-        public interface Complete extends Compact {}
+        public interface Compact {
+        }
+
+        public interface Complete extends Compact {
+        }
     }
 }

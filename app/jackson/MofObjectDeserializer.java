@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import javax.persistence.EntityManager;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
 import java.io.IOException;
+import java.util.UUID;
 
 public class MofObjectDeserializer extends StdDeserializer<MofObjectImpl> {
     private EntityManager entityManager;
@@ -27,19 +28,18 @@ public class MofObjectDeserializer extends StdDeserializer<MofObjectImpl> {
         if (p.currentToken() != JsonToken.START_OBJECT) {
             throw new JsonParseException(p, "Expected START_OBJECT. Received " + p.getCurrentName() + ".");
         }
+        MofObjectImpl mof;
+        try {
+            mof = (MofObjectImpl) ctxt.getContextualType().getRawClass().getConstructor().newInstance();
+        } catch (ReflectiveOperationException e) {
+            throw new IOException(e);
+        }
+
         JsonToken token;
-        MofObjectImpl mof = null;
         while ((token = p.nextToken()) != null && token != JsonToken.END_OBJECT) {
-            if (mof == null && token == JsonToken.FIELD_NAME && "id".equals(p.getCurrentName())) {
+            if (token == JsonToken.FIELD_NAME && "identifier".equals(p.getCurrentName())) {
                 p.nextToken();
-                Object id = p.getText();
-                if ("java.util.UUID".endsWith("UUID")) {
-                    id = java.util.UUID.fromString(id.toString());
-                }
-                mof = entityManager.find(MofObjectImpl.class, id);
-                if (mof == null) {
-                    throw new IOException("Unable to find an object with id " + id);
-                }
+                mof.setIdentifier(UUID.fromString(p.getText()));
             }
         }
         return mof;

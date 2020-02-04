@@ -5,16 +5,16 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.hibernate.annotations.Any;
+import org.omg.sysml.lifecycle.ElementVersion;
 import org.omg.sysml.metamodel.MofObject;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
 import org.omg.sysml.lifecycle.ElementIdentity;
-import org.omg.sysml.lifecycle.ElementRecord;
 
 import javax.persistence.*;
 
-@Entity(name = "ElementRecord")
-@JsonTypeName(value = "ElementRecord")
-public class ElementRecordImpl extends RecordImpl implements ElementRecord {
+@Entity(name = "ElementVersion")
+@JsonTypeName(value = "ElementVersion")
+public class ElementVersionImpl extends RecordImpl implements ElementVersion {
     private MofObject data;
     private ElementIdentity identity;
 
@@ -44,6 +44,6 @@ public class ElementRecordImpl extends RecordImpl implements ElementRecord {
     @Transient
     @JsonProperty("@type")
     public static String getType() {
-        return ElementRecord.class.getSimpleName();
+        return ElementVersion.class.getSimpleName();
     }
 }

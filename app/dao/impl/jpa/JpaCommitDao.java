@@ -3,12 +3,12 @@ package dao.impl.jpa;
 import dao.CommitDao;
 import jpa.manager.JPAManager;
 import org.omg.sysml.lifecycle.Commit;
-import org.omg.sysml.lifecycle.ElementRecord;
+import org.omg.sysml.lifecycle.ElementVersion;
 import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.lifecycle.impl.CommitImpl;
 import org.omg.sysml.lifecycle.impl.CommitImpl_;
 import org.omg.sysml.lifecycle.impl.ElementIdentityImpl;
-import org.omg.sysml.lifecycle.impl.ElementRecordImpl;
+import org.omg.sysml.lifecycle.impl.ElementVersionImpl;
 import org.omg.sysml.metamodel.MofObject;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
 
@@ -19,10 +19,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -41,10 +38,10 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
     public Optional<Commit> persist(Commit commit) {
         UUID tombstoneUuid = UUID.randomUUID();
 
-        Supplier<Stream<ElementRecordImpl>> changeStream = () -> commit.getChanges().stream().filter(change -> change instanceof ElementRecordImpl).map(change -> (ElementRecordImpl) change);
+        Supplier<Stream<ElementVersionImpl>> changeStream = () -> commit.getChanges().stream().filter(change -> change instanceof ElementVersionImpl).map(change -> (ElementVersionImpl) change);
 
         // Give all Commit#changes an identity, if they don't already have one, and all Commit#changes#identity an id, if they don't already have one.
-        changeStream.get().peek(change -> change.setIdentity(change.getIdentity() != null ? change.getIdentity() : new ElementIdentityImpl())).map(ElementRecord::getIdentity).filter(identity -> identity instanceof ElementIdentityImpl).map(identity -> (ElementIdentityImpl) identity).forEach(identity -> identity.setId(identity.getId() != null ? identity.getId() : UUID.randomUUID()));
+        changeStream.get().peek(change -> change.setIdentity(change.getIdentity() != null ? change.getIdentity() : new ElementIdentityImpl())).map(ElementVersion::getIdentity).filter(identity -> identity instanceof ElementIdentityImpl).map(identity -> (ElementIdentityImpl) identity).forEach(identity -> identity.setId(identity.getId() != null ? identity.getId() : UUID.randomUUID()));
 
         // Copy all Commit#changes#identity#id to Commit#changes#data#identifier and give all Commit#changes#data a random id.
         Map<UUID, UUID> identifierToIdMap = changeStream.get().peek(change -> Optional.ofNullable(change.getData()).filter(mof -> mof instanceof MofObjectImpl).map(mof -> (MofObjectImpl) mof).ifPresent(mof -> {
@@ -52,10 +49,21 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
             mof.setId(UUID.randomUUID());
         })).collect(Collectors.toMap(change -> change.getIdentity().getId(), change -> Optional.ofNullable(change.getData()).map(MofObject::getId).orElse(tombstoneUuid)));
 
+        // TODO Resolve/set all identifier -> id, reflectively. Hopefully that's enough for Hibernate to try to make the relationships and give a meaningful error when types are incompatible.
+
         if (!(commit instanceof CommitImpl)) {
             throw new IllegalStateException();
         }
         return jpa.transact(em -> {
+            commit.getChanges().stream().map(ElementVersion::getData).filter(mof -> mof instanceof MofObjectImpl).map(mof -> (MofObjectImpl) mof).map(mof -> {
+                try {
+                    MofObjectImpl firstPassMof = mof.getClass().getConstructor().newInstance();
+                    firstPassMof.setId(mof.getId());
+                    return firstPassMof;
+                } catch (ReflectiveOperationException e) {
+                    throw new RuntimeException(e);
+                }
+            }).forEach(em::merge);
             commit.setChanges(commit.getChanges().stream().map(em::merge).collect(Collectors.toSet()));
             return super.persist(commit, em);
         });

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.Record;
 import org.omg.sysml.lifecycle.impl.CommitImpl;
+import org.omg.sysml.lifecycle.impl.ProjectImpl;
 import org.omg.sysml.lifecycle.impl.RecordImpl;
 import org.omg.sysml.lifecycle.impl.RecordImpl_;
 
@@ -66,6 +67,21 @@ public class RecordSerialization {
         @Override
         protected Class<CommitImpl> getRecordClass() {
             return CommitImpl.class;
+        }
+    }
+
+    public static class ProjectDeserializer extends RecordDeserializer<ProjectImpl> {
+        public ProjectDeserializer(EntityManager entityManager) {
+            super(entityManager);
+        }
+
+        public ProjectDeserializer() {
+            super();
+        }
+
+        @Override
+        protected Class<ProjectImpl> getRecordClass() {
+            return ProjectImpl.class;
         }
     }
 }

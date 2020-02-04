@@ -8,9 +8,9 @@ public interface Commit extends Record {
 
     void setContainingProject(Project containingProject);
 
-    Set<ElementRecord> getChanges();
+    Set<ElementVersion> getChanges();
 
-    void setChanges(Set<ElementRecord> changes);
+    void setChanges(Set<ElementVersion> changes);
 
     Commit getPreviousCommit();
 

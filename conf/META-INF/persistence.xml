@@ -113,7 +113,7 @@
         <class>org.omg.sysml.lifecycle.impl</class>
         <class>org.omg.sysml.lifecycle.impl.CommitImpl</class>
         <class>org.omg.sysml.lifecycle.impl.ElementIdentityImpl</class>
-        <class>org.omg.sysml.lifecycle.impl.ElementRecordImpl</class>
+        <class>org.omg.sysml.lifecycle.impl.ElementVersionImpl</class>
         <class>org.omg.sysml.lifecycle.impl.ProjectImpl</class>
         <class>org.omg.sysml.lifecycle.impl.RecordImpl</class>
 

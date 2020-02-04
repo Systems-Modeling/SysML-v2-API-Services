@@ -7,7 +7,7 @@
                 metaValues = {
                         @MetaValue(value = "Commit", targetEntity = CommitImpl.class),
                         @MetaValue(value = "ElementIdentity", targetEntity = ElementIdentityImpl.class),
-                        @MetaValue(value = "ElementRecord", targetEntity = ElementRecordImpl.class),
+                        @MetaValue(value = "ElementVersion", targetEntity = ElementVersionImpl.class),
                         @MetaValue(value = "Project", targetEntity = ProjectImpl.class),
                         @MetaValue(value = "Record", targetEntity = RecordImpl.class),
                 }),

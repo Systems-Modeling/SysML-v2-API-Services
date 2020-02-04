@@ -5,10 +5,10 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
-@StaticMetamodel(ElementRecordImpl.class)
-public abstract class ElementRecordImpl_ extends org.omg.sysml.lifecycle.impl.RecordImpl_ {
+@StaticMetamodel(ElementVersionImpl.class)
+public abstract class ElementVersionImpl_ extends org.omg.sysml.lifecycle.impl.RecordImpl_ {
 
-	public static volatile SingularAttribute<ElementRecordImpl, ElementIdentityImpl> identity;
+	public static volatile SingularAttribute<ElementVersionImpl, ElementIdentityImpl> identity;
 
 	public static final String IDENTITY = "identity";
 

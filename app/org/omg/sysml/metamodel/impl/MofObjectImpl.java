@@ -1,22 +1,20 @@
 package org.omg.sysml.metamodel.impl;
 
-import com.fasterxml.jackson.annotation.*;
-
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import jackson.RecordSerialization;
+import org.hibernate.annotations.Any;
 import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.lifecycle.impl.ProjectImpl;
 import org.omg.sysml.metamodel.MofObject;
 
-//import info.archinnov.achilles.annotations.PartitionKey;
-
 import javax.persistence.*;
 
+//import info.archinnov.achilles.annotations.PartitionKey;
 // TODO Remove temporary modification for prototyping Project concept
-
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import jackson.MofObjectDeserializer;
-import jackson.MofObjectSerializer;
-import org.hibernate.annotations.Any;
 
 @Entity(name = "MofObjectImpl")
 @Table(name = "MofObject")
@@ -46,7 +44,7 @@ public abstract class MofObjectImpl implements MofObject {
     private Project containingProject;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = RecordSerialization.RecordSerializer.class)
     @Any(metaDef = "ProjectMetaDef", metaColumn = @javax.persistence.Column(name = "containingProjectType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "containingProjectId", table = "MofObject")
     public Project getContainingProject() {
@@ -54,7 +52,7 @@ public abstract class MofObjectImpl implements MofObject {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ProjectImpl.class)
+    @JsonDeserialize(using = RecordSerialization.ProjectDeserializer.class, as = ProjectImpl.class)
     public void setContainingProject(Project containingProject) {
         this.containingProject = containingProject;
     }
