@@ -31,10 +31,10 @@ public class MofObjectSerializer extends StdSerializer<MofObject> {
         }
         gen.writeStartObject();
         // TODO Decide if @type and id should be exposed
-        gen.writeObjectField("@type", value.getClass().getSimpleName());
-        gen.writeObjectField("id", value.getId());
+        // gen.writeObjectField("@type", value.getClass().getSimpleName());
+        // gen.writeObjectField("id", value.getId());
         if (value instanceof MofObjectImpl) {
-            gen.writeObjectField("identifier", ((MofObjectImpl) value).getIdentifier());
+            gen.writeObjectField("identifier", value.getIdentifier());
         }
         gen.writeEndObject();
     }

@@ -1,6 +1,7 @@
 package dao.impl.jpa;
 
 import dao.CommitDao;
+import javabean.JavaBeanHelper;
 import jpa.manager.JPAManager;
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.ElementVersion;
@@ -19,7 +20,9 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import java.lang.reflect.Method;
 import java.util.*;
+import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -34,9 +37,18 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
         return jpa;
     }
 
+    private JpaElementDao elementDao = new JpaElementDao();
+
     @Override
     public Optional<Commit> persist(Commit commit) {
-        UUID tombstoneUuid = UUID.randomUUID();
+        MofObject tombstone = new MofObjectImpl() {
+            UUID id = UUID.randomUUID();
+
+            @Override
+            public UUID getId() {
+                return id;
+            }
+        };
 
         Supplier<Stream<ElementVersionImpl>> changeStream = () -> commit.getChanges().stream().filter(change -> change instanceof ElementVersionImpl).map(change -> (ElementVersionImpl) change);
 
@@ -44,12 +56,88 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
         changeStream.get().peek(change -> change.setIdentity(change.getIdentity() != null ? change.getIdentity() : new ElementIdentityImpl())).map(ElementVersion::getIdentity).filter(identity -> identity instanceof ElementIdentityImpl).map(identity -> (ElementIdentityImpl) identity).forEach(identity -> identity.setId(identity.getId() != null ? identity.getId() : UUID.randomUUID()));
 
         // Copy all Commit#changes#identity#id to Commit#changes#data#identifier and give all Commit#changes#data a random id.
-        Map<UUID, UUID> identifierToIdMap = changeStream.get().peek(change -> Optional.ofNullable(change.getData()).filter(mof -> mof instanceof MofObjectImpl).map(mof -> (MofObjectImpl) mof).ifPresent(mof -> {
+        Map<UUID, MofObject> identifierToMofMap = changeStream.get().peek(change -> Optional.ofNullable(change.getData()).filter(mof -> mof instanceof MofObjectImpl).map(mof -> (MofObjectImpl) mof).ifPresent(mof -> {
             mof.setIdentifier(change.getIdentity().getId());
             mof.setId(UUID.randomUUID());
-        })).collect(Collectors.toMap(change -> change.getIdentity().getId(), change -> Optional.ofNullable(change.getData()).map(MofObject::getId).orElse(tombstoneUuid)));
+        })).collect(Collectors.toMap(change -> change.getIdentity().getId(), change -> Optional.ofNullable(change.getData()).orElse(tombstone)));
 
-        // TODO Resolve/set all identifier -> id, reflectively. Hopefully that's enough for Hibernate to try to make the relationships and give a meaningful error when types are incompatible.
+        // Attempt #1 using a javassist proxy. Failed because Hibernate/JPA can't handle subclasses of Entities.
+/*        changeStream.get().map(ElementVersion::getData).filter(Objects::nonNull).map(JpaCommitDao::getBeanPropertyValues).flatMap(map -> map.values().stream()).flatMap(o -> o instanceof Collection ? ((Collection<?>) o).stream() : Stream.of(o)).filter(o -> o instanceof MofObject && o instanceof ProxyObject).map(o -> (MofObject & ProxyObject) o).forEach(mofProxy -> {
+            MofObject mof = identifierToMofMap.computeIfAbsent(mofProxy.getIdentifier(), identifier -> {
+                if (commit.getPreviousCommit() == null) {
+                    return tombstone;
+                }
+                return elementDao.findByCommitAndId(commit.getPreviousCommit(), identifier).map(element -> (MofObject) element).orElse(tombstone);
+            });
+            if (Objects.equals(mof, tombstone)) {
+                throw new IllegalArgumentException("Element with ID " + mofProxy.getIdentifier() + " not found.");
+            }
+            mofProxy.setHandler(new PassthroughMethodHandler(mof));
+            System.out.println("REFERENCE: " + mofProxy.getIdentifier());
+        });*/
+
+        Function<MofObject, MofObject> reattachMofFunction = mof -> {
+            MofObject reattachedMof = identifierToMofMap.computeIfAbsent(mof.getIdentifier(), identifier -> {
+                if (commit.getPreviousCommit() == null) {
+                    return tombstone;
+                }
+                return elementDao.findByCommitAndId(commit.getPreviousCommit(), identifier).map(element -> (MofObject) element).orElse(tombstone);
+            });
+            if (Objects.equals(reattachedMof, tombstone)) {
+                throw new IllegalArgumentException("Element with ID " + mof.getIdentifier() + " not found.");
+            }
+            return reattachedMof;
+        };
+        changeStream.get().map(ElementVersion::getData).filter(Objects::nonNull).forEach(mof -> {
+            JavaBeanHelper.getBeanProperties(mof).values().stream().filter(property -> property.getReadMethod() != null && property.getWriteMethod() != null).forEach(property -> {
+                Method getter = property.getReadMethod();
+                Method setter = property.getWriteMethod();
+                Class<?> type = property.getPropertyType();
+
+                Object originalValue;
+                try {
+                    originalValue = getter.invoke(mof);
+                    final Object newValue;
+                    if (MofObject.class.isAssignableFrom(type)) {
+                        if (!(originalValue instanceof MofObject)) {
+                            return;
+                        }
+                        newValue = reattachMofFunction.apply((MofObject) originalValue);
+                    } else if (Collection.class.isAssignableFrom(type)) {
+                        Collection<?> originalValueCollection = (Collection<?>) originalValue;
+                        if (originalValueCollection.isEmpty() || originalValueCollection.stream().anyMatch((o -> !(o instanceof MofObject)))) {
+                            return;
+                        }
+                        final Collection<Object> newValueCollection;
+                        if (List.class.isAssignableFrom(type)) {
+                            newValueCollection = new ArrayList<>();
+                        } else if (Set.class.isAssignableFrom(type)) {
+                            newValueCollection = new HashSet<>();
+                        } else if (Collection.class.isAssignableFrom(type)) {
+                            newValueCollection = new ArrayList<>();
+                        } else {
+                            throw new IllegalStateException("Unknown collection type.");
+                        }
+                        ((Collection<?>) originalValue).stream().map(o -> (MofObject) o).map(reattachMofFunction).forEachOrdered(newValueCollection::add);
+                        newValue = newValueCollection;
+                    } else {
+                        return;
+                    }
+                    setter.invoke(mof, newValue);
+                } catch (ReflectiveOperationException e) {
+                    throw new RuntimeException(e);
+                }
+            });
+        });
+
+ /*       changeStream.get().map(ElementVersion::getData).filter(Objects::nonNull).filter(element -> element instanceof BlockImpl).map(element -> (BlockImpl) element).forEach(block -> {
+            if (block.getOwner() instanceof MofObjectImpl) {
+                MofObjectImpl owner = (MofObjectImpl) block.getOwner();
+                if (owner.getIdentifier() != null) {
+                    block.setOwner((Element) identifierToMofMap.get(owner.getIdentifier()));
+                }
+            }
+        });*/
 
         if (!(commit instanceof CommitImpl)) {
             throw new IllegalStateException();
@@ -135,4 +223,19 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
             }
         });
     }
+
+/*    private static class PassthroughMethodHandler implements MethodHandler {
+
+        private final Object target;
+
+        protected PassthroughMethodHandler(Object target) {
+            this.target = target;
+        }
+
+        @Override
+        public Object invoke(Object self, Method thisMethod, Method proceed, Object[] args) throws Throwable {
+            //return thisMethod.invoke(target, args);
+            return target.getClass().getMethod(thisMethod.getName(), thisMethod.getParameterTypes()).invoke(target, args);
+        }
+    }*/
 }
