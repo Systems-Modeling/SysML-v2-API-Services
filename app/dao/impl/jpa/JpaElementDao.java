@@ -14,12 +14,16 @@ import javax.inject.Singleton;
 import javax.persistence.NoResultException;
 import javax.persistence.criteria.*;
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Singleton
 public class JpaElementDao extends JpaDao<Element> implements ElementDao {
+    // TODO Explore alternative to serializing lazy entity attributes that doesn't involve resolving all proxies one level.
+    static Consumer<Element> PROXY_RESOLVER = element -> JavaBeanHelper.getBeanPropertyValues(element).values().stream().flatMap(o -> o instanceof Collection ? ((Collection<?>) o).stream() : Stream.of(o)).forEach(o -> {});
+
     @Inject
     private MetamodelProvider metamodelProvider;
 
@@ -76,8 +80,7 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
         return jpa.transact(em -> {
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
             Commit c = em.contains(commit) ? commit : em.find(metamodelProvider.getImplementationClass(Commit.class), commit.getId());
-            // TODO Explore alternative to serializing lazy entity attributes that doesn't involve resolving all proxies one level.
-            return streamFlattenedElements(c).peek(e -> JavaBeanHelper.getBeanPropertyValues(e).values().stream().flatMap(o -> o instanceof Collection ? ((Collection<?>) o).stream() : Stream.of(o)).forEach(o -> {})).collect(Collectors.toSet());
+            return streamFlattenedElements(c).peek(PROXY_RESOLVER).collect(Collectors.toSet());
         });
     }
 
@@ -87,8 +90,7 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
             return queryCommitTree(em.contains(commit) ? commit : em.find(metamodelProvider.getImplementationClass(Commit.class), commit.getId()), c ->
                     c.getChanges().stream().filter(record -> record.getIdentity() != null && record.getIdentity().getId() != null && record.getData() instanceof Element).filter(record -> id.equals(record.getIdentity().getId())).map(record -> (Element) record.getData()).findAny(),
                     Optional::isPresent)
-                // TODO Explore alternative to serializing lazy entity attributes that doesn't involve resolving all proxies one level.
-                .values().stream().filter(Optional::isPresent).peek(e -> JavaBeanHelper.getBeanPropertyValues(e).values().stream().flatMap(o -> o instanceof Collection ? ((Collection<?>) o).stream() : Stream.of(o)).forEach(o -> {})).map(Optional::get).findAny();
+                .values().stream().filter(Optional::isPresent).map(Optional::get).peek(PROXY_RESOLVER).findAny();
         });
     }
 

@@ -28,11 +28,15 @@ public class CommitService {
     }
 
     public List<Commit> getByProjectId(UUID projectId) {
-        return projectDao.findById(projectId).map(m -> commitDao.findAllByProject(m)).orElse(Collections.emptyList());
+        return projectDao.findById(projectId).map(commitDao::findAllByProject).orElse(Collections.emptyList());
     }
 
     public Optional<Commit> getByProjectIdAndId(UUID projectId, UUID commitId) {
-        return projectDao.findById(projectId).flatMap(m -> commitDao.findByProjectAndId(m, commitId));
+        return projectDao.findById(projectId).flatMap(project -> commitDao.findByProjectAndId(project, commitId));
+    }
+
+    public Optional<Commit> getHeadByProjectId(UUID projectId) {
+        return projectDao.findById(projectId).flatMap(commitDao::findHeadByProject);
     }
 
     public Optional<Commit> create(Commit commit) {

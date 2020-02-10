@@ -14,6 +14,7 @@ GET         /projects/:projectId                                                
 GET         /projects/:projectId/commits                                                           controllers.CommitController.byProject(projectId : java.util.UUID)
 POST        /projects/:projectId/commits                                                           controllers.CommitController.createWithProjectId(projectId : java.util.UUID, request : Request)
 GET         /projects/:projectId/commits/:commitId                                                 controllers.CommitController.byProjectAndId(projectId : java.util.UUID, commitId : java.util.UUID)
+GET         /projects/:projectId/head                                                              controllers.CommitController.headByProject(projectId : java.util.UUID)
 
 # Element endpoints
 GET         /projects/:projectId/commits/:commitId/elements                                        controllers.ElementController.getElementsByProjectIdCommitId(projectId : java.util.UUID, commitId : java.util.UUID)

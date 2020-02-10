@@ -67,4 +67,9 @@ public class CommitController extends Controller {
         Optional<Commit> commit = commitService.getByProjectIdAndId(projectId, commitId);
         return commit.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
     }
+
+    public Result headByProject(UUID projectId) {
+        Optional<Commit> commit = commitService.getHeadByProjectId(projectId);
+        return commit.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
+    }
 }

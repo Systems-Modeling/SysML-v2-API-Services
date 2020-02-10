@@ -10,6 +10,7 @@ import org.omg.sysml.lifecycle.impl.CommitImpl;
 import org.omg.sysml.lifecycle.impl.CommitImpl_;
 import org.omg.sysml.lifecycle.impl.ElementIdentityImpl;
 import org.omg.sysml.lifecycle.impl.ElementVersionImpl;
+import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.MofObject;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
 
@@ -22,6 +23,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.lang.reflect.Method;
 import java.util.*;
+import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -29,6 +31,9 @@ import java.util.stream.Stream;
 
 @Singleton
 public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
+    // TODO Explore alternative to serializing lazy entity attributes that doesn't involve resolving all proxies one level.
+    static Consumer<Commit> PROXY_RESOLVER = commit -> commit.getChanges().stream().filter(Objects::nonNull).map(ElementVersion::getData).filter(mof -> mof instanceof Element).map(mof -> (Element) mof).forEach(JpaElementDao.PROXY_RESOLVER);
+
     @Inject
     private JPAManager jpa;
 
@@ -88,47 +93,45 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
             }
             return reattachedMof;
         };
-        changeStream.get().map(ElementVersion::getData).filter(Objects::nonNull).forEach(mof -> {
-            JavaBeanHelper.getBeanProperties(mof).values().stream().filter(property -> property.getReadMethod() != null && property.getWriteMethod() != null).forEach(property -> {
-                Method getter = property.getReadMethod();
-                Method setter = property.getWriteMethod();
-                Class<?> type = property.getPropertyType();
+        changeStream.get().map(ElementVersion::getData).filter(Objects::nonNull).forEach(mof -> JavaBeanHelper.getBeanProperties(mof).values().stream().filter(property -> property.getReadMethod() != null && property.getWriteMethod() != null).forEach(property -> {
+            Method getter = property.getReadMethod();
+            Method setter = property.getWriteMethod();
+            Class<?> type = property.getPropertyType();
 
-                Object originalValue;
-                try {
-                    originalValue = getter.invoke(mof);
-                    final Object newValue;
-                    if (MofObject.class.isAssignableFrom(type)) {
-                        if (!(originalValue instanceof MofObject)) {
-                            return;
-                        }
-                        newValue = reattachMofFunction.apply((MofObject) originalValue);
-                    } else if (Collection.class.isAssignableFrom(type)) {
-                        Collection<?> originalValueCollection = (Collection<?>) originalValue;
-                        if (originalValueCollection.isEmpty() || originalValueCollection.stream().anyMatch((o -> !(o instanceof MofObject)))) {
-                            return;
-                        }
-                        final Collection<Object> newValueCollection;
-                        if (List.class.isAssignableFrom(type)) {
-                            newValueCollection = new ArrayList<>();
-                        } else if (Set.class.isAssignableFrom(type)) {
-                            newValueCollection = new HashSet<>();
-                        } else if (Collection.class.isAssignableFrom(type)) {
-                            newValueCollection = new ArrayList<>();
-                        } else {
-                            throw new IllegalStateException("Unknown collection type.");
-                        }
-                        ((Collection<?>) originalValue).stream().map(o -> (MofObject) o).map(reattachMofFunction).forEachOrdered(newValueCollection::add);
-                        newValue = newValueCollection;
-                    } else {
+            Object originalValue;
+            try {
+                originalValue = getter.invoke(mof);
+                final Object newValue;
+                if (MofObject.class.isAssignableFrom(type)) {
+                    if (!(originalValue instanceof MofObject)) {
                         return;
                     }
-                    setter.invoke(mof, newValue);
-                } catch (ReflectiveOperationException e) {
-                    throw new RuntimeException(e);
+                    newValue = reattachMofFunction.apply((MofObject) originalValue);
+                } else if (Collection.class.isAssignableFrom(type)) {
+                    Collection<?> originalValueCollection = (Collection<?>) originalValue;
+                    if (originalValueCollection.isEmpty() || originalValueCollection.stream().anyMatch((o -> !(o instanceof MofObject)))) {
+                        return;
+                    }
+                    final Collection<Object> newValueCollection;
+                    if (List.class.isAssignableFrom(type)) {
+                        newValueCollection = new ArrayList<>();
+                    } else if (Set.class.isAssignableFrom(type)) {
+                        newValueCollection = new HashSet<>();
+                    } else if (Collection.class.isAssignableFrom(type)) {
+                        newValueCollection = new ArrayList<>();
+                    } else {
+                        throw new IllegalStateException("Unknown collection type.");
+                    }
+                    ((Collection<?>) originalValue).stream().map(o -> (MofObject) o).map(reattachMofFunction).forEachOrdered(newValueCollection::add);
+                    newValue = newValueCollection;
+                } else {
+                    return;
                 }
-            });
-        });
+                setter.invoke(mof, newValue);
+            } catch (ReflectiveOperationException e) {
+                throw new RuntimeException(e);
+            }
+        }));
 
  /*       changeStream.get().map(ElementVersion::getData).filter(Objects::nonNull).filter(element -> element instanceof BlockImpl).map(element -> (BlockImpl) element).forEach(block -> {
             if (block.getOwner() instanceof MofObjectImpl) {
@@ -139,9 +142,11 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
             }
         });*/
 
-        if (!(commit instanceof CommitImpl)) {
-            throw new IllegalStateException();
+        // If previousCommit is not specified, default to head commit.
+        if (commit.getPreviousCommit() == null && commit.getContainingProject() != null) {
+            findHeadByProject(commit.getContainingProject()).ifPresent(commit::setPreviousCommit);
         }
+
         return jpa.transact(em -> {
             commit.getChanges().stream().map(ElementVersion::getData).filter(mof -> mof instanceof MofObjectImpl).map(mof -> (MofObjectImpl) mof).map(mof -> {
                 try {
@@ -216,11 +221,34 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
                             builder.equal(root.get(CommitImpl_.containingProject), project),
                             builder.equal(root.get(CommitImpl_.id), id)
                     ));
+            Optional<Commit> commit;
             try {
-                return Optional.of(em.createQuery(query).getSingleResult());
+                commit = Optional.of(em.createQuery(query).getSingleResult());
             } catch (NoResultException e) {
                 return Optional.empty();
             }
+            commit.ifPresent(PROXY_RESOLVER);
+            return commit;
+        });
+    }
+
+    @Override
+    public Optional<Commit> findHeadByProject(Project project) {
+        return jpa.transact(em -> {
+            CriteriaBuilder builder = em.getCriteriaBuilder();
+            CriteriaQuery<CommitImpl> query = builder.createQuery(CommitImpl.class);
+            Root<CommitImpl> root = query.from(CommitImpl.class);
+            query.select(root)
+                    .where(builder.equal(root.get(CommitImpl_.containingProject), project))
+                    .orderBy(builder.desc(root.get(CommitImpl_.timestamp)));
+            Optional<Commit> commit;
+            try {
+                commit = Optional.of(em.createQuery(query).setMaxResults(1).getSingleResult());
+            } catch (NoResultException e) {
+                return Optional.empty();
+            }
+            commit.ifPresent(PROXY_RESOLVER);
+            return commit;
         });
     }
 
