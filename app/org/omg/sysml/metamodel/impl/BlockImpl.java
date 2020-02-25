@@ -256,11 +256,13 @@ public class BlockImpl extends MofObjectImpl implements Block {
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedTransition")
     private Collection<TransitionUsage> ownedTransition;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
     @ManyToAny(metaDef = "TransitionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Block_ownedTransition",
             joinColumns = @JoinColumn(name = "classId"),

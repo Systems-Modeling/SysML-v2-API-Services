@@ -612,11 +612,13 @@ public class AssociationBlockImpl extends MofObjectImpl implements AssociationBl
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedTransition")
     private Collection<TransitionUsage> ownedTransition;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
     @ManyToAny(metaDef = "TransitionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "AssociationBlock_ownedTransition",
             joinColumns = @JoinColumn(name = "classId"),

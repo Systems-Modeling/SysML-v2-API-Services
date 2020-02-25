@@ -40,14 +40,35 @@ import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
-@Entity(name = "InvariantImpl")
-@SecondaryTable(name = "Invariant")
-@org.hibernate.annotations.Table(appliesTo = "Invariant", fetch = FetchMode.SELECT, optional = false)
-// @info.archinnov.achilles.annotations.Table(table = "Invariant")
-@DiscriminatorValue(value = "Invariant")
-@JsonTypeName(value = "Invariant")
+@Entity(name = "AssertConstraintUsageImpl")
+@SecondaryTable(name = "AssertConstraintUsage")
+@org.hibernate.annotations.Table(appliesTo = "AssertConstraintUsage", fetch = FetchMode.SELECT, optional = false)
+// @info.archinnov.achilles.annotations.Table(table = "AssertConstraintUsage")
+@DiscriminatorValue(value = "AssertConstraintUsage")
+@JsonTypeName(value = "AssertConstraintUsage")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class InvariantImpl extends MofObjectImpl implements Invariant {
+public class AssertConstraintUsageImpl extends MofObjectImpl implements AssertConstraintUsage {
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("assertedConstraint")
+    private ConstraintUsage assertedConstraint;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "ConstraintUsageMetaDef", metaColumn = @javax.persistence.Column(name = "assertedConstraintType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "assertedConstraintId", table = "AssertConstraintUsage")
+    public ConstraintUsage getAssertedConstraint() {
+        return assertedConstraint;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ConstraintUsageImpl.class)
+    public void setAssertedConstraint(ConstraintUsage assertedConstraint) {
+        this.assertedConstraint = assertedConstraint;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("assertionConnector")
     private BindingConnector assertionConnector;
@@ -56,7 +77,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "BindingConnectorMetaDef", metaColumn = @javax.persistence.Column(name = "assertionConnectorType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "assertionConnectorId", table = "Invariant")
+    @JoinColumn(name = "assertionConnectorId", table = "AssertConstraintUsage")
     public BindingConnector getAssertionConnector() {
         return assertionConnector;
     }
@@ -77,7 +98,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "PredicateMetaDef", metaColumn = @javax.persistence.Column(name = "predicateType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "predicateId", table = "Invariant")
+    @JoinColumn(name = "predicateId", table = "AssertConstraintUsage")
     public Predicate getPredicate() {
         return predicate;
     }
@@ -98,7 +119,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "FunctionMetaDef", metaColumn = @javax.persistence.Column(name = "functionType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "functionId", table = "Invariant")
+    @JoinColumn(name = "functionId", table = "AssertConstraintUsage")
     public Function getFunction() {
         return function;
     }
@@ -112,6 +133,319 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("constraintDefinition")
+    private Predicate constraintDefinition;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "PredicateMetaDef", metaColumn = @javax.persistence.Column(name = "constraintDefinitionType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "constraintDefinitionId", table = "AssertConstraintUsage")
+    public Predicate getConstraintDefinition() {
+        return constraintDefinition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = PredicateImpl.class)
+    public void setConstraintDefinition(Predicate constraintDefinition) {
+        this.constraintDefinition = constraintDefinition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("constraintOwningUsage")
+    private Usage constraintOwningUsage;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "constraintOwningUsageType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "constraintOwningUsageId", table = "AssertConstraintUsage")
+    public Usage getConstraintOwningUsage() {
+        return constraintOwningUsage;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = UsageImpl.class)
+    public void setConstraintOwningUsage(Usage constraintOwningUsage) {
+        this.constraintOwningUsage = constraintOwningUsage;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("constraintOwningDefinition")
+    private Definition constraintOwningDefinition;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "DefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "constraintOwningDefinitionType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "constraintOwningDefinitionId", table = "AssertConstraintUsage")
+    public Definition getConstraintOwningDefinition() {
+        return constraintOwningDefinition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = DefinitionImpl.class)
+    public void setConstraintOwningDefinition(Definition constraintOwningDefinition) {
+        this.constraintOwningDefinition = constraintOwningDefinition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedUsage")
+    private Collection<Usage> nestedUsage;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "AssertConstraintUsage_nestedUsage",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Usage> getNestedUsage() {
+        if (nestedUsage == null) {
+            nestedUsage = new ArrayList<>();
+        }
+        return nestedUsage;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
+    public void setNestedUsage(Collection<Usage> nestedUsage) {
+        this.nestedUsage = nestedUsage;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("owningUsage")
+    private Usage owningUsage;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "owningUsageType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningUsageId", table = "AssertConstraintUsage")
+    public Usage getOwningUsage() {
+        return owningUsage;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = UsageImpl.class)
+    public void setOwningUsage(Usage owningUsage) {
+        this.owningUsage = owningUsage;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("owningDefinition")
+    private Definition owningDefinition;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "DefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "owningDefinitionType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningDefinitionId", table = "AssertConstraintUsage")
+    public Definition getOwningDefinition() {
+        return owningDefinition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = DefinitionImpl.class)
+    public void setOwningDefinition(Definition owningDefinition) {
+        this.owningDefinition = owningDefinition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedPort")
+    private Collection<PortUsage> nestedPort;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "PortUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "AssertConstraintUsage_nestedPort",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<PortUsage> getNestedPort() {
+        if (nestedPort == null) {
+            nestedPort = new ArrayList<>();
+        }
+        return nestedPort;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PortUsageImpl.class)
+    public void setNestedPort(Collection<PortUsage> nestedPort) {
+        this.nestedPort = nestedPort;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedProperty")
+    private Collection<Property> nestedProperty;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "PropertyMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "AssertConstraintUsage_nestedProperty",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Property> getNestedProperty() {
+        if (nestedProperty == null) {
+            nestedProperty = new ArrayList<>();
+        }
+        return nestedProperty;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PropertyImpl.class)
+    public void setNestedProperty(Collection<Property> nestedProperty) {
+        this.nestedProperty = nestedProperty;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("property")
+    private Collection<Property> property;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "PropertyMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "AssertConstraintUsage_property",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Property> getProperty() {
+        if (property == null) {
+            property = new ArrayList<>();
+        }
+        return property;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PropertyImpl.class)
+    public void setProperty(Collection<Property> property) {
+        this.property = property;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedAction")
+    private Collection<ActionUsage> nestedAction;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "AssertConstraintUsage_nestedAction",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ActionUsage> getNestedAction() {
+        if (nestedAction == null) {
+            nestedAction = new ArrayList<>();
+        }
+        return nestedAction;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ActionUsageImpl.class)
+    public void setNestedAction(Collection<ActionUsage> nestedAction) {
+        this.nestedAction = nestedAction;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedState")
+    private Collection<StateUsage> nestedState;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "StateUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "AssertConstraintUsage_nestedState",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<StateUsage> getNestedState() {
+        if (nestedState == null) {
+            nestedState = new ArrayList<>();
+        }
+        return nestedState;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StateUsageImpl.class)
+    public void setNestedState(Collection<StateUsage> nestedState) {
+        this.nestedState = nestedState;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedConstraint")
+    private Collection<ConstraintUsage> nestedConstraint;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ConstraintUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "AssertConstraintUsage_nestedConstraint",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ConstraintUsage> getNestedConstraint() {
+        if (nestedConstraint == null) {
+            nestedConstraint = new ArrayList<>();
+        }
+        return nestedConstraint;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConstraintUsageImpl.class)
+    public void setNestedConstraint(Collection<ConstraintUsage> nestedConstraint) {
+        this.nestedConstraint = nestedConstraint;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedTransition")
+    private Collection<TransitionUsage> nestedTransition;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TransitionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "AssertConstraintUsage_nestedTransition",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<TransitionUsage> getNestedTransition() {
+        if (nestedTransition == null) {
+            nestedTransition = new ArrayList<>();
+        }
+        return nestedTransition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TransitionUsageImpl.class)
+    public void setNestedTransition(Collection<TransitionUsage> nestedTransition) {
+        this.nestedTransition = nestedTransition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("behavior")
     private Collection<Behavior> behavior;
 
@@ -119,7 +453,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "BehaviorMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_behavior",
+    @JoinTable(name = "AssertConstraintUsage_behavior",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Behavior> getBehavior() {
@@ -145,7 +479,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_referencedType",
+    @JoinTable(name = "AssertConstraintUsage_referencedType",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Type> getReferencedType() {
@@ -171,7 +505,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningTypeId", table = "Invariant")
+    @JoinColumn(name = "owningTypeId", table = "AssertConstraintUsage")
     public Type getOwningType() {
         return owningType;
     }
@@ -188,7 +522,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     private Boolean isUnique;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isUnique", table = "Invariant")
+    @javax.persistence.Column(name = "isUnique", table = "AssertConstraintUsage")
     public Boolean getIsUnique() {
         return isUnique;
     }
@@ -204,7 +538,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     private Boolean isOrdered;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isOrdered", table = "Invariant")
+    @javax.persistence.Column(name = "isOrdered", table = "AssertConstraintUsage")
     public Boolean getIsOrdered() {
         return isOrdered;
     }
@@ -224,7 +558,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_type",
+    @JoinTable(name = "AssertConstraintUsage_type",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Type> getType() {
@@ -250,7 +584,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_ownedType",
+    @JoinTable(name = "AssertConstraintUsage_ownedType",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Type> getOwnedType() {
@@ -276,7 +610,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "RedefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_ownedRedefinition",
+    @JoinTable(name = "AssertConstraintUsage_ownedRedefinition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Redefinition> getOwnedRedefinition() {
@@ -302,7 +636,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "SubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_ownedSubsetting",
+    @JoinTable(name = "AssertConstraintUsage_ownedSubsetting",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Subsetting> getOwnedSubsetting() {
@@ -326,7 +660,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningFeatureMembershipId", table = "Invariant")
+    @JoinColumn(name = "owningFeatureMembershipId", table = "AssertConstraintUsage")
     public FeatureMembership getOwningFeatureMembership() {
         return owningFeatureMembership;
     }
@@ -345,7 +679,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isComposite", table = "Invariant")
+    @javax.persistence.Column(name = "isComposite", table = "AssertConstraintUsage")
     public Boolean getIsComposite() {
         return isComposite;
     }
@@ -363,7 +697,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_typing",
+    @JoinTable(name = "AssertConstraintUsage_typing",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<FeatureTyping> getTyping() {
@@ -387,7 +721,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isEnd", table = "Invariant")
+    @javax.persistence.Column(name = "isEnd", table = "AssertConstraintUsage")
     public Boolean getIsEnd() {
         return isEnd;
     }
@@ -407,7 +741,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "endOwningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "endOwningTypeId", table = "Invariant")
+    @JoinColumn(name = "endOwningTypeId", table = "AssertConstraintUsage")
     public Type getEndOwningType() {
         return endOwningType;
     }
@@ -426,7 +760,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isNonunique", table = "Invariant")
+    @javax.persistence.Column(name = "isNonunique", table = "AssertConstraintUsage")
     public Boolean getIsNonunique() {
         return isNonunique;
     }
@@ -446,7 +780,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "GeneralizationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_ownedGeneralization",
+    @JoinTable(name = "AssertConstraintUsage_ownedGeneralization",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Generalization> getOwnedGeneralization() {
@@ -470,7 +804,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_ownedFeatureMembership",
+    @JoinTable(name = "AssertConstraintUsage_ownedFeatureMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureMembership> getOwnedFeatureMembership() {
@@ -496,7 +830,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_feature",
+    @JoinTable(name = "AssertConstraintUsage_feature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getFeature() {
@@ -522,7 +856,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_ownedFeature",
+    @JoinTable(name = "AssertConstraintUsage_ownedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getOwnedFeature() {
@@ -548,7 +882,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_input",
+    @JoinTable(name = "AssertConstraintUsage_input",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getInput() {
@@ -574,7 +908,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_output",
+    @JoinTable(name = "AssertConstraintUsage_output",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getOutput() {
@@ -596,7 +930,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     private Boolean isAbstract;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isAbstract", table = "Invariant")
+    @javax.persistence.Column(name = "isAbstract", table = "AssertConstraintUsage")
     public Boolean getIsAbstract() {
         return isAbstract;
     }
@@ -616,7 +950,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_inheritedMembership",
+    @JoinTable(name = "AssertConstraintUsage_inheritedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getInheritedMembership() {
@@ -642,7 +976,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_endFeature",
+    @JoinTable(name = "AssertConstraintUsage_endFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getEndFeature() {
@@ -668,7 +1002,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_ownedEndFeature",
+    @JoinTable(name = "AssertConstraintUsage_ownedEndFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getOwnedEndFeature() {
@@ -690,7 +1024,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     private Boolean isSufficient;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isSufficient", table = "Invariant")
+    @javax.persistence.Column(name = "isSufficient", table = "AssertConstraintUsage")
     public Boolean getIsSufficient() {
         return isSufficient;
     }
@@ -710,7 +1044,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConjugatorType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedConjugatorId", table = "Invariant")
+    @JoinColumn(name = "ownedConjugatorId", table = "AssertConstraintUsage")
     public Conjugation getOwnedConjugator() {
         return ownedConjugator;
     }
@@ -729,7 +1063,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isConjugated", table = "Invariant")
+    @javax.persistence.Column(name = "isConjugated", table = "AssertConstraintUsage")
     public Boolean getIsConjugated() {
         return isConjugated;
     }
@@ -747,7 +1081,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "conjugatorType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "conjugatorId", table = "Invariant")
+    @JoinColumn(name = "conjugatorId", table = "AssertConstraintUsage")
     public Conjugation getConjugator() {
         return conjugator;
     }
@@ -768,7 +1102,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_featureMembership",
+    @JoinTable(name = "AssertConstraintUsage_featureMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureMembership> getFeatureMembership() {
@@ -794,7 +1128,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_inheritedFeature",
+    @JoinTable(name = "AssertConstraintUsage_inheritedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getInheritedFeature() {
@@ -820,7 +1154,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "multiplicityId", table = "Invariant")
+    @JoinColumn(name = "multiplicityId", table = "AssertConstraintUsage")
     public Multiplicity getMultiplicity() {
         return multiplicity;
     }
@@ -841,7 +1175,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_membership",
+    @JoinTable(name = "AssertConstraintUsage_membership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getMembership() {
@@ -865,7 +1199,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_ownedImport",
+    @JoinTable(name = "AssertConstraintUsage_ownedImport",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Import> getOwnedImport() {
@@ -891,7 +1225,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_member",
+    @JoinTable(name = "AssertConstraintUsage_member",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getMember() {
@@ -917,7 +1251,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_ownedMember",
+    @JoinTable(name = "AssertConstraintUsage_ownedMember",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getOwnedMember() {
@@ -941,7 +1275,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_ownedMembership",
+    @JoinTable(name = "AssertConstraintUsage_ownedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getOwnedMembership() {
@@ -967,7 +1301,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_importedMembership",
+    @JoinTable(name = "AssertConstraintUsage_importedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getImportedMembership() {
@@ -991,7 +1325,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningMembershipId", table = "Invariant")
+    @JoinColumn(name = "owningMembershipId", table = "AssertConstraintUsage")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -1010,7 +1344,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelationshipId", table = "Invariant")
+    @JoinColumn(name = "owningRelationshipId", table = "AssertConstraintUsage")
     public Relationship getOwningRelationship() {
         return owningRelationship;
     }
@@ -1027,7 +1361,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     private java.util.UUID identifier;
 
     @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "Invariant")
+    @javax.persistence.Column(name = "identifier", table = "AssertConstraintUsage")
     public java.util.UUID getIdentifier() {
         return identifier;
     }
@@ -1047,7 +1381,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "Invariant")
+    @JoinColumn(name = "owningNamespaceId", table = "AssertConstraintUsage")
     public Package getOwningNamespace() {
         return owningNamespace;
     }
@@ -1068,7 +1402,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "name", table = "Invariant")
+    @javax.persistence.Column(name = "name", table = "AssertConstraintUsage")
     public String getName() {
         return name;
     }
@@ -1086,7 +1420,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_ownedRelationship",
+    @JoinTable(name = "AssertConstraintUsage_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Relationship> getOwnedRelationship() {
@@ -1112,7 +1446,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownerId", table = "Invariant")
+    @JoinColumn(name = "ownerId", table = "AssertConstraintUsage")
     public Element getOwner() {
         return owner;
     }
@@ -1133,7 +1467,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Invariant_ownedElement",
+    @JoinTable(name = "AssertConstraintUsage_ownedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getOwnedElement() {
