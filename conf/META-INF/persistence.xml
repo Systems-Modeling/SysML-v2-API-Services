@@ -10,6 +10,7 @@
         <class>org.omg.sysml.metamodel.impl.ActionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.ActivityImpl</class>
         <class>org.omg.sysml.metamodel.impl.AnnotationImpl</class>
+        <class>org.omg.sysml.metamodel.impl.AssertConstraintUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.AssociationBlockImpl</class>
         <class>org.omg.sysml.metamodel.impl.AssociationImpl</class>
         <class>org.omg.sysml.metamodel.impl.AtomicInteractionImpl</class>

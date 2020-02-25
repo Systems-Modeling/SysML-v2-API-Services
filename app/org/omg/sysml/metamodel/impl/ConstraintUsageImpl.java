@@ -112,6 +112,27 @@ public class ConstraintUsageImpl extends MofObjectImpl implements ConstraintUsag
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("predicate")
+    private Predicate predicate;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "PredicateMetaDef", metaColumn = @javax.persistence.Column(name = "predicateType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "predicateId", table = "ConstraintUsage")
+    public Predicate getPredicate() {
+        return predicate;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = PredicateImpl.class)
+    public void setPredicate(Predicate predicate) {
+        this.predicate = predicate;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedUsage")
     private Collection<Usage> nestedUsage;
 
@@ -357,27 +378,6 @@ public class ConstraintUsageImpl extends MofObjectImpl implements ConstraintUsag
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TransitionUsageImpl.class)
     public void setNestedTransition(Collection<TransitionUsage> nestedTransition) {
         this.nestedTransition = nestedTransition;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("predicate")
-    private Predicate predicate;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "PredicateMetaDef", metaColumn = @javax.persistence.Column(name = "predicateType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "predicateId", table = "ConstraintUsage")
-    public Predicate getPredicate() {
-        return predicate;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = PredicateImpl.class)
-    public void setPredicate(Predicate predicate) {
-        this.predicate = predicate;
     }
 
 
