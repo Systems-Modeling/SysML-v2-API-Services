@@ -70,6 +70,132 @@ public class TransitionUsageImpl extends MofObjectImpl implements TransitionUsag
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("source")
+    private Step source;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "StepMetaDef", metaColumn = @javax.persistence.Column(name = "sourceType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "sourceId", table = "TransitionUsage")
+    public Step getSource() {
+        return source;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = StepImpl.class)
+    public void setSource(Step source) {
+        this.source = source;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("target")
+    private Step target;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "StepMetaDef", metaColumn = @javax.persistence.Column(name = "targetType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "targetId", table = "TransitionUsage")
+    public Step getTarget() {
+        return target;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = StepImpl.class)
+    public void setTarget(Step target) {
+        this.target = target;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("triggerAction")
+    private AcceptActionUsage triggerAction;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "AcceptActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "triggerActionType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "triggerActionId", table = "TransitionUsage")
+    public AcceptActionUsage getTriggerAction() {
+        return triggerAction;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = AcceptActionUsageImpl.class)
+    public void setTriggerAction(AcceptActionUsage triggerAction) {
+        this.triggerAction = triggerAction;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("guardExpression")
+    private Expression guardExpression;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "guardExpressionType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "guardExpressionId", table = "TransitionUsage")
+    public Expression getGuardExpression() {
+        return guardExpression;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ExpressionImpl.class)
+    public void setGuardExpression(Expression guardExpression) {
+        this.guardExpression = guardExpression;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("effectAction")
+    private ActionUsage effectAction;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "effectActionType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "effectActionId", table = "TransitionUsage")
+    public ActionUsage getEffectAction() {
+        return effectAction;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ActionUsageImpl.class)
+    public void setEffectAction(ActionUsage effectAction) {
+        this.effectAction = effectAction;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("succession")
+    private Succession succession;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "SuccessionMetaDef", metaColumn = @javax.persistence.Column(name = "successionType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "successionId", table = "TransitionUsage")
+    public Succession getSuccession() {
+        return succession;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = SuccessionImpl.class)
+    public void setSuccession(Succession succession) {
+        this.succession = succession;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedUsage")
     private Collection<Usage> nestedUsage;
 
