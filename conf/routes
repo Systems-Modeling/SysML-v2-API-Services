@@ -3,33 +3,28 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET         /                                 controllers.HomeController.index
+GET         /                                                                                      controllers.HomeController.index
 
 # Project endpoints
-GET         /projects                           controllers.ProjectController.all()
-GET         /projects/:id                       controllers.ProjectController.byId(id : String)
-POST        /projects                           controllers.ProjectController.create(request : Request)
+GET         /projects                                                                              controllers.ProjectController.all()
+POST        /projects                                                                              controllers.ProjectController.create(request : Request)
+GET         /projects/:projectId                                                                   controllers.ProjectController.byId(projectId : java.util.UUID)
+
+# Commit endpoints
+GET         /projects/:projectId/commits                                                           controllers.CommitController.byProject(projectId : java.util.UUID)
+POST        /projects/:projectId/commits                                                           controllers.CommitController.createWithProjectId(projectId : java.util.UUID, request : Request)
+GET         /projects/:projectId/commits/:commitId                                                 controllers.CommitController.byProjectAndId(projectId : java.util.UUID, commitId : java.util.UUID)
+GET         /projects/:projectId/head                                                              controllers.CommitController.headByProject(projectId : java.util.UUID)
 
 # Element endpoints
-GET         /elements                         controllers.ElementController.all()
-GET         /elements/:id                     controllers.ElementController.byId(id : String)
-GET         /projects/:mid/elements/:id         controllers.ElementController.byProjectAndId(id : String, mid : String)
-GET         /projects/:mid/elements             controllers.ElementController.byProject(mid : String)
-POST        /elements                         controllers.ElementController.create(request : Request)
+GET         /projects/:projectId/commits/:commitId/elements                                        controllers.ElementController.getElementsByProjectIdCommitId(projectId : java.util.UUID, commitId : java.util.UUID)
+GET         /projects/:projectId/commits/:commitId/elements/:elementId                             controllers.ElementController.getElementByProjectIdCommitIdElementId(projectId : java.util.UUID, commitId : java.util.UUID, elementId : java.util.UUID)
 
 # Relationship endpoints
-GET         /relationships/:id                controllers.RelationshipController.byId(id : String)
-# GET         /relationship/element/:id                  controllers.RelationshipController.byRelatedElementId(id : String)
-# GET         /relationship/source/:id                   controllers.RelationshipController.bySourceElementId(id : String)
-# GET         /relationship/source/:id/type/:type        controllers.RelationshipController.bySourceElementId(id : String)
-# GET         /relationship/target/:id                   controllers.RelationshipController.byTargetElementId(id : String)
-# GET         /relationship/target/:id/type/:type        controllers.RelationshipController.byTargetElementId(id : String)
-GET         /relationships                    controllers.RelationshipController.all()
-GET         /projects/:mid/relationships        controllers.RelationshipController.byProject(mid : String)
-POST        /relationships                    controllers.RelationshipController.create(request : Request)
+GET         /projects/:projectId/commits/:commitId/elements/:relatedElementId/relationships        controllers.RelationshipController.getRelationshipsByProjectIdCommitIdRelatedElementId(projectId : java.util.UUID, commitId : java.util.UUID, relatedElementId : java.util.UUID)
 
 # Map static resources from the /public folder to the /assets URL path
-GET         /assets/*file                     controllers.Assets.versioned(path="/public", file: Asset)
+GET         /assets/*file                                                                          controllers.Assets.versioned(path="/public", file: Asset)
 
-GET         /docs/                            controllers.Assets.at(path="/public/swagger",file="index.html")
-GET         /docs/*file                       controllers.Assets.at(path="/public/swagger",file)
+GET         /docs/                                                                                 controllers.Assets.at(path="/public/swagger",file="index.html")
+GET         /docs/*file                                                                            controllers.Assets.at(path="/public/swagger",file)

@@ -10,8 +10,10 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class MofObjectImpl_ {
 
 	public static volatile SingularAttribute<MofObjectImpl, UUID> identifier;
+	public static volatile SingularAttribute<MofObjectImpl, UUID> id;
 
 	public static final String IDENTIFIER = "identifier";
+	public static final String ID = "id";
 
 }
 

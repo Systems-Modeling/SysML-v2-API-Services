@@ -3,7 +3,7 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import config.MetamodelProvider;
 import jackson.JacksonHelper;
-import org.omg.sysml.extension.Project;
+import org.omg.sysml.lifecycle.Project;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Http;
@@ -28,9 +28,8 @@ public class ProjectController extends Controller {
     @Inject
     private ProjectService projectService;
 
-    public Result byId(String id) {
-        UUID uuid = UUID.fromString(id);
-        Optional<Project> project = projectService.getById(uuid);
+    public Result byId(UUID id) {
+        Optional<Project> project = projectService.getById(id);
         return project.map(m -> ok(Json.toJson(m))).orElseGet(Results::notFound);
     }
 
@@ -43,6 +42,6 @@ public class ProjectController extends Controller {
         JsonNode requestBodyJson = request.body().asJson();
         Project requestProject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Project.class));
         Optional<Project> responseProject = projectService.create(requestProject);
-        return responseProject.map(e -> created(Json.toJson(e))).orElseGet(Results::badRequest);
+        return responseProject.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 }
