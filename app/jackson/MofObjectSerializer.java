@@ -5,6 +5,8 @@ import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import javax.persistence.PersistenceException;
 import org.omg.sysml.metamodel.MofObject;
+import org.omg.sysml.metamodel.impl.MofObjectImpl;
+
 import java.io.IOException;
 
 public class MofObjectSerializer extends StdSerializer<MofObject> {
@@ -19,7 +21,7 @@ public class MofObjectSerializer extends StdSerializer<MofObject> {
     @Override
     public void serialize(MofObject value, JsonGenerator gen, SerializerProvider provider) throws IOException {
         try {
-            if (value == null || value.getIdentifier() == null) {
+            if (value == null || value.getId() == null) {
                 gen.writeNull();
                 return;
             }
@@ -28,7 +30,12 @@ public class MofObjectSerializer extends StdSerializer<MofObject> {
             return;
         }
         gen.writeStartObject();
-        gen.writeObjectField("identifier", value.getIdentifier());
+        // TODO Decide if @type and id should be exposed
+        // gen.writeObjectField("@type", value.getClass().getSimpleName());
+        // gen.writeObjectField("id", value.getId());
+        if (value instanceof MofObjectImpl) {
+            gen.writeObjectField("identifier", value.getIdentifier());
+        }
         gen.writeEndObject();
     }
 }

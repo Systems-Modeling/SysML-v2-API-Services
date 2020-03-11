@@ -111,9 +111,13 @@
         <class>org.omg.sysml.metamodel.impl.ValuePropertyImpl</class>
         <class>org.omg.sysml.metamodel.impl.ValueTypeImpl</class>
 
-        <class>org.omg.sysml.extension.impl</class>
-        <class>org.omg.sysml.extension.impl.ProjectImpl</class>
-        
+        <class>org.omg.sysml.lifecycle.impl</class>
+        <class>org.omg.sysml.lifecycle.impl.CommitImpl</class>
+        <class>org.omg.sysml.lifecycle.impl.ElementIdentityImpl</class>
+        <class>org.omg.sysml.lifecycle.impl.ElementVersionImpl</class>
+        <class>org.omg.sysml.lifecycle.impl.ProjectImpl</class>
+        <class>org.omg.sysml.lifecycle.impl.RecordImpl</class>
+
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/sysml2"/>

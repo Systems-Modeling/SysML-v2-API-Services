@@ -15,6 +15,7 @@ import services.RelationshipService;
 import javax.inject.Inject;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.UUID;
 
 /**
@@ -47,30 +48,12 @@ public class RelationshipController extends Controller {
             return Results.badRequest();
         }
         Optional<Relationship> responseRelationship = relationshipService.create((Relationship) requestedObject);
-        return responseRelationship.map(e -> created(Json.toJson(e))).orElseGet(Results::badRequest);
+        return responseRelationship.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 
-    public Result byRelatedElementId(String id) {
-        UUID elementUuid = UUID.fromString(id);
-        List<Relationship> relationships = relationshipService.getByRelatedElementId(elementUuid);
-        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
-    }
-
-    public Result bySourceElementId(String id) {
-        UUID elementUuid = UUID.fromString(id);
-        List<Relationship> relationships = relationshipService.getBySourceElementId(elementUuid);
-        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
-    }
-
-    public Result byTargetElementId(String id) {
-        UUID elementUuid = UUID.fromString(id);
-        List<Relationship> relationships = relationshipService.getByTargetElementId(elementUuid);
-        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
-    }
-
-    public Result byProject(String projectId) {
-        UUID projectUuid = UUID.fromString(projectId);
-        List<Relationship> relationships = relationshipService.getByProjectId(projectUuid);
-        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
+    public Result getRelationshipsByProjectIdCommitIdRelatedElementId(UUID projectId, UUID commitId, UUID elementId) {
+        System.out.println(projectId + " : " + commitId + " : " + elementId);
+        Set<Relationship> relationships = relationshipService.getRelationshipsByProjectCommitRelatedElement(projectId, commitId, elementId);
+        return ok(JacksonHelper.collectionValueToTree(Set.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
     }
 }
