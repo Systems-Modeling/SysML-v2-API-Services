@@ -118,6 +118,9 @@
         <class>org.omg.sysml.lifecycle.impl.ProjectImpl</class>
         <class>org.omg.sysml.lifecycle.impl.RecordImpl</class>
 
+        <class>org.omg.sysml.internal.impl</class>
+        <class>org.omg.sysml.internal.impl.CommitIndexImpl</class>
+
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/sysml2"/>
