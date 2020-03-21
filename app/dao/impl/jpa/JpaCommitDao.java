@@ -42,7 +42,8 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
         return jpa;
     }
 
-    private JpaElementDao elementDao = new JpaElementDao();
+    @Inject
+    private JpaElementDao elementDao;
 
     @Override
     public Optional<Commit> persist(Commit commit) {

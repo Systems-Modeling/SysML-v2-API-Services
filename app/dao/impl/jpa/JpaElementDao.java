@@ -4,16 +4,27 @@ import config.MetamodelProvider;
 import dao.ElementDao;
 import javabean.JavaBeanHelper;
 import jpa.manager.JPAManager;
+import org.omg.sysml.internal.CommitIndex;
+import org.omg.sysml.internal.impl.CommitIndexImpl;
+import org.omg.sysml.internal.impl.CommitIndexImpl_;
 import org.omg.sysml.lifecycle.Commit;
+import org.omg.sysml.lifecycle.ElementVersion;
+import org.omg.sysml.lifecycle.impl.ElementIdentityImpl;
+import org.omg.sysml.lifecycle.impl.ElementIdentityImpl_;
+import org.omg.sysml.lifecycle.impl.ElementVersionImpl;
+import org.omg.sysml.lifecycle.impl.ElementVersionImpl_;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
 import org.omg.sysml.metamodel.impl.MofObjectImpl_;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.criteria.*;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -22,7 +33,8 @@ import java.util.stream.Stream;
 @Singleton
 public class JpaElementDao extends JpaDao<Element> implements ElementDao {
     // TODO Explore alternative to serializing lazy entity attributes that doesn't involve resolving all proxies one level.
-    static Consumer<Element> PROXY_RESOLVER = element -> JavaBeanHelper.getBeanPropertyValues(element).values().stream().flatMap(o -> o instanceof Collection ? ((Collection<?>) o).stream() : Stream.of(o)).forEach(o -> {});
+    static Consumer<Element> PROXY_RESOLVER = element -> JavaBeanHelper.getBeanPropertyValues(element).values().stream().flatMap(o -> o instanceof Collection ? ((Collection<?>) o).stream() : Stream.of(o)).forEach(o -> {
+    });
 
     @Inject
     private MetamodelProvider metamodelProvider;
@@ -80,17 +92,31 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
         return jpa.transact(em -> {
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
             Commit c = em.contains(commit) ? commit : em.find(metamodelProvider.getImplementationClass(Commit.class), commit.getId());
-            return streamFlattenedElements(c).peek(PROXY_RESOLVER).collect(Collectors.toSet());
+            return getCommitIndex(c, em).getWorkingElementVersions().stream().map(ElementVersion::getData).filter(mof -> mof instanceof Element).map(mof -> (Element) mof).collect(Collectors.toSet());
         });
     }
 
     @Override
     public Optional<Element> findByCommitAndId(Commit commit, UUID id) {
         return jpa.transact(em -> {
-            return queryCommitTree(em.contains(commit) ? commit : em.find(metamodelProvider.getImplementationClass(Commit.class), commit.getId()), c ->
-                    c.getChanges().stream().filter(record -> record.getIdentity() != null && record.getIdentity().getId() != null && record.getData() instanceof Element).filter(record -> id.equals(record.getIdentity().getId())).map(record -> (Element) record.getData()).findAny(),
-                    Optional::isPresent)
-                .values().stream().filter(Optional::isPresent).map(Optional::get).peek(PROXY_RESOLVER).findAny();
+            // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
+            Commit c = em.contains(commit) ? commit : em.find(metamodelProvider.getImplementationClass(Commit.class), commit.getId());
+            CommitIndex commitIndex = getCommitIndex(c, em);
+
+            CriteriaBuilder builder = em.getCriteriaBuilder();
+            CriteriaQuery<ElementVersionImpl> query = builder.createQuery(ElementVersionImpl.class);
+            Root<CommitIndexImpl> commitIndexRoot = query.from(CommitIndexImpl.class);
+            SetJoin<CommitIndexImpl, ElementVersionImpl> workingElementVersionsJoin = commitIndexRoot.join(CommitIndexImpl_.workingElementVersions);
+            Join<ElementVersionImpl, ElementIdentityImpl> elementIdentityJoin = workingElementVersionsJoin.join(ElementVersionImpl_.identity);
+            query.select(workingElementVersionsJoin).where(
+                    builder.equal(commitIndexRoot.get(CommitIndexImpl_.id), commitIndex.getId()),
+                    builder.equal(elementIdentityJoin.get(ElementIdentityImpl_.id), id)
+            );
+            try {
+                return Optional.of(em.createQuery(query).getSingleResult()).map(ElementVersion::getData).filter(mof -> mof instanceof Element).map(mof -> (Element) mof);
+            } catch (NoResultException e) {
+                return Optional.empty();
+            }
         });
     }
 
@@ -114,11 +140,35 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
         return results;
     }
 
-    protected Stream<Element> streamFlattenedElements(Commit commit) {
-        Set<UUID> visitedElements = new HashSet<>();
-        Map<Commit, Stream<Element>> results = queryCommitTree(commit,
-                c -> c.getChanges().stream().filter(record -> record.getIdentity() != null && record.getIdentity().getId() != null && record.getData() instanceof Element).filter(record -> !visitedElements.contains(record.getIdentity().getId())).peek(record -> visitedElements.add(record.getIdentity().getId())).map(record -> (Element) record.getData()));
+    protected Stream<ElementVersion> streamWorkingElementVersions(Commit commit) {
+        Set<UUID> visitedElements = ConcurrentHashMap.newKeySet();
+        Map<Commit, Stream<ElementVersion>> results = queryCommitTree(commit,
+                c -> c.getChanges().stream().filter(record -> record.getIdentity() != null && record.getIdentity().getId() != null && record.getData() != null).filter(record -> !visitedElements.contains(record.getIdentity().getId())).peek(record -> visitedElements.add(record.getIdentity().getId())));
         return results.values().stream().flatMap(Function.identity());
+    }
+
+    protected CommitIndex getCommitIndex(Commit commit, EntityManager em) {
+        CriteriaBuilder builder = em.getCriteriaBuilder();
+        CriteriaQuery<CommitIndexImpl> query = builder.createQuery(CommitIndexImpl.class);
+        Root<CommitIndexImpl> root = query.from(CommitIndexImpl.class);
+        query.select(root).where(builder.equal(root.get(CommitIndexImpl_.id), commit.getId()));
+        CommitIndex commitIndex = null;
+        try {
+            commitIndex = em.createQuery(query).getSingleResult();
+        } catch (NoResultException ignored) {
+        }
+        if (commitIndex != null) {
+            return commitIndex;
+        }
+
+        commitIndex = new CommitIndexImpl();
+        commitIndex.setCommit(commit);
+        commitIndex.setWorkingElementVersions(streamWorkingElementVersions(commit).collect(Collectors.toSet()));
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        em.persist(commitIndex);
+        transaction.commit();
+        return commitIndex;
     }
 
     private Expression<Boolean> getTypeExpression(CriteriaBuilder builder, Root<?> root) {
