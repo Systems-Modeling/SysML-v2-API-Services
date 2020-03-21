@@ -17,6 +17,7 @@ import org.omg.sysml.metamodel.Membership;
 import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.Property;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.RequirementUsage;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Superclassing;
 import org.omg.sysml.metamodel.TransitionUsage;
@@ -56,6 +57,7 @@ public abstract class InterfaceDefinitionImpl_ extends org.omg.sysml.metamodel.i
 	public static volatile ListAttribute<InterfaceDefinitionImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<InterfaceDefinitionImpl, Feature> endFeature;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, Import> ownedImport;
+	public static volatile CollectionAttribute<InterfaceDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<InterfaceDefinitionImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<InterfaceDefinitionImpl, Feature> associationEnd;
 	public static volatile CollectionAttribute<InterfaceDefinitionImpl, Element> target;
@@ -98,6 +100,7 @@ public abstract class InterfaceDefinitionImpl_ extends org.omg.sysml.metamodel.i
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String OWNED_IMPORT = "ownedImport";
+	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String ASSOCIATION_END = "associationEnd";
 	public static final String TARGET = "target";

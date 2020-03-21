@@ -239,29 +239,6 @@ public class FeatureMembershipImpl extends MofObjectImpl implements FeatureMembe
 
 
 
-    // @info.archinnov.achilles.annotations.Column("aliases")
-    private Collection<String> aliases;
-
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "FeatureMembership_aliases",
-            joinColumns = @JoinColumn(name = "FeatureMembershipId"))
-    public Collection<String> getAliases() {
-        if (aliases == null) {
-            aliases = new ArrayList<>();
-        }
-        return aliases;
-    }
-
-    @JsonSetter
-    public void setAliases(Collection<String> aliases) {
-        this.aliases = aliases;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("memberElement")
     private Element memberElement;
 

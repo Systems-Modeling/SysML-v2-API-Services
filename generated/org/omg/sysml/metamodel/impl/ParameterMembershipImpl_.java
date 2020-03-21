@@ -17,7 +17,6 @@ public abstract class ParameterMembershipImpl_ extends org.omg.sysml.metamodel.i
 	public static volatile SingularAttribute<ParameterMembershipImpl, UUID> identifier;
 	public static volatile SingularAttribute<ParameterMembershipImpl, Boolean> isDerived;
 	public static volatile CollectionAttribute<ParameterMembershipImpl, Element> ownedElement;
-	public static volatile CollectionAttribute<ParameterMembershipImpl, String> aliases;
 	public static volatile SingularAttribute<ParameterMembershipImpl, VisibilityKind> visibility;
 	public static volatile CollectionAttribute<ParameterMembershipImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<ParameterMembershipImpl, String> memberName;
@@ -35,7 +34,6 @@ public abstract class ParameterMembershipImpl_ extends org.omg.sysml.metamodel.i
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ELEMENT = "ownedElement";
-	public static final String ALIASES = "aliases";
 	public static final String VISIBILITY = "visibility";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String MEMBER_NAME = "memberName";

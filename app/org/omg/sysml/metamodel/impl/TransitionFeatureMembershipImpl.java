@@ -66,6 +66,25 @@ public class TransitionFeatureMembershipImpl extends MofObjectImpl implements Tr
 
 
 
+    // @info.archinnov.achilles.annotations.Column("transitionFeature")
+    private Step transitionFeature;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    @Any(metaDef = "StepMetaDef", metaColumn = @javax.persistence.Column(name = "transitionFeatureType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "transitionFeatureId", table = "TransitionFeatureMembership")
+    public Step getTransitionFeature() {
+        return transitionFeature;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = StepImpl.class)
+    public void setTransitionFeature(Step transitionFeature) {
+        this.transitionFeature = transitionFeature;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("owningType")
     private Type owningType;
 
@@ -253,29 +272,6 @@ public class TransitionFeatureMembershipImpl extends MofObjectImpl implements Tr
     @JsonSetter
     public void setVisibility(VisibilityKind visibility) {
         this.visibility = visibility;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("aliases")
-    private Collection<String> aliases;
-
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "TransitionFeatureMembership_aliases",
-            joinColumns = @JoinColumn(name = "TransitionFeatureMembershipId"))
-    public Collection<String> getAliases() {
-        if (aliases == null) {
-            aliases = new ArrayList<>();
-        }
-        return aliases;
-    }
-
-    @JsonSetter
-    public void setAliases(Collection<String> aliases) {
-        this.aliases = aliases;
     }
 
 

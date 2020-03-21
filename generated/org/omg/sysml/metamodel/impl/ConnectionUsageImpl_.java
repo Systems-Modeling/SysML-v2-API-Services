@@ -20,6 +20,7 @@ import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.Property;
 import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.RequirementUsage;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TransitionUsage;
@@ -37,6 +38,7 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Subsetting> ownedSubsetting;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Element> source;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Type> type;
+	public static volatile CollectionAttribute<ConnectionUsageImpl, RequirementUsage> nestedRequirement;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Feature> output;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, PortUsage> nestedPort;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, TransitionUsage> nestedTransition;
@@ -90,6 +92,7 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String SOURCE = "source";
 	public static final String TYPE = "type";
+	public static final String NESTED_REQUIREMENT = "nestedRequirement";
 	public static final String OUTPUT = "output";
 	public static final String NESTED_PORT = "nestedPort";
 	public static final String NESTED_TRANSITION = "nestedTransition";

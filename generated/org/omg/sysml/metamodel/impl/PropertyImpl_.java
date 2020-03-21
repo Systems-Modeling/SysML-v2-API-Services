@@ -19,6 +19,7 @@ import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.Property;
 import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.RequirementUsage;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TransitionUsage;
@@ -36,6 +37,7 @@ public abstract class PropertyImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile CollectionAttribute<PropertyImpl, Subsetting> ownedSubsetting;
 	public static volatile ListAttribute<PropertyImpl, Membership> membership;
 	public static volatile CollectionAttribute<PropertyImpl, Type> type;
+	public static volatile CollectionAttribute<PropertyImpl, RequirementUsage> nestedRequirement;
 	public static volatile SingularAttribute<PropertyImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<PropertyImpl, Feature> output;
 	public static volatile CollectionAttribute<PropertyImpl, PortUsage> nestedPort;
@@ -80,6 +82,7 @@ public abstract class PropertyImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String MEMBERSHIP = "membership";
 	public static final String TYPE = "type";
+	public static final String NESTED_REQUIREMENT = "nestedRequirement";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OUTPUT = "output";
 	public static final String NESTED_PORT = "nestedPort";

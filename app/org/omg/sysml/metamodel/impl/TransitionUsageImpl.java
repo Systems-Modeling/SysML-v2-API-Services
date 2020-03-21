@@ -71,20 +71,20 @@ public class TransitionUsageImpl extends MofObjectImpl implements TransitionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("source")
-    private Step source;
+    private ActionUsage source;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "StepMetaDef", metaColumn = @javax.persistence.Column(name = "sourceType"), fetch = FetchType.LAZY)
+    @Any(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "sourceType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "sourceId", table = "TransitionUsage")
-    public Step getSource() {
+    public ActionUsage getSource() {
         return source;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = StepImpl.class)
-    public void setSource(Step source) {
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ActionUsageImpl.class)
+    public void setSource(ActionUsage source) {
         this.source = source;
     }
 
@@ -92,20 +92,20 @@ public class TransitionUsageImpl extends MofObjectImpl implements TransitionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("target")
-    private Step target;
+    private ActionUsage target;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "StepMetaDef", metaColumn = @javax.persistence.Column(name = "targetType"), fetch = FetchType.LAZY)
+    @Any(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "targetType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "targetId", table = "TransitionUsage")
-    public Step getTarget() {
+    public ActionUsage getTarget() {
         return target;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = StepImpl.class)
-    public void setTarget(Step target) {
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ActionUsageImpl.class)
+    public void setTarget(ActionUsage target) {
         this.target = target;
     }
 
@@ -113,20 +113,25 @@ public class TransitionUsageImpl extends MofObjectImpl implements TransitionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("triggerAction")
-    private AcceptActionUsage triggerAction;
+    private Collection<AcceptActionUsage> triggerAction;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "AcceptActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "triggerActionType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "triggerActionId", table = "TransitionUsage")
-    public AcceptActionUsage getTriggerAction() {
+    @ManyToAny(metaDef = "AcceptActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TransitionUsage_triggerAction",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<AcceptActionUsage> getTriggerAction() {
+        if (triggerAction == null) {
+            triggerAction = new ArrayList<>();
+        }
         return triggerAction;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = AcceptActionUsageImpl.class)
-    public void setTriggerAction(AcceptActionUsage triggerAction) {
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AcceptActionUsageImpl.class)
+    public void setTriggerAction(Collection<AcceptActionUsage> triggerAction) {
         this.triggerAction = triggerAction;
     }
 
@@ -134,20 +139,25 @@ public class TransitionUsageImpl extends MofObjectImpl implements TransitionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("guardExpression")
-    private Expression guardExpression;
+    private Collection<Expression> guardExpression;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "guardExpressionType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "guardExpressionId", table = "TransitionUsage")
-    public Expression getGuardExpression() {
+    @ManyToAny(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TransitionUsage_guardExpression",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Expression> getGuardExpression() {
+        if (guardExpression == null) {
+            guardExpression = new ArrayList<>();
+        }
         return guardExpression;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ExpressionImpl.class)
-    public void setGuardExpression(Expression guardExpression) {
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ExpressionImpl.class)
+    public void setGuardExpression(Collection<Expression> guardExpression) {
         this.guardExpression = guardExpression;
     }
 
@@ -155,20 +165,25 @@ public class TransitionUsageImpl extends MofObjectImpl implements TransitionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("effectAction")
-    private ActionUsage effectAction;
+    private Collection<ActionUsage> effectAction;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "effectActionType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "effectActionId", table = "TransitionUsage")
-    public ActionUsage getEffectAction() {
+    @ManyToAny(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TransitionUsage_effectAction",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ActionUsage> getEffectAction() {
+        if (effectAction == null) {
+            effectAction = new ArrayList<>();
+        }
         return effectAction;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ActionUsageImpl.class)
-    public void setEffectAction(ActionUsage effectAction) {
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ActionUsageImpl.class)
+    public void setEffectAction(Collection<ActionUsage> effectAction) {
         this.effectAction = effectAction;
     }
 
@@ -191,6 +206,74 @@ public class TransitionUsageImpl extends MofObjectImpl implements TransitionUsag
     @JsonDeserialize(using = MofObjectDeserializer.class, as = SuccessionImpl.class)
     public void setSuccession(Succession succession) {
         this.succession = succession;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("activity")
+    private Collection<Behavior> activity;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "BehaviorMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TransitionUsage_activity",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Behavior> getActivity() {
+        if (activity == null) {
+            activity = new ArrayList<>();
+        }
+        return activity;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = BehaviorImpl.class)
+    public void setActivity(Collection<Behavior> activity) {
+        this.activity = activity;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("actionOwningDefinition")
+    private Definition actionOwningDefinition;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "DefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "actionOwningDefinitionType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "actionOwningDefinitionId", table = "TransitionUsage")
+    public Definition getActionOwningDefinition() {
+        return actionOwningDefinition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = DefinitionImpl.class)
+    public void setActionOwningDefinition(Definition actionOwningDefinition) {
+        this.actionOwningDefinition = actionOwningDefinition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("actionOwningUsage")
+    private Usage actionOwningUsage;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "actionOwningUsageType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "actionOwningUsageId", table = "TransitionUsage")
+    public Usage getActionOwningUsage() {
+        return actionOwningUsage;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = UsageImpl.class)
+    public void setActionOwningUsage(Usage actionOwningUsage) {
+        this.actionOwningUsage = actionOwningUsage;
     }
 
 
@@ -441,6 +524,32 @@ public class TransitionUsageImpl extends MofObjectImpl implements TransitionUsag
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TransitionUsageImpl.class)
     public void setNestedTransition(Collection<TransitionUsage> nestedTransition) {
         this.nestedTransition = nestedTransition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedRequirement")
+    private Collection<RequirementUsage> nestedRequirement;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "RequirementUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TransitionUsage_nestedRequirement",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<RequirementUsage> getNestedRequirement() {
+        if (nestedRequirement == null) {
+            nestedRequirement = new ArrayList<>();
+        }
+        return nestedRequirement;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RequirementUsageImpl.class)
+    public void setNestedRequirement(Collection<RequirementUsage> nestedRequirement) {
+        this.nestedRequirement = nestedRequirement;
     }
 
 

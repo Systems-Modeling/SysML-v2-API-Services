@@ -342,7 +342,7 @@ definitions:
             type: array
             items:
               $ref: '#/definitions/ElementVersion'
-          containingProject:
+          previousCommit:
             $ref: '#/definitions/Record'
   ElementVersion:
     type: object

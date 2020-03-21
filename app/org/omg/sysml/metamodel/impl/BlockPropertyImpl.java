@@ -367,6 +367,32 @@ public abstract class BlockPropertyImpl extends MofObjectImpl implements BlockPr
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedRequirement")
+    private Collection<RequirementUsage> nestedRequirement;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "RequirementUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "BlockProperty_nestedRequirement",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<RequirementUsage> getNestedRequirement() {
+        if (nestedRequirement == null) {
+            nestedRequirement = new ArrayList<>();
+        }
+        return nestedRequirement;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RequirementUsageImpl.class)
+    public void setNestedRequirement(Collection<RequirementUsage> nestedRequirement) {
+        this.nestedRequirement = nestedRequirement;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("referencedType")
     private Collection<Type> referencedType;
 

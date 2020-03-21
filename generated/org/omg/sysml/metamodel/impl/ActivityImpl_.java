@@ -18,6 +18,7 @@ import org.omg.sysml.metamodel.Parameter;
 import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.Property;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.RequirementUsage;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Step;
 import org.omg.sysml.metamodel.Superclassing;
@@ -56,6 +57,7 @@ public abstract class ActivityImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile ListAttribute<ActivityImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<ActivityImpl, Feature> endFeature;
 	public static volatile ListAttribute<ActivityImpl, Import> ownedImport;
+	public static volatile CollectionAttribute<ActivityImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<ActivityImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<ActivityImpl, Property> flowProperty;
 	public static volatile CollectionAttribute<ActivityImpl, Feature> input;
@@ -94,6 +96,7 @@ public abstract class ActivityImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String OWNED_IMPORT = "ownedImport";
+	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String FLOW_PROPERTY = "flowProperty";
 	public static final String INPUT = "input";

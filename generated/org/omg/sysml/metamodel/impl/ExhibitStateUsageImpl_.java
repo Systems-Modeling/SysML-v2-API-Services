@@ -20,6 +20,7 @@ import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.Property;
 import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.RequirementUsage;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TransitionUsage;
@@ -31,6 +32,7 @@ import org.omg.sysml.metamodel.Usage;
 public abstract class ExhibitStateUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<ExhibitStateUsageImpl, Generalization> ownedGeneralization;
+	public static volatile CollectionAttribute<ExhibitStateUsageImpl, Behavior> activity;
 	public static volatile SingularAttribute<ExhibitStateUsageImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<ExhibitStateUsageImpl, Usage> nestedUsage;
 	public static volatile SingularAttribute<ExhibitStateUsageImpl, Boolean> isUnique;
@@ -38,6 +40,7 @@ public abstract class ExhibitStateUsageImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile ListAttribute<ExhibitStateUsageImpl, Membership> membership;
 	public static volatile CollectionAttribute<ExhibitStateUsageImpl, Type> type;
 	public static volatile CollectionAttribute<ExhibitStateUsageImpl, Behavior> stateDefinition;
+	public static volatile CollectionAttribute<ExhibitStateUsageImpl, RequirementUsage> nestedRequirement;
 	public static volatile SingularAttribute<ExhibitStateUsageImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<ExhibitStateUsageImpl, Feature> output;
 	public static volatile CollectionAttribute<ExhibitStateUsageImpl, PortUsage> nestedPort;
@@ -77,6 +80,7 @@ public abstract class ExhibitStateUsageImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile ListAttribute<ExhibitStateUsageImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String ACTIVITY = "activity";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String NESTED_USAGE = "nestedUsage";
 	public static final String IS_UNIQUE = "isUnique";
@@ -84,6 +88,7 @@ public abstract class ExhibitStateUsageImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String MEMBERSHIP = "membership";
 	public static final String TYPE = "type";
 	public static final String STATE_DEFINITION = "stateDefinition";
+	public static final String NESTED_REQUIREMENT = "nestedRequirement";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OUTPUT = "output";
 	public static final String NESTED_PORT = "nestedPort";
