@@ -4,6 +4,7 @@ import config.MetamodelProvider;
 import dao.ElementDao;
 import javabean.JavaBeanHelper;
 import jpa.manager.JPAManager;
+import org.hibernate.Hibernate;
 import org.omg.sysml.internal.CommitIndex;
 import org.omg.sysml.internal.impl.CommitIndexImpl;
 import org.omg.sysml.internal.impl.CommitIndexImpl_;
@@ -33,8 +34,7 @@ import java.util.stream.Stream;
 @Singleton
 public class JpaElementDao extends JpaDao<Element> implements ElementDao {
     // TODO Explore alternative to serializing lazy entity attributes that doesn't involve resolving all proxies one level.
-    static Consumer<Element> PROXY_RESOLVER = element -> JavaBeanHelper.getBeanPropertyValues(element).values().stream().flatMap(o -> o instanceof Collection ? ((Collection<?>) o).stream() : Stream.of(o)).forEach(o -> {
-    });
+    static Consumer<Element> PROXY_RESOLVER = element -> JavaBeanHelper.getBeanPropertyValues(element).values().stream().flatMap(o -> o instanceof Collection ? ((Collection<?>) o).stream() : Stream.of(o)).filter(o -> o instanceof Element).map(o -> (Element) o).forEach(Hibernate::unproxy);
 
     @Inject
     private MetamodelProvider metamodelProvider;
@@ -92,7 +92,7 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
         return jpa.transact(em -> {
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
             Commit c = em.contains(commit) ? commit : em.find(metamodelProvider.getImplementationClass(Commit.class), commit.getId());
-            return getCommitIndex(c, em).getWorkingElementVersions().stream().map(ElementVersion::getData).filter(mof -> mof instanceof Element).map(mof -> (Element) mof).collect(Collectors.toSet());
+            return getCommitIndex(c, em).getWorkingElementVersions().stream().map(ElementVersion::getData).filter(mof -> mof instanceof Element).map(mof -> (Element) mof).peek(PROXY_RESOLVER).collect(Collectors.toSet());
         });
     }
 
@@ -113,7 +113,10 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
                     builder.equal(elementIdentityJoin.get(ElementIdentityImpl_.id), id)
             );
             try {
-                return Optional.of(em.createQuery(query).getSingleResult()).map(ElementVersion::getData).filter(mof -> mof instanceof Element).map(mof -> (Element) mof);
+                return Optional.of(em.createQuery(query).getSingleResult()).map(ElementVersion::getData).filter(mof -> mof instanceof Element).map(mof -> (Element) mof).map(element -> {
+                    PROXY_RESOLVER.accept(element);
+                    return element;
+                });
             } catch (NoResultException e) {
                 return Optional.empty();
             }
