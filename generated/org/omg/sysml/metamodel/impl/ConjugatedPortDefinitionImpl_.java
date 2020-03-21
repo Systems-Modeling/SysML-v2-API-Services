@@ -17,6 +17,7 @@ import org.omg.sysml.metamodel.Membership;
 import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.Property;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.RequirementUsage;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Superclassing;
 import org.omg.sysml.metamodel.TransitionUsage;
@@ -52,6 +53,7 @@ public abstract class ConjugatedPortDefinitionImpl_ extends org.omg.sysml.metamo
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<ConjugatedPortDefinitionImpl, Feature> endFeature;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, Import> ownedImport;
+	public static volatile CollectionAttribute<ConjugatedPortDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<ConjugatedPortDefinitionImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<ConjugatedPortDefinitionImpl, Property> flowProperty;
 	public static volatile CollectionAttribute<ConjugatedPortDefinitionImpl, Feature> input;
@@ -87,6 +89,7 @@ public abstract class ConjugatedPortDefinitionImpl_ extends org.omg.sysml.metamo
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String OWNED_IMPORT = "ownedImport";
+	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String FLOW_PROPERTY = "flowProperty";
 	public static final String INPUT = "input";

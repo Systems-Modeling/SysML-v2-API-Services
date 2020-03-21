@@ -75,6 +75,95 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("entryAction")
+    private ActionUsage entryAction;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "entryActionType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "entryActionId", table = "StateDefinition")
+    public ActionUsage getEntryAction() {
+        return entryAction;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ActionUsageImpl.class)
+    public void setEntryAction(ActionUsage entryAction) {
+        this.entryAction = entryAction;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("doAction")
+    private ActionUsage doAction;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "doActionType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "doActionId", table = "StateDefinition")
+    public ActionUsage getDoAction() {
+        return doAction;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ActionUsageImpl.class)
+    public void setDoAction(ActionUsage doAction) {
+        this.doAction = doAction;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("exitAction")
+    private ActionUsage exitAction;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "exitActionType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "exitActionId", table = "StateDefinition")
+    public ActionUsage getExitAction() {
+        return exitAction;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ActionUsageImpl.class)
+    public void setExitAction(ActionUsage exitAction) {
+        this.exitAction = exitAction;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("action")
+    private Collection<ActionUsage> action;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StateDefinition_action",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ActionUsage> getAction() {
+        if (action == null) {
+            action = new ArrayList<>();
+        }
+        return action;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ActionUsageImpl.class)
+    public void setAction(Collection<ActionUsage> action) {
+        this.action = action;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedUsage")
     private Collection<Usage> ownedUsage;
 
@@ -304,6 +393,32 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TransitionUsageImpl.class)
     public void setOwnedTransition(Collection<TransitionUsage> ownedTransition) {
         this.ownedTransition = ownedTransition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedRequirement")
+    private Collection<RequirementUsage> ownedRequirement;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "RequirementUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StateDefinition_ownedRequirement",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<RequirementUsage> getOwnedRequirement() {
+        if (ownedRequirement == null) {
+            ownedRequirement = new ArrayList<>();
+        }
+        return ownedRequirement;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RequirementUsageImpl.class)
+    public void setOwnedRequirement(Collection<RequirementUsage> ownedRequirement) {
+        this.ownedRequirement = ownedRequirement;
     }
 
 

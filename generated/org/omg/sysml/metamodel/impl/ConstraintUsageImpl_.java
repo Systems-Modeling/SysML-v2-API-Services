@@ -20,6 +20,7 @@ import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.Property;
 import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.RequirementUsage;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TransitionUsage;
@@ -37,6 +38,7 @@ public abstract class ConstraintUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<ConstraintUsageImpl, Subsetting> ownedSubsetting;
 	public static volatile ListAttribute<ConstraintUsageImpl, Membership> membership;
 	public static volatile CollectionAttribute<ConstraintUsageImpl, Type> type;
+	public static volatile CollectionAttribute<ConstraintUsageImpl, RequirementUsage> nestedRequirement;
 	public static volatile SingularAttribute<ConstraintUsageImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<ConstraintUsageImpl, Feature> output;
 	public static volatile CollectionAttribute<ConstraintUsageImpl, PortUsage> nestedPort;
@@ -82,6 +84,7 @@ public abstract class ConstraintUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String MEMBERSHIP = "membership";
 	public static final String TYPE = "type";
+	public static final String NESTED_REQUIREMENT = "nestedRequirement";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OUTPUT = "output";
 	public static final String NESTED_PORT = "nestedPort";

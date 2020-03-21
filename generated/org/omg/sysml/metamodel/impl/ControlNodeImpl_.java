@@ -20,6 +20,7 @@ import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.Property;
 import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.RequirementUsage;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TransitionUsage;
@@ -38,6 +39,7 @@ public abstract class ControlNodeImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static volatile CollectionAttribute<ControlNodeImpl, Subsetting> ownedSubsetting;
 	public static volatile ListAttribute<ControlNodeImpl, Membership> membership;
 	public static volatile CollectionAttribute<ControlNodeImpl, Type> type;
+	public static volatile CollectionAttribute<ControlNodeImpl, RequirementUsage> nestedRequirement;
 	public static volatile SingularAttribute<ControlNodeImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<ControlNodeImpl, Feature> output;
 	public static volatile CollectionAttribute<ControlNodeImpl, PortUsage> nestedPort;
@@ -84,6 +86,7 @@ public abstract class ControlNodeImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String MEMBERSHIP = "membership";
 	public static final String TYPE = "type";
+	public static final String NESTED_REQUIREMENT = "nestedRequirement";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OUTPUT = "output";
 	public static final String NESTED_PORT = "nestedPort";

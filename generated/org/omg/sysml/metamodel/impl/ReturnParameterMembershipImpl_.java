@@ -17,7 +17,6 @@ public abstract class ReturnParameterMembershipImpl_ extends org.omg.sysml.metam
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, UUID> identifier;
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, Boolean> isDerived;
 	public static volatile CollectionAttribute<ReturnParameterMembershipImpl, Element> ownedElement;
-	public static volatile CollectionAttribute<ReturnParameterMembershipImpl, String> aliases;
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, VisibilityKind> visibility;
 	public static volatile CollectionAttribute<ReturnParameterMembershipImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, String> memberName;
@@ -35,7 +34,6 @@ public abstract class ReturnParameterMembershipImpl_ extends org.omg.sysml.metam
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ELEMENT = "ownedElement";
-	public static final String ALIASES = "aliases";
 	public static final String VISIBILITY = "visibility";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String MEMBER_NAME = "memberName";

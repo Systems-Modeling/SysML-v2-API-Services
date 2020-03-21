@@ -4,18 +4,18 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface TransitionUsage extends Step, Usage, MofObject {
+public interface TransitionUsage extends ActionUsage, MofObject {
     Usage getTransitionOwningUsage();
 
-    Step getSource();
+    ActionUsage getSource();
 
-    Step getTarget();
+    ActionUsage getTarget();
 
-    AcceptActionUsage getTriggerAction();
+    Collection<? extends AcceptActionUsage> getTriggerAction();
 
-    Expression getGuardExpression();
+    Collection<? extends Expression> getGuardExpression();
 
-    ActionUsage getEffectAction();
+    Collection<? extends ActionUsage> getEffectAction();
 
     Succession getSuccession();
 }

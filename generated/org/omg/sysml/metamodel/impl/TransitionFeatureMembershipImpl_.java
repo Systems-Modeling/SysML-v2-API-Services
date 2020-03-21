@@ -18,7 +18,6 @@ public abstract class TransitionFeatureMembershipImpl_ extends org.omg.sysml.met
 	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, UUID> identifier;
 	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, Boolean> isDerived;
 	public static volatile CollectionAttribute<TransitionFeatureMembershipImpl, Element> ownedElement;
-	public static volatile CollectionAttribute<TransitionFeatureMembershipImpl, String> aliases;
 	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, VisibilityKind> visibility;
 	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, TransitionFeatureKind> kind;
 	public static volatile CollectionAttribute<TransitionFeatureMembershipImpl, Relationship> ownedRelationship;
@@ -37,7 +36,6 @@ public abstract class TransitionFeatureMembershipImpl_ extends org.omg.sysml.met
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ELEMENT = "ownedElement";
-	public static final String ALIASES = "aliases";
 	public static final String VISIBILITY = "visibility";
 	public static final String KIND = "kind";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";

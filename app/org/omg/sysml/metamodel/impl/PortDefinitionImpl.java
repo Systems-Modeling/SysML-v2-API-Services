@@ -304,6 +304,32 @@ public class PortDefinitionImpl extends MofObjectImpl implements PortDefinition 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedRequirement")
+    private Collection<RequirementUsage> ownedRequirement;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "RequirementUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "PortDefinition_ownedRequirement",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<RequirementUsage> getOwnedRequirement() {
+        if (ownedRequirement == null) {
+            ownedRequirement = new ArrayList<>();
+        }
+        return ownedRequirement;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RequirementUsageImpl.class)
+    public void setOwnedRequirement(Collection<RequirementUsage> ownedRequirement) {
+        this.ownedRequirement = ownedRequirement;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedSuperclassing")
     private Collection<Superclassing> ownedSuperclassing;
 

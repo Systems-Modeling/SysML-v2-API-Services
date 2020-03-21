@@ -20,6 +20,7 @@ import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.Property;
 import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.RequirementUsage;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TransitionUsage;
@@ -31,6 +32,7 @@ import org.omg.sysml.metamodel.Usage;
 public abstract class StateUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<StateUsageImpl, Generalization> ownedGeneralization;
+	public static volatile CollectionAttribute<StateUsageImpl, Behavior> activity;
 	public static volatile SingularAttribute<StateUsageImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<StateUsageImpl, Usage> nestedUsage;
 	public static volatile SingularAttribute<StateUsageImpl, Boolean> isUnique;
@@ -38,6 +40,7 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile ListAttribute<StateUsageImpl, Membership> membership;
 	public static volatile CollectionAttribute<StateUsageImpl, Type> type;
 	public static volatile CollectionAttribute<StateUsageImpl, Behavior> stateDefinition;
+	public static volatile CollectionAttribute<StateUsageImpl, RequirementUsage> nestedRequirement;
 	public static volatile SingularAttribute<StateUsageImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<StateUsageImpl, Feature> output;
 	public static volatile CollectionAttribute<StateUsageImpl, PortUsage> nestedPort;
@@ -77,6 +80,7 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile ListAttribute<StateUsageImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String ACTIVITY = "activity";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String NESTED_USAGE = "nestedUsage";
 	public static final String IS_UNIQUE = "isUnique";
@@ -84,6 +88,7 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String MEMBERSHIP = "membership";
 	public static final String TYPE = "type";
 	public static final String STATE_DEFINITION = "stateDefinition";
+	public static final String NESTED_REQUIREMENT = "nestedRequirement";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OUTPUT = "output";
 	public static final String NESTED_PORT = "nestedPort";

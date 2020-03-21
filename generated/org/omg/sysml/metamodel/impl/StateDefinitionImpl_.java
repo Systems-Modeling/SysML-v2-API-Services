@@ -18,6 +18,7 @@ import org.omg.sysml.metamodel.Parameter;
 import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.Property;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.RequirementUsage;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Step;
 import org.omg.sysml.metamodel.Superclassing;
@@ -42,6 +43,7 @@ public abstract class StateDefinitionImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<StateDefinitionImpl, Property> property;
 	public static volatile CollectionAttribute<StateDefinitionImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<StateDefinitionImpl, Element> member;
+	public static volatile CollectionAttribute<StateDefinitionImpl, ActionUsage> action;
 	public static volatile ListAttribute<StateDefinitionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<StateDefinitionImpl, StateUsage> state;
 	public static volatile CollectionAttribute<StateDefinitionImpl, TransitionUsage> ownedTransition;
@@ -56,6 +58,7 @@ public abstract class StateDefinitionImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile ListAttribute<StateDefinitionImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<StateDefinitionImpl, Feature> endFeature;
 	public static volatile ListAttribute<StateDefinitionImpl, Import> ownedImport;
+	public static volatile CollectionAttribute<StateDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<StateDefinitionImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<StateDefinitionImpl, Property> flowProperty;
 	public static volatile CollectionAttribute<StateDefinitionImpl, Feature> input;
@@ -80,6 +83,7 @@ public abstract class StateDefinitionImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String PROPERTY = "property";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
+	public static final String ACTION = "action";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String STATE = "state";
 	public static final String OWNED_TRANSITION = "ownedTransition";
@@ -94,6 +98,7 @@ public abstract class StateDefinitionImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String OWNED_IMPORT = "ownedImport";
+	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String FLOW_PROPERTY = "flowProperty";
 	public static final String INPUT = "input";
