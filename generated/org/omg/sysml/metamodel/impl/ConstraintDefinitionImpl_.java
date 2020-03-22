@@ -19,6 +19,7 @@ import org.omg.sysml.metamodel.Parameter;
 import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.Property;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.RequirementUsage;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Step;
 import org.omg.sysml.metamodel.Superclassing;
@@ -57,6 +58,7 @@ public abstract class ConstraintDefinitionImpl_ extends org.omg.sysml.metamodel.
 	public static volatile ListAttribute<ConstraintDefinitionImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<ConstraintDefinitionImpl, Feature> endFeature;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, Import> ownedImport;
+	public static volatile CollectionAttribute<ConstraintDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<ConstraintDefinitionImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<ConstraintDefinitionImpl, Property> flowProperty;
 	public static volatile CollectionAttribute<ConstraintDefinitionImpl, Feature> input;
@@ -95,6 +97,7 @@ public abstract class ConstraintDefinitionImpl_ extends org.omg.sysml.metamodel.
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String OWNED_IMPORT = "ownedImport";
+	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String FLOW_PROPERTY = "flowProperty";
 	public static final String INPUT = "input";

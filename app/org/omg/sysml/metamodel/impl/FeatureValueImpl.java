@@ -300,29 +300,6 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
 
 
 
-    // @info.archinnov.achilles.annotations.Column("aliases")
-    private Collection<String> aliases;
-
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "FeatureValue_aliases",
-            joinColumns = @JoinColumn(name = "FeatureValueId"))
-    public Collection<String> getAliases() {
-        if (aliases == null) {
-            aliases = new ArrayList<>();
-        }
-        return aliases;
-    }
-
-    @JsonSetter
-    public void setAliases(Collection<String> aliases) {
-        this.aliases = aliases;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("memberElement")
     private Element memberElement;
 

@@ -17,7 +17,6 @@ public abstract class EndFeatureMembershipImpl_ extends org.omg.sysml.metamodel.
 	public static volatile SingularAttribute<EndFeatureMembershipImpl, UUID> identifier;
 	public static volatile SingularAttribute<EndFeatureMembershipImpl, Boolean> isDerived;
 	public static volatile CollectionAttribute<EndFeatureMembershipImpl, Element> ownedElement;
-	public static volatile CollectionAttribute<EndFeatureMembershipImpl, String> aliases;
 	public static volatile SingularAttribute<EndFeatureMembershipImpl, VisibilityKind> visibility;
 	public static volatile CollectionAttribute<EndFeatureMembershipImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<EndFeatureMembershipImpl, String> memberName;
@@ -35,7 +34,6 @@ public abstract class EndFeatureMembershipImpl_ extends org.omg.sysml.metamodel.
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ELEMENT = "ownedElement";
-	public static final String ALIASES = "aliases";
 	public static final String VISIBILITY = "visibility";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String MEMBER_NAME = "memberName";

@@ -49,6 +49,8 @@
         <class>org.omg.sysml.metamodel.impl.GeneralizationImpl</class>
         <class>org.omg.sysml.metamodel.impl.ImportConditionImpl</class>
         <class>org.omg.sysml.metamodel.impl.ImportImpl</class>
+        <class>org.omg.sysml.metamodel.impl.IndividualDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.IndividualUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.InstanceCreationExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.InteractionImpl</class>
         <class>org.omg.sysml.metamodel.impl.InterfaceDefinitionImpl</class>
@@ -60,6 +62,7 @@
         <class>org.omg.sysml.metamodel.impl.ItemFlowFeatureImpl</class>
         <class>org.omg.sysml.metamodel.impl.ItemFlowImpl</class>
         <class>org.omg.sysml.metamodel.impl.JoinNodeImpl</class>
+        <class>org.omg.sysml.metamodel.impl.LifeClassImpl</class>
         <class>org.omg.sysml.metamodel.impl.LiteralBooleanImpl</class>
         <class>org.omg.sysml.metamodel.impl.LiteralExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.LiteralIntegerImpl</class>
@@ -90,12 +93,18 @@
         <class>org.omg.sysml.metamodel.impl.RedefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.ReferencePropertyImpl</class>
         <class>org.omg.sysml.metamodel.impl.RelationshipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.RequirementConstraintMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.RequirementDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.RequirementUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.ReturnParameterMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.SatisfyRequirementUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.SendActionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.SequenceConstructionExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.SnapshotFeatureImpl</class>
         <class>org.omg.sysml.metamodel.impl.SourceEndImpl</class>
         <class>org.omg.sysml.metamodel.impl.StateActionMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.StateDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.StateSubactionMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.StateUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.StepImpl</class>
         <class>org.omg.sysml.metamodel.impl.SubsettingImpl</class>
@@ -103,6 +112,7 @@
         <class>org.omg.sysml.metamodel.impl.SuccessionItemFlowImpl</class>
         <class>org.omg.sysml.metamodel.impl.SuperclassingImpl</class>
         <class>org.omg.sysml.metamodel.impl.TargetEndImpl</class>
+        <class>org.omg.sysml.metamodel.impl.TimeSliceFeatureImpl</class>
         <class>org.omg.sysml.metamodel.impl.TransferActionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.TransitionFeatureMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.TransitionUsageImpl</class>
@@ -117,6 +127,9 @@
         <class>org.omg.sysml.lifecycle.impl.ElementVersionImpl</class>
         <class>org.omg.sysml.lifecycle.impl.ProjectImpl</class>
         <class>org.omg.sysml.lifecycle.impl.RecordImpl</class>
+
+        <class>org.omg.sysml.internal.impl</class>
+        <class>org.omg.sysml.internal.impl.CommitIndexImpl</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>

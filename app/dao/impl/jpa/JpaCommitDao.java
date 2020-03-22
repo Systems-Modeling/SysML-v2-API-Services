@@ -42,7 +42,8 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
         return jpa;
     }
 
-    private JpaElementDao elementDao = new JpaElementDao();
+    @Inject
+    private JpaElementDao elementDao;
 
     @Override
     public Optional<Commit> persist(Commit commit) {
@@ -158,7 +159,9 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
                 }
             }).forEach(em::merge);
             commit.setChanges(commit.getChanges().stream().map(em::merge).collect(Collectors.toSet()));
-            return super.persist(commit, em);
+            Optional<Commit> persistedCommit = super.persist(commit, em);
+            persistedCommit.ifPresent(PROXY_RESOLVER);
+            return persistedCommit;
         });
     }
 

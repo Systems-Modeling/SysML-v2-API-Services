@@ -320,52 +320,56 @@ definitions:
         format: uuid
   Project:
     type: object
-    allOf:
-      - $ref: '#/definitions/Record'
-      - properties:
-          '@type':
-            type: string
-            enum:
-              - 'Project'
-          name:
-            type: string
+    properties:
+      '@type':
+        type: string
+        enum:
+          - 'Project'
+      id:
+        type: string
+        format: uuid
+      name:
+        type: string
   Commit:
     type: object
-    allOf:
-      - $ref: '#/definitions/Record'
-      - properties:
-          '@type':
-            type: string
-            enum:
-              - 'Commit'
-          changes:
-            type: array
-            items:
-              $ref: '#/definitions/ElementVersion'
-          containingProject:
-            $ref: '#/definitions/Record'
+    properties:
+      '@type':
+        type: string
+        enum:
+          - 'Commit'
+      changes:
+        type: array
+        items:
+          $ref: '#/definitions/ElementVersion'
+      id:
+        type: string
+        format: uuid
+      previousCommit:
+        $ref: '#/definitions/Record'
   ElementVersion:
     type: object
-    allOf:
-      - $ref: '#/definitions/Record'
-      - properties:
-          '@type':
-            type: string
-            enum:
-              - 'ElementVersion'
-          data:
-            $ref: '#/definitions/Element'
-          identity:
-            $ref: '#/definitions/ElementIdentity'
+    properties:
+      '@type':
+        type: string
+        enum:
+          - 'ElementVersion'
+      data:
+        $ref: '#/definitions/Element'
+      id:
+        type: string
+        format: uuid
+      identity:
+        $ref: '#/definitions/ElementIdentity'
   ElementIdentity:
     type: object
-    allOf:
-      - $ref: '#/definitions/Record'
-      - properties:
-          '@type':
-            type: string
-            enum:
-              - 'ElementIdentity'
+    properties:
+      '@type':
+        type: string
+        enum:
+          - 'ElementIdentity'
+      id:
+        type: string
+        format: uuid
   Identified:
     type: object
     properties:
@@ -374,26 +378,30 @@ definitions:
         format: uuid
   Element:
     type: object
-    allOf:
-      - $ref: '#/definitions/Identified'
-      - properties:
-          '@type':
-            type: string
+    properties:
+      '@type':
+        type: string
+      identifier:
+        type: string
+        format: uuid
     additionalProperties:
       type: object
   Relationship:
     type: object
-    allOf:
-      - $ref: '#/definitions/Element'
-      - properties:
-          source:
-            type: array
-            items:
-              $ref: '#/definitions/Identified'
-          target:
-            type: array
-            items:
-              $ref: '#/definitions/Identified'
+    properties:
+      '@type':
+        type: string
+      identifier:
+        type: string
+        format: uuid
+      source:
+        type: array
+        items:
+          $ref: '#/definitions/Identified'
+      target:
+        type: array
+        items:
+          $ref: '#/definitions/Identified'
   Error:
     type: object
     properties:

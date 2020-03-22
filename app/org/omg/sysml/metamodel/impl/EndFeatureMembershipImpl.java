@@ -239,29 +239,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
 
 
 
-    // @info.archinnov.achilles.annotations.Column("aliases")
-    private Collection<String> aliases;
-
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "EndFeatureMembership_aliases",
-            joinColumns = @JoinColumn(name = "EndFeatureMembershipId"))
-    public Collection<String> getAliases() {
-        if (aliases == null) {
-            aliases = new ArrayList<>();
-        }
-        return aliases;
-    }
-
-    @JsonSetter
-    public void setAliases(Collection<String> aliases) {
-        this.aliases = aliases;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("memberElement")
     private Element memberElement;
 
