@@ -10,6 +10,7 @@ import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.deser.ContextualDeserializer;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.jsontype.TypeDeserializer;
+import javassist.util.proxy.ProxyFactory;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
 
 import javax.persistence.EntityManager;
@@ -22,7 +23,7 @@ public class MofObjectDeserializer extends StdDeserializer<MofObjectImpl> implem
     private EntityManager entityManager;
     private JavaType type;
 
-    //private static Map<Class<?>, Class<?>> PROXY_MAP = new HashMap<>();
+    private static Map<Class<?>, Class<?>> PROXY_MAP = new HashMap<>();
 
     public MofObjectDeserializer(EntityManager entityManager) {
         this(entityManager, null);
@@ -45,14 +46,15 @@ public class MofObjectDeserializer extends StdDeserializer<MofObjectImpl> implem
         }
 
         MofObjectImpl mof;
-/*        Class<?> proxyClass = PROXY_MAP.computeIfAbsent(type.getRawClass(), clazz -> {
+        // Proxy class to handle abstract classes
+        Class<?> proxyClass = PROXY_MAP.computeIfAbsent(type.getRawClass(), clazz -> {
             ProxyFactory factory = new ProxyFactory();
             factory.setSuperclass(clazz);
             return factory.createClass();
-        });*/
+        });
         try {
-            //mof = (MofObjectImpl) proxyClass.getConstructor().newInstance();
-            mof = (MofObjectImpl) type.getRawClass().getConstructor().newInstance();
+            mof = (MofObjectImpl) proxyClass.getConstructor().newInstance();
+            //mof = (MofObjectImpl) type.getRawClass().getConstructor().newInstance();
         } catch (ReflectiveOperationException e) {
             throw new IOException(e);
         }
