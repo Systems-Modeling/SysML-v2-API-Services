@@ -47,6 +47,11 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
 
     @Override
     public Optional<Commit> persist(Commit commit) {
+        // If previousCommit is not specified, default to head commit.
+        if (commit.getPreviousCommit() == null && commit.getContainingProject() != null) {
+            findHeadByProject(commit.getContainingProject()).ifPresent(commit::setPreviousCommit);
+        }
+
         MofObject tombstone = new MofObjectImpl() {
             UUID id = UUID.randomUUID();
 
@@ -142,11 +147,6 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
                 }
             }
         });*/
-
-        // If previousCommit is not specified, default to head commit.
-        if (commit.getPreviousCommit() == null && commit.getContainingProject() != null) {
-            findHeadByProject(commit.getContainingProject()).ifPresent(commit::setPreviousCommit);
-        }
 
         return jpa.transact(em -> {
             commit.getChanges().stream().map(ElementVersion::getData).filter(mof -> mof instanceof MofObjectImpl).map(mof -> (MofObjectImpl) mof).map(mof -> {
