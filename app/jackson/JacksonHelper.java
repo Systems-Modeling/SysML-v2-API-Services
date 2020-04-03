@@ -23,4 +23,12 @@ public class JacksonHelper {
             throw new RuntimeException(e);
         }
     }
+
+    public static JsonNode valueToTree(Object value, Function<ObjectWriter, ObjectWriter> objectWriterFunction) {
+        try {
+            return Json.mapper().readTree(objectWriterFunction.apply(Json.mapper().writer()).writeValueAsBytes(value));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
