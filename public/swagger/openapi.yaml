@@ -103,7 +103,9 @@ paths:
         200:
           description: Ok
           schema:
-            $ref: '#/definitions/Commit'
+            type: array
+            items:
+              $ref: '#/definitions/Commit'
         404:
           $ref: '#/responses/NotFound'
         415:
@@ -144,11 +146,13 @@ paths:
         in: path
         description: ID of the project
         type: string
+        format: uuid
         required: true
       - name: commitId
         in: path
         description: ID of the commit
         type: string
+        format: uuid
         required: true
     get:
       tags:
@@ -176,6 +180,7 @@ paths:
         in: path
         description: ID of the project
         type: string
+        format: uuid
         required: true
     get:
       tags:
@@ -222,7 +227,9 @@ paths:
         200:
           description: Ok
           schema:
-            $ref: '#/definitions/Element'
+            type: array
+            items:
+              $ref: '#/definitions/Element'
         404:
           $ref: '#/responses/NotFound'
         415:
