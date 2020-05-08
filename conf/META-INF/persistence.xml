@@ -13,7 +13,6 @@
         <class>org.omg.sysml.metamodel.impl.AssertConstraintUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.AssociationBlockImpl</class>
         <class>org.omg.sysml.metamodel.impl.AssociationImpl</class>
-        <class>org.omg.sysml.metamodel.impl.AtomicInteractionImpl</class>
         <class>org.omg.sysml.metamodel.impl.BehaviorImpl</class>
         <class>org.omg.sysml.metamodel.impl.BindingConnectorImpl</class>
         <class>org.omg.sysml.metamodel.impl.BlockExpressionImpl</class>
@@ -102,7 +101,6 @@
         <class>org.omg.sysml.metamodel.impl.SequenceConstructionExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.SnapshotFeatureImpl</class>
         <class>org.omg.sysml.metamodel.impl.SourceEndImpl</class>
-        <class>org.omg.sysml.metamodel.impl.StateActionMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.StateDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.StateSubactionMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.StateUsageImpl</class>
