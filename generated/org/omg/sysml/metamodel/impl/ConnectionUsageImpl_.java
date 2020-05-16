@@ -13,6 +13,7 @@ import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
+import org.omg.sysml.metamodel.FunctionUsage;
 import org.omg.sysml.metamodel.Generalization;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.Membership;
@@ -33,8 +34,8 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 
 	public static volatile ListAttribute<ConnectionUsageImpl, Generalization> ownedGeneralization;
 	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isConjugated;
-	public static volatile CollectionAttribute<ConnectionUsageImpl, Usage> nestedUsage;
 	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isUnique;
+	public static volatile CollectionAttribute<ConnectionUsageImpl, Usage> nestedUsage;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Subsetting> ownedSubsetting;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Element> source;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Type> type;
@@ -44,11 +45,12 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<ConnectionUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, ConstraintUsage> nestedConstraint;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Property> property;
-	public static volatile CollectionAttribute<ConnectionUsageImpl, StateUsage> nestedState;
 	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isSufficient;
+	public static volatile CollectionAttribute<ConnectionUsageImpl, StateUsage> nestedState;
 	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<ConnectionUsageImpl, UUID> identifier;
+	public static volatile CollectionAttribute<ConnectionUsageImpl, FunctionUsage> nestedFunction;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Property> nestedProperty;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Feature> endFeature;
@@ -65,13 +67,13 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile ListAttribute<ConnectionUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<ConnectionUsageImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Association> association;
-	public static volatile CollectionAttribute<ConnectionUsageImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<ConnectionUsageImpl, Membership> membership;
+	public static volatile CollectionAttribute<ConnectionUsageImpl, Element> ownedRelatedElement;
 	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Feature> feature;
 	public static volatile ListAttribute<ConnectionUsageImpl, Membership> inheritedMembership;
-	public static volatile CollectionAttribute<ConnectionUsageImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<ConnectionUsageImpl, Element> member;
+	public static volatile CollectionAttribute<ConnectionUsageImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<ConnectionUsageImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<ConnectionUsageImpl, Membership> importedMembership;
@@ -80,15 +82,15 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<ConnectionUsageImpl, FeatureMembership> featureMembership;
 	public static volatile ListAttribute<ConnectionUsageImpl, Import> ownedImport;
-	public static volatile CollectionAttribute<ConnectionUsageImpl, Feature> relatedFeature;
 	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isAbstract;
+	public static volatile CollectionAttribute<ConnectionUsageImpl, Feature> relatedFeature;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Element> target;
 	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isDirected;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String IS_CONJUGATED = "isConjugated";
-	public static final String NESTED_USAGE = "nestedUsage";
 	public static final String IS_UNIQUE = "isUnique";
+	public static final String NESTED_USAGE = "nestedUsage";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String SOURCE = "source";
 	public static final String TYPE = "type";
@@ -98,11 +100,12 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
 	public static final String PROPERTY = "property";
-	public static final String NESTED_STATE = "nestedState";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String NESTED_STATE = "nestedState";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";
+	public static final String NESTED_FUNCTION = "nestedFunction";
 	public static final String NESTED_PROPERTY = "nestedProperty";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String END_FEATURE = "endFeature";
@@ -119,13 +122,13 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String ASSOCIATION = "association";
-	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String MEMBERSHIP = "membership";
+	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
-	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
+	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
@@ -134,8 +137,8 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String OWNED_IMPORT = "ownedImport";
-	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String IS_ABSTRACT = "isAbstract";
+	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String TARGET = "target";
 	public static final String IS_DIRECTED = "isDirected";
 

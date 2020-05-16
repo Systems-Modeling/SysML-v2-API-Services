@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Comment extends Element, MofObject {
+public interface Comment extends Element {
     String getBody();
 
     Element getCommentedElement();

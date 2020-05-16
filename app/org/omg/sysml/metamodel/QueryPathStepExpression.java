@@ -4,6 +4,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface QueryPathStepExpression extends OperatorExpression, MofObject {
+public interface QueryPathStepExpression extends OperatorExpression {
     String getOperator();
 }

@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface OperatorExpression extends InvocationExpression, MofObject {
+public interface OperatorExpression extends InvocationExpression {
     String getOperator();
 
     List<? extends Expression> getOperand();

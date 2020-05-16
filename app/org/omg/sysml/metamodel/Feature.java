@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Feature extends Type, MofObject {
+public interface Feature extends Type {
     Collection<? extends Type> getReferencedType();
 
     Type getOwningType();

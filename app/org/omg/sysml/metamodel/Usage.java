@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Usage extends Feature, MofObject {
+public interface Usage extends Feature {
     Collection<? extends Usage> getNestedUsage();
 
     Usage getOwningUsage();
@@ -26,4 +26,6 @@ public interface Usage extends Feature, MofObject {
     Collection<? extends TransitionUsage> getNestedTransition();
 
     Collection<? extends RequirementUsage> getNestedRequirement();
+
+    Collection<? extends FunctionUsage> getNestedFunction();
 }

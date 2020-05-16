@@ -4,6 +4,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ReferenceProperty extends BlockProperty, MofObject {
+public interface ReferenceProperty extends BlockProperty {
 
 }

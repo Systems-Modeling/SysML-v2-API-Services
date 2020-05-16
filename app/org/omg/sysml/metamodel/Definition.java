@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Definition extends Classifier, MofObject {
+public interface Definition extends Classifier {
     Collection<? extends Usage> getOwnedUsage();
 
     Collection<? extends PortUsage> getOwnedPort();
@@ -24,4 +24,6 @@ public interface Definition extends Classifier, MofObject {
     Collection<? extends TransitionUsage> getOwnedTransition();
 
     Collection<? extends RequirementUsage> getOwnedRequirement();
+
+    Collection<? extends FunctionUsage> getOwnedFunction();
 }

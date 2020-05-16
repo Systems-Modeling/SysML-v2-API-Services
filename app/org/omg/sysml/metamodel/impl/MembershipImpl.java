@@ -48,38 +48,18 @@ import java.util.HashSet;
 @JsonTypeName(value = "Membership")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public class MembershipImpl extends MofObjectImpl implements Membership {
-    // @info.archinnov.achilles.annotations.Column("memberName")
-    private String memberName;
+    // @info.archinnov.achilles.annotations.Column("identifier")
+    private java.util.UUID identifier;
 
     @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "memberName", table = "Membership")
-    public String getMemberName() {
-        return memberName;
+    @javax.persistence.Column(name = "identifier", table = "Membership")
+    public java.util.UUID getIdentifier() {
+        return identifier;
     }
 
     @JsonSetter
-    public void setMemberName(String memberName) {
-        this.memberName = memberName;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("visibility")
-    // @info.archinnov.achilles.annotations.Enumerated(info.archinnov.achilles.annotations.Enumerated.Encoding.NAME)
-    private VisibilityKind visibility;
-
-    @JsonGetter
-    @javax.persistence.Enumerated(EnumType.STRING)
-    @javax.persistence.Column(name = "visibility", table = "Membership")
-    public VisibilityKind getVisibility() {
-        return visibility;
-    }
-
-    @JsonSetter
-    public void setVisibility(VisibilityKind visibility) {
-        this.visibility = visibility;
+    public void setIdentifier(java.util.UUID identifier) {
+        this.identifier = identifier;
     }
 
 
@@ -103,21 +83,20 @@ public class MembershipImpl extends MofObjectImpl implements Membership {
 
 
 
-    // @info.archinnov.achilles.annotations.Column("ownedMemberElement")
-    private Element ownedMemberElement;
+    // @info.archinnov.achilles.annotations.Column("memberName")
+    private String memberName;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedMemberElementId", table = "Membership")
-    public Element getOwnedMemberElement() {
-        return ownedMemberElement;
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "memberName", table = "Membership")
+    public String getMemberName() {
+        return memberName;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
-    public void setOwnedMemberElement(Element ownedMemberElement) {
-        this.ownedMemberElement = ownedMemberElement;
+    public void setMemberName(String memberName) {
+        this.memberName = memberName;
     }
 
 
@@ -142,94 +121,66 @@ public class MembershipImpl extends MofObjectImpl implements Membership {
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("relatedElement")
-    private Collection<Element> relatedElement;
+    // @info.archinnov.achilles.annotations.Column("name")
+    private String name;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "name", table = "Membership")
+    public String getName() {
+        return name;
+    }
+
+    @JsonSetter
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedElement")
+    private Collection<Element> ownedElement;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Membership_relatedElement",
+    @JoinTable(name = "Membership_ownedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Element> getRelatedElement() {
-        if (relatedElement == null) {
-            relatedElement = new ArrayList<>();
+    public Collection<Element> getOwnedElement() {
+        if (ownedElement == null) {
+            ownedElement = new ArrayList<>();
         }
-        return relatedElement;
+        return ownedElement;
     }
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
-    public void setRelatedElement(Collection<Element> relatedElement) {
-        this.relatedElement = relatedElement;
+    public void setOwnedElement(Collection<Element> ownedElement) {
+        this.ownedElement = ownedElement;
     }
 
 
 
-    // @info.archinnov.achilles.annotations.Column("target")
-    private Collection<Element> target;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Membership_target",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Element> getTarget() {
-        if (target == null) {
-            target = new ArrayList<>();
-        }
-        return target;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
-    public void setTarget(Collection<Element> target) {
-        this.target = target;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("source")
-    private Collection<Element> source;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Membership_source",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Element> getSource() {
-        if (source == null) {
-            source = new ArrayList<>();
-        }
-        return source;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
-    public void setSource(Collection<Element> source) {
-        this.source = source;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("owningRelatedElement")
-    private Element owningRelatedElement;
+    // @info.archinnov.achilles.annotations.Column("ownedMemberElement")
+    private Element ownedMemberElement;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelatedElementId", table = "Membership")
-    public Element getOwningRelatedElement() {
-        return owningRelatedElement;
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberElementType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedMemberElementId", table = "Membership")
+    public Element getOwnedMemberElement() {
+        return ownedMemberElement;
     }
 
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
-    public void setOwningRelatedElement(Element owningRelatedElement) {
-        this.owningRelatedElement = owningRelatedElement;
+    public void setOwnedMemberElement(Element ownedMemberElement) {
+        this.ownedMemberElement = ownedMemberElement;
     }
 
 
@@ -254,101 +205,6 @@ public class MembershipImpl extends MofObjectImpl implements Membership {
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedRelatedElement(Collection<Element> ownedRelatedElement) {
         this.ownedRelatedElement = ownedRelatedElement;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("owningMembership")
-    private Membership owningMembership;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningMembershipId", table = "Membership")
-    public Membership getOwningMembership() {
-        return owningMembership;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = MembershipImpl.class)
-    public void setOwningMembership(Membership owningMembership) {
-        this.owningMembership = owningMembership;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("owningRelationship")
-    private Relationship owningRelationship;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelationshipId", table = "Membership")
-    public Relationship getOwningRelationship() {
-        return owningRelationship;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
-    public void setOwningRelationship(Relationship owningRelationship) {
-        this.owningRelationship = owningRelationship;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("identifier")
-    private java.util.UUID identifier;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "Membership")
-    public java.util.UUID getIdentifier() {
-        return identifier;
-    }
-
-    @JsonSetter
-    public void setIdentifier(java.util.UUID identifier) {
-        this.identifier = identifier;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("owningNamespace")
-    private Package owningNamespace;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "Membership")
-    public Package getOwningNamespace() {
-        return owningNamespace;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
-    public void setOwningNamespace(Package owningNamespace) {
-        this.owningNamespace = owningNamespace;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("name")
-    private String name;
-
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    // @javax.persistence.Transient
-    @javax.persistence.Column(name = "name", table = "Membership")
-    public String getName() {
-        return name;
-    }
-
-    @JsonSetter
-    public void setName(String name) {
-        this.name = name;
     }
 
 
@@ -398,28 +254,172 @@ public class MembershipImpl extends MofObjectImpl implements Membership {
 
 
 
+    // @info.archinnov.achilles.annotations.Column("owningMembership")
+    private Membership owningMembership;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningMembershipId", table = "Membership")
+    public Membership getOwningMembership() {
+        return owningMembership;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = MembershipImpl.class)
+    public void setOwningMembership(Membership owningMembership) {
+        this.owningMembership = owningMembership;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedElement")
-    private Collection<Element> ownedElement;
+    // @info.archinnov.achilles.annotations.Column("owningNamespace")
+    private Package owningNamespace;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningNamespaceId", table = "Membership")
+    public Package getOwningNamespace() {
+        return owningNamespace;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
+    public void setOwningNamespace(Package owningNamespace) {
+        this.owningNamespace = owningNamespace;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("owningRelatedElement")
+    private Element owningRelatedElement;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElementType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningRelatedElementId", table = "Membership")
+    public Element getOwningRelatedElement() {
+        return owningRelatedElement;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
+    public void setOwningRelatedElement(Element owningRelatedElement) {
+        this.owningRelatedElement = owningRelatedElement;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("owningRelationship")
+    private Relationship owningRelationship;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningRelationshipId", table = "Membership")
+    public Relationship getOwningRelationship() {
+        return owningRelationship;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
+    public void setOwningRelationship(Relationship owningRelationship) {
+        this.owningRelationship = owningRelationship;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("relatedElement")
+    private Collection<Element> relatedElement;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Membership_ownedElement",
+    @JoinTable(name = "Membership_relatedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Element> getOwnedElement() {
-        if (ownedElement == null) {
-            ownedElement = new ArrayList<>();
+    public Collection<Element> getRelatedElement() {
+        if (relatedElement == null) {
+            relatedElement = new ArrayList<>();
         }
-        return ownedElement;
+        return relatedElement;
     }
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
-    public void setOwnedElement(Collection<Element> ownedElement) {
-        this.ownedElement = ownedElement;
+    public void setRelatedElement(Collection<Element> relatedElement) {
+        this.relatedElement = relatedElement;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("source")
+    private Collection<Element> source;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Membership_source",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Element> getSource() {
+        if (source == null) {
+            source = new ArrayList<>();
+        }
+        return source;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    public void setSource(Collection<Element> source) {
+        this.source = source;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("target")
+    private Collection<Element> target;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Membership_target",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Element> getTarget() {
+        if (target == null) {
+            target = new ArrayList<>();
+        }
+        return target;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    public void setTarget(Collection<Element> target) {
+        this.target = target;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("visibility")
+    // @info.archinnov.achilles.annotations.Enumerated(info.archinnov.achilles.annotations.Enumerated.Encoding.NAME)
+    private VisibilityKind visibility;
+
+    @JsonGetter
+    @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "visibility", table = "Membership")
+    public VisibilityKind getVisibility() {
+        return visibility;
+    }
+
+    @JsonSetter
+    public void setVisibility(VisibilityKind visibility) {
+        this.visibility = visibility;
     }
 
 

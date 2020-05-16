@@ -13,6 +13,7 @@ import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
+import org.omg.sysml.metamodel.FunctionUsage;
 import org.omg.sysml.metamodel.Generalization;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.Membership;
@@ -33,8 +34,8 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 
 	public static volatile ListAttribute<InterfaceUsageImpl, Generalization> ownedGeneralization;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isConjugated;
-	public static volatile CollectionAttribute<InterfaceUsageImpl, Usage> nestedUsage;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isUnique;
+	public static volatile CollectionAttribute<InterfaceUsageImpl, Usage> nestedUsage;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Subsetting> ownedSubsetting;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Element> source;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Type> type;
@@ -44,11 +45,12 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<InterfaceUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, ConstraintUsage> nestedConstraint;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Property> property;
-	public static volatile CollectionAttribute<InterfaceUsageImpl, StateUsage> nestedState;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isSufficient;
+	public static volatile CollectionAttribute<InterfaceUsageImpl, StateUsage> nestedState;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<InterfaceUsageImpl, UUID> identifier;
+	public static volatile CollectionAttribute<InterfaceUsageImpl, FunctionUsage> nestedFunction;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Property> nestedProperty;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Feature> endFeature;
@@ -65,13 +67,13 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile ListAttribute<InterfaceUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<InterfaceUsageImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Association> association;
-	public static volatile CollectionAttribute<InterfaceUsageImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<InterfaceUsageImpl, Membership> membership;
+	public static volatile CollectionAttribute<InterfaceUsageImpl, Element> ownedRelatedElement;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Feature> feature;
 	public static volatile ListAttribute<InterfaceUsageImpl, Membership> inheritedMembership;
-	public static volatile CollectionAttribute<InterfaceUsageImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<InterfaceUsageImpl, Element> member;
+	public static volatile CollectionAttribute<InterfaceUsageImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<InterfaceUsageImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<InterfaceUsageImpl, Membership> importedMembership;
@@ -80,15 +82,15 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<InterfaceUsageImpl, FeatureMembership> featureMembership;
 	public static volatile ListAttribute<InterfaceUsageImpl, Import> ownedImport;
-	public static volatile CollectionAttribute<InterfaceUsageImpl, Feature> relatedFeature;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isAbstract;
+	public static volatile CollectionAttribute<InterfaceUsageImpl, Feature> relatedFeature;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Element> target;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isDirected;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String IS_CONJUGATED = "isConjugated";
-	public static final String NESTED_USAGE = "nestedUsage";
 	public static final String IS_UNIQUE = "isUnique";
+	public static final String NESTED_USAGE = "nestedUsage";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String SOURCE = "source";
 	public static final String TYPE = "type";
@@ -98,11 +100,12 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
 	public static final String PROPERTY = "property";
-	public static final String NESTED_STATE = "nestedState";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String NESTED_STATE = "nestedState";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";
+	public static final String NESTED_FUNCTION = "nestedFunction";
 	public static final String NESTED_PROPERTY = "nestedProperty";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String END_FEATURE = "endFeature";
@@ -119,13 +122,13 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String ASSOCIATION = "association";
-	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String MEMBERSHIP = "membership";
+	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
-	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
+	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
@@ -134,8 +137,8 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String OWNED_IMPORT = "ownedImport";
-	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String IS_ABSTRACT = "isAbstract";
+	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String TARGET = "target";
 	public static final String IS_DIRECTED = "isDirected";
 
