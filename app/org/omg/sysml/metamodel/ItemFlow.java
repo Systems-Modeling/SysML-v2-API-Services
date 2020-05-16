@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ItemFlow extends Connector, Step, MofObject {
+public interface ItemFlow extends Connector, Step {
     List<? extends Classifier> getItemType();
 
     List<? extends Feature> getTargetInputFeature();

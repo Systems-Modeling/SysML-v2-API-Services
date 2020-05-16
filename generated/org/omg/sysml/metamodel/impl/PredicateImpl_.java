@@ -24,19 +24,19 @@ public abstract class PredicateImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 
 	public static volatile ListAttribute<PredicateImpl, Generalization> ownedGeneralization;
 	public static volatile SingularAttribute<PredicateImpl, Boolean> isConjugated;
-	public static volatile CollectionAttribute<PredicateImpl, Superclassing> ownedSuperclassing;
 	public static volatile ListAttribute<PredicateImpl, Membership> membership;
+	public static volatile CollectionAttribute<PredicateImpl, Superclassing> ownedSuperclassing;
 	public static volatile CollectionAttribute<PredicateImpl, Feature> output;
 	public static volatile CollectionAttribute<PredicateImpl, Feature> feature;
-	public static volatile CollectionAttribute<PredicateImpl, Parameter> parameter;
 	public static volatile ListAttribute<PredicateImpl, Membership> inheritedMembership;
-	public static volatile CollectionAttribute<PredicateImpl, Feature> ownedEndFeature;
+	public static volatile CollectionAttribute<PredicateImpl, Parameter> parameter;
 	public static volatile ListAttribute<PredicateImpl, Element> member;
+	public static volatile CollectionAttribute<PredicateImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<PredicateImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<PredicateImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<PredicateImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<PredicateImpl, Membership> importedMembership;
 	public static volatile SingularAttribute<PredicateImpl, UUID> identifier;
+	public static volatile ListAttribute<PredicateImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<PredicateImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<PredicateImpl, Expression> expression;
 	public static volatile CollectionAttribute<PredicateImpl, Feature> ownedFeature;
@@ -53,19 +53,19 @@ public abstract class PredicateImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String IS_CONJUGATED = "isConjugated";
-	public static final String OWNED_SUPERCLASSING = "ownedSuperclassing";
 	public static final String MEMBERSHIP = "membership";
+	public static final String OWNED_SUPERCLASSING = "ownedSuperclassing";
 	public static final String OUTPUT = "output";
 	public static final String FEATURE = "feature";
-	public static final String PARAMETER = "parameter";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
-	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String PARAMETER = "parameter";
 	public static final String MEMBER = "member";
+	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String IDENTIFIER = "identifier";
+	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String EXPRESSION = "expression";
 	public static final String OWNED_FEATURE = "ownedFeature";

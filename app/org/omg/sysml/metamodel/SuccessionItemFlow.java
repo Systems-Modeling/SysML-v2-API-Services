@@ -4,6 +4,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface SuccessionItemFlow extends Succession, ItemFlow, MofObject {
+public interface SuccessionItemFlow extends Succession, ItemFlow {
 
 }

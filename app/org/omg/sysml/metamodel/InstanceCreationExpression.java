@@ -4,6 +4,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface InstanceCreationExpression extends InvocationExpression, MofObject {
+public interface InstanceCreationExpression extends InvocationExpression {
     Type getInstantiatedType();
 }

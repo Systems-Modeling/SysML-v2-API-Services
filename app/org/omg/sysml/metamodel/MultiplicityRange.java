@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface MultiplicityRange extends Multiplicity, MofObject {
+public interface MultiplicityRange extends Multiplicity {
     Expression getLowerBound();
 
     Expression getUpperBound();

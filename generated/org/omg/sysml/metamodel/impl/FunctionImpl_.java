@@ -24,19 +24,19 @@ public abstract class FunctionImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 
 	public static volatile ListAttribute<FunctionImpl, Generalization> ownedGeneralization;
 	public static volatile SingularAttribute<FunctionImpl, Boolean> isConjugated;
-	public static volatile CollectionAttribute<FunctionImpl, Superclassing> ownedSuperclassing;
 	public static volatile ListAttribute<FunctionImpl, Membership> membership;
+	public static volatile CollectionAttribute<FunctionImpl, Superclassing> ownedSuperclassing;
 	public static volatile CollectionAttribute<FunctionImpl, Feature> output;
 	public static volatile CollectionAttribute<FunctionImpl, Feature> feature;
-	public static volatile CollectionAttribute<FunctionImpl, Parameter> parameter;
 	public static volatile ListAttribute<FunctionImpl, Membership> inheritedMembership;
-	public static volatile CollectionAttribute<FunctionImpl, Feature> ownedEndFeature;
+	public static volatile CollectionAttribute<FunctionImpl, Parameter> parameter;
 	public static volatile ListAttribute<FunctionImpl, Element> member;
+	public static volatile CollectionAttribute<FunctionImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<FunctionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<FunctionImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<FunctionImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<FunctionImpl, Membership> importedMembership;
 	public static volatile SingularAttribute<FunctionImpl, UUID> identifier;
+	public static volatile ListAttribute<FunctionImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<FunctionImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<FunctionImpl, Expression> expression;
 	public static volatile CollectionAttribute<FunctionImpl, Feature> ownedFeature;
@@ -53,19 +53,19 @@ public abstract class FunctionImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String IS_CONJUGATED = "isConjugated";
-	public static final String OWNED_SUPERCLASSING = "ownedSuperclassing";
 	public static final String MEMBERSHIP = "membership";
+	public static final String OWNED_SUPERCLASSING = "ownedSuperclassing";
 	public static final String OUTPUT = "output";
 	public static final String FEATURE = "feature";
-	public static final String PARAMETER = "parameter";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
-	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String PARAMETER = "parameter";
 	public static final String MEMBER = "member";
+	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String IDENTIFIER = "identifier";
+	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String EXPRESSION = "expression";
 	public static final String OWNED_FEATURE = "ownedFeature";

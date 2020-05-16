@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Expression extends Step, MofObject {
+public interface Expression extends Step {
     Function getFunction();
+
+    Parameter getResult();
 }

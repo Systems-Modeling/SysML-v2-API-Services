@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Association extends Class, Relationship, MofObject {
+public interface Association extends Class, Relationship {
     Collection<? extends Type> getRelatedType();
 
     Connector getOwningConnector();

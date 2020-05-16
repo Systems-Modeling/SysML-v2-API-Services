@@ -24,17 +24,17 @@ public abstract class InteractionImpl_ extends org.omg.sysml.metamodel.impl.MofO
 
 	public static volatile ListAttribute<InteractionImpl, Generalization> ownedGeneralization;
 	public static volatile SingularAttribute<InteractionImpl, Boolean> isConjugated;
-	public static volatile CollectionAttribute<InteractionImpl, Element> source;
+	public static volatile ListAttribute<InteractionImpl, Membership> membership;
 	public static volatile CollectionAttribute<InteractionImpl, Element> ownedRelatedElement;
 	public static volatile CollectionAttribute<InteractionImpl, Superclassing> ownedSuperclassing;
-	public static volatile ListAttribute<InteractionImpl, Membership> membership;
+	public static volatile CollectionAttribute<InteractionImpl, Element> source;
 	public static volatile CollectionAttribute<InteractionImpl, Feature> output;
 	public static volatile CollectionAttribute<InteractionImpl, Type> relatedType;
 	public static volatile CollectionAttribute<InteractionImpl, Feature> feature;
-	public static volatile CollectionAttribute<InteractionImpl, Parameter> parameter;
 	public static volatile ListAttribute<InteractionImpl, Membership> inheritedMembership;
-	public static volatile CollectionAttribute<InteractionImpl, Feature> ownedEndFeature;
+	public static volatile CollectionAttribute<InteractionImpl, Parameter> parameter;
 	public static volatile ListAttribute<InteractionImpl, Element> member;
+	public static volatile CollectionAttribute<InteractionImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<InteractionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<InteractionImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<InteractionImpl, Boolean> isSufficient;
@@ -58,17 +58,17 @@ public abstract class InteractionImpl_ extends org.omg.sysml.metamodel.impl.MofO
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String IS_CONJUGATED = "isConjugated";
-	public static final String SOURCE = "source";
+	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String OWNED_SUPERCLASSING = "ownedSuperclassing";
-	public static final String MEMBERSHIP = "membership";
+	public static final String SOURCE = "source";
 	public static final String OUTPUT = "output";
 	public static final String RELATED_TYPE = "relatedType";
 	public static final String FEATURE = "feature";
-	public static final String PARAMETER = "parameter";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
-	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String PARAMETER = "parameter";
 	public static final String MEMBER = "member";
+	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";

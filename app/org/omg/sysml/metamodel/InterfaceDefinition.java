@@ -4,6 +4,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface InterfaceDefinition extends AssociationBlock, MofObject {
+public interface InterfaceDefinition extends AssociationBlock {
     Collection<? extends PortUsage> getInterfaceEnd();
 }
