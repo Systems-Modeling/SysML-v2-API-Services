@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Succession extends Connector {
+public interface Succession extends Connector, MofObject {
     Step getTransitionStep();
 
     Collection<? extends Step> getTriggerStep();

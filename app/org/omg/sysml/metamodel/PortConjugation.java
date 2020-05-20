@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface PortConjugation extends Conjugation {
+public interface PortConjugation extends Conjugation, MofObject {
     PortDefinition getOriginalPortDefinition();
 
     ConjugatedPortDefinition getConjugatedPortDefinition();

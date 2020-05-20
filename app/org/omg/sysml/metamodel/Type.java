@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Type extends Package {
+public interface Type extends Package, MofObject {
     List<? extends Generalization> getOwnedGeneralization();
 
     List<? extends FeatureMembership> getOwnedFeatureMembership();

@@ -4,6 +4,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface InterfaceUsage extends ConnectionUsage {
+public interface InterfaceUsage extends ConnectionUsage, MofObject {
     InterfaceDefinition getInterfaceDefinition();
 }

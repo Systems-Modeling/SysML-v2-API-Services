@@ -4,6 +4,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ExhibitStateUsage extends StateUsage {
+public interface ExhibitStateUsage extends StateUsage, MofObject {
     StateUsage getExhibitedState();
 }
