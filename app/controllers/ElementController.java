@@ -77,12 +77,18 @@ public class ElementController extends Controller {
         );
     }
 
-    static boolean respondWithJsonLd(Http.Request request) {
-        return request.accepts("application/ld+json");
+    public Result getRootsByProjectIdCommitId(UUID projectId, UUID commitId, Http.Request request) {
+        Set<Element> roots = elementService.getRootsByProjectIdCommitId(projectId, commitId);
+        boolean respondWithJsonLd = respondWithJsonLd(request);
+        return ok(JacksonHelper.collectionValueToTree(Set.class,
+                respondWithJsonLd ? JsonLdMofObjectAdornment.class : metamodelProvider.getImplementationClass(Element.class),
+                roots.stream()
+                        .map(e -> respondWithJsonLd ? adornMofObject((MofObject) e, metamodelProvider, request, projectId, commitId) : e)
+                        .collect(Collectors.toSet())
+        ));
     }
 
-    public Result getRootsByProjectIdCommitId(UUID projectId, UUID commitId) {
-        Set<Element> elements = elementService.getRootsByProjectIdCommitId(projectId, commitId);
-        return ok(JacksonHelper.collectionValueToTree(Set.class, metamodelProvider.getImplementationClass(Element.class), elements));
+    static boolean respondWithJsonLd(Http.Request request) {
+        return request.accepts("application/ld+json");
     }
 }

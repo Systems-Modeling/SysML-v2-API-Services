@@ -300,6 +300,7 @@ paths:
       operationId: getRootsByProjectCommit
       summary: Get root elements by project and commit
       produces:
+        - application/ld+json
         - application/json
       responses:
         200:
