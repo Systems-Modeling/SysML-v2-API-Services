@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Relationship extends Element {
+public interface Relationship extends Element, MofObject {
     Collection<? extends Element> getRelatedElement();
 
     Collection<? extends Element> getTarget();

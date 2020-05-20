@@ -4,6 +4,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ValueProperty extends Property {
+public interface ValueProperty extends Property, MofObject {
     Collection<? extends DataType> getValueType();
 }

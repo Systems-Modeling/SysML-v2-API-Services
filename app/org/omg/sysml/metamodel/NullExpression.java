@@ -4,6 +4,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface NullExpression extends Expression {
+public interface NullExpression extends Expression, MofObject {
 
 }

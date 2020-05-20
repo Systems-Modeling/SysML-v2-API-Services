@@ -4,6 +4,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Activity extends Behavior, Definition {
+public interface Activity extends Behavior, Definition, MofObject {
     Collection<? extends ActionUsage> getAction();
 }

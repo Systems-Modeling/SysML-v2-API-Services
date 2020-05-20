@@ -4,6 +4,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface LiteralString extends LiteralExpression {
+public interface LiteralString extends LiteralExpression, MofObject {
     String getValue();
 }
