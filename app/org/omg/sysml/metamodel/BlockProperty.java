@@ -4,6 +4,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface BlockProperty extends Property {
+public interface BlockProperty extends Property, MofObject {
     Collection<? extends Class> getBlock();
 }

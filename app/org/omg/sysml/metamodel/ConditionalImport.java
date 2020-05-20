@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ConditionalImport extends Import {
+public interface ConditionalImport extends Import, MofObject {
     ImportCondition getCondition();
 
     Predicate getSelector();
