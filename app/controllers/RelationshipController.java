@@ -3,6 +3,7 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import config.MetamodelProvider;
 import jackson.JacksonHelper;
+import jackson.JsonLdMofObjectAdornment;
 import org.omg.sysml.metamodel.MofObject;
 import org.omg.sysml.metamodel.Relationship;
 import play.libs.Json;
@@ -17,10 +18,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
  * @author Manas Bajaj
- *
+ * <p>
  * Controller for handling all API requests related to SysML v2 elements
  */
 public class RelationshipController extends Controller {
@@ -51,9 +53,14 @@ public class RelationshipController extends Controller {
         return responseRelationship.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 
-    public Result getRelationshipsByProjectIdCommitIdRelatedElementId(UUID projectId, UUID commitId, UUID elementId) {
-        System.out.println(projectId + " : " + commitId + " : " + elementId);
+    public Result getRelationshipsByProjectIdCommitIdRelatedElementId(UUID projectId, UUID commitId, UUID elementId, Http.Request request) {
         Set<Relationship> relationships = relationshipService.getRelationshipsByProjectCommitRelatedElement(projectId, commitId, elementId);
-        return ok(JacksonHelper.collectionValueToTree(Set.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
+        boolean respondWithJsonLd = ElementController.respondWithJsonLd(request);
+        return ok(JacksonHelper.collectionValueToTree(Set.class,
+                respondWithJsonLd ? JsonLdMofObjectAdornment.class : metamodelProvider.getImplementationClass(Relationship.class),
+                relationships.stream().
+                        map(r -> respondWithJsonLd ? ElementController.adornMofObject((MofObject) r, metamodelProvider, request, projectId, commitId) : r)
+                        .collect(Collectors.toSet())
+        ));
     }
 }

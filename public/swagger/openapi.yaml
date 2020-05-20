@@ -222,6 +222,7 @@ paths:
       operationId: getElementsByProjectCommit
       summary: Get elements by project and commit
       produces:
+        - application/ld+json
         - application/json
       responses:
         200:
@@ -264,6 +265,7 @@ paths:
       operationId: getElementByProjectCommitId
       summary: Get element by project, commit and ID
       produces:
+        - application/ld+json
         - application/json
       responses:
         200:
@@ -304,6 +306,7 @@ paths:
       operationId: getRelationshipsByProjectCommitRelatedElement
       summary: Get relationships by project, commit, and related element.
       produces:
+        - application/ld+json
         - application/json
       responses:
         200:
@@ -380,7 +383,7 @@ definitions:
   Identified:
     type: object
     properties:
-      identifier:
+      '@id':
         type: string
         format: uuid
   Element:
@@ -388,6 +391,9 @@ definitions:
     properties:
       '@type':
         type: string
+      '@id':
+        type: string
+        format: uuid
       identifier:
         type: string
         format: uuid
@@ -398,6 +404,9 @@ definitions:
     properties:
       '@type':
         type: string
+      '@id':
+        type: string
+        format: uuid
       identifier:
         type: string
         format: uuid

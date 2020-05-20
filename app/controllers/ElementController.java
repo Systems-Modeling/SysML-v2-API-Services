@@ -3,6 +3,7 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import config.MetamodelProvider;
 import jackson.JacksonHelper;
+import jackson.JsonLdMofObjectAdornment;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.MofObject;
 import play.libs.Json;
@@ -17,6 +18,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 /**
  * @author Manas Bajaj
@@ -51,26 +53,31 @@ public class ElementController extends Controller {
         return responseElement.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 
-    public Result byCommit(String commitId) {
-        UUID commitUuid = UUID.fromString(commitId);
-        Set<Element> elements = elementService.getByCommitId(commitUuid);
-        return ok(JacksonHelper.collectionValueToTree(Set.class, metamodelProvider.getImplementationClass(Element.class), elements));
-    }
-
-    public Result byCommitAndId(String commitId, String elementId) {
-        UUID commitUuid = UUID.fromString(commitId);
-        UUID elementUuid = UUID.fromString(elementId);
-        Optional<Element> element = elementService.getByCommitIdAndId(commitUuid, elementUuid);
-        return element.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
-    }
-
-    public Result getElementsByProjectIdCommitId(UUID projectId, UUID commitId) {
+    public Result getElementsByProjectIdCommitId(UUID projectId, UUID commitId, Http.Request request) {
         Set<Element> elements = elementService.getElementsByProjectIdCommitId(projectId, commitId);
-        return ok(JacksonHelper.collectionValueToTree(Set.class, metamodelProvider.getImplementationClass(Element.class), elements));
+        boolean respondWithJsonLd = respondWithJsonLd(request);
+        return ok(JacksonHelper.collectionValueToTree(Set.class,
+                respondWithJsonLd ? JsonLdMofObjectAdornment.class : metamodelProvider.getImplementationClass(Element.class),
+                elements.stream()
+                        .map(e -> respondWithJsonLd ? adornMofObject((MofObject) e, metamodelProvider, request, projectId, commitId) : e)
+                        .collect(Collectors.toSet())
+        ));
     }
 
-    public Result getElementByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId) {
+    public Result getElementByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId, Http.Request request) {
         Optional<Element> element = elementService.getElementsByProjectIdCommitIdElementId(projectId, commitId, elementId);
-        return element.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
+        return element
+                .map(e -> respondWithJsonLd(request) ? adornMofObject((MofObject) e, metamodelProvider, request, projectId, commitId) : e)
+                .map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
+    }
+
+    static JsonLdMofObjectAdornment adornMofObject(MofObject mof, MetamodelProvider metamodelProvider, Http.Request request, UUID projectId, UUID commitId) {
+        return new JsonLdMofObjectAdornment(mof, metamodelProvider,
+                String.format("http://%s/projects/%s/commits/%s/elements/", request.host(), projectId, commitId)
+        );
+    }
+
+    static boolean respondWithJsonLd(Http.Request request) {
+        return request.accepts("application/ld+json");
     }
 }
