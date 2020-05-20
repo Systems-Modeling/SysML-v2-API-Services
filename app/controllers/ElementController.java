@@ -80,4 +80,9 @@ public class ElementController extends Controller {
     static boolean respondWithJsonLd(Http.Request request) {
         return request.accepts("application/ld+json");
     }
+
+    public Result getRootsByProjectIdCommitId(UUID projectId, UUID commitId) {
+        Set<Element> elements = elementService.getRootsByProjectIdCommitId(projectId, commitId);
+        return ok(JacksonHelper.collectionValueToTree(Set.class, metamodelProvider.getImplementationClass(Element.class), elements));
+    }
 }

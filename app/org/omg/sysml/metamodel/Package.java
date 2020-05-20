@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Package extends Element {
+public interface Package extends Element, MofObject {
     List<? extends Membership> getMembership();
 
     List<? extends Import> getOwnedImport();

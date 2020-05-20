@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface TransitionUsage extends ActionUsage {
+public interface TransitionUsage extends ActionUsage, MofObject {
     Usage getTransitionOwningUsage();
 
     ActionUsage getSource();

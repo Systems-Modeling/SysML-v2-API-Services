@@ -32,7 +32,10 @@ import java.util.stream.Stream;
 @Singleton
 public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
     // TODO Explore alternative to serializing lazy entity attributes that doesn't involve resolving all proxies one level.
-    static Consumer<Commit> PROXY_RESOLVER = commit -> commit.getChanges().stream().filter(Objects::nonNull).map(ElementVersion::getData).filter(mof -> mof instanceof Element).map(mof -> (Element) mof).forEach(JpaElementDao.PROXY_RESOLVER);
+    static Consumer<Commit> PROXY_RESOLVER = commit -> commit.getChanges().stream()
+            .filter(Objects::nonNull).map(ElementVersion::getData)
+            .filter(mof -> mof instanceof Element).map(mof -> (Element) mof)
+            .forEach(JpaElementDao.PROXY_RESOLVER);
 
     @Inject
     private JPAManager jpa;
@@ -69,13 +72,20 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
         Supplier<Stream<ElementVersionImpl>> changeStream = () -> commit.getChanges().stream().filter(change -> change instanceof ElementVersionImpl).map(change -> (ElementVersionImpl) change);
 
         // Give all Commit#changes an identity, if they don't already have one, and all Commit#changes#identity an id, if they don't already have one.
-        changeStream.get().peek(change -> change.setIdentity(change.getIdentity() != null ? change.getIdentity() : new ElementIdentityImpl())).map(ElementVersion::getIdentity).filter(identity -> identity instanceof ElementIdentityImpl).map(identity -> (ElementIdentityImpl) identity).forEach(identity -> identity.setId(identity.getId() != null ? identity.getId() : UUID.randomUUID()));
+        changeStream.get()
+                .peek(change -> change.setIdentity(change.getIdentity() != null ? change.getIdentity() : new ElementIdentityImpl())).map(ElementVersion::getIdentity)
+                .filter(identity -> identity instanceof ElementIdentityImpl)
+                .map(identity -> (ElementIdentityImpl) identity)
+                .forEach(identity -> identity.setId(identity.getId() != null ? identity.getId() : UUID.randomUUID()));
 
         // Copy all Commit#changes#identity#id to Commit#changes#data#identifier and give all Commit#changes#data a random id.
-        Map<UUID, MofObject> identifierToMofMap = changeStream.get().peek(change -> Optional.ofNullable(change.getData()).filter(mof -> mof instanceof MofObjectImpl).map(mof -> (MofObjectImpl) mof).ifPresent(mof -> {
-            mof.setIdentifier(change.getIdentity().getId());
-            mof.setKey(UUID.randomUUID());
-        })).collect(Collectors.toMap(change -> change.getIdentity().getId(), change -> Optional.ofNullable(change.getData()).orElse(tombstone)));
+        Map<UUID, MofObject> identifierToMofMap = changeStream.get()
+                .peek(change -> Optional.ofNullable(change.getData())
+                        .filter(mof -> mof instanceof MofObjectImpl).map(mof -> (MofObjectImpl) mof).ifPresent(mof -> {
+                            mof.setIdentifier(change.getIdentity().getId());
+                            mof.setKey(UUID.randomUUID());
+                        }))
+                .collect(Collectors.toMap(change -> change.getIdentity().getId(), change -> Optional.ofNullable(change.getData()).orElse(tombstone)));
 
         // Attempt #1 using a javassist proxy. Failed because Hibernate/JPA can't handle subclasses of Entities.
 /*        changeStream.get().map(ElementVersion::getData).filter(Objects::nonNull).map(JpaCommitDao::getBeanPropertyValues).flatMap(map -> map.values().stream()).flatMap(o -> o instanceof Collection ? ((Collection<?>) o).stream() : Stream.of(o)).filter(o -> o instanceof MofObject && o instanceof ProxyObject).map(o -> (MofObject & ProxyObject) o).forEach(mofProxy -> {
@@ -97,52 +107,60 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
                 if (commit.getPreviousCommit() == null) {
                     return tombstone;
                 }
-                return elementDao.findByCommitAndId(commit.getPreviousCommit(), identifier).map(element -> (MofObject) element).orElse(tombstone);
+                return elementDao.findByCommitAndId(commit.getPreviousCommit(), identifier)
+                        .map(element -> (MofObject) element)
+                        .orElse(tombstone);
             });
             if (Objects.equals(reattachedMof, tombstone)) {
                 throw new IllegalArgumentException("Element with ID " + mof.getIdentifier() + " not found.");
             }
             return reattachedMof;
         };
-        changeStream.get().map(ElementVersion::getData).filter(Objects::nonNull).forEach(mof -> JavaBeanHelper.getBeanProperties(mof).values().stream().filter(property -> property.getReadMethod() != null && property.getWriteMethod() != null).forEach(property -> {
-            Method getter = property.getReadMethod();
-            Method setter = property.getWriteMethod();
-            Class<?> type = property.getPropertyType();
+        changeStream.get()
+                .map(ElementVersion::getData)
+                .filter(Objects::nonNull)
+                .forEach(mof -> JavaBeanHelper.getBeanProperties(mof).values().stream()
+                        .filter(property -> property.getReadMethod() != null && property.getWriteMethod() != null)
+                        .forEach(property -> {
+                            Method getter = property.getReadMethod();
+                            Method setter = property.getWriteMethod();
+                            Class<?> type = property.getPropertyType();
 
-            Object originalValue;
-            try {
-                originalValue = getter.invoke(mof);
-                final Object newValue;
-                if (MofObject.class.isAssignableFrom(type)) {
-                    if (!(originalValue instanceof MofObject)) {
-                        return;
-                    }
-                    newValue = reattachMofFunction.apply((MofObject) originalValue);
-                } else if (Collection.class.isAssignableFrom(type)) {
-                    Collection<?> originalValueCollection = (Collection<?>) originalValue;
-                    if (originalValueCollection.isEmpty() || originalValueCollection.stream().anyMatch((o -> !(o instanceof MofObject)))) {
-                        return;
-                    }
-                    final Collection<Object> newValueCollection;
-                    if (List.class.isAssignableFrom(type)) {
-                        newValueCollection = new ArrayList<>();
-                    } else if (Set.class.isAssignableFrom(type)) {
-                        newValueCollection = new HashSet<>();
-                    } else if (Collection.class.isAssignableFrom(type)) {
-                        newValueCollection = new ArrayList<>();
-                    } else {
-                        throw new IllegalStateException("Unknown collection type.");
-                    }
-                    ((Collection<?>) originalValue).stream().map(o -> (MofObject) o).map(reattachMofFunction).forEachOrdered(newValueCollection::add);
-                    newValue = newValueCollection;
-                } else {
-                    return;
-                }
-                setter.invoke(mof, newValue);
-            } catch (ReflectiveOperationException e) {
-                throw new RuntimeException(e);
-            }
-        }));
+                            Object originalValue;
+                            try {
+                                originalValue = getter.invoke(mof);
+                                final Object newValue;
+                                if (MofObject.class.isAssignableFrom(type)) {
+                                    if (!(originalValue instanceof MofObject)) {
+                                        return;
+                                    }
+                                    newValue = reattachMofFunction.apply((MofObject) originalValue);
+                                } else if (Collection.class.isAssignableFrom(type)) {
+                                    Collection<?> originalValueCollection = (Collection<?>) originalValue;
+                                    if (originalValueCollection.isEmpty() || originalValueCollection.stream().anyMatch((o -> !(o instanceof MofObject)))) {
+                                        return;
+                                    }
+                                    final Collection<Object> newValueCollection;
+                                    if (List.class.isAssignableFrom(type)) {
+                                        newValueCollection = new ArrayList<>();
+                                    } else if (Set.class.isAssignableFrom(type)) {
+                                        newValueCollection = new HashSet<>();
+                                    } else if (Collection.class.isAssignableFrom(type)) {
+                                        newValueCollection = new ArrayList<>();
+                                    } else {
+                                        throw new IllegalStateException("Unknown collection type.");
+                                    }
+                                    ((Collection<?>) originalValue).stream().map(o -> (MofObject) o).map(reattachMofFunction).forEachOrdered(newValueCollection::add);
+                                    newValue = newValueCollection;
+                                } else {
+                                    return;
+                                }
+                                setter.invoke(mof, newValue);
+                            } catch (ReflectiveOperationException e) {
+                                throw new RuntimeException(e);
+                            }
+                        })
+                );
 
  /*       changeStream.get().map(ElementVersion::getData).filter(Objects::nonNull).filter(element -> element instanceof BlockImpl).map(element -> (BlockImpl) element).forEach(block -> {
             if (block.getOwner() instanceof MofObjectImpl) {

@@ -29,11 +29,13 @@ public class ElementService {
     }
 
     public Set<Element> getByCommitId(UUID commitId) {
-        return commitDao.findById(commitId).map(c -> elementDao.findAllByCommit(c)).orElse(Collections.emptySet());
+        return commitDao.findById(commitId)
+                .map(c -> elementDao.findAllByCommit(c)).orElse(Collections.emptySet());
     }
 
     public Optional<Element> getByCommitIdAndId(UUID commitId, UUID elementId) {
-        return commitDao.findById(commitId).flatMap(m -> elementDao.findByCommitAndId(m, elementId));
+        return commitDao.findById(commitId)
+                .flatMap(m -> elementDao.findByCommitAndId(m, elementId));
     }
 
     public Optional<Element> create(Element element) {
@@ -41,10 +43,22 @@ public class ElementService {
     }
 
     public Set<Element> getElementsByProjectIdCommitId(UUID projectId, UUID commitId) {
-        return projectDao.findById(projectId).flatMap(project -> commitDao.findByProjectAndId(project, commitId)).map(commit -> elementDao.findAllByCommit(commit)).orElse(Collections.emptySet());
+        return projectDao.findById(projectId)
+                .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
+                .map(commit -> elementDao.findAllByCommit(commit))
+                .orElse(Collections.emptySet());
     }
 
     public Optional<Element> getElementsByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId) {
-        return projectDao.findById(projectId).flatMap(project -> commitDao.findByProjectAndId(project, commitId)).flatMap(commit -> elementDao.findByCommitAndId(commit, elementId));
+        return projectDao.findById(projectId)
+                .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
+                .flatMap(commit -> elementDao.findByCommitAndId(commit, elementId));
+    }
+
+    public Set<Element> getRootsByProjectIdCommitId(UUID projectId, UUID commitId) {
+        return projectDao.findById(projectId)
+                .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
+                .map(commit -> elementDao.findRootsByCommit(commit))
+                .orElse(Collections.emptySet());
     }
 }
