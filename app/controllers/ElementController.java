@@ -73,4 +73,9 @@ public class ElementController extends Controller {
         Optional<Element> element = elementService.getElementsByProjectIdCommitIdElementId(projectId, commitId, elementId);
         return element.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
     }
+
+    public Result getRootsByProjectIdCommitId(UUID projectId, UUID commitId) {
+        Set<Element> elements = elementService.getRootsByProjectIdCommitId(projectId, commitId);
+        return ok(JacksonHelper.collectionValueToTree(Set.class, metamodelProvider.getImplementationClass(Element.class), elements));
+    }
 }
