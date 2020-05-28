@@ -26,4 +26,6 @@ public interface Usage extends Feature, MofObject {
     Collection<? extends TransitionUsage> getNestedTransition();
 
     Collection<? extends RequirementUsage> getNestedRequirement();
+
+    Collection<? extends FunctionUsage> getNestedFunction();
 }

@@ -21,18 +21,18 @@ public abstract class ClassImpl_ extends org.omg.sysml.metamodel.impl.MofObjectI
 
 	public static volatile ListAttribute<ClassImpl, Generalization> ownedGeneralization;
 	public static volatile SingularAttribute<ClassImpl, Boolean> isConjugated;
-	public static volatile CollectionAttribute<ClassImpl, Superclassing> ownedSuperclassing;
 	public static volatile ListAttribute<ClassImpl, Membership> membership;
+	public static volatile CollectionAttribute<ClassImpl, Superclassing> ownedSuperclassing;
 	public static volatile CollectionAttribute<ClassImpl, Feature> output;
 	public static volatile CollectionAttribute<ClassImpl, Feature> feature;
 	public static volatile ListAttribute<ClassImpl, Membership> inheritedMembership;
-	public static volatile CollectionAttribute<ClassImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<ClassImpl, Element> member;
+	public static volatile CollectionAttribute<ClassImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<ClassImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<ClassImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<ClassImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<ClassImpl, Membership> importedMembership;
 	public static volatile SingularAttribute<ClassImpl, UUID> identifier;
+	public static volatile ListAttribute<ClassImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<ClassImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<ClassImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<ClassImpl, Relationship> ownedRelationship;
@@ -47,18 +47,18 @@ public abstract class ClassImpl_ extends org.omg.sysml.metamodel.impl.MofObjectI
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String IS_CONJUGATED = "isConjugated";
-	public static final String OWNED_SUPERCLASSING = "ownedSuperclassing";
 	public static final String MEMBERSHIP = "membership";
+	public static final String OWNED_SUPERCLASSING = "ownedSuperclassing";
 	public static final String OUTPUT = "output";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
-	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String MEMBER = "member";
+	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String IDENTIFIER = "identifier";
+	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";

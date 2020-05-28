@@ -5,5 +5,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface InvocationExpression extends Expression, MofObject {
-
+    List<? extends Expression> getArgument();
 }

@@ -6,6 +6,7 @@ import org.omg.sysml.metamodel.MofObject;
 
 //import info.archinnov.achilles.annotations.PartitionKey;
 
+import java.util.UUID;
 import javax.persistence.*;
 
 @Entity(name = "MofObjectImpl")
@@ -15,35 +16,35 @@ import javax.persistence.*;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public abstract class MofObjectImpl implements MofObject {
     //@PartitionKey
-    public java.util.UUID id;
+    private UUID key;
 
     @Id
-    // TODO Abstract this concept to cli option
     @GeneratedValue(generator = "UseExistingOrGenerateUUIDGenerator")
-    @Column(name = "id")
-    @JsonGetter(value = "id")
-    public java.util.UUID getId() {
-        return id;
+    @Column(name = "key")
+    @JsonIgnore
+    public UUID getKey() {
+        return key;
     }
 
-    @JsonSetter(value = "id")
-    public void setId(java.util.UUID id) {
-        this.id = id;
+    public void setKey(UUID key) {
+        this.key = key;
     }
 
-    // TODO Remove hardcoding for identifier
+    public abstract java.util.UUID getIdentifier();
 
-    // @info.archinnov.achilles.annotations.Column("identifier")
-    private java.util.UUID identifier;
+    public abstract void setIdentifier(java.util.UUID identifier);
 
-    @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "MofObject")
-    public java.util.UUID getIdentifier() {
-        return identifier;
+    //@PartitionKey
+    private java.util.UUID id;
+
+    @Transient
+    @JsonGetter(value = "@id")
+    public java.util.UUID getId_() {
+        return getIdentifier();
     }
 
-    @JsonSetter
-    public void setIdentifier(java.util.UUID identifier) {
-        this.identifier = identifier;
+    @JsonSetter(value = "@id")
+    public void setId_(java.util.UUID id_) {
+        setIdentifier(id_);
     }
 }

@@ -14,20 +14,20 @@ public abstract class ConjugatedPortTypingImpl_ extends org.omg.sysml.metamodel.
 
 	public static volatile SingularAttribute<ConjugatedPortTypingImpl, UUID> identifier;
 	public static volatile CollectionAttribute<ConjugatedPortTypingImpl, Element> ownedElement;
-	public static volatile CollectionAttribute<ConjugatedPortTypingImpl, Element> relatedElement;
 	public static volatile CollectionAttribute<ConjugatedPortTypingImpl, Relationship> ownedRelationship;
+	public static volatile CollectionAttribute<ConjugatedPortTypingImpl, Element> relatedElement;
 	public static volatile SingularAttribute<ConjugatedPortTypingImpl, String> name;
-	public static volatile CollectionAttribute<ConjugatedPortTypingImpl, Element> source;
 	public static volatile CollectionAttribute<ConjugatedPortTypingImpl, Element> ownedRelatedElement;
+	public static volatile CollectionAttribute<ConjugatedPortTypingImpl, Element> source;
 	public static volatile CollectionAttribute<ConjugatedPortTypingImpl, Element> target;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ELEMENT = "ownedElement";
-	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NAME = "name";
-	public static final String SOURCE = "source";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
+	public static final String SOURCE = "source";
 	public static final String TARGET = "target";
 
 }

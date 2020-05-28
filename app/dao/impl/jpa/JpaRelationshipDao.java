@@ -43,7 +43,7 @@ public class JpaRelationshipDao extends JpaDao<Relationship> implements Relation
             CriteriaQuery<MofObjectImpl> query = builder.createQuery(MofObjectImpl.class);
             Root<MofObjectImpl> root = query.from(MofObjectImpl.class);
             query.select(root).where(builder.and(
-                    builder.equal(root.get(MofObjectImpl_.id), id),
+                    builder.equal(root.get(MofObjectImpl_.identifier), id),
                     getTypeExpression(builder, root)
             ));
             try {
@@ -182,15 +182,22 @@ public class JpaRelationshipDao extends JpaDao<Relationship> implements Relation
             // Reverting to non-relational streaming
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
             Commit c = em.contains(commit) ? commit : em.find(metamodelProvider.getImplementationClass(Commit.class), commit.getId());
-            return elementDao.getCommitIndex(c, em).getWorkingElementVersions().stream().map(ElementVersion::getData).filter(mof -> mof instanceof Relationship).map(mof -> (Relationship) mof).filter(relationship -> Stream.concat(relationship.getSource().stream(), relationship.getTarget().stream()).map(Element::getIdentifier).anyMatch(id -> id.equals(relatedElement.getIdentifier()))).collect(Collectors.toSet());
+            return elementDao.getCommitIndex(c, em).getWorkingElementVersions().stream()
+                    .map(ElementVersion::getData).filter(mof -> mof instanceof Relationship)
+                    .map(mof -> (Relationship) mof)
+                    .filter(relationship -> Stream.concat(relationship.getSource().stream(), relationship.getTarget().stream()).map(Element::getIdentifier)
+                            .anyMatch(id -> id.equals(relatedElement.getIdentifier()))).collect(Collectors.toSet());
         });
     }
 
     private Stream<Class<?>> getTypeStream() {
-        return metamodelProvider.getAllImplementationClasses().stream().filter(Relationship.class::isAssignableFrom);
+        return metamodelProvider.getAllImplementationClasses().stream()
+                .filter(Relationship.class::isAssignableFrom);
     }
 
     private Expression<Boolean> getTypeExpression(CriteriaBuilder builder, Root<?> root) {
-        return builder.or(getTypeStream().map(c -> builder.equal(root.type(), c)).toArray(Predicate[]::new));
+        return builder.or(getTypeStream()
+                .map(c -> builder.equal(root.type(), c))
+                .toArray(Predicate[]::new));
     }
 }

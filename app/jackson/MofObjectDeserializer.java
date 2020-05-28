@@ -61,7 +61,7 @@ public class MofObjectDeserializer extends StdDeserializer<MofObjectImpl> implem
 
         JsonToken token;
         while ((token = p.nextToken()) != null && token != JsonToken.END_OBJECT) {
-            if (token == JsonToken.FIELD_NAME && "identifier".equals(p.getCurrentName())) {
+            if (token == JsonToken.FIELD_NAME && "@id".equals(p.getCurrentName())) {
                 p.nextToken();
                 mof.setIdentifier(UUID.fromString(p.getText()));
             }

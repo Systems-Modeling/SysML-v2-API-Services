@@ -44,7 +44,9 @@
         <class>org.omg.sysml.metamodel.impl.FeatureTypingImpl</class>
         <class>org.omg.sysml.metamodel.impl.FeatureValueImpl</class>
         <class>org.omg.sysml.metamodel.impl.ForkNodeImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FunctionDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.FunctionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FunctionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.GeneralizationImpl</class>
         <class>org.omg.sysml.metamodel.impl.ImportConditionImpl</class>
         <class>org.omg.sysml.metamodel.impl.ImportImpl</class>
@@ -98,7 +100,6 @@
         <class>org.omg.sysml.metamodel.impl.ReturnParameterMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.SatisfyRequirementUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.SendActionUsageImpl</class>
-        <class>org.omg.sysml.metamodel.impl.SequenceConstructionExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.SnapshotFeatureImpl</class>
         <class>org.omg.sysml.metamodel.impl.SourceEndImpl</class>
         <class>org.omg.sysml.metamodel.impl.StateDefinitionImpl</class>

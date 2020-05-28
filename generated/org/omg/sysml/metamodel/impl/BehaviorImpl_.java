@@ -23,19 +23,19 @@ public abstract class BehaviorImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 
 	public static volatile ListAttribute<BehaviorImpl, Generalization> ownedGeneralization;
 	public static volatile SingularAttribute<BehaviorImpl, Boolean> isConjugated;
-	public static volatile CollectionAttribute<BehaviorImpl, Superclassing> ownedSuperclassing;
 	public static volatile ListAttribute<BehaviorImpl, Membership> membership;
+	public static volatile CollectionAttribute<BehaviorImpl, Superclassing> ownedSuperclassing;
 	public static volatile CollectionAttribute<BehaviorImpl, Feature> output;
 	public static volatile CollectionAttribute<BehaviorImpl, Feature> feature;
-	public static volatile CollectionAttribute<BehaviorImpl, Parameter> parameter;
 	public static volatile ListAttribute<BehaviorImpl, Membership> inheritedMembership;
-	public static volatile CollectionAttribute<BehaviorImpl, Feature> ownedEndFeature;
+	public static volatile CollectionAttribute<BehaviorImpl, Parameter> parameter;
 	public static volatile ListAttribute<BehaviorImpl, Element> member;
+	public static volatile CollectionAttribute<BehaviorImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<BehaviorImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<BehaviorImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<BehaviorImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<BehaviorImpl, Membership> importedMembership;
 	public static volatile SingularAttribute<BehaviorImpl, UUID> identifier;
+	public static volatile ListAttribute<BehaviorImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<BehaviorImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<BehaviorImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<BehaviorImpl, Relationship> ownedRelationship;
@@ -51,19 +51,19 @@ public abstract class BehaviorImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String IS_CONJUGATED = "isConjugated";
-	public static final String OWNED_SUPERCLASSING = "ownedSuperclassing";
 	public static final String MEMBERSHIP = "membership";
+	public static final String OWNED_SUPERCLASSING = "ownedSuperclassing";
 	public static final String OUTPUT = "output";
 	public static final String FEATURE = "feature";
-	public static final String PARAMETER = "parameter";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
-	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String PARAMETER = "parameter";
 	public static final String MEMBER = "member";
+	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String IDENTIFIER = "identifier";
+	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";

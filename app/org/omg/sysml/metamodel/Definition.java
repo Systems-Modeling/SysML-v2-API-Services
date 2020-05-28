@@ -24,4 +24,6 @@ public interface Definition extends Classifier, MofObject {
     Collection<? extends TransitionUsage> getOwnedTransition();
 
     Collection<? extends RequirementUsage> getOwnedRequirement();
+
+    Collection<? extends FunctionUsage> getOwnedFunction();
 }

@@ -54,7 +54,7 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
             CriteriaQuery<MofObjectImpl> query = builder.createQuery(MofObjectImpl.class);
             Root<MofObjectImpl> root = query.from(MofObjectImpl.class);
             query.select(root).where(builder.and(
-                    builder.equal(root.get(MofObjectImpl_.id), id),
+                    builder.equal(root.get(MofObjectImpl_.identifier), id),
                     getTypeExpression(builder, root)
             ));
             try {
@@ -92,7 +92,12 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
         return jpa.transact(em -> {
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
             Commit c = em.contains(commit) ? commit : em.find(metamodelProvider.getImplementationClass(Commit.class), commit.getId());
-            return getCommitIndex(c, em).getWorkingElementVersions().stream().map(ElementVersion::getData).filter(mof -> mof instanceof Element).map(mof -> (Element) mof).peek(PROXY_RESOLVER).collect(Collectors.toSet());
+            return getCommitIndex(c, em).getWorkingElementVersions().stream()
+                    .map(ElementVersion::getData)
+                    .filter(mof -> mof instanceof Element)
+                    .map(mof -> (Element) mof)
+                    .peek(PROXY_RESOLVER)
+                    .collect(Collectors.toSet());
         });
     }
 
@@ -113,13 +118,30 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
                     builder.equal(elementIdentityJoin.get(ElementIdentityImpl_.id), id)
             );
             try {
-                return Optional.of(em.createQuery(query).getSingleResult()).map(ElementVersion::getData).filter(mof -> mof instanceof Element).map(mof -> (Element) mof).map(element -> {
+                return Optional.of(em.createQuery(query).getSingleResult())
+                        .map(ElementVersion::getData).filter(mof -> mof instanceof Element)
+                        .map(mof -> (Element) mof).map(element -> {
                     PROXY_RESOLVER.accept(element);
                     return element;
                 });
             } catch (NoResultException e) {
                 return Optional.empty();
             }
+        });
+    }
+
+    @Override
+    public Set<Element> findRootsByCommit(Commit commit) {
+        return jpa.transact(em -> {
+            // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
+            Commit c = em.contains(commit) ? commit : em.find(metamodelProvider.getImplementationClass(Commit.class), commit.getId());
+            return getCommitIndex(c, em).getWorkingElementVersions().stream()
+                    .map(ElementVersion::getData)
+                    .filter(mof -> mof instanceof Element)
+                    .map(mof -> (Element) mof)
+                    .filter(element -> element.getOwner() == null)
+                    .peek(PROXY_RESOLVER)
+                    .collect(Collectors.toSet());
         });
     }
 
@@ -146,7 +168,10 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
     protected Stream<ElementVersion> streamWorkingElementVersions(Commit commit) {
         Set<UUID> visitedElements = ConcurrentHashMap.newKeySet();
         Map<Commit, Stream<ElementVersion>> results = queryCommitTree(commit,
-                c -> c.getChanges().stream().filter(record -> record.getIdentity() != null && record.getIdentity().getId() != null && record.getData() != null).filter(record -> !visitedElements.contains(record.getIdentity().getId())).peek(record -> visitedElements.add(record.getIdentity().getId())));
+                c -> c.getChanges().stream()
+                        .filter(record -> record.getIdentity() != null && record.getIdentity().getId() != null && record.getData() != null)
+                        .filter(record -> !visitedElements.contains(record.getIdentity().getId()))
+                        .peek(record -> visitedElements.add(record.getIdentity().getId())));
         return results.values().stream().flatMap(Function.identity());
     }
 
@@ -175,6 +200,9 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
     }
 
     private Expression<Boolean> getTypeExpression(CriteriaBuilder builder, Root<?> root) {
-        return builder.or(metamodelProvider.getAllImplementationClasses().stream().filter(Element.class::isAssignableFrom).map(c -> builder.equal(root.type(), c)).toArray(Predicate[]::new));
+        return builder.or(metamodelProvider.getAllImplementationClasses().stream()
+                .filter(Element.class::isAssignableFrom)
+                .map(c -> builder.equal(root.type(), c))
+                .toArray(Predicate[]::new));
     }
 }
