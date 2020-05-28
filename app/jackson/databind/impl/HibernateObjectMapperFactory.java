@@ -36,6 +36,7 @@ public class HibernateObjectMapperFactory implements ObjectMapperFactory {
         ObjectMapper objectMapper = Json.newDefaultMapper();
         objectMapper.enable(MapperFeature.SORT_PROPERTIES_ALPHABETICALLY);
         objectMapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        objectMapper.disable(SerializationFeature.FAIL_ON_UNWRAPPED_TYPE_IDENTIFIERS);
 
         Hibernate5Module hibernate5Module = new Hibernate5Module(jpaManager.getEntityManagerFactory().unwrap(SessionFactory.class));
         hibernate5Module.enable(Hibernate5Module.Feature.FORCE_LAZY_LOADING);

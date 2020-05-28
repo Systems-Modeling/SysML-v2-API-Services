@@ -21,7 +21,7 @@ public class MofObjectSerializer extends StdSerializer<MofObject> {
     @Override
     public void serialize(MofObject value, JsonGenerator gen, SerializerProvider provider) throws IOException {
         try {
-            if (value == null || value.getId() == null) {
+            if (value == null || value.getId_() == null) {
                 gen.writeNull();
                 return;
             }
@@ -30,11 +30,8 @@ public class MofObjectSerializer extends StdSerializer<MofObject> {
             return;
         }
         gen.writeStartObject();
-        // TODO Decide if @type and id should be exposed
-        // gen.writeObjectField("@type", value.getClass().getSimpleName());
-        // gen.writeObjectField("id", value.getId());
         if (value instanceof MofObjectImpl) {
-            gen.writeObjectField("identifier", value.getIdentifier());
+            gen.writeObjectField("@id", value.getId_());
         }
         gen.writeEndObject();
     }

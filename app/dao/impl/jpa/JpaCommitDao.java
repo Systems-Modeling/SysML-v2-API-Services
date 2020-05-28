@@ -56,11 +56,16 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
         }
 
         MofObject tombstone = new MofObjectImpl() {
-            UUID id = UUID.randomUUID();
+            final UUID identifier = UUID.randomUUID();
 
             @Override
-            public UUID getId() {
-                return id;
+            public UUID getIdentifier() {
+                return identifier;
+            }
+
+            @Override
+            public void setIdentifier(UUID identifier) {
+
             }
         };
 
@@ -78,7 +83,7 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
                 .peek(change -> Optional.ofNullable(change.getData())
                         .filter(mof -> mof instanceof MofObjectImpl).map(mof -> (MofObjectImpl) mof).ifPresent(mof -> {
                             mof.setIdentifier(change.getIdentity().getId());
-                            mof.setId(UUID.randomUUID());
+                            mof.setKey(UUID.randomUUID());
                         }))
                 .collect(Collectors.toMap(change -> change.getIdentity().getId(), change -> Optional.ofNullable(change.getData()).orElse(tombstone)));
 
@@ -170,7 +175,7 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
             commit.getChanges().stream().map(ElementVersion::getData).filter(mof -> mof instanceof MofObjectImpl).map(mof -> (MofObjectImpl) mof).map(mof -> {
                 try {
                     MofObjectImpl firstPassMof = mof.getClass().getConstructor().newInstance();
-                    firstPassMof.setId(mof.getId());
+                    firstPassMof.setIdentifier(mof.getIdentifier());
                     return firstPassMof;
                 } catch (ReflectiveOperationException e) {
                     throw new RuntimeException(e);

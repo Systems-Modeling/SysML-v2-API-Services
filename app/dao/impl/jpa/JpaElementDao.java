@@ -54,7 +54,7 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
             CriteriaQuery<MofObjectImpl> query = builder.createQuery(MofObjectImpl.class);
             Root<MofObjectImpl> root = query.from(MofObjectImpl.class);
             query.select(root).where(builder.and(
-                    builder.equal(root.get(MofObjectImpl_.id), id),
+                    builder.equal(root.get(MofObjectImpl_.identifier), id),
                     getTypeExpression(builder, root)
             ));
             try {
