@@ -27,5 +27,6 @@ GET         /projects/:projectId/commits/:commitId/elements/:relatedElementId/re
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                                                                          controllers.Assets.versioned(path="/public", file: Asset)
 
-GET         /docs/                                                                                 controllers.Assets.at(path="/public/swagger",file="index.html")
-GET         /docs/*file                                                                            controllers.Assets.at(path="/public/swagger",file)
+GET         /docs/                                                                                 controllers.Assets.at(path="/public/swagger", file="index.html")
+GET         /docs/*file                                                                            controllers.Assets.at(path="/public/swagger", file)
+GET         /jsonld/*file                                                                          controllers.Assets.at(path="/public/jsonld", file)

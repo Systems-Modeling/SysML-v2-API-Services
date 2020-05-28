@@ -6,6 +6,7 @@ import jackson.JacksonHelper;
 import jackson.JsonLdMofObjectAdornment;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.MofObject;
+import play.Environment;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Http;
@@ -31,6 +32,9 @@ public class ElementController extends Controller {
 
     @Inject
     private ElementService elementService;
+
+    @Inject
+    private Environment environment;
 
     public Result byId(String id) {
         UUID uuid = UUID.fromString(id);
@@ -59,7 +63,7 @@ public class ElementController extends Controller {
         return ok(JacksonHelper.collectionValueToTree(Set.class,
                 respondWithJsonLd ? JsonLdMofObjectAdornment.class : metamodelProvider.getImplementationClass(Element.class),
                 elements.stream()
-                        .map(e -> respondWithJsonLd ? adornMofObject((MofObject) e, metamodelProvider, request, projectId, commitId) : e)
+                        .map(e -> respondWithJsonLd ? adornMofObject(e, request, metamodelProvider, environment, projectId, commitId) : e)
                         .collect(Collectors.toSet())
         ));
     }
@@ -67,13 +71,15 @@ public class ElementController extends Controller {
     public Result getElementByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId, Http.Request request) {
         Optional<Element> element = elementService.getElementsByProjectIdCommitIdElementId(projectId, commitId, elementId);
         return element
-                .map(e -> respondWithJsonLd(request) ? adornMofObject((MofObject) e, metamodelProvider, request, projectId, commitId) : e)
+                .map(e -> respondWithJsonLd(request) ? adornMofObject(e, request, metamodelProvider, environment, projectId, commitId) : e)
                 .map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
     }
 
-    static JsonLdMofObjectAdornment adornMofObject(MofObject mof, MetamodelProvider metamodelProvider, Http.Request request, UUID projectId, UUID commitId) {
-        return new JsonLdMofObjectAdornment(mof, metamodelProvider,
-                String.format("http://%s/projects/%s/commits/%s/elements/", request.host(), projectId, commitId)
+    static JsonLdMofObjectAdornment adornMofObject(MofObject mof, Http.Request request, MetamodelProvider metamodelProvider, Environment environment, UUID projectId, UUID commitId) {
+        return new JsonLdMofObjectAdornment(mof, metamodelProvider, environment,
+                String.format("http://%s", request.host()),
+                String.format("/projects/%s/commits/%s/elements/", projectId, commitId),
+                false
         );
     }
 
@@ -83,7 +89,7 @@ public class ElementController extends Controller {
         return ok(JacksonHelper.collectionValueToTree(Set.class,
                 respondWithJsonLd ? JsonLdMofObjectAdornment.class : metamodelProvider.getImplementationClass(Element.class),
                 roots.stream()
-                        .map(e -> respondWithJsonLd ? adornMofObject((MofObject) e, metamodelProvider, request, projectId, commitId) : e)
+                        .map(e -> respondWithJsonLd ? adornMofObject(e, request, metamodelProvider, environment, projectId, commitId) : e)
                         .collect(Collectors.toSet())
         ));
     }

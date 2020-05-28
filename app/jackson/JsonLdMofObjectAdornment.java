@@ -1,7 +1,6 @@
 package jackson;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -9,8 +8,10 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import config.MetamodelProvider;
 import org.omg.sysml.metamodel.MofObject;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
+import play.Environment;
 import play.libs.Json;
 
+import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,11 +22,7 @@ public class JsonLdMofObjectAdornment {
     private final String type;
     private final JsonNode context;
 
-    public JsonLdMofObjectAdornment(MofObject mof, MetamodelProvider metamodelProvider) {
-        this(mof, metamodelProvider, null);
-    }
-
-    public JsonLdMofObjectAdornment(MofObject mof, MetamodelProvider metamodelProvider, String base) {
+    public JsonLdMofObjectAdornment(MofObject mof, MetamodelProvider metamodelProvider, Environment environment, String host, String basePath, boolean inline) {
         this.mof = mof;
         try {
             this.type = metamodelProvider.getInterface(mof.getClass()).getSimpleName();
@@ -33,14 +30,19 @@ public class JsonLdMofObjectAdornment {
             throw new IllegalStateException(e);
         }
         ObjectNode contextObjectNode = Json.mapper().createObjectNode();
-        if (base != null) {
-            contextObjectNode.put("@base", base);
+        if (basePath != null) {
+            contextObjectNode.put("@base", URI.create(host).resolve(basePath).toString());
         }
-        JsonNode cachedContext = CONTEXT_CACHE.computeIfAbsent(type, t -> Json.parse(getClass().getResourceAsStream(String.format("/jsonld/%s.jsonld", t))));
-        if (!(cachedContext instanceof ObjectNode)) {
-            throw new IllegalStateException("context expected to be an ObjectNode");
+        if (inline) {
+            JsonNode cachedContext = CONTEXT_CACHE.computeIfAbsent(type, t -> Json.parse(environment.resourceAsStream(String.format("public/jsonld/%s.jsonld", t))));
+            if (!(cachedContext instanceof ObjectNode)) {
+                throw new IllegalStateException("context expected to be an ObjectNode");
+            }
+            contextObjectNode.setAll((ObjectNode) cachedContext);
         }
-        contextObjectNode.setAll((ObjectNode) cachedContext);
+        else {
+            contextObjectNode.put("@import", URI.create(host).resolve(String.format("/jsonld/%s.jsonld", type)).toString());
+        }
         this.context = contextObjectNode;
     }
 

@@ -6,6 +6,7 @@ import jackson.JacksonHelper;
 import jackson.JsonLdMofObjectAdornment;
 import org.omg.sysml.metamodel.MofObject;
 import org.omg.sysml.metamodel.Relationship;
+import play.Environment;
 import play.libs.Json;
 import play.mvc.Controller;
 import play.mvc.Http;
@@ -31,6 +32,9 @@ public class RelationshipController extends Controller {
 
     @Inject
     private RelationshipService relationshipService;
+
+    @Inject
+    private Environment environment;
 
     public Result byId(String id) {
         UUID uuid = UUID.fromString(id);
@@ -59,7 +63,7 @@ public class RelationshipController extends Controller {
         return ok(JacksonHelper.collectionValueToTree(Set.class,
                 respondWithJsonLd ? JsonLdMofObjectAdornment.class : metamodelProvider.getImplementationClass(Relationship.class),
                 relationships.stream().
-                        map(r -> respondWithJsonLd ? ElementController.adornMofObject((MofObject) r, metamodelProvider, request, projectId, commitId) : r)
+                        map(r -> respondWithJsonLd ? ElementController.adornMofObject((MofObject) r, request, metamodelProvider, environment, projectId, commitId) : r)
                         .collect(Collectors.toSet())
         ));
     }
