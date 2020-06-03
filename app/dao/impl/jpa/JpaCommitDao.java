@@ -175,7 +175,7 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
             commit.getChanges().stream().map(ElementVersion::getData).filter(mof -> mof instanceof MofObjectImpl).map(mof -> (MofObjectImpl) mof).map(mof -> {
                 try {
                     MofObjectImpl firstPassMof = mof.getClass().getConstructor().newInstance();
-                    firstPassMof.setIdentifier(mof.getIdentifier());
+                    firstPassMof.setKey(mof.getKey());
                     return firstPassMof;
                 } catch (ReflectiveOperationException e) {
                     throw new RuntimeException(e);
