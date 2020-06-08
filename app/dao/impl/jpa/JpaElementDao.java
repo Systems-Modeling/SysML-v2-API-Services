@@ -26,15 +26,21 @@ import javax.persistence.NoResultException;
 import javax.persistence.criteria.*;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Singleton
 public class JpaElementDao extends JpaDao<Element> implements ElementDao {
     // TODO Explore alternative to serializing lazy entity attributes that doesn't involve resolving all proxies one level.
-    static Consumer<Element> PROXY_RESOLVER = element -> JavaBeanHelper.getBeanPropertyValues(element).values().stream().flatMap(o -> o instanceof Collection ? ((Collection<?>) o).stream() : Stream.of(o)).filter(o -> o instanceof Element).map(o -> (Element) o).forEach(Hibernate::unproxy);
+    static UnaryOperator<Element> PROXY_RESOLVER = element -> {
+        element = Hibernate.unproxy(element, Element.class);
+        JavaBeanHelper.getBeanPropertyValues(element).values().stream()
+                .flatMap(o -> o instanceof Collection ? ((Collection<?>) o).stream() : Stream.of(o)).filter(o -> o instanceof Element)
+                .map(o -> (Element) o).forEach(Hibernate::unproxy);
+        return element;
+    };
 
     @Inject
     private MetamodelProvider metamodelProvider;
@@ -96,7 +102,7 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
                     .map(ElementVersion::getData)
                     .filter(mof -> mof instanceof Element)
                     .map(mof -> (Element) mof)
-                    .peek(PROXY_RESOLVER)
+                    .map(PROXY_RESOLVER)
                     .collect(Collectors.toSet());
         });
     }
@@ -119,11 +125,10 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
             );
             try {
                 return Optional.of(em.createQuery(query).getSingleResult())
-                        .map(ElementVersion::getData).filter(mof -> mof instanceof Element)
-                        .map(mof -> (Element) mof).map(element -> {
-                    PROXY_RESOLVER.accept(element);
-                    return element;
-                });
+                        .map(ElementVersion::getData)
+                        .filter(mof -> mof instanceof Element)
+                        .map(mof -> (Element) mof)
+                        .map(PROXY_RESOLVER);
             } catch (NoResultException e) {
                 return Optional.empty();
             }
@@ -140,7 +145,7 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
                     .filter(mof -> mof instanceof Element)
                     .map(mof -> (Element) mof)
                     .filter(element -> element.getOwner() == null)
-                    .peek(PROXY_RESOLVER)
+                    .map(PROXY_RESOLVER)
                     .collect(Collectors.toSet());
         });
     }
