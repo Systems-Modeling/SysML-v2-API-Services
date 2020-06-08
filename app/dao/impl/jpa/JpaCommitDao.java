@@ -23,19 +23,26 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.lang.reflect.Method;
 import java.util.*;
-import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
+import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Singleton
 public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
     // TODO Explore alternative to serializing lazy entity attributes that doesn't involve resolving all proxies one level.
-    static Consumer<Commit> PROXY_RESOLVER = commit -> commit.getChanges().stream()
-            .filter(Objects::nonNull).map(ElementVersion::getData)
-            .filter(mof -> mof instanceof Element).map(mof -> (Element) mof)
-            .forEach(JpaElementDao.PROXY_RESOLVER);
+    static UnaryOperator<Commit> PROXY_RESOLVER = commit -> {
+        commit.getChanges().stream()
+                .filter(Objects::nonNull)
+                .map(ElementVersion::getData)
+                .filter(mof -> mof instanceof Element)
+                .map(mof -> (Element) mof)
+                .map(JpaElementDao.PROXY_RESOLVER)
+                .forEach(e -> {
+                });
+        return commit;
+    };
 
     @Inject
     private JPAManager jpa;
@@ -172,19 +179,27 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
         });*/
 
         return jpa.transact(em -> {
-            commit.getChanges().stream().map(ElementVersion::getData).filter(mof -> mof instanceof MofObjectImpl).map(mof -> (MofObjectImpl) mof).map(mof -> {
-                try {
-                    MofObjectImpl firstPassMof = mof.getClass().getConstructor().newInstance();
-                    firstPassMof.setKey(mof.getKey());
-                    return firstPassMof;
-                } catch (ReflectiveOperationException e) {
-                    throw new RuntimeException(e);
-                }
-            }).forEach(em::merge);
-            commit.setChanges(commit.getChanges().stream().map(em::merge).collect(Collectors.toSet()));
+            commit.getChanges().stream()
+                    .map(ElementVersion::getData)
+                    .filter(mof -> mof instanceof MofObjectImpl)
+                    .map(mof -> (MofObjectImpl) mof)
+                    .map(mof -> {
+                        try {
+                            MofObjectImpl firstPassMof = mof.getClass().getConstructor().newInstance();
+                            firstPassMof.setKey(mof.getKey());
+                            return firstPassMof;
+                        } catch (ReflectiveOperationException e) {
+                            throw new RuntimeException(e);
+                        }
+                    })
+                    .forEach(em::merge);
+            commit.setChanges(
+                    commit.getChanges().stream()
+                            .map(em::merge)
+                            .collect(Collectors.toSet())
+            );
             Optional<Commit> persistedCommit = super.persist(commit, em);
-            persistedCommit.ifPresent(PROXY_RESOLVER);
-            return persistedCommit;
+            return persistedCommit.map(PROXY_RESOLVER);
         });
     }
 
@@ -253,8 +268,7 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
             } catch (NoResultException e) {
                 return Optional.empty();
             }
-            commit.ifPresent(PROXY_RESOLVER);
-            return commit;
+            return commit.map(PROXY_RESOLVER);
         });
     }
 
@@ -273,8 +287,7 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
             } catch (NoResultException e) {
                 return Optional.empty();
             }
-            commit.ifPresent(PROXY_RESOLVER);
-            return commit;
+            return commit.map(PROXY_RESOLVER);
         });
     }
 
