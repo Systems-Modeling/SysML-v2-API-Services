@@ -49,69 +49,27 @@ import java.util.HashSet;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public abstract class TransferActionUsageImpl extends MofObjectImpl implements TransferActionUsage {
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("actionOwningDefinition")
-    private Definition actionOwningDefinition;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "DefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "actionOwningDefinitionType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "actionOwningDefinitionId", table = "TransferActionUsage")
-    public Definition getActionOwningDefinition() {
-        return actionOwningDefinition;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = DefinitionImpl.class)
-    public void setActionOwningDefinition(Definition actionOwningDefinition) {
-        this.actionOwningDefinition = actionOwningDefinition;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("actionOwningUsage")
-    private Usage actionOwningUsage;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "actionOwningUsageType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "actionOwningUsageId", table = "TransferActionUsage")
-    public Usage getActionOwningUsage() {
-        return actionOwningUsage;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = UsageImpl.class)
-    public void setActionOwningUsage(Usage actionOwningUsage) {
-        this.actionOwningUsage = actionOwningUsage;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("activity")
-    private Collection<Behavior> activity;
+    // @info.archinnov.achilles.annotations.Column("actionDefinition")
+    private Collection<Behavior> actionDefinition;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "BehaviorMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_activity",
+    @JoinTable(name = "TransferActionUsage_actionDefinition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Behavior> getActivity() {
-        if (activity == null) {
-            activity = new ArrayList<>();
+    public Collection<Behavior> getActionDefinition() {
+        if (actionDefinition == null) {
+            actionDefinition = new ArrayList<>();
         }
-        return activity;
+        return actionDefinition;
     }
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = BehaviorImpl.class)
-    public void setActivity(Collection<Behavior> activity) {
-        this.activity = activity;
+    public void setActionDefinition(Collection<Behavior> actionDefinition) {
+        this.actionDefinition = actionDefinition;
     }
 
 
@@ -277,6 +235,32 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureMembershipImpl.class)
     public void setFeatureMembership(List<FeatureMembership> featureMembership) {
         this.featureMembership = featureMembership;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("flow")
+    private Collection<Usage> flow;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TransferActionUsage_flow",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Usage> getFlow() {
+        if (flow == null) {
+            flow = new ArrayList<>();
+        }
+        return flow;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
+    public void setFlow(Collection<Usage> flow) {
+        this.flow = flow;
     }
 
 
@@ -537,6 +521,22 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
 
 
 
+    // @info.archinnov.achilles.annotations.Column("isVariation")
+    private Boolean isVariation;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isVariation", table = "TransferActionUsage")
+    public Boolean getIsVariation() {
+        return isVariation;
+    }
+
+    @JsonSetter
+    public void setIsVariation(Boolean isVariation) {
+        this.isVariation = isVariation;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("member")
     private List<Element> member;
@@ -657,6 +657,136 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedAnalysisCase")
+    private Collection<AnalysisCaseUsage> nestedAnalysisCase;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "AnalysisCaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TransferActionUsage_nestedAnalysisCase",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<AnalysisCaseUsage> getNestedAnalysisCase() {
+        if (nestedAnalysisCase == null) {
+            nestedAnalysisCase = new ArrayList<>();
+        }
+        return nestedAnalysisCase;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnalysisCaseUsageImpl.class)
+    public void setNestedAnalysisCase(Collection<AnalysisCaseUsage> nestedAnalysisCase) {
+        this.nestedAnalysisCase = nestedAnalysisCase;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedAttribute")
+    private Collection<AttributeUsage> nestedAttribute;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "AttributeUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TransferActionUsage_nestedAttribute",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<AttributeUsage> getNestedAttribute() {
+        if (nestedAttribute == null) {
+            nestedAttribute = new ArrayList<>();
+        }
+        return nestedAttribute;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AttributeUsageImpl.class)
+    public void setNestedAttribute(Collection<AttributeUsage> nestedAttribute) {
+        this.nestedAttribute = nestedAttribute;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedCalculation")
+    private Collection<CalculationUsage> nestedCalculation;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "CalculationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TransferActionUsage_nestedCalculation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<CalculationUsage> getNestedCalculation() {
+        if (nestedCalculation == null) {
+            nestedCalculation = new ArrayList<>();
+        }
+        return nestedCalculation;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CalculationUsageImpl.class)
+    public void setNestedCalculation(Collection<CalculationUsage> nestedCalculation) {
+        this.nestedCalculation = nestedCalculation;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedCase")
+    private Collection<CaseUsage> nestedCase;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "CaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TransferActionUsage_nestedCase",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<CaseUsage> getNestedCase() {
+        if (nestedCase == null) {
+            nestedCase = new ArrayList<>();
+        }
+        return nestedCase;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CaseUsageImpl.class)
+    public void setNestedCase(Collection<CaseUsage> nestedCase) {
+        this.nestedCase = nestedCase;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedConnection")
+    private Collection<ConnectionUsage> nestedConnection;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ConnectionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TransferActionUsage_nestedConnection",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ConnectionUsage> getNestedConnection() {
+        if (nestedConnection == null) {
+            nestedConnection = new ArrayList<>();
+        }
+        return nestedConnection;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConnectionUsageImpl.class)
+    public void setNestedConnection(Collection<ConnectionUsage> nestedConnection) {
+        this.nestedConnection = nestedConnection;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedConstraint")
     private Collection<ConstraintUsage> nestedConstraint;
 
@@ -683,27 +813,105 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("nestedFunction")
-    private Collection<FunctionUsage> nestedFunction;
+    // @info.archinnov.achilles.annotations.Column("nestedIndividual")
+    private Collection<IndividualUsage> nestedIndividual;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FunctionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedFunction",
+    @ManyToAny(metaDef = "IndividualUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TransferActionUsage_nestedIndividual",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<FunctionUsage> getNestedFunction() {
-        if (nestedFunction == null) {
-            nestedFunction = new ArrayList<>();
+    public Collection<IndividualUsage> getNestedIndividual() {
+        if (nestedIndividual == null) {
+            nestedIndividual = new ArrayList<>();
         }
-        return nestedFunction;
+        return nestedIndividual;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FunctionUsageImpl.class)
-    public void setNestedFunction(Collection<FunctionUsage> nestedFunction) {
-        this.nestedFunction = nestedFunction;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = IndividualUsageImpl.class)
+    public void setNestedIndividual(Collection<IndividualUsage> nestedIndividual) {
+        this.nestedIndividual = nestedIndividual;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedInterface")
+    private Collection<InterfaceUsage> nestedInterface;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "InterfaceUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TransferActionUsage_nestedInterface",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<InterfaceUsage> getNestedInterface() {
+        if (nestedInterface == null) {
+            nestedInterface = new ArrayList<>();
+        }
+        return nestedInterface;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = InterfaceUsageImpl.class)
+    public void setNestedInterface(Collection<InterfaceUsage> nestedInterface) {
+        this.nestedInterface = nestedInterface;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedItem")
+    private Collection<ItemUsage> nestedItem;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ItemUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TransferActionUsage_nestedItem",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ItemUsage> getNestedItem() {
+        if (nestedItem == null) {
+            nestedItem = new ArrayList<>();
+        }
+        return nestedItem;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ItemUsageImpl.class)
+    public void setNestedItem(Collection<ItemUsage> nestedItem) {
+        this.nestedItem = nestedItem;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedPart")
+    private Collection<PartUsage> nestedPart;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "PartUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TransferActionUsage_nestedPart",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<PartUsage> getNestedPart() {
+        if (nestedPart == null) {
+            nestedPart = new ArrayList<>();
+        }
+        return nestedPart;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PartUsageImpl.class)
+    public void setNestedPart(Collection<PartUsage> nestedPart) {
+        this.nestedPart = nestedPart;
     }
 
 
@@ -735,27 +943,27 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("nestedProperty")
-    private Collection<Property> nestedProperty;
+    // @info.archinnov.achilles.annotations.Column("nestedReference")
+    private Collection<ReferenceUsage> nestedReference;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "PropertyMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedProperty",
+    @ManyToAny(metaDef = "ReferenceUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TransferActionUsage_nestedReference",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Property> getNestedProperty() {
-        if (nestedProperty == null) {
-            nestedProperty = new ArrayList<>();
+    public Collection<ReferenceUsage> getNestedReference() {
+        if (nestedReference == null) {
+            nestedReference = new ArrayList<>();
         }
-        return nestedProperty;
+        return nestedReference;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PropertyImpl.class)
-    public void setNestedProperty(Collection<Property> nestedProperty) {
-        this.nestedProperty = nestedProperty;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ReferenceUsageImpl.class)
+    public void setNestedReference(Collection<ReferenceUsage> nestedReference) {
+        this.nestedReference = nestedReference;
     }
 
 
@@ -1377,6 +1585,67 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
 
 
 
+    // @info.archinnov.achilles.annotations.Column("owningVariantMembership")
+    private VariantMembership owningVariantMembership;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    @Any(metaDef = "VariantMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningVariantMembershipType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningVariantMembershipId", table = "TransferActionUsage")
+    public VariantMembership getOwningVariantMembership() {
+        return owningVariantMembership;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = VariantMembershipImpl.class)
+    public void setOwningVariantMembership(VariantMembership owningVariantMembership) {
+        this.owningVariantMembership = owningVariantMembership;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("owningVariationDefinition")
+    private Definition owningVariationDefinition;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "DefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "owningVariationDefinitionType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningVariationDefinitionId", table = "TransferActionUsage")
+    public Definition getOwningVariationDefinition() {
+        return owningVariationDefinition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = DefinitionImpl.class)
+    public void setOwningVariationDefinition(Definition owningVariationDefinition) {
+        this.owningVariationDefinition = owningVariationDefinition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("owningVariationUsage")
+    private Usage owningVariationUsage;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "owningVariationUsageType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningVariationUsageId", table = "TransferActionUsage")
+    public Usage getOwningVariationUsage() {
+        return owningVariationUsage;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = UsageImpl.class)
+    public void setOwningVariationUsage(Usage owningVariationUsage) {
+        this.owningVariationUsage = owningVariationUsage;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("parameter")
     private Collection<Parameter> parameter;
@@ -1399,32 +1668,6 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ParameterImpl.class)
     public void setParameter(Collection<Parameter> parameter) {
         this.parameter = parameter;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("property")
-    private Collection<Property> property;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "PropertyMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_property",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Property> getProperty() {
-        if (property == null) {
-            property = new ArrayList<>();
-        }
-        return property;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PropertyImpl.class)
-    public void setProperty(Collection<Property> property) {
-        this.property = property;
     }
 
 
@@ -1501,6 +1744,82 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureTypingImpl.class)
     public void setTyping(Collection<FeatureTyping> typing) {
         this.typing = typing;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("usage")
+    private Collection<Usage> usage;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TransferActionUsage_usage",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Usage> getUsage() {
+        if (usage == null) {
+            usage = new ArrayList<>();
+        }
+        return usage;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
+    public void setUsage(Collection<Usage> usage) {
+        this.usage = usage;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("variant")
+    private Collection<Usage> variant;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TransferActionUsage_variant",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Usage> getVariant() {
+        if (variant == null) {
+            variant = new ArrayList<>();
+        }
+        return variant;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
+    public void setVariant(Collection<Usage> variant) {
+        this.variant = variant;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("variantMembership")
+    private Collection<VariantMembership> variantMembership;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "VariantMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TransferActionUsage_variantMembership",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<VariantMembership> getVariantMembership() {
+        if (variantMembership == null) {
+            variantMembership = new ArrayList<>();
+        }
+        return variantMembership;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = VariantMembershipImpl.class)
+    public void setVariantMembership(Collection<VariantMembership> variantMembership) {
+        this.variantMembership = variantMembership;
     }
 
 

@@ -7,10 +7,6 @@ import java.util.Set;
 public interface RequirementUsage extends ConstraintUsage, MofObject {
     RequirementDefinition getRequirementDefinition();
 
-    Usage getRequirementOwningUsage();
-
-    Definition getRequirementOwningDefinition();
-
     Parameter getSubjectParameter();
 
     String getReqId();

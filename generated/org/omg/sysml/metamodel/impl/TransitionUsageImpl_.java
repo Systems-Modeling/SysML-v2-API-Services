@@ -8,21 +8,29 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.AcceptActionUsage;
 import org.omg.sysml.metamodel.ActionUsage;
+import org.omg.sysml.metamodel.AnalysisCaseUsage;
+import org.omg.sysml.metamodel.AttributeUsage;
 import org.omg.sysml.metamodel.Behavior;
+import org.omg.sysml.metamodel.CalculationUsage;
+import org.omg.sysml.metamodel.CaseUsage;
+import org.omg.sysml.metamodel.ConnectionUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Expression;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
-import org.omg.sysml.metamodel.FunctionUsage;
 import org.omg.sysml.metamodel.Generalization;
 import org.omg.sysml.metamodel.Import;
+import org.omg.sysml.metamodel.IndividualUsage;
+import org.omg.sysml.metamodel.InterfaceUsage;
+import org.omg.sysml.metamodel.ItemUsage;
 import org.omg.sysml.metamodel.Membership;
 import org.omg.sysml.metamodel.Parameter;
+import org.omg.sysml.metamodel.PartUsage;
 import org.omg.sysml.metamodel.PortUsage;
-import org.omg.sysml.metamodel.Property;
 import org.omg.sysml.metamodel.Redefinition;
+import org.omg.sysml.metamodel.ReferenceUsage;
 import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.RequirementUsage;
 import org.omg.sysml.metamodel.StateUsage;
@@ -30,13 +38,16 @@ import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.Usage;
+import org.omg.sysml.metamodel.VariantMembership;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(TransitionUsageImpl.class)
 public abstract class TransitionUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<TransitionUsageImpl, Generalization> ownedGeneralization;
+	public static volatile CollectionAttribute<TransitionUsageImpl, PartUsage> nestedPart;
 	public static volatile SingularAttribute<TransitionUsageImpl, Boolean> isConjugated;
+	public static volatile CollectionAttribute<TransitionUsageImpl, Usage> usage;
 	public static volatile SingularAttribute<TransitionUsageImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<TransitionUsageImpl, Usage> nestedUsage;
 	public static volatile CollectionAttribute<TransitionUsageImpl, Subsetting> ownedSubsetting;
@@ -47,19 +58,23 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<TransitionUsageImpl, Expression> guardExpression;
 	public static volatile CollectionAttribute<TransitionUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile CollectionAttribute<TransitionUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<TransitionUsageImpl, Property> property;
+	public static volatile CollectionAttribute<TransitionUsageImpl, Usage> variant;
 	public static volatile SingularAttribute<TransitionUsageImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<TransitionUsageImpl, StateUsage> nestedState;
 	public static volatile SingularAttribute<TransitionUsageImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<TransitionUsageImpl, Redefinition> ownedRedefinition;
+	public static volatile CollectionAttribute<TransitionUsageImpl, Usage> flow;
 	public static volatile SingularAttribute<TransitionUsageImpl, UUID> identifier;
-	public static volatile CollectionAttribute<TransitionUsageImpl, FunctionUsage> nestedFunction;
-	public static volatile CollectionAttribute<TransitionUsageImpl, Property> nestedProperty;
+	public static volatile CollectionAttribute<TransitionUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile CollectionAttribute<TransitionUsageImpl, Feature> ownedFeature;
+	public static volatile CollectionAttribute<TransitionUsageImpl, AnalysisCaseUsage> nestedAnalysisCase;
 	public static volatile CollectionAttribute<TransitionUsageImpl, Feature> endFeature;
+	public static volatile CollectionAttribute<TransitionUsageImpl, Behavior> actionDefinition;
 	public static volatile CollectionAttribute<TransitionUsageImpl, Type> referencedType;
 	public static volatile SingularAttribute<TransitionUsageImpl, Boolean> isEnd;
+	public static volatile CollectionAttribute<TransitionUsageImpl, ItemUsage> nestedItem;
 	public static volatile CollectionAttribute<TransitionUsageImpl, Feature> input;
+	public static volatile CollectionAttribute<TransitionUsageImpl, CalculationUsage> nestedCalculation;
 	public static volatile SingularAttribute<TransitionUsageImpl, Boolean> isComposite;
 	public static volatile CollectionAttribute<TransitionUsageImpl, Type> ownedType;
 	public static volatile SingularAttribute<TransitionUsageImpl, String> name;
@@ -67,9 +82,12 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile ListAttribute<TransitionUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<TransitionUsageImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<TransitionUsageImpl, AcceptActionUsage> triggerAction;
-	public static volatile CollectionAttribute<TransitionUsageImpl, Behavior> activity;
+	public static volatile CollectionAttribute<TransitionUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<TransitionUsageImpl, IndividualUsage> nestedIndividual;
 	public static volatile ListAttribute<TransitionUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<TransitionUsageImpl, Boolean> isNonunique;
+	public static volatile CollectionAttribute<TransitionUsageImpl, ReferenceUsage> nestedReference;
+	public static volatile SingularAttribute<TransitionUsageImpl, Boolean> isVariation;
 	public static volatile CollectionAttribute<TransitionUsageImpl, ActionUsage> effectAction;
 	public static volatile CollectionAttribute<TransitionUsageImpl, Feature> feature;
 	public static volatile ListAttribute<TransitionUsageImpl, Membership> inheritedMembership;
@@ -86,9 +104,14 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile ListAttribute<TransitionUsageImpl, FeatureMembership> featureMembership;
 	public static volatile ListAttribute<TransitionUsageImpl, Import> ownedImport;
 	public static volatile SingularAttribute<TransitionUsageImpl, Boolean> isAbstract;
+	public static volatile CollectionAttribute<TransitionUsageImpl, VariantMembership> variantMembership;
+	public static volatile CollectionAttribute<TransitionUsageImpl, ConnectionUsage> nestedConnection;
+	public static volatile CollectionAttribute<TransitionUsageImpl, InterfaceUsage> nestedInterface;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String NESTED_PART = "nestedPart";
 	public static final String IS_CONJUGATED = "isConjugated";
+	public static final String USAGE = "usage";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String NESTED_USAGE = "nestedUsage";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
@@ -99,19 +122,23 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String GUARD_EXPRESSION = "guardExpression";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String PROPERTY = "property";
+	public static final String VARIANT = "variant";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String NESTED_STATE = "nestedState";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String FLOW = "flow";
 	public static final String IDENTIFIER = "identifier";
-	public static final String NESTED_FUNCTION = "nestedFunction";
-	public static final String NESTED_PROPERTY = "nestedProperty";
+	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String OWNED_FEATURE = "ownedFeature";
+	public static final String NESTED_ANALYSIS_CASE = "nestedAnalysisCase";
 	public static final String END_FEATURE = "endFeature";
+	public static final String ACTION_DEFINITION = "actionDefinition";
 	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String IS_END = "isEnd";
+	public static final String NESTED_ITEM = "nestedItem";
 	public static final String INPUT = "input";
+	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
@@ -119,9 +146,12 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String TRIGGER_ACTION = "triggerAction";
-	public static final String ACTIVITY = "activity";
+	public static final String NESTED_CASE = "nestedCase";
+	public static final String NESTED_INDIVIDUAL = "nestedIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_NONUNIQUE = "isNonunique";
+	public static final String NESTED_REFERENCE = "nestedReference";
+	public static final String IS_VARIATION = "isVariation";
 	public static final String EFFECT_ACTION = "effectAction";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
@@ -138,6 +168,9 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
+	public static final String VARIANT_MEMBERSHIP = "variantMembership";
+	public static final String NESTED_CONNECTION = "nestedConnection";
+	public static final String NESTED_INTERFACE = "nestedInterface";
 
 }
 

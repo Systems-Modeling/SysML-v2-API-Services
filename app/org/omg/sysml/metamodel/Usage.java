@@ -13,10 +13,6 @@ public interface Usage extends Feature, MofObject {
 
     Collection<? extends PortUsage> getNestedPort();
 
-    Collection<? extends Property> getNestedProperty();
-
-    Collection<? extends Property> getProperty();
-
     Collection<? extends ActionUsage> getNestedAction();
 
     Collection<? extends StateUsage> getNestedState();
@@ -27,5 +23,39 @@ public interface Usage extends Feature, MofObject {
 
     Collection<? extends RequirementUsage> getNestedRequirement();
 
-    Collection<? extends FunctionUsage> getNestedFunction();
+    Collection<? extends CalculationUsage> getNestedCalculation();
+
+    Boolean getIsVariation();
+
+    Definition getOwningVariationDefinition();
+
+    Collection<? extends Usage> getFlow();
+
+    Collection<? extends CaseUsage> getNestedCase();
+
+    VariantMembership getOwningVariantMembership();
+
+    Usage getOwningVariationUsage();
+
+    Collection<? extends AnalysisCaseUsage> getNestedAnalysisCase();
+
+    Collection<? extends VariantMembership> getVariantMembership();
+
+    Collection<? extends Usage> getUsage();
+
+    Collection<? extends Usage> getVariant();
+
+    Collection<? extends ReferenceUsage> getNestedReference();
+
+    Collection<? extends ConnectionUsage> getNestedConnection();
+
+    Collection<? extends ItemUsage> getNestedItem();
+
+    Collection<? extends PartUsage> getNestedPart();
+
+    Collection<? extends IndividualUsage> getNestedIndividual();
+
+    Collection<? extends InterfaceUsage> getNestedInterface();
+
+    Collection<? extends AttributeUsage> getNestedAttribute();
 }

@@ -7,20 +7,28 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.ActionUsage;
+import org.omg.sysml.metamodel.AnalysisCaseUsage;
+import org.omg.sysml.metamodel.AttributeUsage;
 import org.omg.sysml.metamodel.Behavior;
+import org.omg.sysml.metamodel.CalculationUsage;
+import org.omg.sysml.metamodel.CaseUsage;
+import org.omg.sysml.metamodel.ConnectionUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
-import org.omg.sysml.metamodel.FunctionUsage;
 import org.omg.sysml.metamodel.Generalization;
 import org.omg.sysml.metamodel.Import;
+import org.omg.sysml.metamodel.IndividualUsage;
+import org.omg.sysml.metamodel.InterfaceUsage;
+import org.omg.sysml.metamodel.ItemUsage;
 import org.omg.sysml.metamodel.Membership;
 import org.omg.sysml.metamodel.Parameter;
+import org.omg.sysml.metamodel.PartUsage;
 import org.omg.sysml.metamodel.PortUsage;
-import org.omg.sysml.metamodel.Property;
 import org.omg.sysml.metamodel.Redefinition;
+import org.omg.sysml.metamodel.ReferenceUsage;
 import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.RequirementUsage;
 import org.omg.sysml.metamodel.StateUsage;
@@ -28,14 +36,17 @@ import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.Usage;
+import org.omg.sysml.metamodel.VariantMembership;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(RequirementUsageImpl.class)
 public abstract class RequirementUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<RequirementUsageImpl, Generalization> ownedGeneralization;
+	public static volatile CollectionAttribute<RequirementUsageImpl, PartUsage> nestedPart;
 	public static volatile SingularAttribute<RequirementUsageImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<RequirementUsageImpl, ConstraintUsage> requiredConstraint;
+	public static volatile CollectionAttribute<RequirementUsageImpl, Usage> usage;
 	public static volatile SingularAttribute<RequirementUsageImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<RequirementUsageImpl, Usage> nestedUsage;
 	public static volatile CollectionAttribute<RequirementUsageImpl, Subsetting> ownedSubsetting;
@@ -45,21 +56,24 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile CollectionAttribute<RequirementUsageImpl, PortUsage> nestedPort;
 	public static volatile CollectionAttribute<RequirementUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile CollectionAttribute<RequirementUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<RequirementUsageImpl, Property> property;
+	public static volatile CollectionAttribute<RequirementUsageImpl, Usage> variant;
 	public static volatile SingularAttribute<RequirementUsageImpl, String> text;
 	public static volatile SingularAttribute<RequirementUsageImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<RequirementUsageImpl, StateUsage> nestedState;
 	public static volatile SingularAttribute<RequirementUsageImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<RequirementUsageImpl, Redefinition> ownedRedefinition;
+	public static volatile CollectionAttribute<RequirementUsageImpl, Usage> flow;
 	public static volatile SingularAttribute<RequirementUsageImpl, UUID> identifier;
-	public static volatile CollectionAttribute<RequirementUsageImpl, FunctionUsage> nestedFunction;
-	public static volatile CollectionAttribute<RequirementUsageImpl, Property> nestedProperty;
+	public static volatile CollectionAttribute<RequirementUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile CollectionAttribute<RequirementUsageImpl, Feature> ownedFeature;
+	public static volatile CollectionAttribute<RequirementUsageImpl, AnalysisCaseUsage> nestedAnalysisCase;
 	public static volatile CollectionAttribute<RequirementUsageImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<RequirementUsageImpl, Type> referencedType;
 	public static volatile SingularAttribute<RequirementUsageImpl, Boolean> isEnd;
+	public static volatile CollectionAttribute<RequirementUsageImpl, ItemUsage> nestedItem;
 	public static volatile SingularAttribute<RequirementUsageImpl, String> reqId;
 	public static volatile CollectionAttribute<RequirementUsageImpl, Feature> input;
+	public static volatile CollectionAttribute<RequirementUsageImpl, CalculationUsage> nestedCalculation;
 	public static volatile SingularAttribute<RequirementUsageImpl, Boolean> isComposite;
 	public static volatile CollectionAttribute<RequirementUsageImpl, ConstraintUsage> assumedConstraint;
 	public static volatile CollectionAttribute<RequirementUsageImpl, Type> ownedType;
@@ -67,8 +81,12 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile CollectionAttribute<RequirementUsageImpl, FeatureTyping> typing;
 	public static volatile ListAttribute<RequirementUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<RequirementUsageImpl, Membership> ownedMembership;
+	public static volatile CollectionAttribute<RequirementUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<RequirementUsageImpl, IndividualUsage> nestedIndividual;
 	public static volatile ListAttribute<RequirementUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<RequirementUsageImpl, Boolean> isNonunique;
+	public static volatile CollectionAttribute<RequirementUsageImpl, ReferenceUsage> nestedReference;
+	public static volatile SingularAttribute<RequirementUsageImpl, Boolean> isVariation;
 	public static volatile CollectionAttribute<RequirementUsageImpl, Feature> feature;
 	public static volatile ListAttribute<RequirementUsageImpl, Membership> inheritedMembership;
 	public static volatile CollectionAttribute<RequirementUsageImpl, Parameter> parameter;
@@ -84,10 +102,15 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile ListAttribute<RequirementUsageImpl, FeatureMembership> featureMembership;
 	public static volatile ListAttribute<RequirementUsageImpl, Import> ownedImport;
 	public static volatile SingularAttribute<RequirementUsageImpl, Boolean> isAbstract;
+	public static volatile CollectionAttribute<RequirementUsageImpl, VariantMembership> variantMembership;
+	public static volatile CollectionAttribute<RequirementUsageImpl, ConnectionUsage> nestedConnection;
+	public static volatile CollectionAttribute<RequirementUsageImpl, InterfaceUsage> nestedInterface;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String NESTED_PART = "nestedPart";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String REQUIRED_CONSTRAINT = "requiredConstraint";
+	public static final String USAGE = "usage";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String NESTED_USAGE = "nestedUsage";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
@@ -97,21 +120,24 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String NESTED_PORT = "nestedPort";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String PROPERTY = "property";
+	public static final String VARIANT = "variant";
 	public static final String TEXT = "text";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String NESTED_STATE = "nestedState";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String FLOW = "flow";
 	public static final String IDENTIFIER = "identifier";
-	public static final String NESTED_FUNCTION = "nestedFunction";
-	public static final String NESTED_PROPERTY = "nestedProperty";
+	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String OWNED_FEATURE = "ownedFeature";
+	public static final String NESTED_ANALYSIS_CASE = "nestedAnalysisCase";
 	public static final String END_FEATURE = "endFeature";
 	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String IS_END = "isEnd";
+	public static final String NESTED_ITEM = "nestedItem";
 	public static final String REQ_ID = "reqId";
 	public static final String INPUT = "input";
+	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String ASSUMED_CONSTRAINT = "assumedConstraint";
 	public static final String OWNED_TYPE = "ownedType";
@@ -119,8 +145,12 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String TYPING = "typing";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
+	public static final String NESTED_CASE = "nestedCase";
+	public static final String NESTED_INDIVIDUAL = "nestedIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_NONUNIQUE = "isNonunique";
+	public static final String NESTED_REFERENCE = "nestedReference";
+	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String PARAMETER = "parameter";
@@ -136,6 +166,9 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
+	public static final String VARIANT_MEMBERSHIP = "variantMembership";
+	public static final String NESTED_CONNECTION = "nestedConnection";
+	public static final String NESTED_INTERFACE = "nestedInterface";
 
 }
 
