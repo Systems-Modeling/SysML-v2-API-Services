@@ -6,8 +6,4 @@ import java.util.Set;
 
 public interface ConstraintUsage extends BooleanExpression, Usage, MofObject {
     Predicate getConstraintDefinition();
-
-    Usage getConstraintOwningUsage();
-
-    Definition getConstraintOwningDefinition();
 }

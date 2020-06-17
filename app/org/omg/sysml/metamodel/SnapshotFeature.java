@@ -4,6 +4,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface SnapshotFeature extends ReferenceProperty, MofObject {
+public interface SnapshotFeature extends Feature, MofObject {
 
 }

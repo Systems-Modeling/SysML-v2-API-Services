@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface StateDefinition extends Activity, MofObject {
+public interface StateDefinition extends ActionDefinition, MofObject {
     Collection<? extends StateUsage> getState();
 
     ActionUsage getEntryAction();

@@ -145,32 +145,6 @@ public class LifeClassImpl extends MofObjectImpl implements LifeClass {
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("flowProperty")
-    private Collection<Property> flowProperty;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "PropertyMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "LifeClass_flowProperty",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Property> getFlowProperty() {
-        if (flowProperty == null) {
-            flowProperty = new ArrayList<>();
-        }
-        return flowProperty;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PropertyImpl.class)
-    public void setFlowProperty(Collection<Property> flowProperty) {
-        this.flowProperty = flowProperty;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("identifier")
     private java.util.UUID identifier;
 
@@ -461,32 +435,6 @@ public class LifeClassImpl extends MofObjectImpl implements LifeClass {
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedAction")
-    private Collection<ActionUsage> ownedAction;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "LifeClass_ownedAction",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<ActionUsage> getOwnedAction() {
-        if (ownedAction == null) {
-            ownedAction = new ArrayList<>();
-        }
-        return ownedAction;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ActionUsageImpl.class)
-    public void setOwnedAction(Collection<ActionUsage> ownedAction) {
-        this.ownedAction = ownedAction;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedConjugator")
     private Conjugation ownedConjugator;
 
@@ -503,32 +451,6 @@ public class LifeClassImpl extends MofObjectImpl implements LifeClass {
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ConjugationImpl.class)
     public void setOwnedConjugator(Conjugation ownedConjugator) {
         this.ownedConjugator = ownedConjugator;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedConstraint")
-    private Collection<ConstraintUsage> ownedConstraint;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ConstraintUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "LifeClass_ownedConstraint",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<ConstraintUsage> getOwnedConstraint() {
-        if (ownedConstraint == null) {
-            ownedConstraint = new ArrayList<>();
-        }
-        return ownedConstraint;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConstraintUsageImpl.class)
-    public void setOwnedConstraint(Collection<ConstraintUsage> ownedConstraint) {
-        this.ownedConstraint = ownedConstraint;
     }
 
 
@@ -636,32 +558,6 @@ public class LifeClassImpl extends MofObjectImpl implements LifeClass {
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedFunction")
-    private Collection<FunctionUsage> ownedFunction;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FunctionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "LifeClass_ownedFunction",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<FunctionUsage> getOwnedFunction() {
-        if (ownedFunction == null) {
-            ownedFunction = new ArrayList<>();
-        }
-        return ownedFunction;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FunctionUsageImpl.class)
-    public void setOwnedFunction(Collection<FunctionUsage> ownedFunction) {
-        this.ownedFunction = ownedFunction;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedGeneralization")
     private List<Generalization> ownedGeneralization;
 
@@ -761,58 +657,6 @@ public class LifeClassImpl extends MofObjectImpl implements LifeClass {
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedPort")
-    private Collection<PortUsage> ownedPort;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "PortUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "LifeClass_ownedPort",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<PortUsage> getOwnedPort() {
-        if (ownedPort == null) {
-            ownedPort = new ArrayList<>();
-        }
-        return ownedPort;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PortUsageImpl.class)
-    public void setOwnedPort(Collection<PortUsage> ownedPort) {
-        this.ownedPort = ownedPort;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedProperty")
-    private Collection<Property> ownedProperty;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "PropertyMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "LifeClass_ownedProperty",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Property> getOwnedProperty() {
-        if (ownedProperty == null) {
-            ownedProperty = new ArrayList<>();
-        }
-        return ownedProperty;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PropertyImpl.class)
-    public void setOwnedProperty(Collection<Property> ownedProperty) {
-        this.ownedProperty = ownedProperty;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("ownedRelationship")
     private Collection<Relationship> ownedRelationship;
 
@@ -833,58 +677,6 @@ public class LifeClassImpl extends MofObjectImpl implements LifeClass {
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
     public void setOwnedRelationship(Collection<Relationship> ownedRelationship) {
         this.ownedRelationship = ownedRelationship;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedRequirement")
-    private Collection<RequirementUsage> ownedRequirement;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "RequirementUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "LifeClass_ownedRequirement",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<RequirementUsage> getOwnedRequirement() {
-        if (ownedRequirement == null) {
-            ownedRequirement = new ArrayList<>();
-        }
-        return ownedRequirement;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RequirementUsageImpl.class)
-    public void setOwnedRequirement(Collection<RequirementUsage> ownedRequirement) {
-        this.ownedRequirement = ownedRequirement;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedState")
-    private Collection<StateUsage> ownedState;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "StateUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "LifeClass_ownedState",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<StateUsage> getOwnedState() {
-        if (ownedState == null) {
-            ownedState = new ArrayList<>();
-        }
-        return ownedState;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StateUsageImpl.class)
-    public void setOwnedState(Collection<StateUsage> ownedState) {
-        this.ownedState = ownedState;
     }
 
 
@@ -911,58 +703,6 @@ public class LifeClassImpl extends MofObjectImpl implements LifeClass {
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SuperclassingImpl.class)
     public void setOwnedSuperclassing(Collection<Superclassing> ownedSuperclassing) {
         this.ownedSuperclassing = ownedSuperclassing;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedTransition")
-    private Collection<TransitionUsage> ownedTransition;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TransitionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "LifeClass_ownedTransition",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<TransitionUsage> getOwnedTransition() {
-        if (ownedTransition == null) {
-            ownedTransition = new ArrayList<>();
-        }
-        return ownedTransition;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TransitionUsageImpl.class)
-    public void setOwnedTransition(Collection<TransitionUsage> ownedTransition) {
-        this.ownedTransition = ownedTransition;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedUsage")
-    private Collection<Usage> ownedUsage;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "LifeClass_ownedUsage",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Usage> getOwnedUsage() {
-        if (ownedUsage == null) {
-            ownedUsage = new ArrayList<>();
-        }
-        return ownedUsage;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
-    public void setOwnedUsage(Collection<Usage> ownedUsage) {
-        this.ownedUsage = ownedUsage;
     }
 
 
@@ -1043,32 +783,6 @@ public class LifeClassImpl extends MofObjectImpl implements LifeClass {
     @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
     public void setOwningRelationship(Relationship owningRelationship) {
         this.owningRelationship = owningRelationship;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("property")
-    private Collection<Property> property;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "PropertyMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "LifeClass_property",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Property> getProperty() {
-        if (property == null) {
-            property = new ArrayList<>();
-        }
-        return property;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PropertyImpl.class)
-    public void setProperty(Collection<Property> property) {
-        this.property = property;
     }
 
 

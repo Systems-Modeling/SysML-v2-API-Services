@@ -9,13 +9,9 @@ public interface Definition extends Classifier, MofObject {
 
     Collection<? extends PortUsage> getOwnedPort();
 
-    Collection<? extends Property> getFlowProperty();
+    Collection<? extends Usage> getFlow();
 
-    Collection<? extends Property> getOwnedProperty();
-
-    Collection<? extends Property> getProperty();
-
-    Collection<? extends ActionUsage> getOwnedAction();
+    Collection<? extends Usage> getUsage();
 
     Collection<? extends StateUsage> getOwnedState();
 
@@ -25,5 +21,31 @@ public interface Definition extends Classifier, MofObject {
 
     Collection<? extends RequirementUsage> getOwnedRequirement();
 
-    Collection<? extends FunctionUsage> getOwnedFunction();
+    Collection<? extends CalculationUsage> getOwnedCalculation();
+
+    Boolean getIsVariation();
+
+    Collection<? extends VariantMembership> getVariantMembership();
+
+    Collection<? extends AnalysisCaseUsage> getOwnedAnalysisCase();
+
+    Collection<? extends Usage> getVariant();
+
+    Collection<? extends CaseUsage> getOwnedCase();
+
+    Collection<? extends ReferenceUsage> getOwnedReference();
+
+    Collection<? extends ActionUsage> getOwnedAction();
+
+    Collection<? extends ConnectionUsage> getOwnedConnection();
+
+    Collection<? extends ItemUsage> getOwnedItem();
+
+    Collection<? extends PartUsage> getOwnedPart();
+
+    Collection<? extends IndividualUsage> getOwnedIndividual();
+
+    Collection<? extends InterfaceUsage> getOwnedInterface();
+
+    Collection<? extends AttributeUsage> getOwnedAttribute();
 }
