@@ -6,6 +6,7 @@ import jackson.JacksonHelper;
 import jackson.JsonLdMofObjectAdornment;
 import org.omg.sysml.metamodel.MofObject;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.utils.RelationshipDirection;
 import play.Environment;
 import play.libs.Json;
 import play.mvc.Controller;
@@ -57,8 +58,18 @@ public class RelationshipController extends Controller {
         return responseRelationship.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 
-    public Result getRelationshipsByProjectIdCommitIdRelatedElementId(UUID projectId, UUID commitId, UUID elementId, Http.Request request) {
-        Set<Relationship> relationships = relationshipService.getRelationshipsByProjectCommitRelatedElement(projectId, commitId, elementId);
+    public Result getRelationshipsByProjectIdCommitIdRelatedElementId(UUID projectId, UUID commitId, UUID elementId, Optional<String> direction, Http.Request request) {
+        RelationshipDirection relDirection = RelationshipDirection.BOTH;
+        if(direction.isPresent()) {
+            if(direction.get().equalsIgnoreCase(RelationshipDirection.IN.toString()))
+                relDirection = RelationshipDirection.IN;
+            else if(direction.get().equalsIgnoreCase(RelationshipDirection.OUT.toString()))
+                relDirection = RelationshipDirection.OUT;
+            else
+                relDirection = RelationshipDirection.BOTH;
+        }
+
+        Set<Relationship> relationships = relationshipService.getRelationshipsByProjectCommitRelatedElement(projectId, commitId, elementId, Optional.of(relDirection));
         boolean respondWithJsonLd = ElementController.respondWithJsonLd(request);
         return ok(JacksonHelper.collectionValueToTree(Set.class,
                 respondWithJsonLd ? JsonLdMofObjectAdornment.class : metamodelProvider.getImplementationClass(Relationship.class),
