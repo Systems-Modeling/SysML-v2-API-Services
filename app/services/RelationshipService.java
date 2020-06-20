@@ -41,17 +41,23 @@ public class RelationshipService {
         return relationship.getIdentifier() != null ? relationshipDao.update(relationship) : relationshipDao.persist(relationship);
     }
 
-    public Set<Relationship> getRelationshipsByProjectCommitRelatedElement(UUID projectId, UUID commitId, UUID relatedElementId, Optional<RelationshipDirection> direction) {
+    public Set<Relationship> getRelationshipsByProjectCommitRelatedElement(UUID projectId, UUID commitId, UUID relatedElementId, RelationshipDirection direction) {
         Commit commit = projectDao.findById(projectId).flatMap(project -> commitDao.findByProjectAndId(project, commitId)).orElseThrow(() -> new IllegalArgumentException("Commit " + commitId + " not found."));
         Element relatedElement = elementDao.findByCommitAndId(commit, relatedElementId).orElseThrow(() -> new IllegalArgumentException("Element " + relatedElementId + " not found."));
         Set<Relationship> allRelationships = relationshipDao.findAllByCommitRelatedElement(commit, relatedElement);
         Set<Relationship> results = allRelationships;
-        if (direction.isPresent()) {
-            if (direction.get().equals(RelationshipDirection.OUT)) {
-                results = allRelationships.stream().filter(r -> r.getSource().stream().anyMatch(e -> e.getIdentifier().equals(relatedElementId))).collect(Collectors.toSet());
-            } else if (direction.get().equals(RelationshipDirection.IN)) {
-                results = allRelationships.stream().filter(r -> r.getTarget().stream().anyMatch(e -> e.getIdentifier().equals(relatedElementId))).collect(Collectors.toSet());
-            }
+        if (RelationshipDirection.OUT.equals(direction)) {
+            results = allRelationships.stream()
+                    .filter(r -> r.getSource().stream()
+                            .anyMatch(e -> Objects.equals(e.getIdentifier(), relatedElementId))
+                    )
+                    .collect(Collectors.toSet());
+        } else if (RelationshipDirection.IN.equals(direction)) {
+            results = allRelationships.stream()
+                    .filter(r -> r.getTarget().stream()
+                            .anyMatch(e -> Objects.equals(e.getIdentifier(), relatedElementId))
+                    )
+                    .collect(Collectors.toSet());
         }
 
         return results;

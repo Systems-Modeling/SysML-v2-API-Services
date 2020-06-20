@@ -16,10 +16,7 @@ import play.mvc.Results;
 import services.RelationshipService;
 
 import javax.inject.Inject;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -59,17 +56,13 @@ public class RelationshipController extends Controller {
     }
 
     public Result getRelationshipsByProjectIdCommitIdRelatedElementId(UUID projectId, UUID commitId, UUID elementId, Optional<String> direction, Http.Request request) {
-        RelationshipDirection relDirection = RelationshipDirection.BOTH;
-        if(direction.isPresent()) {
-            if(direction.get().equalsIgnoreCase(RelationshipDirection.IN.toString()))
-                relDirection = RelationshipDirection.IN;
-            else if(direction.get().equalsIgnoreCase(RelationshipDirection.OUT.toString()))
-                relDirection = RelationshipDirection.OUT;
-            else
-                relDirection = RelationshipDirection.BOTH;
-        }
+        RelationshipDirection relDirection = direction
+                .flatMap(d -> Arrays.stream(RelationshipDirection.values())
+                        .filter(rd -> rd.toString().equalsIgnoreCase(d))
+                        .findAny())
+                .orElse(RelationshipDirection.BOTH);
 
-        Set<Relationship> relationships = relationshipService.getRelationshipsByProjectCommitRelatedElement(projectId, commitId, elementId, Optional.of(relDirection));
+        Set<Relationship> relationships = relationshipService.getRelationshipsByProjectCommitRelatedElement(projectId, commitId, elementId, relDirection);
         boolean respondWithJsonLd = ElementController.respondWithJsonLd(request);
         return ok(JacksonHelper.collectionValueToTree(Set.class,
                 respondWithJsonLd ? JsonLdMofObjectAdornment.class : metamodelProvider.getImplementationClass(Relationship.class),

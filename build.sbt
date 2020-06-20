@@ -33,5 +33,3 @@ javacOptions in Compile ++= Seq("-s", "generated")
 
 sources in(Compile, doc) := Seq.empty
 publishArtifact in(Compile, packageDoc) := false
-
-//routesImport += “org.omg.sysml.utils.RelationshipDirection”
