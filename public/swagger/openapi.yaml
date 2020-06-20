@@ -337,6 +337,16 @@ paths:
         type: string
         format: uuid
         required: true
+      - name: direction
+        in: query
+        description: Filter for relationships that are incoming (in), outgoing (out), or both relative to the related element
+        type: string
+        enum:
+          - 'in'
+          - 'out'
+          - 'both'
+        default: 'both'
+        required: false
     get:
       tags:
         - Relationship

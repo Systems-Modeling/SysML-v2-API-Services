@@ -4,7 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface IndividualUsage extends BlockProperty, MofObject {
+public interface IndividualUsage extends ItemUsage, MofObject {
     IndividualDefinition getIndividualDefinition();
 
     Boolean getIsTimeSlice();

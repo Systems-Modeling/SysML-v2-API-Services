@@ -8,10 +8,12 @@ import dao.RelationshipDao;
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.utils.RelationshipDirection;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Singleton
 public class RelationshipService {
@@ -39,9 +41,25 @@ public class RelationshipService {
         return relationship.getIdentifier() != null ? relationshipDao.update(relationship) : relationshipDao.persist(relationship);
     }
 
-    public Set<Relationship> getRelationshipsByProjectCommitRelatedElement(UUID projectId, UUID commitId, UUID relatedElementId) {
+    public Set<Relationship> getRelationshipsByProjectCommitRelatedElement(UUID projectId, UUID commitId, UUID relatedElementId, RelationshipDirection direction) {
         Commit commit = projectDao.findById(projectId).flatMap(project -> commitDao.findByProjectAndId(project, commitId)).orElseThrow(() -> new IllegalArgumentException("Commit " + commitId + " not found."));
         Element relatedElement = elementDao.findByCommitAndId(commit, relatedElementId).orElseThrow(() -> new IllegalArgumentException("Element " + relatedElementId + " not found."));
-        return relationshipDao.findAllByCommitRelatedElement(commit, relatedElement);
+        Set<Relationship> allRelationships = relationshipDao.findAllByCommitRelatedElement(commit, relatedElement);
+        Set<Relationship> results = allRelationships;
+        if (RelationshipDirection.OUT.equals(direction)) {
+            results = allRelationships.stream()
+                    .filter(r -> r.getSource().stream()
+                            .anyMatch(e -> Objects.equals(e.getIdentifier(), relatedElementId))
+                    )
+                    .collect(Collectors.toSet());
+        } else if (RelationshipDirection.IN.equals(direction)) {
+            results = allRelationships.stream()
+                    .filter(r -> r.getTarget().stream()
+                            .anyMatch(e -> Objects.equals(e.getIdentifier(), relatedElementId))
+                    )
+                    .collect(Collectors.toSet());
+        }
+
+        return results;
     }
 }
