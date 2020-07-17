@@ -33,3 +33,7 @@ javacOptions in Compile ++= Seq("-s", "generated")
 
 sources in(Compile, doc) := Seq.empty
 publishArtifact in(Compile, packageDoc) := false
+
+// https://github.com/playframework/playframework/issues/8286#issuecomment-488733669
+// hopefully fixed in Play 2.8
+PlayKeys.devSettings += "play.server.http.idleTimeout" -> "infinite"
