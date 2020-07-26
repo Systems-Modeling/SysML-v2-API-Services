@@ -11,6 +11,7 @@
         <class>org.omg.sysml.metamodel.impl.ActionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.AnalysisCaseDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.AnalysisCaseUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.AnnotatingElementImpl</class>
         <class>org.omg.sysml.metamodel.impl.AnnotationImpl</class>
         <class>org.omg.sysml.metamodel.impl.AssertConstraintUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.AssociationImpl</class>
@@ -27,7 +28,6 @@
         <class>org.omg.sysml.metamodel.impl.ClassifierImpl</class>
         <class>org.omg.sysml.metamodel.impl.ClassImpl</class>
         <class>org.omg.sysml.metamodel.impl.CommentImpl</class>
-        <class>org.omg.sysml.metamodel.impl.ConditionalImportImpl</class>
         <class>org.omg.sysml.metamodel.impl.ConjugatedPortDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.ConjugatedPortTypingImpl</class>
         <class>org.omg.sysml.metamodel.impl.ConjugationImpl</class>
@@ -40,6 +40,8 @@
         <class>org.omg.sysml.metamodel.impl.DataTypeImpl</class>
         <class>org.omg.sysml.metamodel.impl.DecisionNodeImpl</class>
         <class>org.omg.sysml.metamodel.impl.DefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.DependencyImpl</class>
+        <class>org.omg.sysml.metamodel.impl.DocumentationImpl</class>
         <class>org.omg.sysml.metamodel.impl.ElementImpl</class>
         <class>org.omg.sysml.metamodel.impl.EndFeatureMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.ExhibitStateUsageImpl</class>
@@ -52,7 +54,6 @@
         <class>org.omg.sysml.metamodel.impl.ForkNodeImpl</class>
         <class>org.omg.sysml.metamodel.impl.FunctionImpl</class>
         <class>org.omg.sysml.metamodel.impl.GeneralizationImpl</class>
-        <class>org.omg.sysml.metamodel.impl.ImportConditionImpl</class>
         <class>org.omg.sysml.metamodel.impl.ImportImpl</class>
         <class>org.omg.sysml.metamodel.impl.IndividualDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.IndividualUsageImpl</class>
@@ -84,9 +85,7 @@
         <class>org.omg.sysml.metamodel.impl.NullExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.ObjectiveMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.OperatorExpressionImpl</class>
-        <class>org.omg.sysml.metamodel.impl.OwnershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.PackageImpl</class>
-        <class>org.omg.sysml.metamodel.impl.ParameterImpl</class>
         <class>org.omg.sysml.metamodel.impl.ParameterMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.PartDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.PartUsageImpl</class>
@@ -104,6 +103,7 @@
         <class>org.omg.sysml.metamodel.impl.RequirementConstraintMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.RequirementDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.RequirementUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ResultExpressionMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.ReturnParameterMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.SatisfyRequirementUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.SendActionUsageImpl</class>
@@ -119,6 +119,7 @@
         <class>org.omg.sysml.metamodel.impl.SuccessionItemFlowImpl</class>
         <class>org.omg.sysml.metamodel.impl.SuperclassingImpl</class>
         <class>org.omg.sysml.metamodel.impl.TargetEndImpl</class>
+        <class>org.omg.sysml.metamodel.impl.TextualRepresentationImpl</class>
         <class>org.omg.sysml.metamodel.impl.TimeSliceFeatureImpl</class>
         <class>org.omg.sysml.metamodel.impl.TransferActionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.TransitionFeatureMembershipImpl</class>

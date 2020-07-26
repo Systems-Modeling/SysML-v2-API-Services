@@ -7,5 +7,5 @@ import java.util.Set;
 public interface Expression extends Step, MofObject {
     Function getFunction();
 
-    Parameter getResult();
+    Feature getResult();
 }

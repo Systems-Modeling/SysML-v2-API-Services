@@ -5,5 +5,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface SubjectMembership extends ParameterMembership, MofObject {
-    Parameter getOwnedSubjectParameter();
+    Usage getOwnedSubjectParameter();
 }

@@ -48,21 +48,75 @@ import java.util.HashSet;
 @JsonTypeName(value = "Comment")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public class CommentImpl extends MofObjectImpl implements Comment {
-    // @info.archinnov.achilles.annotations.Column("annotationForComment")
-    private Annotation annotationForComment;
+    // @info.archinnov.achilles.annotations.Column("aliasId")
+    private Collection<String> aliasId;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "annotationForCommentType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "annotationForCommentId", table = "Comment")
-    public Annotation getAnnotationForComment() {
-        return annotationForComment;
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @ElementCollection(targetClass = String.class)
+    @CollectionTable(name = "Comment_aliasId",
+            joinColumns = @JoinColumn(name = "CommentId"))
+    public Collection<String> getAliasId() {
+        if (aliasId == null) {
+            aliasId = new ArrayList<>();
+        }
+        return aliasId;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = AnnotationImpl.class)
-    public void setAnnotationForComment(Annotation annotationForComment) {
-        this.annotationForComment = annotationForComment;
+    public void setAliasId(Collection<String> aliasId) {
+        this.aliasId = aliasId;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("annotatedElement")
+    private Collection<Element> annotatedElement;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Comment_annotatedElement",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Element> getAnnotatedElement() {
+        if (annotatedElement == null) {
+            annotatedElement = new ArrayList<>();
+        }
+        return annotatedElement;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    public void setAnnotatedElement(Collection<Element> annotatedElement) {
+        this.annotatedElement = annotatedElement;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("annotation")
+    private Collection<Annotation> annotation;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Comment_annotation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Annotation> getAnnotation() {
+        if (annotation == null) {
+            annotation = new ArrayList<>();
+        }
+        return annotation;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnnotationImpl.class)
+    public void setAnnotation(Collection<Annotation> annotation) {
+        this.annotation = annotation;
     }
 
 
@@ -85,23 +139,70 @@ public class CommentImpl extends MofObjectImpl implements Comment {
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("commentedElement")
-    private Element commentedElement;
+    // @info.archinnov.achilles.annotations.Column("documentation")
+    private Collection<Documentation> documentation;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "commentedElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "commentedElementId", table = "Comment")
-    public Element getCommentedElement() {
-        return commentedElement;
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Comment_documentation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Documentation> getDocumentation() {
+        if (documentation == null) {
+            documentation = new ArrayList<>();
+        }
+        return documentation;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
-    public void setCommentedElement(Element commentedElement) {
-        this.commentedElement = commentedElement;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DocumentationImpl.class)
+    public void setDocumentation(Collection<Documentation> documentation) {
+        this.documentation = documentation;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("documentationComment")
+    private Collection<Comment> documentationComment;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Comment_documentationComment",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Comment> getDocumentationComment() {
+        if (documentationComment == null) {
+            documentationComment = new ArrayList<>();
+        }
+        return documentationComment;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CommentImpl.class)
+    public void setDocumentationComment(Collection<Comment> documentationComment) {
+        this.documentationComment = documentationComment;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("humanId")
+    private String humanId;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "humanId", table = "Comment")
+    public String getHumanId() {
+        return humanId;
+    }
+
+    @JsonSetter
+    public void setHumanId(String humanId) {
+        this.humanId = humanId;
     }
 
 
@@ -142,6 +243,30 @@ public class CommentImpl extends MofObjectImpl implements Comment {
 
 
 
+    // @info.archinnov.achilles.annotations.Column("ownedAnnotation")
+    private Collection<Annotation> ownedAnnotation;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Comment_ownedAnnotation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Annotation> getOwnedAnnotation() {
+        if (ownedAnnotation == null) {
+            ownedAnnotation = new ArrayList<>();
+        }
+        return ownedAnnotation;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnnotationImpl.class)
+    public void setOwnedAnnotation(Collection<Annotation> ownedAnnotation) {
+        this.ownedAnnotation = ownedAnnotation;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedElement")
     private Collection<Element> ownedElement;
@@ -169,7 +294,7 @@ public class CommentImpl extends MofObjectImpl implements Comment {
 
 
     // @info.archinnov.achilles.annotations.Column("ownedRelationship")
-    private Collection<Relationship> ownedRelationship;
+    private List<Relationship> ownedRelationship;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -177,7 +302,7 @@ public class CommentImpl extends MofObjectImpl implements Comment {
     @JoinTable(name = "Comment_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Relationship> getOwnedRelationship() {
+    public List<Relationship> getOwnedRelationship() {
         if (ownedRelationship == null) {
             ownedRelationship = new ArrayList<>();
         }
@@ -186,8 +311,34 @@ public class CommentImpl extends MofObjectImpl implements Comment {
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
-    public void setOwnedRelationship(Collection<Relationship> ownedRelationship) {
+    public void setOwnedRelationship(List<Relationship> ownedRelationship) {
         this.ownedRelationship = ownedRelationship;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedTextualRepresentation")
+    private Collection<TextualRepresentation> ownedTextualRepresentation;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Comment_ownedTextualRepresentation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<TextualRepresentation> getOwnedTextualRepresentation() {
+        if (ownedTextualRepresentation == null) {
+            ownedTextualRepresentation = new ArrayList<>();
+        }
+        return ownedTextualRepresentation;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TextualRepresentationImpl.class)
+    public void setOwnedTextualRepresentation(Collection<TextualRepresentation> ownedTextualRepresentation) {
+        this.ownedTextualRepresentation = ownedTextualRepresentation;
     }
 
 

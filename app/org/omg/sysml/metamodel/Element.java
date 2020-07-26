@@ -15,9 +15,21 @@ public interface Element extends MofObject {
 
     String getName();
 
-    Collection<? extends Relationship> getOwnedRelationship();
+    List<? extends Relationship> getOwnedRelationship();
 
     Element getOwner();
 
     Collection<? extends Element> getOwnedElement();
+
+    Collection<? extends Documentation> getDocumentation();
+
+    Collection<? extends Comment> getDocumentationComment();
+
+    Collection<? extends Annotation> getOwnedAnnotation();
+
+    Collection<? extends TextualRepresentation> getOwnedTextualRepresentation();
+
+    Collection<? extends String> getAliasId();
+
+    String getHumanId();
 }
