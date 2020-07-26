@@ -27,15 +27,9 @@ public interface Usage extends Feature, MofObject {
 
     Boolean getIsVariation();
 
-    Definition getOwningVariationDefinition();
-
     Collection<? extends Usage> getFlow();
 
     Collection<? extends CaseUsage> getNestedCase();
-
-    VariantMembership getOwningVariantMembership();
-
-    Usage getOwningVariationUsage();
 
     Collection<? extends AnalysisCaseUsage> getNestedAnalysisCase();
 

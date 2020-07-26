@@ -21,6 +21,8 @@ import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import static jackson.JsonLdMofObjectAdornment.JSONLD_MIME_TYPE;
+
 /**
  * @author Manas Bajaj
  * <p>
@@ -60,19 +62,33 @@ public class ElementController extends Controller {
     public Result getElementsByProjectIdCommitId(UUID projectId, UUID commitId, Http.Request request) {
         Set<Element> elements = elementService.getElementsByProjectIdCommitId(projectId, commitId);
         boolean respondWithJsonLd = respondWithJsonLd(request);
-        return ok(JacksonHelper.collectionValueToTree(Set.class,
-                respondWithJsonLd ? JsonLdMofObjectAdornment.class : metamodelProvider.getImplementationClass(Element.class),
+        return Optional.of(
                 elements.stream()
-                        .map(e -> respondWithJsonLd ? adornMofObject(e, request, metamodelProvider, environment, projectId, commitId) : e)
+                        .map(e -> respondWithJsonLd ?
+                                adornMofObject(e, request, metamodelProvider, environment, projectId, commitId) :
+                                e
+                        )
                         .collect(Collectors.toSet())
-        ));
+        )
+                .map(set -> JacksonHelper.collectionValueToTree(Set.class, respondWithJsonLd ?
+                        JsonLdMofObjectAdornment.class :
+                        metamodelProvider.getImplementationClass(Element.class), set)
+                )
+                .map(Results::ok)
+                .map(result -> respondWithJsonLd ? result.as(JSONLD_MIME_TYPE) : result)
+                .orElseThrow();
     }
 
     public Result getElementByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId, Http.Request request) {
         Optional<Element> element = elementService.getElementsByProjectIdCommitIdElementId(projectId, commitId, elementId);
+        boolean respondWithJsonLd = respondWithJsonLd(request);
         return element
-                .map(e -> respondWithJsonLd(request) ? adornMofObject(e, request, metamodelProvider, environment, projectId, commitId) : e)
-                .map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
+                .map(e -> respondWithJsonLd ? adornMofObject(e, request, metamodelProvider, environment, projectId, commitId) : e)
+                .map(Json::toJson)
+                .map(Results::ok)
+                .map(result -> respondWithJsonLd ? result.as(JSONLD_MIME_TYPE) : result)
+                .orElseGet(Results::notFound);
+
     }
 
     static JsonLdMofObjectAdornment adornMofObject(MofObject mof, Http.Request request, MetamodelProvider metamodelProvider, Environment environment, UUID projectId, UUID commitId) {
@@ -95,6 +111,6 @@ public class ElementController extends Controller {
     }
 
     static boolean respondWithJsonLd(Http.Request request) {
-        return request.accepts("application/ld+json");
+        return request.accepts(JSONLD_MIME_TYPE);
     }
 }

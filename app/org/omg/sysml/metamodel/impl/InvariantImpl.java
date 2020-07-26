@@ -48,6 +48,29 @@ import java.util.HashSet;
 @JsonTypeName(value = "Invariant")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public class InvariantImpl extends MofObjectImpl implements Invariant {
+    // @info.archinnov.achilles.annotations.Column("aliasId")
+    private Collection<String> aliasId;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @ElementCollection(targetClass = String.class)
+    @CollectionTable(name = "Invariant_aliasId",
+            joinColumns = @JoinColumn(name = "InvariantId"))
+    public Collection<String> getAliasId() {
+        if (aliasId == null) {
+            aliasId = new ArrayList<>();
+        }
+        return aliasId;
+    }
+
+    @JsonSetter
+    public void setAliasId(Collection<String> aliasId) {
+        this.aliasId = aliasId;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("assertionConnector")
     private BindingConnector assertionConnector;
@@ -110,6 +133,56 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ConjugationImpl.class)
     public void setConjugator(Conjugation conjugator) {
         this.conjugator = conjugator;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("documentation")
+    private Collection<Documentation> documentation;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Invariant_documentation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Documentation> getDocumentation() {
+        if (documentation == null) {
+            documentation = new ArrayList<>();
+        }
+        return documentation;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DocumentationImpl.class)
+    public void setDocumentation(Collection<Documentation> documentation) {
+        this.documentation = documentation;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("documentationComment")
+    private Collection<Comment> documentationComment;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Invariant_documentationComment",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Comment> getDocumentationComment() {
+        if (documentationComment == null) {
+            documentationComment = new ArrayList<>();
+        }
+        return documentationComment;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CommentImpl.class)
+    public void setDocumentationComment(Collection<Comment> documentationComment) {
+        this.documentationComment = documentationComment;
     }
 
 
@@ -230,6 +303,24 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonDeserialize(using = MofObjectDeserializer.class, as = FunctionImpl.class)
     public void setFunction(Function function) {
         this.function = function;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("humanId")
+    private String humanId;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "humanId", table = "Invariant")
+    public String getHumanId() {
+        return humanId;
+    }
+
+    @JsonSetter
+    public void setHumanId(String humanId) {
+        this.humanId = humanId;
     }
 
 
@@ -609,6 +700,30 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
 
 
 
+    // @info.archinnov.achilles.annotations.Column("ownedAnnotation")
+    private Collection<Annotation> ownedAnnotation;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Invariant_ownedAnnotation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Annotation> getOwnedAnnotation() {
+        if (ownedAnnotation == null) {
+            ownedAnnotation = new ArrayList<>();
+        }
+        return ownedAnnotation;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnnotationImpl.class)
+    public void setOwnedAnnotation(Collection<Annotation> ownedAnnotation) {
+        this.ownedAnnotation = ownedAnnotation;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedConjugator")
     private Conjugation ownedConjugator;
@@ -859,7 +974,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
 
 
     // @info.archinnov.achilles.annotations.Column("ownedRelationship")
-    private Collection<Relationship> ownedRelationship;
+    private List<Relationship> ownedRelationship;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -867,7 +982,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JoinTable(name = "Invariant_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Relationship> getOwnedRelationship() {
+    public List<Relationship> getOwnedRelationship() {
         if (ownedRelationship == null) {
             ownedRelationship = new ArrayList<>();
         }
@@ -876,7 +991,7 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
-    public void setOwnedRelationship(Collection<Relationship> ownedRelationship) {
+    public void setOwnedRelationship(List<Relationship> ownedRelationship) {
         this.ownedRelationship = ownedRelationship;
     }
 
@@ -904,6 +1019,32 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SubsettingImpl.class)
     public void setOwnedSubsetting(Collection<Subsetting> ownedSubsetting) {
         this.ownedSubsetting = ownedSubsetting;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedTextualRepresentation")
+    private Collection<TextualRepresentation> ownedTextualRepresentation;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Invariant_ownedTextualRepresentation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<TextualRepresentation> getOwnedTextualRepresentation() {
+        if (ownedTextualRepresentation == null) {
+            ownedTextualRepresentation = new ArrayList<>();
+        }
+        return ownedTextualRepresentation;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TextualRepresentationImpl.class)
+    public void setOwnedTextualRepresentation(Collection<TextualRepresentation> ownedTextualRepresentation) {
+        this.ownedTextualRepresentation = ownedTextualRepresentation;
     }
 
 
@@ -1056,16 +1197,16 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("parameter")
-    private Collection<Parameter> parameter;
+    private Collection<Feature> parameter;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ParameterMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Invariant_parameter",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Parameter> getParameter() {
+    public Collection<Feature> getParameter() {
         if (parameter == null) {
             parameter = new ArrayList<>();
         }
@@ -1073,8 +1214,8 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ParameterImpl.class)
-    public void setParameter(Collection<Parameter> parameter) {
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    public void setParameter(Collection<Feature> parameter) {
         this.parameter = parameter;
     }
 
@@ -1129,20 +1270,20 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("result")
-    private Parameter result;
+    private Feature result;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "ParameterMetaDef", metaColumn = @javax.persistence.Column(name = "resultType"), fetch = FetchType.LAZY)
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "resultType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "resultId", table = "Invariant")
-    public Parameter getResult() {
+    public Feature getResult() {
         return result;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ParameterImpl.class)
-    public void setResult(Parameter result) {
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
+    public void setResult(Feature result) {
         this.result = result;
     }
 

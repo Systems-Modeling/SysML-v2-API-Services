@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import config.MetamodelProvider;
 import jackson.JacksonHelper;
 import jackson.JsonLdMofObjectAdornment;
+import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.MofObject;
 import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.utils.RelationshipDirection;
@@ -18,6 +19,10 @@ import services.RelationshipService;
 import javax.inject.Inject;
 import java.util.*;
 import java.util.stream.Collectors;
+
+import static controllers.ElementController.adornMofObject;
+import static controllers.ElementController.respondWithJsonLd;
+import static jackson.JsonLdMofObjectAdornment.JSONLD_MIME_TYPE;
 
 /**
  * @author Manas Bajaj
@@ -63,12 +68,21 @@ public class RelationshipController extends Controller {
                 .orElse(RelationshipDirection.BOTH);
 
         Set<Relationship> relationships = relationshipService.getRelationshipsByProjectCommitRelatedElement(projectId, commitId, elementId, relDirection);
-        boolean respondWithJsonLd = ElementController.respondWithJsonLd(request);
-        return ok(JacksonHelper.collectionValueToTree(Set.class,
-                respondWithJsonLd ? JsonLdMofObjectAdornment.class : metamodelProvider.getImplementationClass(Relationship.class),
-                relationships.stream().
-                        map(r -> respondWithJsonLd ? ElementController.adornMofObject((MofObject) r, request, metamodelProvider, environment, projectId, commitId) : r)
+        boolean respondWithJsonLd = respondWithJsonLd(request);
+        return Optional.of(
+                ((Set<? extends Element>) relationships).stream()
+                        .map(e -> respondWithJsonLd ?
+                                adornMofObject(e, request, metamodelProvider, environment, projectId, commitId) :
+                                e
+                        )
                         .collect(Collectors.toSet())
-        ));
+        )
+                .map(set -> JacksonHelper.collectionValueToTree(Set.class, respondWithJsonLd ?
+                        JsonLdMofObjectAdornment.class :
+                        metamodelProvider.getImplementationClass(Relationship.class), set)
+                )
+                .map(Results::ok)
+                .map(result -> respondWithJsonLd ? result.as(JSONLD_MIME_TYPE) : result)
+                .orElseThrow();
     }
 }

@@ -48,6 +48,29 @@ import java.util.HashSet;
 @JsonTypeName(value = "ReturnParameterMembership")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public class ReturnParameterMembershipImpl extends MofObjectImpl implements ReturnParameterMembership {
+    // @info.archinnov.achilles.annotations.Column("aliasId")
+    private Collection<String> aliasId;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @ElementCollection(targetClass = String.class)
+    @CollectionTable(name = "ReturnParameterMembership_aliasId",
+            joinColumns = @JoinColumn(name = "ReturnParameterMembershipId"))
+    public Collection<String> getAliasId() {
+        if (aliasId == null) {
+            aliasId = new ArrayList<>();
+        }
+        return aliasId;
+    }
+
+    @JsonSetter
+    public void setAliasId(Collection<String> aliasId) {
+        this.aliasId = aliasId;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("direction")
     // @info.archinnov.achilles.annotations.Enumerated(info.archinnov.achilles.annotations.Enumerated.Encoding.NAME)
     private FeatureDirectionKind direction;
@@ -62,6 +85,74 @@ public class ReturnParameterMembershipImpl extends MofObjectImpl implements Retu
     @JsonSetter
     public void setDirection(FeatureDirectionKind direction) {
         this.direction = direction;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("documentation")
+    private Collection<Documentation> documentation;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ReturnParameterMembership_documentation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Documentation> getDocumentation() {
+        if (documentation == null) {
+            documentation = new ArrayList<>();
+        }
+        return documentation;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DocumentationImpl.class)
+    public void setDocumentation(Collection<Documentation> documentation) {
+        this.documentation = documentation;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("documentationComment")
+    private Collection<Comment> documentationComment;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ReturnParameterMembership_documentationComment",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Comment> getDocumentationComment() {
+        if (documentationComment == null) {
+            documentationComment = new ArrayList<>();
+        }
+        return documentationComment;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CommentImpl.class)
+    public void setDocumentationComment(Collection<Comment> documentationComment) {
+        this.documentationComment = documentationComment;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("humanId")
+    private String humanId;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "humanId", table = "ReturnParameterMembership")
+    public String getHumanId() {
+        return humanId;
+    }
+
+    @JsonSetter
+    public void setHumanId(String humanId) {
+        this.humanId = humanId;
     }
 
 
@@ -219,19 +310,19 @@ public class ReturnParameterMembershipImpl extends MofObjectImpl implements Retu
 
 
     // @info.archinnov.achilles.annotations.Column("memberParameter")
-    private Parameter memberParameter;
+    private Feature memberParameter;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "ParameterMetaDef", metaColumn = @javax.persistence.Column(name = "memberParameterType"), fetch = FetchType.LAZY)
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "memberParameterType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "memberParameterId", table = "ReturnParameterMembership")
-    public Parameter getMemberParameter() {
+    public Feature getMemberParameter() {
         return memberParameter;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ParameterImpl.class)
-    public void setMemberParameter(Parameter memberParameter) {
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
+    public void setMemberParameter(Feature memberParameter) {
         this.memberParameter = memberParameter;
     }
 
@@ -272,6 +363,30 @@ public class ReturnParameterMembershipImpl extends MofObjectImpl implements Retu
     @JsonSetter
     public void setName(String name) {
         this.name = name;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("ownedAnnotation")
+    private Collection<Annotation> ownedAnnotation;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ReturnParameterMembership_ownedAnnotation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Annotation> getOwnedAnnotation() {
+        if (ownedAnnotation == null) {
+            ownedAnnotation = new ArrayList<>();
+        }
+        return ownedAnnotation;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnnotationImpl.class)
+    public void setOwnedAnnotation(Collection<Annotation> ownedAnnotation) {
+        this.ownedAnnotation = ownedAnnotation;
     }
 
 
@@ -341,26 +456,26 @@ public class ReturnParameterMembershipImpl extends MofObjectImpl implements Retu
 
 
     // @info.archinnov.achilles.annotations.Column("ownedMemberParameter")
-    private Parameter ownedMemberParameter;
+    private Feature ownedMemberParameter;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "ParameterMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberParameterType"), fetch = FetchType.LAZY)
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberParameterType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownedMemberParameterId", table = "ReturnParameterMembership")
-    public Parameter getOwnedMemberParameter() {
+    public Feature getOwnedMemberParameter() {
         return ownedMemberParameter;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ParameterImpl.class)
-    public void setOwnedMemberParameter(Parameter ownedMemberParameter) {
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
+    public void setOwnedMemberParameter(Feature ownedMemberParameter) {
         this.ownedMemberParameter = ownedMemberParameter;
     }
 
 
 
     // @info.archinnov.achilles.annotations.Column("ownedRelatedElement")
-    private Collection<Element> ownedRelatedElement;
+    private List<Element> ownedRelatedElement;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -368,7 +483,7 @@ public class ReturnParameterMembershipImpl extends MofObjectImpl implements Retu
     @JoinTable(name = "ReturnParameterMembership_ownedRelatedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Element> getOwnedRelatedElement() {
+    public List<Element> getOwnedRelatedElement() {
         if (ownedRelatedElement == null) {
             ownedRelatedElement = new ArrayList<>();
         }
@@ -377,14 +492,14 @@ public class ReturnParameterMembershipImpl extends MofObjectImpl implements Retu
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
-    public void setOwnedRelatedElement(Collection<Element> ownedRelatedElement) {
+    public void setOwnedRelatedElement(List<Element> ownedRelatedElement) {
         this.ownedRelatedElement = ownedRelatedElement;
     }
 
 
 
     // @info.archinnov.achilles.annotations.Column("ownedRelationship")
-    private Collection<Relationship> ownedRelationship;
+    private List<Relationship> ownedRelationship;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -392,7 +507,7 @@ public class ReturnParameterMembershipImpl extends MofObjectImpl implements Retu
     @JoinTable(name = "ReturnParameterMembership_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Relationship> getOwnedRelationship() {
+    public List<Relationship> getOwnedRelationship() {
         if (ownedRelationship == null) {
             ownedRelationship = new ArrayList<>();
         }
@@ -401,8 +516,34 @@ public class ReturnParameterMembershipImpl extends MofObjectImpl implements Retu
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
-    public void setOwnedRelationship(Collection<Relationship> ownedRelationship) {
+    public void setOwnedRelationship(List<Relationship> ownedRelationship) {
         this.ownedRelationship = ownedRelationship;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedTextualRepresentation")
+    private Collection<TextualRepresentation> ownedTextualRepresentation;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ReturnParameterMembership_ownedTextualRepresentation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<TextualRepresentation> getOwnedTextualRepresentation() {
+        if (ownedTextualRepresentation == null) {
+            ownedTextualRepresentation = new ArrayList<>();
+        }
+        return ownedTextualRepresentation;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TextualRepresentationImpl.class)
+    public void setOwnedTextualRepresentation(Collection<TextualRepresentation> ownedTextualRepresentation) {
+        this.ownedTextualRepresentation = ownedTextualRepresentation;
     }
 
 
@@ -527,7 +668,7 @@ public class ReturnParameterMembershipImpl extends MofObjectImpl implements Retu
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("relatedElement")
-    private Collection<Element> relatedElement;
+    private List<Element> relatedElement;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -536,7 +677,7 @@ public class ReturnParameterMembershipImpl extends MofObjectImpl implements Retu
     @JoinTable(name = "ReturnParameterMembership_relatedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Element> getRelatedElement() {
+    public List<Element> getRelatedElement() {
         if (relatedElement == null) {
             relatedElement = new ArrayList<>();
         }
@@ -545,14 +686,14 @@ public class ReturnParameterMembershipImpl extends MofObjectImpl implements Retu
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
-    public void setRelatedElement(Collection<Element> relatedElement) {
+    public void setRelatedElement(List<Element> relatedElement) {
         this.relatedElement = relatedElement;
     }
 
 
 
     // @info.archinnov.achilles.annotations.Column("source")
-    private Collection<Element> source;
+    private List<Element> source;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -560,7 +701,7 @@ public class ReturnParameterMembershipImpl extends MofObjectImpl implements Retu
     @JoinTable(name = "ReturnParameterMembership_source",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Element> getSource() {
+    public List<Element> getSource() {
         if (source == null) {
             source = new ArrayList<>();
         }
@@ -569,14 +710,14 @@ public class ReturnParameterMembershipImpl extends MofObjectImpl implements Retu
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
-    public void setSource(Collection<Element> source) {
+    public void setSource(List<Element> source) {
         this.source = source;
     }
 
 
 
     // @info.archinnov.achilles.annotations.Column("target")
-    private Collection<Element> target;
+    private List<Element> target;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -584,7 +725,7 @@ public class ReturnParameterMembershipImpl extends MofObjectImpl implements Retu
     @JoinTable(name = "ReturnParameterMembership_target",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Element> getTarget() {
+    public List<Element> getTarget() {
         if (target == null) {
             target = new ArrayList<>();
         }
@@ -593,7 +734,7 @@ public class ReturnParameterMembershipImpl extends MofObjectImpl implements Retu
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
-    public void setTarget(Collection<Element> target) {
+    public void setTarget(List<Element> target) {
         this.target = target;
     }
 
