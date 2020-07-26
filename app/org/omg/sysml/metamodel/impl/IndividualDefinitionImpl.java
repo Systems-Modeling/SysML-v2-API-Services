@@ -48,6 +48,29 @@ import java.util.HashSet;
 @JsonTypeName(value = "IndividualDefinition")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public class IndividualDefinitionImpl extends MofObjectImpl implements IndividualDefinition {
+    // @info.archinnov.achilles.annotations.Column("aliasId")
+    private Collection<String> aliasId;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @ElementCollection(targetClass = String.class)
+    @CollectionTable(name = "IndividualDefinition_aliasId",
+            joinColumns = @JoinColumn(name = "IndividualDefinitionId"))
+    public Collection<String> getAliasId() {
+        if (aliasId == null) {
+            aliasId = new ArrayList<>();
+        }
+        return aliasId;
+    }
+
+    @JsonSetter
+    public void setAliasId(Collection<String> aliasId) {
+        this.aliasId = aliasId;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("conjugator")
     private Conjugation conjugator;
 
@@ -63,6 +86,56 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ConjugationImpl.class)
     public void setConjugator(Conjugation conjugator) {
         this.conjugator = conjugator;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("documentation")
+    private Collection<Documentation> documentation;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "IndividualDefinition_documentation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Documentation> getDocumentation() {
+        if (documentation == null) {
+            documentation = new ArrayList<>();
+        }
+        return documentation;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DocumentationImpl.class)
+    public void setDocumentation(Collection<Documentation> documentation) {
+        this.documentation = documentation;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("documentationComment")
+    private Collection<Comment> documentationComment;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "IndividualDefinition_documentationComment",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Comment> getDocumentationComment() {
+        if (documentationComment == null) {
+            documentationComment = new ArrayList<>();
+        }
+        return documentationComment;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CommentImpl.class)
+    public void setDocumentationComment(Collection<Comment> documentationComment) {
+        this.documentationComment = documentationComment;
     }
 
 
@@ -167,6 +240,24 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
     public void setFlow(Collection<Usage> flow) {
         this.flow = flow;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("humanId")
+    private String humanId;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "humanId", table = "IndividualDefinition")
+    public String getHumanId() {
+        return humanId;
+    }
+
+    @JsonSetter
+    public void setHumanId(String humanId) {
+        this.humanId = humanId;
     }
 
 
@@ -545,6 +636,30 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnalysisCaseUsageImpl.class)
     public void setOwnedAnalysisCase(Collection<AnalysisCaseUsage> ownedAnalysisCase) {
         this.ownedAnalysisCase = ownedAnalysisCase;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("ownedAnnotation")
+    private Collection<Annotation> ownedAnnotation;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "IndividualDefinition_ownedAnnotation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Annotation> getOwnedAnnotation() {
+        if (ownedAnnotation == null) {
+            ownedAnnotation = new ArrayList<>();
+        }
+        return ownedAnnotation;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnnotationImpl.class)
+    public void setOwnedAnnotation(Collection<Annotation> ownedAnnotation) {
+        this.ownedAnnotation = ownedAnnotation;
     }
 
 
@@ -1059,7 +1174,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
 
 
     // @info.archinnov.achilles.annotations.Column("ownedRelationship")
-    private Collection<Relationship> ownedRelationship;
+    private List<Relationship> ownedRelationship;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1067,7 +1182,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JoinTable(name = "IndividualDefinition_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Relationship> getOwnedRelationship() {
+    public List<Relationship> getOwnedRelationship() {
         if (ownedRelationship == null) {
             ownedRelationship = new ArrayList<>();
         }
@@ -1076,7 +1191,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
-    public void setOwnedRelationship(Collection<Relationship> ownedRelationship) {
+    public void setOwnedRelationship(List<Relationship> ownedRelationship) {
         this.ownedRelationship = ownedRelationship;
     }
 
@@ -1156,6 +1271,32 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SuperclassingImpl.class)
     public void setOwnedSuperclassing(Collection<Superclassing> ownedSuperclassing) {
         this.ownedSuperclassing = ownedSuperclassing;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedTextualRepresentation")
+    private Collection<TextualRepresentation> ownedTextualRepresentation;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "IndividualDefinition_ownedTextualRepresentation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<TextualRepresentation> getOwnedTextualRepresentation() {
+        if (ownedTextualRepresentation == null) {
+            ownedTextualRepresentation = new ArrayList<>();
+        }
+        return ownedTextualRepresentation;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TextualRepresentationImpl.class)
+    public void setOwnedTextualRepresentation(Collection<TextualRepresentation> ownedTextualRepresentation) {
+        this.ownedTextualRepresentation = ownedTextualRepresentation;
     }
 
 

@@ -5,13 +5,13 @@ import java.util.List;
 import java.util.Set;
 
 public interface RequirementDefinition extends ConstraintDefinition, MofObject {
-    Parameter getSubjectParameter();
-
     String getReqId();
 
-    String getText();
+    Collection<? extends String> getText();
 
     Collection<? extends ConstraintUsage> getAssumedConstraint();
 
     Collection<? extends ConstraintUsage> getRequiredConstraint();
+
+    Usage getSubjectParameter();
 }

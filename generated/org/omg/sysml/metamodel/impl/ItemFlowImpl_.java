@@ -6,9 +6,12 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
+import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.Association;
 import org.omg.sysml.metamodel.Behavior;
 import org.omg.sysml.metamodel.Classifier;
+import org.omg.sysml.metamodel.Comment;
+import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
@@ -19,10 +22,10 @@ import org.omg.sysml.metamodel.ItemFeature;
 import org.omg.sysml.metamodel.ItemFlowEnd;
 import org.omg.sysml.metamodel.ItemFlowFeature;
 import org.omg.sysml.metamodel.Membership;
-import org.omg.sysml.metamodel.Parameter;
 import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.Subsetting;
+import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.Type;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
@@ -33,15 +36,18 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isConjugated;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<ItemFlowImpl, Subsetting> ownedSubsetting;
-	public static volatile CollectionAttribute<ItemFlowImpl, Element> source;
+	public static volatile ListAttribute<ItemFlowImpl, Element> source;
 	public static volatile CollectionAttribute<ItemFlowImpl, Type> type;
 	public static volatile CollectionAttribute<ItemFlowImpl, Feature> output;
 	public static volatile ListAttribute<ItemFlowImpl, Feature> sourceOutputFeature;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isSufficient;
+	public static volatile CollectionAttribute<ItemFlowImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<ItemFlowImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<ItemFlowImpl, UUID> identifier;
+	public static volatile CollectionAttribute<ItemFlowImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<ItemFlowImpl, Feature> ownedFeature;
+	public static volatile CollectionAttribute<ItemFlowImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<ItemFlowImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<ItemFlowImpl, Association> ownedAssociationType;
 	public static volatile CollectionAttribute<ItemFlowImpl, Type> referencedType;
@@ -50,7 +56,7 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile CollectionAttribute<ItemFlowImpl, Feature> input;
 	public static volatile ListAttribute<ItemFlowImpl, Feature> targetInputFeature;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isComposite;
-	public static volatile CollectionAttribute<ItemFlowImpl, Element> relatedElement;
+	public static volatile ListAttribute<ItemFlowImpl, Element> relatedElement;
 	public static volatile CollectionAttribute<ItemFlowImpl, Type> ownedType;
 	public static volatile SingularAttribute<ItemFlowImpl, String> name;
 	public static volatile CollectionAttribute<ItemFlowImpl, FeatureTyping> typing;
@@ -61,11 +67,12 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile ListAttribute<ItemFlowImpl, Classifier> itemType;
 	public static volatile CollectionAttribute<ItemFlowImpl, Association> association;
 	public static volatile ListAttribute<ItemFlowImpl, Membership> membership;
-	public static volatile CollectionAttribute<ItemFlowImpl, Element> ownedRelatedElement;
+	public static volatile ListAttribute<ItemFlowImpl, Element> ownedRelatedElement;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isNonunique;
+	public static volatile CollectionAttribute<ItemFlowImpl, Feature> targetFeature;
 	public static volatile CollectionAttribute<ItemFlowImpl, Feature> feature;
 	public static volatile ListAttribute<ItemFlowImpl, Membership> inheritedMembership;
-	public static volatile CollectionAttribute<ItemFlowImpl, Parameter> parameter;
+	public static volatile CollectionAttribute<ItemFlowImpl, Feature> parameter;
 	public static volatile ListAttribute<ItemFlowImpl, Element> member;
 	public static volatile CollectionAttribute<ItemFlowImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<ItemFlowImpl, FeatureMembership> ownedFeatureMembership;
@@ -74,13 +81,16 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile CollectionAttribute<ItemFlowImpl, ItemFlowFeature> itemFlowFeature;
 	public static volatile ListAttribute<ItemFlowImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<ItemFlowImpl, Element> ownedElement;
-	public static volatile CollectionAttribute<ItemFlowImpl, Relationship> ownedRelationship;
+	public static volatile ListAttribute<ItemFlowImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<ItemFlowImpl, FeatureMembership> featureMembership;
 	public static volatile ListAttribute<ItemFlowImpl, Import> ownedImport;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isAbstract;
-	public static volatile CollectionAttribute<ItemFlowImpl, Feature> relatedFeature;
-	public static volatile CollectionAttribute<ItemFlowImpl, Element> target;
+	public static volatile ListAttribute<ItemFlowImpl, Feature> relatedFeature;
+	public static volatile ListAttribute<ItemFlowImpl, Element> target;
+	public static volatile CollectionAttribute<ItemFlowImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isDirected;
+	public static volatile SingularAttribute<ItemFlowImpl, String> humanId;
+	public static volatile CollectionAttribute<ItemFlowImpl, String> aliasId;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String IS_CONJUGATED = "isConjugated";
@@ -91,10 +101,13 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static final String OUTPUT = "output";
 	public static final String SOURCE_OUTPUT_FEATURE = "sourceOutputFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";
+	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";
+	public static final String DOCUMENTATION = "documentation";
 	public static final String END_FEATURE = "endFeature";
 	public static final String OWNED_ASSOCIATION_TYPE = "ownedAssociationType";
 	public static final String REFERENCED_TYPE = "referencedType";
@@ -116,6 +129,7 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String IS_NONUNIQUE = "isNonunique";
+	public static final String TARGET_FEATURE = "targetFeature";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String PARAMETER = "parameter";
@@ -133,7 +147,10 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String TARGET = "target";
+	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String IS_DIRECTED = "isDirected";
+	public static final String HUMAN_ID = "humanId";
+	public static final String ALIAS_ID = "aliasId";
 
 }
 

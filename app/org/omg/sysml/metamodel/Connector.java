@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface Connector extends Feature, Relationship, MofObject {
-    Collection<? extends Feature> getRelatedFeature();
+    List<? extends Feature> getRelatedFeature();
 
     Collection<? extends Association> getAssociation();
 
@@ -14,4 +14,8 @@ public interface Connector extends Feature, Relationship, MofObject {
     Collection<? extends Association> getOwnedAssociationType();
 
     Collection<? extends Feature> getConnectorEnd();
+
+    Feature getSourceFeature();
+
+    Collection<? extends Feature> getTargetFeature();
 }

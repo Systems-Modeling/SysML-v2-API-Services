@@ -7,5 +7,5 @@ import java.util.Set;
 public interface CaseDefinition extends CalculationDefinition, MofObject {
     RequirementUsage getObjectiveRequirement();
 
-    Parameter getSubjectParameter();
+    Usage getSubjectParameter();
 }

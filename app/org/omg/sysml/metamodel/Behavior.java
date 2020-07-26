@@ -7,5 +7,5 @@ import java.util.Set;
 public interface Behavior extends Classifier, MofObject {
     Collection<? extends Step> getStep();
 
-    Collection<? extends Parameter> getParameter();
+    Collection<? extends Feature> getParameter();
 }

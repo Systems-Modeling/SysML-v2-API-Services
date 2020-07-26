@@ -6,8 +6,4 @@ import java.util.Set;
 
 public interface VariantMembership extends Membership, MofObject {
     Usage getOwnedVariantUsage();
-
-    Definition getOwningVariationDefinition();
-
-    Usage getOwningVariationUsage();
 }
