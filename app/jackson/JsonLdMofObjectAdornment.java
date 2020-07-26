@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class JsonLdMofObjectAdornment {
+    public static final String JSONLD_MIME_TYPE = "application/ld+json";
+
     private static final Map<String, JsonNode> CONTEXT_CACHE = new HashMap<>();
 
     private final MofObject mof;
