@@ -38,6 +38,10 @@ public class ElementController extends Controller {
     @Inject
     private Environment environment;
 
+    private static final boolean INLINE_JSON_LD_CONTEXT_DEFAULT = true;
+    private static final boolean INLINE_JSON_LD_CONTEXT = Optional.ofNullable(System.getenv("INLINE_JSON_LD_CONTEXT"))
+            .map(Boolean::parseBoolean).orElse(INLINE_JSON_LD_CONTEXT_DEFAULT);
+
     public Result byId(String id) {
         UUID uuid = UUID.fromString(id);
         Optional<Element> element = elementService.getById(uuid);
@@ -95,7 +99,7 @@ public class ElementController extends Controller {
         return new JsonLdMofObjectAdornment(mof, metamodelProvider, environment,
                 String.format("http://%s", request.host()),
                 String.format("/projects/%s/commits/%s/elements/", projectId, commitId),
-                false
+                INLINE_JSON_LD_CONTEXT
         );
     }
 

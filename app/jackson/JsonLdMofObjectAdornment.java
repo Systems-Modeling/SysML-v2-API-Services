@@ -40,7 +40,7 @@ public class JsonLdMofObjectAdornment {
             if (!(cachedContext instanceof ObjectNode)) {
                 throw new IllegalStateException("context expected to be an ObjectNode");
             }
-            contextObjectNode.setAll((ObjectNode) cachedContext);
+            contextObjectNode.setAll((ObjectNode) cachedContext.get("@context"));
         }
         else {
             contextObjectNode.put("@import", URI.create(host).resolve(String.format("/jsonld/%s.jsonld", type)).toString());
