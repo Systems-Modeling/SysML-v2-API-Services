@@ -30,6 +30,7 @@ import org.omg.sysml.metamodel.PartUsage;
 import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.ReferenceUsage;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.RenderingUsage;
 import org.omg.sysml.metamodel.RequirementUsage;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Step;
@@ -38,6 +39,9 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Usage;
 import org.omg.sysml.metamodel.VariantMembership;
+import org.omg.sysml.metamodel.VerificationCaseUsage;
+import org.omg.sysml.metamodel.ViewUsage;
+import org.omg.sysml.metamodel.ViewpointUsage;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(RequirementDefinitionImpl.class)
@@ -46,9 +50,12 @@ public abstract class RequirementDefinitionImpl_ extends org.omg.sysml.metamodel
 	public static volatile CollectionAttribute<RequirementDefinitionImpl, PortUsage> ownedPort;
 	public static volatile ListAttribute<RequirementDefinitionImpl, Generalization> ownedGeneralization;
 	public static volatile SingularAttribute<RequirementDefinitionImpl, Boolean> isConjugated;
+	public static volatile CollectionAttribute<RequirementDefinitionImpl, VerificationCaseUsage> ownedVerificationCase;
 	public static volatile CollectionAttribute<RequirementDefinitionImpl, ConstraintUsage> requiredConstraint;
 	public static volatile CollectionAttribute<RequirementDefinitionImpl, Usage> usage;
+	public static volatile CollectionAttribute<RequirementDefinitionImpl, ViewpointUsage> ownedViewpoint;
 	public static volatile CollectionAttribute<RequirementDefinitionImpl, AnalysisCaseUsage> ownedAnalysisCase;
+	public static volatile CollectionAttribute<RequirementDefinitionImpl, RenderingUsage> ownedRendering;
 	public static volatile CollectionAttribute<RequirementDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile CollectionAttribute<RequirementDefinitionImpl, Feature> output;
 	public static volatile CollectionAttribute<RequirementDefinitionImpl, Usage> variant;
@@ -57,10 +64,11 @@ public abstract class RequirementDefinitionImpl_ extends org.omg.sysml.metamodel
 	public static volatile CollectionAttribute<RequirementDefinitionImpl, String> text;
 	public static volatile SingularAttribute<RequirementDefinitionImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<RequirementDefinitionImpl, Comment> documentationComment;
-	public static volatile CollectionAttribute<RequirementDefinitionImpl, Usage> flow;
 	public static volatile SingularAttribute<RequirementDefinitionImpl, UUID> identifier;
 	public static volatile CollectionAttribute<RequirementDefinitionImpl, Annotation> ownedAnnotation;
+	public static volatile CollectionAttribute<RequirementDefinitionImpl, ViewUsage> ownedView;
 	public static volatile CollectionAttribute<RequirementDefinitionImpl, Feature> ownedFeature;
+	public static volatile CollectionAttribute<RequirementDefinitionImpl, Usage> flowFeature;
 	public static volatile CollectionAttribute<RequirementDefinitionImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<RequirementDefinitionImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<RequirementDefinitionImpl, InterfaceUsage> ownedInterface;
@@ -107,9 +115,12 @@ public abstract class RequirementDefinitionImpl_ extends org.omg.sysml.metamodel
 	public static final String OWNED_PORT = "ownedPort";
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String IS_CONJUGATED = "isConjugated";
+	public static final String OWNED_VERIFICATION_CASE = "ownedVerificationCase";
 	public static final String REQUIRED_CONSTRAINT = "requiredConstraint";
 	public static final String USAGE = "usage";
+	public static final String OWNED_VIEWPOINT = "ownedViewpoint";
 	public static final String OWNED_ANALYSIS_CASE = "ownedAnalysisCase";
+	public static final String OWNED_RENDERING = "ownedRendering";
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
 	public static final String VARIANT = "variant";
@@ -118,10 +129,11 @@ public abstract class RequirementDefinitionImpl_ extends org.omg.sysml.metamodel
 	public static final String TEXT = "text";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
-	public static final String FLOW = "flow";
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
+	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";
+	public static final String FLOW_FEATURE = "flowFeature";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String END_FEATURE = "endFeature";
 	public static final String OWNED_INTERFACE = "ownedInterface";

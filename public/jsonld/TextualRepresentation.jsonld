@@ -24,5 +24,6 @@
         "owningNamespace": {"@type": "@id"},
         "owningRelationship": {"@type": "@id"},
         "representedElement": {"@type": "@id"}
+
     }
 }

@@ -7,7 +7,6 @@
 
         "aliasId": {"@type": "xsd:string"},
         "association": {"@type": "@id"},
-        "conjugator": {"@type": "@id"},
         "connectionDefinition": {"@type": "@id"},
         "connectorEnd": {"@type": "@id"},
         "documentation": {"@type": "@id"},
@@ -16,7 +15,7 @@
         "endOwningType": {"@type": "@id"},
         "feature": {"@type": "@id"},
         "featureMembership": {"@type": "@id"},
-        "flow": {"@type": "@id"},
+        "flowFeature": {"@type": "@id"},
         "humanId": {"@type": "xsd:string"},
         "identifier": {"@type": "dcterms:identifier"},
         "importedMembership": {"@type": "@id"},
@@ -52,10 +51,14 @@
         "nestedPart": {"@type": "@id"},
         "nestedPort": {"@type": "@id"},
         "nestedReference": {"@type": "@id"},
+        "nestedRendering": {"@type": "@id"},
         "nestedRequirement": {"@type": "@id"},
         "nestedState": {"@type": "@id"},
         "nestedTransition": {"@type": "@id"},
         "nestedUsage": {"@type": "@id"},
+        "nestedVerificationCase": {"@type": "@id"},
+        "nestedView": {"@type": "@id"},
+        "nestedViewpoint": {"@type": "@id"},
         "output": {"@type": "@id"},
         "ownedAnnotation": {"@type": "@id"},
         "ownedAssociationType": {"@type": "@id"},
@@ -74,6 +77,7 @@
         "ownedSubsetting": {"@type": "@id"},
         "ownedTextualRepresentation": {"@type": "@id"},
         "ownedType": {"@type": "@id"},
+        "ownedTyping": {"@type": "@id"},
         "owner": {"@type": "@id"},
         "owningDefinition": {"@type": "@id"},
         "owningFeatureMembership": {"@type": "@id"},
@@ -92,9 +96,9 @@
         "target": {"@type": "@id"},
         "targetFeature": {"@type": "@id"},
         "type": {"@type": "@id"},
-        "typing": {"@type": "@id"},
         "usage": {"@type": "@id"},
         "variant": {"@type": "@id"},
         "variantMembership": {"@type": "@id"}
+
     }
 }

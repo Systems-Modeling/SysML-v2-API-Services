@@ -8,4 +8,6 @@ public interface FeatureTyping extends Generalization, MofObject {
     Feature getTypedFeature();
 
     Type getType();
+
+    Feature getOwningFeature();
 }

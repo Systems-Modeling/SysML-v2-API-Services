@@ -34,6 +34,7 @@ public abstract class ItemFlowFeatureImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<ItemFlowFeatureImpl, Type> type;
 	public static volatile SingularAttribute<ItemFlowFeatureImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<ItemFlowFeatureImpl, Feature> output;
+	public static volatile CollectionAttribute<ItemFlowFeatureImpl, FeatureTyping> ownedTyping;
 	public static volatile CollectionAttribute<ItemFlowFeatureImpl, Feature> feature;
 	public static volatile ListAttribute<ItemFlowFeatureImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<ItemFlowFeatureImpl, Element> member;
@@ -64,7 +65,6 @@ public abstract class ItemFlowFeatureImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<ItemFlowFeatureImpl, String> aliasId;
 	public static volatile CollectionAttribute<ItemFlowFeatureImpl, Type> ownedType;
 	public static volatile SingularAttribute<ItemFlowFeatureImpl, String> name;
-	public static volatile CollectionAttribute<ItemFlowFeatureImpl, FeatureTyping> typing;
 	public static volatile ListAttribute<ItemFlowFeatureImpl, Element> ownedMember;
 	public static volatile ListAttribute<ItemFlowFeatureImpl, Membership> ownedMembership;
 
@@ -76,6 +76,7 @@ public abstract class ItemFlowFeatureImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String TYPE = "type";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OUTPUT = "output";
+	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String MEMBER = "member";
@@ -106,7 +107,6 @@ public abstract class ItemFlowFeatureImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
-	public static final String TYPING = "typing";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 

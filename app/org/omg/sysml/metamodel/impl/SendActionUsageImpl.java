@@ -123,25 +123,6 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
 
 
 
-    // @info.archinnov.achilles.annotations.Column("conjugator")
-    private Conjugation conjugator;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "conjugatorType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "conjugatorId", table = "SendActionUsage")
-    public Conjugation getConjugator() {
-        return conjugator;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ConjugationImpl.class)
-    public void setConjugator(Conjugation conjugator) {
-        this.conjugator = conjugator;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("context")
     private Feature context;
@@ -313,27 +294,27 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("flow")
-    private Collection<Usage> flow;
+    // @info.archinnov.achilles.annotations.Column("flowFeature")
+    private Collection<Usage> flowFeature;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SendActionUsage_flow",
+    @JoinTable(name = "SendActionUsage_flowFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Usage> getFlow() {
-        if (flow == null) {
-            flow = new ArrayList<>();
+    public Collection<Usage> getFlowFeature() {
+        if (flowFeature == null) {
+            flowFeature = new ArrayList<>();
         }
-        return flow;
+        return flowFeature;
     }
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
-    public void setFlow(Collection<Usage> flow) {
-        this.flow = flow;
+    public void setFlowFeature(Collection<Usage> flowFeature) {
+        this.flowFeature = flowFeature;
     }
 
 
@@ -1060,6 +1041,32 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedRendering")
+    private Collection<RenderingUsage> nestedRendering;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "RenderingUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "SendActionUsage_nestedRendering",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<RenderingUsage> getNestedRendering() {
+        if (nestedRendering == null) {
+            nestedRendering = new ArrayList<>();
+        }
+        return nestedRendering;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RenderingUsageImpl.class)
+    public void setNestedRendering(Collection<RenderingUsage> nestedRendering) {
+        this.nestedRendering = nestedRendering;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedRequirement")
     private Collection<RequirementUsage> nestedRequirement;
 
@@ -1159,6 +1166,84 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
     public void setNestedUsage(Collection<Usage> nestedUsage) {
         this.nestedUsage = nestedUsage;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedVerificationCase")
+    private Collection<VerificationCaseUsage> nestedVerificationCase;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "VerificationCaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "SendActionUsage_nestedVerificationCase",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<VerificationCaseUsage> getNestedVerificationCase() {
+        if (nestedVerificationCase == null) {
+            nestedVerificationCase = new ArrayList<>();
+        }
+        return nestedVerificationCase;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = VerificationCaseUsageImpl.class)
+    public void setNestedVerificationCase(Collection<VerificationCaseUsage> nestedVerificationCase) {
+        this.nestedVerificationCase = nestedVerificationCase;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedView")
+    private Collection<ViewUsage> nestedView;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ViewUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "SendActionUsage_nestedView",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ViewUsage> getNestedView() {
+        if (nestedView == null) {
+            nestedView = new ArrayList<>();
+        }
+        return nestedView;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ViewUsageImpl.class)
+    public void setNestedView(Collection<ViewUsage> nestedView) {
+        this.nestedView = nestedView;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedViewpoint")
+    private Collection<ViewpointUsage> nestedViewpoint;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ViewpointUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "SendActionUsage_nestedViewpoint",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ViewpointUsage> getNestedViewpoint() {
+        if (nestedViewpoint == null) {
+            nestedViewpoint = new ArrayList<>();
+        }
+        return nestedViewpoint;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ViewpointUsageImpl.class)
+    public void setNestedViewpoint(Collection<ViewpointUsage> nestedViewpoint) {
+        this.nestedViewpoint = nestedViewpoint;
     }
 
 
@@ -1565,6 +1650,32 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedTyping")
+    private Collection<FeatureTyping> ownedTyping;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "SendActionUsage_ownedTyping",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<FeatureTyping> getOwnedTyping() {
+        if (ownedTyping == null) {
+            ownedTyping = new ArrayList<>();
+        }
+        return ownedTyping;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureTypingImpl.class)
+    public void setOwnedTyping(Collection<FeatureTyping> ownedTyping) {
+        this.ownedTyping = ownedTyping;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owner")
     private Element owner;
 
@@ -1821,30 +1932,6 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
     public void setType(Collection<Type> type) {
         this.type = type;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("typing")
-    private Collection<FeatureTyping> typing;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SendActionUsage_typing",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<FeatureTyping> getTyping() {
-        if (typing == null) {
-            typing = new ArrayList<>();
-        }
-        return typing;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureTypingImpl.class)
-    public void setTyping(Collection<FeatureTyping> typing) {
-        this.typing = typing;
     }
 
 

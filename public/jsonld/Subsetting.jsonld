@@ -30,5 +30,6 @@
         "subsettedFeature": {"@type": "@id"},
         "subsettingFeature": {"@type": "@id"},
         "target": {"@type": "@id"}
+
     }
 }

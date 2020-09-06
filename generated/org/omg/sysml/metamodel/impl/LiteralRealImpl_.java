@@ -35,6 +35,7 @@ public abstract class LiteralRealImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static volatile CollectionAttribute<LiteralRealImpl, Type> type;
 	public static volatile SingularAttribute<LiteralRealImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<LiteralRealImpl, Feature> output;
+	public static volatile CollectionAttribute<LiteralRealImpl, FeatureTyping> ownedTyping;
 	public static volatile CollectionAttribute<LiteralRealImpl, Feature> feature;
 	public static volatile ListAttribute<LiteralRealImpl, Membership> inheritedMembership;
 	public static volatile CollectionAttribute<LiteralRealImpl, Feature> parameter;
@@ -68,7 +69,6 @@ public abstract class LiteralRealImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static volatile CollectionAttribute<LiteralRealImpl, String> aliasId;
 	public static volatile CollectionAttribute<LiteralRealImpl, Type> ownedType;
 	public static volatile SingularAttribute<LiteralRealImpl, String> name;
-	public static volatile CollectionAttribute<LiteralRealImpl, FeatureTyping> typing;
 	public static volatile ListAttribute<LiteralRealImpl, Element> ownedMember;
 	public static volatile ListAttribute<LiteralRealImpl, Membership> ownedMembership;
 
@@ -80,6 +80,7 @@ public abstract class LiteralRealImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static final String TYPE = "type";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OUTPUT = "output";
+	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String PARAMETER = "parameter";
@@ -113,7 +114,6 @@ public abstract class LiteralRealImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
-	public static final String TYPING = "typing";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 

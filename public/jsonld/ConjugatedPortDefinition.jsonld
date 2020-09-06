@@ -7,13 +7,12 @@
 
         "aliasId": {"@type": "xsd:string"},
         "conjugatedPortDefinition": {"@type": "@id"},
-        "conjugator": {"@type": "@id"},
         "documentation": {"@type": "@id"},
         "documentationComment": {"@type": "@id"},
         "endFeature": {"@type": "@id"},
         "feature": {"@type": "@id"},
         "featureMembership": {"@type": "@id"},
-        "flow": {"@type": "@id"},
+        "flowFeature": {"@type": "@id"},
         "humanId": {"@type": "xsd:string"},
         "identifier": {"@type": "dcterms:identifier"},
         "importedMembership": {"@type": "@id"},
@@ -55,12 +54,16 @@
         "ownedPortConjugator": {"@type": "@id"},
         "ownedReference": {"@type": "@id"},
         "ownedRelationship": {"@type": "@id"},
+        "ownedRendering": {"@type": "@id"},
         "ownedRequirement": {"@type": "@id"},
         "ownedState": {"@type": "@id"},
         "ownedSuperclassing": {"@type": "@id"},
         "ownedTextualRepresentation": {"@type": "@id"},
         "ownedTransition": {"@type": "@id"},
         "ownedUsage": {"@type": "@id"},
+        "ownedVerificationCase": {"@type": "@id"},
+        "ownedView": {"@type": "@id"},
+        "ownedViewpoint": {"@type": "@id"},
         "owner": {"@type": "@id"},
         "owningMembership": {"@type": "@id"},
         "owningNamespace": {"@type": "@id"},
@@ -68,5 +71,6 @@
         "usage": {"@type": "@id"},
         "variant": {"@type": "@id"},
         "variantMembership": {"@type": "@id"}
+
     }
 }

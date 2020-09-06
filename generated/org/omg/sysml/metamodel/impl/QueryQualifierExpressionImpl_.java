@@ -38,6 +38,7 @@ public abstract class QueryQualifierExpressionImpl_ extends org.omg.sysml.metamo
 	public static volatile SingularAttribute<QueryQualifierExpressionImpl, String> operator;
 	public static volatile SingularAttribute<QueryQualifierExpressionImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<QueryQualifierExpressionImpl, Feature> output;
+	public static volatile CollectionAttribute<QueryQualifierExpressionImpl, FeatureTyping> ownedTyping;
 	public static volatile CollectionAttribute<QueryQualifierExpressionImpl, Feature> feature;
 	public static volatile ListAttribute<QueryQualifierExpressionImpl, Membership> inheritedMembership;
 	public static volatile CollectionAttribute<QueryQualifierExpressionImpl, Feature> parameter;
@@ -70,7 +71,6 @@ public abstract class QueryQualifierExpressionImpl_ extends org.omg.sysml.metamo
 	public static volatile CollectionAttribute<QueryQualifierExpressionImpl, String> aliasId;
 	public static volatile CollectionAttribute<QueryQualifierExpressionImpl, Type> ownedType;
 	public static volatile SingularAttribute<QueryQualifierExpressionImpl, String> name;
-	public static volatile CollectionAttribute<QueryQualifierExpressionImpl, FeatureTyping> typing;
 	public static volatile ListAttribute<QueryQualifierExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<QueryQualifierExpressionImpl, Expression> operand;
 	public static volatile ListAttribute<QueryQualifierExpressionImpl, Membership> ownedMembership;
@@ -85,6 +85,7 @@ public abstract class QueryQualifierExpressionImpl_ extends org.omg.sysml.metamo
 	public static final String OPERATOR = "operator";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OUTPUT = "output";
+	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String PARAMETER = "parameter";
@@ -117,7 +118,6 @@ public abstract class QueryQualifierExpressionImpl_ extends org.omg.sysml.metamo
 	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
-	public static final String TYPING = "typing";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OPERAND = "operand";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";

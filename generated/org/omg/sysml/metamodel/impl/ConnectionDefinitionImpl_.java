@@ -29,6 +29,7 @@ import org.omg.sysml.metamodel.PartUsage;
 import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.ReferenceUsage;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.RenderingUsage;
 import org.omg.sysml.metamodel.RequirementUsage;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Superclassing;
@@ -37,6 +38,9 @@ import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.Usage;
 import org.omg.sysml.metamodel.VariantMembership;
+import org.omg.sysml.metamodel.VerificationCaseUsage;
+import org.omg.sysml.metamodel.ViewUsage;
+import org.omg.sysml.metamodel.ViewpointUsage;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(ConnectionDefinitionImpl.class)
@@ -45,9 +49,12 @@ public abstract class ConnectionDefinitionImpl_ extends org.omg.sysml.metamodel.
 	public static volatile CollectionAttribute<ConnectionDefinitionImpl, PortUsage> ownedPort;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, Generalization> ownedGeneralization;
 	public static volatile SingularAttribute<ConnectionDefinitionImpl, Boolean> isConjugated;
+	public static volatile CollectionAttribute<ConnectionDefinitionImpl, VerificationCaseUsage> ownedVerificationCase;
 	public static volatile CollectionAttribute<ConnectionDefinitionImpl, Usage> usage;
+	public static volatile CollectionAttribute<ConnectionDefinitionImpl, ViewpointUsage> ownedViewpoint;
 	public static volatile CollectionAttribute<ConnectionDefinitionImpl, AnalysisCaseUsage> ownedAnalysisCase;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, Element> source;
+	public static volatile CollectionAttribute<ConnectionDefinitionImpl, RenderingUsage> ownedRendering;
 	public static volatile CollectionAttribute<ConnectionDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile CollectionAttribute<ConnectionDefinitionImpl, Feature> output;
 	public static volatile CollectionAttribute<ConnectionDefinitionImpl, Usage> variant;
@@ -55,10 +62,11 @@ public abstract class ConnectionDefinitionImpl_ extends org.omg.sysml.metamodel.
 	public static volatile CollectionAttribute<ConnectionDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<ConnectionDefinitionImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<ConnectionDefinitionImpl, Comment> documentationComment;
-	public static volatile CollectionAttribute<ConnectionDefinitionImpl, Usage> flow;
 	public static volatile SingularAttribute<ConnectionDefinitionImpl, UUID> identifier;
 	public static volatile CollectionAttribute<ConnectionDefinitionImpl, Annotation> ownedAnnotation;
+	public static volatile CollectionAttribute<ConnectionDefinitionImpl, ViewUsage> ownedView;
 	public static volatile CollectionAttribute<ConnectionDefinitionImpl, Feature> ownedFeature;
+	public static volatile CollectionAttribute<ConnectionDefinitionImpl, Usage> flowFeature;
 	public static volatile CollectionAttribute<ConnectionDefinitionImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<ConnectionDefinitionImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<ConnectionDefinitionImpl, InterfaceUsage> ownedInterface;
@@ -107,9 +115,12 @@ public abstract class ConnectionDefinitionImpl_ extends org.omg.sysml.metamodel.
 	public static final String OWNED_PORT = "ownedPort";
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String IS_CONJUGATED = "isConjugated";
+	public static final String OWNED_VERIFICATION_CASE = "ownedVerificationCase";
 	public static final String USAGE = "usage";
+	public static final String OWNED_VIEWPOINT = "ownedViewpoint";
 	public static final String OWNED_ANALYSIS_CASE = "ownedAnalysisCase";
 	public static final String SOURCE = "source";
+	public static final String OWNED_RENDERING = "ownedRendering";
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
 	public static final String VARIANT = "variant";
@@ -117,10 +128,11 @@ public abstract class ConnectionDefinitionImpl_ extends org.omg.sysml.metamodel.
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
-	public static final String FLOW = "flow";
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
+	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";
+	public static final String FLOW_FEATURE = "flowFeature";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String END_FEATURE = "endFeature";
 	public static final String OWNED_INTERFACE = "ownedInterface";

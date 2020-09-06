@@ -37,6 +37,7 @@ public abstract class InstanceCreationExpressionImpl_ extends org.omg.sysml.meta
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Type> type;
 	public static volatile SingularAttribute<InstanceCreationExpressionImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Feature> output;
+	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, FeatureTyping> ownedTyping;
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Feature> feature;
 	public static volatile ListAttribute<InstanceCreationExpressionImpl, Membership> inheritedMembership;
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Feature> parameter;
@@ -69,7 +70,6 @@ public abstract class InstanceCreationExpressionImpl_ extends org.omg.sysml.meta
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, String> aliasId;
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Type> ownedType;
 	public static volatile SingularAttribute<InstanceCreationExpressionImpl, String> name;
-	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, FeatureTyping> typing;
 	public static volatile ListAttribute<InstanceCreationExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<InstanceCreationExpressionImpl, Membership> ownedMembership;
 
@@ -82,6 +82,7 @@ public abstract class InstanceCreationExpressionImpl_ extends org.omg.sysml.meta
 	public static final String TYPE = "type";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OUTPUT = "output";
+	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String PARAMETER = "parameter";
@@ -114,7 +115,6 @@ public abstract class InstanceCreationExpressionImpl_ extends org.omg.sysml.meta
 	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
-	public static final String TYPING = "typing";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 

@@ -7,7 +7,6 @@
 
         "aliasId": {"@type": "xsd:string"},
         "associationEnd": {"@type": "@id"},
-        "conjugator": {"@type": "@id"},
         "documentation": {"@type": "@id"},
         "documentationComment": {"@type": "@id"},
         "endFeature": {"@type": "@id"},
@@ -53,5 +52,6 @@
         "sourceType": {"@type": "@id"},
         "target": {"@type": "@id"},
         "targetType": {"@type": "@id"}
+
     }
 }

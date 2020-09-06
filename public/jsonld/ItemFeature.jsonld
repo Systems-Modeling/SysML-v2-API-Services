@@ -6,7 +6,6 @@
         "xsd": "http://www.w3.org/2001/XMLSchema#",
 
         "aliasId": {"@type": "xsd:string"},
-        "conjugator": {"@type": "@id"},
         "documentation": {"@type": "@id"},
         "documentationComment": {"@type": "@id"},
         "endFeature": {"@type": "@id"},
@@ -47,6 +46,7 @@
         "ownedSubsetting": {"@type": "@id"},
         "ownedTextualRepresentation": {"@type": "@id"},
         "ownedType": {"@type": "@id"},
+        "ownedTyping": {"@type": "@id"},
         "owner": {"@type": "@id"},
         "owningFeatureMembership": {"@type": "@id"},
         "owningMembership": {"@type": "@id"},
@@ -54,7 +54,7 @@
         "owningRelationship": {"@type": "@id"},
         "owningType": {"@type": "@id"},
         "referencedType": {"@type": "@id"},
-        "type": {"@type": "@id"},
-        "typing": {"@type": "@id"}
+        "type": {"@type": "@id"}
+
     }
 }

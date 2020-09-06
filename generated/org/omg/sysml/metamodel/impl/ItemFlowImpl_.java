@@ -59,7 +59,6 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile ListAttribute<ItemFlowImpl, Element> relatedElement;
 	public static volatile CollectionAttribute<ItemFlowImpl, Type> ownedType;
 	public static volatile SingularAttribute<ItemFlowImpl, String> name;
-	public static volatile CollectionAttribute<ItemFlowImpl, FeatureTyping> typing;
 	public static volatile CollectionAttribute<ItemFlowImpl, Feature> connectorEnd;
 	public static volatile CollectionAttribute<ItemFlowImpl, ItemFlowEnd> itemFlowEnd;
 	public static volatile ListAttribute<ItemFlowImpl, Element> ownedMember;
@@ -70,6 +69,7 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile ListAttribute<ItemFlowImpl, Element> ownedRelatedElement;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<ItemFlowImpl, Feature> targetFeature;
+	public static volatile CollectionAttribute<ItemFlowImpl, FeatureTyping> ownedTyping;
 	public static volatile CollectionAttribute<ItemFlowImpl, Feature> feature;
 	public static volatile ListAttribute<ItemFlowImpl, Membership> inheritedMembership;
 	public static volatile CollectionAttribute<ItemFlowImpl, Feature> parameter;
@@ -119,7 +119,6 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
-	public static final String TYPING = "typing";
 	public static final String CONNECTOR_END = "connectorEnd";
 	public static final String ITEM_FLOW_END = "itemFlowEnd";
 	public static final String OWNED_MEMBER = "ownedMember";
@@ -130,6 +129,7 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String TARGET_FEATURE = "targetFeature";
+	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String PARAMETER = "parameter";

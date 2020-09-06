@@ -51,7 +51,6 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile ListAttribute<BindingConnectorImpl, Element> relatedElement;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Type> ownedType;
 	public static volatile SingularAttribute<BindingConnectorImpl, String> name;
-	public static volatile CollectionAttribute<BindingConnectorImpl, FeatureTyping> typing;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Feature> connectorEnd;
 	public static volatile ListAttribute<BindingConnectorImpl, Element> ownedMember;
 	public static volatile ListAttribute<BindingConnectorImpl, Membership> ownedMembership;
@@ -60,6 +59,7 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile ListAttribute<BindingConnectorImpl, Element> ownedRelatedElement;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Feature> targetFeature;
+	public static volatile CollectionAttribute<BindingConnectorImpl, FeatureTyping> ownedTyping;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Feature> feature;
 	public static volatile ListAttribute<BindingConnectorImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<BindingConnectorImpl, Element> member;
@@ -103,7 +103,6 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
-	public static final String TYPING = "typing";
 	public static final String CONNECTOR_END = "connectorEnd";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
@@ -112,6 +111,7 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String TARGET_FEATURE = "targetFeature";
+	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String MEMBER = "member";
