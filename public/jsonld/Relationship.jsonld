@@ -24,5 +24,6 @@
         "relatedElement": {"@type": "@id"},
         "source": {"@type": "@id"},
         "target": {"@type": "@id"}
+
     }
 }

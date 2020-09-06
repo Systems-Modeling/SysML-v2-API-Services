@@ -7,7 +7,6 @@
 
         "aliasId": {"@type": "xsd:string"},
         "association": {"@type": "@id"},
-        "conjugator": {"@type": "@id"},
         "connectorEnd": {"@type": "@id"},
         "documentation": {"@type": "@id"},
         "documentationComment": {"@type": "@id"},
@@ -54,6 +53,7 @@
         "ownedSubsetting": {"@type": "@id"},
         "ownedTextualRepresentation": {"@type": "@id"},
         "ownedType": {"@type": "@id"},
+        "ownedTyping": {"@type": "@id"},
         "owner": {"@type": "@id"},
         "owningFeatureMembership": {"@type": "@id"},
         "owningMembership": {"@type": "@id"},
@@ -70,7 +70,7 @@
         "targetFeature": {"@type": "@id"},
         "transitionStep": {"@type": "@id"},
         "triggerStep": {"@type": "@id"},
-        "type": {"@type": "@id"},
-        "typing": {"@type": "@id"}
+        "type": {"@type": "@id"}
+
     }
 }

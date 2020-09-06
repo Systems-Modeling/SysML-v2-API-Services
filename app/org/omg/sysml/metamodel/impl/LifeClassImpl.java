@@ -71,25 +71,6 @@ public class LifeClassImpl extends MofObjectImpl implements LifeClass {
 
 
 
-    // @info.archinnov.achilles.annotations.Column("conjugator")
-    private Conjugation conjugator;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "conjugatorType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "conjugatorId", table = "LifeClass")
-    public Conjugation getConjugator() {
-        return conjugator;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ConjugationImpl.class)
-    public void setConjugator(Conjugation conjugator) {
-        this.conjugator = conjugator;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("documentation")
     private Collection<Documentation> documentation;
 

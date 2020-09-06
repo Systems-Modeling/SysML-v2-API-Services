@@ -32,6 +32,7 @@ import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.ReferenceUsage;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.RenderingUsage;
 import org.omg.sysml.metamodel.RequirementUsage;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Subsetting;
@@ -40,6 +41,9 @@ import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.Usage;
 import org.omg.sysml.metamodel.VariantMembership;
+import org.omg.sysml.metamodel.VerificationCaseUsage;
+import org.omg.sysml.metamodel.ViewUsage;
+import org.omg.sysml.metamodel.ViewpointUsage;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(MergeNodeImpl.class)
@@ -64,13 +68,14 @@ public abstract class MergeNodeImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile CollectionAttribute<MergeNodeImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<MergeNodeImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<MergeNodeImpl, Redefinition> ownedRedefinition;
-	public static volatile CollectionAttribute<MergeNodeImpl, Usage> flow;
 	public static volatile SingularAttribute<MergeNodeImpl, UUID> identifier;
 	public static volatile CollectionAttribute<MergeNodeImpl, AttributeUsage> nestedAttribute;
 	public static volatile CollectionAttribute<MergeNodeImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<MergeNodeImpl, Feature> ownedFeature;
+	public static volatile CollectionAttribute<MergeNodeImpl, Usage> flowFeature;
 	public static volatile CollectionAttribute<MergeNodeImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<MergeNodeImpl, AnalysisCaseUsage> nestedAnalysisCase;
+	public static volatile CollectionAttribute<MergeNodeImpl, VerificationCaseUsage> nestedVerificationCase;
 	public static volatile CollectionAttribute<MergeNodeImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<MergeNodeImpl, Behavior> actionDefinition;
 	public static volatile CollectionAttribute<MergeNodeImpl, Type> referencedType;
@@ -79,9 +84,9 @@ public abstract class MergeNodeImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile CollectionAttribute<MergeNodeImpl, Feature> input;
 	public static volatile CollectionAttribute<MergeNodeImpl, CalculationUsage> nestedCalculation;
 	public static volatile SingularAttribute<MergeNodeImpl, Boolean> isComposite;
+	public static volatile CollectionAttribute<MergeNodeImpl, ViewUsage> nestedView;
 	public static volatile CollectionAttribute<MergeNodeImpl, Type> ownedType;
 	public static volatile SingularAttribute<MergeNodeImpl, String> name;
-	public static volatile CollectionAttribute<MergeNodeImpl, FeatureTyping> typing;
 	public static volatile ListAttribute<MergeNodeImpl, Element> ownedMember;
 	public static volatile ListAttribute<MergeNodeImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<MergeNodeImpl, CaseUsage> nestedCase;
@@ -90,6 +95,7 @@ public abstract class MergeNodeImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile SingularAttribute<MergeNodeImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<MergeNodeImpl, ReferenceUsage> nestedReference;
 	public static volatile SingularAttribute<MergeNodeImpl, Boolean> isVariation;
+	public static volatile CollectionAttribute<MergeNodeImpl, FeatureTyping> ownedTyping;
 	public static volatile CollectionAttribute<MergeNodeImpl, Feature> feature;
 	public static volatile ListAttribute<MergeNodeImpl, Membership> inheritedMembership;
 	public static volatile CollectionAttribute<MergeNodeImpl, Feature> parameter;
@@ -107,10 +113,12 @@ public abstract class MergeNodeImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile SingularAttribute<MergeNodeImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<MergeNodeImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<MergeNodeImpl, VariantMembership> variantMembership;
+	public static volatile CollectionAttribute<MergeNodeImpl, RenderingUsage> nestedRendering;
 	public static volatile SingularAttribute<MergeNodeImpl, String> humanId;
 	public static volatile CollectionAttribute<MergeNodeImpl, ConnectionUsage> nestedConnection;
 	public static volatile CollectionAttribute<MergeNodeImpl, String> aliasId;
 	public static volatile CollectionAttribute<MergeNodeImpl, InterfaceUsage> nestedInterface;
+	public static volatile CollectionAttribute<MergeNodeImpl, ViewpointUsage> nestedViewpoint;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String NESTED_PART = "nestedPart";
@@ -131,13 +139,14 @@ public abstract class MergeNodeImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
-	public static final String FLOW = "flow";
 	public static final String IDENTIFIER = "identifier";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";
+	public static final String FLOW_FEATURE = "flowFeature";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String NESTED_ANALYSIS_CASE = "nestedAnalysisCase";
+	public static final String NESTED_VERIFICATION_CASE = "nestedVerificationCase";
 	public static final String END_FEATURE = "endFeature";
 	public static final String ACTION_DEFINITION = "actionDefinition";
 	public static final String REFERENCED_TYPE = "referencedType";
@@ -146,9 +155,9 @@ public abstract class MergeNodeImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String INPUT = "input";
 	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String IS_COMPOSITE = "isComposite";
+	public static final String NESTED_VIEW = "nestedView";
 	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
-	public static final String TYPING = "typing";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String NESTED_CASE = "nestedCase";
@@ -157,6 +166,7 @@ public abstract class MergeNodeImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String NESTED_REFERENCE = "nestedReference";
 	public static final String IS_VARIATION = "isVariation";
+	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String PARAMETER = "parameter";
@@ -174,10 +184,12 @@ public abstract class MergeNodeImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
+	public static final String NESTED_RENDERING = "nestedRendering";
 	public static final String HUMAN_ID = "humanId";
 	public static final String NESTED_CONNECTION = "nestedConnection";
 	public static final String ALIAS_ID = "aliasId";
 	public static final String NESTED_INTERFACE = "nestedInterface";
+	public static final String NESTED_VIEWPOINT = "nestedViewpoint";
 
 }
 

@@ -35,6 +35,7 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<LiteralBooleanImpl, Type> type;
 	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<LiteralBooleanImpl, Feature> output;
+	public static volatile CollectionAttribute<LiteralBooleanImpl, FeatureTyping> ownedTyping;
 	public static volatile CollectionAttribute<LiteralBooleanImpl, Feature> feature;
 	public static volatile ListAttribute<LiteralBooleanImpl, Membership> inheritedMembership;
 	public static volatile CollectionAttribute<LiteralBooleanImpl, Feature> parameter;
@@ -68,7 +69,6 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<LiteralBooleanImpl, String> aliasId;
 	public static volatile CollectionAttribute<LiteralBooleanImpl, Type> ownedType;
 	public static volatile SingularAttribute<LiteralBooleanImpl, String> name;
-	public static volatile CollectionAttribute<LiteralBooleanImpl, FeatureTyping> typing;
 	public static volatile ListAttribute<LiteralBooleanImpl, Element> ownedMember;
 	public static volatile ListAttribute<LiteralBooleanImpl, Membership> ownedMembership;
 
@@ -80,6 +80,7 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String TYPE = "type";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OUTPUT = "output";
+	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String PARAMETER = "parameter";
@@ -113,7 +114,6 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
-	public static final String TYPING = "typing";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 

@@ -38,6 +38,7 @@ public abstract class QueryPathStepExpressionImpl_ extends org.omg.sysml.metamod
 	public static volatile SingularAttribute<QueryPathStepExpressionImpl, String> operator;
 	public static volatile SingularAttribute<QueryPathStepExpressionImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<QueryPathStepExpressionImpl, Feature> output;
+	public static volatile CollectionAttribute<QueryPathStepExpressionImpl, FeatureTyping> ownedTyping;
 	public static volatile CollectionAttribute<QueryPathStepExpressionImpl, Feature> feature;
 	public static volatile ListAttribute<QueryPathStepExpressionImpl, Membership> inheritedMembership;
 	public static volatile CollectionAttribute<QueryPathStepExpressionImpl, Feature> parameter;
@@ -70,7 +71,6 @@ public abstract class QueryPathStepExpressionImpl_ extends org.omg.sysml.metamod
 	public static volatile CollectionAttribute<QueryPathStepExpressionImpl, String> aliasId;
 	public static volatile CollectionAttribute<QueryPathStepExpressionImpl, Type> ownedType;
 	public static volatile SingularAttribute<QueryPathStepExpressionImpl, String> name;
-	public static volatile CollectionAttribute<QueryPathStepExpressionImpl, FeatureTyping> typing;
 	public static volatile ListAttribute<QueryPathStepExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<QueryPathStepExpressionImpl, Expression> operand;
 	public static volatile ListAttribute<QueryPathStepExpressionImpl, Membership> ownedMembership;
@@ -85,6 +85,7 @@ public abstract class QueryPathStepExpressionImpl_ extends org.omg.sysml.metamod
 	public static final String OPERATOR = "operator";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OUTPUT = "output";
+	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String PARAMETER = "parameter";
@@ -117,7 +118,6 @@ public abstract class QueryPathStepExpressionImpl_ extends org.omg.sysml.metamod
 	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
-	public static final String TYPING = "typing";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OPERAND = "operand";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";

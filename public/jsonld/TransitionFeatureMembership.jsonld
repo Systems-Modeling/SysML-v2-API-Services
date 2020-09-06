@@ -40,5 +40,6 @@
         "target": {"@type": "@id"},
         "transitionFeature": {"@type": "@id"},
         "visibility": {"@type": "@vocab"}
+
     }
 }

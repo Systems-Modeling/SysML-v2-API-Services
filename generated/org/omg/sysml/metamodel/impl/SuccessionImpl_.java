@@ -55,7 +55,6 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile CollectionAttribute<SuccessionImpl, Type> ownedType;
 	public static volatile CollectionAttribute<SuccessionImpl, Step> effectStep;
 	public static volatile SingularAttribute<SuccessionImpl, String> name;
-	public static volatile CollectionAttribute<SuccessionImpl, FeatureTyping> typing;
 	public static volatile CollectionAttribute<SuccessionImpl, Feature> connectorEnd;
 	public static volatile ListAttribute<SuccessionImpl, Element> ownedMember;
 	public static volatile ListAttribute<SuccessionImpl, Membership> ownedMembership;
@@ -65,6 +64,7 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile CollectionAttribute<SuccessionImpl, Step> triggerStep;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<SuccessionImpl, Feature> targetFeature;
+	public static volatile CollectionAttribute<SuccessionImpl, FeatureTyping> ownedTyping;
 	public static volatile CollectionAttribute<SuccessionImpl, Feature> feature;
 	public static volatile ListAttribute<SuccessionImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<SuccessionImpl, Element> member;
@@ -110,7 +110,6 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String OWNED_TYPE = "ownedType";
 	public static final String EFFECT_STEP = "effectStep";
 	public static final String NAME = "name";
-	public static final String TYPING = "typing";
 	public static final String CONNECTOR_END = "connectorEnd";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
@@ -120,6 +119,7 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String TRIGGER_STEP = "triggerStep";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String TARGET_FEATURE = "targetFeature";
+	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String MEMBER = "member";

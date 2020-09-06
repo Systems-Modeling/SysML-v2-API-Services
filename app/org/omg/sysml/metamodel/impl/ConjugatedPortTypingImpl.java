@@ -360,6 +360,27 @@ public class ConjugatedPortTypingImpl extends MofObjectImpl implements Conjugate
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("owningFeature")
+    private Feature owningFeature;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningFeatureId", table = "ConjugatedPortTyping")
+    public Feature getOwningFeature() {
+        return owningFeature;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
+    public void setOwningFeature(Feature owningFeature) {
+        this.owningFeature = owningFeature;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private Membership owningMembership;
 

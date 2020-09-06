@@ -30,5 +30,6 @@
         "source": {"@type": "@id"},
         "target": {"@type": "@id"},
         "visibility": {"@type": "@vocab"}
+
     }
 }

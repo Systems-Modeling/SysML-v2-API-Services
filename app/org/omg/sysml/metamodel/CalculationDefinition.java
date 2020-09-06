@@ -5,5 +5,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface CalculationDefinition extends Function, ActionDefinition, MofObject {
-    Collection<? extends CalculationUsage> getCalculationUsage();
+    Collection<? extends CalculationUsage> getCalculation();
 }

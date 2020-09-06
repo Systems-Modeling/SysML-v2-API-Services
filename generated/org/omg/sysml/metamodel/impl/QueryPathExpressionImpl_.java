@@ -35,6 +35,7 @@ public abstract class QueryPathExpressionImpl_ extends org.omg.sysml.metamodel.i
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, Type> type;
 	public static volatile SingularAttribute<QueryPathExpressionImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, Feature> output;
+	public static volatile CollectionAttribute<QueryPathExpressionImpl, FeatureTyping> ownedTyping;
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, Feature> feature;
 	public static volatile ListAttribute<QueryPathExpressionImpl, Membership> inheritedMembership;
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, Feature> parameter;
@@ -67,7 +68,6 @@ public abstract class QueryPathExpressionImpl_ extends org.omg.sysml.metamodel.i
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, String> aliasId;
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, Type> ownedType;
 	public static volatile SingularAttribute<QueryPathExpressionImpl, String> name;
-	public static volatile CollectionAttribute<QueryPathExpressionImpl, FeatureTyping> typing;
 	public static volatile ListAttribute<QueryPathExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<QueryPathExpressionImpl, Membership> ownedMembership;
 
@@ -79,6 +79,7 @@ public abstract class QueryPathExpressionImpl_ extends org.omg.sysml.metamodel.i
 	public static final String TYPE = "type";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OUTPUT = "output";
+	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String PARAMETER = "parameter";
@@ -111,7 +112,6 @@ public abstract class QueryPathExpressionImpl_ extends org.omg.sysml.metamodel.i
 	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
-	public static final String TYPING = "typing";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 

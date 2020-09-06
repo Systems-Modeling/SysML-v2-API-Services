@@ -9,7 +9,7 @@ public interface Definition extends Classifier, MofObject {
 
     Collection<? extends PortUsage> getOwnedPort();
 
-    Collection<? extends Usage> getFlow();
+    Collection<? extends Usage> getFlowFeature();
 
     Collection<? extends Usage> getUsage();
 
@@ -48,4 +48,12 @@ public interface Definition extends Classifier, MofObject {
     Collection<? extends InterfaceUsage> getOwnedInterface();
 
     Collection<? extends AttributeUsage> getOwnedAttribute();
+
+    Collection<? extends ViewUsage> getOwnedView();
+
+    Collection<? extends ViewpointUsage> getOwnedViewpoint();
+
+    Collection<? extends RenderingUsage> getOwnedRendering();
+
+    Collection<? extends VerificationCaseUsage> getOwnedVerificationCase();
 }

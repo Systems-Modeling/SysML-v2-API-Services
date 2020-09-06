@@ -123,25 +123,6 @@ public class QueryPathStepExpressionImpl extends MofObjectImpl implements QueryP
 
 
 
-    // @info.archinnov.achilles.annotations.Column("conjugator")
-    private Conjugation conjugator;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "conjugatorType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "conjugatorId", table = "QueryPathStepExpression")
-    public Conjugation getConjugator() {
-        return conjugator;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ConjugationImpl.class)
-    public void setConjugator(Conjugation conjugator) {
-        this.conjugator = conjugator;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("documentation")
     private Collection<Documentation> documentation;
 
@@ -1123,6 +1104,32 @@ public class QueryPathStepExpressionImpl extends MofObjectImpl implements QueryP
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedTyping")
+    private Collection<FeatureTyping> ownedTyping;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "QueryPathStepExpression_ownedTyping",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<FeatureTyping> getOwnedTyping() {
+        if (ownedTyping == null) {
+            ownedTyping = new ArrayList<>();
+        }
+        return ownedTyping;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureTypingImpl.class)
+    public void setOwnedTyping(Collection<FeatureTyping> ownedTyping) {
+        this.ownedTyping = ownedTyping;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owner")
     private Element owner;
 
@@ -1337,30 +1344,6 @@ public class QueryPathStepExpressionImpl extends MofObjectImpl implements QueryP
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
     public void setType(Collection<Type> type) {
         this.type = type;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("typing")
-    private Collection<FeatureTyping> typing;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathStepExpression_typing",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<FeatureTyping> getTyping() {
-        if (typing == null) {
-            typing = new ArrayList<>();
-        }
-        return typing;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureTypingImpl.class)
-    public void setTyping(Collection<FeatureTyping> typing) {
-        this.typing = typing;
     }
 
 

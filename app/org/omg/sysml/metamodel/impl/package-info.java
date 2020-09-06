@@ -40,6 +40,7 @@
                         @MetaValue(value = "Element", targetEntity = ElementImpl.class),
                         @MetaValue(value = "EndFeatureMembership", targetEntity = EndFeatureMembershipImpl.class),
                         @MetaValue(value = "ExhibitStateUsage", targetEntity = ExhibitStateUsageImpl.class),
+                        @MetaValue(value = "Expose", targetEntity = ExposeImpl.class),
                         @MetaValue(value = "Expression", targetEntity = ExpressionImpl.class),
                         @MetaValue(value = "Feature", targetEntity = FeatureImpl.class),
                         @MetaValue(value = "FeatureMembership", targetEntity = FeatureMembershipImpl.class),
@@ -74,6 +75,7 @@
                         @MetaValue(value = "LiteralUnbounded", targetEntity = LiteralUnboundedImpl.class),
                         @MetaValue(value = "Membership", targetEntity = MembershipImpl.class),
                         @MetaValue(value = "MergeNode", targetEntity = MergeNodeImpl.class),
+                        @MetaValue(value = "ModelQuery", targetEntity = ModelQueryImpl.class),
                         @MetaValue(value = "Multiplicity", targetEntity = MultiplicityImpl.class),
                         @MetaValue(value = "MultiplicityRange", targetEntity = MultiplicityRangeImpl.class),
                         @MetaValue(value = "NullExpression", targetEntity = NullExpressionImpl.class),
@@ -94,6 +96,8 @@
                         @MetaValue(value = "Redefinition", targetEntity = RedefinitionImpl.class),
                         @MetaValue(value = "ReferenceUsage", targetEntity = ReferenceUsageImpl.class),
                         @MetaValue(value = "Relationship", targetEntity = RelationshipImpl.class),
+                        @MetaValue(value = "RenderingDefinition", targetEntity = RenderingDefinitionImpl.class),
+                        @MetaValue(value = "RenderingUsage", targetEntity = RenderingUsageImpl.class),
                         @MetaValue(value = "RequirementConstraintMembership", targetEntity = RequirementConstraintMembershipImpl.class),
                         @MetaValue(value = "RequirementDefinition", targetEntity = RequirementDefinitionImpl.class),
                         @MetaValue(value = "RequirementUsage", targetEntity = RequirementUsageImpl.class),
@@ -121,6 +125,12 @@
                         @MetaValue(value = "Type", targetEntity = TypeImpl.class),
                         @MetaValue(value = "Usage", targetEntity = UsageImpl.class),
                         @MetaValue(value = "VariantMembership", targetEntity = VariantMembershipImpl.class),
+                        @MetaValue(value = "VerificationCaseDefinition", targetEntity = VerificationCaseDefinitionImpl.class),
+                        @MetaValue(value = "VerificationCaseUsage", targetEntity = VerificationCaseUsageImpl.class),
+                        @MetaValue(value = "ViewDefinition", targetEntity = ViewDefinitionImpl.class),
+                        @MetaValue(value = "ViewUsage", targetEntity = ViewUsageImpl.class),
+                        @MetaValue(value = "ViewpointDefinition", targetEntity = ViewpointDefinitionImpl.class),
+                        @MetaValue(value = "ViewpointUsage", targetEntity = ViewpointUsageImpl.class),
                 }),
         @AnyMetaDef(name = "AcceptActionUsageMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -133,6 +143,7 @@
                         @MetaValue(value = "CalculationDefinition", targetEntity = CalculationDefinitionImpl.class),
                         @MetaValue(value = "CaseDefinition", targetEntity = CaseDefinitionImpl.class),
                         @MetaValue(value = "StateDefinition", targetEntity = StateDefinitionImpl.class),
+                        @MetaValue(value = "VerificationCaseDefinition", targetEntity = VerificationCaseDefinitionImpl.class),
                 }),
         @AnyMetaDef(name = "ActionUsageMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -152,6 +163,7 @@
                         @MetaValue(value = "StateUsage", targetEntity = StateUsageImpl.class),
                         @MetaValue(value = "TransferActionUsage", targetEntity = TransferActionUsageImpl.class),
                         @MetaValue(value = "TransitionUsage", targetEntity = TransitionUsageImpl.class),
+                        @MetaValue(value = "VerificationCaseUsage", targetEntity = VerificationCaseUsageImpl.class),
                 }),
         @AnyMetaDef(name = "AnalysisCaseDefinitionMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -205,6 +217,8 @@
                         @MetaValue(value = "Predicate", targetEntity = PredicateImpl.class),
                         @MetaValue(value = "RequirementDefinition", targetEntity = RequirementDefinitionImpl.class),
                         @MetaValue(value = "StateDefinition", targetEntity = StateDefinitionImpl.class),
+                        @MetaValue(value = "VerificationCaseDefinition", targetEntity = VerificationCaseDefinitionImpl.class),
+                        @MetaValue(value = "ViewpointDefinition", targetEntity = ViewpointDefinitionImpl.class),
                 }),
         @AnyMetaDef(name = "BindingConnectorMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -222,28 +236,33 @@
                         @MetaValue(value = "Invariant", targetEntity = InvariantImpl.class),
                         @MetaValue(value = "RequirementUsage", targetEntity = RequirementUsageImpl.class),
                         @MetaValue(value = "SatisfyRequirementUsage", targetEntity = SatisfyRequirementUsageImpl.class),
+                        @MetaValue(value = "ViewpointUsage", targetEntity = ViewpointUsageImpl.class),
                 }),
         @AnyMetaDef(name = "CalculationDefinitionMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
                         @MetaValue(value = "AnalysisCaseDefinition", targetEntity = AnalysisCaseDefinitionImpl.class),
                         @MetaValue(value = "CalculationDefinition", targetEntity = CalculationDefinitionImpl.class),
                         @MetaValue(value = "CaseDefinition", targetEntity = CaseDefinitionImpl.class),
+                        @MetaValue(value = "VerificationCaseDefinition", targetEntity = VerificationCaseDefinitionImpl.class),
                 }),
         @AnyMetaDef(name = "CalculationUsageMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
                         @MetaValue(value = "AnalysisCaseUsage", targetEntity = AnalysisCaseUsageImpl.class),
                         @MetaValue(value = "CalculationUsage", targetEntity = CalculationUsageImpl.class),
                         @MetaValue(value = "CaseUsage", targetEntity = CaseUsageImpl.class),
+                        @MetaValue(value = "VerificationCaseUsage", targetEntity = VerificationCaseUsageImpl.class),
                 }),
         @AnyMetaDef(name = "CaseDefinitionMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
                         @MetaValue(value = "AnalysisCaseDefinition", targetEntity = AnalysisCaseDefinitionImpl.class),
                         @MetaValue(value = "CaseDefinition", targetEntity = CaseDefinitionImpl.class),
+                        @MetaValue(value = "VerificationCaseDefinition", targetEntity = VerificationCaseDefinitionImpl.class),
                 }),
         @AnyMetaDef(name = "CaseUsageMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
                         @MetaValue(value = "AnalysisCaseUsage", targetEntity = AnalysisCaseUsageImpl.class),
                         @MetaValue(value = "CaseUsage", targetEntity = CaseUsageImpl.class),
+                        @MetaValue(value = "VerificationCaseUsage", targetEntity = VerificationCaseUsageImpl.class),
                 }),
         @AnyMetaDef(name = "ClassMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -256,6 +275,8 @@
                         @MetaValue(value = "ItemDefinition", targetEntity = ItemDefinitionImpl.class),
                         @MetaValue(value = "LifeClass", targetEntity = LifeClassImpl.class),
                         @MetaValue(value = "PartDefinition", targetEntity = PartDefinitionImpl.class),
+                        @MetaValue(value = "RenderingDefinition", targetEntity = RenderingDefinitionImpl.class),
+                        @MetaValue(value = "ViewDefinition", targetEntity = ViewDefinitionImpl.class),
                 }),
         @AnyMetaDef(name = "ClassifierMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -282,8 +303,12 @@
                         @MetaValue(value = "PartDefinition", targetEntity = PartDefinitionImpl.class),
                         @MetaValue(value = "PortDefinition", targetEntity = PortDefinitionImpl.class),
                         @MetaValue(value = "Predicate", targetEntity = PredicateImpl.class),
+                        @MetaValue(value = "RenderingDefinition", targetEntity = RenderingDefinitionImpl.class),
                         @MetaValue(value = "RequirementDefinition", targetEntity = RequirementDefinitionImpl.class),
                         @MetaValue(value = "StateDefinition", targetEntity = StateDefinitionImpl.class),
+                        @MetaValue(value = "VerificationCaseDefinition", targetEntity = VerificationCaseDefinitionImpl.class),
+                        @MetaValue(value = "ViewDefinition", targetEntity = ViewDefinitionImpl.class),
+                        @MetaValue(value = "ViewpointDefinition", targetEntity = ViewpointDefinitionImpl.class),
                 }),
         @AnyMetaDef(name = "CommentMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -326,6 +351,7 @@
                 metaValues = {
                         @MetaValue(value = "ConstraintDefinition", targetEntity = ConstraintDefinitionImpl.class),
                         @MetaValue(value = "RequirementDefinition", targetEntity = RequirementDefinitionImpl.class),
+                        @MetaValue(value = "ViewpointDefinition", targetEntity = ViewpointDefinitionImpl.class),
                 }),
         @AnyMetaDef(name = "ConstraintUsageMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -333,6 +359,7 @@
                         @MetaValue(value = "ConstraintUsage", targetEntity = ConstraintUsageImpl.class),
                         @MetaValue(value = "RequirementUsage", targetEntity = RequirementUsageImpl.class),
                         @MetaValue(value = "SatisfyRequirementUsage", targetEntity = SatisfyRequirementUsageImpl.class),
+                        @MetaValue(value = "ViewpointUsage", targetEntity = ViewpointUsageImpl.class),
                 }),
         @AnyMetaDef(name = "ControlNodeMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -367,8 +394,12 @@
                         @MetaValue(value = "ItemDefinition", targetEntity = ItemDefinitionImpl.class),
                         @MetaValue(value = "PartDefinition", targetEntity = PartDefinitionImpl.class),
                         @MetaValue(value = "PortDefinition", targetEntity = PortDefinitionImpl.class),
+                        @MetaValue(value = "RenderingDefinition", targetEntity = RenderingDefinitionImpl.class),
                         @MetaValue(value = "RequirementDefinition", targetEntity = RequirementDefinitionImpl.class),
                         @MetaValue(value = "StateDefinition", targetEntity = StateDefinitionImpl.class),
+                        @MetaValue(value = "VerificationCaseDefinition", targetEntity = VerificationCaseDefinitionImpl.class),
+                        @MetaValue(value = "ViewDefinition", targetEntity = ViewDefinitionImpl.class),
+                        @MetaValue(value = "ViewpointDefinition", targetEntity = ViewpointDefinitionImpl.class),
                 }),
         @AnyMetaDef(name = "DependencyMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -419,6 +450,7 @@
                         @MetaValue(value = "Element", targetEntity = ElementImpl.class),
                         @MetaValue(value = "EndFeatureMembership", targetEntity = EndFeatureMembershipImpl.class),
                         @MetaValue(value = "ExhibitStateUsage", targetEntity = ExhibitStateUsageImpl.class),
+                        @MetaValue(value = "Expose", targetEntity = ExposeImpl.class),
                         @MetaValue(value = "Expression", targetEntity = ExpressionImpl.class),
                         @MetaValue(value = "Feature", targetEntity = FeatureImpl.class),
                         @MetaValue(value = "FeatureMembership", targetEntity = FeatureMembershipImpl.class),
@@ -453,6 +485,7 @@
                         @MetaValue(value = "LiteralUnbounded", targetEntity = LiteralUnboundedImpl.class),
                         @MetaValue(value = "Membership", targetEntity = MembershipImpl.class),
                         @MetaValue(value = "MergeNode", targetEntity = MergeNodeImpl.class),
+                        @MetaValue(value = "ModelQuery", targetEntity = ModelQueryImpl.class),
                         @MetaValue(value = "Multiplicity", targetEntity = MultiplicityImpl.class),
                         @MetaValue(value = "MultiplicityRange", targetEntity = MultiplicityRangeImpl.class),
                         @MetaValue(value = "NullExpression", targetEntity = NullExpressionImpl.class),
@@ -473,6 +506,8 @@
                         @MetaValue(value = "Redefinition", targetEntity = RedefinitionImpl.class),
                         @MetaValue(value = "ReferenceUsage", targetEntity = ReferenceUsageImpl.class),
                         @MetaValue(value = "Relationship", targetEntity = RelationshipImpl.class),
+                        @MetaValue(value = "RenderingDefinition", targetEntity = RenderingDefinitionImpl.class),
+                        @MetaValue(value = "RenderingUsage", targetEntity = RenderingUsageImpl.class),
                         @MetaValue(value = "RequirementConstraintMembership", targetEntity = RequirementConstraintMembershipImpl.class),
                         @MetaValue(value = "RequirementDefinition", targetEntity = RequirementDefinitionImpl.class),
                         @MetaValue(value = "RequirementUsage", targetEntity = RequirementUsageImpl.class),
@@ -500,6 +535,12 @@
                         @MetaValue(value = "Type", targetEntity = TypeImpl.class),
                         @MetaValue(value = "Usage", targetEntity = UsageImpl.class),
                         @MetaValue(value = "VariantMembership", targetEntity = VariantMembershipImpl.class),
+                        @MetaValue(value = "VerificationCaseDefinition", targetEntity = VerificationCaseDefinitionImpl.class),
+                        @MetaValue(value = "VerificationCaseUsage", targetEntity = VerificationCaseUsageImpl.class),
+                        @MetaValue(value = "ViewDefinition", targetEntity = ViewDefinitionImpl.class),
+                        @MetaValue(value = "ViewUsage", targetEntity = ViewUsageImpl.class),
+                        @MetaValue(value = "ViewpointDefinition", targetEntity = ViewpointDefinitionImpl.class),
+                        @MetaValue(value = "ViewpointUsage", targetEntity = ViewpointUsageImpl.class),
                 }),
         @AnyMetaDef(name = "EndFeatureMembershipMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -508,6 +549,10 @@
         @AnyMetaDef(name = "ExhibitStateUsageMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
                         @MetaValue(value = "ExhibitStateUsage", targetEntity = ExhibitStateUsageImpl.class),
+                }),
+        @AnyMetaDef(name = "ExposeMetaDef", metaType = "string", idType = "java.util.UUID",
+                metaValues = {
+                        @MetaValue(value = "Expose", targetEntity = ExposeImpl.class),
                 }),
         @AnyMetaDef(name = "ExpressionMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -536,6 +581,8 @@
                         @MetaValue(value = "QueryQualifierExpression", targetEntity = QueryQualifierExpressionImpl.class),
                         @MetaValue(value = "RequirementUsage", targetEntity = RequirementUsageImpl.class),
                         @MetaValue(value = "SatisfyRequirementUsage", targetEntity = SatisfyRequirementUsageImpl.class),
+                        @MetaValue(value = "VerificationCaseUsage", targetEntity = VerificationCaseUsageImpl.class),
+                        @MetaValue(value = "ViewpointUsage", targetEntity = ViewpointUsageImpl.class),
                 }),
         @AnyMetaDef(name = "FeatureMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -588,6 +635,7 @@
                         @MetaValue(value = "QueryPathStepExpression", targetEntity = QueryPathStepExpressionImpl.class),
                         @MetaValue(value = "QueryQualifierExpression", targetEntity = QueryQualifierExpressionImpl.class),
                         @MetaValue(value = "ReferenceUsage", targetEntity = ReferenceUsageImpl.class),
+                        @MetaValue(value = "RenderingUsage", targetEntity = RenderingUsageImpl.class),
                         @MetaValue(value = "RequirementUsage", targetEntity = RequirementUsageImpl.class),
                         @MetaValue(value = "SatisfyRequirementUsage", targetEntity = SatisfyRequirementUsageImpl.class),
                         @MetaValue(value = "SendActionUsage", targetEntity = SendActionUsageImpl.class),
@@ -602,6 +650,9 @@
                         @MetaValue(value = "TransferActionUsage", targetEntity = TransferActionUsageImpl.class),
                         @MetaValue(value = "TransitionUsage", targetEntity = TransitionUsageImpl.class),
                         @MetaValue(value = "Usage", targetEntity = UsageImpl.class),
+                        @MetaValue(value = "VerificationCaseUsage", targetEntity = VerificationCaseUsageImpl.class),
+                        @MetaValue(value = "ViewUsage", targetEntity = ViewUsageImpl.class),
+                        @MetaValue(value = "ViewpointUsage", targetEntity = ViewpointUsageImpl.class),
                 }),
         @AnyMetaDef(name = "FeatureMembershipMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -644,6 +695,8 @@
                         @MetaValue(value = "Function", targetEntity = FunctionImpl.class),
                         @MetaValue(value = "Predicate", targetEntity = PredicateImpl.class),
                         @MetaValue(value = "RequirementDefinition", targetEntity = RequirementDefinitionImpl.class),
+                        @MetaValue(value = "VerificationCaseDefinition", targetEntity = VerificationCaseDefinitionImpl.class),
+                        @MetaValue(value = "ViewpointDefinition", targetEntity = ViewpointDefinitionImpl.class),
                 }),
         @AnyMetaDef(name = "GeneralizationMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -656,6 +709,7 @@
                 }),
         @AnyMetaDef(name = "ImportMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
+                        @MetaValue(value = "Expose", targetEntity = ExposeImpl.class),
                         @MetaValue(value = "Import", targetEntity = ImportImpl.class),
                 }),
         @AnyMetaDef(name = "IndividualDefinitionMetaDef", metaType = "string", idType = "java.util.UUID",
@@ -703,6 +757,8 @@
                         @MetaValue(value = "InterfaceDefinition", targetEntity = InterfaceDefinitionImpl.class),
                         @MetaValue(value = "ItemDefinition", targetEntity = ItemDefinitionImpl.class),
                         @MetaValue(value = "PartDefinition", targetEntity = PartDefinitionImpl.class),
+                        @MetaValue(value = "RenderingDefinition", targetEntity = RenderingDefinitionImpl.class),
+                        @MetaValue(value = "ViewDefinition", targetEntity = ViewDefinitionImpl.class),
                 }),
         @AnyMetaDef(name = "ItemFeatureMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -728,6 +784,8 @@
                         @MetaValue(value = "InterfaceUsage", targetEntity = InterfaceUsageImpl.class),
                         @MetaValue(value = "ItemUsage", targetEntity = ItemUsageImpl.class),
                         @MetaValue(value = "PartUsage", targetEntity = PartUsageImpl.class),
+                        @MetaValue(value = "RenderingUsage", targetEntity = RenderingUsageImpl.class),
+                        @MetaValue(value = "ViewUsage", targetEntity = ViewUsageImpl.class),
                 }),
         @AnyMetaDef(name = "JoinNodeMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -785,6 +843,10 @@
         @AnyMetaDef(name = "MergeNodeMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
                         @MetaValue(value = "MergeNode", targetEntity = MergeNodeImpl.class),
+                }),
+        @AnyMetaDef(name = "ModelQueryMetaDef", metaType = "string", idType = "java.util.UUID",
+                metaValues = {
+                        @MetaValue(value = "ModelQuery", targetEntity = ModelQueryImpl.class),
                 }),
         @AnyMetaDef(name = "MultiplicityMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -884,6 +946,8 @@
                         @MetaValue(value = "QueryPathStepExpression", targetEntity = QueryPathStepExpressionImpl.class),
                         @MetaValue(value = "QueryQualifierExpression", targetEntity = QueryQualifierExpressionImpl.class),
                         @MetaValue(value = "ReferenceUsage", targetEntity = ReferenceUsageImpl.class),
+                        @MetaValue(value = "RenderingDefinition", targetEntity = RenderingDefinitionImpl.class),
+                        @MetaValue(value = "RenderingUsage", targetEntity = RenderingUsageImpl.class),
                         @MetaValue(value = "RequirementDefinition", targetEntity = RequirementDefinitionImpl.class),
                         @MetaValue(value = "RequirementUsage", targetEntity = RequirementUsageImpl.class),
                         @MetaValue(value = "SatisfyRequirementUsage", targetEntity = SatisfyRequirementUsageImpl.class),
@@ -901,6 +965,12 @@
                         @MetaValue(value = "TransitionUsage", targetEntity = TransitionUsageImpl.class),
                         @MetaValue(value = "Type", targetEntity = TypeImpl.class),
                         @MetaValue(value = "Usage", targetEntity = UsageImpl.class),
+                        @MetaValue(value = "VerificationCaseDefinition", targetEntity = VerificationCaseDefinitionImpl.class),
+                        @MetaValue(value = "VerificationCaseUsage", targetEntity = VerificationCaseUsageImpl.class),
+                        @MetaValue(value = "ViewDefinition", targetEntity = ViewDefinitionImpl.class),
+                        @MetaValue(value = "ViewUsage", targetEntity = ViewUsageImpl.class),
+                        @MetaValue(value = "ViewpointDefinition", targetEntity = ViewpointDefinitionImpl.class),
+                        @MetaValue(value = "ViewpointUsage", targetEntity = ViewpointUsageImpl.class),
                 }),
         @AnyMetaDef(name = "ParameterMembershipMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -913,12 +983,16 @@
                         @MetaValue(value = "ConnectionDefinition", targetEntity = ConnectionDefinitionImpl.class),
                         @MetaValue(value = "InterfaceDefinition", targetEntity = InterfaceDefinitionImpl.class),
                         @MetaValue(value = "PartDefinition", targetEntity = PartDefinitionImpl.class),
+                        @MetaValue(value = "RenderingDefinition", targetEntity = RenderingDefinitionImpl.class),
+                        @MetaValue(value = "ViewDefinition", targetEntity = ViewDefinitionImpl.class),
                 }),
         @AnyMetaDef(name = "PartUsageMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
                         @MetaValue(value = "ConnectionUsage", targetEntity = ConnectionUsageImpl.class),
                         @MetaValue(value = "InterfaceUsage", targetEntity = InterfaceUsageImpl.class),
                         @MetaValue(value = "PartUsage", targetEntity = PartUsageImpl.class),
+                        @MetaValue(value = "RenderingUsage", targetEntity = RenderingUsageImpl.class),
+                        @MetaValue(value = "ViewUsage", targetEntity = ViewUsageImpl.class),
                 }),
         @AnyMetaDef(name = "PerformActionUsageMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -942,6 +1016,7 @@
                         @MetaValue(value = "ConstraintDefinition", targetEntity = ConstraintDefinitionImpl.class),
                         @MetaValue(value = "Predicate", targetEntity = PredicateImpl.class),
                         @MetaValue(value = "RequirementDefinition", targetEntity = RequirementDefinitionImpl.class),
+                        @MetaValue(value = "ViewpointDefinition", targetEntity = ViewpointDefinitionImpl.class),
                 }),
         @AnyMetaDef(name = "QueryPathExpressionMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -976,6 +1051,7 @@
                         @MetaValue(value = "Dependency", targetEntity = DependencyImpl.class),
                         @MetaValue(value = "Documentation", targetEntity = DocumentationImpl.class),
                         @MetaValue(value = "EndFeatureMembership", targetEntity = EndFeatureMembershipImpl.class),
+                        @MetaValue(value = "Expose", targetEntity = ExposeImpl.class),
                         @MetaValue(value = "FeatureMembership", targetEntity = FeatureMembershipImpl.class),
                         @MetaValue(value = "FeatureTyping", targetEntity = FeatureTypingImpl.class),
                         @MetaValue(value = "FeatureValue", targetEntity = FeatureValueImpl.class),
@@ -1003,6 +1079,14 @@
                         @MetaValue(value = "TransitionFeatureMembership", targetEntity = TransitionFeatureMembershipImpl.class),
                         @MetaValue(value = "VariantMembership", targetEntity = VariantMembershipImpl.class),
                 }),
+        @AnyMetaDef(name = "RenderingDefinitionMetaDef", metaType = "string", idType = "java.util.UUID",
+                metaValues = {
+                        @MetaValue(value = "RenderingDefinition", targetEntity = RenderingDefinitionImpl.class),
+                }),
+        @AnyMetaDef(name = "RenderingUsageMetaDef", metaType = "string", idType = "java.util.UUID",
+                metaValues = {
+                        @MetaValue(value = "RenderingUsage", targetEntity = RenderingUsageImpl.class),
+                }),
         @AnyMetaDef(name = "RequirementConstraintMembershipMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
                         @MetaValue(value = "RequirementConstraintMembership", targetEntity = RequirementConstraintMembershipImpl.class),
@@ -1010,11 +1094,13 @@
         @AnyMetaDef(name = "RequirementDefinitionMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
                         @MetaValue(value = "RequirementDefinition", targetEntity = RequirementDefinitionImpl.class),
+                        @MetaValue(value = "ViewpointDefinition", targetEntity = ViewpointDefinitionImpl.class),
                 }),
         @AnyMetaDef(name = "RequirementUsageMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
                         @MetaValue(value = "RequirementUsage", targetEntity = RequirementUsageImpl.class),
                         @MetaValue(value = "SatisfyRequirementUsage", targetEntity = SatisfyRequirementUsageImpl.class),
+                        @MetaValue(value = "ViewpointUsage", targetEntity = ViewpointUsageImpl.class),
                 }),
         @AnyMetaDef(name = "ResultExpressionMembershipMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -1096,6 +1182,8 @@
                         @MetaValue(value = "SuccessionItemFlow", targetEntity = SuccessionItemFlowImpl.class),
                         @MetaValue(value = "TransferActionUsage", targetEntity = TransferActionUsageImpl.class),
                         @MetaValue(value = "TransitionUsage", targetEntity = TransitionUsageImpl.class),
+                        @MetaValue(value = "VerificationCaseUsage", targetEntity = VerificationCaseUsageImpl.class),
+                        @MetaValue(value = "ViewpointUsage", targetEntity = ViewpointUsageImpl.class),
                 }),
         @AnyMetaDef(name = "SubjectMembershipMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -1219,6 +1307,8 @@
                         @MetaValue(value = "QueryPathStepExpression", targetEntity = QueryPathStepExpressionImpl.class),
                         @MetaValue(value = "QueryQualifierExpression", targetEntity = QueryQualifierExpressionImpl.class),
                         @MetaValue(value = "ReferenceUsage", targetEntity = ReferenceUsageImpl.class),
+                        @MetaValue(value = "RenderingDefinition", targetEntity = RenderingDefinitionImpl.class),
+                        @MetaValue(value = "RenderingUsage", targetEntity = RenderingUsageImpl.class),
                         @MetaValue(value = "RequirementDefinition", targetEntity = RequirementDefinitionImpl.class),
                         @MetaValue(value = "RequirementUsage", targetEntity = RequirementUsageImpl.class),
                         @MetaValue(value = "SatisfyRequirementUsage", targetEntity = SatisfyRequirementUsageImpl.class),
@@ -1236,6 +1326,12 @@
                         @MetaValue(value = "TransitionUsage", targetEntity = TransitionUsageImpl.class),
                         @MetaValue(value = "Type", targetEntity = TypeImpl.class),
                         @MetaValue(value = "Usage", targetEntity = UsageImpl.class),
+                        @MetaValue(value = "VerificationCaseDefinition", targetEntity = VerificationCaseDefinitionImpl.class),
+                        @MetaValue(value = "VerificationCaseUsage", targetEntity = VerificationCaseUsageImpl.class),
+                        @MetaValue(value = "ViewDefinition", targetEntity = ViewDefinitionImpl.class),
+                        @MetaValue(value = "ViewUsage", targetEntity = ViewUsageImpl.class),
+                        @MetaValue(value = "ViewpointDefinition", targetEntity = ViewpointDefinitionImpl.class),
+                        @MetaValue(value = "ViewpointUsage", targetEntity = ViewpointUsageImpl.class),
                 }),
         @AnyMetaDef(name = "UsageMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -1261,6 +1357,7 @@
                         @MetaValue(value = "PerformActionUsage", targetEntity = PerformActionUsageImpl.class),
                         @MetaValue(value = "PortUsage", targetEntity = PortUsageImpl.class),
                         @MetaValue(value = "ReferenceUsage", targetEntity = ReferenceUsageImpl.class),
+                        @MetaValue(value = "RenderingUsage", targetEntity = RenderingUsageImpl.class),
                         @MetaValue(value = "RequirementUsage", targetEntity = RequirementUsageImpl.class),
                         @MetaValue(value = "SatisfyRequirementUsage", targetEntity = SatisfyRequirementUsageImpl.class),
                         @MetaValue(value = "SendActionUsage", targetEntity = SendActionUsageImpl.class),
@@ -1268,10 +1365,37 @@
                         @MetaValue(value = "TransferActionUsage", targetEntity = TransferActionUsageImpl.class),
                         @MetaValue(value = "TransitionUsage", targetEntity = TransitionUsageImpl.class),
                         @MetaValue(value = "Usage", targetEntity = UsageImpl.class),
+                        @MetaValue(value = "VerificationCaseUsage", targetEntity = VerificationCaseUsageImpl.class),
+                        @MetaValue(value = "ViewUsage", targetEntity = ViewUsageImpl.class),
+                        @MetaValue(value = "ViewpointUsage", targetEntity = ViewpointUsageImpl.class),
                 }),
         @AnyMetaDef(name = "VariantMembershipMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
                         @MetaValue(value = "VariantMembership", targetEntity = VariantMembershipImpl.class),
+                }),
+        @AnyMetaDef(name = "VerificationCaseDefinitionMetaDef", metaType = "string", idType = "java.util.UUID",
+                metaValues = {
+                        @MetaValue(value = "VerificationCaseDefinition", targetEntity = VerificationCaseDefinitionImpl.class),
+                }),
+        @AnyMetaDef(name = "VerificationCaseUsageMetaDef", metaType = "string", idType = "java.util.UUID",
+                metaValues = {
+                        @MetaValue(value = "VerificationCaseUsage", targetEntity = VerificationCaseUsageImpl.class),
+                }),
+        @AnyMetaDef(name = "ViewDefinitionMetaDef", metaType = "string", idType = "java.util.UUID",
+                metaValues = {
+                        @MetaValue(value = "ViewDefinition", targetEntity = ViewDefinitionImpl.class),
+                }),
+        @AnyMetaDef(name = "ViewUsageMetaDef", metaType = "string", idType = "java.util.UUID",
+                metaValues = {
+                        @MetaValue(value = "ViewUsage", targetEntity = ViewUsageImpl.class),
+                }),
+        @AnyMetaDef(name = "ViewpointDefinitionMetaDef", metaType = "string", idType = "java.util.UUID",
+                metaValues = {
+                        @MetaValue(value = "ViewpointDefinition", targetEntity = ViewpointDefinitionImpl.class),
+                }),
+        @AnyMetaDef(name = "ViewpointUsageMetaDef", metaType = "string", idType = "java.util.UUID",
+                metaValues = {
+                        @MetaValue(value = "ViewpointUsage", targetEntity = ViewpointUsageImpl.class),
                 }),
 })
 
