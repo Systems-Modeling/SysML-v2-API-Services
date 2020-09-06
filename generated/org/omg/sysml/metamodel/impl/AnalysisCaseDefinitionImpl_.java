@@ -30,6 +30,7 @@ import org.omg.sysml.metamodel.PartUsage;
 import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.ReferenceUsage;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.RenderingUsage;
 import org.omg.sysml.metamodel.RequirementUsage;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Step;
@@ -38,16 +39,23 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Usage;
 import org.omg.sysml.metamodel.VariantMembership;
+import org.omg.sysml.metamodel.VerificationCaseUsage;
+import org.omg.sysml.metamodel.ViewUsage;
+import org.omg.sysml.metamodel.ViewpointUsage;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(AnalysisCaseDefinitionImpl.class)
 public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
+	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, CalculationUsage> calculation;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, PortUsage> ownedPort;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Generalization> ownedGeneralization;
 	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, Boolean> isConjugated;
+	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, VerificationCaseUsage> ownedVerificationCase;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, Usage> usage;
+	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, ViewpointUsage> ownedViewpoint;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, AnalysisCaseUsage> ownedAnalysisCase;
+	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, RenderingUsage> ownedRendering;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, Feature> output;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, Usage> variant;
@@ -56,10 +64,11 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.metamode
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, Comment> documentationComment;
-	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, Usage> flow;
 	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, UUID> identifier;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, Annotation> ownedAnnotation;
+	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, ViewUsage> ownedView;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, Feature> ownedFeature;
+	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, Usage> flowFeature;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, InterfaceUsage> ownedInterface;
@@ -74,7 +83,6 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.metamode
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, ActionUsage> analysisAction;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, StateUsage> ownedState;
-	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, CalculationUsage> calculationUsage;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Membership> membership;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, Superclassing> ownedSuperclassing;
 	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, Boolean> isVariation;
@@ -103,11 +111,15 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.metamode
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, AttributeUsage> ownedAttribute;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, PartUsage> ownedPart;
 
+	public static final String CALCULATION = "calculation";
 	public static final String OWNED_PORT = "ownedPort";
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String IS_CONJUGATED = "isConjugated";
+	public static final String OWNED_VERIFICATION_CASE = "ownedVerificationCase";
 	public static final String USAGE = "usage";
+	public static final String OWNED_VIEWPOINT = "ownedViewpoint";
 	public static final String OWNED_ANALYSIS_CASE = "ownedAnalysisCase";
+	public static final String OWNED_RENDERING = "ownedRendering";
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
 	public static final String VARIANT = "variant";
@@ -116,10 +128,11 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.metamode
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
-	public static final String FLOW = "flow";
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
+	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";
+	public static final String FLOW_FEATURE = "flowFeature";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String END_FEATURE = "endFeature";
 	public static final String OWNED_INTERFACE = "ownedInterface";
@@ -134,7 +147,6 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.metamode
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String ANALYSIS_ACTION = "analysisAction";
 	public static final String OWNED_STATE = "ownedState";
-	public static final String CALCULATION_USAGE = "calculationUsage";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_SUPERCLASSING = "ownedSuperclassing";
 	public static final String IS_VARIATION = "isVariation";

@@ -31,8 +31,6 @@ public interface Type extends Package, MofObject {
 
     Boolean getIsConjugated();
 
-    Conjugation getConjugator();
-
     List<? extends FeatureMembership> getFeatureMembership();
 
     Collection<? extends Feature> getInheritedFeature();

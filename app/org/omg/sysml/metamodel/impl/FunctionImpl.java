@@ -71,25 +71,6 @@ public class FunctionImpl extends MofObjectImpl implements Function {
 
 
 
-    // @info.archinnov.achilles.annotations.Column("conjugator")
-    private Conjugation conjugator;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "conjugatorType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "conjugatorId", table = "Function")
-    public Conjugation getConjugator() {
-        return conjugator;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ConjugationImpl.class)
-    public void setConjugator(Conjugation conjugator) {
-        this.conjugator = conjugator;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("documentation")
     private Collection<Documentation> documentation;
 

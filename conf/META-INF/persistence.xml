@@ -45,6 +45,7 @@
         <class>org.omg.sysml.metamodel.impl.ElementImpl</class>
         <class>org.omg.sysml.metamodel.impl.EndFeatureMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.ExhibitStateUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ExposeImpl</class>
         <class>org.omg.sysml.metamodel.impl.ExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.FeatureImpl</class>
         <class>org.omg.sysml.metamodel.impl.FeatureMembershipImpl</class>
@@ -79,6 +80,7 @@
         <class>org.omg.sysml.metamodel.impl.LiteralUnboundedImpl</class>
         <class>org.omg.sysml.metamodel.impl.MembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.MergeNodeImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ModelQueryImpl</class>
         <class>org.omg.sysml.metamodel.impl.MofObjectImpl</class>
         <class>org.omg.sysml.metamodel.impl.MultiplicityImpl</class>
         <class>org.omg.sysml.metamodel.impl.MultiplicityRangeImpl</class>
@@ -100,6 +102,8 @@
         <class>org.omg.sysml.metamodel.impl.RedefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.ReferenceUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.RelationshipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.RenderingDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.RenderingUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.RequirementConstraintMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.RequirementDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.RequirementUsageImpl</class>
@@ -127,6 +131,12 @@
         <class>org.omg.sysml.metamodel.impl.TypeImpl</class>
         <class>org.omg.sysml.metamodel.impl.UsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.VariantMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.VerificationCaseDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.VerificationCaseUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ViewDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ViewpointDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ViewpointUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ViewUsageImpl</class>
 
         <class>org.omg.sysml.lifecycle.impl</class>
         <class>org.omg.sysml.lifecycle.impl.CommitImpl</class>

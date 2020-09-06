@@ -26,5 +26,6 @@
         "source": {"@type": "@id"},
         "supplier": {"@type": "@id"},
         "target": {"@type": "@id"}
+
     }
 }

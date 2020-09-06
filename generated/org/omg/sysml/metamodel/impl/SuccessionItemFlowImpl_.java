@@ -63,7 +63,6 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.metamodel.im
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Type> ownedType;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Step> effectStep;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, String> name;
-	public static volatile CollectionAttribute<SuccessionItemFlowImpl, FeatureTyping> typing;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Feature> connectorEnd;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, ItemFlowEnd> itemFlowEnd;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Element> ownedMember;
@@ -75,6 +74,7 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.metamodel.im
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Step> triggerStep;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Feature> targetFeature;
+	public static volatile CollectionAttribute<SuccessionItemFlowImpl, FeatureTyping> ownedTyping;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Feature> feature;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Membership> inheritedMembership;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Feature> parameter;
@@ -126,7 +126,6 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.metamodel.im
 	public static final String OWNED_TYPE = "ownedType";
 	public static final String EFFECT_STEP = "effectStep";
 	public static final String NAME = "name";
-	public static final String TYPING = "typing";
 	public static final String CONNECTOR_END = "connectorEnd";
 	public static final String ITEM_FLOW_END = "itemFlowEnd";
 	public static final String OWNED_MEMBER = "ownedMember";
@@ -138,6 +137,7 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.metamodel.im
 	public static final String TRIGGER_STEP = "triggerStep";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String TARGET_FEATURE = "targetFeature";
+	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String PARAMETER = "parameter";

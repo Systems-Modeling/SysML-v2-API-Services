@@ -41,5 +41,6 @@
         "value": {"@type": "@id"},
         "valueConnector": {"@type": "@id"},
         "visibility": {"@type": "@vocab"}
+
     }
 }

@@ -29,6 +29,7 @@ import org.omg.sysml.metamodel.PartUsage;
 import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.ReferenceUsage;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.RenderingUsage;
 import org.omg.sysml.metamodel.RequirementUsage;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Superclassing;
@@ -36,6 +37,9 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Usage;
 import org.omg.sysml.metamodel.VariantMembership;
+import org.omg.sysml.metamodel.VerificationCaseUsage;
+import org.omg.sysml.metamodel.ViewUsage;
+import org.omg.sysml.metamodel.ViewpointUsage;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(ItemDefinitionImpl.class)
@@ -44,8 +48,11 @@ public abstract class ItemDefinitionImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<ItemDefinitionImpl, PortUsage> ownedPort;
 	public static volatile ListAttribute<ItemDefinitionImpl, Generalization> ownedGeneralization;
 	public static volatile SingularAttribute<ItemDefinitionImpl, Boolean> isConjugated;
+	public static volatile CollectionAttribute<ItemDefinitionImpl, VerificationCaseUsage> ownedVerificationCase;
 	public static volatile CollectionAttribute<ItemDefinitionImpl, Usage> usage;
+	public static volatile CollectionAttribute<ItemDefinitionImpl, ViewpointUsage> ownedViewpoint;
 	public static volatile CollectionAttribute<ItemDefinitionImpl, AnalysisCaseUsage> ownedAnalysisCase;
+	public static volatile CollectionAttribute<ItemDefinitionImpl, RenderingUsage> ownedRendering;
 	public static volatile CollectionAttribute<ItemDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile CollectionAttribute<ItemDefinitionImpl, Feature> output;
 	public static volatile CollectionAttribute<ItemDefinitionImpl, Usage> variant;
@@ -53,10 +60,11 @@ public abstract class ItemDefinitionImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<ItemDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<ItemDefinitionImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<ItemDefinitionImpl, Comment> documentationComment;
-	public static volatile CollectionAttribute<ItemDefinitionImpl, Usage> flow;
 	public static volatile SingularAttribute<ItemDefinitionImpl, UUID> identifier;
 	public static volatile CollectionAttribute<ItemDefinitionImpl, Annotation> ownedAnnotation;
+	public static volatile CollectionAttribute<ItemDefinitionImpl, ViewUsage> ownedView;
 	public static volatile CollectionAttribute<ItemDefinitionImpl, Feature> ownedFeature;
+	public static volatile CollectionAttribute<ItemDefinitionImpl, Usage> flowFeature;
 	public static volatile CollectionAttribute<ItemDefinitionImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<ItemDefinitionImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<ItemDefinitionImpl, InterfaceUsage> ownedInterface;
@@ -98,8 +106,11 @@ public abstract class ItemDefinitionImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String OWNED_PORT = "ownedPort";
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String IS_CONJUGATED = "isConjugated";
+	public static final String OWNED_VERIFICATION_CASE = "ownedVerificationCase";
 	public static final String USAGE = "usage";
+	public static final String OWNED_VIEWPOINT = "ownedViewpoint";
 	public static final String OWNED_ANALYSIS_CASE = "ownedAnalysisCase";
+	public static final String OWNED_RENDERING = "ownedRendering";
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
 	public static final String VARIANT = "variant";
@@ -107,10 +118,11 @@ public abstract class ItemDefinitionImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
-	public static final String FLOW = "flow";
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
+	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";
+	public static final String FLOW_FEATURE = "flowFeature";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String END_FEATURE = "endFeature";
 	public static final String OWNED_INTERFACE = "ownedInterface";

@@ -34,6 +34,7 @@ public abstract class FeatureImpl_ extends org.omg.sysml.metamodel.impl.MofObjec
 	public static volatile CollectionAttribute<FeatureImpl, Type> type;
 	public static volatile SingularAttribute<FeatureImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<FeatureImpl, Feature> output;
+	public static volatile CollectionAttribute<FeatureImpl, FeatureTyping> ownedTyping;
 	public static volatile CollectionAttribute<FeatureImpl, Feature> feature;
 	public static volatile ListAttribute<FeatureImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<FeatureImpl, Element> member;
@@ -64,7 +65,6 @@ public abstract class FeatureImpl_ extends org.omg.sysml.metamodel.impl.MofObjec
 	public static volatile CollectionAttribute<FeatureImpl, String> aliasId;
 	public static volatile CollectionAttribute<FeatureImpl, Type> ownedType;
 	public static volatile SingularAttribute<FeatureImpl, String> name;
-	public static volatile CollectionAttribute<FeatureImpl, FeatureTyping> typing;
 	public static volatile ListAttribute<FeatureImpl, Element> ownedMember;
 	public static volatile ListAttribute<FeatureImpl, Membership> ownedMembership;
 
@@ -76,6 +76,7 @@ public abstract class FeatureImpl_ extends org.omg.sysml.metamodel.impl.MofObjec
 	public static final String TYPE = "type";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OUTPUT = "output";
+	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String MEMBER = "member";
@@ -106,7 +107,6 @@ public abstract class FeatureImpl_ extends org.omg.sysml.metamodel.impl.MofObjec
 	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
-	public static final String TYPING = "typing";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 

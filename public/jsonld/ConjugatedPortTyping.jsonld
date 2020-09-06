@@ -19,6 +19,7 @@
         "ownedRelationship": {"@type": "@id"},
         "ownedTextualRepresentation": {"@type": "@id"},
         "owner": {"@type": "@id"},
+        "owningFeature": {"@type": "@id"},
         "owningMembership": {"@type": "@id"},
         "owningNamespace": {"@type": "@id"},
         "owningRelatedElement": {"@type": "@id"},
@@ -31,5 +32,6 @@
         "target": {"@type": "@id"},
         "type": {"@type": "@id"},
         "typedFeature": {"@type": "@id"}
+
     }
 }

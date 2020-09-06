@@ -6,7 +6,6 @@
         "xsd": "http://www.w3.org/2001/XMLSchema#",
 
         "aliasId": {"@type": "xsd:string"},
-        "conjugator": {"@type": "@id"},
         "documentation": {"@type": "@id"},
         "documentationComment": {"@type": "@id"},
         "endFeature": {"@type": "@id"},
@@ -47,5 +46,6 @@
         "parameter": {"@type": "@id"},
         "result": {"@type": "@id"},
         "step": {"@type": "@id"}
+
     }
 }

@@ -13,7 +13,7 @@ public interface ItemFlow extends Connector, Step, MofObject {
 
     Collection<? extends ItemFlowEnd> getItemFlowEnd();
 
-    Collection<? extends ItemFlowFeature> getItemFlowFeature();
-
     Collection<? extends ItemFeature> getItemFeature();
+
+    Collection<? extends ItemFlowFeature> getItemFlowFeature();
 }

@@ -98,46 +98,27 @@ public class CaseDefinitionImpl extends MofObjectImpl implements CaseDefinition 
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("calculationUsage")
-    private Collection<CalculationUsage> calculationUsage;
+    // @info.archinnov.achilles.annotations.Column("calculation")
+    private Collection<CalculationUsage> calculation;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CalculationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "CaseDefinition_calculationUsage",
+    @JoinTable(name = "CaseDefinition_calculation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<CalculationUsage> getCalculationUsage() {
-        if (calculationUsage == null) {
-            calculationUsage = new ArrayList<>();
+    public Collection<CalculationUsage> getCalculation() {
+        if (calculation == null) {
+            calculation = new ArrayList<>();
         }
-        return calculationUsage;
+        return calculation;
     }
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CalculationUsageImpl.class)
-    public void setCalculationUsage(Collection<CalculationUsage> calculationUsage) {
-        this.calculationUsage = calculationUsage;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("conjugator")
-    private Conjugation conjugator;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "conjugatorType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "conjugatorId", table = "CaseDefinition")
-    public Conjugation getConjugator() {
-        return conjugator;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ConjugationImpl.class)
-    public void setConjugator(Conjugation conjugator) {
-        this.conjugator = conjugator;
+    public void setCalculation(Collection<CalculationUsage> calculation) {
+        this.calculation = calculation;
     }
 
 
@@ -297,27 +278,27 @@ public class CaseDefinitionImpl extends MofObjectImpl implements CaseDefinition 
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("flow")
-    private Collection<Usage> flow;
+    // @info.archinnov.achilles.annotations.Column("flowFeature")
+    private Collection<Usage> flowFeature;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "CaseDefinition_flow",
+    @JoinTable(name = "CaseDefinition_flowFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Usage> getFlow() {
-        if (flow == null) {
-            flow = new ArrayList<>();
+    public Collection<Usage> getFlowFeature() {
+        if (flowFeature == null) {
+            flowFeature = new ArrayList<>();
         }
-        return flow;
+        return flowFeature;
     }
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
-    public void setFlow(Collection<Usage> flow) {
-        this.flow = flow;
+    public void setFlowFeature(Collection<Usage> flowFeature) {
+        this.flowFeature = flowFeature;
     }
 
 
@@ -1276,6 +1257,32 @@ public class CaseDefinitionImpl extends MofObjectImpl implements CaseDefinition 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedRendering")
+    private Collection<RenderingUsage> ownedRendering;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "RenderingUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "CaseDefinition_ownedRendering",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<RenderingUsage> getOwnedRendering() {
+        if (ownedRendering == null) {
+            ownedRendering = new ArrayList<>();
+        }
+        return ownedRendering;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RenderingUsageImpl.class)
+    public void setOwnedRendering(Collection<RenderingUsage> ownedRendering) {
+        this.ownedRendering = ownedRendering;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedRequirement")
     private Collection<RequirementUsage> ownedRequirement;
 
@@ -1427,6 +1434,84 @@ public class CaseDefinitionImpl extends MofObjectImpl implements CaseDefinition 
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
     public void setOwnedUsage(Collection<Usage> ownedUsage) {
         this.ownedUsage = ownedUsage;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedVerificationCase")
+    private Collection<VerificationCaseUsage> ownedVerificationCase;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "VerificationCaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "CaseDefinition_ownedVerificationCase",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<VerificationCaseUsage> getOwnedVerificationCase() {
+        if (ownedVerificationCase == null) {
+            ownedVerificationCase = new ArrayList<>();
+        }
+        return ownedVerificationCase;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = VerificationCaseUsageImpl.class)
+    public void setOwnedVerificationCase(Collection<VerificationCaseUsage> ownedVerificationCase) {
+        this.ownedVerificationCase = ownedVerificationCase;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedView")
+    private Collection<ViewUsage> ownedView;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ViewUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "CaseDefinition_ownedView",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ViewUsage> getOwnedView() {
+        if (ownedView == null) {
+            ownedView = new ArrayList<>();
+        }
+        return ownedView;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ViewUsageImpl.class)
+    public void setOwnedView(Collection<ViewUsage> ownedView) {
+        this.ownedView = ownedView;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedViewpoint")
+    private Collection<ViewpointUsage> ownedViewpoint;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ViewpointUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "CaseDefinition_ownedViewpoint",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ViewpointUsage> getOwnedViewpoint() {
+        if (ownedViewpoint == null) {
+            ownedViewpoint = new ArrayList<>();
+        }
+        return ownedViewpoint;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ViewpointUsageImpl.class)
+    public void setOwnedViewpoint(Collection<ViewpointUsage> ownedViewpoint) {
+        this.ownedViewpoint = ownedViewpoint;
     }
 
 

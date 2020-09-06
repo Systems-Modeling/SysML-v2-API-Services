@@ -51,7 +51,6 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile ListAttribute<ConnectorImpl, Element> relatedElement;
 	public static volatile CollectionAttribute<ConnectorImpl, Type> ownedType;
 	public static volatile SingularAttribute<ConnectorImpl, String> name;
-	public static volatile CollectionAttribute<ConnectorImpl, FeatureTyping> typing;
 	public static volatile CollectionAttribute<ConnectorImpl, Feature> connectorEnd;
 	public static volatile ListAttribute<ConnectorImpl, Element> ownedMember;
 	public static volatile ListAttribute<ConnectorImpl, Membership> ownedMembership;
@@ -60,6 +59,7 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile ListAttribute<ConnectorImpl, Element> ownedRelatedElement;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<ConnectorImpl, Feature> targetFeature;
+	public static volatile CollectionAttribute<ConnectorImpl, FeatureTyping> ownedTyping;
 	public static volatile CollectionAttribute<ConnectorImpl, Feature> feature;
 	public static volatile ListAttribute<ConnectorImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<ConnectorImpl, Element> member;
@@ -103,7 +103,6 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
-	public static final String TYPING = "typing";
 	public static final String CONNECTOR_END = "connectorEnd";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
@@ -112,6 +111,7 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String TARGET_FEATURE = "targetFeature";
+	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String MEMBER = "member";

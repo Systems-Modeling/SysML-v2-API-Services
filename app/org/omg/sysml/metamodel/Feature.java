@@ -25,11 +25,11 @@ public interface Feature extends Type, MofObject {
 
     Boolean getIsComposite();
 
-    Collection<? extends FeatureTyping> getTyping();
-
     Boolean getIsEnd();
 
     Type getEndOwningType();
+
+    Collection<? extends FeatureTyping> getOwnedTyping();
 
     Boolean getIsNonunique();
 }

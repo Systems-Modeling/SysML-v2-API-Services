@@ -34,6 +34,7 @@ public abstract class ItemFlowEndImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static volatile CollectionAttribute<ItemFlowEndImpl, Type> type;
 	public static volatile SingularAttribute<ItemFlowEndImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<ItemFlowEndImpl, Feature> output;
+	public static volatile CollectionAttribute<ItemFlowEndImpl, FeatureTyping> ownedTyping;
 	public static volatile CollectionAttribute<ItemFlowEndImpl, Feature> feature;
 	public static volatile ListAttribute<ItemFlowEndImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<ItemFlowEndImpl, Element> member;
@@ -64,7 +65,6 @@ public abstract class ItemFlowEndImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static volatile CollectionAttribute<ItemFlowEndImpl, String> aliasId;
 	public static volatile CollectionAttribute<ItemFlowEndImpl, Type> ownedType;
 	public static volatile SingularAttribute<ItemFlowEndImpl, String> name;
-	public static volatile CollectionAttribute<ItemFlowEndImpl, FeatureTyping> typing;
 	public static volatile ListAttribute<ItemFlowEndImpl, Element> ownedMember;
 	public static volatile ListAttribute<ItemFlowEndImpl, Membership> ownedMembership;
 
@@ -76,6 +76,7 @@ public abstract class ItemFlowEndImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static final String TYPE = "type";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OUTPUT = "output";
+	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String MEMBER = "member";
@@ -106,7 +107,6 @@ public abstract class ItemFlowEndImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
-	public static final String TYPING = "typing";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 

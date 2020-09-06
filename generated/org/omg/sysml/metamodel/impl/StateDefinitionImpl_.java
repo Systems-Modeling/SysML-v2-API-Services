@@ -29,6 +29,7 @@ import org.omg.sysml.metamodel.PartUsage;
 import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.ReferenceUsage;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.RenderingUsage;
 import org.omg.sysml.metamodel.RequirementUsage;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Step;
@@ -37,6 +38,9 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Usage;
 import org.omg.sysml.metamodel.VariantMembership;
+import org.omg.sysml.metamodel.VerificationCaseUsage;
+import org.omg.sysml.metamodel.ViewUsage;
+import org.omg.sysml.metamodel.ViewpointUsage;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(StateDefinitionImpl.class)
@@ -45,8 +49,11 @@ public abstract class StateDefinitionImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<StateDefinitionImpl, PortUsage> ownedPort;
 	public static volatile ListAttribute<StateDefinitionImpl, Generalization> ownedGeneralization;
 	public static volatile SingularAttribute<StateDefinitionImpl, Boolean> isConjugated;
+	public static volatile CollectionAttribute<StateDefinitionImpl, VerificationCaseUsage> ownedVerificationCase;
 	public static volatile CollectionAttribute<StateDefinitionImpl, Usage> usage;
+	public static volatile CollectionAttribute<StateDefinitionImpl, ViewpointUsage> ownedViewpoint;
 	public static volatile CollectionAttribute<StateDefinitionImpl, AnalysisCaseUsage> ownedAnalysisCase;
+	public static volatile CollectionAttribute<StateDefinitionImpl, RenderingUsage> ownedRendering;
 	public static volatile CollectionAttribute<StateDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile CollectionAttribute<StateDefinitionImpl, Feature> output;
 	public static volatile CollectionAttribute<StateDefinitionImpl, Usage> variant;
@@ -56,10 +63,11 @@ public abstract class StateDefinitionImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<StateDefinitionImpl, StateUsage> state;
 	public static volatile SingularAttribute<StateDefinitionImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<StateDefinitionImpl, Comment> documentationComment;
-	public static volatile CollectionAttribute<StateDefinitionImpl, Usage> flow;
 	public static volatile SingularAttribute<StateDefinitionImpl, UUID> identifier;
 	public static volatile CollectionAttribute<StateDefinitionImpl, Annotation> ownedAnnotation;
+	public static volatile CollectionAttribute<StateDefinitionImpl, ViewUsage> ownedView;
 	public static volatile CollectionAttribute<StateDefinitionImpl, Feature> ownedFeature;
+	public static volatile CollectionAttribute<StateDefinitionImpl, Usage> flowFeature;
 	public static volatile CollectionAttribute<StateDefinitionImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<StateDefinitionImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<StateDefinitionImpl, InterfaceUsage> ownedInterface;
@@ -103,8 +111,11 @@ public abstract class StateDefinitionImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String OWNED_PORT = "ownedPort";
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String IS_CONJUGATED = "isConjugated";
+	public static final String OWNED_VERIFICATION_CASE = "ownedVerificationCase";
 	public static final String USAGE = "usage";
+	public static final String OWNED_VIEWPOINT = "ownedViewpoint";
 	public static final String OWNED_ANALYSIS_CASE = "ownedAnalysisCase";
+	public static final String OWNED_RENDERING = "ownedRendering";
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
 	public static final String VARIANT = "variant";
@@ -114,10 +125,11 @@ public abstract class StateDefinitionImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String STATE = "state";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
-	public static final String FLOW = "flow";
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
+	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";
+	public static final String FLOW_FEATURE = "flowFeature";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String END_FEATURE = "endFeature";
 	public static final String OWNED_INTERFACE = "ownedInterface";

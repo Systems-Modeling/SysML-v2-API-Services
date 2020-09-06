@@ -27,7 +27,7 @@ public interface Usage extends Feature, MofObject {
 
     Boolean getIsVariation();
 
-    Collection<? extends Usage> getFlow();
+    Collection<? extends Usage> getFlowFeature();
 
     Collection<? extends CaseUsage> getNestedCase();
 
@@ -52,4 +52,12 @@ public interface Usage extends Feature, MofObject {
     Collection<? extends InterfaceUsage> getNestedInterface();
 
     Collection<? extends AttributeUsage> getNestedAttribute();
+
+    Collection<? extends ViewUsage> getNestedView();
+
+    Collection<? extends ViewpointUsage> getNestedViewpoint();
+
+    Collection<? extends RenderingUsage> getNestedRendering();
+
+    Collection<? extends VerificationCaseUsage> getNestedVerificationCase();
 }

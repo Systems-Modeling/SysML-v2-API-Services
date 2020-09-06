@@ -35,6 +35,7 @@ public abstract class BooleanExpressionImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile CollectionAttribute<BooleanExpressionImpl, Type> type;
 	public static volatile SingularAttribute<BooleanExpressionImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<BooleanExpressionImpl, Feature> output;
+	public static volatile CollectionAttribute<BooleanExpressionImpl, FeatureTyping> ownedTyping;
 	public static volatile CollectionAttribute<BooleanExpressionImpl, Feature> feature;
 	public static volatile ListAttribute<BooleanExpressionImpl, Membership> inheritedMembership;
 	public static volatile CollectionAttribute<BooleanExpressionImpl, Feature> parameter;
@@ -67,7 +68,6 @@ public abstract class BooleanExpressionImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile CollectionAttribute<BooleanExpressionImpl, String> aliasId;
 	public static volatile CollectionAttribute<BooleanExpressionImpl, Type> ownedType;
 	public static volatile SingularAttribute<BooleanExpressionImpl, String> name;
-	public static volatile CollectionAttribute<BooleanExpressionImpl, FeatureTyping> typing;
 	public static volatile ListAttribute<BooleanExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<BooleanExpressionImpl, Membership> ownedMembership;
 
@@ -79,6 +79,7 @@ public abstract class BooleanExpressionImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String TYPE = "type";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OUTPUT = "output";
+	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String PARAMETER = "parameter";
@@ -111,7 +112,6 @@ public abstract class BooleanExpressionImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
-	public static final String TYPING = "typing";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 
