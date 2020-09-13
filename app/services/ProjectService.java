@@ -5,27 +5,14 @@ import org.omg.sysml.lifecycle.Project;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
-
-/**
- * @author Manas Bajaj
- * <p>
- * Main service that provides CRUD operations for all SysML v2 projects
- */
 
 @Singleton
-public class ProjectService {
+public class ProjectService extends BaseService<Project, ProjectDao> {
+
     @Inject
-    private ProjectDao dao;
-
-    public List<Project> getAll() {
-        return dao.findAll();
-    }
-
-    public Optional<Project> getById(UUID id) {
-        return dao.findById(id);
+    public ProjectService(ProjectDao dao) {
+        super(dao);
     }
 
     public Optional<Project> create(Project project) {

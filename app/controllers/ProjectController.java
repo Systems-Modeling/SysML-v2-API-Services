@@ -16,17 +16,16 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-/**
- * @author Manas Bajaj
- *
- * Controller for handling all API requests related to SysML v2 elements
- */
 public class ProjectController extends Controller {
-    @Inject
-    private MetamodelProvider metamodelProvider;
+
+    private final MetamodelProvider metamodelProvider;
+    private final ProjectService projectService;
 
     @Inject
-    private ProjectService projectService;
+    public ProjectController(ProjectService projectService, MetamodelProvider metamodelProvider) {
+        this.projectService = projectService;
+        this.metamodelProvider = metamodelProvider;
+    }
 
     public Result byId(UUID id) {
         Optional<Project> project = projectService.getById(id);
@@ -40,8 +39,8 @@ public class ProjectController extends Controller {
 
     public Result create(Http.Request request) {
         JsonNode requestBodyJson = request.body().asJson();
-        Project requestProject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Project.class));
-        Optional<Project> responseProject = projectService.create(requestProject);
-        return responseProject.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
+        Project requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Project.class));
+        Optional<Project> response = projectService.create(requestedObject);
+        return response.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 }

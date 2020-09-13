@@ -1,6 +1,6 @@
-package org.omg.sysml.lifecycle.impl;
+package org.omg.sysml.record.impl;
 
-import org.omg.sysml.lifecycle.Record;
+import org.omg.sysml.record.Record;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;

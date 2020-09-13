@@ -23,22 +23,20 @@ import java.util.stream.Stream;
 
 @Singleton
 public class JpaRelationshipDao extends JpaDao<Relationship> implements RelationshipDao {
-    @Inject
-    private MetamodelProvider metamodelProvider;
+
+    private final MetamodelProvider metamodelProvider;
+    private final JpaElementDao elementDao;
 
     @Inject
-    private JPAManager jpa;
-
-    private JpaElementDao elementDao = new JpaElementDao();
-
-    @Override
-    protected JPAManager getJpaManager() {
-        return jpa;
+    public JpaRelationshipDao(JPAManager jpaManager, MetamodelProvider metamodelProvider, JpaElementDao elementDao) {
+        super(jpaManager);
+        this.metamodelProvider = metamodelProvider;
+        this.elementDao = elementDao;
     }
 
     @Override
     public Optional<Relationship> findById(UUID id) {
-        return jpa.transact(em -> {
+        return jpaManager.transact(em -> {
             CriteriaBuilder builder = em.getCriteriaBuilder();
             CriteriaQuery<MofObjectImpl> query = builder.createQuery(MofObjectImpl.class);
             Root<MofObjectImpl> root = query.from(MofObjectImpl.class);
@@ -56,7 +54,7 @@ public class JpaRelationshipDao extends JpaDao<Relationship> implements Relation
 
     @Override
     public List<Relationship> findAll() {
-        return jpa.transact(em -> {
+        return jpaManager.transact(em -> {
             CriteriaBuilder builder = em.getCriteriaBuilder();
             CriteriaQuery<MofObjectImpl> query = builder.createQuery(MofObjectImpl.class);
             Root<MofObjectImpl> root = query.from(MofObjectImpl.class);
@@ -67,7 +65,7 @@ public class JpaRelationshipDao extends JpaDao<Relationship> implements Relation
 
     @Override
     public void deleteAll() {
-        jpa.transact(em -> {
+        jpaManager.transact(em -> {
             CriteriaBuilder builder = em.getCriteriaBuilder();
             CriteriaDelete<MofObjectImpl> query = builder.createCriteriaDelete(MofObjectImpl.class);
             Root<MofObjectImpl> root = query.from(MofObjectImpl.class);
@@ -78,14 +76,14 @@ public class JpaRelationshipDao extends JpaDao<Relationship> implements Relation
 
     @Override
     public Set<Relationship> findAllByCommitRelatedElement(Commit commit, Element relatedElement) {
-        return jpa.transact(em -> {
+        return jpaManager.transact(em -> {
 /*            Commit c = em.contains(commit) ? commit : em.find(metamodelProvider.getImplementationClass(Commit.class), commit.getId());
             return elementDao.streamFlattenedElements(c).filter(e -> e instanceof Relationship).map(e -> (Relationship) e)
                     .filter(relationship -> Stream.concat(relationship.getSource().stream(), relationship.getTarget().stream()).map(Element::getIdentifier).anyMatch(id -> id.equals(relatedElement.getIdentifier())))
                     .collect(Collectors.toSet());
         });*/
 
-        /*return jpa.transact(em -> {
+        /*return jpaManager.transact(em -> {
             CommitIndex commitIndex = elementDao.getCommitIndex(commit, em);
 
             CriteriaBuilder builder = em.getCriteriaBuilder();

@@ -7,58 +7,55 @@ import org.omg.sysml.metamodel.Element;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.util.*;
+import java.util.Collections;
+import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
 
 @Singleton
-public class ElementService {
-    @Inject
-    private ElementDao elementDao;
+public class ElementService extends BaseService<Element, ElementDao> {
+
+    private final ProjectDao projectDao;
+    private final CommitDao commitDao;
 
     @Inject
-    private ProjectDao projectDao;
-
-    @Inject
-    private CommitDao commitDao;
-
-    public List<Element> getAll() {
-        return elementDao.findAll();
+    public ElementService(ElementDao elementDao, ProjectDao projectDao, CommitDao commitDao) {
+        super(elementDao);
+        this.projectDao = projectDao;
+        this.commitDao = commitDao;
     }
 
-    public Optional<Element> getById(UUID id) {
-        return elementDao.findById(id);
+    public Optional<Element> create(Element element) {
+        return element.getIdentifier() != null ? dao.update(element) : dao.persist(element);
     }
 
     public Set<Element> getByCommitId(UUID commitId) {
         return commitDao.findById(commitId)
-                .map(c -> elementDao.findAllByCommit(c)).orElse(Collections.emptySet());
+                .map(dao::findAllByCommit).orElse(Collections.emptySet());
     }
 
     public Optional<Element> getByCommitIdAndId(UUID commitId, UUID elementId) {
         return commitDao.findById(commitId)
-                .flatMap(m -> elementDao.findByCommitAndId(m, elementId));
-    }
-
-    public Optional<Element> create(Element element) {
-        return element.getIdentifier() != null ? elementDao.update(element) : elementDao.persist(element);
+                .flatMap(m -> dao.findByCommitAndId(m, elementId));
     }
 
     public Set<Element> getElementsByProjectIdCommitId(UUID projectId, UUID commitId) {
         return projectDao.findById(projectId)
                 .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
-                .map(commit -> elementDao.findAllByCommit(commit))
+                .map(dao::findAllByCommit)
                 .orElse(Collections.emptySet());
     }
 
     public Optional<Element> getElementsByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId) {
         return projectDao.findById(projectId)
                 .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
-                .flatMap(commit -> elementDao.findByCommitAndId(commit, elementId));
+                .flatMap(commit -> dao.findByCommitAndId(commit, elementId));
     }
 
     public Set<Element> getRootsByProjectIdCommitId(UUID projectId, UUID commitId) {
         return projectDao.findById(projectId)
                 .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
-                .map(commit -> elementDao.findRootsByCommit(commit))
+                .map(dao::findRootsByCommit)
                 .orElse(Collections.emptySet());
     }
 }

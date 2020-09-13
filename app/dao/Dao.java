@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface Dao<E> {
+
     Optional<E> persist(E entity);
 
     Optional<E> update(E entity);

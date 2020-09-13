@@ -23,20 +23,18 @@ import java.util.stream.Collectors;
 
 import static jackson.JsonLdMofObjectAdornment.JSONLD_MIME_TYPE;
 
-/**
- * @author Manas Bajaj
- * <p>
- * Controller for handling all API requests related to SysML v2 elements
- */
 public class ElementController extends Controller {
-    @Inject
-    private MetamodelProvider metamodelProvider;
+
+    private final ElementService elementService;
+    private final MetamodelProvider metamodelProvider;
+    private final Environment environment;
 
     @Inject
-    private ElementService elementService;
-
-    @Inject
-    private Environment environment;
+    public ElementController(ElementService elementService, MetamodelProvider metamodelProvider, Environment environment) {
+        this.elementService = elementService;
+        this.metamodelProvider = metamodelProvider;
+        this.environment = environment;
+    }
 
     private static final boolean INLINE_JSON_LD_CONTEXT_DEFAULT = true;
     private static final boolean INLINE_JSON_LD_CONTEXT = Optional.ofNullable(System.getenv("INLINE_JSON_LD_CONTEXT"))

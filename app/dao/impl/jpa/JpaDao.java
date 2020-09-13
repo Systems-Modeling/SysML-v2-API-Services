@@ -8,12 +8,16 @@ import javax.persistence.EntityTransaction;
 import java.util.Optional;
 
 public abstract class JpaDao<E> implements Dao<E> {
+    
+    protected final JPAManager jpaManager;
 
-    protected abstract JPAManager getJpaManager();
+    protected JpaDao(JPAManager jpaManager) {
+        this.jpaManager = jpaManager;
+    }
 
     @Override
     public Optional<E> update(E e) {
-        return Optional.ofNullable(getJpaManager().transact(em -> {
+        return Optional.ofNullable(jpaManager.transact(em -> {
             EntityTransaction transaction = em.getTransaction();
             transaction.begin();
             em.merge(e);
@@ -24,7 +28,7 @@ public abstract class JpaDao<E> implements Dao<E> {
 
     @Override
     public Optional<E> persist(E e) {
-        return getJpaManager().transact(em -> {
+        return jpaManager.transact(em -> {
             return persist(e, em);
         });
     }
@@ -39,7 +43,7 @@ public abstract class JpaDao<E> implements Dao<E> {
 
     @Override
     public void delete(E e) {
-        getJpaManager().transact(em -> {
+        jpaManager.transact(em -> {
             em.remove(e);
         });
     }

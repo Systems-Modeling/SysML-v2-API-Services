@@ -18,6 +18,7 @@ import play.libs.Json;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import java.lang.reflect.Modifier;
 
 @Singleton
 public class HibernateObjectMapperFactory implements ObjectMapperFactory {
@@ -51,6 +52,9 @@ public class HibernateObjectMapperFactory implements ObjectMapperFactory {
         SimpleAbstractTypeResolver resolver = new SimpleAbstractTypeResolver() {
             {
                 for (Class<?> clazz : metamodelProvider.getAllImplementationClasses()) {
+                    if (Modifier.isAbstract(clazz.getModifiers())) {
+                        continue;
+                    }
                     Class<?> intrface;
                     try {
                         intrface = metamodelProvider.getInterface(clazz);

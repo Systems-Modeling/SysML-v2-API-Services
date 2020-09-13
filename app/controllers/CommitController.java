@@ -19,11 +19,15 @@ import java.util.Optional;
 import java.util.UUID;
 
 public class CommitController extends Controller {
-    @Inject
-    private MetamodelProvider metamodelProvider;
+
+    private final MetamodelProvider metamodelProvider;
+    private final CommitService commitService;
 
     @Inject
-    private CommitService commitService;
+    public CommitController(CommitService commitService, MetamodelProvider metamodelProvider) {
+        this.commitService = commitService;
+        this.metamodelProvider = metamodelProvider;
+    }
 
     public Result byId(String id) {
         UUID uuid = UUID.fromString(id);
@@ -54,8 +58,8 @@ public class CommitController extends Controller {
             return Results.badRequest();
         }
         requestedObject.setTimestamp(ZonedDateTime.now());
-        Optional<Commit> responseCommit = commitService.create(projectId, requestedObject);
-        return responseCommit.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
+        Optional<Commit> response = commitService.create(projectId, requestedObject);
+        return response.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 
     public Result byProject(UUID projectId) {

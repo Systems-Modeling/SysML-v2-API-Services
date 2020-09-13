@@ -24,20 +24,18 @@ import static controllers.ElementController.adornMofObject;
 import static controllers.ElementController.respondWithJsonLd;
 import static jackson.JsonLdMofObjectAdornment.JSONLD_MIME_TYPE;
 
-/**
- * @author Manas Bajaj
- * <p>
- * Controller for handling all API requests related to SysML v2 elements
- */
 public class RelationshipController extends Controller {
-    @Inject
-    private MetamodelProvider metamodelProvider;
+
+    private final RelationshipService relationshipService;
+    private final MetamodelProvider metamodelProvider;
+    private final Environment environment;
 
     @Inject
-    private RelationshipService relationshipService;
-
-    @Inject
-    private Environment environment;
+    public RelationshipController(RelationshipService relationshipService, MetamodelProvider metamodelProvider, Environment environment) {
+        this.relationshipService = relationshipService;
+        this.metamodelProvider = metamodelProvider;
+        this.environment = environment;
+    }
 
     public Result byId(String id) {
         UUID uuid = UUID.fromString(id);

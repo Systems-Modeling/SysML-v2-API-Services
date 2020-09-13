@@ -2,24 +2,46 @@ package config.impl;
 
 import config.MetamodelProvider;
 import org.omg.sysml.metamodel.MofObject;
-import org.omg.sysml.metamodel.impl.MofObjectImpl;
+import org.omg.sysml.query.Constraint;
+import org.omg.sysml.record.Record;
 import org.reflections.Reflections;
 
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class JPAMetamodelProvider implements MetamodelProvider {
     private static Set<Class<?>> INTERFACES = new HashSet<>(), IMPLEMENTATION_CLASSES = new HashSet<>();
 
     static {
-        INTERFACES.add(MofObject.class);
-        for (String pakkage : new String[]{"org.omg.sysml.metamodel", "org.omg.sysml.extension", "org.omg.sysml.versioning"}) {
-            INTERFACES.addAll(new Reflections(pakkage).getSubTypesOf(MofObject.class));
-        }
-        IMPLEMENTATION_CLASSES.add(MofObjectImpl.class);
-        for (String pakkage : new String[]{"org.omg.sysml.metamodel.impl", "org.omg.sysml.extension.impl", "org.omg.sysml.versioning.impl"}) {
-            IMPLEMENTATION_CLASSES.addAll(new Reflections(pakkage).getSubTypesOf(MofObjectImpl.class));
-        }
+        List<Class<?>> roots = Arrays.asList(
+                MofObject.class,
+                Record.class,
+                Constraint.class
+        );
+        String packageScope = "org.omg.sysml";
+
+        INTERFACES.addAll(roots);
+        Reflections reflections = new Reflections(packageScope);
+        roots.stream()
+                .map(reflections::getSubTypesOf)
+                .flatMap(Set::stream)
+                .forEach(c -> (c.isInterface() ? INTERFACES : IMPLEMENTATION_CLASSES).add(c));
+
+/*
+
+        List<String> interfacePackages = Arrays.asList(
+                "org.omg.sysml.internal",
+                "org.omg.sysml.lifecycle",
+                "org.omg.sysml.metamodel",
+                "org.omg.sysml.query",
+                "org.omg.sysml.record"
+        );
+        List<String> implementationPackages = interfacePackages.stream().map(i -> i + ".impl").collect(Collectors.toList());
+
+        interfacePackages.stream().map(Reflections::new).flatMap(ref -> ref.getSubTypesOf(Object.class).stream()).forEach(INTERFACES::add);
+        implementationPackages.stream().map(Reflections::new).flatMap(ref -> ref.getSubTypesOf(Object.class).stream()).forEach(IMPLEMENTATION_CLASSES::add);*/
     }
 
     @Override

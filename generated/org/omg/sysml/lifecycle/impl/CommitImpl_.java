@@ -8,14 +8,14 @@ import javax.persistence.metamodel.StaticMetamodel;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(CommitImpl.class)
-public abstract class CommitImpl_ extends org.omg.sysml.lifecycle.impl.RecordImpl_ {
+public abstract class CommitImpl_ extends org.omg.sysml.record.impl.RecordImpl_ {
 
-	public static volatile SetAttribute<CommitImpl, ElementVersionImpl> changes;
+	public static volatile SetAttribute<CommitImpl, ElementVersionImpl> change;
 	public static volatile SingularAttribute<CommitImpl, CommitImpl> previousCommit;
 	public static volatile SingularAttribute<CommitImpl, ProjectImpl> containingProject;
 	public static volatile SingularAttribute<CommitImpl, ZonedDateTime> timestamp;
 
-	public static final String CHANGES = "changes";
+	public static final String CHANGE = "change";
 	public static final String PREVIOUS_COMMIT = "previousCommit";
 	public static final String CONTAINING_PROJECT = "containingProject";
 	public static final String TIMESTAMP = "timestamp";

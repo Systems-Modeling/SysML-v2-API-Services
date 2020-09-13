@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.hibernate.annotations.Any;
+import org.omg.sysml.lifecycle.ElementIdentity;
 import org.omg.sysml.lifecycle.ElementVersion;
 import org.omg.sysml.metamodel.MofObject;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
-import org.omg.sysml.lifecycle.ElementIdentity;
+import org.omg.sysml.record.impl.RecordImpl;
 
 import javax.persistence.*;
 

@@ -18,7 +18,6 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import java.lang.reflect.Method;
@@ -30,10 +29,11 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Singleton
-public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
+public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements CommitDao {
+
     // TODO Explore alternative to serializing lazy entity attributes that doesn't involve resolving all proxies one level.
     static UnaryOperator<Commit> PROXY_RESOLVER = commit -> {
-        commit.getChanges().stream()
+        commit.getChange().stream()
                 .filter(Objects::nonNull)
                 .map(ElementVersion::getData)
                 .filter(mof -> mof instanceof Element)
@@ -44,16 +44,13 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
         return commit;
     };
 
-    @Inject
-    private JPAManager jpa;
+    private final JpaElementDao elementDao;
 
-    @Override
-    protected JPAManager getJpaManager() {
-        return jpa;
+    @Inject
+    public JpaCommitDao(JPAManager jpaManager, JpaElementDao elementDao) {
+        super(jpaManager, CommitImpl.class, CommitImpl_.id);
+        this.elementDao = elementDao;
     }
-
-    @Inject
-    private JpaElementDao elementDao;
 
     @Override
     public Optional<Commit> persist(Commit commit) {
@@ -76,7 +73,7 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
             }
         };
 
-        Supplier<Stream<ElementVersionImpl>> changeStream = () -> commit.getChanges().stream().filter(change -> change instanceof ElementVersionImpl).map(change -> (ElementVersionImpl) change);
+        Supplier<Stream<ElementVersionImpl>> changeStream = () -> commit.getChange().stream().filter(change -> change instanceof ElementVersionImpl).map(change -> (ElementVersionImpl) change);
 
         // Give all Commit#changes an identity, if they don't already have one, and all Commit#changes#identity an id, if they don't already have one.
         changeStream.get()
@@ -178,8 +175,8 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
             }
         });*/
 
-        return jpa.transact(em -> {
-            commit.getChanges().stream()
+        return jpaManager.transact(em -> {
+            commit.getChange().stream()
                     .map(ElementVersion::getData)
                     .filter(mof -> mof instanceof MofObjectImpl)
                     .map(mof -> (MofObjectImpl) mof)
@@ -193,8 +190,8 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
                         }
                     })
                     .forEach(em::merge);
-            commit.setChanges(
-                    commit.getChanges().stream()
+            commit.setChange(
+                    commit.getChange().stream()
                             .map(em::merge)
                             .collect(Collectors.toSet())
             );
@@ -204,44 +201,8 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
     }
 
     @Override
-    public Optional<Commit> findById(UUID id) {
-        return jpa.transact(em -> {
-            CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaQuery<CommitImpl> query = builder.createQuery(CommitImpl.class);
-            Root<CommitImpl> root = query.from(CommitImpl.class);
-            query.select(root)
-                    .where(builder.equal(root.get(CommitImpl_.id), id));
-            try {
-                return Optional.of(em.createQuery(query).getSingleResult());
-            } catch (NoResultException e) {
-                return Optional.empty();
-            }
-        });
-    }
-
-    @Override
-    public List<Commit> findAll() {
-        return jpa.transact(em -> {
-            CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaQuery<CommitImpl> query = builder.createQuery(CommitImpl.class);
-            query.select(query.from(CommitImpl.class));
-            return em.createQuery(query).getResultStream().collect(Collectors.toList());
-        });
-    }
-
-    @Override
-    public void deleteAll() {
-        jpa.transact(em -> {
-            CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaDelete<CommitImpl> query = builder.createCriteriaDelete(CommitImpl.class);
-            query.from(CommitImpl.class);
-            return ((Stream<?>) em.createQuery(query).getResultStream()).collect(Collectors.toList());
-        });
-    }
-
-    @Override
     public List<Commit> findAllByProject(Project project) {
-        return jpa.transact(em -> {
+        return jpaManager.transact(em -> {
             CriteriaBuilder builder = em.getCriteriaBuilder();
             CriteriaQuery<CommitImpl> query = builder.createQuery(CommitImpl.class);
             Root<CommitImpl> root = query.from(CommitImpl.class);
@@ -253,7 +214,7 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
 
     @Override
     public Optional<Commit> findByProjectAndId(Project project, UUID id) {
-        return jpa.transact(em -> {
+        return jpaManager.transact(em -> {
             CriteriaBuilder builder = em.getCriteriaBuilder();
             CriteriaQuery<CommitImpl> query = builder.createQuery(CommitImpl.class);
             Root<CommitImpl> root = query.from(CommitImpl.class);
@@ -274,7 +235,7 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
 
     @Override
     public Optional<Commit> findHeadByProject(Project project) {
-        return jpa.transact(em -> {
+        return jpaManager.transact(em -> {
             CriteriaBuilder builder = em.getCriteriaBuilder();
             CriteriaQuery<CommitImpl> query = builder.createQuery(CommitImpl.class);
             Root<CommitImpl> root = query.from(CommitImpl.class);

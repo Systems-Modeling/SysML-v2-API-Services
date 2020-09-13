@@ -1,5 +1,7 @@
 package org.omg.sysml.lifecycle;
 
+import org.omg.sysml.record.Record;
+
 import java.time.ZonedDateTime;
 import java.util.Set;
 
@@ -8,9 +10,9 @@ public interface Commit extends Record {
 
     void setContainingProject(Project containingProject);
 
-    Set<ElementVersion> getChanges();
+    Set<ElementVersion> getChange();
 
-    void setChanges(Set<ElementVersion> changes);
+    void setChange(Set<ElementVersion> changes);
 
     Commit getPreviousCommit();
 

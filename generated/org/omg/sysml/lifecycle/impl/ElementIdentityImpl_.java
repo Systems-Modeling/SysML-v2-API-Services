@@ -5,7 +5,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(ElementIdentityImpl.class)
-public abstract class ElementIdentityImpl_ extends org.omg.sysml.lifecycle.impl.RecordImpl_ {
+public abstract class ElementIdentityImpl_ extends org.omg.sysml.record.impl.RecordImpl_ {
 
 
 

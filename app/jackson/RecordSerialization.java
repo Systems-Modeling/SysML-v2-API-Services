@@ -1,12 +1,10 @@
 package jackson;
 
 import com.fasterxml.jackson.core.JsonParser;
-import org.omg.sysml.lifecycle.Commit;
-import org.omg.sysml.lifecycle.Record;
 import org.omg.sysml.lifecycle.impl.CommitImpl;
 import org.omg.sysml.lifecycle.impl.ProjectImpl;
-import org.omg.sysml.lifecycle.impl.RecordImpl;
 import org.omg.sysml.lifecycle.impl.RecordImpl_;
+import org.omg.sysml.record.Record;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
