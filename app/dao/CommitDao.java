@@ -24,5 +24,7 @@ public interface CommitDao extends Dao<Commit> {
 
     Optional<Commit> findByProjectAndId(Project project, UUID id);
 
+    Optional<Commit> findByProjectAndIdResolved(Project project, UUID id);
+
     Optional<Commit> findHeadByProject(Project project);
 }
