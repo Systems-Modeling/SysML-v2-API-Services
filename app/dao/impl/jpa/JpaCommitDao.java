@@ -16,6 +16,7 @@ import org.omg.sysml.metamodel.impl.MofObjectImpl;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaDelete;
@@ -254,21 +255,32 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
     @Override
     public Optional<Commit> findByProjectAndId(Project project, UUID id) {
         return jpa.transact(em -> {
-            CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaQuery<CommitImpl> query = builder.createQuery(CommitImpl.class);
-            Root<CommitImpl> root = query.from(CommitImpl.class);
-            query.select(root)
-                    .where(builder.and(
-                            builder.equal(root.get(CommitImpl_.containingProject), project),
-                            builder.equal(root.get(CommitImpl_.id), id)
-                    ));
-            Optional<Commit> commit;
-            try {
-                commit = Optional.of(em.createQuery(query).getSingleResult());
-            } catch (NoResultException e) {
-                return Optional.empty();
-            }
-            return commit.map(PROXY_RESOLVER);
+            return findByProjectAndId(project, id, em);
+        });
+    }
+
+    protected Optional<Commit> findByProjectAndId(Project project, UUID id, EntityManager em) {
+        CriteriaBuilder builder = em.getCriteriaBuilder();
+        CriteriaQuery<CommitImpl> query = builder.createQuery(CommitImpl.class);
+        Root<CommitImpl> root = query.from(CommitImpl.class);
+        query.select(root)
+                .where(builder.and(
+                        builder.equal(root.get(CommitImpl_.containingProject), project),
+                        builder.equal(root.get(CommitImpl_.id), id)
+                ));
+        Optional<Commit> commit;
+        try {
+            commit = Optional.of(em.createQuery(query).getSingleResult());
+        } catch (NoResultException e) {
+            return Optional.empty();
+        }
+        return commit;
+    }
+
+    @Override
+    public Optional<Commit> findByProjectAndIdResolved(Project project, UUID id) {
+        return jpa.transact(em -> {
+            return findByProjectAndId(project, id, em).map(PROXY_RESOLVER);
         });
     }
 
@@ -287,7 +299,7 @@ public class JpaCommitDao extends JpaDao<Commit> implements CommitDao {
             } catch (NoResultException e) {
                 return Optional.empty();
             }
-            return commit.map(PROXY_RESOLVER);
+            return commit;
         });
     }
 

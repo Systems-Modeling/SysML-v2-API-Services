@@ -32,7 +32,7 @@ public class CommitService {
     }
 
     public Optional<Commit> getByProjectIdAndId(UUID projectId, UUID commitId) {
-        return projectDao.findById(projectId).flatMap(project -> commitDao.findByProjectAndId(project, commitId));
+        return projectDao.findById(projectId).flatMap(project -> commitDao.findByProjectAndIdResolved(project, commitId));
     }
 
     public Optional<Commit> getHeadByProjectId(UUID projectId) {
