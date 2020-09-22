@@ -15,7 +15,7 @@ import java.util.Collection;
 public class PrimitiveConstraintImpl extends ConstraintImpl implements PrimitiveConstraint {
     private Boolean inverse;
     private String property;
-    private Collection<String> value;
+    private String value;
     private PrimitiveOperator operator;
 
     @Override
@@ -44,16 +44,13 @@ public class PrimitiveConstraintImpl extends ConstraintImpl implements Primitive
     }
 
     @Override
-    @ElementCollection
-    public Collection<String> getValue() {
-        if (value == null) {
-            value = new ArrayList<>();
-        }
+    @Column
+    public String getValue() {
         return value;
     }
 
     @Override
-    public void setValue(Collection<String> value) {
+    public void setValue(String value) {
         this.value = value;
     }
 

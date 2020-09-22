@@ -11,7 +11,5 @@ public enum PrimitiveOperator {
     @JsonProperty(">")
     GREATER_THAN,
     @JsonProperty("<")
-    LESS_THAN,
-    @JsonProperty("in")
-    IN;
+    LESS_THAN;
 }

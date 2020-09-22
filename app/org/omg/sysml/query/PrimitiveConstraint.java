@@ -1,7 +1,5 @@
 package org.omg.sysml.query;
 
-import java.util.Collection;
-
 public interface PrimitiveConstraint extends Constraint {
     Boolean getInverse();
 
@@ -11,9 +9,9 @@ public interface PrimitiveConstraint extends Constraint {
 
     void setProperty(String property);
 
-    Collection<String> getValue();
+    String getValue();
 
-    void setValue(Collection<String> value);
+    void setValue(String value);
 
     PrimitiveOperator getOperator();
 

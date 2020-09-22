@@ -112,6 +112,17 @@ public class ElementController extends Controller {
         ));
     }
 
+    public Result getQueryResultsByProjectIdCommitIdQueryId(UUID projectId, UUID commitId, UUID queryId, Http.Request request) {
+        Set<Element> roots = elementService.getQueryResultsByProjectIdCommitIdQueryId(projectId, commitId, queryId);
+        boolean respondWithJsonLd = respondWithJsonLd(request);
+        return ok(JacksonHelper.collectionValueToTree(Set.class,
+                respondWithJsonLd ? JsonLdMofObjectAdornment.class : metamodelProvider.getImplementationClass(Element.class),
+                roots.stream()
+                        .map(e -> respondWithJsonLd ? adornMofObject(e, request, metamodelProvider, environment, projectId, commitId) : e)
+                        .collect(Collectors.toSet())
+        ));
+    }
+
     static boolean respondWithJsonLd(Http.Request request) {
         return request.accepts(JSONLD_MIME_TYPE);
     }

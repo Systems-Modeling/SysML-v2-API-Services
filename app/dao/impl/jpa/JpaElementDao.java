@@ -17,6 +17,7 @@ import org.omg.sysml.lifecycle.impl.ElementVersionImpl_;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
 import org.omg.sysml.metamodel.impl.MofObjectImpl_;
+import org.omg.sysml.query.*;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -24,9 +25,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.criteria.*;
+import java.beans.PropertyDescriptor;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -41,7 +44,7 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
                 .map(o -> (Element) o).forEach(Hibernate::unproxy);
         return element;
     };
-    
+
     private final MetamodelProvider metamodelProvider;
 
     @Inject
@@ -147,6 +150,78 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
         });
     }
 
+    @Override
+    public Set<Element> query(Commit commit, Query query) {
+        return jpaManager.transact(em -> {
+            // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
+            Commit c = em.contains(commit) ? commit : em.find(metamodelProvider.getImplementationClass(Commit.class), commit.getId());
+            return getCommitIndex(c, em).getWorkingElementVersions().stream()
+                    .map(ElementVersion::getData)
+                    .filter(mof -> mof instanceof Element)
+                    .map(mof -> (Element) mof)
+                    .filter(constrain(query.getWhere()))
+                    .map(PROXY_RESOLVER)
+                    .collect(Collectors.toSet());
+        });
+    }
+
+    protected static List<Class<?>> SUPPORTED_PRIMITIVE_CONSTRAINT_CLASSES = Arrays.asList(
+            Number.class,
+            Boolean.class,
+            String.class
+    );
+
+    @SuppressWarnings({"unchecked", "rawtypes"})
+    protected static Comparator<Object> UNSAFE_COMPARABLE_COMPARATOR = (o1, o2) -> ((Comparable) o1).compareTo(o2);
+
+    protected Predicate<Element> constrain(Constraint constraint) {
+        Objects.requireNonNull(constraint);
+        if (constraint instanceof PrimitiveConstraint) {
+            PrimitiveConstraint primitiveConstraint = (PrimitiveConstraint) constraint;
+            return element -> {
+                PropertyDescriptor property = JavaBeanHelper.getBeanProperties(element).get(primitiveConstraint.getProperty());
+                if (property == null) {
+                    return false;
+                }
+                if (SUPPORTED_PRIMITIVE_CONSTRAINT_CLASSES.stream()
+                        .noneMatch(supported -> property.getPropertyType().isAssignableFrom(supported))) {
+                    return false;
+                }
+                Object actualValue = JavaBeanHelper.getBeanPropertyValue(element, property);
+                Object constrainedValue = JavaBeanHelper.convert(primitiveConstraint.getValue(), property.getPropertyType());
+                if (actualValue == null || constrainedValue == null) {
+                    return (actualValue == null && constrainedValue == null && Objects.equals(primitiveConstraint.getOperator(), PrimitiveOperator.EQUALS)) != primitiveConstraint.getInverse();
+                }
+                int comparison = Objects.compare(actualValue, constrainedValue, UNSAFE_COMPARABLE_COMPARATOR);
+                boolean comparisonResult;
+                switch (primitiveConstraint.getOperator()) {
+                    case LESS_THAN:
+                        comparisonResult = comparison < 0;
+                        break;
+                    case EQUALS:
+                        comparisonResult = comparison == 0;
+                        break;
+                    case GREATER_THAN:
+                        comparisonResult = comparison > 0;
+                        break;
+                    default:
+                        throw new UnsupportedOperationException("Unsupported primitive constraint operator: " + primitiveConstraint.getOperator().name());
+                }
+                return comparisonResult != primitiveConstraint.getInverse();
+            };
+        }
+        else if (constraint instanceof CompositeConstraint) {
+            CompositeConstraint compositeConstraint = (CompositeConstraint) constraint;
+            boolean and = Objects.equals(compositeConstraint.getOperator(), CompositeOperator.AND);
+            return compositeConstraint.getConstraint().stream()
+                    .map(this::constrain)
+                    .reduce(e -> true, (p1, p2) -> and ? p1.and(p2) : p1.or(p2));
+        }
+        else {
+            throw new IllegalArgumentException("Unknown constraint type: " + constraint.getClass().getSimpleName());
+        }
+    }
+
     protected <T> Map<Commit, T> queryCommitTree(Commit commit, Function<Commit, T> query) {
         return queryCommitTree(commit, query, t -> false);
     }
@@ -205,6 +280,6 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
         return builder.or(metamodelProvider.getAllImplementationClasses().stream()
                 .filter(Element.class::isAssignableFrom)
                 .map(c -> builder.equal(root.type(), c))
-                .toArray(Predicate[]::new));
+                .toArray(javax.persistence.criteria.Predicate[]::new));
     }
 }
