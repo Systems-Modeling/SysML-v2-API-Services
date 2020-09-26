@@ -34,7 +34,7 @@ public class QueryController extends Controller {
 
     public Result all() {
         List<Query> queries = queryService.getAll();
-        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Query.class), queries));
+        return ok(JacksonHelper.collectionToTree(queries, List.class, metamodelProvider.getImplementationClass(Query.class)));
     }
 
     public Result create(Http.Request request) {
@@ -53,7 +53,7 @@ public class QueryController extends Controller {
 
     public Result byProject(UUID projectId) {
         List<Query> queries = queryService.getByProjectId(projectId);
-        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Query.class), queries));
+        return ok(JacksonHelper.collectionToTree(queries, List.class, metamodelProvider.getImplementationClass(Query.class)));
     }
 
     public Result byProjectAndId(UUID projectId, UUID queryId) {

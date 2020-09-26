@@ -16,9 +16,7 @@ import org.omg.sysml.query.Query;
 import org.omg.sysml.record.impl.RecordImpl;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity(name = "Query")
@@ -26,8 +24,10 @@ public class QueryImpl extends RecordImpl implements Query {
     private Project containingProject;
     private Set<String> select;
     private Set<ElementIdentity> scope;
+/*
     private Boolean recursiveInScope;
     private List<String> orderBy;
+*/
     private Constraint where;
 
     @Override
@@ -44,7 +44,7 @@ public class QueryImpl extends RecordImpl implements Query {
     }
 
     @Override
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @Column(name = "select_") // select is a reserved keyword in SQL
     public Set<String> getSelect() {
         if (select == null) {
@@ -73,6 +73,7 @@ public class QueryImpl extends RecordImpl implements Query {
         this.scope = scope;
     }
 
+/*
     @Override
     @Column
     public Boolean getRecursiveInScope() {
@@ -100,6 +101,7 @@ public class QueryImpl extends RecordImpl implements Query {
     public void setOrderBy(List<String> orderBy) {
         this.orderBy = orderBy;
     }
+*/
 
     @Override
     @Any(metaDef = "ConstraintMetaDef", metaColumn = @javax.persistence.Column(name = "whereType"), fetch = FetchType.EAGER)

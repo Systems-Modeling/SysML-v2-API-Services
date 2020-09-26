@@ -57,6 +57,9 @@ public class PrimitiveConstraintImpl extends ConstraintImpl implements Primitive
     @Override
     @Enumerated(EnumType.STRING)
     public PrimitiveOperator getOperator() {
+        if (operator == null) {
+            operator = PrimitiveOperator.EQUALS;
+        }
         return operator;
     }
 

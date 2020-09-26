@@ -4,7 +4,6 @@ import org.omg.sysml.lifecycle.ElementIdentity;
 import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.record.Record;
 
-import java.util.List;
 import java.util.Set;
 
 public interface Query extends Record {
@@ -20,6 +19,7 @@ public interface Query extends Record {
 
     void setScope(Set<ElementIdentity> scope);
 
+/*
     Boolean getRecursiveInScope();
 
     void setRecursiveInScope(Boolean recursiveInScope);
@@ -27,6 +27,7 @@ public interface Query extends Record {
     List<String> getOrderBy();
 
     void setOrderBy(List<String> orderBy);
+*/
 
     Constraint getWhere();
 

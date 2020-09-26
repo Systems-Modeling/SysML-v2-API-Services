@@ -34,7 +34,7 @@ public class ProjectController extends Controller {
 
     public Result all() {
         List<Project> projects = projectService.getAll();
-        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Project.class), projects));
+        return ok(JacksonHelper.collectionToTree(projects, List.class, metamodelProvider.getImplementationClass(Project.class)));
     }
 
     public Result create(Http.Request request) {

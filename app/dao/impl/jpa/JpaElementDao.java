@@ -9,6 +9,7 @@ import org.omg.sysml.internal.CommitIndex;
 import org.omg.sysml.internal.impl.CommitIndexImpl;
 import org.omg.sysml.internal.impl.CommitIndexImpl_;
 import org.omg.sysml.lifecycle.Commit;
+import org.omg.sysml.lifecycle.ElementIdentity;
 import org.omg.sysml.lifecycle.ElementVersion;
 import org.omg.sysml.lifecycle.impl.ElementIdentityImpl;
 import org.omg.sysml.lifecycle.impl.ElementIdentityImpl_;
@@ -155,11 +156,13 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
         return jpaManager.transact(em -> {
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
             Commit c = em.contains(commit) ? commit : em.find(metamodelProvider.getImplementationClass(Commit.class), commit.getId());
+            Query q = em.contains(query) ? query : em.find(metamodelProvider.getImplementationClass(Query.class), query.getId());
             return getCommitIndex(c, em).getWorkingElementVersions().stream()
+                    .filter(scope(q))
                     .map(ElementVersion::getData)
                     .filter(mof -> mof instanceof Element)
                     .map(mof -> (Element) mof)
-                    .filter(constrain(query.getWhere()))
+                    .filter(constrain(q.getWhere()))
                     .map(PROXY_RESOLVER)
                     .collect(Collectors.toSet());
         });
@@ -174,21 +177,44 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
     @SuppressWarnings({"unchecked", "rawtypes"})
     protected static Comparator<Object> UNSAFE_COMPARABLE_COMPARATOR = (o1, o2) -> ((Comparable) o1).compareTo(o2);
 
+    protected Predicate<ElementVersion> scope(Query query) {
+        if (query.getScope() == null || query.getScope().isEmpty()) {
+            return ev -> true;
+        }
+        return ev -> ev.getIdentity() != null && query.getScope().stream()
+                .map(ElementIdentity::getId)
+                .anyMatch(id -> Objects.equals(id, ev.getIdentity().getId()));
+    }
+
     protected Predicate<Element> constrain(Constraint constraint) {
         Objects.requireNonNull(constraint);
         if (constraint instanceof PrimitiveConstraint) {
             PrimitiveConstraint primitiveConstraint = (PrimitiveConstraint) constraint;
             return element -> {
-                PropertyDescriptor property = JavaBeanHelper.getBeanProperties(element).get(primitiveConstraint.getProperty());
-                if (property == null) {
-                    return false;
+                Object actualValue;
+                Object constrainedValue;
+                switch (primitiveConstraint.getProperty()) {
+                    case "@type":
+                        try {
+                            actualValue = metamodelProvider.getInterface(element.getClass()).getSimpleName();
+                        } catch (ClassNotFoundException e) {
+                            throw new IllegalStateException(e);
+                        }
+                        constrainedValue = primitiveConstraint.getValue();
+                        break;
+                    default:
+                        PropertyDescriptor property = JavaBeanHelper.getBeanProperties(element).get(primitiveConstraint.getProperty());
+                        if (property == null) {
+                            return false;
+                        }
+                        if (SUPPORTED_PRIMITIVE_CONSTRAINT_CLASSES.stream()
+                                .noneMatch(supported -> supported.isAssignableFrom(property.getPropertyType()))) {
+                            return false;
+                        }
+                        actualValue = JavaBeanHelper.getBeanPropertyValue(element, property);
+                        constrainedValue = JavaBeanHelper.convert(primitiveConstraint.getValue(), property.getPropertyType());
+                        break;
                 }
-                if (SUPPORTED_PRIMITIVE_CONSTRAINT_CLASSES.stream()
-                        .noneMatch(supported -> property.getPropertyType().isAssignableFrom(supported))) {
-                    return false;
-                }
-                Object actualValue = JavaBeanHelper.getBeanPropertyValue(element, property);
-                Object constrainedValue = JavaBeanHelper.convert(primitiveConstraint.getValue(), property.getPropertyType());
                 if (actualValue == null || constrainedValue == null) {
                     return (actualValue == null && constrainedValue == null && Objects.equals(primitiveConstraint.getOperator(), PrimitiveOperator.EQUALS)) != primitiveConstraint.getInverse();
                 }
@@ -215,7 +241,8 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
             boolean and = Objects.equals(compositeConstraint.getOperator(), CompositeOperator.AND);
             return compositeConstraint.getConstraint().stream()
                     .map(this::constrain)
-                    .reduce(e -> true, (p1, p2) -> and ? p1.and(p2) : p1.or(p2));
+                    .reduce((p1, p2) -> and ? p1.and(p2) : p1.or(p2))
+                    .orElse(e -> true);
         }
         else {
             throw new IllegalArgumentException("Unknown constraint type: " + constraint.getClass().getSimpleName());

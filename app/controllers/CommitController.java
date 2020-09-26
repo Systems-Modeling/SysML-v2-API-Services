@@ -1,6 +1,7 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import config.MetamodelProvider;
 import jackson.JacksonHelper;
 import org.omg.sysml.lifecycle.Commit;
@@ -37,7 +38,7 @@ public class CommitController extends Controller {
 
     public Result all() {
         List<Commit> commits = commitService.getAll();
-        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Commit.class), commits));
+        return ok(JacksonHelper.collectionToTree(commits, List.class, metamodelProvider.getImplementationClass(Commit.class)));
     }
 
     public Result create(Http.Request request) {
@@ -64,7 +65,7 @@ public class CommitController extends Controller {
 
     public Result byProject(UUID projectId) {
         List<Commit> commits = commitService.getByProjectId(projectId);
-        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Commit.class), commits, writer -> writer.withView(CommitImpl.Views.Compact.class)));
+        return ok(JacksonHelper.collectionToTree(commits, List.class, metamodelProvider.getImplementationClass(Commit.class), Json::mapper, writer -> writer.withView(CommitImpl.Views.Compact.class)));
     }
 
     public Result byProjectAndId(UUID projectId, UUID commitId) {
@@ -74,6 +75,6 @@ public class CommitController extends Controller {
 
     public Result headByProject(UUID projectId) {
         Optional<Commit> commit = commitService.getHeadByProjectId(projectId);
-        return commit.map(e -> ok(JacksonHelper.valueToTree(commit, writer -> writer.withView(CommitImpl.Views.Compact.class)))).orElseGet(Results::notFound);
+        return commit.map(e -> ok(JacksonHelper.objectToTree(commit, Json::mapper, mapper -> mapper.writer().withView(CommitImpl.Views.Compact.class), ObjectMapper::reader))).orElseGet(Results::notFound);
     }
 }

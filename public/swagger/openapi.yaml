@@ -621,12 +621,12 @@ definitions:
       id:
         type: string
         format: uuid
-      orderBy:
-        type: array
-        items:
-          type: string
-      recursiveInScope:
-        type: boolean
+      # orderBy:
+      #   type: array
+      #   items:
+      #     type: string
+      # recursiveInScope:
+      #   type: boolean
       scope:
         type: array
         items:

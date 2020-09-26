@@ -1,7 +1,6 @@
 package org.omg.sysml.query.impl;
 
 import javax.annotation.processing.Generated;
-import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SetAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
@@ -14,15 +13,11 @@ public abstract class QueryImpl_ extends org.omg.sysml.record.impl.RecordImpl_ {
 
 	public static volatile SetAttribute<QueryImpl, String> select;
 	public static volatile SetAttribute<QueryImpl, ElementIdentityImpl> scope;
-	public static volatile ListAttribute<QueryImpl, String> orderBy;
 	public static volatile SingularAttribute<QueryImpl, ProjectImpl> containingProject;
-	public static volatile SingularAttribute<QueryImpl, Boolean> recursiveInScope;
 
 	public static final String SELECT = "select";
 	public static final String SCOPE = "scope";
-	public static final String ORDER_BY = "orderBy";
 	public static final String CONTAINING_PROJECT = "containingProject";
-	public static final String RECURSIVE_IN_SCOPE = "recursiveInScope";
 
 }
 

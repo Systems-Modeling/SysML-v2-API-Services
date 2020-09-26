@@ -44,6 +44,9 @@ public class CompositeConstraintImpl extends ConstraintImpl implements Composite
     @Override
     @Enumerated(EnumType.STRING)
     public CompositeOperator getOperator() {
+        if (operator == null) {
+            operator = CompositeOperator.AND;
+        }
         return operator;
     }
 

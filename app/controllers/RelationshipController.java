@@ -45,7 +45,7 @@ public class RelationshipController extends Controller {
 
     public Result all() {
         List<Relationship> relationships = relationshipService.getAll();
-        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
+        return ok(JacksonHelper.collectionToTree(relationships, List.class, metamodelProvider.getImplementationClass(Relationship.class)));
     }
 
     public Result create(Http.Request request) {
@@ -75,9 +75,9 @@ public class RelationshipController extends Controller {
                         )
                         .collect(Collectors.toSet())
         )
-                .map(set -> JacksonHelper.collectionValueToTree(Set.class, respondWithJsonLd ?
+                .map(set -> JacksonHelper.collectionToTree(set, Set.class, respondWithJsonLd ?
                         JsonLdMofObjectAdornment.class :
-                        metamodelProvider.getImplementationClass(Relationship.class), set)
+                        metamodelProvider.getImplementationClass(Relationship.class))
                 )
                 .map(Results::ok)
                 .map(result -> respondWithJsonLd ? result.as(JSONLD_MIME_TYPE) : result)
