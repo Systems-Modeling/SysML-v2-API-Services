@@ -36,7 +36,7 @@ public class CommitService extends BaseService<Commit, CommitDao> {
     }
 
     public Optional<Commit> getByProjectIdAndId(UUID projectId, UUID commitId) {
-        return projectDao.findById(projectId).flatMap(project -> dao.findByProjectAndId(project, commitId));
+        return projectDao.findById(projectId).flatMap(project -> dao.findByProjectAndIdResolved(project, commitId));
     }
 
     public Optional<Commit> getHeadByProjectId(UUID projectId) {

@@ -184,7 +184,10 @@ public class JpaRelationshipDao extends JpaDao<Relationship> implements Relation
                     .map(ElementVersion::getData).filter(mof -> mof instanceof Relationship)
                     .map(mof -> (Relationship) mof)
                     .filter(relationship -> Stream.concat(relationship.getSource().stream(), relationship.getTarget().stream()).map(Element::getIdentifier)
-                            .anyMatch(id -> id.equals(relatedElement.getIdentifier()))).collect(Collectors.toSet());
+                            .anyMatch(id -> id.equals(relatedElement.getIdentifier())))
+                    .map(JpaElementDao.PROXY_RESOLVER)
+                    .map(mof -> (Relationship) mof)
+                    .collect(Collectors.toSet());
         });
     }
 
