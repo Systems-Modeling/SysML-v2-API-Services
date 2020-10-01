@@ -15,6 +15,7 @@ import org.omg.sysml.lifecycle.impl.ElementIdentityImpl_;
 import org.omg.sysml.lifecycle.impl.ElementVersionImpl;
 import org.omg.sysml.lifecycle.impl.ElementVersionImpl_;
 import org.omg.sysml.metamodel.Element;
+import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
 import org.omg.sysml.metamodel.impl.MofObjectImpl_;
 
@@ -142,7 +143,7 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
             Commit c = em.contains(commit) ? commit : em.find(metamodelProvider.getImplementationClass(Commit.class), commit.getId());
             return getCommitIndex(c, em).getWorkingElementVersions().stream()
                     .map(ElementVersion::getData)
-                    .filter(mof -> mof instanceof Element)
+                    .filter(mof -> (mof instanceof Element) && !(mof instanceof Relationship))
                     .map(mof -> (Element) mof)
                     .filter(element -> element.getOwner() == null)
                     .map(PROXY_RESOLVER)
