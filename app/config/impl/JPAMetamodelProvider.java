@@ -13,11 +13,11 @@ public class JPAMetamodelProvider implements MetamodelProvider {
 
     static {
         INTERFACES.add(MofObject.class);
-        for (String pakkage : new String[]{"org.omg.sysml.metamodel", "org.omg.sysml.extension", "org.omg.sysml.versioning"}) {
+        for (String pakkage : new String[]{"org.omg.sysml.metamodel", "org.omg.sysml.external"}) {
             INTERFACES.addAll(new Reflections(pakkage).getSubTypesOf(MofObject.class));
         }
         IMPLEMENTATION_CLASSES.add(MofObjectImpl.class);
-        for (String pakkage : new String[]{"org.omg.sysml.metamodel.impl", "org.omg.sysml.extension.impl", "org.omg.sysml.versioning.impl"}) {
+        for (String pakkage : new String[]{"org.omg.sysml.metamodel.impl", "org.omg.sysml.external.impl"}) {
             IMPLEMENTATION_CLASSES.addAll(new Reflections(pakkage).getSubTypesOf(MofObjectImpl.class));
         }
     }

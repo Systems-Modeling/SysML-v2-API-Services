@@ -317,7 +317,7 @@ public class ExternalElementImpl extends MofObjectImpl implements ExternalElemen
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "Element")
+    @JoinColumn(name = "owningNamespaceId", table = "ExternalElement")
     public Package getOwningNamespace() {
         return owningNamespace;
     }
