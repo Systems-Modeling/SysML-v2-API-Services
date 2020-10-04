@@ -25,6 +25,14 @@ GET         /projects/:projectId/commits/:commitId/roots                        
 # Relationship endpoints
 GET         /projects/:projectId/commits/:commitId/elements/:relatedElementId/relationships        controllers.RelationshipController.getRelationshipsByProjectIdCommitIdRelatedElementId(projectId : java.util.UUID, commitId : java.util.UUID, relatedElementId : java.util.UUID, direction : java.util.Optional[String], request : Request)
 
+# Query endpoints
+GET         /projects/:projectId/queries                                                           controllers.QueryController.byProject(projectId : java.util.UUID)
+POST        /projects/:projectId/queries                                                           controllers.QueryController.createWithProjectId(projectId : java.util.UUID, request : Request)
+GET         /projects/:projectId/queries/:queryId                                                  controllers.QueryController.byProjectAndId(projectId : java.util.UUID, queryId : java.util.UUID)
+GET         /projects/:projectId/queries/:queryId/results                                          controllers.QueryController.getQueryResultsByProjectIdQueryId(projectId : java.util.UUID, queryId : java.util.UUID, commitId : java.util.Optional[java.util.UUID], request : Request)
+GET         /projects/:projectId/query-results                                                     controllers.QueryController.getQueryResultsByProjectIdQuery(projectId : java.util.UUID, commitId : java.util.Optional[java.util.UUID], request : Request)
+POST        /projects/:projectId/query-results                                                     controllers.QueryController.getQueryResultsByProjectIdQuery(projectId : java.util.UUID, commitId : java.util.Optional[java.util.UUID], request : Request)
+
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                                                                          controllers.Assets.versioned(path="/public", file: Asset)
 

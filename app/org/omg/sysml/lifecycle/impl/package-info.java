@@ -2,15 +2,7 @@
         @AnyMetaDef(name = "ProjectMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
                         @MetaValue(value = "Project", targetEntity = ProjectImpl.class),
-                }),
-        @AnyMetaDef(name = "RecordMetaDef", metaType = "string", idType = "java.util.UUID",
-                metaValues = {
-                        @MetaValue(value = "Commit", targetEntity = CommitImpl.class),
-                        @MetaValue(value = "ElementIdentity", targetEntity = ElementIdentityImpl.class),
-                        @MetaValue(value = "ElementVersion", targetEntity = ElementVersionImpl.class),
-                        @MetaValue(value = "Project", targetEntity = ProjectImpl.class),
-                        @MetaValue(value = "Record", targetEntity = RecordImpl.class),
-                }),
+                })
 })
 
 @GenericGenerators(value = {

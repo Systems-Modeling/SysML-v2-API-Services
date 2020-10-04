@@ -2,7 +2,7 @@ package org.omg.sysml.internal;
 
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.ElementVersion;
-import org.omg.sysml.lifecycle.Record;
+import org.omg.sysml.record.Record;
 
 import java.util.Set;
 

@@ -1,14 +1,8 @@
 import com.google.inject.AbstractModule;
 import config.MetamodelProvider;
 import config.impl.JPAMetamodelProvider;
-import dao.CommitDao;
-import dao.ElementDao;
-import dao.ProjectDao;
-import dao.RelationshipDao;
-import dao.impl.jpa.JpaCommitDao;
-import dao.impl.jpa.JpaElementDao;
-import dao.impl.jpa.JpaProjectDao;
-import dao.impl.jpa.JpaRelationshipDao;
+import dao.*;
+import dao.impl.jpa.*;
 import jackson.databind.ObjectMapperFactory;
 import jackson.databind.impl.HibernateObjectMapperFactory;
 import jpa.manager.JPAManager;
@@ -25,5 +19,6 @@ public class Module extends AbstractModule {
         bind(ProjectDao.class).to(JpaProjectDao.class);
         bind(RelationshipDao.class).to(JpaRelationshipDao.class);
         bind(CommitDao.class).to(JpaCommitDao.class);
+        bind(QueryDao.class).to(JpaQueryDao.class);
     }
 }

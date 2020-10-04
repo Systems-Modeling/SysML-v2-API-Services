@@ -2,24 +2,33 @@ package config.impl;
 
 import config.MetamodelProvider;
 import org.omg.sysml.metamodel.MofObject;
-import org.omg.sysml.metamodel.impl.MofObjectImpl;
+import org.omg.sysml.query.Constraint;
+import org.omg.sysml.record.Record;
 import org.reflections.Reflections;
 
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class JPAMetamodelProvider implements MetamodelProvider {
-    private static Set<Class<?>> INTERFACES = new HashSet<>(), IMPLEMENTATION_CLASSES = new HashSet<>();
+    private static final Set<Class<?>> INTERFACES = new HashSet<>();
+    private static final Set<Class<?>> IMPLEMENTATION_CLASSES = new HashSet<>();
 
     static {
-        INTERFACES.add(MofObject.class);
-        for (String pakkage : new String[]{"org.omg.sysml.metamodel", "org.omg.sysml.extension", "org.omg.sysml.versioning"}) {
-            INTERFACES.addAll(new Reflections(pakkage).getSubTypesOf(MofObject.class));
-        }
-        IMPLEMENTATION_CLASSES.add(MofObjectImpl.class);
-        for (String pakkage : new String[]{"org.omg.sysml.metamodel.impl", "org.omg.sysml.extension.impl", "org.omg.sysml.versioning.impl"}) {
-            IMPLEMENTATION_CLASSES.addAll(new Reflections(pakkage).getSubTypesOf(MofObjectImpl.class));
-        }
+        List<Class<?>> roots = Arrays.asList(
+                MofObject.class,
+                Record.class,
+                Constraint.class
+        );
+        String packageScope = "org.omg.sysml";
+
+        INTERFACES.addAll(roots);
+        Reflections reflections = new Reflections(packageScope);
+        roots.stream()
+                .map(reflections::getSubTypesOf)
+                .flatMap(Set::stream)
+                .forEach(c -> (c.isInterface() ? INTERFACES : IMPLEMENTATION_CLASSES).add(c));
     }
 
     @Override

@@ -8,6 +8,7 @@ import jackson.RecordSerialization;
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.ElementVersion;
 import org.omg.sysml.lifecycle.Project;
+import org.omg.sysml.record.impl.RecordImpl;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
@@ -17,7 +18,7 @@ import java.util.Set;
 @Entity(name = "Commit")
 public class CommitImpl extends RecordImpl implements Commit {
     private Project containingProject;
-    private Set<ElementVersion> changes;
+    private Set<ElementVersion> change;
     private ZonedDateTime timestamp;
     private Commit previousCommit;
 
@@ -34,19 +35,18 @@ public class CommitImpl extends RecordImpl implements Commit {
         this.containingProject = containingProject;
     }
 
-    @Override
     @OneToMany(targetEntity = ElementVersionImpl.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonView(Views.Complete.class)
-    public Set<ElementVersion> getChanges() {
-        if (changes == null) {
-            changes = new HashSet<>();
+    public Set<ElementVersion> getChange() {
+        if (change == null) {
+            change = new HashSet<>();
         }
-        return changes;
+        return change;
     }
 
     @JsonDeserialize(contentAs = ElementVersionImpl.class)
-    public void setChanges(Set<ElementVersion> changes) {
-        this.changes = changes;
+    public void setChange(Set<ElementVersion> change) {
+        this.change = change;
     }
 
     @Override

@@ -1,12 +1,14 @@
 package org.omg.sysml.lifecycle.impl;
 
-import com.fasterxml.jackson.annotation.*;
-import org.hibernate.annotations.FetchMode;
-import org.omg.sysml.lifecycle.Commit;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import org.omg.sysml.lifecycle.Project;
-import org.omg.sysml.metamodel.impl.MofObjectImpl;
+import org.omg.sysml.record.impl.RecordImpl;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Lob;
+import javax.persistence.Transient;
 
 // import info.archinnov.achilles.annotations.UDT;
 

@@ -23,20 +23,18 @@ import java.util.stream.Collectors;
 
 import static jackson.JsonLdMofObjectAdornment.JSONLD_MIME_TYPE;
 
-/**
- * @author Manas Bajaj
- * <p>
- * Controller for handling all API requests related to SysML v2 elements
- */
 public class ElementController extends Controller {
-    @Inject
-    private MetamodelProvider metamodelProvider;
+
+    private final ElementService elementService;
+    private final MetamodelProvider metamodelProvider;
+    private final Environment environment;
 
     @Inject
-    private ElementService elementService;
-
-    @Inject
-    private Environment environment;
+    public ElementController(ElementService elementService, MetamodelProvider metamodelProvider, Environment environment) {
+        this.elementService = elementService;
+        this.metamodelProvider = metamodelProvider;
+        this.environment = environment;
+    }
 
     private static final boolean INLINE_JSON_LD_CONTEXT_DEFAULT = true;
     private static final boolean INLINE_JSON_LD_CONTEXT = Optional.ofNullable(System.getenv("INLINE_JSON_LD_CONTEXT"))
@@ -50,7 +48,7 @@ public class ElementController extends Controller {
 
     public Result all() {
         List<Element> elements = elementService.getAll();
-        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Element.class), elements));
+        return ok(JacksonHelper.collectionToTree(elements, List.class, metamodelProvider.getImplementationClass(Element.class)));
     }
 
     public Result create(Http.Request request) {
@@ -74,9 +72,9 @@ public class ElementController extends Controller {
                         )
                         .collect(Collectors.toSet())
         )
-                .map(set -> JacksonHelper.collectionValueToTree(Set.class, respondWithJsonLd ?
+                .map(set -> JacksonHelper.collectionToTree(set, Set.class, respondWithJsonLd ?
                         JsonLdMofObjectAdornment.class :
-                        metamodelProvider.getImplementationClass(Element.class), set)
+                        metamodelProvider.getImplementationClass(Element.class))
                 )
                 .map(Results::ok)
                 .map(result -> respondWithJsonLd ? result.as(JSONLD_MIME_TYPE) : result)
@@ -106,11 +104,10 @@ public class ElementController extends Controller {
     public Result getRootsByProjectIdCommitId(UUID projectId, UUID commitId, Http.Request request) {
         Set<Element> roots = elementService.getRootsByProjectIdCommitId(projectId, commitId);
         boolean respondWithJsonLd = respondWithJsonLd(request);
-        return ok(JacksonHelper.collectionValueToTree(Set.class,
-                respondWithJsonLd ? JsonLdMofObjectAdornment.class : metamodelProvider.getImplementationClass(Element.class),
-                roots.stream()
+        return ok(JacksonHelper.collectionToTree(roots.stream()
                         .map(e -> respondWithJsonLd ? adornMofObject(e, request, metamodelProvider, environment, projectId, commitId) : e)
-                        .collect(Collectors.toSet())
+                        .collect(Collectors.toSet()), Set.class,
+                respondWithJsonLd ? JsonLdMofObjectAdornment.class : metamodelProvider.getImplementationClass(Element.class)
         ));
     }
 

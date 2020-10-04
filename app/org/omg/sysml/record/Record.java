@@ -1,4 +1,4 @@
-package org.omg.sysml.lifecycle;
+package org.omg.sysml.record;
 
 import java.util.UUID;
 
