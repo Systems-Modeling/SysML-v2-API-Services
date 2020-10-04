@@ -682,11 +682,9 @@ definitions:
       operator:
         type: string
         enum:
-          - 'instanceOf'
           - '='
           - '>'
           - '<'
-          - 'in'
   Error:
     type: object
     properties:

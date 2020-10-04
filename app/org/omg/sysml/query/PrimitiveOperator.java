@@ -3,9 +3,6 @@ package org.omg.sysml.query;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum PrimitiveOperator {
-
-    @JsonProperty("instanceOf")
-    INSTANCE_OF,
     @JsonProperty("=")
     EQUALS,
     @JsonProperty(">")

@@ -12,7 +12,8 @@ import java.util.List;
 import java.util.Set;
 
 public class JPAMetamodelProvider implements MetamodelProvider {
-    private static Set<Class<?>> INTERFACES = new HashSet<>(), IMPLEMENTATION_CLASSES = new HashSet<>();
+    private static final Set<Class<?>> INTERFACES = new HashSet<>();
+    private static final Set<Class<?>> IMPLEMENTATION_CLASSES = new HashSet<>();
 
     static {
         List<Class<?>> roots = Arrays.asList(
@@ -28,20 +29,6 @@ public class JPAMetamodelProvider implements MetamodelProvider {
                 .map(reflections::getSubTypesOf)
                 .flatMap(Set::stream)
                 .forEach(c -> (c.isInterface() ? INTERFACES : IMPLEMENTATION_CLASSES).add(c));
-
-/*
-
-        List<String> interfacePackages = Arrays.asList(
-                "org.omg.sysml.internal",
-                "org.omg.sysml.lifecycle",
-                "org.omg.sysml.metamodel",
-                "org.omg.sysml.query",
-                "org.omg.sysml.record"
-        );
-        List<String> implementationPackages = interfacePackages.stream().map(i -> i + ".impl").collect(Collectors.toList());
-
-        interfacePackages.stream().map(Reflections::new).flatMap(ref -> ref.getSubTypesOf(Object.class).stream()).forEach(INTERFACES::add);
-        implementationPackages.stream().map(Reflections::new).flatMap(ref -> ref.getSubTypesOf(Object.class).stream()).forEach(IMPLEMENTATION_CLASSES::add);*/
     }
 
     @Override
