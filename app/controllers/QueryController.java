@@ -72,24 +72,24 @@ public class QueryController extends Controller {
         return query.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
     }
 
-    public Result getQueryResultsByProjectIdCommitIdQueryId(UUID projectId, UUID commitId, UUID queryId, Http.Request request) {
-        Map.Entry<Set<Element>, AllowedPropertyFilter> results = queryService.getQueryResultsByProjectIdCommitIdQueryId(projectId, commitId, queryId);
-        return buildResponse(results, projectId, commitId, request);
+    public Result getQueryResultsByProjectIdQueryId(UUID projectId, UUID queryId, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<UUID> commitId, Http.Request request) {
+        QueryService.QueryResults result = queryService.getQueryResultsByProjectIdQueryId(projectId, queryId, commitId.orElse(null));
+        return buildResponse(result, projectId, request);
     }
 
-    public Result getQueryResultsByProjectIdCommitIdQuery(UUID projectId, UUID commitId, Http.Request request) {
+    public Result getQueryResultsByProjectIdQuery(UUID projectId, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<UUID> commitId, Http.Request request) {
         JsonNode requestBodyJson = request.body().asJson();
         Query query = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Query.class));
-        Map.Entry<Set<Element>, AllowedPropertyFilter> results = queryService.getQueryResultsByProjectIdCommitIdQuery(projectId, commitId, query);
-        return buildResponse(results, projectId, commitId, request);
+        QueryService.QueryResults result = queryService.getQueryResultsByProjectIdQuery(projectId, query, commitId.orElse(null));
+        return buildResponse(result, projectId, request);
     }
 
-    private Result buildResponse(Map.Entry<Set<Element>, AllowedPropertyFilter> results, UUID projectId, UUID commitId, Http.Request request) {
-        Set<Element> elements = results.getKey();
-        AllowedPropertyFilter filter = results.getValue();
+    private Result buildResponse(QueryService.QueryResults result, UUID projectId, Http.Request request) {
+        Set<Element> elements = result.getElements();
+        AllowedPropertyFilter filter = result.getPropertyFilter();
         boolean respondWithJsonLd = ElementController.respondWithJsonLd(request);
         JsonNode json = JacksonHelper.collectionToTree(elements.stream()
-                        .map(e -> respondWithJsonLd ? ElementController.adornMofObject(e, request, metamodelProvider, environment, projectId, commitId) : e)
+                        .map(e -> respondWithJsonLd ? ElementController.adornMofObject(e, request, metamodelProvider, environment, projectId, result.getCommit().getId()) : e)
                         .collect(Collectors.toSet()), Set.class,
                 respondWithJsonLd ? JsonLdMofObjectAdornment.class : metamodelProvider.getImplementationClass(Element.class),
                 filter != null ? () -> Json.mapper().copy().addMixIn(MofObject.class, DynamicFilterMixin.class) : Json::mapper,

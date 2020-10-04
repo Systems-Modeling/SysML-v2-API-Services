@@ -16,5 +16,5 @@ public interface ElementDao extends Dao<Element> {
 
     Set<Element> findRootsByCommit(Commit commit);
 
-    Set<Element> query(Commit commit, Query query);
+    Set<Element> findByCommitAndQuery(Commit commit, Query query);
 }

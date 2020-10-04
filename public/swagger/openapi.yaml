@@ -352,7 +352,7 @@ paths:
       tags:
         - Relationship
       operationId: getRelationshipsByProjectCommitRelatedElement
-      summary: Get relationships by project, commit, and related element.
+      summary: Get relationships by project, commit, and related element
       produces:
         - application/ld+json
         - application/json
@@ -467,23 +467,23 @@ paths:
         type: string
         format: uuid
         required: true
-      - name: commitId
-        in: query
-        description: ID of the commit
-        type: string
-        format: uuid
-        required: true
       - name: queryId
         in: path
         description: ID of the query
         type: string
         format: uuid
         required: true
+      - name: commitId
+        in: query
+        description: ID of the commit - defaults to head of project
+        type: string
+        format: uuid
+        required: false
     get:
       tags:
         - Query
-      operationId: getQueryResultsByProjectIdCommitIdQueryId
-      summary: Get query results by project, commit, and ID
+      operationId: getQueryResultsByProjectIdQueryId
+      summary: Get query results by project and query
       produces:
         - application/ld+json
         - application/json
@@ -502,7 +502,7 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-  /projects/{projectId}/queries/results:
+  /projects/{projectId}/query-results:
     parameters:
       - name: projectId
         in: path
@@ -512,15 +512,15 @@ paths:
         required: true
       - name: commitId
         in: query
-        description: ID of the commit
+        description: ID of the commit - defaults to head of project
         type: string
         format: uuid
-        required: true
+        required: false
     get:
       tags:
         - Query
-      operationId: getQueryResultsByProjectIdCommitIdQuery
-      summary: Get query results by project, commit, and query
+      operationId: getQueryResultsByProjectIdQuery
+      summary: Get query results by project and query definition
       consumes:
         - application/json
       produces:
@@ -550,8 +550,8 @@ paths:
     post:
       tags:
         - Query
-      operationId: getQueryResultsByProjectIdCommitIdQueryPost
-      summary: Get query results by project, commit, and query via POST
+      operationId: getQueryResultsByProjectIdQueryPost
+      summary: Get query results by project and query definition via POST
       description: For compatibility with clients that don't support GET requests with a body
       consumes:
         - application/json
@@ -720,29 +720,13 @@ definitions:
       '@type':
         type: string
         enum:
-          - 'CompositeConstraint'
           - 'PrimitiveConstraint'
+          - 'CompositeConstraint'
     additionalProperties:
       type: object
     discriminator: '@type'
     required:
       - '@type'
-  CompositeConstraint:
-    type: object
-    properties:
-      '@type':
-        type: string
-        enum:
-          - 'CompositeConstraint'
-      constraint:
-        type: array
-        items:
-          $ref: '#/definitions/Constraint'
-      operator:
-        type: string
-        enum:
-          - 'and'
-          - 'or'
   PrimitiveConstraint:
     type: object
     properties:
@@ -762,6 +746,22 @@ definitions:
           - '='
           - '>'
           - '<'
+  CompositeConstraint:
+    type: object
+    properties:
+      '@type':
+        type: string
+        enum:
+          - 'CompositeConstraint'
+      constraint:
+        type: array
+        items:
+          $ref: '#/definitions/Constraint'
+      operator:
+        type: string
+        enum:
+          - 'and'
+          - 'or'
   Error:
     type: object
     properties:
