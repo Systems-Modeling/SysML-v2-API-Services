@@ -1,13 +1,9 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import config.MetamodelProvider;
 import jackson.JacksonHelper;
 import jackson.JsonLdMofObjectAdornment;
-import jackson.filter.AllowedPropertyFilter;
-import jackson.filter.DynamicFilterMixin;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.MofObject;
 import play.Environment;
@@ -19,11 +15,11 @@ import play.mvc.Results;
 import services.ElementService;
 
 import javax.inject.Inject;
-import java.util.*;
-import java.util.Map.Entry;
-import java.util.function.UnaryOperator;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
 
 import static jackson.JsonLdMofObjectAdornment.JSONLD_MIME_TYPE;
 
@@ -113,27 +109,6 @@ public class ElementController extends Controller {
                         .collect(Collectors.toSet()), Set.class,
                 respondWithJsonLd ? JsonLdMofObjectAdornment.class : metamodelProvider.getImplementationClass(Element.class)
         ));
-    }
-
-    public Result getQueryResultsByProjectIdCommitIdQueryId(UUID projectId, UUID commitId, UUID queryId, Http.Request request) {
-        Entry<Set<Element>, AllowedPropertyFilter> results = elementService.getQueryResultsByProjectIdCommitIdQueryId(projectId, commitId, queryId);
-        Set<Element> elements = results.getKey();
-        AllowedPropertyFilter filter = results.getValue();
-        boolean respondWithJsonLd = respondWithJsonLd(request);
-        JsonNode json = JacksonHelper.collectionToTree(elements.stream()
-                        .map(e -> respondWithJsonLd ? adornMofObject(e, request, metamodelProvider, environment, projectId, commitId) : e)
-                        .collect(Collectors.toSet()), Set.class,
-                respondWithJsonLd ? JsonLdMofObjectAdornment.class : metamodelProvider.getImplementationClass(Element.class),
-                filter != null ? () -> Json.mapper().copy().addMixIn(MofObject.class, DynamicFilterMixin.class) : Json::mapper,
-                filter != null ? writer -> writer.with(new SimpleFilterProvider().addFilter(DynamicFilterMixin.FILTER_NAME, filter)) : UnaryOperator.identity()
-        );
-        // Workaround for JSON always containing "@type"
-        if (filter != null && !filter.getAllowedProperties().contains("@type")) {
-            StreamSupport.stream(Spliterators.spliteratorUnknownSize(json.elements(), Spliterator.ORDERED), false)
-                    .filter(n -> n instanceof ObjectNode)
-                    .forEach(n -> ((ObjectNode) n).remove("@type"));
-        }
-        return ok(json);
     }
 
     static boolean respondWithJsonLd(Http.Request request) {

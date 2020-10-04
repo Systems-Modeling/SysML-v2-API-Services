@@ -318,49 +318,6 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
-  /projects/{projectId}/commits/{commitId}/queries/{queryId}/results:
-    parameters:
-      - name: projectId
-        in: path
-        description: ID of the project
-        type: string
-        format: uuid
-        required: true
-      - name: commitId
-        in: path
-        description: ID of the commit
-        type: string
-        format: uuid
-        required: true
-      - name: queryId
-        in: path
-        description: ID of the query
-        type: string
-        format: uuid
-        required: true
-    get:
-      tags:
-        - Element
-      operationId: getQueryResultsByProjectIdCommitIdQueryId
-      summary: Get query results by project, commit, and query
-      produces:
-        - application/ld+json
-        - application/json
-      responses:
-        200:
-          description: Ok
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Element'
-        404:
-          $ref: '#/responses/NotFound'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
   /projects/{projectId}/commits/{commitId}/elements/{relatedElementId}/relationships:
     parameters:
       - name: projectId
@@ -494,6 +451,126 @@ paths:
           description: Ok
           schema:
             $ref: '#/definitions/Query'
+        404:
+          $ref: '#/responses/NotFound'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+  /projects/{projectId}/queries/{queryId}/results:
+    parameters:
+      - name: projectId
+        in: path
+        description: ID of the project
+        type: string
+        format: uuid
+        required: true
+      - name: commitId
+        in: query
+        description: ID of the commit
+        type: string
+        format: uuid
+        required: true
+      - name: queryId
+        in: path
+        description: ID of the query
+        type: string
+        format: uuid
+        required: true
+    get:
+      tags:
+        - Query
+      operationId: getQueryResultsByProjectIdCommitIdQueryId
+      summary: Get query results by project, commit, and ID
+      produces:
+        - application/ld+json
+        - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Element'
+        404:
+          $ref: '#/responses/NotFound'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+  /projects/{projectId}/queries/results:
+    parameters:
+      - name: projectId
+        in: path
+        description: ID of the project
+        type: string
+        format: uuid
+        required: true
+      - name: commitId
+        in: query
+        description: ID of the commit
+        type: string
+        format: uuid
+        required: true
+    get:
+      tags:
+        - Query
+      operationId: getQueryResultsByProjectIdCommitIdQuery
+      summary: Get query results by project, commit, and query
+      consumes:
+        - application/json
+      produces:
+        - application/ld+json
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/Query'
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Element'
+        404:
+          $ref: '#/responses/NotFound'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    post:
+      tags:
+        - Query
+      operationId: getQueryResultsByProjectIdCommitIdQueryPost
+      summary: Get query results by project, commit, and query via POST
+      description: For compatibility with clients that don't support GET requests with a body
+      consumes:
+        - application/json
+      produces:
+        - application/ld+json
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            $ref: '#/definitions/Query'
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Element'
         404:
           $ref: '#/responses/NotFound'
         415:

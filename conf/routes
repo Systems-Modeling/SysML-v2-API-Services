@@ -21,7 +21,6 @@ GET         /projects/:projectId/head                                           
 GET         /projects/:projectId/commits/:commitId/elements                                        controllers.ElementController.getElementsByProjectIdCommitId(projectId : java.util.UUID, commitId : java.util.UUID, request : Request)
 GET         /projects/:projectId/commits/:commitId/elements/:elementId                             controllers.ElementController.getElementByProjectIdCommitIdElementId(projectId : java.util.UUID, commitId : java.util.UUID, elementId : java.util.UUID, request : Request)
 GET         /projects/:projectId/commits/:commitId/roots                                           controllers.ElementController.getRootsByProjectIdCommitId(projectId : java.util.UUID, commitId : java.util.UUID, request : Request)
-GET         /projects/:projectId/commits/:commitId/queries/:queryId/results                        controllers.ElementController.getQueryResultsByProjectIdCommitIdQueryId(projectId : java.util.UUID, commitId : java.util.UUID, queryId : java.util.UUID, request : Request)
 
 # Relationship endpoints
 GET         /projects/:projectId/commits/:commitId/elements/:relatedElementId/relationships        controllers.RelationshipController.getRelationshipsByProjectIdCommitIdRelatedElementId(projectId : java.util.UUID, commitId : java.util.UUID, relatedElementId : java.util.UUID, direction : java.util.Optional[String], request : Request)
@@ -30,6 +29,9 @@ GET         /projects/:projectId/commits/:commitId/elements/:relatedElementId/re
 GET         /projects/:projectId/queries                                                           controllers.QueryController.byProject(projectId : java.util.UUID)
 POST        /projects/:projectId/queries                                                           controllers.QueryController.createWithProjectId(projectId : java.util.UUID, request : Request)
 GET         /projects/:projectId/queries/:queryId                                                  controllers.QueryController.byProjectAndId(projectId : java.util.UUID, queryId : java.util.UUID)
+GET         /projects/:projectId/queries/:queryId/results                                          controllers.QueryController.getQueryResultsByProjectIdCommitIdQueryId(projectId : java.util.UUID, commitId : java.util.UUID, queryId : java.util.UUID, request : Request)
+GET         /projects/:projectId/queries/results                                                   controllers.QueryController.getQueryResultsByProjectIdCommitIdQuery(projectId : java.util.UUID, commitId : java.util.UUID, request : Request)
+POST        /projects/:projectId/queries/results                                                   controllers.QueryController.getQueryResultsByProjectIdCommitIdQuery(projectId : java.util.UUID, commitId : java.util.UUID, request : Request)
 
 # Map static resources from the /public folder to the /assets URL path
 GET         /assets/*file                                                                          controllers.Assets.versioned(path="/public", file: Asset)

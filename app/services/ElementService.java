@@ -4,17 +4,11 @@ import dao.CommitDao;
 import dao.ElementDao;
 import dao.ProjectDao;
 import dao.QueryDao;
-import jackson.filter.AllowedPropertyFilter;
-import org.omg.sysml.lifecycle.Commit;
-import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.metamodel.Element;
-import org.omg.sysml.query.Query;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.util.AbstractMap.SimpleImmutableEntry;
 import java.util.Collections;
-import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
@@ -66,19 +60,5 @@ public class ElementService extends BaseService<Element, ElementDao> {
                 .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
                 .map(dao::findRootsByCommit)
                 .orElse(Collections.emptySet());
-    }
-
-    public Entry<Set<Element>, AllowedPropertyFilter> getQueryResultsByProjectIdCommitIdQueryId(UUID projectId, UUID commitId, UUID queryId) {
-        Project project = projectDao.findById(projectId).orElseThrow(() -> new IllegalArgumentException("Project " + projectId + " not found."));
-        Commit commit = commitDao.findByProjectAndId(project, commitId).orElseThrow(() -> new IllegalArgumentException("Commit " + commitId + " not found."));
-        Query query = queryDao.findByProjectAndId(project, queryId).orElseThrow(() -> new IllegalArgumentException("Query " + queryId + " not found."));
-        return new SimpleImmutableEntry<>(dao.query(commit, query), getPropertyFilter(query));
-    }
-
-    private AllowedPropertyFilter getPropertyFilter(Query query) {
-        if (query.getSelect() == null || query.getSelect().isEmpty()) {
-            return null;
-        }
-        return new AllowedPropertyFilter(query.getSelect());
     }
 }
