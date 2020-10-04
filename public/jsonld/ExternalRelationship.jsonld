@@ -22,7 +22,9 @@
         "owningRelatedElement": {"@type": "@id"},
         "owningRelationship": {"@type": "@id"},
         "relatedElement": {"@type": "@id"},
+        "resourceIdentifier": {"@type": "@id"},
         "source": {"@type": "@id"},
+        "specification": {"@type": "xsd:string"},
         "target": {"@type": "@id"}
 
     }
