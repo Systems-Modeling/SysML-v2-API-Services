@@ -1,3 +1,24 @@
+/*
+ * SysML v2 REST/HTTP Pilot Implementation
+ * Copyright (C) 2020  InterCAX LLC
+ * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
+ */
+
 package dao.impl.jpa;
 
 import dao.ProjectDao;
@@ -8,57 +29,12 @@ import org.omg.sysml.lifecycle.impl.ProjectImpl_;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.persistence.NoResultException;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaDelete;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
 
 @Singleton
-public class JpaProjectDao extends JpaDao<Project> implements ProjectDao {
+public class JpaProjectDao extends SimpleJpaDao<Project, ProjectImpl> implements ProjectDao {
+
     @Inject
-    private JPAManager jpa;
-
-    @Override
-    protected JPAManager getJpaManager() {
-        return jpa;
-    }
-
-    @Override
-    public Optional<Project> findById(UUID id) {
-        return jpa.transact(em -> {
-            CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaQuery<ProjectImpl> query = builder.createQuery(ProjectImpl.class);
-            Root<ProjectImpl> root = query.from(ProjectImpl.class);
-            query.select(root).where(builder.equal(root.get(ProjectImpl_.id), id));
-            try {
-                return Optional.of(em.createQuery(query).getSingleResult());
-            } catch (NoResultException e) {
-                return Optional.empty();
-            }
-        });
-    }
-
-    @Override
-    public List<Project> findAll() {
-        return jpa.transact(em -> {
-            CriteriaBuilder cb = em.getCriteriaBuilder();
-            CriteriaQuery<Project> query = cb.createQuery(Project.class);
-            Root<ProjectImpl> root = query.from(ProjectImpl.class);
-            query.select(root);
-            return em.createQuery(query).getResultList();
-        });
-    }
-
-    @Override
-    public void deleteAll() {
-        jpa.transact(em -> {
-            CriteriaBuilder cb = em.getCriteriaBuilder();
-            CriteriaDelete<Project> query = cb.createCriteriaDelete(Project.class);
-            return em.createQuery(query).getResultList();
-        });
+    public JpaProjectDao(JPAManager jpaManager) {
+        super(jpaManager, ProjectImpl.class, ProjectImpl_.id);
     }
 }

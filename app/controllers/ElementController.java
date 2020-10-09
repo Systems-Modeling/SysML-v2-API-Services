@@ -1,3 +1,24 @@
+/*
+ * SysML v2 REST/HTTP Pilot Implementation
+ * Copyright (C) 2020  InterCAX LLC
+ * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
+ */
+
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -23,20 +44,18 @@ import java.util.stream.Collectors;
 
 import static jackson.JsonLdMofObjectAdornment.JSONLD_MIME_TYPE;
 
-/**
- * @author Manas Bajaj
- * <p>
- * Controller for handling all API requests related to SysML v2 elements
- */
 public class ElementController extends Controller {
-    @Inject
-    private MetamodelProvider metamodelProvider;
+
+    private final ElementService elementService;
+    private final MetamodelProvider metamodelProvider;
+    private final Environment environment;
 
     @Inject
-    private ElementService elementService;
-
-    @Inject
-    private Environment environment;
+    public ElementController(ElementService elementService, MetamodelProvider metamodelProvider, Environment environment) {
+        this.elementService = elementService;
+        this.metamodelProvider = metamodelProvider;
+        this.environment = environment;
+    }
 
     private static final boolean INLINE_JSON_LD_CONTEXT_DEFAULT = true;
     private static final boolean INLINE_JSON_LD_CONTEXT = Optional.ofNullable(System.getenv("INLINE_JSON_LD_CONTEXT"))
@@ -50,7 +69,7 @@ public class ElementController extends Controller {
 
     public Result all() {
         List<Element> elements = elementService.getAll();
-        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Element.class), elements));
+        return ok(JacksonHelper.collectionToTree(elements, List.class, metamodelProvider.getImplementationClass(Element.class)));
     }
 
     public Result create(Http.Request request) {
@@ -74,9 +93,9 @@ public class ElementController extends Controller {
                         )
                         .collect(Collectors.toSet())
         )
-                .map(set -> JacksonHelper.collectionValueToTree(Set.class, respondWithJsonLd ?
+                .map(set -> JacksonHelper.collectionToTree(set, Set.class, respondWithJsonLd ?
                         JsonLdMofObjectAdornment.class :
-                        metamodelProvider.getImplementationClass(Element.class), set)
+                        metamodelProvider.getImplementationClass(Element.class))
                 )
                 .map(Results::ok)
                 .map(result -> respondWithJsonLd ? result.as(JSONLD_MIME_TYPE) : result)
@@ -106,11 +125,10 @@ public class ElementController extends Controller {
     public Result getRootsByProjectIdCommitId(UUID projectId, UUID commitId, Http.Request request) {
         Set<Element> roots = elementService.getRootsByProjectIdCommitId(projectId, commitId);
         boolean respondWithJsonLd = respondWithJsonLd(request);
-        return ok(JacksonHelper.collectionValueToTree(Set.class,
-                respondWithJsonLd ? JsonLdMofObjectAdornment.class : metamodelProvider.getImplementationClass(Element.class),
-                roots.stream()
+        return ok(JacksonHelper.collectionToTree(roots.stream()
                         .map(e -> respondWithJsonLd ? adornMofObject(e, request, metamodelProvider, environment, projectId, commitId) : e)
-                        .collect(Collectors.toSet())
+                        .collect(Collectors.toSet()), Set.class,
+                respondWithJsonLd ? JsonLdMofObjectAdornment.class : metamodelProvider.getImplementationClass(Element.class)
         ));
     }
 

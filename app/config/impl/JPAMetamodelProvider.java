@@ -1,25 +1,55 @@
+/*
+ * SysML v2 REST/HTTP Pilot Implementation
+ * Copyright (C) 2020  InterCAX LLC
+ * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
+ */
+
 package config.impl;
 
 import config.MetamodelProvider;
 import org.omg.sysml.metamodel.MofObject;
-import org.omg.sysml.metamodel.impl.MofObjectImpl;
+import org.omg.sysml.query.Constraint;
+import org.omg.sysml.record.Record;
 import org.reflections.Reflections;
 
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class JPAMetamodelProvider implements MetamodelProvider {
-    private static Set<Class<?>> INTERFACES = new HashSet<>(), IMPLEMENTATION_CLASSES = new HashSet<>();
+    private static final Set<Class<?>> INTERFACES = new HashSet<>();
+    private static final Set<Class<?>> IMPLEMENTATION_CLASSES = new HashSet<>();
 
     static {
-        INTERFACES.add(MofObject.class);
-        for (String pakkage : new String[]{"org.omg.sysml.metamodel", "org.omg.sysml.extension", "org.omg.sysml.versioning"}) {
-            INTERFACES.addAll(new Reflections(pakkage).getSubTypesOf(MofObject.class));
-        }
-        IMPLEMENTATION_CLASSES.add(MofObjectImpl.class);
-        for (String pakkage : new String[]{"org.omg.sysml.metamodel.impl", "org.omg.sysml.extension.impl", "org.omg.sysml.versioning.impl"}) {
-            IMPLEMENTATION_CLASSES.addAll(new Reflections(pakkage).getSubTypesOf(MofObjectImpl.class));
-        }
+        List<Class<?>> roots = Arrays.asList(
+                MofObject.class,
+                Record.class,
+                Constraint.class
+        );
+        String packageScope = "org.omg.sysml";
+
+        INTERFACES.addAll(roots);
+        Reflections reflections = new Reflections(packageScope);
+        roots.stream()
+                .map(reflections::getSubTypesOf)
+                .flatMap(Set::stream)
+                .forEach(c -> (c.isInterface() ? INTERFACES : IMPLEMENTATION_CLASSES).add(c));
     }
 
     @Override

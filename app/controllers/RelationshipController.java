@@ -1,3 +1,24 @@
+/*
+ * SysML v2 REST/HTTP Pilot Implementation
+ * Copyright (C) 2020  InterCAX LLC
+ * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
+ */
+
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -24,20 +45,18 @@ import static controllers.ElementController.adornMofObject;
 import static controllers.ElementController.respondWithJsonLd;
 import static jackson.JsonLdMofObjectAdornment.JSONLD_MIME_TYPE;
 
-/**
- * @author Manas Bajaj
- * <p>
- * Controller for handling all API requests related to SysML v2 elements
- */
 public class RelationshipController extends Controller {
-    @Inject
-    private MetamodelProvider metamodelProvider;
+
+    private final RelationshipService relationshipService;
+    private final MetamodelProvider metamodelProvider;
+    private final Environment environment;
 
     @Inject
-    private RelationshipService relationshipService;
-
-    @Inject
-    private Environment environment;
+    public RelationshipController(RelationshipService relationshipService, MetamodelProvider metamodelProvider, Environment environment) {
+        this.relationshipService = relationshipService;
+        this.metamodelProvider = metamodelProvider;
+        this.environment = environment;
+    }
 
     public Result byId(String id) {
         UUID uuid = UUID.fromString(id);
@@ -47,7 +66,7 @@ public class RelationshipController extends Controller {
 
     public Result all() {
         List<Relationship> relationships = relationshipService.getAll();
-        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Relationship.class), relationships));
+        return ok(JacksonHelper.collectionToTree(relationships, List.class, metamodelProvider.getImplementationClass(Relationship.class)));
     }
 
     public Result create(Http.Request request) {
@@ -77,9 +96,9 @@ public class RelationshipController extends Controller {
                         )
                         .collect(Collectors.toSet())
         )
-                .map(set -> JacksonHelper.collectionValueToTree(Set.class, respondWithJsonLd ?
+                .map(set -> JacksonHelper.collectionToTree(set, Set.class, respondWithJsonLd ?
                         JsonLdMofObjectAdornment.class :
-                        metamodelProvider.getImplementationClass(Relationship.class), set)
+                        metamodelProvider.getImplementationClass(Relationship.class))
                 )
                 .map(Results::ok)
                 .map(result -> respondWithJsonLd ? result.as(JSONLD_MIME_TYPE) : result)

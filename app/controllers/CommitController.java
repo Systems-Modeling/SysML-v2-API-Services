@@ -1,6 +1,28 @@
+/*
+ * SysML v2 REST/HTTP Pilot Implementation
+ * Copyright (C) 2020  InterCAX LLC
+ * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
+ */
+
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import config.MetamodelProvider;
 import jackson.JacksonHelper;
 import org.omg.sysml.lifecycle.Commit;
@@ -19,11 +41,15 @@ import java.util.Optional;
 import java.util.UUID;
 
 public class CommitController extends Controller {
-    @Inject
-    private MetamodelProvider metamodelProvider;
+
+    private final MetamodelProvider metamodelProvider;
+    private final CommitService commitService;
 
     @Inject
-    private CommitService commitService;
+    public CommitController(CommitService commitService, MetamodelProvider metamodelProvider) {
+        this.commitService = commitService;
+        this.metamodelProvider = metamodelProvider;
+    }
 
     public Result byId(String id) {
         UUID uuid = UUID.fromString(id);
@@ -33,7 +59,7 @@ public class CommitController extends Controller {
 
     public Result all() {
         List<Commit> commits = commitService.getAll();
-        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Commit.class), commits));
+        return ok(JacksonHelper.collectionToTree(commits, List.class, metamodelProvider.getImplementationClass(Commit.class)));
     }
 
     public Result create(Http.Request request) {
@@ -54,13 +80,13 @@ public class CommitController extends Controller {
             return Results.badRequest();
         }
         requestedObject.setTimestamp(ZonedDateTime.now());
-        Optional<Commit> responseCommit = commitService.create(projectId, requestedObject);
-        return responseCommit.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
+        Optional<Commit> response = commitService.create(projectId, requestedObject);
+        return response.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 
     public Result byProject(UUID projectId) {
         List<Commit> commits = commitService.getByProjectId(projectId);
-        return ok(JacksonHelper.collectionValueToTree(List.class, metamodelProvider.getImplementationClass(Commit.class), commits, writer -> writer.withView(CommitImpl.Views.Compact.class)));
+        return ok(JacksonHelper.collectionToTree(commits, List.class, metamodelProvider.getImplementationClass(Commit.class), Json::mapper, writer -> writer.withView(CommitImpl.Views.Compact.class)));
     }
 
     public Result byProjectAndId(UUID projectId, UUID commitId) {
@@ -70,6 +96,6 @@ public class CommitController extends Controller {
 
     public Result headByProject(UUID projectId) {
         Optional<Commit> commit = commitService.getHeadByProjectId(projectId);
-        return commit.map(e -> ok(JacksonHelper.valueToTree(commit, writer -> writer.withView(CommitImpl.Views.Compact.class)))).orElseGet(Results::notFound);
+        return commit.map(e -> ok(JacksonHelper.objectToTree(commit, Json::mapper, mapper -> mapper.writer().withView(CommitImpl.Views.Compact.class), ObjectMapper::reader))).orElseGet(Results::notFound);
     }
 }

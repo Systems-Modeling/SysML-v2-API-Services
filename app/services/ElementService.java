@@ -1,64 +1,85 @@
+/*
+ * SysML v2 REST/HTTP Pilot Implementation
+ * Copyright (C) 2020  InterCAX LLC
+ * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
+ */
+
 package services;
 
 import dao.CommitDao;
 import dao.ElementDao;
 import dao.ProjectDao;
+import dao.QueryDao;
 import org.omg.sysml.metamodel.Element;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.util.*;
+import java.util.Collections;
+import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
 
 @Singleton
-public class ElementService {
-    @Inject
-    private ElementDao elementDao;
+public class ElementService extends BaseService<Element, ElementDao> {
+
+    private final ProjectDao projectDao;
+    private final CommitDao commitDao;
+    private final QueryDao queryDao;
 
     @Inject
-    private ProjectDao projectDao;
-
-    @Inject
-    private CommitDao commitDao;
-
-    public List<Element> getAll() {
-        return elementDao.findAll();
+    public ElementService(ElementDao elementDao, ProjectDao projectDao, CommitDao commitDao, QueryDao queryDao) {
+        super(elementDao);
+        this.projectDao = projectDao;
+        this.commitDao = commitDao;
+        this.queryDao = queryDao;
     }
 
-    public Optional<Element> getById(UUID id) {
-        return elementDao.findById(id);
+    public Optional<Element> create(Element element) {
+        return element.getIdentifier() != null ? dao.update(element) : dao.persist(element);
     }
 
     public Set<Element> getByCommitId(UUID commitId) {
         return commitDao.findById(commitId)
-                .map(c -> elementDao.findAllByCommit(c)).orElse(Collections.emptySet());
+                .map(dao::findAllByCommit).orElse(Collections.emptySet());
     }
 
     public Optional<Element> getByCommitIdAndId(UUID commitId, UUID elementId) {
         return commitDao.findById(commitId)
-                .flatMap(m -> elementDao.findByCommitAndId(m, elementId));
-    }
-
-    public Optional<Element> create(Element element) {
-        return element.getIdentifier() != null ? elementDao.update(element) : elementDao.persist(element);
+                .flatMap(m -> dao.findByCommitAndId(m, elementId));
     }
 
     public Set<Element> getElementsByProjectIdCommitId(UUID projectId, UUID commitId) {
         return projectDao.findById(projectId)
                 .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
-                .map(commit -> elementDao.findAllByCommit(commit))
+                .map(dao::findAllByCommit)
                 .orElse(Collections.emptySet());
     }
 
     public Optional<Element> getElementsByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId) {
         return projectDao.findById(projectId)
                 .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
-                .flatMap(commit -> elementDao.findByCommitAndId(commit, elementId));
+                .flatMap(commit -> dao.findByCommitAndId(commit, elementId));
     }
 
     public Set<Element> getRootsByProjectIdCommitId(UUID projectId, UUID commitId) {
         return projectDao.findById(projectId)
                 .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
-                .map(commit -> elementDao.findRootsByCommit(commit))
+                .map(dao::findRootsByCommit)
                 .orElse(Collections.emptySet());
     }
 }

@@ -1,3 +1,24 @@
+/*
+ * SysML v2 REST/HTTP Pilot Implementation
+ * Copyright (C) 2020  InterCAX LLC
+ * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
+ */
+
 package services;
 
 import dao.CommitDao;
@@ -12,39 +33,34 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Singleton
-public class CommitService {
-    @Inject
-    private CommitDao commitDao;
+public class CommitService extends BaseService<Commit, CommitDao> {
+
+    private final ProjectDao projectDao;
 
     @Inject
-    private ProjectDao projectDao;
-
-    public List<Commit> getAll() {
-        return commitDao.findAll();
-    }
-
-    public Optional<Commit> getById(UUID id) {
-        return commitDao.findById(id);
-    }
-
-    public List<Commit> getByProjectId(UUID projectId) {
-        return projectDao.findById(projectId).map(commitDao::findAllByProject).orElse(Collections.emptyList());
-    }
-
-    public Optional<Commit> getByProjectIdAndId(UUID projectId, UUID commitId) {
-        return projectDao.findById(projectId).flatMap(project -> commitDao.findByProjectAndIdResolved(project, commitId));
-    }
-
-    public Optional<Commit> getHeadByProjectId(UUID projectId) {
-        return projectDao.findById(projectId).flatMap(commitDao::findHeadByProject);
+    public CommitService(CommitDao commitDao, ProjectDao projectDao) {
+        super(commitDao);
+        this.projectDao = projectDao;
     }
 
     public Optional<Commit> create(Commit commit) {
-        return commit.getId() != null ? commitDao.update(commit) : commitDao.persist(commit);
+        return commit.getId() != null ? dao.update(commit) : dao.persist(commit);
     }
 
     public Optional<Commit> create(UUID projectId, Commit commit) {
         commit.setContainingProject(projectDao.findById(projectId).orElseThrow(() -> new IllegalArgumentException("Project " + projectId + " not found.")));
         return create(commit);
+    }
+
+    public List<Commit> getByProjectId(UUID projectId) {
+        return projectDao.findById(projectId).map(dao::findAllByProject).orElse(Collections.emptyList());
+    }
+
+    public Optional<Commit> getByProjectIdAndId(UUID projectId, UUID commitId) {
+        return projectDao.findById(projectId).flatMap(project -> dao.findByProjectAndIdResolved(project, commitId));
+    }
+
+    public Optional<Commit> getHeadByProjectId(UUID projectId) {
+        return projectDao.findById(projectId).flatMap(dao::findHeadByProject);
     }
 }

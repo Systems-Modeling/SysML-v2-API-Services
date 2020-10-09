@@ -1,3 +1,24 @@
+/*
+ * SysML v2 REST/HTTP Pilot Implementation
+ * Copyright (C) 2020  InterCAX LLC
+ * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
+ */
+
 package services;
 
 
@@ -12,39 +33,35 @@ import org.omg.sysml.utils.RelationshipDirection;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.util.*;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Singleton
-public class RelationshipService {
-    @Inject
-    private RelationshipDao relationshipDao;
+public class RelationshipService extends BaseService<Relationship, RelationshipDao> {
+
+    private final ElementDao elementDao;
+    private final ProjectDao projectDao;
+    private final CommitDao commitDao;
 
     @Inject
-    private ElementDao elementDao;
-
-    @Inject
-    private ProjectDao projectDao;
-
-    @Inject
-    private CommitDao commitDao;
-
-    public List<Relationship> getAll() {
-        return relationshipDao.findAll();
-    }
-
-    public Optional<Relationship> getById(UUID id) {
-        return relationshipDao.findById(id);
+    public RelationshipService(RelationshipDao relationshipDao, ElementDao elementDao, ProjectDao projectDao, CommitDao commitDao) {
+        super(relationshipDao);
+        this.elementDao = elementDao;
+        this.projectDao = projectDao;
+        this.commitDao = commitDao;
     }
 
     public Optional<Relationship> create(Relationship relationship) {
-        return relationship.getIdentifier() != null ? relationshipDao.update(relationship) : relationshipDao.persist(relationship);
+        return relationship.getIdentifier() != null ? dao.update(relationship) : dao.persist(relationship);
     }
 
     public Set<Relationship> getRelationshipsByProjectCommitRelatedElement(UUID projectId, UUID commitId, UUID relatedElementId, RelationshipDirection direction) {
         Commit commit = projectDao.findById(projectId).flatMap(project -> commitDao.findByProjectAndId(project, commitId)).orElseThrow(() -> new IllegalArgumentException("Commit " + commitId + " not found."));
         Element relatedElement = elementDao.findByCommitAndId(commit, relatedElementId).orElseThrow(() -> new IllegalArgumentException("Element " + relatedElementId + " not found."));
-        Set<Relationship> allRelationships = relationshipDao.findAllByCommitRelatedElement(commit, relatedElement);
+        Set<Relationship> allRelationships = dao.findAllByCommitRelatedElement(commit, relatedElement);
         Set<Relationship> results = allRelationships;
         if (RelationshipDirection.OUT.equals(direction)) {
             results = allRelationships.stream()
