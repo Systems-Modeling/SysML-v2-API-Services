@@ -1,6 +1,5 @@
 package org.omg.sysml.external;
 
-import org.omg.sysml.lifecycle.Record;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.MofObject;
 
