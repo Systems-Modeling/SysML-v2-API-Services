@@ -42,6 +42,8 @@
                         @MetaValue(value = "ExhibitStateUsage", targetEntity = ExhibitStateUsageImpl.class),
                         @MetaValue(value = "Expose", targetEntity = ExposeImpl.class),
                         @MetaValue(value = "Expression", targetEntity = ExpressionImpl.class),
+                        @MetaValue(value = "ExternalElement", targetEntity = ExternalElementImpl.class),
+                        @MetaValue(value = "ExternalRelationship", targetEntity = ExternalRelationshipImpl.class),
                         @MetaValue(value = "Feature", targetEntity = FeatureImpl.class),
                         @MetaValue(value = "FeatureMembership", targetEntity = FeatureMembershipImpl.class),
                         @MetaValue(value = "FeatureReferenceExpression", targetEntity = FeatureReferenceExpressionImpl.class),
@@ -452,6 +454,8 @@
                         @MetaValue(value = "ExhibitStateUsage", targetEntity = ExhibitStateUsageImpl.class),
                         @MetaValue(value = "Expose", targetEntity = ExposeImpl.class),
                         @MetaValue(value = "Expression", targetEntity = ExpressionImpl.class),
+                        @MetaValue(value = "ExternalElement", targetEntity = ExternalElementImpl.class),
+                        @MetaValue(value = "ExternalRelationship", targetEntity = ExternalRelationshipImpl.class),
                         @MetaValue(value = "Feature", targetEntity = FeatureImpl.class),
                         @MetaValue(value = "FeatureMembership", targetEntity = FeatureMembershipImpl.class),
                         @MetaValue(value = "FeatureReferenceExpression", targetEntity = FeatureReferenceExpressionImpl.class),
@@ -1052,6 +1056,7 @@
                         @MetaValue(value = "Documentation", targetEntity = DocumentationImpl.class),
                         @MetaValue(value = "EndFeatureMembership", targetEntity = EndFeatureMembershipImpl.class),
                         @MetaValue(value = "Expose", targetEntity = ExposeImpl.class),
+                        @MetaValue(value = "ExternalRelationship", targetEntity = ExternalRelationshipImpl.class),
                         @MetaValue(value = "FeatureMembership", targetEntity = FeatureMembershipImpl.class),
                         @MetaValue(value = "FeatureTyping", targetEntity = FeatureTypingImpl.class),
                         @MetaValue(value = "FeatureValue", targetEntity = FeatureValueImpl.class),
@@ -1412,3 +1417,4 @@ import org.hibernate.annotations.MetaValue;
 // TODO Abstract this concept to cli option
 import org.hibernate.annotations.GenericGenerators;
 import org.hibernate.annotations.GenericGenerator;
+import org.omg.sysml.external.impl.*;
