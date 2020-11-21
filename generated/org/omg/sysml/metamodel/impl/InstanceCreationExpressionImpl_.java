@@ -23,6 +23,7 @@ import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.Type;
+import org.omg.sysml.metamodel.TypeFeaturing;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(InstanceCreationExpressionImpl.class)
@@ -30,6 +31,7 @@ public abstract class InstanceCreationExpressionImpl_ extends org.omg.sysml.meta
 
 	public static volatile ListAttribute<InstanceCreationExpressionImpl, Generalization> ownedGeneralization;
 	public static volatile ListAttribute<InstanceCreationExpressionImpl, Expression> argument;
+	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<InstanceCreationExpressionImpl, Boolean> isConjugated;
 	public static volatile SingularAttribute<InstanceCreationExpressionImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Subsetting> ownedSubsetting;
@@ -60,21 +62,21 @@ public abstract class InstanceCreationExpressionImpl_ extends org.omg.sysml.meta
 	public static volatile ListAttribute<InstanceCreationExpressionImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Feature> endFeature;
 	public static volatile ListAttribute<InstanceCreationExpressionImpl, Import> ownedImport;
-	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Type> referencedType;
 	public static volatile SingularAttribute<InstanceCreationExpressionImpl, Boolean> isAbstract;
 	public static volatile SingularAttribute<InstanceCreationExpressionImpl, Boolean> isEnd;
+	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Type> featuringType;
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Feature> input;
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<InstanceCreationExpressionImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<InstanceCreationExpressionImpl, String> humanId;
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, String> aliasId;
-	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Type> ownedType;
 	public static volatile SingularAttribute<InstanceCreationExpressionImpl, String> name;
 	public static volatile ListAttribute<InstanceCreationExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<InstanceCreationExpressionImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String ARGUMENT = "argument";
+	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
@@ -105,15 +107,14 @@ public abstract class InstanceCreationExpressionImpl_ extends org.omg.sysml.meta
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String OWNED_IMPORT = "ownedImport";
-	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String IS_END = "isEnd";
+	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
 	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
-	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";

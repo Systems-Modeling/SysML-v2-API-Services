@@ -22,12 +22,14 @@ import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.Type;
+import org.omg.sysml.metamodel.TypeFeaturing;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(ExpressionImpl.class)
 public abstract class ExpressionImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<ExpressionImpl, Generalization> ownedGeneralization;
+	public static volatile CollectionAttribute<ExpressionImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<ExpressionImpl, Boolean> isConjugated;
 	public static volatile SingularAttribute<ExpressionImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<ExpressionImpl, Subsetting> ownedSubsetting;
@@ -58,20 +60,20 @@ public abstract class ExpressionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile ListAttribute<ExpressionImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<ExpressionImpl, Feature> endFeature;
 	public static volatile ListAttribute<ExpressionImpl, Import> ownedImport;
-	public static volatile CollectionAttribute<ExpressionImpl, Type> referencedType;
 	public static volatile SingularAttribute<ExpressionImpl, Boolean> isAbstract;
 	public static volatile SingularAttribute<ExpressionImpl, Boolean> isEnd;
+	public static volatile CollectionAttribute<ExpressionImpl, Type> featuringType;
 	public static volatile CollectionAttribute<ExpressionImpl, Feature> input;
 	public static volatile CollectionAttribute<ExpressionImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<ExpressionImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<ExpressionImpl, String> humanId;
 	public static volatile CollectionAttribute<ExpressionImpl, String> aliasId;
-	public static volatile CollectionAttribute<ExpressionImpl, Type> ownedType;
 	public static volatile SingularAttribute<ExpressionImpl, String> name;
 	public static volatile ListAttribute<ExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<ExpressionImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
@@ -102,15 +104,14 @@ public abstract class ExpressionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String OWNED_IMPORT = "ownedImport";
-	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String IS_END = "isEnd";
+	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
 	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
-	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";

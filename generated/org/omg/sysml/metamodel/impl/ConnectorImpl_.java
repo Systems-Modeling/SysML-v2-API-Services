@@ -22,12 +22,14 @@ import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.Type;
+import org.omg.sysml.metamodel.TypeFeaturing;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(ConnectorImpl.class)
 public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<ConnectorImpl, Generalization> ownedGeneralization;
+	public static volatile CollectionAttribute<ConnectorImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isConjugated;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<ConnectorImpl, Subsetting> ownedSubsetting;
@@ -43,13 +45,11 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile CollectionAttribute<ConnectorImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<ConnectorImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<ConnectorImpl, Feature> endFeature;
-	public static volatile CollectionAttribute<ConnectorImpl, Association> ownedAssociationType;
-	public static volatile CollectionAttribute<ConnectorImpl, Type> referencedType;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isEnd;
+	public static volatile CollectionAttribute<ConnectorImpl, Type> featuringType;
 	public static volatile CollectionAttribute<ConnectorImpl, Feature> input;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isComposite;
 	public static volatile ListAttribute<ConnectorImpl, Element> relatedElement;
-	public static volatile CollectionAttribute<ConnectorImpl, Type> ownedType;
 	public static volatile SingularAttribute<ConnectorImpl, String> name;
 	public static volatile CollectionAttribute<ConnectorImpl, Feature> connectorEnd;
 	public static volatile ListAttribute<ConnectorImpl, Element> ownedMember;
@@ -80,6 +80,7 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile CollectionAttribute<ConnectorImpl, String> aliasId;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
@@ -95,13 +96,11 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String END_FEATURE = "endFeature";
-	public static final String OWNED_ASSOCIATION_TYPE = "ownedAssociationType";
-	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String IS_END = "isEnd";
+	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String RELATED_ELEMENT = "relatedElement";
-	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
 	public static final String CONNECTOR_END = "connectorEnd";
 	public static final String OWNED_MEMBER = "ownedMember";

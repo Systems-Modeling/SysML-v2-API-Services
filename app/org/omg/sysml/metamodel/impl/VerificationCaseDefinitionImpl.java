@@ -1787,4 +1787,30 @@ public class VerificationCaseDefinitionImpl extends MofObjectImpl implements Ver
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("verifiedRequirement")
+    private Collection<RequirementUsage> verifiedRequirement;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "RequirementUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "VerificationCaseDefinition_verifiedRequirement",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<RequirementUsage> getVerifiedRequirement() {
+        if (verifiedRequirement == null) {
+            verifiedRequirement = new ArrayList<>();
+        }
+        return verifiedRequirement;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RequirementUsageImpl.class)
+    public void setVerifiedRequirement(Collection<RequirementUsage> verifiedRequirement) {
+        this.verifiedRequirement = verifiedRequirement;
+    }
+
+
+
 }

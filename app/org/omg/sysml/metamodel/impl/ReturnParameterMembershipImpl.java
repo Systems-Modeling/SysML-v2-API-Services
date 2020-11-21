@@ -160,6 +160,44 @@ public class ReturnParameterMembershipImpl extends MofObjectImpl implements Retu
 
 
 
+    // @info.archinnov.achilles.annotations.Column("featureOfType")
+    private Feature featureOfType;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "featureOfTypeType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "featureOfTypeId", table = "ReturnParameterMembership")
+    public Feature getFeatureOfType() {
+        return featureOfType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
+    public void setFeatureOfType(Feature featureOfType) {
+        this.featureOfType = featureOfType;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("featuringType")
+    private Type featuringType;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "featuringTypeType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "featuringTypeId", table = "ReturnParameterMembership")
+    public Type getFeaturingType() {
+        return featuringType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
+    public void setFeaturingType(Type featuringType) {
+        this.featuringType = featuringType;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("humanId")
     private String humanId;
 
@@ -586,6 +624,27 @@ public class ReturnParameterMembershipImpl extends MofObjectImpl implements Retu
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
     public void setOwner(Element owner) {
         this.owner = owner;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("owningFeatureOfType")
+    private Feature owningFeatureOfType;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureOfTypeType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningFeatureOfTypeId", table = "ReturnParameterMembership")
+    public Feature getOwningFeatureOfType() {
+        return owningFeatureOfType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
+    public void setOwningFeatureOfType(Feature owningFeatureOfType) {
+        this.owningFeatureOfType = owningFeatureOfType;
     }
 
 

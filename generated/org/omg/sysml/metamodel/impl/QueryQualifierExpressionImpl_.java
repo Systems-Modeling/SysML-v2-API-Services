@@ -23,6 +23,7 @@ import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.Type;
+import org.omg.sysml.metamodel.TypeFeaturing;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(QueryQualifierExpressionImpl.class)
@@ -30,6 +31,7 @@ public abstract class QueryQualifierExpressionImpl_ extends org.omg.sysml.metamo
 
 	public static volatile ListAttribute<QueryQualifierExpressionImpl, Generalization> ownedGeneralization;
 	public static volatile ListAttribute<QueryQualifierExpressionImpl, Expression> argument;
+	public static volatile CollectionAttribute<QueryQualifierExpressionImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<QueryQualifierExpressionImpl, Boolean> isConjugated;
 	public static volatile SingularAttribute<QueryQualifierExpressionImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<QueryQualifierExpressionImpl, Subsetting> ownedSubsetting;
@@ -61,15 +63,14 @@ public abstract class QueryQualifierExpressionImpl_ extends org.omg.sysml.metamo
 	public static volatile ListAttribute<QueryQualifierExpressionImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<QueryQualifierExpressionImpl, Feature> endFeature;
 	public static volatile ListAttribute<QueryQualifierExpressionImpl, Import> ownedImport;
-	public static volatile CollectionAttribute<QueryQualifierExpressionImpl, Type> referencedType;
 	public static volatile SingularAttribute<QueryQualifierExpressionImpl, Boolean> isAbstract;
 	public static volatile SingularAttribute<QueryQualifierExpressionImpl, Boolean> isEnd;
+	public static volatile CollectionAttribute<QueryQualifierExpressionImpl, Type> featuringType;
 	public static volatile CollectionAttribute<QueryQualifierExpressionImpl, Feature> input;
 	public static volatile CollectionAttribute<QueryQualifierExpressionImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<QueryQualifierExpressionImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<QueryQualifierExpressionImpl, String> humanId;
 	public static volatile CollectionAttribute<QueryQualifierExpressionImpl, String> aliasId;
-	public static volatile CollectionAttribute<QueryQualifierExpressionImpl, Type> ownedType;
 	public static volatile SingularAttribute<QueryQualifierExpressionImpl, String> name;
 	public static volatile ListAttribute<QueryQualifierExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<QueryQualifierExpressionImpl, Expression> operand;
@@ -77,6 +78,7 @@ public abstract class QueryQualifierExpressionImpl_ extends org.omg.sysml.metamo
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String ARGUMENT = "argument";
+	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
@@ -108,15 +110,14 @@ public abstract class QueryQualifierExpressionImpl_ extends org.omg.sysml.metamo
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String OWNED_IMPORT = "ownedImport";
-	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String IS_END = "isEnd";
+	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
 	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
-	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OPERAND = "operand";

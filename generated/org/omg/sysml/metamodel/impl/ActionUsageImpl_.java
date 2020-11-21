@@ -39,6 +39,7 @@ import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Type;
+import org.omg.sysml.metamodel.TypeFeaturing;
 import org.omg.sysml.metamodel.Usage;
 import org.omg.sysml.metamodel.VariantMembership;
 import org.omg.sysml.metamodel.VerificationCaseUsage;
@@ -51,6 +52,7 @@ public abstract class ActionUsageImpl_ extends org.omg.sysml.metamodel.impl.MofO
 
 	public static volatile ListAttribute<ActionUsageImpl, Generalization> ownedGeneralization;
 	public static volatile CollectionAttribute<ActionUsageImpl, PartUsage> nestedPart;
+	public static volatile CollectionAttribute<ActionUsageImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<ActionUsageImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<ActionUsageImpl, Usage> usage;
 	public static volatile SingularAttribute<ActionUsageImpl, Boolean> isUnique;
@@ -78,14 +80,13 @@ public abstract class ActionUsageImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static volatile CollectionAttribute<ActionUsageImpl, VerificationCaseUsage> nestedVerificationCase;
 	public static volatile CollectionAttribute<ActionUsageImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<ActionUsageImpl, Behavior> actionDefinition;
-	public static volatile CollectionAttribute<ActionUsageImpl, Type> referencedType;
 	public static volatile SingularAttribute<ActionUsageImpl, Boolean> isEnd;
 	public static volatile CollectionAttribute<ActionUsageImpl, ItemUsage> nestedItem;
+	public static volatile CollectionAttribute<ActionUsageImpl, Type> featuringType;
 	public static volatile CollectionAttribute<ActionUsageImpl, Feature> input;
 	public static volatile CollectionAttribute<ActionUsageImpl, CalculationUsage> nestedCalculation;
 	public static volatile SingularAttribute<ActionUsageImpl, Boolean> isComposite;
 	public static volatile CollectionAttribute<ActionUsageImpl, ViewUsage> nestedView;
-	public static volatile CollectionAttribute<ActionUsageImpl, Type> ownedType;
 	public static volatile SingularAttribute<ActionUsageImpl, String> name;
 	public static volatile ListAttribute<ActionUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<ActionUsageImpl, Membership> ownedMembership;
@@ -122,6 +123,7 @@ public abstract class ActionUsageImpl_ extends org.omg.sysml.metamodel.impl.MofO
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String NESTED_PART = "nestedPart";
+	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String USAGE = "usage";
 	public static final String IS_UNIQUE = "isUnique";
@@ -149,14 +151,13 @@ public abstract class ActionUsageImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static final String NESTED_VERIFICATION_CASE = "nestedVerificationCase";
 	public static final String END_FEATURE = "endFeature";
 	public static final String ACTION_DEFINITION = "actionDefinition";
-	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String IS_END = "isEnd";
 	public static final String NESTED_ITEM = "nestedItem";
+	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
 	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NESTED_VIEW = "nestedView";
-	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";

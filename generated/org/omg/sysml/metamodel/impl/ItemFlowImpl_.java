@@ -27,12 +27,14 @@ import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.Type;
+import org.omg.sysml.metamodel.TypeFeaturing;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(ItemFlowImpl.class)
 public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<ItemFlowImpl, Generalization> ownedGeneralization;
+	public static volatile CollectionAttribute<ItemFlowImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isConjugated;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<ItemFlowImpl, Subsetting> ownedSubsetting;
@@ -49,15 +51,13 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile CollectionAttribute<ItemFlowImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<ItemFlowImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<ItemFlowImpl, Feature> endFeature;
-	public static volatile CollectionAttribute<ItemFlowImpl, Association> ownedAssociationType;
-	public static volatile CollectionAttribute<ItemFlowImpl, Type> referencedType;
 	public static volatile CollectionAttribute<ItemFlowImpl, ItemFeature> itemFeature;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isEnd;
+	public static volatile CollectionAttribute<ItemFlowImpl, Type> featuringType;
 	public static volatile CollectionAttribute<ItemFlowImpl, Feature> input;
 	public static volatile ListAttribute<ItemFlowImpl, Feature> targetInputFeature;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isComposite;
 	public static volatile ListAttribute<ItemFlowImpl, Element> relatedElement;
-	public static volatile CollectionAttribute<ItemFlowImpl, Type> ownedType;
 	public static volatile SingularAttribute<ItemFlowImpl, String> name;
 	public static volatile CollectionAttribute<ItemFlowImpl, Feature> connectorEnd;
 	public static volatile CollectionAttribute<ItemFlowImpl, ItemFlowEnd> itemFlowEnd;
@@ -93,6 +93,7 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile CollectionAttribute<ItemFlowImpl, String> aliasId;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
@@ -109,15 +110,13 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String END_FEATURE = "endFeature";
-	public static final String OWNED_ASSOCIATION_TYPE = "ownedAssociationType";
-	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String ITEM_FEATURE = "itemFeature";
 	public static final String IS_END = "isEnd";
+	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
 	public static final String TARGET_INPUT_FEATURE = "targetInputFeature";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String RELATED_ELEMENT = "relatedElement";
-	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
 	public static final String CONNECTOR_END = "connectorEnd";
 	public static final String ITEM_FLOW_END = "itemFlowEnd";

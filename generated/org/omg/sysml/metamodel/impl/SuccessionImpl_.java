@@ -24,12 +24,14 @@ import org.omg.sysml.metamodel.Step;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.Type;
+import org.omg.sysml.metamodel.TypeFeaturing;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(SuccessionImpl.class)
 public abstract class SuccessionImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<SuccessionImpl, Generalization> ownedGeneralization;
+	public static volatile CollectionAttribute<SuccessionImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isConjugated;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<SuccessionImpl, Subsetting> ownedSubsetting;
@@ -46,13 +48,11 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile CollectionAttribute<SuccessionImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<SuccessionImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<SuccessionImpl, Feature> endFeature;
-	public static volatile CollectionAttribute<SuccessionImpl, Association> ownedAssociationType;
-	public static volatile CollectionAttribute<SuccessionImpl, Type> referencedType;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isEnd;
+	public static volatile CollectionAttribute<SuccessionImpl, Type> featuringType;
 	public static volatile CollectionAttribute<SuccessionImpl, Feature> input;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isComposite;
 	public static volatile ListAttribute<SuccessionImpl, Element> relatedElement;
-	public static volatile CollectionAttribute<SuccessionImpl, Type> ownedType;
 	public static volatile CollectionAttribute<SuccessionImpl, Step> effectStep;
 	public static volatile SingularAttribute<SuccessionImpl, String> name;
 	public static volatile CollectionAttribute<SuccessionImpl, Feature> connectorEnd;
@@ -85,6 +85,7 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile CollectionAttribute<SuccessionImpl, String> aliasId;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
@@ -101,13 +102,11 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String END_FEATURE = "endFeature";
-	public static final String OWNED_ASSOCIATION_TYPE = "ownedAssociationType";
-	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String IS_END = "isEnd";
+	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String RELATED_ELEMENT = "relatedElement";
-	public static final String OWNED_TYPE = "ownedType";
 	public static final String EFFECT_STEP = "effectStep";
 	public static final String NAME = "name";
 	public static final String CONNECTOR_END = "connectorEnd";

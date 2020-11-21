@@ -39,6 +39,7 @@ import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Type;
+import org.omg.sysml.metamodel.TypeFeaturing;
 import org.omg.sysml.metamodel.Usage;
 import org.omg.sysml.metamodel.VariantMembership;
 import org.omg.sysml.metamodel.VerificationCaseUsage;
@@ -51,6 +52,7 @@ public abstract class ItemUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 
 	public static volatile ListAttribute<ItemUsageImpl, Generalization> ownedGeneralization;
 	public static volatile CollectionAttribute<ItemUsageImpl, PartUsage> nestedPart;
+	public static volatile CollectionAttribute<ItemUsageImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<ItemUsageImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<ItemUsageImpl, Usage> usage;
 	public static volatile SingularAttribute<ItemUsageImpl, Boolean> isUnique;
@@ -77,14 +79,13 @@ public abstract class ItemUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile CollectionAttribute<ItemUsageImpl, AnalysisCaseUsage> nestedAnalysisCase;
 	public static volatile CollectionAttribute<ItemUsageImpl, VerificationCaseUsage> nestedVerificationCase;
 	public static volatile CollectionAttribute<ItemUsageImpl, Feature> endFeature;
-	public static volatile CollectionAttribute<ItemUsageImpl, Type> referencedType;
 	public static volatile SingularAttribute<ItemUsageImpl, Boolean> isEnd;
 	public static volatile CollectionAttribute<ItemUsageImpl, ItemUsage> nestedItem;
+	public static volatile CollectionAttribute<ItemUsageImpl, Type> featuringType;
 	public static volatile CollectionAttribute<ItemUsageImpl, Feature> input;
 	public static volatile CollectionAttribute<ItemUsageImpl, CalculationUsage> nestedCalculation;
 	public static volatile SingularAttribute<ItemUsageImpl, Boolean> isComposite;
 	public static volatile CollectionAttribute<ItemUsageImpl, ViewUsage> nestedView;
-	public static volatile CollectionAttribute<ItemUsageImpl, Type> ownedType;
 	public static volatile SingularAttribute<ItemUsageImpl, String> name;
 	public static volatile ListAttribute<ItemUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<ItemUsageImpl, Membership> ownedMembership;
@@ -120,6 +121,7 @@ public abstract class ItemUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String NESTED_PART = "nestedPart";
+	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String USAGE = "usage";
 	public static final String IS_UNIQUE = "isUnique";
@@ -146,14 +148,13 @@ public abstract class ItemUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String NESTED_ANALYSIS_CASE = "nestedAnalysisCase";
 	public static final String NESTED_VERIFICATION_CASE = "nestedVerificationCase";
 	public static final String END_FEATURE = "endFeature";
-	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String IS_END = "isEnd";
 	public static final String NESTED_ITEM = "nestedItem";
+	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
 	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NESTED_VIEW = "nestedView";
-	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";

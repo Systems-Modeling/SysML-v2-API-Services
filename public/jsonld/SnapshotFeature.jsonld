@@ -12,6 +12,7 @@
         "endOwningType": {"@type": "@id"},
         "feature": {"@type": "@id"},
         "featureMembership": {"@type": "@id"},
+        "featuringType": {"@type": "@id"},
         "humanId": {"@type": "xsd:string"},
         "identifier": {"@type": "dcterms:identifier"},
         "importedMembership": {"@type": "@id"},
@@ -45,7 +46,7 @@
         "ownedRelationship": {"@type": "@id"},
         "ownedSubsetting": {"@type": "@id"},
         "ownedTextualRepresentation": {"@type": "@id"},
-        "ownedType": {"@type": "@id"},
+        "ownedTypeFeaturing": {"@type": "@id"},
         "ownedTyping": {"@type": "@id"},
         "owner": {"@type": "@id"},
         "owningFeatureMembership": {"@type": "@id"},
@@ -53,7 +54,6 @@
         "owningNamespace": {"@type": "@id"},
         "owningRelationship": {"@type": "@id"},
         "owningType": {"@type": "@id"},
-        "referencedType": {"@type": "@id"},
         "type": {"@type": "@id"}
 
     }

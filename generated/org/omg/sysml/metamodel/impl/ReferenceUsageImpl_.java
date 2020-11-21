@@ -39,6 +39,7 @@ import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Type;
+import org.omg.sysml.metamodel.TypeFeaturing;
 import org.omg.sysml.metamodel.Usage;
 import org.omg.sysml.metamodel.VariantMembership;
 import org.omg.sysml.metamodel.VerificationCaseUsage;
@@ -51,6 +52,7 @@ public abstract class ReferenceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 
 	public static volatile ListAttribute<ReferenceUsageImpl, Generalization> ownedGeneralization;
 	public static volatile CollectionAttribute<ReferenceUsageImpl, PartUsage> nestedPart;
+	public static volatile CollectionAttribute<ReferenceUsageImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<ReferenceUsageImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<ReferenceUsageImpl, Usage> usage;
 	public static volatile SingularAttribute<ReferenceUsageImpl, Boolean> isUnique;
@@ -77,14 +79,13 @@ public abstract class ReferenceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<ReferenceUsageImpl, AnalysisCaseUsage> nestedAnalysisCase;
 	public static volatile CollectionAttribute<ReferenceUsageImpl, VerificationCaseUsage> nestedVerificationCase;
 	public static volatile CollectionAttribute<ReferenceUsageImpl, Feature> endFeature;
-	public static volatile CollectionAttribute<ReferenceUsageImpl, Type> referencedType;
 	public static volatile SingularAttribute<ReferenceUsageImpl, Boolean> isEnd;
 	public static volatile CollectionAttribute<ReferenceUsageImpl, ItemUsage> nestedItem;
+	public static volatile CollectionAttribute<ReferenceUsageImpl, Type> featuringType;
 	public static volatile CollectionAttribute<ReferenceUsageImpl, Feature> input;
 	public static volatile CollectionAttribute<ReferenceUsageImpl, CalculationUsage> nestedCalculation;
 	public static volatile SingularAttribute<ReferenceUsageImpl, Boolean> isComposite;
 	public static volatile CollectionAttribute<ReferenceUsageImpl, ViewUsage> nestedView;
-	public static volatile CollectionAttribute<ReferenceUsageImpl, Type> ownedType;
 	public static volatile SingularAttribute<ReferenceUsageImpl, String> name;
 	public static volatile ListAttribute<ReferenceUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<ReferenceUsageImpl, Membership> ownedMembership;
@@ -120,6 +121,7 @@ public abstract class ReferenceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String NESTED_PART = "nestedPart";
+	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String USAGE = "usage";
 	public static final String IS_UNIQUE = "isUnique";
@@ -146,14 +148,13 @@ public abstract class ReferenceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String NESTED_ANALYSIS_CASE = "nestedAnalysisCase";
 	public static final String NESTED_VERIFICATION_CASE = "nestedVerificationCase";
 	public static final String END_FEATURE = "endFeature";
-	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String IS_END = "isEnd";
 	public static final String NESTED_ITEM = "nestedItem";
+	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
 	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NESTED_VIEW = "nestedView";
-	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
