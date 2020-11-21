@@ -32,8 +32,6 @@ public interface Connector extends Feature, Relationship, MofObject {
 
     Boolean getIsDirected();
 
-    Collection<? extends Association> getOwnedAssociationType();
-
     Collection<? extends Feature> getConnectorEnd();
 
     Feature getSourceFeature();

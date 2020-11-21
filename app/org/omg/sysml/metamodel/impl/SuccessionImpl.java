@@ -320,6 +320,32 @@ public class SuccessionImpl extends MofObjectImpl implements Succession {
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("featuringType")
+    private Collection<Type> featuringType;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Succession_featuringType",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Type> getFeaturingType() {
+        if (featuringType == null) {
+            featuringType = new ArrayList<>();
+        }
+        return featuringType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
+    public void setFeaturingType(Collection<Type> featuringType) {
+        this.featuringType = featuringType;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("guardExpression")
     private Collection<Expression> guardExpression;
 
@@ -779,32 +805,6 @@ public class SuccessionImpl extends MofObjectImpl implements Succession {
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedAssociationType")
-    private Collection<Association> ownedAssociationType;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "AssociationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Succession_ownedAssociationType",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Association> getOwnedAssociationType() {
-        if (ownedAssociationType == null) {
-            ownedAssociationType = new ArrayList<>();
-        }
-        return ownedAssociationType;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AssociationImpl.class)
-    public void setOwnedAssociationType(Collection<Association> ownedAssociationType) {
-        this.ownedAssociationType = ownedAssociationType;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedConjugator")
     private Conjugation ownedConjugator;
 
@@ -1154,27 +1154,27 @@ public class SuccessionImpl extends MofObjectImpl implements Succession {
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedType")
-    private Collection<Type> ownedType;
+    // @info.archinnov.achilles.annotations.Column("ownedTypeFeaturing")
+    private Collection<TypeFeaturing> ownedTypeFeaturing;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Succession_ownedType",
+    @ManyToAny(metaDef = "TypeFeaturingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Succession_ownedTypeFeaturing",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Type> getOwnedType() {
-        if (ownedType == null) {
-            ownedType = new ArrayList<>();
+    public Collection<TypeFeaturing> getOwnedTypeFeaturing() {
+        if (ownedTypeFeaturing == null) {
+            ownedTypeFeaturing = new ArrayList<>();
         }
-        return ownedType;
+        return ownedTypeFeaturing;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
-    public void setOwnedType(Collection<Type> ownedType) {
-        this.ownedType = ownedType;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeFeaturingImpl.class)
+    public void setOwnedTypeFeaturing(Collection<TypeFeaturing> ownedTypeFeaturing) {
+        this.ownedTypeFeaturing = ownedTypeFeaturing;
     }
 
 
@@ -1340,32 +1340,6 @@ public class SuccessionImpl extends MofObjectImpl implements Succession {
     @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
     public void setOwningType(Type owningType) {
         this.owningType = owningType;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("referencedType")
-    private Collection<Type> referencedType;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Succession_referencedType",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Type> getReferencedType() {
-        if (referencedType == null) {
-            referencedType = new ArrayList<>();
-        }
-        return referencedType;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
-    public void setReferencedType(Collection<Type> referencedType) {
-        this.referencedType = referencedType;
     }
 
 

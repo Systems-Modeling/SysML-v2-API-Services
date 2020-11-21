@@ -29,12 +29,14 @@ import org.omg.sysml.metamodel.Step;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.Type;
+import org.omg.sysml.metamodel.TypeFeaturing;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(SuccessionItemFlowImpl.class)
 public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Generalization> ownedGeneralization;
+	public static volatile CollectionAttribute<SuccessionItemFlowImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, Boolean> isConjugated;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Subsetting> ownedSubsetting;
@@ -52,15 +54,13 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.metamodel.im
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Feature> endFeature;
-	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Association> ownedAssociationType;
-	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Type> referencedType;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, ItemFeature> itemFeature;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, Boolean> isEnd;
+	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Type> featuringType;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Feature> input;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Feature> targetInputFeature;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, Boolean> isComposite;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Element> relatedElement;
-	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Type> ownedType;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Step> effectStep;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, String> name;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Feature> connectorEnd;
@@ -98,6 +98,7 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.metamodel.im
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, String> aliasId;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
@@ -115,15 +116,13 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.metamodel.im
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String END_FEATURE = "endFeature";
-	public static final String OWNED_ASSOCIATION_TYPE = "ownedAssociationType";
-	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String ITEM_FEATURE = "itemFeature";
 	public static final String IS_END = "isEnd";
+	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
 	public static final String TARGET_INPUT_FEATURE = "targetInputFeature";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String RELATED_ELEMENT = "relatedElement";
-	public static final String OWNED_TYPE = "ownedType";
 	public static final String EFFECT_STEP = "effectStep";
 	public static final String NAME = "name";
 	public static final String CONNECTOR_END = "connectorEnd";

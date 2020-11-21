@@ -41,6 +41,7 @@ import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Type;
+import org.omg.sysml.metamodel.TypeFeaturing;
 import org.omg.sysml.metamodel.Usage;
 import org.omg.sysml.metamodel.VariantMembership;
 import org.omg.sysml.metamodel.VerificationCaseUsage;
@@ -53,6 +54,7 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 
 	public static volatile ListAttribute<TransitionUsageImpl, Generalization> ownedGeneralization;
 	public static volatile CollectionAttribute<TransitionUsageImpl, PartUsage> nestedPart;
+	public static volatile CollectionAttribute<TransitionUsageImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<TransitionUsageImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<TransitionUsageImpl, Usage> usage;
 	public static volatile SingularAttribute<TransitionUsageImpl, Boolean> isUnique;
@@ -81,14 +83,13 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<TransitionUsageImpl, VerificationCaseUsage> nestedVerificationCase;
 	public static volatile CollectionAttribute<TransitionUsageImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<TransitionUsageImpl, Behavior> actionDefinition;
-	public static volatile CollectionAttribute<TransitionUsageImpl, Type> referencedType;
 	public static volatile SingularAttribute<TransitionUsageImpl, Boolean> isEnd;
 	public static volatile CollectionAttribute<TransitionUsageImpl, ItemUsage> nestedItem;
+	public static volatile CollectionAttribute<TransitionUsageImpl, Type> featuringType;
 	public static volatile CollectionAttribute<TransitionUsageImpl, Feature> input;
 	public static volatile CollectionAttribute<TransitionUsageImpl, CalculationUsage> nestedCalculation;
 	public static volatile SingularAttribute<TransitionUsageImpl, Boolean> isComposite;
 	public static volatile CollectionAttribute<TransitionUsageImpl, ViewUsage> nestedView;
-	public static volatile CollectionAttribute<TransitionUsageImpl, Type> ownedType;
 	public static volatile SingularAttribute<TransitionUsageImpl, String> name;
 	public static volatile ListAttribute<TransitionUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<TransitionUsageImpl, Membership> ownedMembership;
@@ -127,6 +128,7 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String NESTED_PART = "nestedPart";
+	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String USAGE = "usage";
 	public static final String IS_UNIQUE = "isUnique";
@@ -155,14 +157,13 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String NESTED_VERIFICATION_CASE = "nestedVerificationCase";
 	public static final String END_FEATURE = "endFeature";
 	public static final String ACTION_DEFINITION = "actionDefinition";
-	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String IS_END = "isEnd";
 	public static final String NESTED_ITEM = "nestedItem";
+	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
 	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NESTED_VIEW = "nestedView";
-	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";

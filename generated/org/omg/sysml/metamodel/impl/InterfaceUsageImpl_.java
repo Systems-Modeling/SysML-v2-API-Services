@@ -41,6 +41,7 @@ import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Type;
+import org.omg.sysml.metamodel.TypeFeaturing;
 import org.omg.sysml.metamodel.Usage;
 import org.omg.sysml.metamodel.VariantMembership;
 import org.omg.sysml.metamodel.VerificationCaseUsage;
@@ -53,6 +54,7 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 
 	public static volatile ListAttribute<InterfaceUsageImpl, Generalization> ownedGeneralization;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, PartUsage> nestedPart;
+	public static volatile CollectionAttribute<InterfaceUsageImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Usage> usage;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isUnique;
@@ -80,16 +82,14 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<InterfaceUsageImpl, AnalysisCaseUsage> nestedAnalysisCase;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, VerificationCaseUsage> nestedVerificationCase;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Feature> endFeature;
-	public static volatile CollectionAttribute<InterfaceUsageImpl, Association> ownedAssociationType;
-	public static volatile CollectionAttribute<InterfaceUsageImpl, Type> referencedType;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isEnd;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, ItemUsage> nestedItem;
+	public static volatile CollectionAttribute<InterfaceUsageImpl, Type> featuringType;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Feature> input;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, CalculationUsage> nestedCalculation;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isComposite;
 	public static volatile ListAttribute<InterfaceUsageImpl, Element> relatedElement;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, ViewUsage> nestedView;
-	public static volatile CollectionAttribute<InterfaceUsageImpl, Type> ownedType;
 	public static volatile SingularAttribute<InterfaceUsageImpl, String> name;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Feature> connectorEnd;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Association> connectionDefinition;
@@ -134,6 +134,7 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String NESTED_PART = "nestedPart";
+	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String USAGE = "usage";
 	public static final String IS_UNIQUE = "isUnique";
@@ -161,16 +162,14 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String NESTED_ANALYSIS_CASE = "nestedAnalysisCase";
 	public static final String NESTED_VERIFICATION_CASE = "nestedVerificationCase";
 	public static final String END_FEATURE = "endFeature";
-	public static final String OWNED_ASSOCIATION_TYPE = "ownedAssociationType";
-	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String IS_END = "isEnd";
 	public static final String NESTED_ITEM = "nestedItem";
+	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
 	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NESTED_VIEW = "nestedView";
-	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
 	public static final String CONNECTOR_END = "connectorEnd";
 	public static final String CONNECTION_DEFINITION = "connectionDefinition";

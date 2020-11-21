@@ -22,12 +22,14 @@ import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.Type;
+import org.omg.sysml.metamodel.TypeFeaturing;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(LiteralIntegerImpl.class)
 public abstract class LiteralIntegerImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile ListAttribute<LiteralIntegerImpl, Generalization> ownedGeneralization;
+	public static volatile CollectionAttribute<LiteralIntegerImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<LiteralIntegerImpl, Boolean> isConjugated;
 	public static volatile SingularAttribute<LiteralIntegerImpl, Boolean> isUnique;
 	public static volatile CollectionAttribute<LiteralIntegerImpl, Subsetting> ownedSubsetting;
@@ -59,20 +61,20 @@ public abstract class LiteralIntegerImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile ListAttribute<LiteralIntegerImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<LiteralIntegerImpl, Feature> endFeature;
 	public static volatile ListAttribute<LiteralIntegerImpl, Import> ownedImport;
-	public static volatile CollectionAttribute<LiteralIntegerImpl, Type> referencedType;
 	public static volatile SingularAttribute<LiteralIntegerImpl, Boolean> isAbstract;
 	public static volatile SingularAttribute<LiteralIntegerImpl, Boolean> isEnd;
+	public static volatile CollectionAttribute<LiteralIntegerImpl, Type> featuringType;
 	public static volatile CollectionAttribute<LiteralIntegerImpl, Feature> input;
 	public static volatile CollectionAttribute<LiteralIntegerImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<LiteralIntegerImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<LiteralIntegerImpl, String> humanId;
 	public static volatile CollectionAttribute<LiteralIntegerImpl, String> aliasId;
-	public static volatile CollectionAttribute<LiteralIntegerImpl, Type> ownedType;
 	public static volatile SingularAttribute<LiteralIntegerImpl, String> name;
 	public static volatile ListAttribute<LiteralIntegerImpl, Element> ownedMember;
 	public static volatile ListAttribute<LiteralIntegerImpl, Membership> ownedMembership;
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
@@ -104,15 +106,14 @@ public abstract class LiteralIntegerImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
 	public static final String OWNED_IMPORT = "ownedImport";
-	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String IS_END = "isEnd";
+	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
 	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
-	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";

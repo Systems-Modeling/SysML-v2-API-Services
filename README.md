@@ -19,7 +19,7 @@ This pilot implementation uses PostgreSQL as the backend database. The easiest w
 
 2. Use the `docker run` command to start a docker container from the downloaded image, as shown below. This will initialize PostgreSQL database in a Docker container and make it available at port 5432 on your local machine.
 
-`docker run --name sysml2-postgres -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_DB=sysml2 -d postgres`
+   ```docker run --name sysml2-postgres -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_DB=sysml2 -d postgres```
 
 3. Connect to the PostgreSQL database, running as a docker container, from any PostgreSQL client to verify. Use the following connection details. 
 - Host = localhost

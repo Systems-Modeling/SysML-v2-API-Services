@@ -921,27 +921,6 @@ public class InteractionImpl extends MofObjectImpl implements Interaction {
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("owningConnector")
-    private Connector owningConnector;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "ConnectorMetaDef", metaColumn = @javax.persistence.Column(name = "owningConnectorType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningConnectorId", table = "Interaction")
-    public Connector getOwningConnector() {
-        return owningConnector;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ConnectorImpl.class)
-    public void setOwningConnector(Connector owningConnector) {
-        this.owningConnector = owningConnector;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private Membership owningMembership;
 

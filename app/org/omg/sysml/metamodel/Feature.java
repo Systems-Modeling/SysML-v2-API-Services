@@ -26,8 +26,6 @@ import java.util.List;
 import java.util.Set;
 
 public interface Feature extends Type, MofObject {
-    Collection<? extends Type> getReferencedType();
-
     Type getOwningType();
 
     Boolean getIsUnique();
@@ -35,8 +33,6 @@ public interface Feature extends Type, MofObject {
     Boolean getIsOrdered();
 
     Collection<? extends Type> getType();
-
-    Collection<? extends Type> getOwnedType();
 
     Collection<? extends Redefinition> getOwnedRedefinition();
 
@@ -51,6 +47,10 @@ public interface Feature extends Type, MofObject {
     Type getEndOwningType();
 
     Collection<? extends FeatureTyping> getOwnedTyping();
+
+    Collection<? extends Type> getFeaturingType();
+
+    Collection<? extends TypeFeaturing> getOwnedTypeFeaturing();
 
     Boolean getIsNonunique();
 }

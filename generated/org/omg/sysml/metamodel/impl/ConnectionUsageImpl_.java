@@ -41,6 +41,7 @@ import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Type;
+import org.omg.sysml.metamodel.TypeFeaturing;
 import org.omg.sysml.metamodel.Usage;
 import org.omg.sysml.metamodel.VariantMembership;
 import org.omg.sysml.metamodel.VerificationCaseUsage;
@@ -53,6 +54,7 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 
 	public static volatile ListAttribute<ConnectionUsageImpl, Generalization> ownedGeneralization;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, PartUsage> nestedPart;
+	public static volatile CollectionAttribute<ConnectionUsageImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Usage> usage;
 	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isUnique;
@@ -80,16 +82,14 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<ConnectionUsageImpl, AnalysisCaseUsage> nestedAnalysisCase;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, VerificationCaseUsage> nestedVerificationCase;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Feature> endFeature;
-	public static volatile CollectionAttribute<ConnectionUsageImpl, Association> ownedAssociationType;
-	public static volatile CollectionAttribute<ConnectionUsageImpl, Type> referencedType;
 	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isEnd;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, ItemUsage> nestedItem;
+	public static volatile CollectionAttribute<ConnectionUsageImpl, Type> featuringType;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Feature> input;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, CalculationUsage> nestedCalculation;
 	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isComposite;
 	public static volatile ListAttribute<ConnectionUsageImpl, Element> relatedElement;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, ViewUsage> nestedView;
-	public static volatile CollectionAttribute<ConnectionUsageImpl, Type> ownedType;
 	public static volatile SingularAttribute<ConnectionUsageImpl, String> name;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Feature> connectorEnd;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Association> connectionDefinition;
@@ -134,6 +134,7 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String NESTED_PART = "nestedPart";
+	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String USAGE = "usage";
 	public static final String IS_UNIQUE = "isUnique";
@@ -161,16 +162,14 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String NESTED_ANALYSIS_CASE = "nestedAnalysisCase";
 	public static final String NESTED_VERIFICATION_CASE = "nestedVerificationCase";
 	public static final String END_FEATURE = "endFeature";
-	public static final String OWNED_ASSOCIATION_TYPE = "ownedAssociationType";
-	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String IS_END = "isEnd";
 	public static final String NESTED_ITEM = "nestedItem";
+	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
 	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NESTED_VIEW = "nestedView";
-	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
 	public static final String CONNECTOR_END = "connectorEnd";
 	public static final String CONNECTION_DEFINITION = "connectionDefinition";

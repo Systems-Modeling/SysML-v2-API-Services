@@ -10,7 +10,6 @@ import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
-import org.omg.sysml.metamodel.FeatureDirectionKind;
 import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.VisibilityKind;
@@ -20,7 +19,6 @@ import org.omg.sysml.metamodel.VisibilityKind;
 public abstract class FeatureValueImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile SingularAttribute<FeatureValueImpl, UUID> identifier;
-	public static volatile SingularAttribute<FeatureValueImpl, Boolean> isDerived;
 	public static volatile CollectionAttribute<FeatureValueImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<FeatureValueImpl, Element> ownedElement;
 	public static volatile SingularAttribute<FeatureValueImpl, VisibilityKind> visibility;
@@ -29,21 +27,15 @@ public abstract class FeatureValueImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static volatile SingularAttribute<FeatureValueImpl, String> memberName;
 	public static volatile ListAttribute<FeatureValueImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<FeatureValueImpl, Element> source;
-	public static volatile SingularAttribute<FeatureValueImpl, Boolean> isPort;
-	public static volatile SingularAttribute<FeatureValueImpl, Boolean> isPortion;
 	public static volatile ListAttribute<FeatureValueImpl, Element> target;
 	public static volatile CollectionAttribute<FeatureValueImpl, TextualRepresentation> ownedTextualRepresentation;
-	public static volatile SingularAttribute<FeatureValueImpl, Boolean> isComposite;
-	public static volatile SingularAttribute<FeatureValueImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<FeatureValueImpl, String> humanId;
 	public static volatile CollectionAttribute<FeatureValueImpl, String> aliasId;
 	public static volatile ListAttribute<FeatureValueImpl, Element> relatedElement;
 	public static volatile SingularAttribute<FeatureValueImpl, String> name;
 	public static volatile CollectionAttribute<FeatureValueImpl, Comment> documentationComment;
-	public static volatile SingularAttribute<FeatureValueImpl, FeatureDirectionKind> direction;
 
 	public static final String IDENTIFIER = "identifier";
-	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String VISIBILITY = "visibility";
@@ -52,18 +44,13 @@ public abstract class FeatureValueImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static final String MEMBER_NAME = "memberName";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
-	public static final String IS_PORT = "isPort";
-	public static final String IS_PORTION = "isPortion";
 	public static final String TARGET = "target";
 	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
-	public static final String IS_COMPOSITE = "isComposite";
-	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NAME = "name";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
-	public static final String DIRECTION = "direction";
 
 }
 
