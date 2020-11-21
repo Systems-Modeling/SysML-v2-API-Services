@@ -39,6 +39,7 @@ import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Type;
+import org.omg.sysml.metamodel.TypeFeaturing;
 import org.omg.sysml.metamodel.Usage;
 import org.omg.sysml.metamodel.VariantMembership;
 import org.omg.sysml.metamodel.VerificationCaseUsage;
@@ -51,6 +52,7 @@ public abstract class VerificationCaseUsageImpl_ extends org.omg.sysml.metamodel
 
 	public static volatile ListAttribute<VerificationCaseUsageImpl, Generalization> ownedGeneralization;
 	public static volatile CollectionAttribute<VerificationCaseUsageImpl, PartUsage> nestedPart;
+	public static volatile CollectionAttribute<VerificationCaseUsageImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<VerificationCaseUsageImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<VerificationCaseUsageImpl, Usage> usage;
 	public static volatile SingularAttribute<VerificationCaseUsageImpl, Boolean> isUnique;
@@ -78,18 +80,18 @@ public abstract class VerificationCaseUsageImpl_ extends org.omg.sysml.metamodel
 	public static volatile CollectionAttribute<VerificationCaseUsageImpl, VerificationCaseUsage> nestedVerificationCase;
 	public static volatile CollectionAttribute<VerificationCaseUsageImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<VerificationCaseUsageImpl, Behavior> actionDefinition;
-	public static volatile CollectionAttribute<VerificationCaseUsageImpl, Type> referencedType;
 	public static volatile SingularAttribute<VerificationCaseUsageImpl, Boolean> isEnd;
 	public static volatile CollectionAttribute<VerificationCaseUsageImpl, ItemUsage> nestedItem;
+	public static volatile CollectionAttribute<VerificationCaseUsageImpl, Type> featuringType;
 	public static volatile CollectionAttribute<VerificationCaseUsageImpl, Feature> input;
 	public static volatile CollectionAttribute<VerificationCaseUsageImpl, CalculationUsage> nestedCalculation;
 	public static volatile SingularAttribute<VerificationCaseUsageImpl, Boolean> isComposite;
 	public static volatile CollectionAttribute<VerificationCaseUsageImpl, ViewUsage> nestedView;
-	public static volatile CollectionAttribute<VerificationCaseUsageImpl, Type> ownedType;
 	public static volatile SingularAttribute<VerificationCaseUsageImpl, String> name;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<VerificationCaseUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<VerificationCaseUsageImpl, RequirementUsage> verifiedRequirement;
 	public static volatile CollectionAttribute<VerificationCaseUsageImpl, IndividualUsage> nestedIndividual;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<VerificationCaseUsageImpl, Boolean> isNonunique;
@@ -122,6 +124,7 @@ public abstract class VerificationCaseUsageImpl_ extends org.omg.sysml.metamodel
 
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String NESTED_PART = "nestedPart";
+	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String USAGE = "usage";
 	public static final String IS_UNIQUE = "isUnique";
@@ -149,18 +152,18 @@ public abstract class VerificationCaseUsageImpl_ extends org.omg.sysml.metamodel
 	public static final String NESTED_VERIFICATION_CASE = "nestedVerificationCase";
 	public static final String END_FEATURE = "endFeature";
 	public static final String ACTION_DEFINITION = "actionDefinition";
-	public static final String REFERENCED_TYPE = "referencedType";
 	public static final String IS_END = "isEnd";
 	public static final String NESTED_ITEM = "nestedItem";
+	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
 	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NESTED_VIEW = "nestedView";
-	public static final String OWNED_TYPE = "ownedType";
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String VERIFIED_REQUIREMENT = "verifiedRequirement";
 	public static final String NESTED_INDIVIDUAL = "nestedIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_NONUNIQUE = "isNonunique";

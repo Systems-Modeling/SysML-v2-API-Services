@@ -13,6 +13,7 @@
         "endOwningType": {"@type": "@id"},
         "feature": {"@type": "@id"},
         "featureMembership": {"@type": "@id"},
+        "featuringType": {"@type": "@id"},
         "function": {"@type": "@id"},
         "humanId": {"@type": "xsd:string"},
         "identifier": {"@type": "dcterms:identifier"},
@@ -47,7 +48,7 @@
         "ownedRelationship": {"@type": "@id"},
         "ownedSubsetting": {"@type": "@id"},
         "ownedTextualRepresentation": {"@type": "@id"},
-        "ownedType": {"@type": "@id"},
+        "ownedTypeFeaturing": {"@type": "@id"},
         "ownedTyping": {"@type": "@id"},
         "owner": {"@type": "@id"},
         "owningFeatureMembership": {"@type": "@id"},
@@ -57,7 +58,6 @@
         "owningType": {"@type": "@id"},
         "parameter": {"@type": "@id"},
         "predicate": {"@type": "@id"},
-        "referencedType": {"@type": "@id"},
         "result": {"@type": "@id"},
         "type": {"@type": "@id"}
 

@@ -242,6 +242,32 @@ public class ReferenceUsageImpl extends MofObjectImpl implements ReferenceUsage 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("featuringType")
+    private Collection<Type> featuringType;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ReferenceUsage_featuringType",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Type> getFeaturingType() {
+        if (featuringType == null) {
+            featuringType = new ArrayList<>();
+        }
+        return featuringType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
+    public void setFeaturingType(Collection<Type> featuringType) {
+        this.featuringType = featuringType;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("flowFeature")
     private Collection<Usage> flowFeature;
 
@@ -1572,27 +1598,27 @@ public class ReferenceUsageImpl extends MofObjectImpl implements ReferenceUsage 
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedType")
-    private Collection<Type> ownedType;
+    // @info.archinnov.achilles.annotations.Column("ownedTypeFeaturing")
+    private Collection<TypeFeaturing> ownedTypeFeaturing;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ReferenceUsage_ownedType",
+    @ManyToAny(metaDef = "TypeFeaturingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ReferenceUsage_ownedTypeFeaturing",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Type> getOwnedType() {
-        if (ownedType == null) {
-            ownedType = new ArrayList<>();
+    public Collection<TypeFeaturing> getOwnedTypeFeaturing() {
+        if (ownedTypeFeaturing == null) {
+            ownedTypeFeaturing = new ArrayList<>();
         }
-        return ownedType;
+        return ownedTypeFeaturing;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
-    public void setOwnedType(Collection<Type> ownedType) {
-        this.ownedType = ownedType;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeFeaturingImpl.class)
+    public void setOwnedTypeFeaturing(Collection<TypeFeaturing> ownedTypeFeaturing) {
+        this.ownedTypeFeaturing = ownedTypeFeaturing;
     }
 
 
@@ -1807,32 +1833,6 @@ public class ReferenceUsageImpl extends MofObjectImpl implements ReferenceUsage 
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ClassifierImpl.class)
     public void setReferenceType(Collection<Classifier> referenceType) {
         this.referenceType = referenceType;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("referencedType")
-    private Collection<Type> referencedType;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ReferenceUsage_referencedType",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Type> getReferencedType() {
-        if (referencedType == null) {
-            referencedType = new ArrayList<>();
-        }
-        return referencedType;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
-    public void setReferencedType(Collection<Type> referencedType) {
-        this.referencedType = referencedType;
     }
 
 

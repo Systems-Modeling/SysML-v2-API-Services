@@ -92,24 +92,6 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
 
 
 
-    // @info.archinnov.achilles.annotations.Column("direction")
-    // @info.archinnov.achilles.annotations.Enumerated(info.archinnov.achilles.annotations.Enumerated.Encoding.NAME)
-    private FeatureDirectionKind direction;
-
-    @JsonGetter
-    @javax.persistence.Enumerated(EnumType.STRING)
-    @javax.persistence.Column(name = "direction", table = "FeatureValue")
-    public FeatureDirectionKind getDirection() {
-        return direction;
-    }
-
-    @JsonSetter
-    public void setDirection(FeatureDirectionKind direction) {
-        this.direction = direction;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("documentation")
     private Collection<Documentation> documentation;
 
@@ -160,13 +142,11 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("featureWithValue")
     private Feature featureWithValue;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
     @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "featureWithValueType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "featureWithValueId", table = "FeatureValue")
     public Feature getFeatureWithValue() {
@@ -215,86 +195,6 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
 
 
 
-    // @info.archinnov.achilles.annotations.Column("isComposite")
-    private Boolean isComposite;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isComposite", table = "FeatureValue")
-    public Boolean getIsComposite() {
-        return isComposite;
-    }
-
-    @JsonSetter
-    public void setIsComposite(Boolean isComposite) {
-        this.isComposite = isComposite;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("isDerived")
-    private Boolean isDerived;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isDerived", table = "FeatureValue")
-    public Boolean getIsDerived() {
-        return isDerived;
-    }
-
-    @JsonSetter
-    public void setIsDerived(Boolean isDerived) {
-        this.isDerived = isDerived;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("isPort")
-    private Boolean isPort;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isPort", table = "FeatureValue")
-    public Boolean getIsPort() {
-        return isPort;
-    }
-
-    @JsonSetter
-    public void setIsPort(Boolean isPort) {
-        this.isPort = isPort;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("isPortion")
-    private Boolean isPortion;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isPortion", table = "FeatureValue")
-    public Boolean getIsPortion() {
-        return isPortion;
-    }
-
-    @JsonSetter
-    public void setIsPortion(Boolean isPortion) {
-        this.isPortion = isPortion;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("isReadOnly")
-    private Boolean isReadOnly;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isReadOnly", table = "FeatureValue")
-    public Boolean getIsReadOnly() {
-        return isReadOnly;
-    }
-
-    @JsonSetter
-    public void setIsReadOnly(Boolean isReadOnly) {
-        this.isReadOnly = isReadOnly;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("memberElement")
     private Element memberElement;
 
@@ -310,25 +210,6 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
     public void setMemberElement(Element memberElement) {
         this.memberElement = memberElement;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("memberFeature")
-    private Feature memberFeature;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "memberFeatureType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "memberFeatureId", table = "FeatureValue")
-    public Feature getMemberFeature() {
-        return memberFeature;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
-    public void setMemberFeature(Feature memberFeature) {
-        this.memberFeature = memberFeature;
     }
 
 
@@ -455,25 +336,6 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
     public void setOwnedMemberElement(Element ownedMemberElement) {
         this.ownedMemberElement = ownedMemberElement;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("ownedMemberFeature")
-    private Feature ownedMemberFeature;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberFeatureType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedMemberFeatureId", table = "FeatureValue")
-    public Feature getOwnedMemberFeature() {
-        return ownedMemberFeature;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
-    public void setOwnedMemberFeature(Feature ownedMemberFeature) {
-        this.ownedMemberFeature = ownedMemberFeature;
     }
 
 
@@ -647,25 +509,6 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
     @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
     public void setOwningRelationship(Relationship owningRelationship) {
         this.owningRelationship = owningRelationship;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("owningType")
-    private Type owningType;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningTypeId", table = "FeatureValue")
-    public Type getOwningType() {
-        return owningType;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
-    public void setOwningType(Type owningType) {
-        this.owningType = owningType;
     }
 
 

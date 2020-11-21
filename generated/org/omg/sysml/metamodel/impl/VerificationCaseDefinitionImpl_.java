@@ -82,6 +82,7 @@ public abstract class VerificationCaseDefinitionImpl_ extends org.omg.sysml.meta
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, Element> ownedMember;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<VerificationCaseDefinitionImpl, StateUsage> ownedState;
+	public static volatile CollectionAttribute<VerificationCaseDefinitionImpl, RequirementUsage> verifiedRequirement;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, Membership> membership;
 	public static volatile CollectionAttribute<VerificationCaseDefinitionImpl, Superclassing> ownedSuperclassing;
 	public static volatile SingularAttribute<VerificationCaseDefinitionImpl, Boolean> isVariation;
@@ -145,6 +146,7 @@ public abstract class VerificationCaseDefinitionImpl_ extends org.omg.sysml.meta
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String OWNED_STATE = "ownedState";
+	public static final String VERIFIED_REQUIREMENT = "verifiedRequirement";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_SUPERCLASSING = "ownedSuperclassing";
 	public static final String IS_VARIATION = "isVariation";

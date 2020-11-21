@@ -65,7 +65,6 @@
         "ownedView": {"@type": "@id"},
         "ownedViewpoint": {"@type": "@id"},
         "owner": {"@type": "@id"},
-        "owningConnector": {"@type": "@id"},
         "owningMembership": {"@type": "@id"},
         "owningNamespace": {"@type": "@id"},
         "owningRelatedElement": {"@type": "@id"},

@@ -25,10 +25,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface FeatureValue extends FeatureMembership, MofObject {
+public interface FeatureValue extends Membership, MofObject {
     Feature getFeatureWithValue();
 
-    BindingConnector getValueConnector();
-
     Expression getValue();
+
+    BindingConnector getValueConnector();
 }

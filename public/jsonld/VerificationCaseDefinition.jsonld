@@ -75,7 +75,8 @@
         "subjectParameter": {"@type": "@id"},
         "usage": {"@type": "@id"},
         "variant": {"@type": "@id"},
-        "variantMembership": {"@type": "@id"}
+        "variantMembership": {"@type": "@id"},
+        "verifiedRequirement": {"@type": "@id"}
 
     }
 }
