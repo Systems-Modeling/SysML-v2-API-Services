@@ -32,7 +32,7 @@ import javax.persistence.*;
 
 @Entity(name = "MofObjectImpl")
 @Table(name = "MofObject")
-@DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING, length = 63)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public abstract class MofObjectImpl implements MofObject {
