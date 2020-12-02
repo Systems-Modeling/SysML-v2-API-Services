@@ -107,6 +107,7 @@
         <class>org.omg.sysml.metamodel.impl.RequirementConstraintMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.RequirementDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.RequirementUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.RequirementVerificationMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.ResultExpressionMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.ReturnParameterMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.SatisfyRequirementUsageImpl</class>
@@ -128,6 +129,7 @@
         <class>org.omg.sysml.metamodel.impl.TransferActionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.TransitionFeatureMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.TransitionUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.TypeFeaturingImpl</class>
         <class>org.omg.sysml.metamodel.impl.TypeImpl</class>
         <class>org.omg.sysml.metamodel.impl.UsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.VariantMembershipImpl</class>
