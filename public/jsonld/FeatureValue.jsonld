@@ -13,7 +13,7 @@
         "identifier": {"@type": "dcterms:identifier"},
         "memberElement": {"@type": "@id"},
         "memberName": {"@type": "xsd:string"},
-        "membershipOwningPackage": {"@type": "@id"},
+        "membershipOwningNamespace": {"@type": "@id"},
         "name": {"@type": "xsd:string"},
         "ownedAnnotation": {"@type": "@id"},
         "ownedElement": {"@type": "@id"},

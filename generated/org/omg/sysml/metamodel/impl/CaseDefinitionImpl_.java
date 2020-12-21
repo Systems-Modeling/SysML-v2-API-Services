@@ -17,6 +17,7 @@ import org.omg.sysml.metamodel.ConnectionUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
+import org.omg.sysml.metamodel.EnumerationUsage;
 import org.omg.sysml.metamodel.Expression;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
@@ -51,6 +52,7 @@ public abstract class CaseDefinitionImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<CaseDefinitionImpl, PortUsage> ownedPort;
 	public static volatile ListAttribute<CaseDefinitionImpl, Generalization> ownedGeneralization;
 	public static volatile SingularAttribute<CaseDefinitionImpl, Boolean> isConjugated;
+	public static volatile CollectionAttribute<CaseDefinitionImpl, EnumerationUsage> ownedEnumeration;
 	public static volatile CollectionAttribute<CaseDefinitionImpl, VerificationCaseUsage> ownedVerificationCase;
 	public static volatile CollectionAttribute<CaseDefinitionImpl, Usage> usage;
 	public static volatile CollectionAttribute<CaseDefinitionImpl, ViewpointUsage> ownedViewpoint;
@@ -114,6 +116,7 @@ public abstract class CaseDefinitionImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String OWNED_PORT = "ownedPort";
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String IS_CONJUGATED = "isConjugated";
+	public static final String OWNED_ENUMERATION = "ownedEnumeration";
 	public static final String OWNED_VERIFICATION_CASE = "ownedVerificationCase";
 	public static final String USAGE = "usage";
 	public static final String OWNED_VIEWPOINT = "ownedViewpoint";

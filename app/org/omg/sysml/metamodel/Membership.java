@@ -34,5 +34,5 @@ public interface Membership extends Relationship, MofObject {
 
     Element getOwnedMemberElement();
 
-    Package getMembershipOwningPackage();
+    Namespace getMembershipOwningNamespace();
 }

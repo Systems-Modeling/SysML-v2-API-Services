@@ -32,7 +32,7 @@ public interface Element extends MofObject {
 
     java.util.UUID getIdentifier();
 
-    Package getOwningNamespace();
+    Namespace getOwningNamespace();
 
     String getName();
 

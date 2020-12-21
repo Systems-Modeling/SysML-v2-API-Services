@@ -27,6 +27,7 @@ public abstract class ImportImpl_ extends org.omg.sysml.metamodel.impl.MofObject
 	public static volatile ListAttribute<ImportImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<ImportImpl, Element> source;
 	public static volatile ListAttribute<ImportImpl, Element> target;
+	public static volatile SingularAttribute<ImportImpl, Boolean> isRecursive;
 	public static volatile CollectionAttribute<ImportImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<ImportImpl, String> humanId;
 	public static volatile CollectionAttribute<ImportImpl, String> aliasId;
@@ -43,6 +44,7 @@ public abstract class ImportImpl_ extends org.omg.sysml.metamodel.impl.MofObject
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
 	public static final String TARGET = "target";
+	public static final String IS_RECURSIVE = "isRecursive";
 	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";

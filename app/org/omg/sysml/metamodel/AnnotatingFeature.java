@@ -25,6 +25,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ModelQuery extends Element, MofObject {
+public interface AnnotatingFeature extends AnnotatingElement, Feature, MofObject {
+    DataType getMetadataType();
 
+    Collection<? extends MetadataFeature> getOwnedMetadata();
 }

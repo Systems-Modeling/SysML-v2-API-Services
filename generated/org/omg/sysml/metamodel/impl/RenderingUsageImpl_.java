@@ -18,6 +18,7 @@ import org.omg.sysml.metamodel.ConnectionUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
+import org.omg.sysml.metamodel.EnumerationUsage;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
@@ -74,6 +75,7 @@ public abstract class RenderingUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile SingularAttribute<RenderingUsageImpl, UUID> identifier;
 	public static volatile CollectionAttribute<RenderingUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile CollectionAttribute<RenderingUsageImpl, Annotation> ownedAnnotation;
+	public static volatile CollectionAttribute<RenderingUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile CollectionAttribute<RenderingUsageImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<RenderingUsageImpl, Usage> flowFeature;
 	public static volatile CollectionAttribute<RenderingUsageImpl, Documentation> documentation;
@@ -144,6 +146,7 @@ public abstract class RenderingUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String IDENTIFIER = "identifier";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
+	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String FLOW_FEATURE = "flowFeature";
 	public static final String DOCUMENTATION = "documentation";

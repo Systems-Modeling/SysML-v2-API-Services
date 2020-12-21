@@ -10,7 +10,7 @@
         "documentationComment": {"@type": "@id"},
         "endFeature": {"@type": "@id"},
         "endOwningType": {"@type": "@id"},
-        "exposedPackage": {"@type": "@id"},
+        "exposedNamespace": {"@type": "@id"},
         "feature": {"@type": "@id"},
         "featureMembership": {"@type": "@id"},
         "featuringType": {"@type": "@id"},
@@ -42,6 +42,7 @@
         "nestedCase": {"@type": "@id"},
         "nestedConnection": {"@type": "@id"},
         "nestedConstraint": {"@type": "@id"},
+        "nestedEnumeration": {"@type": "@id"},
         "nestedIndividual": {"@type": "@id"},
         "nestedInterface": {"@type": "@id"},
         "nestedItem": {"@type": "@id"},
@@ -88,7 +89,9 @@
         "usage": {"@type": "@id"},
         "variant": {"@type": "@id"},
         "variantMembership": {"@type": "@id"},
-        "viewDefinition": {"@type": "@id"}
+        "viewCondition": {"@type": "@id"},
+        "viewDefinition": {"@type": "@id"},
+        "viewedElement": {"@type": "@id"}
 
     }
 }

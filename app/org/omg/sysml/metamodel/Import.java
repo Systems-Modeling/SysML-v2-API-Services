@@ -26,9 +26,11 @@ import java.util.List;
 import java.util.Set;
 
 public interface Import extends Relationship, MofObject {
-    Package getImportedPackage();
+    Namespace getImportedNamespace();
 
-    Package getImportOwningPackage();
+    Namespace getImportOwningNamespace();
 
     VisibilityKind getVisibility();
+
+    Boolean getIsRecursive();
 }

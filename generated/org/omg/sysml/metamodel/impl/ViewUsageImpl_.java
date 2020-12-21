@@ -18,6 +18,7 @@ import org.omg.sysml.metamodel.ConnectionUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
+import org.omg.sysml.metamodel.EnumerationUsage;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
@@ -27,7 +28,8 @@ import org.omg.sysml.metamodel.IndividualUsage;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.ItemUsage;
 import org.omg.sysml.metamodel.Membership;
-import org.omg.sysml.metamodel.Package;
+import org.omg.sysml.metamodel.MetadataCondition;
+import org.omg.sysml.metamodel.Namespace;
 import org.omg.sysml.metamodel.PartDefinition;
 import org.omg.sysml.metamodel.PartUsage;
 import org.omg.sysml.metamodel.PortUsage;
@@ -62,6 +64,7 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile CollectionAttribute<ViewUsageImpl, Subsetting> ownedSubsetting;
 	public static volatile CollectionAttribute<ViewUsageImpl, Type> type;
 	public static volatile CollectionAttribute<ViewUsageImpl, RequirementUsage> nestedRequirement;
+	public static volatile CollectionAttribute<ViewUsageImpl, Namespace> exposedNamespace;
 	public static volatile CollectionAttribute<ViewUsageImpl, Feature> output;
 	public static volatile CollectionAttribute<ViewUsageImpl, PortUsage> nestedPort;
 	public static volatile CollectionAttribute<ViewUsageImpl, TransitionUsage> nestedTransition;
@@ -75,6 +78,7 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile SingularAttribute<ViewUsageImpl, UUID> identifier;
 	public static volatile CollectionAttribute<ViewUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile CollectionAttribute<ViewUsageImpl, Annotation> ownedAnnotation;
+	public static volatile CollectionAttribute<ViewUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile CollectionAttribute<ViewUsageImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<ViewUsageImpl, Usage> flowFeature;
 	public static volatile CollectionAttribute<ViewUsageImpl, Documentation> documentation;
@@ -94,6 +98,7 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile CollectionAttribute<ViewUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<ViewUsageImpl, IndividualUsage> nestedIndividual;
 	public static volatile ListAttribute<ViewUsageImpl, Membership> membership;
+	public static volatile CollectionAttribute<ViewUsageImpl, MetadataCondition> viewCondition;
 	public static volatile CollectionAttribute<ViewUsageImpl, ViewpointUsage> satisfiedViewpoint;
 	public static volatile SingularAttribute<ViewUsageImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<ViewUsageImpl, ReferenceUsage> nestedReference;
@@ -101,7 +106,6 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile CollectionAttribute<ViewUsageImpl, FeatureTyping> ownedTyping;
 	public static volatile CollectionAttribute<ViewUsageImpl, Feature> feature;
 	public static volatile ListAttribute<ViewUsageImpl, Membership> inheritedMembership;
-	public static volatile CollectionAttribute<ViewUsageImpl, Package> exposedPackage;
 	public static volatile ListAttribute<ViewUsageImpl, Element> member;
 	public static volatile CollectionAttribute<ViewUsageImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<ViewUsageImpl, FeatureMembership> ownedFeatureMembership;
@@ -111,6 +115,7 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile CollectionAttribute<ViewUsageImpl, PartDefinition> partDefinition;
 	public static volatile CollectionAttribute<ViewUsageImpl, ActionUsage> nestedAction;
 	public static volatile ListAttribute<ViewUsageImpl, Relationship> ownedRelationship;
+	public static volatile CollectionAttribute<ViewUsageImpl, Element> viewedElement;
 	public static volatile ListAttribute<ViewUsageImpl, FeatureMembership> featureMembership;
 	public static volatile ListAttribute<ViewUsageImpl, Import> ownedImport;
 	public static volatile SingularAttribute<ViewUsageImpl, Boolean> isAbstract;
@@ -134,6 +139,7 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String TYPE = "type";
 	public static final String NESTED_REQUIREMENT = "nestedRequirement";
+	public static final String EXPOSED_NAMESPACE = "exposedNamespace";
 	public static final String OUTPUT = "output";
 	public static final String NESTED_PORT = "nestedPort";
 	public static final String NESTED_TRANSITION = "nestedTransition";
@@ -147,6 +153,7 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String IDENTIFIER = "identifier";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
+	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String FLOW_FEATURE = "flowFeature";
 	public static final String DOCUMENTATION = "documentation";
@@ -166,6 +173,7 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String NESTED_CASE = "nestedCase";
 	public static final String NESTED_INDIVIDUAL = "nestedIndividual";
 	public static final String MEMBERSHIP = "membership";
+	public static final String VIEW_CONDITION = "viewCondition";
 	public static final String SATISFIED_VIEWPOINT = "satisfiedViewpoint";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String NESTED_REFERENCE = "nestedReference";
@@ -173,7 +181,6 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
-	public static final String EXPOSED_PACKAGE = "exposedPackage";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
@@ -183,6 +190,7 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String PART_DEFINITION = "partDefinition";
 	public static final String NESTED_ACTION = "nestedAction";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String VIEWED_ELEMENT = "viewedElement";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";

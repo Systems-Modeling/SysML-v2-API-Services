@@ -77,4 +77,6 @@ public interface Definition extends Classifier, MofObject {
     Collection<? extends RenderingUsage> getOwnedRendering();
 
     Collection<? extends VerificationCaseUsage> getOwnedVerificationCase();
+
+    Collection<? extends EnumerationUsage> getOwnedEnumeration();
 }

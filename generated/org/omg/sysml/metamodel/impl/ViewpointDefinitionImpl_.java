@@ -17,6 +17,7 @@ import org.omg.sysml.metamodel.ConnectionUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
+import org.omg.sysml.metamodel.EnumerationUsage;
 import org.omg.sysml.metamodel.Expression;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
@@ -50,6 +51,7 @@ public abstract class ViewpointDefinitionImpl_ extends org.omg.sysml.metamodel.i
 	public static volatile CollectionAttribute<ViewpointDefinitionImpl, PortUsage> ownedPort;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, Generalization> ownedGeneralization;
 	public static volatile SingularAttribute<ViewpointDefinitionImpl, Boolean> isConjugated;
+	public static volatile CollectionAttribute<ViewpointDefinitionImpl, EnumerationUsage> ownedEnumeration;
 	public static volatile CollectionAttribute<ViewpointDefinitionImpl, VerificationCaseUsage> ownedVerificationCase;
 	public static volatile CollectionAttribute<ViewpointDefinitionImpl, ConstraintUsage> requiredConstraint;
 	public static volatile CollectionAttribute<ViewpointDefinitionImpl, Usage> usage;
@@ -115,6 +117,7 @@ public abstract class ViewpointDefinitionImpl_ extends org.omg.sysml.metamodel.i
 	public static final String OWNED_PORT = "ownedPort";
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String IS_CONJUGATED = "isConjugated";
+	public static final String OWNED_ENUMERATION = "ownedEnumeration";
 	public static final String OWNED_VERIFICATION_CASE = "ownedVerificationCase";
 	public static final String REQUIRED_CONSTRAINT = "requiredConstraint";
 	public static final String USAGE = "usage";

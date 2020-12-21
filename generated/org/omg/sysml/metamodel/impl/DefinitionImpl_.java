@@ -17,6 +17,7 @@ import org.omg.sysml.metamodel.ConnectionUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
+import org.omg.sysml.metamodel.EnumerationUsage;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.Generalization;
@@ -48,6 +49,7 @@ public abstract class DefinitionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile CollectionAttribute<DefinitionImpl, PortUsage> ownedPort;
 	public static volatile ListAttribute<DefinitionImpl, Generalization> ownedGeneralization;
 	public static volatile SingularAttribute<DefinitionImpl, Boolean> isConjugated;
+	public static volatile CollectionAttribute<DefinitionImpl, EnumerationUsage> ownedEnumeration;
 	public static volatile CollectionAttribute<DefinitionImpl, VerificationCaseUsage> ownedVerificationCase;
 	public static volatile CollectionAttribute<DefinitionImpl, Usage> usage;
 	public static volatile CollectionAttribute<DefinitionImpl, ViewpointUsage> ownedViewpoint;
@@ -106,6 +108,7 @@ public abstract class DefinitionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String OWNED_PORT = "ownedPort";
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String IS_CONJUGATED = "isConjugated";
+	public static final String OWNED_ENUMERATION = "ownedEnumeration";
 	public static final String OWNED_VERIFICATION_CASE = "ownedVerificationCase";
 	public static final String USAGE = "usage";
 	public static final String OWNED_VIEWPOINT = "ownedViewpoint";
