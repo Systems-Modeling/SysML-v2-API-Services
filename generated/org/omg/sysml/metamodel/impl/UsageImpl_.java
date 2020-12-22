@@ -17,6 +17,7 @@ import org.omg.sysml.metamodel.ConnectionUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
+import org.omg.sysml.metamodel.EnumerationUsage;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
@@ -72,6 +73,7 @@ public abstract class UsageImpl_ extends org.omg.sysml.metamodel.impl.MofObjectI
 	public static volatile SingularAttribute<UsageImpl, UUID> identifier;
 	public static volatile CollectionAttribute<UsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile CollectionAttribute<UsageImpl, Annotation> ownedAnnotation;
+	public static volatile CollectionAttribute<UsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile CollectionAttribute<UsageImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<UsageImpl, Usage> flowFeature;
 	public static volatile CollectionAttribute<UsageImpl, Documentation> documentation;
@@ -140,6 +142,7 @@ public abstract class UsageImpl_ extends org.omg.sysml.metamodel.impl.MofObjectI
 	public static final String IDENTIFIER = "identifier";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
+	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String FLOW_FEATURE = "flowFeature";
 	public static final String DOCUMENTATION = "documentation";

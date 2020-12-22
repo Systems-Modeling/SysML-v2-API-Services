@@ -41,6 +41,7 @@
         "nestedCase": {"@type": "@id"},
         "nestedConnection": {"@type": "@id"},
         "nestedConstraint": {"@type": "@id"},
+        "nestedEnumeration": {"@type": "@id"},
         "nestedIndividual": {"@type": "@id"},
         "nestedInterface": {"@type": "@id"},
         "nestedItem": {"@type": "@id"},

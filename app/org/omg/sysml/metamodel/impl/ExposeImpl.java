@@ -176,59 +176,56 @@ public class ExposeImpl extends MofObjectImpl implements Expose {
 
 
 
-    // @info.archinnov.achilles.annotations.Column("importOwningPackage")
-    private Package importOwningPackage;
+    // @info.archinnov.achilles.annotations.Column("importOwningNamespace")
+    private Namespace importOwningNamespace;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "importOwningPackageType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "importOwningPackageId", table = "Expose")
-    public Package getImportOwningPackage() {
-        return importOwningPackage;
+    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "importOwningNamespaceType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "importOwningNamespaceId", table = "Expose")
+    public Namespace getImportOwningNamespace() {
+        return importOwningNamespace;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
-    public void setImportOwningPackage(Package importOwningPackage) {
-        this.importOwningPackage = importOwningPackage;
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = NamespaceImpl.class)
+    public void setImportOwningNamespace(Namespace importOwningNamespace) {
+        this.importOwningNamespace = importOwningNamespace;
     }
 
 
 
-    // @info.archinnov.achilles.annotations.Column("importedPackage")
-    private Package importedPackage;
+    // @info.archinnov.achilles.annotations.Column("importedNamespace")
+    private Namespace importedNamespace;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "importedPackageType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "importedPackageId", table = "Expose")
-    public Package getImportedPackage() {
-        return importedPackage;
+    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "importedNamespaceType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "importedNamespaceId", table = "Expose")
+    public Namespace getImportedNamespace() {
+        return importedNamespace;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
-    public void setImportedPackage(Package importedPackage) {
-        this.importedPackage = importedPackage;
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = NamespaceImpl.class)
+    public void setImportedNamespace(Namespace importedNamespace) {
+        this.importedNamespace = importedNamespace;
     }
 
 
 
-    // @info.archinnov.achilles.annotations.Column("modelQuery")
-    private ModelQuery modelQuery;
+    // @info.archinnov.achilles.annotations.Column("isRecursive")
+    private Boolean isRecursive;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "ModelQueryMetaDef", metaColumn = @javax.persistence.Column(name = "modelQueryType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "modelQueryId", table = "Expose")
-    public ModelQuery getModelQuery() {
-        return modelQuery;
+    @javax.persistence.Column(name = "isRecursive", table = "Expose")
+    public Boolean getIsRecursive() {
+        return isRecursive;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ModelQueryImpl.class)
-    public void setModelQuery(ModelQuery modelQuery) {
-        this.modelQuery = modelQuery;
+    public void setIsRecursive(Boolean isRecursive) {
+        this.isRecursive = isRecursive;
     }
 
 
@@ -419,20 +416,20 @@ public class ExposeImpl extends MofObjectImpl implements Expose {
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningNamespace")
-    private Package owningNamespace;
+    private Namespace owningNamespace;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
+    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningNamespaceId", table = "Expose")
-    public Package getOwningNamespace() {
+    public Namespace getOwningNamespace() {
         return owningNamespace;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
-    public void setOwningNamespace(Package owningNamespace) {
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = NamespaceImpl.class)
+    public void setOwningNamespace(Namespace owningNamespace) {
         this.owningNamespace = owningNamespace;
     }
 

@@ -190,27 +190,27 @@ public class ViewUsageImpl extends MofObjectImpl implements ViewUsage {
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("exposedPackage")
-    private Collection<Package> exposedPackage;
+    // @info.archinnov.achilles.annotations.Column("exposedNamespace")
+    private Collection<Namespace> exposedNamespace;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ViewUsage_exposedPackage",
+    @ManyToAny(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ViewUsage_exposedNamespace",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Package> getExposedPackage() {
-        if (exposedPackage == null) {
-            exposedPackage = new ArrayList<>();
+    public Collection<Namespace> getExposedNamespace() {
+        if (exposedNamespace == null) {
+            exposedNamespace = new ArrayList<>();
         }
-        return exposedPackage;
+        return exposedNamespace;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PackageImpl.class)
-    public void setExposedPackage(Collection<Package> exposedPackage) {
-        this.exposedPackage = exposedPackage;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = NamespaceImpl.class)
+    public void setExposedNamespace(Collection<Namespace> exposedNamespace) {
+        this.exposedNamespace = exposedNamespace;
     }
 
 
@@ -906,6 +906,32 @@ public class ViewUsageImpl extends MofObjectImpl implements ViewUsage {
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConstraintUsageImpl.class)
     public void setNestedConstraint(Collection<ConstraintUsage> nestedConstraint) {
         this.nestedConstraint = nestedConstraint;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedEnumeration")
+    private Collection<EnumerationUsage> nestedEnumeration;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "EnumerationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ViewUsage_nestedEnumeration",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<EnumerationUsage> getNestedEnumeration() {
+        if (nestedEnumeration == null) {
+            nestedEnumeration = new ArrayList<>();
+        }
+        return nestedEnumeration;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = EnumerationUsageImpl.class)
+    public void setNestedEnumeration(Collection<EnumerationUsage> nestedEnumeration) {
+        this.nestedEnumeration = nestedEnumeration;
     }
 
 
@@ -1783,20 +1809,20 @@ public class ViewUsageImpl extends MofObjectImpl implements ViewUsage {
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningNamespace")
-    private Package owningNamespace;
+    private Namespace owningNamespace;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
+    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningNamespaceId", table = "ViewUsage")
-    public Package getOwningNamespace() {
+    public Namespace getOwningNamespace() {
         return owningNamespace;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
-    public void setOwningNamespace(Package owningNamespace) {
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = NamespaceImpl.class)
+    public void setOwningNamespace(Namespace owningNamespace) {
         this.owningNamespace = owningNamespace;
     }
 
@@ -2039,6 +2065,32 @@ public class ViewUsageImpl extends MofObjectImpl implements ViewUsage {
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("viewCondition")
+    private Collection<MetadataCondition> viewCondition;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MetadataConditionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ViewUsage_viewCondition",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<MetadataCondition> getViewCondition() {
+        if (viewCondition == null) {
+            viewCondition = new ArrayList<>();
+        }
+        return viewCondition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MetadataConditionImpl.class)
+    public void setViewCondition(Collection<MetadataCondition> viewCondition) {
+        this.viewCondition = viewCondition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("viewDefinition")
     private ViewDefinition viewDefinition;
 
@@ -2055,6 +2107,32 @@ public class ViewUsageImpl extends MofObjectImpl implements ViewUsage {
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ViewDefinitionImpl.class)
     public void setViewDefinition(ViewDefinition viewDefinition) {
         this.viewDefinition = viewDefinition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("viewedElement")
+    private Collection<Element> viewedElement;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ViewUsage_viewedElement",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Element> getViewedElement() {
+        if (viewedElement == null) {
+            viewedElement = new ArrayList<>();
+        }
+        return viewedElement;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    public void setViewedElement(Collection<Element> viewedElement) {
+        this.viewedElement = viewedElement;
     }
 
 

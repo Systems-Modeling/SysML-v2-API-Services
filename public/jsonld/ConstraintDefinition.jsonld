@@ -39,6 +39,7 @@
         "ownedConstraint": {"@type": "@id"},
         "ownedElement": {"@type": "@id"},
         "ownedEndFeature": {"@type": "@id"},
+        "ownedEnumeration": {"@type": "@id"},
         "ownedFeature": {"@type": "@id"},
         "ownedFeatureMembership": {"@type": "@id"},
         "ownedGeneralization": {"@type": "@id"},

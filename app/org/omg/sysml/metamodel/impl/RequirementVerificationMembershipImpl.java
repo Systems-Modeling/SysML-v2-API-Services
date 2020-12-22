@@ -405,21 +405,21 @@ public class RequirementVerificationMembershipImpl extends MofObjectImpl impleme
 
 
 
-    // @info.archinnov.achilles.annotations.Column("membershipOwningPackage")
-    private Package membershipOwningPackage;
+    // @info.archinnov.achilles.annotations.Column("membershipOwningNamespace")
+    private Namespace membershipOwningNamespace;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "membershipOwningPackageType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "membershipOwningPackageId", table = "RequirementVerificationMembership")
-    public Package getMembershipOwningPackage() {
-        return membershipOwningPackage;
+    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "membershipOwningNamespaceType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "membershipOwningNamespaceId", table = "RequirementVerificationMembership")
+    public Namespace getMembershipOwningNamespace() {
+        return membershipOwningNamespace;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
-    public void setMembershipOwningPackage(Package membershipOwningPackage) {
-        this.membershipOwningPackage = membershipOwningPackage;
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = NamespaceImpl.class)
+    public void setMembershipOwningNamespace(Namespace membershipOwningNamespace) {
+        this.membershipOwningNamespace = membershipOwningNamespace;
     }
 
 
@@ -688,20 +688,20 @@ public class RequirementVerificationMembershipImpl extends MofObjectImpl impleme
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningNamespace")
-    private Package owningNamespace;
+    private Namespace owningNamespace;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
+    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningNamespaceId", table = "RequirementVerificationMembership")
-    public Package getOwningNamespace() {
+    public Namespace getOwningNamespace() {
         return owningNamespace;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
-    public void setOwningNamespace(Package owningNamespace) {
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = NamespaceImpl.class)
+    public void setOwningNamespace(Namespace owningNamespace) {
         this.owningNamespace = owningNamespace;
     }
 

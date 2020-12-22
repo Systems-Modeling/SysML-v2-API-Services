@@ -963,6 +963,32 @@ public class TransitionUsageImpl extends MofObjectImpl implements TransitionUsag
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedEnumeration")
+    private Collection<EnumerationUsage> nestedEnumeration;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "EnumerationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TransitionUsage_nestedEnumeration",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<EnumerationUsage> getNestedEnumeration() {
+        if (nestedEnumeration == null) {
+            nestedEnumeration = new ArrayList<>();
+        }
+        return nestedEnumeration;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = EnumerationUsageImpl.class)
+    public void setNestedEnumeration(Collection<EnumerationUsage> nestedEnumeration) {
+        this.nestedEnumeration = nestedEnumeration;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedIndividual")
     private Collection<IndividualUsage> nestedIndividual;
 
@@ -1835,20 +1861,20 @@ public class TransitionUsageImpl extends MofObjectImpl implements TransitionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningNamespace")
-    private Package owningNamespace;
+    private Namespace owningNamespace;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
+    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningNamespaceId", table = "TransitionUsage")
-    public Package getOwningNamespace() {
+    public Namespace getOwningNamespace() {
         return owningNamespace;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
-    public void setOwningNamespace(Package owningNamespace) {
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = NamespaceImpl.class)
+    public void setOwningNamespace(Namespace owningNamespace) {
         this.owningNamespace = owningNamespace;
     }
 

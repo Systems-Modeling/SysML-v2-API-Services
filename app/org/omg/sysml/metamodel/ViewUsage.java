@@ -30,7 +30,11 @@ public interface ViewUsage extends PartUsage, MofObject {
 
     Collection<? extends ViewpointUsage> getSatisfiedViewpoint();
 
-    Collection<? extends Package> getExposedPackage();
+    Collection<? extends Namespace> getExposedNamespace();
 
     RenderingUsage getRendering();
+
+    Collection<? extends MetadataCondition> getViewCondition();
+
+    Collection<? extends Element> getViewedElement();
 }

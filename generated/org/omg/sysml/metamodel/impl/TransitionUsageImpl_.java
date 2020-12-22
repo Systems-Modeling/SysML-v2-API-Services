@@ -19,6 +19,7 @@ import org.omg.sysml.metamodel.ConnectionUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
+import org.omg.sysml.metamodel.EnumerationUsage;
 import org.omg.sysml.metamodel.Expression;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
@@ -76,6 +77,7 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile SingularAttribute<TransitionUsageImpl, UUID> identifier;
 	public static volatile CollectionAttribute<TransitionUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile CollectionAttribute<TransitionUsageImpl, Annotation> ownedAnnotation;
+	public static volatile CollectionAttribute<TransitionUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile CollectionAttribute<TransitionUsageImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<TransitionUsageImpl, Usage> flowFeature;
 	public static volatile CollectionAttribute<TransitionUsageImpl, Documentation> documentation;
@@ -150,6 +152,7 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String IDENTIFIER = "identifier";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
+	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String FLOW_FEATURE = "flowFeature";
 	public static final String DOCUMENTATION = "documentation";

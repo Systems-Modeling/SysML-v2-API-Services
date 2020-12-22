@@ -18,6 +18,7 @@ import org.omg.sysml.metamodel.ConnectionUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
+import org.omg.sysml.metamodel.EnumerationUsage;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
@@ -73,6 +74,7 @@ public abstract class TransferActionUsageImpl_ extends org.omg.sysml.metamodel.i
 	public static volatile SingularAttribute<TransferActionUsageImpl, UUID> identifier;
 	public static volatile CollectionAttribute<TransferActionUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile CollectionAttribute<TransferActionUsageImpl, Annotation> ownedAnnotation;
+	public static volatile CollectionAttribute<TransferActionUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile CollectionAttribute<TransferActionUsageImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<TransferActionUsageImpl, Usage> flowFeature;
 	public static volatile CollectionAttribute<TransferActionUsageImpl, Documentation> documentation;
@@ -144,6 +146,7 @@ public abstract class TransferActionUsageImpl_ extends org.omg.sysml.metamodel.i
 	public static final String IDENTIFIER = "identifier";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
+	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String FLOW_FEATURE = "flowFeature";
 	public static final String DOCUMENTATION = "documentation";

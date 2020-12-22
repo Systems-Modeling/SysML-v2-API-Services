@@ -81,4 +81,6 @@ public interface Usage extends Feature, MofObject {
     Collection<? extends RenderingUsage> getNestedRendering();
 
     Collection<? extends VerificationCaseUsage> getNestedVerificationCase();
+
+    Collection<? extends EnumerationUsage> getNestedEnumeration();
 }

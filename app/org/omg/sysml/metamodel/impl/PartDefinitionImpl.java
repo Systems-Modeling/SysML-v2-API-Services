@@ -849,6 +849,32 @@ public class PartDefinitionImpl extends MofObjectImpl implements PartDefinition 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedEnumeration")
+    private Collection<EnumerationUsage> ownedEnumeration;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "EnumerationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "PartDefinition_ownedEnumeration",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<EnumerationUsage> getOwnedEnumeration() {
+        if (ownedEnumeration == null) {
+            ownedEnumeration = new ArrayList<>();
+        }
+        return ownedEnumeration;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = EnumerationUsageImpl.class)
+    public void setOwnedEnumeration(Collection<EnumerationUsage> ownedEnumeration) {
+        this.ownedEnumeration = ownedEnumeration;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedFeature")
     private Collection<Feature> ownedFeature;
 
@@ -1480,20 +1506,20 @@ public class PartDefinitionImpl extends MofObjectImpl implements PartDefinition 
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningNamespace")
-    private Package owningNamespace;
+    private Namespace owningNamespace;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
+    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningNamespaceId", table = "PartDefinition")
-    public Package getOwningNamespace() {
+    public Namespace getOwningNamespace() {
         return owningNamespace;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
-    public void setOwningNamespace(Package owningNamespace) {
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = NamespaceImpl.class)
+    public void setOwningNamespace(Namespace owningNamespace) {
         this.owningNamespace = owningNamespace;
     }
 

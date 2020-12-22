@@ -22,7 +22,7 @@
         "memberFeature": {"@type": "@id"},
         "memberName": {"@type": "xsd:string"},
         "memberParameter": {"@type": "@id"},
-        "membershipOwningPackage": {"@type": "@id"},
+        "membershipOwningNamespace": {"@type": "@id"},
         "name": {"@type": "xsd:string"},
         "ownedAnnotation": {"@type": "@id"},
         "ownedElement": {"@type": "@id"},

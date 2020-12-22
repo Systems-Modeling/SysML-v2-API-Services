@@ -61,14 +61,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
-@Entity(name = "ModelQueryImpl")
-@SecondaryTable(name = "ModelQuery")
-@org.hibernate.annotations.Table(appliesTo = "ModelQuery", fetch = FetchMode.SELECT, optional = false)
-// @info.archinnov.achilles.annotations.Table(table = "ModelQuery")
-@DiscriminatorValue(value = "ModelQuery")
-@JsonTypeName(value = "ModelQuery")
+@Entity(name = "NamespaceImpl")
+@SecondaryTable(name = "Namespace")
+@org.hibernate.annotations.Table(appliesTo = "Namespace", fetch = FetchMode.SELECT, optional = false)
+// @info.archinnov.achilles.annotations.Table(table = "Namespace")
+@DiscriminatorValue(value = "Namespace")
+@JsonTypeName(value = "Namespace")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class ModelQueryImpl extends MofObjectImpl implements ModelQuery {
+public class NamespaceImpl extends MofObjectImpl implements Namespace {
     // @info.archinnov.achilles.annotations.Column("aliasId")
     private Collection<String> aliasId;
 
@@ -76,8 +76,8 @@ public class ModelQueryImpl extends MofObjectImpl implements ModelQuery {
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "ModelQuery_aliasId",
-            joinColumns = @JoinColumn(name = "ModelQueryId"))
+    @CollectionTable(name = "Namespace_aliasId",
+            joinColumns = @JoinColumn(name = "NamespaceId"))
     public Collection<String> getAliasId() {
         if (aliasId == null) {
             aliasId = new ArrayList<>();
@@ -98,7 +98,7 @@ public class ModelQueryImpl extends MofObjectImpl implements ModelQuery {
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ModelQuery_documentation",
+    @JoinTable(name = "Namespace_documentation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Documentation> getDocumentation() {
@@ -124,7 +124,7 @@ public class ModelQueryImpl extends MofObjectImpl implements ModelQuery {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ModelQuery_documentationComment",
+    @JoinTable(name = "Namespace_documentationComment",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Comment> getDocumentationComment() {
@@ -148,7 +148,7 @@ public class ModelQueryImpl extends MofObjectImpl implements ModelQuery {
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "humanId", table = "ModelQuery")
+    @javax.persistence.Column(name = "humanId", table = "Namespace")
     public String getHumanId() {
         return humanId;
     }
@@ -164,7 +164,7 @@ public class ModelQueryImpl extends MofObjectImpl implements ModelQuery {
     private java.util.UUID identifier;
 
     @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "ModelQuery")
+    @javax.persistence.Column(name = "identifier", table = "Namespace")
     public java.util.UUID getIdentifier() {
         return identifier;
     }
@@ -177,6 +177,84 @@ public class ModelQueryImpl extends MofObjectImpl implements ModelQuery {
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("importedMembership")
+    private List<Membership> importedMembership;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Namespace_importedMembership",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Membership> getImportedMembership() {
+        if (importedMembership == null) {
+            importedMembership = new ArrayList<>();
+        }
+        return importedMembership;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
+    public void setImportedMembership(List<Membership> importedMembership) {
+        this.importedMembership = importedMembership;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("member")
+    private List<Element> member;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Namespace_member",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Element> getMember() {
+        if (member == null) {
+            member = new ArrayList<>();
+        }
+        return member;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    public void setMember(List<Element> member) {
+        this.member = member;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("membership")
+    private List<Membership> membership;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Namespace_membership",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Membership> getMembership() {
+        if (membership == null) {
+            membership = new ArrayList<>();
+        }
+        return membership;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
+    public void setMembership(List<Membership> membership) {
+        this.membership = membership;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("name")
     private String name;
 
@@ -184,7 +262,7 @@ public class ModelQueryImpl extends MofObjectImpl implements ModelQuery {
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "name", table = "ModelQuery")
+    @javax.persistence.Column(name = "name", table = "Namespace")
     public String getName() {
         return name;
     }
@@ -202,7 +280,7 @@ public class ModelQueryImpl extends MofObjectImpl implements ModelQuery {
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ModelQuery_ownedAnnotation",
+    @JoinTable(name = "Namespace_ownedAnnotation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Annotation> getOwnedAnnotation() {
@@ -228,7 +306,7 @@ public class ModelQueryImpl extends MofObjectImpl implements ModelQuery {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ModelQuery_ownedElement",
+    @JoinTable(name = "Namespace_ownedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getOwnedElement() {
@@ -246,13 +324,87 @@ public class ModelQueryImpl extends MofObjectImpl implements ModelQuery {
 
 
 
+    // @info.archinnov.achilles.annotations.Column("ownedImport")
+    private List<Import> ownedImport;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Namespace_ownedImport",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Import> getOwnedImport() {
+        if (ownedImport == null) {
+            ownedImport = new ArrayList<>();
+        }
+        return ownedImport;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ImportImpl.class)
+    public void setOwnedImport(List<Import> ownedImport) {
+        this.ownedImport = ownedImport;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedMember")
+    private List<Element> ownedMember;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Namespace_ownedMember",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Element> getOwnedMember() {
+        if (ownedMember == null) {
+            ownedMember = new ArrayList<>();
+        }
+        return ownedMember;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    public void setOwnedMember(List<Element> ownedMember) {
+        this.ownedMember = ownedMember;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("ownedMembership")
+    private List<Membership> ownedMembership;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Namespace_ownedMembership",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Membership> getOwnedMembership() {
+        if (ownedMembership == null) {
+            ownedMembership = new ArrayList<>();
+        }
+        return ownedMembership;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
+    public void setOwnedMembership(List<Membership> ownedMembership) {
+        this.ownedMembership = ownedMembership;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("ownedRelationship")
     private List<Relationship> ownedRelationship;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ModelQuery_ownedRelationship",
+    @JoinTable(name = "Namespace_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Relationship> getOwnedRelationship() {
@@ -278,7 +430,7 @@ public class ModelQueryImpl extends MofObjectImpl implements ModelQuery {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ModelQuery_ownedTextualRepresentation",
+    @JoinTable(name = "Namespace_ownedTextualRepresentation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<TextualRepresentation> getOwnedTextualRepresentation() {
@@ -304,7 +456,7 @@ public class ModelQueryImpl extends MofObjectImpl implements ModelQuery {
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownerId", table = "ModelQuery")
+    @JoinColumn(name = "ownerId", table = "Namespace")
     public Element getOwner() {
         return owner;
     }
@@ -323,7 +475,7 @@ public class ModelQueryImpl extends MofObjectImpl implements ModelQuery {
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningMembershipId", table = "ModelQuery")
+    @JoinColumn(name = "owningMembershipId", table = "Namespace")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -338,20 +490,20 @@ public class ModelQueryImpl extends MofObjectImpl implements ModelQuery {
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningNamespace")
-    private Package owningNamespace;
+    private Namespace owningNamespace;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "ModelQuery")
-    public Package getOwningNamespace() {
+    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningNamespaceId", table = "Namespace")
+    public Namespace getOwningNamespace() {
         return owningNamespace;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
-    public void setOwningNamespace(Package owningNamespace) {
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = NamespaceImpl.class)
+    public void setOwningNamespace(Namespace owningNamespace) {
         this.owningNamespace = owningNamespace;
     }
 
@@ -363,7 +515,7 @@ public class ModelQueryImpl extends MofObjectImpl implements ModelQuery {
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelationshipId", table = "ModelQuery")
+    @JoinColumn(name = "owningRelationshipId", table = "Namespace")
     public Relationship getOwningRelationship() {
         return owningRelationship;
     }
