@@ -27,6 +27,7 @@ public abstract class ExposeImpl_ extends org.omg.sysml.metamodel.impl.MofObject
 	public static volatile ListAttribute<ExposeImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<ExposeImpl, Element> source;
 	public static volatile ListAttribute<ExposeImpl, Element> target;
+	public static volatile SingularAttribute<ExposeImpl, Boolean> isRecursive;
 	public static volatile CollectionAttribute<ExposeImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<ExposeImpl, String> humanId;
 	public static volatile CollectionAttribute<ExposeImpl, String> aliasId;
@@ -43,6 +44,7 @@ public abstract class ExposeImpl_ extends org.omg.sysml.metamodel.impl.MofObject
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
 	public static final String TARGET = "target";
+	public static final String IS_RECURSIVE = "isRecursive";
 	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";

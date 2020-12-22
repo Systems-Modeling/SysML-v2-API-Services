@@ -17,6 +17,7 @@ import org.omg.sysml.metamodel.ConnectionUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
+import org.omg.sysml.metamodel.EnumerationUsage;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.Generalization;
@@ -25,6 +26,7 @@ import org.omg.sysml.metamodel.IndividualUsage;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.ItemUsage;
 import org.omg.sysml.metamodel.Membership;
+import org.omg.sysml.metamodel.MetadataCondition;
 import org.omg.sysml.metamodel.PartUsage;
 import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.ReferenceUsage;
@@ -48,6 +50,7 @@ public abstract class ViewDefinitionImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<ViewDefinitionImpl, PortUsage> ownedPort;
 	public static volatile ListAttribute<ViewDefinitionImpl, Generalization> ownedGeneralization;
 	public static volatile SingularAttribute<ViewDefinitionImpl, Boolean> isConjugated;
+	public static volatile CollectionAttribute<ViewDefinitionImpl, EnumerationUsage> ownedEnumeration;
 	public static volatile CollectionAttribute<ViewDefinitionImpl, VerificationCaseUsage> ownedVerificationCase;
 	public static volatile CollectionAttribute<ViewDefinitionImpl, Usage> usage;
 	public static volatile CollectionAttribute<ViewDefinitionImpl, ViewpointUsage> ownedViewpoint;
@@ -81,6 +84,7 @@ public abstract class ViewDefinitionImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<ViewDefinitionImpl, StateUsage> ownedState;
 	public static volatile ListAttribute<ViewDefinitionImpl, Membership> membership;
 	public static volatile CollectionAttribute<ViewDefinitionImpl, Superclassing> ownedSuperclassing;
+	public static volatile CollectionAttribute<ViewDefinitionImpl, MetadataCondition> viewCondition;
 	public static volatile CollectionAttribute<ViewDefinitionImpl, ViewpointUsage> satisfiedViewpoint;
 	public static volatile SingularAttribute<ViewDefinitionImpl, Boolean> isVariation;
 	public static volatile CollectionAttribute<ViewDefinitionImpl, Feature> feature;
@@ -108,6 +112,7 @@ public abstract class ViewDefinitionImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String OWNED_PORT = "ownedPort";
 	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String IS_CONJUGATED = "isConjugated";
+	public static final String OWNED_ENUMERATION = "ownedEnumeration";
 	public static final String OWNED_VERIFICATION_CASE = "ownedVerificationCase";
 	public static final String USAGE = "usage";
 	public static final String OWNED_VIEWPOINT = "ownedViewpoint";
@@ -141,6 +146,7 @@ public abstract class ViewDefinitionImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String OWNED_STATE = "ownedState";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_SUPERCLASSING = "ownedSuperclassing";
+	public static final String VIEW_CONDITION = "viewCondition";
 	public static final String SATISFIED_VIEWPOINT = "satisfiedViewpoint";
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
