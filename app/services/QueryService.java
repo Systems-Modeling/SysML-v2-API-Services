@@ -34,7 +34,10 @@ import org.omg.sysml.query.Query;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import java.util.*;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.function.Function;
 
 @Singleton
@@ -90,17 +93,17 @@ public class QueryService extends BaseService<Query, QueryDao> {
     }
 
     public static class QueryResults {
-        private final Set<Element> elements;
+        private final List<Element> elements;
         private final Commit commit;
         private final AllowedPropertyFilter propertyFilter;
 
-        public QueryResults(Set<Element> elements, Commit commit, AllowedPropertyFilter propertyFilter) {
+        public QueryResults(List<Element> elements, Commit commit, AllowedPropertyFilter propertyFilter) {
             this.elements = elements;
             this.commit = commit;
             this.propertyFilter = propertyFilter;
         }
 
-        public Set<Element> getElements() {
+        public List<Element> getElements() {
             return elements;
         }
 

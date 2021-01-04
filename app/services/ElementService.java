@@ -30,8 +30,8 @@ import org.omg.sysml.metamodel.Element;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.UUID;
 
 @Singleton
@@ -53,21 +53,16 @@ public class ElementService extends BaseService<Element, ElementDao> {
         return element.getIdentifier() != null ? dao.update(element) : dao.persist(element);
     }
 
-    public Set<Element> getByCommitId(UUID commitId) {
-        return commitDao.findById(commitId)
-                .map(dao::findAllByCommit).orElse(Collections.emptySet());
-    }
-
     public Optional<Element> getByCommitIdAndId(UUID commitId, UUID elementId) {
         return commitDao.findById(commitId)
                 .flatMap(m -> dao.findByCommitAndId(m, elementId));
     }
 
-    public Set<Element> getElementsByProjectIdCommitId(UUID projectId, UUID commitId) {
+    public List<Element> getElementsByProjectIdCommitId(UUID projectId, UUID commitId, UUID after, UUID before, int maxResults) {
         return projectDao.findById(projectId)
                 .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
-                .map(dao::findAllByCommit)
-                .orElse(Collections.emptySet());
+                .map(commit -> dao.findAllByCommit(commit, after, before, maxResults))
+                .orElse(Collections.emptyList());
     }
 
     public Optional<Element> getElementsByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId) {
@@ -76,10 +71,10 @@ public class ElementService extends BaseService<Element, ElementDao> {
                 .flatMap(commit -> dao.findByCommitAndId(commit, elementId));
     }
 
-    public Set<Element> getRootsByProjectIdCommitId(UUID projectId, UUID commitId) {
+    public List<Element> getRootsByProjectIdCommitId(UUID projectId, UUID commitId) {
         return projectDao.findById(projectId)
                 .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
                 .map(dao::findRootsByCommit)
-                .orElse(Collections.emptySet());
+                .orElse(Collections.emptyList());
     }
 }

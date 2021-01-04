@@ -83,22 +83,57 @@ public class ElementController extends Controller {
     }
 
     public Result getElementsByProjectIdCommitId(UUID projectId, UUID commitId, Http.Request request) {
-        Set<Element> elements = elementService.getElementsByProjectIdCommitId(projectId, commitId);
+        UUID pageAfter = Optional.ofNullable(request.getQueryString("page[after]"))
+                .map(UUID::fromString)
+                .orElse(null);
+        UUID pageBefore = Optional.ofNullable(request.getQueryString("page[before]"))
+                .map(UUID::fromString)
+                .orElse(null);
+        int pageSize = Optional.ofNullable(request.getQueryString("page[size]"))
+                .map(Integer::parseInt)
+                .orElse(100);
+        if (pageSize <= 0) {
+            return Results.badRequest("Page size must be greater than zero.");
+        }
+
+        List<Element> elements = elementService.getElementsByProjectIdCommitId(projectId, commitId, pageAfter, pageBefore, pageSize);
         boolean respondWithJsonLd = respondWithJsonLd(request);
+        final String linkHeaderValue;
+        if (elements.size() > 0) {
+            boolean pageFull = elements.size() == pageSize;
+            boolean hasNext = pageFull || pageBefore != null;
+            boolean hasPrev = pageFull || pageAfter != null;
+            StringBuilder linkHeaderValueBuilder = new StringBuilder();
+            if (hasNext) {
+                linkHeaderValueBuilder.append(String.format("<http://%s/projects/%s/commits/%s/elements?page[after]=%s>; rel=\"next\"", request.host(), projectId, commitId, elements.get(elements.size() - 1).getIdentifier()));
+                if (hasPrev) {
+                    linkHeaderValueBuilder.append(", ");
+                }
+            }
+            if (hasPrev) {
+                linkHeaderValueBuilder.append(String.format("<http://%s/projects/%s/commits/%s/elements?page[before]=%s>; rel=\"prev\"", request.host(), projectId, commitId, elements.get(0).getIdentifier()));
+            }
+            linkHeaderValue = linkHeaderValueBuilder.toString();
+        }
+        else {
+            linkHeaderValue = null;
+        }
+
         return Optional.of(
                 elements.stream()
                         .map(e -> respondWithJsonLd ?
                                 adornMofObject(e, request, metamodelProvider, environment, projectId, commitId) :
                                 e
                         )
-                        .collect(Collectors.toSet())
+                        .collect(Collectors.toList())
         )
-                .map(set -> JacksonHelper.collectionToTree(set, Set.class, respondWithJsonLd ?
+                .map(collection -> JacksonHelper.collectionToTree(collection, List.class, respondWithJsonLd ?
                         JsonLdMofObjectAdornment.class :
                         metamodelProvider.getImplementationClass(Element.class))
                 )
                 .map(Results::ok)
                 .map(result -> respondWithJsonLd ? result.as(JSONLD_MIME_TYPE) : result)
+                .map(result -> linkHeaderValue != null ? result.withHeader("Link", linkHeaderValue) : result)
                 .orElseThrow();
     }
 
@@ -123,7 +158,7 @@ public class ElementController extends Controller {
     }
 
     public Result getRootsByProjectIdCommitId(UUID projectId, UUID commitId, Http.Request request) {
-        Set<Element> roots = elementService.getRootsByProjectIdCommitId(projectId, commitId);
+        List<Element> roots = elementService.getRootsByProjectIdCommitId(projectId, commitId);
         boolean respondWithJsonLd = respondWithJsonLd(request);
         return ok(JacksonHelper.collectionToTree(roots.stream()
                         .map(e -> respondWithJsonLd ? adornMofObject(e, request, metamodelProvider, environment, projectId, commitId) : e)
