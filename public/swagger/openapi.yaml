@@ -221,13 +221,11 @@ paths:
         in: query
         description: Page after
         type: string
-        format: uuid
         required: false
       - name: page[before]
         in: query
         description: Page before
         type: string
-        format: uuid
         required: false
       - name: page[size]
         in: query

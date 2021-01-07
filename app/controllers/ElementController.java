@@ -22,6 +22,7 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.google.common.primitives.Bytes;
 import config.MetamodelProvider;
 import jackson.JacksonHelper;
 import jackson.JsonLdMofObjectAdornment;
@@ -36,10 +37,8 @@ import play.mvc.Results;
 import services.ElementService;
 
 import javax.inject.Inject;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
+import java.time.Instant;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import static jackson.JsonLdMofObjectAdornment.JSONLD_MIME_TYPE;
@@ -84,10 +83,12 @@ public class ElementController extends Controller {
 
     public Result getElementsByProjectIdCommitId(UUID projectId, UUID commitId, Http.Request request) {
         UUID pageAfter = Optional.ofNullable(request.getQueryString("page[after]"))
-                .map(UUID::fromString)
+                .map(ElementController::fromCursor)
+                //.map(UUID::fromString)
                 .orElse(null);
         UUID pageBefore = Optional.ofNullable(request.getQueryString("page[before]"))
-                .map(UUID::fromString)
+                .map(ElementController::fromCursor)
+                //.map(UUID::fromString)
                 .orElse(null);
         int pageSize = Optional.ofNullable(request.getQueryString("page[size]"))
                 .map(Integer::parseInt)
@@ -102,16 +103,27 @@ public class ElementController extends Controller {
         if (elements.size() > 0) {
             boolean pageFull = elements.size() == pageSize;
             boolean hasNext = pageFull || pageBefore != null;
-            boolean hasPrev = pageFull || pageAfter != null;
+            boolean hasPrev = pageFull && pageBefore != null || pageAfter != null;
+            // hasPrev -> !pageFull || pageAfter != null
             StringBuilder linkHeaderValueBuilder = new StringBuilder();
             if (hasNext) {
-                linkHeaderValueBuilder.append(String.format("<http://%s/projects/%s/commits/%s/elements?page[after]=%s>; rel=\"next\"", request.host(), projectId, commitId, elements.get(elements.size() - 1).getIdentifier()));
+                linkHeaderValueBuilder.append(String.format("<http://%s/projects/%s/commits/%s/elements?page[after]=%s&page[size]=%s>; rel=\"next\"",
+                        request.host(),
+                        projectId,
+                        commitId,
+                        toCursor(elements.get(elements.size() - 1).getIdentifier()),
+                        pageSize));
                 if (hasPrev) {
                     linkHeaderValueBuilder.append(", ");
                 }
             }
             if (hasPrev) {
-                linkHeaderValueBuilder.append(String.format("<http://%s/projects/%s/commits/%s/elements?page[before]=%s>; rel=\"prev\"", request.host(), projectId, commitId, elements.get(0).getIdentifier()));
+                linkHeaderValueBuilder.append(String.format("<http://%s/projects/%s/commits/%s/elements?page[before]=%s&page[size]=%s>; rel=\"prev\"",
+                        request.host(),
+                        projectId,
+                        commitId,
+                        toCursor(elements.get(0).getIdentifier()),
+                        pageSize));
             }
             linkHeaderValue = linkHeaderValueBuilder.toString();
         }
@@ -169,5 +181,25 @@ public class ElementController extends Controller {
 
     static boolean respondWithJsonLd(Http.Request request) {
         return request.accepts(JSONLD_MIME_TYPE);
+    }
+
+    protected static char CURSOR_SEPARATOR = '|';
+
+    protected static UUID fromCursor(String cursor) throws IllegalArgumentException {
+        byte[] decoded = Base64.getUrlDecoder().decode(cursor);
+        int separatorIndex = Bytes.indexOf(decoded, (byte) CURSOR_SEPARATOR);
+        if (separatorIndex < 0) {
+            throw new IllegalArgumentException("Cursor separator missing");
+        }
+        return UUID.fromString(
+                new String(decoded, separatorIndex + 1, decoded.length - separatorIndex - 1)
+        );
+    }
+
+    protected static String toCursor(UUID id) throws IllegalArgumentException {
+        String unencoded = String.valueOf(Instant.now().toEpochMilli()) +
+                CURSOR_SEPARATOR +
+                id.toString();
+        return Base64.getUrlEncoder().withoutPadding().encodeToString(unencoded.getBytes());
     }
 }
