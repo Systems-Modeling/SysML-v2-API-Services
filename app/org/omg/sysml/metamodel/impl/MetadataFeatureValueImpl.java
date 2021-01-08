@@ -473,6 +473,25 @@ public class MetadataFeatureValueImpl extends MofObjectImpl implements MetadataF
 
 
 
+    // @info.archinnov.achilles.annotations.Column("owningMetadataFeature")
+    private MetadataFeature owningMetadataFeature;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    @Any(metaDef = "MetadataFeatureMetaDef", metaColumn = @javax.persistence.Column(name = "owningMetadataFeatureType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningMetadataFeatureId", table = "MetadataFeatureValue")
+    public MetadataFeature getOwningMetadataFeature() {
+        return owningMetadataFeature;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = MetadataFeatureImpl.class)
+    public void setOwningMetadataFeature(MetadataFeature owningMetadataFeature) {
+        this.owningMetadataFeature = owningMetadataFeature;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningNamespace")
     private Namespace owningNamespace;

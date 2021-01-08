@@ -24,6 +24,7 @@
         "ownedTextualRepresentation": {"@type": "@id"},
         "owner": {"@type": "@id"},
         "owningMembership": {"@type": "@id"},
+        "owningMetadataFeature": {"@type": "@id"},
         "owningNamespace": {"@type": "@id"},
         "owningRelatedElement": {"@type": "@id"},
         "owningRelationship": {"@type": "@id"},

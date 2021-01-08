@@ -1256,20 +1256,20 @@ public class MetadataReferenceExpressionImpl extends MofObjectImpl implements Me
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("referent")
-    private MetadataFeature referent;
+    private Feature referent;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "MetadataFeatureMetaDef", metaColumn = @javax.persistence.Column(name = "referentType"), fetch = FetchType.LAZY)
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "referentType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "referentId", table = "MetadataReferenceExpression")
-    public MetadataFeature getReferent() {
+    public Feature getReferent() {
         return referent;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = MetadataFeatureImpl.class)
-    public void setReferent(MetadataFeature referent) {
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
+    public void setReferent(Feature referent) {
         this.referent = referent;
     }
 
