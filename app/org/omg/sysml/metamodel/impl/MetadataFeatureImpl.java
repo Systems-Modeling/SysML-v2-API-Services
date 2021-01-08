@@ -593,13 +593,11 @@ public class MetadataFeatureImpl extends MofObjectImpl implements MetadataFeatur
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("metadataFeatureValue")
     private MetadataFeatureValue metadataFeatureValue;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
     @Any(metaDef = "MetadataFeatureValueMetaDef", metaColumn = @javax.persistence.Column(name = "metadataFeatureValueType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "metadataFeatureValueId", table = "MetadataFeature")
     public MetadataFeatureValue getMetadataFeatureValue() {
