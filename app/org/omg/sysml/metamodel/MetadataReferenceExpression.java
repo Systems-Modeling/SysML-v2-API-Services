@@ -26,5 +26,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface MetadataReferenceExpression extends FeatureReferenceExpression, MetadataExpression, MofObject {
-    MetadataFeature getReferent();
+
 }

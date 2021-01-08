@@ -27,4 +27,6 @@ import java.util.Set;
 
 public interface MetadataFeatureValue extends FeatureValue, MofObject {
     MetadataExpression getMetadataValue();
+
+    MetadataFeature getOwningMetadataFeature();
 }
