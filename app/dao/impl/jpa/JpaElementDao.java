@@ -47,6 +47,7 @@ import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 import java.beans.PropertyDescriptor;
 import java.util.*;
@@ -101,7 +102,9 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
             CriteriaQuery<MofObjectImpl> query = builder.createQuery(MofObjectImpl.class);
             Root<MofObjectImpl> root = query.from(MofObjectImpl.class);
             query.select(root).where(getTypeExpression(builder, root));
-            return em.createQuery(query).getResultStream().map(o -> (Element) o).collect(Collectors.toList());
+            return em.createQuery(query).getResultStream()
+                    .map(o -> (Element) o)
+                    .collect(Collectors.toList());
         });
     }
 
@@ -112,21 +115,50 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
             CriteriaDelete<MofObjectImpl> query = builder.createCriteriaDelete(MofObjectImpl.class);
             Root<MofObjectImpl> root = query.from(MofObjectImpl.class);
             query.where(getTypeExpression(builder, root));
-            return ((Stream<?>) em.createQuery(query).getResultStream()).map(o -> (Element) o).collect(Collectors.toList());
+            return ((Stream<?>) em.createQuery(query).getResultStream())
+                    .map(o -> (Element) o)
+                    .collect(Collectors.toList());
         });
     }
 
-    @Override
-    public Set<Element> findAllByCommit(Commit commit) {
+    public List<Element> findAllByCommit(Commit commit, UUID after, UUID before, int maxResults) {
         return jpaManager.transact(em -> {
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
             Commit c = em.contains(commit) ? commit : em.find(metamodelProvider.getImplementationClass(Commit.class), commit.getId());
-            return getCommitIndex(c, em).getWorkingElementVersions().stream()
+            CommitIndex commitIndex = getCommitIndex(c, em);
+
+            CriteriaBuilder builder = em.getCriteriaBuilder();
+            CriteriaQuery<ElementVersionImpl> query = builder.createQuery(ElementVersionImpl.class);
+            Root<CommitIndexImpl> commitIndexRoot = query.from(CommitIndexImpl.class);
+            SetJoin<CommitIndexImpl, ElementVersionImpl> workingElementVersionsJoin = commitIndexRoot.join(CommitIndexImpl_.workingElementVersions);
+            Join<ElementVersionImpl, ElementIdentityImpl> elementIdentityJoin = workingElementVersionsJoin.join(ElementVersionImpl_.identity);
+            query.select(workingElementVersionsJoin);
+            Expression<Boolean> whereExpression = builder.equal(commitIndexRoot.get(CommitIndexImpl_.id), commitIndex.getId());
+            if (after != null) {
+                whereExpression = builder.and(whereExpression, builder.greaterThan(elementIdentityJoin.get(ElementIdentityImpl_.id), after));
+            }
+            if (before != null) {
+                whereExpression = builder.and(whereExpression, builder.lessThan(elementIdentityJoin.get(ElementIdentityImpl_.id), before));
+            }
+            query.where(whereExpression);
+            boolean flip = after == null && before != null;
+            Function<Path<UUID>, Order> orderFunction = flip ? builder::desc : builder::asc;
+            query.orderBy((orderFunction).apply(elementIdentityJoin.get(ElementIdentityImpl_.id)));
+            TypedQuery<ElementVersionImpl> typedQuery = em.createQuery(query);
+            if (maxResults >= 0) {
+                typedQuery.setMaxResults(maxResults);
+            }
+            List<Element> result = typedQuery
+                    .getResultStream()
                     .map(ElementVersion::getData)
                     .filter(mof -> mof instanceof Element)
                     .map(mof -> (Element) mof)
                     .map(PROXY_RESOLVER)
-                    .collect(Collectors.toSet());
+                    .collect(Collectors.toList());
+            if (flip) {
+                Collections.reverse(result);
+            }
+            return result;
         });
     }
 
@@ -159,7 +191,7 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
     }
 
     @Override
-    public Set<Element> findRootsByCommit(Commit commit) {
+    public List<Element> findRootsByCommit(Commit commit) {
         return jpaManager.transact(em -> {
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
             Commit c = em.contains(commit) ? commit : em.find(metamodelProvider.getImplementationClass(Commit.class), commit.getId());
@@ -169,12 +201,12 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
                     .map(mof -> (Element) mof)
                     .filter(element -> element.getOwner() == null)
                     .map(PROXY_RESOLVER)
-                    .collect(Collectors.toSet());
+                    .collect(Collectors.toList());
         });
     }
 
     @Override
-    public Set<Element> findByCommitAndQuery(Commit commit, Query query) {
+    public List<Element> findByCommitAndQuery(Commit commit, Query query) {
         return jpaManager.transact(em -> {
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
             Commit c = em.contains(commit) ? commit : em.find(metamodelProvider.getImplementationClass(Commit.class), commit.getId());
@@ -186,7 +218,7 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
                     .map(mof -> (Element) mof)
                     .filter(constrain(q.getWhere()))
                     .map(PROXY_RESOLVER)
-                    .collect(Collectors.toSet());
+                    .collect(Collectors.toList());
         });
     }
 
