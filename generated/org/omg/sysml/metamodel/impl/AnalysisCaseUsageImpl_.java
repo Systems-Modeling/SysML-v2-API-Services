@@ -110,6 +110,7 @@ public abstract class AnalysisCaseUsageImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile CollectionAttribute<AnalysisCaseUsageImpl, Behavior> behavior;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<AnalysisCaseUsageImpl, Element> ownedElement;
+	public static volatile SingularAttribute<AnalysisCaseUsageImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<AnalysisCaseUsageImpl, ActionUsage> nestedAction;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, FeatureMembership> featureMembership;
@@ -183,6 +184,7 @@ public abstract class AnalysisCaseUsageImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String BEHAVIOR = "behavior";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String NESTED_ACTION = "nestedAction";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";

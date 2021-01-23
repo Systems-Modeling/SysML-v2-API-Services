@@ -31,6 +31,7 @@
         "isComposite": {"@type": "xsd:boolean"},
         "isConjugated": {"@type": "xsd:boolean"},
         "isEnd": {"@type": "xsd:boolean"},
+        "isModelLevelEvaluable": {"@type": "xsd:boolean"},
         "isNonunique": {"@type": "xsd:boolean"},
         "isOrdered": {"@type": "xsd:boolean"},
         "isSufficient": {"@type": "xsd:boolean"},

@@ -56,6 +56,7 @@ public abstract class InvocationExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static volatile ListAttribute<InvocationExpressionImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<InvocationExpressionImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<InvocationExpressionImpl, Element> ownedElement;
+	public static volatile SingularAttribute<InvocationExpressionImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<InvocationExpressionImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<InvocationExpressionImpl, Relationship> ownedRelationship;
 	public static volatile CollectionAttribute<InvocationExpressionImpl, Documentation> documentation;
@@ -101,6 +102,7 @@ public abstract class InvocationExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String DOCUMENTATION = "documentation";

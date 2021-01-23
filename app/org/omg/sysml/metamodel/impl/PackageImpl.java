@@ -142,42 +142,18 @@ public class PackageImpl extends MofObjectImpl implements Package {
 
 
 
-    // @info.archinnov.achilles.annotations.Column("filter")
-    private Collection<ElementFilter> filter;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "ElementFilterMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Package_filter",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<ElementFilter> getFilter() {
-        if (filter == null) {
-            filter = new ArrayList<>();
-        }
-        return filter;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementFilterImpl.class)
-    public void setFilter(Collection<ElementFilter> filter) {
-        this.filter = filter;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("filterCondition")
-    private Collection<MetadataCondition> filterCondition;
+    private Collection<Expression> filterCondition;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "MetadataConditionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Package_filterCondition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<MetadataCondition> getFilterCondition() {
+    public Collection<Expression> getFilterCondition() {
         if (filterCondition == null) {
             filterCondition = new ArrayList<>();
         }
@@ -185,8 +161,8 @@ public class PackageImpl extends MofObjectImpl implements Package {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MetadataConditionImpl.class)
-    public void setFilterCondition(Collection<MetadataCondition> filterCondition) {
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ExpressionImpl.class)
+    public void setFilterCondition(Collection<Expression> filterCondition) {
         this.filterCondition = filterCondition;
     }
 

@@ -54,6 +54,7 @@ public abstract class QueryPathExpressionImpl_ extends org.omg.sysml.metamodel.i
 	public static volatile ListAttribute<QueryPathExpressionImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, Element> ownedElement;
+	public static volatile SingularAttribute<QueryPathExpressionImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<QueryPathExpressionImpl, Relationship> ownedRelationship;
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, Documentation> documentation;
@@ -98,6 +99,7 @@ public abstract class QueryPathExpressionImpl_ extends org.omg.sysml.metamodel.i
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String DOCUMENTATION = "documentation";

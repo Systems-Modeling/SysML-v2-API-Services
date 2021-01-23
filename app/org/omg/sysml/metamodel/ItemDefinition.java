@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ItemDefinition extends Class, Definition, MofObject {
+public interface ItemDefinition extends Structure, Definition, MofObject {
 
 }

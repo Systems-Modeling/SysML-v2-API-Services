@@ -26,7 +26,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface Package extends Namespace, MofObject {
-    Collection<? extends MetadataCondition> getFilterCondition();
-
-    Collection<? extends ElementFilter> getFilter();
+    Collection<? extends Expression> getFilterCondition();
 }

@@ -112,6 +112,7 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<ViewpointUsageImpl, Behavior> behavior;
 	public static volatile ListAttribute<ViewpointUsageImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<ViewpointUsageImpl, Element> ownedElement;
+	public static volatile SingularAttribute<ViewpointUsageImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<ViewpointUsageImpl, ActionUsage> nestedAction;
 	public static volatile ListAttribute<ViewpointUsageImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<ViewpointUsageImpl, FeatureMembership> featureMembership;
@@ -187,6 +188,7 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String BEHAVIOR = "behavior";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String NESTED_ACTION = "nestedAction";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";

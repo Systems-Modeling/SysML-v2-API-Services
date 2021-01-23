@@ -54,6 +54,7 @@ public abstract class LiteralUnboundedImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile ListAttribute<LiteralUnboundedImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<LiteralUnboundedImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<LiteralUnboundedImpl, Element> ownedElement;
+	public static volatile SingularAttribute<LiteralUnboundedImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<LiteralUnboundedImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<LiteralUnboundedImpl, Relationship> ownedRelationship;
 	public static volatile CollectionAttribute<LiteralUnboundedImpl, Documentation> documentation;
@@ -98,6 +99,7 @@ public abstract class LiteralUnboundedImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String DOCUMENTATION = "documentation";

@@ -120,16 +120,16 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("connectionDefinition")
-    private Collection<Association> connectionDefinition;
+    private Collection<AssociationStructure> connectionDefinition;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "AssociationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "AssociationStructureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_connectionDefinition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Association> getConnectionDefinition() {
+    public Collection<AssociationStructure> getConnectionDefinition() {
         if (connectionDefinition == null) {
             connectionDefinition = new ArrayList<>();
         }
@@ -137,8 +137,8 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AssociationImpl.class)
-    public void setConnectionDefinition(Collection<Association> connectionDefinition) {
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AssociationStructureImpl.class)
+    public void setConnectionDefinition(Collection<AssociationStructure> connectionDefinition) {
         this.connectionDefinition = connectionDefinition;
     }
 
@@ -700,16 +700,16 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("itemDefinition")
-    private Collection<Class> itemDefinition;
+    private Collection<Structure> itemDefinition;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ClassMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "StructureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "InterfaceUsage_itemDefinition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Class> getItemDefinition() {
+    public Collection<Structure> getItemDefinition() {
         if (itemDefinition == null) {
             itemDefinition = new ArrayList<>();
         }
@@ -717,8 +717,8 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ClassImpl.class)
-    public void setItemDefinition(Collection<Class> itemDefinition) {
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StructureImpl.class)
+    public void setItemDefinition(Collection<Structure> itemDefinition) {
         this.itemDefinition = itemDefinition;
     }
 

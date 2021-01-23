@@ -57,6 +57,7 @@ public abstract class QueryPathStepExpressionImpl_ extends org.omg.sysml.metamod
 	public static volatile ListAttribute<QueryPathStepExpressionImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<QueryPathStepExpressionImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<QueryPathStepExpressionImpl, Element> ownedElement;
+	public static volatile SingularAttribute<QueryPathStepExpressionImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<QueryPathStepExpressionImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<QueryPathStepExpressionImpl, Relationship> ownedRelationship;
 	public static volatile CollectionAttribute<QueryPathStepExpressionImpl, Documentation> documentation;
@@ -104,6 +105,7 @@ public abstract class QueryPathStepExpressionImpl_ extends org.omg.sysml.metamod
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String DOCUMENTATION = "documentation";

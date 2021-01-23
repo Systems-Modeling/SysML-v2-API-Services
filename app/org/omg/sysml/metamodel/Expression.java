@@ -29,4 +29,6 @@ public interface Expression extends Step, MofObject {
     Function getFunction();
 
     Feature getResult();
+
+    Boolean getIsModelLevelEvaluable();
 }

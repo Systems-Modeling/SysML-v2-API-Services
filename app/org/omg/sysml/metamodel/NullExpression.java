@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface NullExpression extends MetadataExpression, MofObject {
+public interface NullExpression extends Expression, MofObject {
 
 }

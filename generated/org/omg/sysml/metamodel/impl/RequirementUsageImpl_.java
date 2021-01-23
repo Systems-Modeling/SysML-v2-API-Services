@@ -112,6 +112,7 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile CollectionAttribute<RequirementUsageImpl, Behavior> behavior;
 	public static volatile ListAttribute<RequirementUsageImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<RequirementUsageImpl, Element> ownedElement;
+	public static volatile SingularAttribute<RequirementUsageImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<RequirementUsageImpl, ActionUsage> nestedAction;
 	public static volatile ListAttribute<RequirementUsageImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<RequirementUsageImpl, FeatureMembership> featureMembership;
@@ -187,6 +188,7 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String BEHAVIOR = "behavior";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String NESTED_ACTION = "nestedAction";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
