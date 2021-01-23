@@ -125,7 +125,7 @@ public class ElementController extends Controller {
                         toCursor(elements.get(0).getIdentifier()),
                         pageSize));
             }
-            linkHeaderValue = linkHeaderValueBuilder.toString();
+            linkHeaderValue = linkHeaderValueBuilder.length() > 0 ? linkHeaderValueBuilder.toString() : null;
         }
         else {
             linkHeaderValue = null;
