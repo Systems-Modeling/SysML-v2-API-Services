@@ -54,6 +54,7 @@ public abstract class InvariantImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile ListAttribute<InvariantImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<InvariantImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<InvariantImpl, Element> ownedElement;
+	public static volatile SingularAttribute<InvariantImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<InvariantImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<InvariantImpl, Relationship> ownedRelationship;
 	public static volatile CollectionAttribute<InvariantImpl, Documentation> documentation;
@@ -98,6 +99,7 @@ public abstract class InvariantImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String DOCUMENTATION = "documentation";

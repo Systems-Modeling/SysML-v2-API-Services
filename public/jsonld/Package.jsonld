@@ -8,7 +8,6 @@
         "aliasId": {"@type": "xsd:string"},
         "documentation": {"@type": "@id"},
         "documentationComment": {"@type": "@id"},
-        "filter": {"@type": "@id"},
         "filterCondition": {"@type": "@id"},
         "humanId": {"@type": "xsd:string"},
         "identifier": {"@type": "dcterms:identifier"},

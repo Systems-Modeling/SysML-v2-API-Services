@@ -54,6 +54,7 @@ public abstract class LiteralExpressionImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile ListAttribute<LiteralExpressionImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<LiteralExpressionImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<LiteralExpressionImpl, Element> ownedElement;
+	public static volatile SingularAttribute<LiteralExpressionImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<LiteralExpressionImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<LiteralExpressionImpl, Relationship> ownedRelationship;
 	public static volatile CollectionAttribute<LiteralExpressionImpl, Documentation> documentation;
@@ -98,6 +99,7 @@ public abstract class LiteralExpressionImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String DOCUMENTATION = "documentation";

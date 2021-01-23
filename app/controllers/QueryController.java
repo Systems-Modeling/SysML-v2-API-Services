@@ -106,7 +106,7 @@ public class QueryController extends Controller {
     }
 
     private Result buildResponse(QueryService.QueryResults result, UUID projectId, Http.Request request) {
-        Set<Element> elements = result.getElements();
+        List<Element> elements = result.getElements();
         AllowedPropertyFilter filter = result.getPropertyFilter();
         boolean respondWithJsonLd = ElementController.respondWithJsonLd(request);
         JsonNode json = JacksonHelper.collectionToTree(elements.stream()

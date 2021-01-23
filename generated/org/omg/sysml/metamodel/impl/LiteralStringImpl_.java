@@ -55,6 +55,7 @@ public abstract class LiteralStringImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static volatile ListAttribute<LiteralStringImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<LiteralStringImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<LiteralStringImpl, Element> ownedElement;
+	public static volatile SingularAttribute<LiteralStringImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<LiteralStringImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<LiteralStringImpl, Relationship> ownedRelationship;
 	public static volatile CollectionAttribute<LiteralStringImpl, Documentation> documentation;
@@ -100,6 +101,7 @@ public abstract class LiteralStringImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String DOCUMENTATION = "documentation";

@@ -109,6 +109,7 @@ public abstract class CalculationUsageImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile CollectionAttribute<CalculationUsageImpl, Behavior> behavior;
 	public static volatile ListAttribute<CalculationUsageImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<CalculationUsageImpl, Element> ownedElement;
+	public static volatile SingularAttribute<CalculationUsageImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<CalculationUsageImpl, ActionUsage> nestedAction;
 	public static volatile ListAttribute<CalculationUsageImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<CalculationUsageImpl, FeatureMembership> featureMembership;
@@ -181,6 +182,7 @@ public abstract class CalculationUsageImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String BEHAVIOR = "behavior";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String NESTED_ACTION = "nestedAction";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";

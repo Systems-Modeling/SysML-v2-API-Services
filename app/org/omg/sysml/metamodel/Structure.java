@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface MetadataExpression extends Expression, MofObject {
+public interface Structure extends Class, MofObject {
 
 }

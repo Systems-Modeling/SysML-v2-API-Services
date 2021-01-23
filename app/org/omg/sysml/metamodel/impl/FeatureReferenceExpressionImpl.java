@@ -523,6 +523,24 @@ public class FeatureReferenceExpressionImpl extends MofObjectImpl implements Fea
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("isModelLevelEvaluable")
+    private Boolean isModelLevelEvaluable;
+
+    @JsonGetter
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "isModelLevelEvaluable", table = "FeatureReferenceExpression")
+    public Boolean getIsModelLevelEvaluable() {
+        return isModelLevelEvaluable;
+    }
+
+    @JsonSetter
+    public void setIsModelLevelEvaluable(Boolean isModelLevelEvaluable) {
+        this.isModelLevelEvaluable = isModelLevelEvaluable;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("isNonunique")
     private Boolean isNonunique;
 

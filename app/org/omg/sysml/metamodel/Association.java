@@ -25,12 +25,12 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Association extends Class, Relationship, MofObject {
+public interface Association extends Classifier, Relationship, MofObject {
     List<? extends Type> getRelatedType();
-
-    Collection<? extends Feature> getAssociationEnd();
 
     Type getSourceType();
 
     Collection<? extends Type> getTargetType();
+
+    Collection<? extends Feature> getAssociationEnd();
 }

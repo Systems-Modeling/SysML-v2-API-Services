@@ -34,7 +34,7 @@ public interface ViewUsage extends PartUsage, MofObject {
 
     RenderingUsage getRendering();
 
-    Collection<? extends MetadataCondition> getViewCondition();
+    Collection<? extends Expression> getViewCondition();
 
     Collection<? extends Element> getViewedElement();
 }

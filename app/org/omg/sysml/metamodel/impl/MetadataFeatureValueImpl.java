@@ -252,19 +252,19 @@ public class MetadataFeatureValueImpl extends MofObjectImpl implements MetadataF
 
 
     // @info.archinnov.achilles.annotations.Column("metadataValue")
-    private MetadataExpression metadataValue;
+    private Expression metadataValue;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "MetadataExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "metadataValueType"), fetch = FetchType.LAZY)
+    @Any(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "metadataValueType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "metadataValueId", table = "MetadataFeatureValue")
-    public MetadataExpression getMetadataValue() {
+    public Expression getMetadataValue() {
         return metadataValue;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = MetadataExpressionImpl.class)
-    public void setMetadataValue(MetadataExpression metadataValue) {
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ExpressionImpl.class)
+    public void setMetadataValue(Expression metadataValue) {
         this.metadataValue = metadataValue;
     }
 

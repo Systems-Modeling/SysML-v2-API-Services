@@ -55,6 +55,7 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile ListAttribute<LiteralBooleanImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<LiteralBooleanImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<LiteralBooleanImpl, Element> ownedElement;
+	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<LiteralBooleanImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<LiteralBooleanImpl, Relationship> ownedRelationship;
 	public static volatile CollectionAttribute<LiteralBooleanImpl, Documentation> documentation;
@@ -100,6 +101,7 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String DOCUMENTATION = "documentation";

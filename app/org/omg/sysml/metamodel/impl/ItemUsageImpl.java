@@ -585,16 +585,16 @@ public class ItemUsageImpl extends MofObjectImpl implements ItemUsage {
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("itemDefinition")
-    private Collection<Class> itemDefinition;
+    private Collection<Structure> itemDefinition;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ClassMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "StructureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "ItemUsage_itemDefinition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Class> getItemDefinition() {
+    public Collection<Structure> getItemDefinition() {
         if (itemDefinition == null) {
             itemDefinition = new ArrayList<>();
         }
@@ -602,8 +602,8 @@ public class ItemUsageImpl extends MofObjectImpl implements ItemUsage {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ClassImpl.class)
-    public void setItemDefinition(Collection<Class> itemDefinition) {
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StructureImpl.class)
+    public void setItemDefinition(Collection<Structure> itemDefinition) {
         this.itemDefinition = itemDefinition;
     }
 

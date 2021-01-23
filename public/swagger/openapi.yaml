@@ -217,6 +217,21 @@ paths:
         type: string
         format: uuid
         required: true
+      - name: page[after]
+        in: query
+        description: Page after
+        type: string
+        required: false
+      - name: page[before]
+        in: query
+        description: Page before
+        type: string
+        required: false
+      - name: page[size]
+        in: query
+        description: Page size
+        type: integer
+        required: false
     get:
       tags:
         - Element

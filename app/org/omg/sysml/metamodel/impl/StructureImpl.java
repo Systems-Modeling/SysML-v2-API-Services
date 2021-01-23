@@ -61,14 +61,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
-@Entity(name = "MetadataOperationExpressionImpl")
-@SecondaryTable(name = "MetadataOperationExpression")
-@org.hibernate.annotations.Table(appliesTo = "MetadataOperationExpression", fetch = FetchMode.SELECT, optional = false)
-// @info.archinnov.achilles.annotations.Table(table = "MetadataOperationExpression")
-@DiscriminatorValue(value = "MetadataOperationExpression")
-@JsonTypeName(value = "MetadataOperationExpression")
+@Entity(name = "StructureImpl")
+@SecondaryTable(name = "Structure")
+@org.hibernate.annotations.Table(appliesTo = "Structure", fetch = FetchMode.SELECT, optional = false)
+// @info.archinnov.achilles.annotations.Table(table = "Structure")
+@DiscriminatorValue(value = "Structure")
+@JsonTypeName(value = "Structure")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class MetadataOperationExpressionImpl extends MofObjectImpl implements MetadataOperationExpression {
+public class StructureImpl extends MofObjectImpl implements Structure {
     // @info.archinnov.achilles.annotations.Column("aliasId")
     private Collection<String> aliasId;
 
@@ -76,8 +76,8 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "MetadataOperationExpression_aliasId",
-            joinColumns = @JoinColumn(name = "MetadataOperationExpressionId"))
+    @CollectionTable(name = "Structure_aliasId",
+            joinColumns = @JoinColumn(name = "StructureId"))
     public Collection<String> getAliasId() {
         if (aliasId == null) {
             aliasId = new ArrayList<>();
@@ -92,65 +92,13 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("argument")
-    private List<MetadataExpression> argument;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "MetadataExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_argument",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<MetadataExpression> getArgument() {
-        if (argument == null) {
-            argument = new ArrayList<>();
-        }
-        return argument;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MetadataExpressionImpl.class)
-    public void setArgument(List<MetadataExpression> argument) {
-        this.argument = argument;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("behavior")
-    private Collection<Behavior> behavior;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "BehaviorMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_behavior",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Behavior> getBehavior() {
-        if (behavior == null) {
-            behavior = new ArrayList<>();
-        }
-        return behavior;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = BehaviorImpl.class)
-    public void setBehavior(Collection<Behavior> behavior) {
-        this.behavior = behavior;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("documentation")
     private Collection<Documentation> documentation;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_documentation",
+    @JoinTable(name = "Structure_documentation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Documentation> getDocumentation() {
@@ -176,7 +124,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_documentationComment",
+    @JoinTable(name = "Structure_documentationComment",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Comment> getDocumentationComment() {
@@ -202,7 +150,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_endFeature",
+    @JoinTable(name = "Structure_endFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getEndFeature() {
@@ -221,27 +169,6 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("endOwningType")
-    private Type endOwningType;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "endOwningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "endOwningTypeId", table = "MetadataOperationExpression")
-    public Type getEndOwningType() {
-        return endOwningType;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
-    public void setEndOwningType(Type endOwningType) {
-        this.endOwningType = endOwningType;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("feature")
     private Collection<Feature> feature;
 
@@ -249,7 +176,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_feature",
+    @JoinTable(name = "Structure_feature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getFeature() {
@@ -275,7 +202,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_featureMembership",
+    @JoinTable(name = "Structure_featureMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureMembership> getFeatureMembership() {
@@ -293,60 +220,13 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("featuringType")
-    private Collection<Type> featuringType;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_featuringType",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Type> getFeaturingType() {
-        if (featuringType == null) {
-            featuringType = new ArrayList<>();
-        }
-        return featuringType;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
-    public void setFeaturingType(Collection<Type> featuringType) {
-        this.featuringType = featuringType;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("function")
-    private Function function;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "FunctionMetaDef", metaColumn = @javax.persistence.Column(name = "functionType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "functionId", table = "MetadataOperationExpression")
-    public Function getFunction() {
-        return function;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FunctionImpl.class)
-    public void setFunction(Function function) {
-        this.function = function;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("humanId")
     private String humanId;
 
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "humanId", table = "MetadataOperationExpression")
+    @javax.persistence.Column(name = "humanId", table = "Structure")
     public String getHumanId() {
         return humanId;
     }
@@ -362,7 +242,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     private java.util.UUID identifier;
 
     @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "MetadataOperationExpression")
+    @javax.persistence.Column(name = "identifier", table = "Structure")
     public java.util.UUID getIdentifier() {
         return identifier;
     }
@@ -382,7 +262,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_importedMembership",
+    @JoinTable(name = "Structure_importedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getImportedMembership() {
@@ -408,7 +288,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_inheritedFeature",
+    @JoinTable(name = "Structure_inheritedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getInheritedFeature() {
@@ -434,7 +314,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_inheritedMembership",
+    @JoinTable(name = "Structure_inheritedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getInheritedMembership() {
@@ -460,7 +340,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_input",
+    @JoinTable(name = "Structure_input",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getInput() {
@@ -482,7 +362,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     private Boolean isAbstract;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isAbstract", table = "MetadataOperationExpression")
+    @javax.persistence.Column(name = "isAbstract", table = "Structure")
     public Boolean getIsAbstract() {
         return isAbstract;
     }
@@ -495,30 +375,12 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("isComposite")
-    private Boolean isComposite;
-
-    @JsonGetter
-    // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isComposite", table = "MetadataOperationExpression")
-    public Boolean getIsComposite() {
-        return isComposite;
-    }
-
-    @JsonSetter
-    public void setIsComposite(Boolean isComposite) {
-        this.isComposite = isComposite;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("isConjugated")
     private Boolean isConjugated;
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isConjugated", table = "MetadataOperationExpression")
+    @javax.persistence.Column(name = "isConjugated", table = "Structure")
     public Boolean getIsConjugated() {
         return isConjugated;
     }
@@ -530,63 +392,11 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("isEnd")
-    private Boolean isEnd;
-
-    @JsonGetter
-    // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isEnd", table = "MetadataOperationExpression")
-    public Boolean getIsEnd() {
-        return isEnd;
-    }
-
-    @JsonSetter
-    public void setIsEnd(Boolean isEnd) {
-        this.isEnd = isEnd;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("isNonunique")
-    private Boolean isNonunique;
-
-    @JsonGetter
-    // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isNonunique", table = "MetadataOperationExpression")
-    public Boolean getIsNonunique() {
-        return isNonunique;
-    }
-
-    @JsonSetter
-    public void setIsNonunique(Boolean isNonunique) {
-        this.isNonunique = isNonunique;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("isOrdered")
-    private Boolean isOrdered;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isOrdered", table = "MetadataOperationExpression")
-    public Boolean getIsOrdered() {
-        return isOrdered;
-    }
-
-    @JsonSetter
-    public void setIsOrdered(Boolean isOrdered) {
-        this.isOrdered = isOrdered;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("isSufficient")
     private Boolean isSufficient;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isSufficient", table = "MetadataOperationExpression")
+    @javax.persistence.Column(name = "isSufficient", table = "Structure")
     public Boolean getIsSufficient() {
         return isSufficient;
     }
@@ -594,22 +404,6 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSetter
     public void setIsSufficient(Boolean isSufficient) {
         this.isSufficient = isSufficient;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("isUnique")
-    private Boolean isUnique;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isUnique", table = "MetadataOperationExpression")
-    public Boolean getIsUnique() {
-        return isUnique;
-    }
-
-    @JsonSetter
-    public void setIsUnique(Boolean isUnique) {
-        this.isUnique = isUnique;
     }
 
 
@@ -622,7 +416,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_member",
+    @JoinTable(name = "Structure_member",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getMember() {
@@ -648,7 +442,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_membership",
+    @JoinTable(name = "Structure_membership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getMembership() {
@@ -674,7 +468,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "multiplicityId", table = "MetadataOperationExpression")
+    @JoinColumn(name = "multiplicityId", table = "Structure")
     public Multiplicity getMultiplicity() {
         return multiplicity;
     }
@@ -695,7 +489,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "name", table = "MetadataOperationExpression")
+    @javax.persistence.Column(name = "name", table = "Structure")
     public String getName() {
         return name;
     }
@@ -715,7 +509,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_output",
+    @JoinTable(name = "Structure_output",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getOutput() {
@@ -739,7 +533,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_ownedAnnotation",
+    @JoinTable(name = "Structure_ownedAnnotation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Annotation> getOwnedAnnotation() {
@@ -765,7 +559,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConjugatorType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedConjugatorId", table = "MetadataOperationExpression")
+    @JoinColumn(name = "ownedConjugatorId", table = "Structure")
     public Conjugation getOwnedConjugator() {
         return ownedConjugator;
     }
@@ -786,7 +580,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_ownedElement",
+    @JoinTable(name = "Structure_ownedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getOwnedElement() {
@@ -812,7 +606,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_ownedEndFeature",
+    @JoinTable(name = "Structure_ownedEndFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getOwnedEndFeature() {
@@ -838,7 +632,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_ownedFeature",
+    @JoinTable(name = "Structure_ownedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getOwnedFeature() {
@@ -862,7 +656,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_ownedFeatureMembership",
+    @JoinTable(name = "Structure_ownedFeatureMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureMembership> getOwnedFeatureMembership() {
@@ -888,7 +682,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "GeneralizationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_ownedGeneralization",
+    @JoinTable(name = "Structure_ownedGeneralization",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Generalization> getOwnedGeneralization() {
@@ -912,7 +706,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_ownedImport",
+    @JoinTable(name = "Structure_ownedImport",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Import> getOwnedImport() {
@@ -938,7 +732,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_ownedMember",
+    @JoinTable(name = "Structure_ownedMember",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getOwnedMember() {
@@ -962,7 +756,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_ownedMembership",
+    @JoinTable(name = "Structure_ownedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getOwnedMembership() {
@@ -980,39 +774,13 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedRedefinition")
-    private Collection<Redefinition> ownedRedefinition;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "RedefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_ownedRedefinition",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Redefinition> getOwnedRedefinition() {
-        if (ownedRedefinition == null) {
-            ownedRedefinition = new ArrayList<>();
-        }
-        return ownedRedefinition;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RedefinitionImpl.class)
-    public void setOwnedRedefinition(Collection<Redefinition> ownedRedefinition) {
-        this.ownedRedefinition = ownedRedefinition;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("ownedRelationship")
     private List<Relationship> ownedRelationship;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_ownedRelationship",
+    @JoinTable(name = "Structure_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Relationship> getOwnedRelationship() {
@@ -1031,27 +799,27 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedSubsetting")
-    private Collection<Subsetting> ownedSubsetting;
+    // @info.archinnov.achilles.annotations.Column("ownedSuperclassing")
+    private Collection<Superclassing> ownedSuperclassing;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "SubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_ownedSubsetting",
+    @ManyToAny(metaDef = "SuperclassingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Structure_ownedSuperclassing",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Subsetting> getOwnedSubsetting() {
-        if (ownedSubsetting == null) {
-            ownedSubsetting = new ArrayList<>();
+    public Collection<Superclassing> getOwnedSuperclassing() {
+        if (ownedSuperclassing == null) {
+            ownedSuperclassing = new ArrayList<>();
         }
-        return ownedSubsetting;
+        return ownedSuperclassing;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SubsettingImpl.class)
-    public void setOwnedSubsetting(Collection<Subsetting> ownedSubsetting) {
-        this.ownedSubsetting = ownedSubsetting;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SuperclassingImpl.class)
+    public void setOwnedSuperclassing(Collection<Superclassing> ownedSuperclassing) {
+        this.ownedSuperclassing = ownedSuperclassing;
     }
 
 
@@ -1064,7 +832,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_ownedTextualRepresentation",
+    @JoinTable(name = "Structure_ownedTextualRepresentation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<TextualRepresentation> getOwnedTextualRepresentation() {
@@ -1083,58 +851,6 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedTypeFeaturing")
-    private Collection<TypeFeaturing> ownedTypeFeaturing;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TypeFeaturingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_ownedTypeFeaturing",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<TypeFeaturing> getOwnedTypeFeaturing() {
-        if (ownedTypeFeaturing == null) {
-            ownedTypeFeaturing = new ArrayList<>();
-        }
-        return ownedTypeFeaturing;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeFeaturingImpl.class)
-    public void setOwnedTypeFeaturing(Collection<TypeFeaturing> ownedTypeFeaturing) {
-        this.ownedTypeFeaturing = ownedTypeFeaturing;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedTyping")
-    private Collection<FeatureTyping> ownedTyping;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_ownedTyping",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<FeatureTyping> getOwnedTyping() {
-        if (ownedTyping == null) {
-            ownedTyping = new ArrayList<>();
-        }
-        return ownedTyping;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureTypingImpl.class)
-    public void setOwnedTyping(Collection<FeatureTyping> ownedTyping) {
-        this.ownedTyping = ownedTyping;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owner")
     private Element owner;
 
@@ -1142,7 +858,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownerId", table = "MetadataOperationExpression")
+    @JoinColumn(name = "ownerId", table = "Structure")
     public Element getOwner() {
         return owner;
     }
@@ -1155,32 +871,13 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
 
 
 
-    // @info.archinnov.achilles.annotations.Column("owningFeatureMembership")
-    private FeatureMembership owningFeatureMembership;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningFeatureMembershipId", table = "MetadataOperationExpression")
-    public FeatureMembership getOwningFeatureMembership() {
-        return owningFeatureMembership;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureMembershipImpl.class)
-    public void setOwningFeatureMembership(FeatureMembership owningFeatureMembership) {
-        this.owningFeatureMembership = owningFeatureMembership;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private Membership owningMembership;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningMembershipId", table = "MetadataOperationExpression")
+    @JoinColumn(name = "owningMembershipId", table = "Structure")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -1201,7 +898,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "MetadataOperationExpression")
+    @JoinColumn(name = "owningNamespaceId", table = "Structure")
     public Namespace getOwningNamespace() {
         return owningNamespace;
     }
@@ -1220,7 +917,7 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelationshipId", table = "MetadataOperationExpression")
+    @JoinColumn(name = "owningRelationshipId", table = "Structure")
     public Relationship getOwningRelationship() {
         return owningRelationship;
     }
@@ -1229,100 +926,6 @@ public class MetadataOperationExpressionImpl extends MofObjectImpl implements Me
     @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
     public void setOwningRelationship(Relationship owningRelationship) {
         this.owningRelationship = owningRelationship;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("owningType")
-    private Type owningType;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningTypeId", table = "MetadataOperationExpression")
-    public Type getOwningType() {
-        return owningType;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
-    public void setOwningType(Type owningType) {
-        this.owningType = owningType;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("parameter")
-    private Collection<Feature> parameter;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_parameter",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Feature> getParameter() {
-        if (parameter == null) {
-            parameter = new ArrayList<>();
-        }
-        return parameter;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
-    public void setParameter(Collection<Feature> parameter) {
-        this.parameter = parameter;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("result")
-    private Feature result;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "resultType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "resultId", table = "MetadataOperationExpression")
-    public Feature getResult() {
-        return result;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
-    public void setResult(Feature result) {
-        this.result = result;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("type")
-    private Collection<Type> type;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "MetadataOperationExpression_type",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Type> getType() {
-        if (type == null) {
-            type = new ArrayList<>();
-        }
-        return type;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
-    public void setType(Collection<Type> type) {
-        this.type = type;
     }
 
 
