@@ -544,6 +544,24 @@ public class InvariantImpl extends MofObjectImpl implements Invariant {
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("isModelLevelEvaluable")
+    private Boolean isModelLevelEvaluable;
+
+    @JsonGetter
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "isModelLevelEvaluable", table = "Invariant")
+    public Boolean getIsModelLevelEvaluable() {
+        return isModelLevelEvaluable;
+    }
+
+    @JsonSetter
+    public void setIsModelLevelEvaluable(Boolean isModelLevelEvaluable) {
+        this.isModelLevelEvaluable = isModelLevelEvaluable;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("isNonunique")
     private Boolean isNonunique;
 

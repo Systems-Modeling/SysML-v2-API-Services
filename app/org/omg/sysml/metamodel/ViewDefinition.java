@@ -32,5 +32,5 @@ public interface ViewDefinition extends PartDefinition, MofObject {
 
     RenderingUsage getRendering();
 
-    Collection<? extends MetadataCondition> getViewCondition();
+    Collection<? extends Expression> getViewCondition();
 }

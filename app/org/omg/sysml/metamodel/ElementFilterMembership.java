@@ -25,8 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ElementFilter extends Relationship, MofObject {
-    MetadataCondition getCondition();
-
-    Package getFilteredPackage();
+public interface ElementFilterMembership extends Membership, MofObject {
+    Expression getCondition();
 }

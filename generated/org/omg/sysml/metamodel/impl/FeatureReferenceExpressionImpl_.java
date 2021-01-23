@@ -54,6 +54,7 @@ public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.meta
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, Element> ownedElement;
+	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Relationship> ownedRelationship;
 	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, Documentation> documentation;
@@ -98,6 +99,7 @@ public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.meta
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String DOCUMENTATION = "documentation";

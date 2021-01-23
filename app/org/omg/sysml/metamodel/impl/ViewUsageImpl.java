@@ -611,16 +611,16 @@ public class ViewUsageImpl extends MofObjectImpl implements ViewUsage {
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("itemDefinition")
-    private Collection<Class> itemDefinition;
+    private Collection<Structure> itemDefinition;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ClassMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "StructureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "ViewUsage_itemDefinition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Class> getItemDefinition() {
+    public Collection<Structure> getItemDefinition() {
         if (itemDefinition == null) {
             itemDefinition = new ArrayList<>();
         }
@@ -628,8 +628,8 @@ public class ViewUsageImpl extends MofObjectImpl implements ViewUsage {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ClassImpl.class)
-    public void setItemDefinition(Collection<Class> itemDefinition) {
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StructureImpl.class)
+    public void setItemDefinition(Collection<Structure> itemDefinition) {
         this.itemDefinition = itemDefinition;
     }
 
@@ -2066,16 +2066,16 @@ public class ViewUsageImpl extends MofObjectImpl implements ViewUsage {
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("viewCondition")
-    private Collection<MetadataCondition> viewCondition;
+    private Collection<Expression> viewCondition;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "MetadataConditionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "ViewUsage_viewCondition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<MetadataCondition> getViewCondition() {
+    public Collection<Expression> getViewCondition() {
         if (viewCondition == null) {
             viewCondition = new ArrayList<>();
         }
@@ -2083,8 +2083,8 @@ public class ViewUsageImpl extends MofObjectImpl implements ViewUsage {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MetadataConditionImpl.class)
-    public void setViewCondition(Collection<MetadataCondition> viewCondition) {
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ExpressionImpl.class)
+    public void setViewCondition(Collection<Expression> viewCondition) {
         this.viewCondition = viewCondition;
     }
 

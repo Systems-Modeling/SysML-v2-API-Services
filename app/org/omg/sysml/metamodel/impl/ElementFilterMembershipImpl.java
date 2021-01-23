@@ -61,14 +61,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
-@Entity(name = "ElementFilterImpl")
-@SecondaryTable(name = "ElementFilter")
-@org.hibernate.annotations.Table(appliesTo = "ElementFilter", fetch = FetchMode.SELECT, optional = false)
-// @info.archinnov.achilles.annotations.Table(table = "ElementFilter")
-@DiscriminatorValue(value = "ElementFilter")
-@JsonTypeName(value = "ElementFilter")
+@Entity(name = "ElementFilterMembershipImpl")
+@SecondaryTable(name = "ElementFilterMembership")
+@org.hibernate.annotations.Table(appliesTo = "ElementFilterMembership", fetch = FetchMode.SELECT, optional = false)
+// @info.archinnov.achilles.annotations.Table(table = "ElementFilterMembership")
+@DiscriminatorValue(value = "ElementFilterMembership")
+@JsonTypeName(value = "ElementFilterMembership")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
+public class ElementFilterMembershipImpl extends MofObjectImpl implements ElementFilterMembership {
     // @info.archinnov.achilles.annotations.Column("aliasId")
     private Collection<String> aliasId;
 
@@ -76,8 +76,8 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "ElementFilter_aliasId",
-            joinColumns = @JoinColumn(name = "ElementFilterId"))
+    @CollectionTable(name = "ElementFilterMembership_aliasId",
+            joinColumns = @JoinColumn(name = "ElementFilterMembershipId"))
     public Collection<String> getAliasId() {
         if (aliasId == null) {
             aliasId = new ArrayList<>();
@@ -93,19 +93,19 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
 
 
     // @info.archinnov.achilles.annotations.Column("condition")
-    private MetadataCondition condition;
+    private Expression condition;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "MetadataConditionMetaDef", metaColumn = @javax.persistence.Column(name = "conditionType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "conditionId", table = "ElementFilter")
-    public MetadataCondition getCondition() {
+    @Any(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "conditionType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "conditionId", table = "ElementFilterMembership")
+    public Expression getCondition() {
         return condition;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = MetadataConditionImpl.class)
-    public void setCondition(MetadataCondition condition) {
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ExpressionImpl.class)
+    public void setCondition(Expression condition) {
         this.condition = condition;
     }
 
@@ -117,7 +117,7 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ElementFilter_documentation",
+    @JoinTable(name = "ElementFilterMembership_documentation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Documentation> getDocumentation() {
@@ -143,7 +143,7 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ElementFilter_documentationComment",
+    @JoinTable(name = "ElementFilterMembership_documentationComment",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Comment> getDocumentationComment() {
@@ -161,32 +161,13 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
 
 
 
-    // @info.archinnov.achilles.annotations.Column("filteredPackage")
-    private Package filteredPackage;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "filteredPackageType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "filteredPackageId", table = "ElementFilter")
-    public Package getFilteredPackage() {
-        return filteredPackage;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
-    public void setFilteredPackage(Package filteredPackage) {
-        this.filteredPackage = filteredPackage;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("humanId")
     private String humanId;
 
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "humanId", table = "ElementFilter")
+    @javax.persistence.Column(name = "humanId", table = "ElementFilterMembership")
     public String getHumanId() {
         return humanId;
     }
@@ -202,7 +183,7 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
     private java.util.UUID identifier;
 
     @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "ElementFilter")
+    @javax.persistence.Column(name = "identifier", table = "ElementFilterMembership")
     public java.util.UUID getIdentifier() {
         return identifier;
     }
@@ -210,6 +191,62 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
     @JsonSetter
     public void setIdentifier(java.util.UUID identifier) {
         this.identifier = identifier;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("memberElement")
+    private Element memberElement;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "memberElementType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "memberElementId", table = "ElementFilterMembership")
+    public Element getMemberElement() {
+        return memberElement;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
+    public void setMemberElement(Element memberElement) {
+        this.memberElement = memberElement;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("memberName")
+    private String memberName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "memberName", table = "ElementFilterMembership")
+    public String getMemberName() {
+        return memberName;
+    }
+
+    @JsonSetter
+    public void setMemberName(String memberName) {
+        this.memberName = memberName;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("membershipOwningNamespace")
+    private Namespace membershipOwningNamespace;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "membershipOwningNamespaceType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "membershipOwningNamespaceId", table = "ElementFilterMembership")
+    public Namespace getMembershipOwningNamespace() {
+        return membershipOwningNamespace;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = NamespaceImpl.class)
+    public void setMembershipOwningNamespace(Namespace membershipOwningNamespace) {
+        this.membershipOwningNamespace = membershipOwningNamespace;
     }
 
 
@@ -222,7 +259,7 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "name", table = "ElementFilter")
+    @javax.persistence.Column(name = "name", table = "ElementFilterMembership")
     public String getName() {
         return name;
     }
@@ -240,7 +277,7 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ElementFilter_ownedAnnotation",
+    @JoinTable(name = "ElementFilterMembership_ownedAnnotation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Annotation> getOwnedAnnotation() {
@@ -266,7 +303,7 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ElementFilter_ownedElement",
+    @JoinTable(name = "ElementFilterMembership_ownedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getOwnedElement() {
@@ -284,13 +321,32 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
 
 
 
+    // @info.archinnov.achilles.annotations.Column("ownedMemberElement")
+    private Element ownedMemberElement;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberElementType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedMemberElementId", table = "ElementFilterMembership")
+    public Element getOwnedMemberElement() {
+        return ownedMemberElement;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
+    public void setOwnedMemberElement(Element ownedMemberElement) {
+        this.ownedMemberElement = ownedMemberElement;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("ownedRelatedElement")
     private List<Element> ownedRelatedElement;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ElementFilter_ownedRelatedElement",
+    @JoinTable(name = "ElementFilterMembership_ownedRelatedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getOwnedRelatedElement() {
@@ -314,7 +370,7 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ElementFilter_ownedRelationship",
+    @JoinTable(name = "ElementFilterMembership_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Relationship> getOwnedRelationship() {
@@ -340,7 +396,7 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ElementFilter_ownedTextualRepresentation",
+    @JoinTable(name = "ElementFilterMembership_ownedTextualRepresentation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<TextualRepresentation> getOwnedTextualRepresentation() {
@@ -366,7 +422,7 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownerId", table = "ElementFilter")
+    @JoinColumn(name = "ownerId", table = "ElementFilterMembership")
     public Element getOwner() {
         return owner;
     }
@@ -385,7 +441,7 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningMembershipId", table = "ElementFilter")
+    @JoinColumn(name = "owningMembershipId", table = "ElementFilterMembership")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -406,7 +462,7 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "ElementFilter")
+    @JoinColumn(name = "owningNamespaceId", table = "ElementFilterMembership")
     public Namespace getOwningNamespace() {
         return owningNamespace;
     }
@@ -425,7 +481,7 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelatedElementId", table = "ElementFilter")
+    @JoinColumn(name = "owningRelatedElementId", table = "ElementFilterMembership")
     public Element getOwningRelatedElement() {
         return owningRelatedElement;
     }
@@ -444,7 +500,7 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelationshipId", table = "ElementFilter")
+    @JoinColumn(name = "owningRelationshipId", table = "ElementFilterMembership")
     public Relationship getOwningRelationship() {
         return owningRelationship;
     }
@@ -465,7 +521,7 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ElementFilter_relatedElement",
+    @JoinTable(name = "ElementFilterMembership_relatedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getRelatedElement() {
@@ -489,7 +545,7 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ElementFilter_source",
+    @JoinTable(name = "ElementFilterMembership_source",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getSource() {
@@ -513,7 +569,7 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ElementFilter_target",
+    @JoinTable(name = "ElementFilterMembership_target",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getTarget() {
@@ -527,6 +583,24 @@ public class ElementFilterImpl extends MofObjectImpl implements ElementFilter {
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
     public void setTarget(List<Element> target) {
         this.target = target;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("visibility")
+    // @info.archinnov.achilles.annotations.Enumerated(info.archinnov.achilles.annotations.Enumerated.Encoding.NAME)
+    private VisibilityKind visibility;
+
+    @JsonGetter
+    @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "visibility", table = "ElementFilterMembership")
+    public VisibilityKind getVisibility() {
+        return visibility;
+    }
+
+    @JsonSetter
+    public void setVisibility(VisibilityKind visibility) {
+        this.visibility = visibility;
     }
 
 

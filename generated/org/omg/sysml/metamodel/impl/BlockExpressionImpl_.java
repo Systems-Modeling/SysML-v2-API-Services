@@ -54,6 +54,7 @@ public abstract class BlockExpressionImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile ListAttribute<BlockExpressionImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<BlockExpressionImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<BlockExpressionImpl, Element> ownedElement;
+	public static volatile SingularAttribute<BlockExpressionImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<BlockExpressionImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<BlockExpressionImpl, Relationship> ownedRelationship;
 	public static volatile CollectionAttribute<BlockExpressionImpl, Documentation> documentation;
@@ -98,6 +99,7 @@ public abstract class BlockExpressionImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String DOCUMENTATION = "documentation";

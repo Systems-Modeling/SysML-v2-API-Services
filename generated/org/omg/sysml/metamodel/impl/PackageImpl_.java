@@ -10,10 +10,9 @@ import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
-import org.omg.sysml.metamodel.ElementFilter;
+import org.omg.sysml.metamodel.Expression;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.Membership;
-import org.omg.sysml.metamodel.MetadataCondition;
 import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.TextualRepresentation;
 
@@ -29,11 +28,10 @@ public abstract class PackageImpl_ extends org.omg.sysml.metamodel.impl.MofObjec
 	public static volatile CollectionAttribute<PackageImpl, Documentation> documentation;
 	public static volatile ListAttribute<PackageImpl, Membership> membership;
 	public static volatile ListAttribute<PackageImpl, Import> ownedImport;
-	public static volatile CollectionAttribute<PackageImpl, ElementFilter> filter;
 	public static volatile CollectionAttribute<PackageImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<PackageImpl, String> humanId;
 	public static volatile CollectionAttribute<PackageImpl, String> aliasId;
-	public static volatile CollectionAttribute<PackageImpl, MetadataCondition> filterCondition;
+	public static volatile CollectionAttribute<PackageImpl, Expression> filterCondition;
 	public static volatile ListAttribute<PackageImpl, Element> member;
 	public static volatile SingularAttribute<PackageImpl, String> name;
 	public static volatile CollectionAttribute<PackageImpl, Comment> documentationComment;
@@ -48,7 +46,6 @@ public abstract class PackageImpl_ extends org.omg.sysml.metamodel.impl.MofObjec
 	public static final String DOCUMENTATION = "documentation";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_IMPORT = "ownedImport";
-	public static final String FILTER = "filter";
 	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";

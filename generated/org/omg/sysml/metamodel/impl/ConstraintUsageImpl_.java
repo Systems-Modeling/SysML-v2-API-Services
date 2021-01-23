@@ -108,6 +108,7 @@ public abstract class ConstraintUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<ConstraintUsageImpl, Behavior> behavior;
 	public static volatile ListAttribute<ConstraintUsageImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<ConstraintUsageImpl, Element> ownedElement;
+	public static volatile SingularAttribute<ConstraintUsageImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<ConstraintUsageImpl, ActionUsage> nestedAction;
 	public static volatile ListAttribute<ConstraintUsageImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<ConstraintUsageImpl, FeatureMembership> featureMembership;
@@ -179,6 +180,7 @@ public abstract class ConstraintUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String BEHAVIOR = "behavior";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String NESTED_ACTION = "nestedAction";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";

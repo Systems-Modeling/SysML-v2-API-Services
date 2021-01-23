@@ -1695,16 +1695,16 @@ public class ViewDefinitionImpl extends MofObjectImpl implements ViewDefinition 
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("viewCondition")
-    private Collection<MetadataCondition> viewCondition;
+    private Collection<Expression> viewCondition;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "MetadataConditionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "ViewDefinition_viewCondition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<MetadataCondition> getViewCondition() {
+    public Collection<Expression> getViewCondition() {
         if (viewCondition == null) {
             viewCondition = new ArrayList<>();
         }
@@ -1712,8 +1712,8 @@ public class ViewDefinitionImpl extends MofObjectImpl implements ViewDefinition 
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MetadataConditionImpl.class)
-    public void setViewCondition(Collection<MetadataCondition> viewCondition) {
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ExpressionImpl.class)
+    public void setViewCondition(Collection<Expression> viewCondition) {
         this.viewCondition = viewCondition;
     }
 

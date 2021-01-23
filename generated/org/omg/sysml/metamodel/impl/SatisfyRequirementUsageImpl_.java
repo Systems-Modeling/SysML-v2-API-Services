@@ -112,6 +112,7 @@ public abstract class SatisfyRequirementUsageImpl_ extends org.omg.sysml.metamod
 	public static volatile CollectionAttribute<SatisfyRequirementUsageImpl, Behavior> behavior;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, Membership> importedMembership;
 	public static volatile CollectionAttribute<SatisfyRequirementUsageImpl, Element> ownedElement;
+	public static volatile SingularAttribute<SatisfyRequirementUsageImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<SatisfyRequirementUsageImpl, ActionUsage> nestedAction;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, FeatureMembership> featureMembership;
@@ -187,6 +188,7 @@ public abstract class SatisfyRequirementUsageImpl_ extends org.omg.sysml.metamod
 	public static final String BEHAVIOR = "behavior";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String NESTED_ACTION = "nestedAction";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";

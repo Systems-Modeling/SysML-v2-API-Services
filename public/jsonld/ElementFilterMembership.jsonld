@@ -9,12 +9,15 @@
         "condition": {"@type": "@id"},
         "documentation": {"@type": "@id"},
         "documentationComment": {"@type": "@id"},
-        "filteredPackage": {"@type": "@id"},
         "humanId": {"@type": "xsd:string"},
         "identifier": {"@type": "dcterms:identifier"},
+        "memberElement": {"@type": "@id"},
+        "memberName": {"@type": "xsd:string"},
+        "membershipOwningNamespace": {"@type": "@id"},
         "name": {"@type": "xsd:string"},
         "ownedAnnotation": {"@type": "@id"},
         "ownedElement": {"@type": "@id"},
+        "ownedMemberElement": {"@type": "@id"},
         "ownedRelatedElement": {"@type": "@id"},
         "ownedRelationship": {"@type": "@id"},
         "ownedTextualRepresentation": {"@type": "@id"},
@@ -25,7 +28,8 @@
         "owningRelationship": {"@type": "@id"},
         "relatedElement": {"@type": "@id"},
         "source": {"@type": "@id"},
-        "target": {"@type": "@id"}
+        "target": {"@type": "@id"},
+        "visibility": {"@type": "@vocab"}
 
     }
 }
