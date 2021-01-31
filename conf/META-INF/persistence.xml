@@ -5,6 +5,19 @@
     <persistence-unit name="sysml2-hibernate" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
+        <class>org.omg.sysml.external.impl</class>
+        <class>org.omg.sysml.external.impl.ExternalElementImpl</class>
+        <class>org.omg.sysml.external.impl.ExternalRelationshipImpl</class>
+
+        <class>org.omg.sysml.internal.impl</class>
+        <class>org.omg.sysml.internal.impl.CommitIndexImpl</class>
+
+        <class>org.omg.sysml.lifecycle.impl</class>
+        <class>org.omg.sysml.lifecycle.impl.CommitImpl</class>
+        <class>org.omg.sysml.lifecycle.impl.ElementIdentityImpl</class>
+        <class>org.omg.sysml.lifecycle.impl.ElementVersionImpl</class>
+        <class>org.omg.sysml.lifecycle.impl.ProjectImpl</class>
+
         <class>org.omg.sysml.metamodel.impl</class>
         <class>org.omg.sysml.metamodel.impl.AcceptActionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.ActionDefinitionImpl</class>
@@ -148,19 +161,14 @@
         <class>org.omg.sysml.metamodel.impl.ViewpointUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.ViewUsageImpl</class>
 
-        <class>org.omg.sysml.lifecycle.impl</class>
-        <class>org.omg.sysml.lifecycle.impl.CommitImpl</class>
-        <class>org.omg.sysml.lifecycle.impl.ElementIdentityImpl</class>
-        <class>org.omg.sysml.lifecycle.impl.ElementVersionImpl</class>
-        <class>org.omg.sysml.lifecycle.impl.ProjectImpl</class>
-        <class>org.omg.sysml.lifecycle.impl.RecordImpl</class>
+        <class>org.omg.sysml.query.impl</class>
+        <class>org.omg.sysml.query.impl.CompositeConstraintImpl</class>
+        <class>org.omg.sysml.query.impl.ConstraintImpl</class>
+        <class>org.omg.sysml.query.impl.PrimitiveConstraintImpl</class>
+        <class>org.omg.sysml.query.impl.QueryImpl</class>
 
-        <class>org.omg.sysml.internal.impl</class>
-        <class>org.omg.sysml.internal.impl.CommitIndexImpl</class>
-
-        <class>org.omg.sysml.external.impl</class>
-        <class>org.omg.sysml.external.impl.ExternalElementImpl</class>
-        <class>org.omg.sysml.external.impl.ExternalRelationshipImpl</class>
+        <class>org.omg.sysml.record.impl</class>
+        <class>org.omg.sysml.record.impl.RecordImpl</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
