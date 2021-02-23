@@ -22,6 +22,7 @@ public abstract class TextualRepresentationImpl_ extends org.omg.sysml.metamodel
 	public static volatile CollectionAttribute<TextualRepresentationImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<TextualRepresentationImpl, Element> ownedElement;
 	public static volatile ListAttribute<TextualRepresentationImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<TextualRepresentationImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<TextualRepresentationImpl, Documentation> documentation;
 	public static volatile SingularAttribute<TextualRepresentationImpl, String> language;
 	public static volatile CollectionAttribute<TextualRepresentationImpl, Element> annotatedElement;
@@ -37,6 +38,7 @@ public abstract class TextualRepresentationImpl_ extends org.omg.sysml.metamodel
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String LANGUAGE = "language";
 	public static final String ANNOTATED_ELEMENT = "annotatedElement";

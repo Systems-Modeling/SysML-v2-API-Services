@@ -60,6 +60,7 @@
         "owningType": {"@type": "@id"},
         "parameter": {"@type": "@id"},
         "predicate": {"@type": "@id"},
+        "qualifiedName": {"@type": "xsd:string"},
         "result": {"@type": "@id"},
         "type": {"@type": "@id"}
 

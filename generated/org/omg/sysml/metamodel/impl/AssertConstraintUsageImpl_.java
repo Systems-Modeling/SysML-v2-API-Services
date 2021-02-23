@@ -7,6 +7,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.ActionUsage;
+import org.omg.sysml.metamodel.AllocationUsage;
 import org.omg.sysml.metamodel.AnalysisCaseUsage;
 import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.AttributeUsage;
@@ -77,6 +78,7 @@ public abstract class AssertConstraintUsageImpl_ extends org.omg.sysml.metamodel
 	public static volatile CollectionAttribute<AssertConstraintUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile CollectionAttribute<AssertConstraintUsageImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<AssertConstraintUsageImpl, Usage> flowFeature;
+	public static volatile SingularAttribute<AssertConstraintUsageImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<AssertConstraintUsageImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<AssertConstraintUsageImpl, AnalysisCaseUsage> nestedAnalysisCase;
 	public static volatile CollectionAttribute<AssertConstraintUsageImpl, VerificationCaseUsage> nestedVerificationCase;
@@ -92,6 +94,7 @@ public abstract class AssertConstraintUsageImpl_ extends org.omg.sysml.metamodel
 	public static volatile ListAttribute<AssertConstraintUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<AssertConstraintUsageImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<AssertConstraintUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<AssertConstraintUsageImpl, AllocationUsage> nestedAllocation;
 	public static volatile CollectionAttribute<AssertConstraintUsageImpl, IndividualUsage> nestedIndividual;
 	public static volatile ListAttribute<AssertConstraintUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<AssertConstraintUsageImpl, Boolean> isNonunique;
@@ -149,6 +152,7 @@ public abstract class AssertConstraintUsageImpl_ extends org.omg.sysml.metamodel
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String FLOW_FEATURE = "flowFeature";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String NESTED_ANALYSIS_CASE = "nestedAnalysisCase";
 	public static final String NESTED_VERIFICATION_CASE = "nestedVerificationCase";
@@ -164,6 +168,7 @@ public abstract class AssertConstraintUsageImpl_ extends org.omg.sysml.metamodel
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String NESTED_INDIVIDUAL = "nestedIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_NONUNIQUE = "isNonunique";

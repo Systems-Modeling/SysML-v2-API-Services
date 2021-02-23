@@ -59,6 +59,7 @@ public abstract class InstanceCreationExpressionImpl_ extends org.omg.sysml.meta
 	public static volatile SingularAttribute<InstanceCreationExpressionImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<InstanceCreationExpressionImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<InstanceCreationExpressionImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Documentation> documentation;
 	public static volatile ListAttribute<InstanceCreationExpressionImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<InstanceCreationExpressionImpl, Feature> endFeature;
@@ -105,6 +106,7 @@ public abstract class InstanceCreationExpressionImpl_ extends org.omg.sysml.meta
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

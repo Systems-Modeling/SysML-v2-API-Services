@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface AcceptActionUsage extends TransferActionUsage, MofObject {
-
+public interface AcceptActionUsage extends ActionUsage, MofObject {
+    Expression getReceiverArgument();
 }

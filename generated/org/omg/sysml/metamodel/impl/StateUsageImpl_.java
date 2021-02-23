@@ -7,6 +7,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.ActionUsage;
+import org.omg.sysml.metamodel.AllocationUsage;
 import org.omg.sysml.metamodel.AnalysisCaseUsage;
 import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.AttributeUsage;
@@ -78,6 +79,7 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile CollectionAttribute<StateUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile CollectionAttribute<StateUsageImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<StateUsageImpl, Usage> flowFeature;
+	public static volatile SingularAttribute<StateUsageImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<StateUsageImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<StateUsageImpl, AnalysisCaseUsage> nestedAnalysisCase;
 	public static volatile CollectionAttribute<StateUsageImpl, VerificationCaseUsage> nestedVerificationCase;
@@ -94,6 +96,7 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile ListAttribute<StateUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<StateUsageImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<StateUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<StateUsageImpl, AllocationUsage> nestedAllocation;
 	public static volatile CollectionAttribute<StateUsageImpl, IndividualUsage> nestedIndividual;
 	public static volatile ListAttribute<StateUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<StateUsageImpl, Boolean> isNonunique;
@@ -151,6 +154,7 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String FLOW_FEATURE = "flowFeature";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String NESTED_ANALYSIS_CASE = "nestedAnalysisCase";
 	public static final String NESTED_VERIFICATION_CASE = "nestedVerificationCase";
@@ -167,6 +171,7 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String NESTED_INDIVIDUAL = "nestedIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_NONUNIQUE = "isNonunique";

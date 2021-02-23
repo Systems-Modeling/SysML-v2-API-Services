@@ -25,6 +25,7 @@ public abstract class ReturnParameterMembershipImpl_ extends org.omg.sysml.metam
 	public static volatile CollectionAttribute<ReturnParameterMembershipImpl, Element> ownedElement;
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<ReturnParameterMembershipImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<ReturnParameterMembershipImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<ReturnParameterMembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, String> memberName;
 	public static volatile ListAttribute<ReturnParameterMembershipImpl, Element> ownedRelatedElement;
@@ -48,6 +49,7 @@ public abstract class ReturnParameterMembershipImpl_ extends org.omg.sysml.metam
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String VISIBILITY = "visibility";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String MEMBER_NAME = "memberName";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";

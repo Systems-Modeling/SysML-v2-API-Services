@@ -21,6 +21,7 @@ public abstract class GeneralizationImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<GeneralizationImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<GeneralizationImpl, Element> ownedElement;
 	public static volatile ListAttribute<GeneralizationImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<GeneralizationImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<GeneralizationImpl, Documentation> documentation;
 	public static volatile ListAttribute<GeneralizationImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<GeneralizationImpl, Element> source;
@@ -36,6 +37,7 @@ public abstract class GeneralizationImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";

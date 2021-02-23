@@ -57,6 +57,7 @@ public abstract class BooleanExpressionImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile SingularAttribute<BooleanExpressionImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<BooleanExpressionImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<BooleanExpressionImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<BooleanExpressionImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<BooleanExpressionImpl, Documentation> documentation;
 	public static volatile ListAttribute<BooleanExpressionImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<BooleanExpressionImpl, Feature> endFeature;
@@ -102,6 +103,7 @@ public abstract class BooleanExpressionImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

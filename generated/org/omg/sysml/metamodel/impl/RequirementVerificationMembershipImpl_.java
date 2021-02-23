@@ -27,6 +27,7 @@ public abstract class RequirementVerificationMembershipImpl_ extends org.omg.sys
 	public static volatile SingularAttribute<RequirementVerificationMembershipImpl, VisibilityKind> visibility;
 	public static volatile SingularAttribute<RequirementVerificationMembershipImpl, RequirementConstraintKind> kind;
 	public static volatile ListAttribute<RequirementVerificationMembershipImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<RequirementVerificationMembershipImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<RequirementVerificationMembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<RequirementVerificationMembershipImpl, String> memberName;
 	public static volatile ListAttribute<RequirementVerificationMembershipImpl, Element> ownedRelatedElement;
@@ -51,6 +52,7 @@ public abstract class RequirementVerificationMembershipImpl_ extends org.omg.sys
 	public static final String VISIBILITY = "visibility";
 	public static final String KIND = "kind";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String MEMBER_NAME = "memberName";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";

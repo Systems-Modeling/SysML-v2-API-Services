@@ -44,6 +44,7 @@
         "owningNamespace": {"@type": "@id"},
         "owningRelationship": {"@type": "@id"},
         "parameter": {"@type": "@id"},
+        "qualifiedName": {"@type": "xsd:string"},
         "result": {"@type": "@id"},
         "step": {"@type": "@id"}
 

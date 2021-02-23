@@ -44,6 +44,7 @@ public abstract class BehaviorImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile CollectionAttribute<BehaviorImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<BehaviorImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<BehaviorImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<BehaviorImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<BehaviorImpl, Documentation> documentation;
 	public static volatile ListAttribute<BehaviorImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<BehaviorImpl, Feature> endFeature;
@@ -78,6 +79,7 @@ public abstract class BehaviorImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

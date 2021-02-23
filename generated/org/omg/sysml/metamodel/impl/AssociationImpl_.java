@@ -46,6 +46,7 @@ public abstract class AssociationImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static volatile CollectionAttribute<AssociationImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<AssociationImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<AssociationImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<AssociationImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<AssociationImpl, Documentation> documentation;
 	public static volatile ListAttribute<AssociationImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<AssociationImpl, Feature> endFeature;
@@ -85,6 +86,7 @@ public abstract class AssociationImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

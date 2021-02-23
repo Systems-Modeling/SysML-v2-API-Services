@@ -25,6 +25,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface SendActionUsage extends TransferActionUsage, MofObject {
-    Expression getTarget();
+public interface SendActionUsage extends ActionUsage, MofObject {
+    Expression getReceiverArgument();
+
+    Expression getItemsArgument();
 }

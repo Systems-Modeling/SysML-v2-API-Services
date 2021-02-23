@@ -7,6 +7,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.ActionUsage;
+import org.omg.sysml.metamodel.AllocationUsage;
 import org.omg.sysml.metamodel.AnalysisCaseUsage;
 import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.AttributeUsage;
@@ -81,6 +82,7 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile CollectionAttribute<ViewUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile CollectionAttribute<ViewUsageImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<ViewUsageImpl, Usage> flowFeature;
+	public static volatile SingularAttribute<ViewUsageImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<ViewUsageImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<ViewUsageImpl, AnalysisCaseUsage> nestedAnalysisCase;
 	public static volatile CollectionAttribute<ViewUsageImpl, VerificationCaseUsage> nestedVerificationCase;
@@ -96,6 +98,7 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile ListAttribute<ViewUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<ViewUsageImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<ViewUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<ViewUsageImpl, AllocationUsage> nestedAllocation;
 	public static volatile CollectionAttribute<ViewUsageImpl, IndividualUsage> nestedIndividual;
 	public static volatile ListAttribute<ViewUsageImpl, Membership> membership;
 	public static volatile CollectionAttribute<ViewUsageImpl, Expression> viewCondition;
@@ -156,6 +159,7 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String FLOW_FEATURE = "flowFeature";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String NESTED_ANALYSIS_CASE = "nestedAnalysisCase";
 	public static final String NESTED_VERIFICATION_CASE = "nestedVerificationCase";
@@ -171,6 +175,7 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String NESTED_INDIVIDUAL = "nestedIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String VIEW_CONDITION = "viewCondition";

@@ -60,6 +60,7 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.metamodel.im
 	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<OperatorExpressionImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<OperatorExpressionImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<OperatorExpressionImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<OperatorExpressionImpl, Documentation> documentation;
 	public static volatile ListAttribute<OperatorExpressionImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<OperatorExpressionImpl, Feature> endFeature;
@@ -108,6 +109,7 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.metamodel.im
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

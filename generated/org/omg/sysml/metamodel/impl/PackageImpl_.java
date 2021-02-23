@@ -25,13 +25,14 @@ public abstract class PackageImpl_ extends org.omg.sysml.metamodel.impl.MofObjec
 	public static volatile CollectionAttribute<PackageImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<PackageImpl, Element> ownedElement;
 	public static volatile ListAttribute<PackageImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<PackageImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<PackageImpl, Documentation> documentation;
 	public static volatile ListAttribute<PackageImpl, Membership> membership;
 	public static volatile ListAttribute<PackageImpl, Import> ownedImport;
 	public static volatile CollectionAttribute<PackageImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<PackageImpl, String> humanId;
 	public static volatile CollectionAttribute<PackageImpl, String> aliasId;
-	public static volatile CollectionAttribute<PackageImpl, Expression> filterCondition;
+	public static volatile ListAttribute<PackageImpl, Expression> filterCondition;
 	public static volatile ListAttribute<PackageImpl, Element> member;
 	public static volatile SingularAttribute<PackageImpl, String> name;
 	public static volatile CollectionAttribute<PackageImpl, Comment> documentationComment;
@@ -43,6 +44,7 @@ public abstract class PackageImpl_ extends org.omg.sysml.metamodel.impl.MofObjec
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_IMPORT = "ownedImport";

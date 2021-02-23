@@ -53,6 +53,7 @@ public abstract class MultiplicityImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static volatile CollectionAttribute<MultiplicityImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<MultiplicityImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<MultiplicityImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<MultiplicityImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<MultiplicityImpl, Documentation> documentation;
 	public static volatile ListAttribute<MultiplicityImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<MultiplicityImpl, Feature> endFeature;
@@ -95,6 +96,7 @@ public abstract class MultiplicityImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";
