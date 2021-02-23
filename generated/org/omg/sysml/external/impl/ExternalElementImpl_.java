@@ -26,6 +26,7 @@ public abstract class ExternalElementImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile SingularAttribute<ExternalElementImpl, String> humanId;
 	public static volatile CollectionAttribute<ExternalElementImpl, String> aliasId;
 	public static volatile ListAttribute<ExternalElementImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<ExternalElementImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<ExternalElementImpl, Documentation> documentation;
 	public static volatile SingularAttribute<ExternalElementImpl, String> name;
 	public static volatile CollectionAttribute<ExternalElementImpl, Comment> documentationComment;
@@ -38,6 +39,7 @@ public abstract class ExternalElementImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String NAME = "name";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";

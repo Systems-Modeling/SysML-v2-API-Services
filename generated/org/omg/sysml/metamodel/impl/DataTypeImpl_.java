@@ -42,6 +42,7 @@ public abstract class DataTypeImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile CollectionAttribute<DataTypeImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<DataTypeImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<DataTypeImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<DataTypeImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<DataTypeImpl, Documentation> documentation;
 	public static volatile ListAttribute<DataTypeImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<DataTypeImpl, Feature> endFeature;
@@ -74,6 +75,7 @@ public abstract class DataTypeImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

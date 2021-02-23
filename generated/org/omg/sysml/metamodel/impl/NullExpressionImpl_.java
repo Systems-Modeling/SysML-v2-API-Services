@@ -57,6 +57,7 @@ public abstract class NullExpressionImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile SingularAttribute<NullExpressionImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<NullExpressionImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<NullExpressionImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<NullExpressionImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<NullExpressionImpl, Documentation> documentation;
 	public static volatile ListAttribute<NullExpressionImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<NullExpressionImpl, Feature> endFeature;
@@ -102,6 +103,7 @@ public abstract class NullExpressionImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

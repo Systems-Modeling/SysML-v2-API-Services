@@ -49,6 +49,7 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile SingularAttribute<ItemFlowImpl, UUID> identifier;
 	public static volatile CollectionAttribute<ItemFlowImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<ItemFlowImpl, Feature> ownedFeature;
+	public static volatile SingularAttribute<ItemFlowImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<ItemFlowImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<ItemFlowImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<ItemFlowImpl, ItemFeature> itemFeature;
@@ -108,6 +109,7 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String END_FEATURE = "endFeature";
 	public static final String ITEM_FEATURE = "itemFeature";

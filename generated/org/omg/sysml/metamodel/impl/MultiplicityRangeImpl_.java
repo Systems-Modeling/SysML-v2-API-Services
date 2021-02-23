@@ -54,6 +54,7 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile CollectionAttribute<MultiplicityRangeImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<MultiplicityRangeImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<MultiplicityRangeImpl, String> qualifiedName;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Expression> bound;
 	public static volatile CollectionAttribute<MultiplicityRangeImpl, Documentation> documentation;
 	public static volatile ListAttribute<MultiplicityRangeImpl, FeatureMembership> featureMembership;
@@ -97,6 +98,7 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String BOUND = "bound";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";

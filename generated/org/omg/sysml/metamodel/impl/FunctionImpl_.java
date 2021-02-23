@@ -46,6 +46,7 @@ public abstract class FunctionImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile CollectionAttribute<FunctionImpl, Expression> expression;
 	public static volatile CollectionAttribute<FunctionImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<FunctionImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<FunctionImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<FunctionImpl, Documentation> documentation;
 	public static volatile ListAttribute<FunctionImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<FunctionImpl, Feature> endFeature;
@@ -81,6 +82,7 @@ public abstract class FunctionImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static final String EXPRESSION = "expression";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

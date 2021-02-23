@@ -22,6 +22,8 @@
         <class>org.omg.sysml.metamodel.impl.AcceptActionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.ActionDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.ActionUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.AllocationDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.AllocationUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.AnalysisCaseDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.AnalysisCaseUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.AnnotatingElementImpl</class>
@@ -147,7 +149,6 @@
         <class>org.omg.sysml.metamodel.impl.TargetEndImpl</class>
         <class>org.omg.sysml.metamodel.impl.TextualRepresentationImpl</class>
         <class>org.omg.sysml.metamodel.impl.TimeSliceFeatureImpl</class>
-        <class>org.omg.sysml.metamodel.impl.TransferActionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.TransitionFeatureMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.TransitionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.TypeFeaturingImpl</class>

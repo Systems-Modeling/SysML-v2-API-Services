@@ -23,6 +23,7 @@ public abstract class MetadataFeatureValueImpl_ extends org.omg.sysml.metamodel.
 	public static volatile CollectionAttribute<MetadataFeatureValueImpl, Element> ownedElement;
 	public static volatile SingularAttribute<MetadataFeatureValueImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<MetadataFeatureValueImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<MetadataFeatureValueImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<MetadataFeatureValueImpl, Documentation> documentation;
 	public static volatile SingularAttribute<MetadataFeatureValueImpl, String> memberName;
 	public static volatile ListAttribute<MetadataFeatureValueImpl, Element> ownedRelatedElement;
@@ -40,6 +41,7 @@ public abstract class MetadataFeatureValueImpl_ extends org.omg.sysml.metamodel.
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String VISIBILITY = "visibility";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String MEMBER_NAME = "memberName";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";

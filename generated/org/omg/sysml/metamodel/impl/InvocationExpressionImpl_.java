@@ -59,6 +59,7 @@ public abstract class InvocationExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static volatile SingularAttribute<InvocationExpressionImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<InvocationExpressionImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<InvocationExpressionImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<InvocationExpressionImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<InvocationExpressionImpl, Documentation> documentation;
 	public static volatile ListAttribute<InvocationExpressionImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<InvocationExpressionImpl, Feature> endFeature;
@@ -105,6 +106,7 @@ public abstract class InvocationExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

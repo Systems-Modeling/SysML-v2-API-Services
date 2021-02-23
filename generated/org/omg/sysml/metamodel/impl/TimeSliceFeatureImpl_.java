@@ -53,6 +53,7 @@ public abstract class TimeSliceFeatureImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile CollectionAttribute<TimeSliceFeatureImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<TimeSliceFeatureImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<TimeSliceFeatureImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<TimeSliceFeatureImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<TimeSliceFeatureImpl, Documentation> documentation;
 	public static volatile ListAttribute<TimeSliceFeatureImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<TimeSliceFeatureImpl, Feature> endFeature;
@@ -95,6 +96,7 @@ public abstract class TimeSliceFeatureImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

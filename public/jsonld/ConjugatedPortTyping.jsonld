@@ -26,6 +26,7 @@
         "owningRelationship": {"@type": "@id"},
         "owningType": {"@type": "@id"},
         "portDefinition": {"@type": "@id"},
+        "qualifiedName": {"@type": "xsd:string"},
         "relatedElement": {"@type": "@id"},
         "source": {"@type": "@id"},
         "specific": {"@type": "@id"},

@@ -21,6 +21,7 @@ public abstract class PortConjugationImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<PortConjugationImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<PortConjugationImpl, Element> ownedElement;
 	public static volatile ListAttribute<PortConjugationImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<PortConjugationImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<PortConjugationImpl, Documentation> documentation;
 	public static volatile ListAttribute<PortConjugationImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<PortConjugationImpl, Element> source;
@@ -36,6 +37,7 @@ public abstract class PortConjugationImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";

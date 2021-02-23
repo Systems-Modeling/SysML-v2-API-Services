@@ -24,6 +24,7 @@ public abstract class NamespaceImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile CollectionAttribute<NamespaceImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<NamespaceImpl, Element> ownedElement;
 	public static volatile ListAttribute<NamespaceImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<NamespaceImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<NamespaceImpl, Documentation> documentation;
 	public static volatile ListAttribute<NamespaceImpl, Membership> membership;
 	public static volatile ListAttribute<NamespaceImpl, Import> ownedImport;
@@ -41,6 +42,7 @@ public abstract class NamespaceImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_IMPORT = "ownedImport";

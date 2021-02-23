@@ -25,6 +25,7 @@ public abstract class EndFeatureMembershipImpl_ extends org.omg.sysml.metamodel.
 	public static volatile CollectionAttribute<EndFeatureMembershipImpl, Element> ownedElement;
 	public static volatile SingularAttribute<EndFeatureMembershipImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<EndFeatureMembershipImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<EndFeatureMembershipImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<EndFeatureMembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<EndFeatureMembershipImpl, String> memberName;
 	public static volatile ListAttribute<EndFeatureMembershipImpl, Element> ownedRelatedElement;
@@ -48,6 +49,7 @@ public abstract class EndFeatureMembershipImpl_ extends org.omg.sysml.metamodel.
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String VISIBILITY = "visibility";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String MEMBER_NAME = "memberName";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";

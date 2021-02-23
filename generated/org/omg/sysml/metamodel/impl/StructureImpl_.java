@@ -42,6 +42,7 @@ public abstract class StructureImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile CollectionAttribute<StructureImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<StructureImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<StructureImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<StructureImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<StructureImpl, Documentation> documentation;
 	public static volatile ListAttribute<StructureImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<StructureImpl, Feature> endFeature;
@@ -74,6 +75,7 @@ public abstract class StructureImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

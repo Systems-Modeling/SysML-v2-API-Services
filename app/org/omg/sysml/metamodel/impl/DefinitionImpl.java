@@ -596,6 +596,32 @@ public abstract class DefinitionImpl extends MofObjectImpl implements Definition
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedAllocation")
+    private Collection<AllocationUsage> ownedAllocation;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "AllocationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Definition_ownedAllocation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<AllocationUsage> getOwnedAllocation() {
+        if (ownedAllocation == null) {
+            ownedAllocation = new ArrayList<>();
+        }
+        return ownedAllocation;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AllocationUsageImpl.class)
+    public void setOwnedAllocation(Collection<AllocationUsage> ownedAllocation) {
+        this.ownedAllocation = ownedAllocation;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedAnalysisCase")
     private Collection<AnalysisCaseUsage> ownedAnalysisCase;
 
@@ -1540,6 +1566,26 @@ public abstract class DefinitionImpl extends MofObjectImpl implements Definition
     @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
     public void setOwningRelationship(Relationship owningRelationship) {
         this.owningRelationship = owningRelationship;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("qualifiedName")
+    private String qualifiedName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "qualifiedName", table = "Definition")
+    public String getQualifiedName() {
+        return qualifiedName;
+    }
+
+    @JsonSetter
+    public void setQualifiedName(String qualifiedName) {
+        this.qualifiedName = qualifiedName;
     }
 
 

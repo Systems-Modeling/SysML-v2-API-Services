@@ -58,6 +58,7 @@ public abstract class LiteralIntegerImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile SingularAttribute<LiteralIntegerImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<LiteralIntegerImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<LiteralIntegerImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<LiteralIntegerImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<LiteralIntegerImpl, Documentation> documentation;
 	public static volatile ListAttribute<LiteralIntegerImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<LiteralIntegerImpl, Feature> endFeature;
@@ -104,6 +105,7 @@ public abstract class LiteralIntegerImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

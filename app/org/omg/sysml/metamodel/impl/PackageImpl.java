@@ -144,7 +144,7 @@ public class PackageImpl extends MofObjectImpl implements Package {
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("filterCondition")
-    private Collection<Expression> filterCondition;
+    private List<Expression> filterCondition;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -153,7 +153,7 @@ public class PackageImpl extends MofObjectImpl implements Package {
     @JoinTable(name = "Package_filterCondition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Expression> getFilterCondition() {
+    public List<Expression> getFilterCondition() {
         if (filterCondition == null) {
             filterCondition = new ArrayList<>();
         }
@@ -162,7 +162,7 @@ public class PackageImpl extends MofObjectImpl implements Package {
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ExpressionImpl.class)
-    public void setFilterCondition(Collection<Expression> filterCondition) {
+    public void setFilterCondition(List<Expression> filterCondition) {
         this.filterCondition = filterCondition;
     }
 
@@ -550,6 +550,26 @@ public class PackageImpl extends MofObjectImpl implements Package {
     @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
     public void setOwningRelationship(Relationship owningRelationship) {
         this.owningRelationship = owningRelationship;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("qualifiedName")
+    private String qualifiedName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "qualifiedName", table = "Package")
+    public String getQualifiedName() {
+        return qualifiedName;
+    }
+
+    @JsonSetter
+    public void setQualifiedName(String qualifiedName) {
+        this.qualifiedName = qualifiedName;
     }
 
 

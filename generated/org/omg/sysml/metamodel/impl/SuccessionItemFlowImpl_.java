@@ -52,6 +52,7 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.metamodel.im
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, UUID> identifier;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Feature> ownedFeature;
+	public static volatile SingularAttribute<SuccessionItemFlowImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Feature> endFeature;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, ItemFeature> itemFeature;
@@ -114,6 +115,7 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.metamodel.im
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String END_FEATURE = "endFeature";
 	public static final String ITEM_FEATURE = "itemFeature";

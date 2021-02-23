@@ -59,6 +59,7 @@
         "owningRelatedElement": {"@type": "@id"},
         "owningRelationship": {"@type": "@id"},
         "owningType": {"@type": "@id"},
+        "qualifiedName": {"@type": "xsd:string"},
         "relatedElement": {"@type": "@id"},
         "relatedFeature": {"@type": "@id"},
         "source": {"@type": "@id"},

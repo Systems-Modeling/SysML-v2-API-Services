@@ -836,6 +836,32 @@ public class VerificationCaseUsageImpl extends MofObjectImpl implements Verifica
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedAllocation")
+    private Collection<AllocationUsage> nestedAllocation;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "AllocationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "VerificationCaseUsage_nestedAllocation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<AllocationUsage> getNestedAllocation() {
+        if (nestedAllocation == null) {
+            nestedAllocation = new ArrayList<>();
+        }
+        return nestedAllocation;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AllocationUsageImpl.class)
+    public void setNestedAllocation(Collection<AllocationUsage> nestedAllocation) {
+        this.nestedAllocation = nestedAllocation;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedAnalysisCase")
     private Collection<AnalysisCaseUsage> nestedAnalysisCase;
 
@@ -2013,6 +2039,26 @@ public class VerificationCaseUsageImpl extends MofObjectImpl implements Verifica
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
     public void setParameter(Collection<Feature> parameter) {
         this.parameter = parameter;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("qualifiedName")
+    private String qualifiedName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "qualifiedName", table = "VerificationCaseUsage")
+    public String getQualifiedName() {
+        return qualifiedName;
+    }
+
+    @JsonSetter
+    public void setQualifiedName(String qualifiedName) {
+        this.qualifiedName = qualifiedName;
     }
 
 

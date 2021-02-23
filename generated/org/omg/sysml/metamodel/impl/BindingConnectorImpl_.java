@@ -43,6 +43,7 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile SingularAttribute<BindingConnectorImpl, UUID> identifier;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Feature> ownedFeature;
+	public static volatile SingularAttribute<BindingConnectorImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Feature> endFeature;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isEnd;
@@ -94,6 +95,7 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String END_FEATURE = "endFeature";
 	public static final String IS_END = "isEnd";

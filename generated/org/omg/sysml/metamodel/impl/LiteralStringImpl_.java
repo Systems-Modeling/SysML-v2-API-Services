@@ -58,6 +58,7 @@ public abstract class LiteralStringImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static volatile SingularAttribute<LiteralStringImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<LiteralStringImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<LiteralStringImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<LiteralStringImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<LiteralStringImpl, Documentation> documentation;
 	public static volatile ListAttribute<LiteralStringImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<LiteralStringImpl, Feature> endFeature;
@@ -104,6 +105,7 @@ public abstract class LiteralStringImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

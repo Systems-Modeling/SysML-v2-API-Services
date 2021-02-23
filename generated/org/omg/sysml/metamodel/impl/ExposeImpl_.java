@@ -23,6 +23,7 @@ public abstract class ExposeImpl_ extends org.omg.sysml.metamodel.impl.MofObject
 	public static volatile CollectionAttribute<ExposeImpl, Element> ownedElement;
 	public static volatile SingularAttribute<ExposeImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<ExposeImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<ExposeImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<ExposeImpl, Documentation> documentation;
 	public static volatile ListAttribute<ExposeImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<ExposeImpl, Element> source;
@@ -40,6 +41,7 @@ public abstract class ExposeImpl_ extends org.omg.sysml.metamodel.impl.MofObject
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String VISIBILITY = "visibility";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
