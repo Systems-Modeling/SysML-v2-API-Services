@@ -56,6 +56,7 @@ public abstract class StepImpl_ extends org.omg.sysml.metamodel.impl.MofObjectIm
 	public static volatile CollectionAttribute<StepImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<StepImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<StepImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<StepImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<StepImpl, Documentation> documentation;
 	public static volatile ListAttribute<StepImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<StepImpl, Feature> endFeature;
@@ -100,6 +101,7 @@ public abstract class StepImpl_ extends org.omg.sysml.metamodel.impl.MofObjectIm
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

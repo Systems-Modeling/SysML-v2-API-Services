@@ -57,6 +57,7 @@ public abstract class QueryPathExpressionImpl_ extends org.omg.sysml.metamodel.i
 	public static volatile SingularAttribute<QueryPathExpressionImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<QueryPathExpressionImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<QueryPathExpressionImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, Documentation> documentation;
 	public static volatile ListAttribute<QueryPathExpressionImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<QueryPathExpressionImpl, Feature> endFeature;
@@ -102,6 +103,7 @@ public abstract class QueryPathExpressionImpl_ extends org.omg.sysml.metamodel.i
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

@@ -30,6 +30,7 @@
         "originalPortDefinition": {"@type": "@id"},
         "output": {"@type": "@id"},
         "ownedAction": {"@type": "@id"},
+        "ownedAllocation": {"@type": "@id"},
         "ownedAnalysisCase": {"@type": "@id"},
         "ownedAnnotation": {"@type": "@id"},
         "ownedAttribute": {"@type": "@id"},
@@ -69,6 +70,7 @@
         "owningMembership": {"@type": "@id"},
         "owningNamespace": {"@type": "@id"},
         "owningRelationship": {"@type": "@id"},
+        "qualifiedName": {"@type": "xsd:string"},
         "usage": {"@type": "@id"},
         "variant": {"@type": "@id"},
         "variantMembership": {"@type": "@id"}

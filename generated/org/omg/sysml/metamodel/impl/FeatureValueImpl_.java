@@ -23,6 +23,7 @@ public abstract class FeatureValueImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static volatile CollectionAttribute<FeatureValueImpl, Element> ownedElement;
 	public static volatile SingularAttribute<FeatureValueImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<FeatureValueImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<FeatureValueImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<FeatureValueImpl, Documentation> documentation;
 	public static volatile SingularAttribute<FeatureValueImpl, String> memberName;
 	public static volatile ListAttribute<FeatureValueImpl, Element> ownedRelatedElement;
@@ -40,6 +41,7 @@ public abstract class FeatureValueImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String VISIBILITY = "visibility";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String MEMBER_NAME = "memberName";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";

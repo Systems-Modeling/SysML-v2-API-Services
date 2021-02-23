@@ -21,6 +21,7 @@ public abstract class FeatureTypingImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static volatile CollectionAttribute<FeatureTypingImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<FeatureTypingImpl, Element> ownedElement;
 	public static volatile ListAttribute<FeatureTypingImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<FeatureTypingImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<FeatureTypingImpl, Documentation> documentation;
 	public static volatile ListAttribute<FeatureTypingImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<FeatureTypingImpl, Element> source;
@@ -36,6 +37,7 @@ public abstract class FeatureTypingImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";

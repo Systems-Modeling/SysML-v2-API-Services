@@ -23,6 +23,7 @@ public abstract class VariantMembershipImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile CollectionAttribute<VariantMembershipImpl, Element> ownedElement;
 	public static volatile SingularAttribute<VariantMembershipImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<VariantMembershipImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<VariantMembershipImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<VariantMembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<VariantMembershipImpl, String> memberName;
 	public static volatile ListAttribute<VariantMembershipImpl, Element> ownedRelatedElement;
@@ -40,6 +41,7 @@ public abstract class VariantMembershipImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String VISIBILITY = "visibility";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String MEMBER_NAME = "memberName";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";

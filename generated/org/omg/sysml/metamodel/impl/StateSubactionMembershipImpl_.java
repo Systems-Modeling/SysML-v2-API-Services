@@ -27,6 +27,7 @@ public abstract class StateSubactionMembershipImpl_ extends org.omg.sysml.metamo
 	public static volatile SingularAttribute<StateSubactionMembershipImpl, VisibilityKind> visibility;
 	public static volatile SingularAttribute<StateSubactionMembershipImpl, StateSubactionKind> kind;
 	public static volatile ListAttribute<StateSubactionMembershipImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<StateSubactionMembershipImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<StateSubactionMembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<StateSubactionMembershipImpl, String> memberName;
 	public static volatile ListAttribute<StateSubactionMembershipImpl, Element> ownedRelatedElement;
@@ -51,6 +52,7 @@ public abstract class StateSubactionMembershipImpl_ extends org.omg.sysml.metamo
 	public static final String VISIBILITY = "visibility";
 	public static final String KIND = "kind";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String MEMBER_NAME = "memberName";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";

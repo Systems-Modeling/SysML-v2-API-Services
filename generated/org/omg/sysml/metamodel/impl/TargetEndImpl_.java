@@ -53,6 +53,7 @@ public abstract class TargetEndImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile CollectionAttribute<TargetEndImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<TargetEndImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<TargetEndImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<TargetEndImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<TargetEndImpl, Documentation> documentation;
 	public static volatile ListAttribute<TargetEndImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<TargetEndImpl, Feature> endFeature;
@@ -95,6 +96,7 @@ public abstract class TargetEndImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

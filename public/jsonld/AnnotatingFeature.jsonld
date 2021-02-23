@@ -58,6 +58,7 @@
         "owningNamespace": {"@type": "@id"},
         "owningRelationship": {"@type": "@id"},
         "owningType": {"@type": "@id"},
+        "qualifiedName": {"@type": "xsd:string"},
         "type": {"@type": "@id"}
 
     }

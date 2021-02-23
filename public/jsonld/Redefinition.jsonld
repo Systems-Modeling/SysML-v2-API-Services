@@ -24,6 +24,7 @@
         "owningRelatedElement": {"@type": "@id"},
         "owningRelationship": {"@type": "@id"},
         "owningType": {"@type": "@id"},
+        "qualifiedName": {"@type": "xsd:string"},
         "redefinedFeature": {"@type": "@id"},
         "redefiningFeature": {"@type": "@id"},
         "relatedElement": {"@type": "@id"},

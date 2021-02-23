@@ -56,6 +56,7 @@
         "owningRelationship": {"@type": "@id"},
         "owningType": {"@type": "@id"},
         "parameter": {"@type": "@id"},
+        "qualifiedName": {"@type": "xsd:string"},
         "type": {"@type": "@id"}
 
     }

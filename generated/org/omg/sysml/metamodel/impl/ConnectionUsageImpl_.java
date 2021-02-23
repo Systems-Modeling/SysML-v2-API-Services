@@ -7,6 +7,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.ActionUsage;
+import org.omg.sysml.metamodel.AllocationUsage;
 import org.omg.sysml.metamodel.AnalysisCaseUsage;
 import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.Association;
@@ -81,6 +82,7 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<ConnectionUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Usage> flowFeature;
+	public static volatile SingularAttribute<ConnectionUsageImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, AnalysisCaseUsage> nestedAnalysisCase;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, VerificationCaseUsage> nestedVerificationCase;
@@ -99,6 +101,7 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile ListAttribute<ConnectionUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<ConnectionUsageImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<ConnectionUsageImpl, AllocationUsage> nestedAllocation;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Association> association;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, IndividualUsage> nestedIndividual;
 	public static volatile ListAttribute<ConnectionUsageImpl, Membership> membership;
@@ -162,6 +165,7 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String FLOW_FEATURE = "flowFeature";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String NESTED_ANALYSIS_CASE = "nestedAnalysisCase";
 	public static final String NESTED_VERIFICATION_CASE = "nestedVerificationCase";
@@ -180,6 +184,7 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String ASSOCIATION = "association";
 	public static final String NESTED_INDIVIDUAL = "nestedIndividual";
 	public static final String MEMBERSHIP = "membership";

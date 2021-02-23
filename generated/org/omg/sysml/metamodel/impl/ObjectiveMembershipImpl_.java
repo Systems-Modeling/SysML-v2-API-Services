@@ -25,6 +25,7 @@ public abstract class ObjectiveMembershipImpl_ extends org.omg.sysml.metamodel.i
 	public static volatile CollectionAttribute<ObjectiveMembershipImpl, Element> ownedElement;
 	public static volatile SingularAttribute<ObjectiveMembershipImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<ObjectiveMembershipImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<ObjectiveMembershipImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<ObjectiveMembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<ObjectiveMembershipImpl, String> memberName;
 	public static volatile ListAttribute<ObjectiveMembershipImpl, Element> ownedRelatedElement;
@@ -48,6 +49,7 @@ public abstract class ObjectiveMembershipImpl_ extends org.omg.sysml.metamodel.i
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String VISIBILITY = "visibility";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String MEMBER_NAME = "memberName";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";

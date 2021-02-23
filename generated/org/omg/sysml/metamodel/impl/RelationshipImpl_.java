@@ -21,6 +21,7 @@ public abstract class RelationshipImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static volatile CollectionAttribute<RelationshipImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<RelationshipImpl, Element> ownedElement;
 	public static volatile ListAttribute<RelationshipImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<RelationshipImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<RelationshipImpl, Documentation> documentation;
 	public static volatile ListAttribute<RelationshipImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<RelationshipImpl, Element> source;
@@ -36,6 +37,7 @@ public abstract class RelationshipImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";

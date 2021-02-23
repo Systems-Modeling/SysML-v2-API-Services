@@ -25,6 +25,7 @@ public abstract class ResultExpressionMembershipImpl_ extends org.omg.sysml.meta
 	public static volatile CollectionAttribute<ResultExpressionMembershipImpl, Element> ownedElement;
 	public static volatile SingularAttribute<ResultExpressionMembershipImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<ResultExpressionMembershipImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<ResultExpressionMembershipImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<ResultExpressionMembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<ResultExpressionMembershipImpl, String> memberName;
 	public static volatile ListAttribute<ResultExpressionMembershipImpl, Element> ownedRelatedElement;
@@ -48,6 +49,7 @@ public abstract class ResultExpressionMembershipImpl_ extends org.omg.sysml.meta
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String VISIBILITY = "visibility";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String MEMBER_NAME = "memberName";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";

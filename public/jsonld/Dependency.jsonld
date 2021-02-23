@@ -22,6 +22,7 @@
         "owningNamespace": {"@type": "@id"},
         "owningRelatedElement": {"@type": "@id"},
         "owningRelationship": {"@type": "@id"},
+        "qualifiedName": {"@type": "xsd:string"},
         "relatedElement": {"@type": "@id"},
         "source": {"@type": "@id"},
         "supplier": {"@type": "@id"},

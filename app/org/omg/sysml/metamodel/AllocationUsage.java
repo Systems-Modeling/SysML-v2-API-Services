@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface TransferActionUsage extends ActionUsage, MofObject {
-    Feature getContext();
+public interface AllocationUsage extends ConnectionUsage, MofObject {
+    Collection<? extends AllocationDefinition> getAllocationDefinition();
 }

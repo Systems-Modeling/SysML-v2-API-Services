@@ -61,40 +61,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
-@Entity(name = "TransferActionUsageImpl")
-@SecondaryTable(name = "TransferActionUsage")
-@org.hibernate.annotations.Table(appliesTo = "TransferActionUsage", fetch = FetchMode.SELECT, optional = false)
-// @info.archinnov.achilles.annotations.Table(table = "TransferActionUsage")
-@DiscriminatorValue(value = "TransferActionUsage")
-@JsonTypeName(value = "TransferActionUsage")
+@Entity(name = "AllocationUsageImpl")
+@SecondaryTable(name = "AllocationUsage")
+@org.hibernate.annotations.Table(appliesTo = "AllocationUsage", fetch = FetchMode.SELECT, optional = false)
+// @info.archinnov.achilles.annotations.Table(table = "AllocationUsage")
+@DiscriminatorValue(value = "AllocationUsage")
+@JsonTypeName(value = "AllocationUsage")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public abstract class TransferActionUsageImpl extends MofObjectImpl implements TransferActionUsage {
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("actionDefinition")
-    private Collection<Behavior> actionDefinition;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "BehaviorMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_actionDefinition",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Behavior> getActionDefinition() {
-        if (actionDefinition == null) {
-            actionDefinition = new ArrayList<>();
-        }
-        return actionDefinition;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = BehaviorImpl.class)
-    public void setActionDefinition(Collection<Behavior> actionDefinition) {
-        this.actionDefinition = actionDefinition;
-    }
-
-
-
+public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsage {
     // @info.archinnov.achilles.annotations.Column("aliasId")
     private Collection<String> aliasId;
 
@@ -102,8 +76,8 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "TransferActionUsage_aliasId",
-            joinColumns = @JoinColumn(name = "TransferActionUsageId"))
+    @CollectionTable(name = "AllocationUsage_aliasId",
+            joinColumns = @JoinColumn(name = "AllocationUsageId"))
     public Collection<String> getAliasId() {
         if (aliasId == null) {
             aliasId = new ArrayList<>();
@@ -119,48 +93,105 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("behavior")
-    private Collection<Behavior> behavior;
+    // @info.archinnov.achilles.annotations.Column("allocationDefinition")
+    private Collection<AllocationDefinition> allocationDefinition;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "BehaviorMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_behavior",
+    @ManyToAny(metaDef = "AllocationDefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "AllocationUsage_allocationDefinition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Behavior> getBehavior() {
-        if (behavior == null) {
-            behavior = new ArrayList<>();
+    public Collection<AllocationDefinition> getAllocationDefinition() {
+        if (allocationDefinition == null) {
+            allocationDefinition = new ArrayList<>();
         }
-        return behavior;
+        return allocationDefinition;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = BehaviorImpl.class)
-    public void setBehavior(Collection<Behavior> behavior) {
-        this.behavior = behavior;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AllocationDefinitionImpl.class)
+    public void setAllocationDefinition(Collection<AllocationDefinition> allocationDefinition) {
+        this.allocationDefinition = allocationDefinition;
     }
 
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("context")
-    private Feature context;
+    // @info.archinnov.achilles.annotations.Column("association")
+    private Collection<Association> association;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "contextType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "contextId", table = "TransferActionUsage")
-    public Feature getContext() {
-        return context;
+    @ManyToAny(metaDef = "AssociationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "AllocationUsage_association",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Association> getAssociation() {
+        if (association == null) {
+            association = new ArrayList<>();
+        }
+        return association;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
-    public void setContext(Feature context) {
-        this.context = context;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AssociationImpl.class)
+    public void setAssociation(Collection<Association> association) {
+        this.association = association;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("connectionDefinition")
+    private Collection<AssociationStructure> connectionDefinition;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "AssociationStructureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "AllocationUsage_connectionDefinition",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<AssociationStructure> getConnectionDefinition() {
+        if (connectionDefinition == null) {
+            connectionDefinition = new ArrayList<>();
+        }
+        return connectionDefinition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AssociationStructureImpl.class)
+    public void setConnectionDefinition(Collection<AssociationStructure> connectionDefinition) {
+        this.connectionDefinition = connectionDefinition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("connectorEnd")
+    private Collection<Feature> connectorEnd;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "AllocationUsage_connectorEnd",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Feature> getConnectorEnd() {
+        if (connectorEnd == null) {
+            connectorEnd = new ArrayList<>();
+        }
+        return connectorEnd;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    public void setConnectorEnd(Collection<Feature> connectorEnd) {
+        this.connectorEnd = connectorEnd;
     }
 
 
@@ -171,7 +202,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_documentation",
+    @JoinTable(name = "AllocationUsage_documentation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Documentation> getDocumentation() {
@@ -197,7 +228,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_documentationComment",
+    @JoinTable(name = "AllocationUsage_documentationComment",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Comment> getDocumentationComment() {
@@ -223,7 +254,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_endFeature",
+    @JoinTable(name = "AllocationUsage_endFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getEndFeature() {
@@ -249,7 +280,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "endOwningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "endOwningTypeId", table = "TransferActionUsage")
+    @JoinColumn(name = "endOwningTypeId", table = "AllocationUsage")
     public Type getEndOwningType() {
         return endOwningType;
     }
@@ -270,7 +301,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_feature",
+    @JoinTable(name = "AllocationUsage_feature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getFeature() {
@@ -296,7 +327,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_featureMembership",
+    @JoinTable(name = "AllocationUsage_featureMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureMembership> getFeatureMembership() {
@@ -322,7 +353,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_featuringType",
+    @JoinTable(name = "AllocationUsage_featuringType",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Type> getFeaturingType() {
@@ -348,7 +379,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_flowFeature",
+    @JoinTable(name = "AllocationUsage_flowFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Usage> getFlowFeature() {
@@ -372,7 +403,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "humanId", table = "TransferActionUsage")
+    @javax.persistence.Column(name = "humanId", table = "AllocationUsage")
     public String getHumanId() {
         return humanId;
     }
@@ -388,7 +419,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     private java.util.UUID identifier;
 
     @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "TransferActionUsage")
+    @javax.persistence.Column(name = "identifier", table = "AllocationUsage")
     public java.util.UUID getIdentifier() {
         return identifier;
     }
@@ -408,7 +439,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_importedMembership",
+    @JoinTable(name = "AllocationUsage_importedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getImportedMembership() {
@@ -434,7 +465,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_inheritedFeature",
+    @JoinTable(name = "AllocationUsage_inheritedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getInheritedFeature() {
@@ -460,7 +491,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_inheritedMembership",
+    @JoinTable(name = "AllocationUsage_inheritedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getInheritedMembership() {
@@ -486,7 +517,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_input",
+    @JoinTable(name = "AllocationUsage_input",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getInput() {
@@ -508,7 +539,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     private Boolean isAbstract;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isAbstract", table = "TransferActionUsage")
+    @javax.persistence.Column(name = "isAbstract", table = "AllocationUsage")
     public Boolean getIsAbstract() {
         return isAbstract;
     }
@@ -526,7 +557,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isComposite", table = "TransferActionUsage")
+    @javax.persistence.Column(name = "isComposite", table = "AllocationUsage")
     public Boolean getIsComposite() {
         return isComposite;
     }
@@ -544,7 +575,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isConjugated", table = "TransferActionUsage")
+    @javax.persistence.Column(name = "isConjugated", table = "AllocationUsage")
     public Boolean getIsConjugated() {
         return isConjugated;
     }
@@ -556,13 +587,29 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
 
 
 
+    // @info.archinnov.achilles.annotations.Column("isDirected")
+    private Boolean isDirected;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isDirected", table = "AllocationUsage")
+    public Boolean getIsDirected() {
+        return isDirected;
+    }
+
+    @JsonSetter
+    public void setIsDirected(Boolean isDirected) {
+        this.isDirected = isDirected;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("isEnd")
     private Boolean isEnd;
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isEnd", table = "TransferActionUsage")
+    @javax.persistence.Column(name = "isEnd", table = "AllocationUsage")
     public Boolean getIsEnd() {
         return isEnd;
     }
@@ -580,7 +627,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isNonunique", table = "TransferActionUsage")
+    @javax.persistence.Column(name = "isNonunique", table = "AllocationUsage")
     public Boolean getIsNonunique() {
         return isNonunique;
     }
@@ -596,7 +643,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     private Boolean isOrdered;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isOrdered", table = "TransferActionUsage")
+    @javax.persistence.Column(name = "isOrdered", table = "AllocationUsage")
     public Boolean getIsOrdered() {
         return isOrdered;
     }
@@ -612,7 +659,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     private Boolean isSufficient;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isSufficient", table = "TransferActionUsage")
+    @javax.persistence.Column(name = "isSufficient", table = "AllocationUsage")
     public Boolean getIsSufficient() {
         return isSufficient;
     }
@@ -628,7 +675,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     private Boolean isUnique;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isUnique", table = "TransferActionUsage")
+    @javax.persistence.Column(name = "isUnique", table = "AllocationUsage")
     public Boolean getIsUnique() {
         return isUnique;
     }
@@ -644,7 +691,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     private Boolean isVariation;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isVariation", table = "TransferActionUsage")
+    @javax.persistence.Column(name = "isVariation", table = "AllocationUsage")
     public Boolean getIsVariation() {
         return isVariation;
     }
@@ -657,6 +704,32 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("itemDefinition")
+    private Collection<Structure> itemDefinition;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "StructureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "AllocationUsage_itemDefinition",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Structure> getItemDefinition() {
+        if (itemDefinition == null) {
+            itemDefinition = new ArrayList<>();
+        }
+        return itemDefinition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StructureImpl.class)
+    public void setItemDefinition(Collection<Structure> itemDefinition) {
+        this.itemDefinition = itemDefinition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("member")
     private List<Element> member;
 
@@ -664,7 +737,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_member",
+    @JoinTable(name = "AllocationUsage_member",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getMember() {
@@ -690,7 +763,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_membership",
+    @JoinTable(name = "AllocationUsage_membership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getMembership() {
@@ -716,7 +789,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "multiplicityId", table = "TransferActionUsage")
+    @JoinColumn(name = "multiplicityId", table = "AllocationUsage")
     public Multiplicity getMultiplicity() {
         return multiplicity;
     }
@@ -737,7 +810,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "name", table = "TransferActionUsage")
+    @javax.persistence.Column(name = "name", table = "AllocationUsage")
     public String getName() {
         return name;
     }
@@ -757,7 +830,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedAction",
+    @JoinTable(name = "AllocationUsage_nestedAction",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<ActionUsage> getNestedAction() {
@@ -776,6 +849,32 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedAllocation")
+    private Collection<AllocationUsage> nestedAllocation;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "AllocationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "AllocationUsage_nestedAllocation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<AllocationUsage> getNestedAllocation() {
+        if (nestedAllocation == null) {
+            nestedAllocation = new ArrayList<>();
+        }
+        return nestedAllocation;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AllocationUsageImpl.class)
+    public void setNestedAllocation(Collection<AllocationUsage> nestedAllocation) {
+        this.nestedAllocation = nestedAllocation;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedAnalysisCase")
     private Collection<AnalysisCaseUsage> nestedAnalysisCase;
 
@@ -783,7 +882,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnalysisCaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedAnalysisCase",
+    @JoinTable(name = "AllocationUsage_nestedAnalysisCase",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<AnalysisCaseUsage> getNestedAnalysisCase() {
@@ -809,7 +908,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AttributeUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedAttribute",
+    @JoinTable(name = "AllocationUsage_nestedAttribute",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<AttributeUsage> getNestedAttribute() {
@@ -835,7 +934,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CalculationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedCalculation",
+    @JoinTable(name = "AllocationUsage_nestedCalculation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<CalculationUsage> getNestedCalculation() {
@@ -861,7 +960,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedCase",
+    @JoinTable(name = "AllocationUsage_nestedCase",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<CaseUsage> getNestedCase() {
@@ -887,7 +986,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ConnectionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedConnection",
+    @JoinTable(name = "AllocationUsage_nestedConnection",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<ConnectionUsage> getNestedConnection() {
@@ -913,7 +1012,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ConstraintUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedConstraint",
+    @JoinTable(name = "AllocationUsage_nestedConstraint",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<ConstraintUsage> getNestedConstraint() {
@@ -939,7 +1038,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "EnumerationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedEnumeration",
+    @JoinTable(name = "AllocationUsage_nestedEnumeration",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<EnumerationUsage> getNestedEnumeration() {
@@ -965,7 +1064,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "IndividualUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedIndividual",
+    @JoinTable(name = "AllocationUsage_nestedIndividual",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<IndividualUsage> getNestedIndividual() {
@@ -991,7 +1090,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "InterfaceUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedInterface",
+    @JoinTable(name = "AllocationUsage_nestedInterface",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<InterfaceUsage> getNestedInterface() {
@@ -1017,7 +1116,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ItemUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedItem",
+    @JoinTable(name = "AllocationUsage_nestedItem",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<ItemUsage> getNestedItem() {
@@ -1043,7 +1142,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "PartUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedPart",
+    @JoinTable(name = "AllocationUsage_nestedPart",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<PartUsage> getNestedPart() {
@@ -1069,7 +1168,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "PortUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedPort",
+    @JoinTable(name = "AllocationUsage_nestedPort",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<PortUsage> getNestedPort() {
@@ -1095,7 +1194,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ReferenceUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedReference",
+    @JoinTable(name = "AllocationUsage_nestedReference",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<ReferenceUsage> getNestedReference() {
@@ -1121,7 +1220,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "RenderingUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedRendering",
+    @JoinTable(name = "AllocationUsage_nestedRendering",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<RenderingUsage> getNestedRendering() {
@@ -1147,7 +1246,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "RequirementUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedRequirement",
+    @JoinTable(name = "AllocationUsage_nestedRequirement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<RequirementUsage> getNestedRequirement() {
@@ -1173,7 +1272,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "StateUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedState",
+    @JoinTable(name = "AllocationUsage_nestedState",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<StateUsage> getNestedState() {
@@ -1199,7 +1298,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TransitionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedTransition",
+    @JoinTable(name = "AllocationUsage_nestedTransition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<TransitionUsage> getNestedTransition() {
@@ -1225,7 +1324,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedUsage",
+    @JoinTable(name = "AllocationUsage_nestedUsage",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Usage> getNestedUsage() {
@@ -1251,7 +1350,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "VerificationCaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedVerificationCase",
+    @JoinTable(name = "AllocationUsage_nestedVerificationCase",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<VerificationCaseUsage> getNestedVerificationCase() {
@@ -1277,7 +1376,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ViewUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedView",
+    @JoinTable(name = "AllocationUsage_nestedView",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<ViewUsage> getNestedView() {
@@ -1303,7 +1402,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ViewpointUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_nestedViewpoint",
+    @JoinTable(name = "AllocationUsage_nestedViewpoint",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<ViewpointUsage> getNestedViewpoint() {
@@ -1329,7 +1428,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_output",
+    @JoinTable(name = "AllocationUsage_output",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getOutput() {
@@ -1353,7 +1452,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_ownedAnnotation",
+    @JoinTable(name = "AllocationUsage_ownedAnnotation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Annotation> getOwnedAnnotation() {
@@ -1379,7 +1478,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConjugatorType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedConjugatorId", table = "TransferActionUsage")
+    @JoinColumn(name = "ownedConjugatorId", table = "AllocationUsage")
     public Conjugation getOwnedConjugator() {
         return ownedConjugator;
     }
@@ -1400,7 +1499,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_ownedElement",
+    @JoinTable(name = "AllocationUsage_ownedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Element> getOwnedElement() {
@@ -1426,7 +1525,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_ownedEndFeature",
+    @JoinTable(name = "AllocationUsage_ownedEndFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getOwnedEndFeature() {
@@ -1452,7 +1551,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_ownedFeature",
+    @JoinTable(name = "AllocationUsage_ownedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Feature> getOwnedFeature() {
@@ -1476,7 +1575,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_ownedFeatureMembership",
+    @JoinTable(name = "AllocationUsage_ownedFeatureMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureMembership> getOwnedFeatureMembership() {
@@ -1502,7 +1601,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "GeneralizationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_ownedGeneralization",
+    @JoinTable(name = "AllocationUsage_ownedGeneralization",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Generalization> getOwnedGeneralization() {
@@ -1526,7 +1625,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_ownedImport",
+    @JoinTable(name = "AllocationUsage_ownedImport",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Import> getOwnedImport() {
@@ -1552,7 +1651,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_ownedMember",
+    @JoinTable(name = "AllocationUsage_ownedMember",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getOwnedMember() {
@@ -1576,7 +1675,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_ownedMembership",
+    @JoinTable(name = "AllocationUsage_ownedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getOwnedMembership() {
@@ -1602,7 +1701,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "RedefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_ownedRedefinition",
+    @JoinTable(name = "AllocationUsage_ownedRedefinition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Redefinition> getOwnedRedefinition() {
@@ -1620,13 +1719,37 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
 
 
 
+    // @info.archinnov.achilles.annotations.Column("ownedRelatedElement")
+    private List<Element> ownedRelatedElement;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "AllocationUsage_ownedRelatedElement",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Element> getOwnedRelatedElement() {
+        if (ownedRelatedElement == null) {
+            ownedRelatedElement = new ArrayList<>();
+        }
+        return ownedRelatedElement;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    public void setOwnedRelatedElement(List<Element> ownedRelatedElement) {
+        this.ownedRelatedElement = ownedRelatedElement;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("ownedRelationship")
     private List<Relationship> ownedRelationship;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_ownedRelationship",
+    @JoinTable(name = "AllocationUsage_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Relationship> getOwnedRelationship() {
@@ -1652,7 +1775,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "SubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_ownedSubsetting",
+    @JoinTable(name = "AllocationUsage_ownedSubsetting",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Subsetting> getOwnedSubsetting() {
@@ -1678,7 +1801,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_ownedTextualRepresentation",
+    @JoinTable(name = "AllocationUsage_ownedTextualRepresentation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<TextualRepresentation> getOwnedTextualRepresentation() {
@@ -1704,7 +1827,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeFeaturingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_ownedTypeFeaturing",
+    @JoinTable(name = "AllocationUsage_ownedTypeFeaturing",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<TypeFeaturing> getOwnedTypeFeaturing() {
@@ -1730,7 +1853,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_ownedTyping",
+    @JoinTable(name = "AllocationUsage_ownedTyping",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<FeatureTyping> getOwnedTyping() {
@@ -1756,7 +1879,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownerId", table = "TransferActionUsage")
+    @JoinColumn(name = "ownerId", table = "AllocationUsage")
     public Element getOwner() {
         return owner;
     }
@@ -1777,7 +1900,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "DefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "owningDefinitionType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningDefinitionId", table = "TransferActionUsage")
+    @JoinColumn(name = "owningDefinitionId", table = "AllocationUsage")
     public Definition getOwningDefinition() {
         return owningDefinition;
     }
@@ -1796,7 +1919,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningFeatureMembershipId", table = "TransferActionUsage")
+    @JoinColumn(name = "owningFeatureMembershipId", table = "AllocationUsage")
     public FeatureMembership getOwningFeatureMembership() {
         return owningFeatureMembership;
     }
@@ -1815,7 +1938,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningMembershipId", table = "TransferActionUsage")
+    @JoinColumn(name = "owningMembershipId", table = "AllocationUsage")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -1836,7 +1959,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "TransferActionUsage")
+    @JoinColumn(name = "owningNamespaceId", table = "AllocationUsage")
     public Namespace getOwningNamespace() {
         return owningNamespace;
     }
@@ -1849,13 +1972,32 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
 
 
 
+    // @info.archinnov.achilles.annotations.Column("owningRelatedElement")
+    private Element owningRelatedElement;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElementType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningRelatedElementId", table = "AllocationUsage")
+    public Element getOwningRelatedElement() {
+        return owningRelatedElement;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
+    public void setOwningRelatedElement(Element owningRelatedElement) {
+        this.owningRelatedElement = owningRelatedElement;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("owningRelationship")
     private Relationship owningRelationship;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelationshipId", table = "TransferActionUsage")
+    @JoinColumn(name = "owningRelationshipId", table = "AllocationUsage")
     public Relationship getOwningRelationship() {
         return owningRelationship;
     }
@@ -1876,7 +2018,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningTypeId", table = "TransferActionUsage")
+    @JoinColumn(name = "owningTypeId", table = "AllocationUsage")
     public Type getOwningType() {
         return owningType;
     }
@@ -1897,7 +2039,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "owningUsageType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningUsageId", table = "TransferActionUsage")
+    @JoinColumn(name = "owningUsageId", table = "AllocationUsage")
     public Usage getOwningUsage() {
         return owningUsage;
     }
@@ -1911,27 +2053,194 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("parameter")
-    private Collection<Feature> parameter;
+    // @info.archinnov.achilles.annotations.Column("partDefinition")
+    private Collection<PartDefinition> partDefinition;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "PartDefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "AllocationUsage_partDefinition",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<PartDefinition> getPartDefinition() {
+        if (partDefinition == null) {
+            partDefinition = new ArrayList<>();
+        }
+        return partDefinition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PartDefinitionImpl.class)
+    public void setPartDefinition(Collection<PartDefinition> partDefinition) {
+        this.partDefinition = partDefinition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("qualifiedName")
+    private String qualifiedName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "qualifiedName", table = "AllocationUsage")
+    public String getQualifiedName() {
+        return qualifiedName;
+    }
+
+    @JsonSetter
+    public void setQualifiedName(String qualifiedName) {
+        this.qualifiedName = qualifiedName;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("relatedElement")
+    private List<Element> relatedElement;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "AllocationUsage_relatedElement",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Element> getRelatedElement() {
+        if (relatedElement == null) {
+            relatedElement = new ArrayList<>();
+        }
+        return relatedElement;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    public void setRelatedElement(List<Element> relatedElement) {
+        this.relatedElement = relatedElement;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("relatedFeature")
+    private List<Feature> relatedFeature;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_parameter",
+    @JoinTable(name = "AllocationUsage_relatedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Feature> getParameter() {
-        if (parameter == null) {
-            parameter = new ArrayList<>();
+    public List<Feature> getRelatedFeature() {
+        if (relatedFeature == null) {
+            relatedFeature = new ArrayList<>();
         }
-        return parameter;
+        return relatedFeature;
     }
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
-    public void setParameter(Collection<Feature> parameter) {
-        this.parameter = parameter;
+    public void setRelatedFeature(List<Feature> relatedFeature) {
+        this.relatedFeature = relatedFeature;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("source")
+    private List<Element> source;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "AllocationUsage_source",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Element> getSource() {
+        if (source == null) {
+            source = new ArrayList<>();
+        }
+        return source;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    public void setSource(List<Element> source) {
+        this.source = source;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("sourceFeature")
+    private Feature sourceFeature;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "sourceFeatureType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "sourceFeatureId", table = "AllocationUsage")
+    public Feature getSourceFeature() {
+        return sourceFeature;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
+    public void setSourceFeature(Feature sourceFeature) {
+        this.sourceFeature = sourceFeature;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("target")
+    private List<Element> target;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "AllocationUsage_target",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Element> getTarget() {
+        if (target == null) {
+            target = new ArrayList<>();
+        }
+        return target;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    public void setTarget(List<Element> target) {
+        this.target = target;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("targetFeature")
+    private Collection<Feature> targetFeature;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "AllocationUsage_targetFeature",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Feature> getTargetFeature() {
+        if (targetFeature == null) {
+            targetFeature = new ArrayList<>();
+        }
+        return targetFeature;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    public void setTargetFeature(Collection<Feature> targetFeature) {
+        this.targetFeature = targetFeature;
     }
 
 
@@ -1944,7 +2253,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_type",
+    @JoinTable(name = "AllocationUsage_type",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Type> getType() {
@@ -1970,7 +2279,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_usage",
+    @JoinTable(name = "AllocationUsage_usage",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Usage> getUsage() {
@@ -1996,7 +2305,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_variant",
+    @JoinTable(name = "AllocationUsage_variant",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Usage> getVariant() {
@@ -2020,7 +2329,7 @@ public abstract class TransferActionUsageImpl extends MofObjectImpl implements T
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "VariantMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransferActionUsage_variantMembership",
+    @JoinTable(name = "AllocationUsage_variantMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<VariantMembership> getVariantMembership() {

@@ -53,6 +53,7 @@ public abstract class SnapshotFeatureImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<SnapshotFeatureImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<SnapshotFeatureImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<SnapshotFeatureImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<SnapshotFeatureImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<SnapshotFeatureImpl, Documentation> documentation;
 	public static volatile ListAttribute<SnapshotFeatureImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<SnapshotFeatureImpl, Feature> endFeature;
@@ -95,6 +96,7 @@ public abstract class SnapshotFeatureImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

@@ -42,6 +42,7 @@ public abstract class ClassImpl_ extends org.omg.sysml.metamodel.impl.MofObjectI
 	public static volatile CollectionAttribute<ClassImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<ClassImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<ClassImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<ClassImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<ClassImpl, Documentation> documentation;
 	public static volatile ListAttribute<ClassImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<ClassImpl, Feature> endFeature;
@@ -74,6 +75,7 @@ public abstract class ClassImpl_ extends org.omg.sysml.metamodel.impl.MofObjectI
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

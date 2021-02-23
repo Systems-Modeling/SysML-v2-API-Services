@@ -27,6 +27,7 @@ public abstract class TransitionFeatureMembershipImpl_ extends org.omg.sysml.met
 	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, VisibilityKind> visibility;
 	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, TransitionFeatureKind> kind;
 	public static volatile ListAttribute<TransitionFeatureMembershipImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<TransitionFeatureMembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, String> memberName;
 	public static volatile ListAttribute<TransitionFeatureMembershipImpl, Element> ownedRelatedElement;
@@ -51,6 +52,7 @@ public abstract class TransitionFeatureMembershipImpl_ extends org.omg.sysml.met
 	public static final String VISIBILITY = "visibility";
 	public static final String KIND = "kind";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String MEMBER_NAME = "memberName";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";

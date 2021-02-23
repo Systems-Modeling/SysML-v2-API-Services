@@ -22,6 +22,7 @@ public abstract class ExternalRelationshipImpl_ extends org.omg.sysml.metamodel.
 	public static volatile CollectionAttribute<ExternalRelationshipImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<ExternalRelationshipImpl, Element> ownedElement;
 	public static volatile ListAttribute<ExternalRelationshipImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<ExternalRelationshipImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<ExternalRelationshipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<ExternalRelationshipImpl, String> specification;
 	public static volatile ListAttribute<ExternalRelationshipImpl, Element> ownedRelatedElement;
@@ -39,6 +40,7 @@ public abstract class ExternalRelationshipImpl_ extends org.omg.sysml.metamodel.
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String SPECIFICATION = "specification";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
