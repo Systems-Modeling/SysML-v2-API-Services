@@ -23,6 +23,7 @@ public abstract class ElementFilterMembershipImpl_ extends org.omg.sysml.metamod
 	public static volatile CollectionAttribute<ElementFilterMembershipImpl, Element> ownedElement;
 	public static volatile SingularAttribute<ElementFilterMembershipImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<ElementFilterMembershipImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<ElementFilterMembershipImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<ElementFilterMembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<ElementFilterMembershipImpl, String> memberName;
 	public static volatile ListAttribute<ElementFilterMembershipImpl, Element> ownedRelatedElement;
@@ -40,6 +41,7 @@ public abstract class ElementFilterMembershipImpl_ extends org.omg.sysml.metamod
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String VISIBILITY = "visibility";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String MEMBER_NAME = "memberName";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";

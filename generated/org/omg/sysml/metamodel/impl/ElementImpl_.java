@@ -24,6 +24,7 @@ public abstract class ElementImpl_ extends org.omg.sysml.metamodel.impl.MofObjec
 	public static volatile SingularAttribute<ElementImpl, String> humanId;
 	public static volatile CollectionAttribute<ElementImpl, String> aliasId;
 	public static volatile ListAttribute<ElementImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<ElementImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<ElementImpl, Documentation> documentation;
 	public static volatile SingularAttribute<ElementImpl, String> name;
 	public static volatile CollectionAttribute<ElementImpl, Comment> documentationComment;
@@ -35,6 +36,7 @@ public abstract class ElementImpl_ extends org.omg.sysml.metamodel.impl.MofObjec
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String NAME = "name";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";

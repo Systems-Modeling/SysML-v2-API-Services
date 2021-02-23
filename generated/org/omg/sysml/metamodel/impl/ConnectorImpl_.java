@@ -43,6 +43,7 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile SingularAttribute<ConnectorImpl, UUID> identifier;
 	public static volatile CollectionAttribute<ConnectorImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<ConnectorImpl, Feature> ownedFeature;
+	public static volatile SingularAttribute<ConnectorImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<ConnectorImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<ConnectorImpl, Feature> endFeature;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isEnd;
@@ -94,6 +95,7 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String END_FEATURE = "endFeature";
 	public static final String IS_END = "isEnd";

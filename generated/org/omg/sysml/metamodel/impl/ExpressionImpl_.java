@@ -57,6 +57,7 @@ public abstract class ExpressionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile SingularAttribute<ExpressionImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<ExpressionImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<ExpressionImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<ExpressionImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<ExpressionImpl, Documentation> documentation;
 	public static volatile ListAttribute<ExpressionImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<ExpressionImpl, Feature> endFeature;
@@ -102,6 +103,7 @@ public abstract class ExpressionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

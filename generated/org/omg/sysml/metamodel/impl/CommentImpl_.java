@@ -22,6 +22,7 @@ public abstract class CommentImpl_ extends org.omg.sysml.metamodel.impl.MofObjec
 	public static volatile CollectionAttribute<CommentImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<CommentImpl, Element> ownedElement;
 	public static volatile ListAttribute<CommentImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<CommentImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<CommentImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<CommentImpl, Element> annotatedElement;
 	public static volatile SingularAttribute<CommentImpl, String> body;
@@ -36,6 +37,7 @@ public abstract class CommentImpl_ extends org.omg.sysml.metamodel.impl.MofObjec
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String ANNOTATED_ELEMENT = "annotatedElement";
 	public static final String BODY = "body";

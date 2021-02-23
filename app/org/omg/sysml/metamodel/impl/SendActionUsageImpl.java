@@ -144,27 +144,6 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("context")
-    private Feature context;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "contextType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "contextId", table = "SendActionUsage")
-    public Feature getContext() {
-        return context;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
-    public void setContext(Feature context) {
-        this.context = context;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("documentation")
     private Collection<Documentation> documentation;
 
@@ -657,6 +636,27 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("itemsArgument")
+    private Expression itemsArgument;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "itemsArgumentType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "itemsArgumentId", table = "SendActionUsage")
+    public Expression getItemsArgument() {
+        return itemsArgument;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ExpressionImpl.class)
+    public void setItemsArgument(Expression itemsArgument) {
+        this.itemsArgument = itemsArgument;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("member")
     private List<Element> member;
 
@@ -771,6 +771,32 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ActionUsageImpl.class)
     public void setNestedAction(Collection<ActionUsage> nestedAction) {
         this.nestedAction = nestedAction;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedAllocation")
+    private Collection<AllocationUsage> nestedAllocation;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "AllocationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "SendActionUsage_nestedAllocation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<AllocationUsage> getNestedAllocation() {
+        if (nestedAllocation == null) {
+            nestedAllocation = new ArrayList<>();
+        }
+        return nestedAllocation;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AllocationUsageImpl.class)
+    public void setNestedAllocation(Collection<AllocationUsage> nestedAllocation) {
+        this.nestedAllocation = nestedAllocation;
     }
 
 
@@ -1937,22 +1963,42 @@ public class SendActionUsageImpl extends MofObjectImpl implements SendActionUsag
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("target")
-    private Expression target;
+    // @info.archinnov.achilles.annotations.Column("qualifiedName")
+    private String qualifiedName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "qualifiedName", table = "SendActionUsage")
+    public String getQualifiedName() {
+        return qualifiedName;
+    }
+
+    @JsonSetter
+    public void setQualifiedName(String qualifiedName) {
+        this.qualifiedName = qualifiedName;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("receiverArgument")
+    private Expression receiverArgument;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "targetType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "targetId", table = "SendActionUsage")
-    public Expression getTarget() {
-        return target;
+    @Any(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "receiverArgumentType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "receiverArgumentId", table = "SendActionUsage")
+    public Expression getReceiverArgument() {
+        return receiverArgument;
     }
 
     @JsonSetter
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ExpressionImpl.class)
-    public void setTarget(Expression target) {
-        this.target = target;
+    public void setReceiverArgument(Expression receiverArgument) {
+        this.receiverArgument = receiverArgument;
     }
 
 

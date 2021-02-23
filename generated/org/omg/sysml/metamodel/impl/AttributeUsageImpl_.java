@@ -7,6 +7,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.ActionUsage;
+import org.omg.sysml.metamodel.AllocationUsage;
 import org.omg.sysml.metamodel.AnalysisCaseUsage;
 import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.AttributeUsage;
@@ -77,6 +78,7 @@ public abstract class AttributeUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<AttributeUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile CollectionAttribute<AttributeUsageImpl, Feature> ownedFeature;
 	public static volatile CollectionAttribute<AttributeUsageImpl, Usage> flowFeature;
+	public static volatile SingularAttribute<AttributeUsageImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<AttributeUsageImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<AttributeUsageImpl, AnalysisCaseUsage> nestedAnalysisCase;
 	public static volatile CollectionAttribute<AttributeUsageImpl, VerificationCaseUsage> nestedVerificationCase;
@@ -92,6 +94,7 @@ public abstract class AttributeUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile ListAttribute<AttributeUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<AttributeUsageImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<AttributeUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<AttributeUsageImpl, AllocationUsage> nestedAllocation;
 	public static volatile CollectionAttribute<AttributeUsageImpl, IndividualUsage> nestedIndividual;
 	public static volatile ListAttribute<AttributeUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<AttributeUsageImpl, Boolean> isNonunique;
@@ -147,6 +150,7 @@ public abstract class AttributeUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String FLOW_FEATURE = "flowFeature";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String NESTED_ANALYSIS_CASE = "nestedAnalysisCase";
 	public static final String NESTED_VERIFICATION_CASE = "nestedVerificationCase";
@@ -162,6 +166,7 @@ public abstract class AttributeUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String NESTED_INDIVIDUAL = "nestedIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_NONUNIQUE = "isNonunique";

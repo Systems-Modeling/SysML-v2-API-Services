@@ -46,6 +46,7 @@ public abstract class PredicateImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile CollectionAttribute<PredicateImpl, Expression> expression;
 	public static volatile CollectionAttribute<PredicateImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<PredicateImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<PredicateImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<PredicateImpl, Documentation> documentation;
 	public static volatile ListAttribute<PredicateImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<PredicateImpl, Feature> endFeature;
@@ -81,6 +82,7 @@ public abstract class PredicateImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String EXPRESSION = "expression";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

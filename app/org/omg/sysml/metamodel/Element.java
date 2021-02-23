@@ -50,6 +50,8 @@ public interface Element extends MofObject {
 
     Collection<? extends TextualRepresentation> getOwnedTextualRepresentation();
 
+    String getQualifiedName();
+
     Collection<? extends String> getAliasId();
 
     String getHumanId();

@@ -53,6 +53,7 @@ public abstract class ItemFlowEndImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static volatile CollectionAttribute<ItemFlowEndImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<ItemFlowEndImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<ItemFlowEndImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<ItemFlowEndImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<ItemFlowEndImpl, Documentation> documentation;
 	public static volatile ListAttribute<ItemFlowEndImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<ItemFlowEndImpl, Feature> endFeature;
@@ -95,6 +96,7 @@ public abstract class ItemFlowEndImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

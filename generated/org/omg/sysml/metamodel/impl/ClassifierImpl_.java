@@ -42,6 +42,7 @@ public abstract class ClassifierImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile CollectionAttribute<ClassifierImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<ClassifierImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<ClassifierImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<ClassifierImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<ClassifierImpl, Documentation> documentation;
 	public static volatile ListAttribute<ClassifierImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<ClassifierImpl, Feature> endFeature;
@@ -74,6 +75,7 @@ public abstract class ClassifierImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

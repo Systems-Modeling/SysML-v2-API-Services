@@ -58,6 +58,7 @@ public abstract class LiteralRealImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static volatile SingularAttribute<LiteralRealImpl, Boolean> isModelLevelEvaluable;
 	public static volatile CollectionAttribute<LiteralRealImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<LiteralRealImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<LiteralRealImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<LiteralRealImpl, Documentation> documentation;
 	public static volatile ListAttribute<LiteralRealImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<LiteralRealImpl, Feature> endFeature;
@@ -104,6 +105,7 @@ public abstract class LiteralRealImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

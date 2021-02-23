@@ -25,6 +25,7 @@ public abstract class FeatureMembershipImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile CollectionAttribute<FeatureMembershipImpl, Element> ownedElement;
 	public static volatile SingularAttribute<FeatureMembershipImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<FeatureMembershipImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<FeatureMembershipImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<FeatureMembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<FeatureMembershipImpl, String> memberName;
 	public static volatile ListAttribute<FeatureMembershipImpl, Element> ownedRelatedElement;
@@ -48,6 +49,7 @@ public abstract class FeatureMembershipImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String VISIBILITY = "visibility";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String MEMBER_NAME = "memberName";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";

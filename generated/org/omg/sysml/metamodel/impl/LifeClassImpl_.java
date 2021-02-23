@@ -42,6 +42,7 @@ public abstract class LifeClassImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile CollectionAttribute<LifeClassImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<LifeClassImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<LifeClassImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<LifeClassImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<LifeClassImpl, Documentation> documentation;
 	public static volatile ListAttribute<LifeClassImpl, FeatureMembership> featureMembership;
 	public static volatile CollectionAttribute<LifeClassImpl, Feature> endFeature;
@@ -74,6 +75,7 @@ public abstract class LifeClassImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String END_FEATURE = "endFeature";

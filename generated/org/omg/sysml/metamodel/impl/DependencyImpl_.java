@@ -21,6 +21,7 @@ public abstract class DependencyImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile CollectionAttribute<DependencyImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<DependencyImpl, Element> ownedElement;
 	public static volatile ListAttribute<DependencyImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<DependencyImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<DependencyImpl, Documentation> documentation;
 	public static volatile ListAttribute<DependencyImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<DependencyImpl, Element> source;
@@ -38,6 +39,7 @@ public abstract class DependencyImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";

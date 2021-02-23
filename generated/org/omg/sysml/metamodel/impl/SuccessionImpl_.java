@@ -46,6 +46,7 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile SingularAttribute<SuccessionImpl, UUID> identifier;
 	public static volatile CollectionAttribute<SuccessionImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<SuccessionImpl, Feature> ownedFeature;
+	public static volatile SingularAttribute<SuccessionImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<SuccessionImpl, Documentation> documentation;
 	public static volatile CollectionAttribute<SuccessionImpl, Feature> endFeature;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isEnd;
@@ -100,6 +101,7 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String END_FEATURE = "endFeature";
 	public static final String IS_END = "isEnd";

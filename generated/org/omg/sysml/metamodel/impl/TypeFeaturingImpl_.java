@@ -21,6 +21,7 @@ public abstract class TypeFeaturingImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static volatile CollectionAttribute<TypeFeaturingImpl, Annotation> ownedAnnotation;
 	public static volatile CollectionAttribute<TypeFeaturingImpl, Element> ownedElement;
 	public static volatile ListAttribute<TypeFeaturingImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<TypeFeaturingImpl, String> qualifiedName;
 	public static volatile CollectionAttribute<TypeFeaturingImpl, Documentation> documentation;
 	public static volatile ListAttribute<TypeFeaturingImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<TypeFeaturingImpl, Element> source;
@@ -36,6 +37,7 @@ public abstract class TypeFeaturingImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
+	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
