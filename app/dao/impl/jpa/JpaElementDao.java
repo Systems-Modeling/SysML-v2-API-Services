@@ -26,6 +26,7 @@ import dao.ElementDao;
 import javabean.JavaBeanHelper;
 import jpa.manager.JPAManager;
 import org.hibernate.Hibernate;
+import org.hibernate.proxy.HibernateProxy;
 import org.omg.sysml.internal.CommitIndex;
 import org.omg.sysml.internal.impl.CommitIndexImpl;
 import org.omg.sysml.internal.impl.CommitIndexImpl_;
@@ -250,7 +251,10 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
                 switch (primitiveConstraint.getProperty()) {
                     case "@type":
                         try {
-                            actualValue = metamodelProvider.getInterface(element.getClass()).getSimpleName();
+                            Class<?> clazz = element instanceof HibernateProxy ?
+                                    ((HibernateProxy) element).getHibernateLazyInitializer().getPersistentClass() :
+                                    element.getClass();
+                            actualValue = metamodelProvider.getInterface(clazz).getSimpleName();
                         } catch (ClassNotFoundException e) {
                             throw new IllegalStateException(e);
                         }
