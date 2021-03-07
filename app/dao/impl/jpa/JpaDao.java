@@ -29,9 +29,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
+import java.util.Comparator;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
 public abstract class JpaDao<E> implements Dao<E> {
     
@@ -74,17 +76,17 @@ public abstract class JpaDao<E> implements Dao<E> {
         });
     }
 
-    protected static class PaginatedQuery<X> {
-        private final TypedQuery<X> typedQuery;
+    protected static class Paginated<X> {
+        private final X x;
         private final boolean reversed;
 
-        private PaginatedQuery(TypedQuery<X> typedQuery, boolean reversed) {
-            this.typedQuery = typedQuery;
+        private Paginated(X x, boolean reversed) {
+            this.x = x;
             this.reversed = reversed;
         }
 
-        public TypedQuery<X> getTypedQuery() {
-            return typedQuery;
+        public X get() {
+            return x;
         }
 
         public boolean isReversed() {
@@ -92,12 +94,11 @@ public abstract class JpaDao<E> implements Dao<E> {
         }
     }
 
-    protected <X> PaginatedQuery<X> paginateQuery(@Nullable UUID after, @Nullable UUID before, int maxResults, CriteriaQuery<X> query, CriteriaBuilder builder, EntityManager em, Path<UUID> idPath) {
+    protected <X> Paginated<TypedQuery<X>> paginateQuery(@Nullable UUID after, @Nullable UUID before, int maxResults, CriteriaQuery<X> query, CriteriaBuilder builder, EntityManager em, Path<UUID> idPath) {
         return paginateQuery(after, before, maxResults, query, builder, em, idPath, null);
     }
 
-    protected <X> PaginatedQuery<X> paginateQuery(@Nullable UUID after, @Nullable UUID before, int maxResults, CriteriaQuery<X> query, CriteriaBuilder builder, EntityManager em, Path<UUID> idPath, @Nullable Expression<Boolean> initialWhere) {
-        Expression<Boolean> where = initialWhere;
+    protected <X> Paginated<TypedQuery<X>> paginateQuery(@Nullable UUID after, @Nullable UUID before, int maxResults, CriteriaQuery<X> query, CriteriaBuilder builder, EntityManager em, Path<UUID> idPath, @Nullable Expression<Boolean> where) {
         if (after != null) {
             Expression<Boolean> expr = builder.greaterThan(idPath, after);
             where = where != null ? builder.and(where, expr) : expr;
@@ -116,6 +117,23 @@ public abstract class JpaDao<E> implements Dao<E> {
         if (maxResults >= 0) {
             typedQuery.setMaxResults(maxResults);
         }
-        return new PaginatedQuery<>(typedQuery, reversed);
+        return new Paginated<>(typedQuery, reversed);
+    }
+
+    protected <X> Paginated<Stream<X>> paginateStream(@Nullable UUID after, @Nullable UUID before, int maxResults, Stream<X> stream, Function<X, UUID> idFunction) {
+        if (after != null) {
+            stream = stream.filter(x -> idFunction.apply(x).compareTo(after) > 0);
+        }
+        if (before != null) {
+            stream = stream.filter(x -> idFunction.apply(x).compareTo(before) < 0);
+        }
+        boolean reversed = after == null && before != null;
+        Comparator<X> sort = Comparator.comparing(idFunction);
+        sort = reversed ? sort.reversed() : sort;
+        stream = stream.sorted(sort);
+        if (maxResults >= 0) {
+            stream = stream.limit(maxResults);
+        }
+        return new Paginated<>(stream, reversed);
     }
 }

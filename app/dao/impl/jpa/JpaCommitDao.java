@@ -39,6 +39,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Expression;
@@ -207,13 +208,12 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
             Root<CommitImpl> root = query.from(CommitImpl.class);
             query.select(root);
             Expression<Boolean> where = builder.equal(root.get(CommitImpl_.containingProject), project);
-            PaginatedQuery<CommitImpl> paginatedQuery = paginateQuery(after, before, maxResults, query, builder, em, root.get(CommitImpl_.id), where);
-            List<Commit> result = paginatedQuery
-                    .getTypedQuery()
+            Paginated<TypedQuery<CommitImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, root.get(CommitImpl_.id), where);
+            List<Commit> result = paginated.get()
                     .getResultStream()
                     .map(commit -> (Commit) commit)
                     .collect(Collectors.toList());
-            if (paginatedQuery.isReversed()) {
+            if (paginated.isReversed()) {
                 Collections.reverse(result);
             }
             return result;

@@ -36,6 +36,7 @@ import javax.annotation.Nullable;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -95,13 +96,12 @@ public class JpaRelationshipDao extends JpaDao<Relationship> implements Relation
             Root<MofObjectImpl> root = query.from(MofObjectImpl.class);
             query.select(root);
             Expression<Boolean> where = getTypeExpression(builder, root);
-            PaginatedQuery<MofObjectImpl> paginatedQuery = paginateQuery(after, before, maxResults, query, builder, em, root.get(MofObjectImpl_.identifier), where);
-            List<Relationship> result = paginatedQuery
-                    .getTypedQuery()
+            Paginated<TypedQuery<MofObjectImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, root.get(MofObjectImpl_.identifier), where);
+            List<Relationship> result = paginated.get()
                     .getResultStream()
                     .map(o -> (Relationship) o)
                     .collect(Collectors.toList());
-            if (paginatedQuery.isReversed()) {
+            if (paginated.isReversed()) {
                 Collections.reverse(result);
             }
             return result;

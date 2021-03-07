@@ -70,13 +70,6 @@ public class ElementService extends BaseService<Element, ElementDao> {
                 .flatMap(commit -> dao.findByCommitAndId(commit, elementId));
     }
 
-    public List<Element> getRootsByProjectIdCommitId(UUID projectId, UUID commitId) {
-        return projectDao.findById(projectId)
-                .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
-                .map(dao::findRootsByCommit)
-                .orElse(Collections.emptyList());
-    }
-
     public List<Element> getRootsByProjectIdCommitId(UUID projectId, UUID commitId, @Nullable UUID after, @Nullable UUID before, int maxResults) {
         return projectDao.findById(projectId)
                 .flatMap(project -> commitDao.findByProjectAndId(project, commitId))

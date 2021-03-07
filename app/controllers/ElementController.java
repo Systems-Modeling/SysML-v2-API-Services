@@ -63,6 +63,28 @@ public class ElementController extends BaseController {
     public Result getElementsByProjectIdCommitId(UUID projectId, UUID commitId, Http.Request request) {
         PageRequest pageRequest = PageRequest.from(request);
         List<Element> elements = elementService.getElementsByProjectIdCommitId(projectId, commitId, pageRequest.getAfter(), pageRequest.getBefore(), pageRequest.getSize());
+        return buildResult(elements, projectId, commitId, request, pageRequest);
+    }
+
+    public Result getElementByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId, Http.Request request) {
+        Optional<Element> element = elementService.getElementsByProjectIdCommitIdElementId(projectId, commitId, elementId);
+        boolean respondWithJsonLd = respondWithJsonLd(request);
+        return element
+                .map(e -> respondWithJsonLd ? adornMofObject(e, request, metamodelProvider, environment, projectId, commitId) : e)
+                .map(Json::toJson)
+                .map(Results::ok)
+                .map(result -> respondWithJsonLd ? result.as(JSONLD_MIME_TYPE) : result)
+                .orElseGet(Results::notFound);
+
+    }
+
+    public Result getRootsByProjectIdCommitId(UUID projectId, UUID commitId, Http.Request request) {
+        PageRequest pageRequest = PageRequest.from(request);
+        List<Element> roots = elementService.getRootsByProjectIdCommitId(projectId, commitId, pageRequest.getAfter(), pageRequest.getBefore(), pageRequest.getSize());
+        return buildResult(roots, projectId, commitId, request, pageRequest);
+    }
+
+    protected Result buildResult(List<Element> elements, UUID projectId, UUID commitId, Http.Request request, PageRequest pageRequest) {
         boolean respondWithJsonLd = respondWithJsonLd(request);
         return Optional.of(
                 elements.stream()
@@ -86,28 +108,6 @@ public class ElementController extends BaseController {
                         pageRequest
                 ))
                 .orElseThrow();
-    }
-
-    public Result getElementByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId, Http.Request request) {
-        Optional<Element> element = elementService.getElementsByProjectIdCommitIdElementId(projectId, commitId, elementId);
-        boolean respondWithJsonLd = respondWithJsonLd(request);
-        return element
-                .map(e -> respondWithJsonLd ? adornMofObject(e, request, metamodelProvider, environment, projectId, commitId) : e)
-                .map(Json::toJson)
-                .map(Results::ok)
-                .map(result -> respondWithJsonLd ? result.as(JSONLD_MIME_TYPE) : result)
-                .orElseGet(Results::notFound);
-
-    }
-
-    public Result getRootsByProjectIdCommitId(UUID projectId, UUID commitId, Http.Request request) {
-        List<Element> roots = elementService.getRootsByProjectIdCommitId(projectId, commitId);
-        boolean respondWithJsonLd = respondWithJsonLd(request);
-        return ok(JacksonHelper.collectionToTree(roots.stream()
-                        .map(e -> respondWithJsonLd ? adornMofObject(e, request, metamodelProvider, environment, projectId, commitId) : e)
-                        .collect(Collectors.toSet()), Set.class,
-                respondWithJsonLd ? JsonLdMofObjectAdornment.class : metamodelProvider.getImplementationClass(Element.class)
-        ));
     }
 
     static JsonLdMofObjectAdornment adornMofObject(MofObject mof, Http.Request request, MetamodelProvider metamodelProvider, Environment environment, UUID projectId, UUID commitId) {

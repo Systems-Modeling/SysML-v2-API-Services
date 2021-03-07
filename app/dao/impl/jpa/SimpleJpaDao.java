@@ -24,6 +24,7 @@ package dao.impl.jpa;
 import jpa.manager.JPAManager;
 
 import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
@@ -84,11 +85,10 @@ public class SimpleJpaDao<I, C extends I> extends JpaDao<I> {
             CriteriaQuery<I> query = (CriteriaQuery<I>) builder.createQuery(clazz);
             Root<C> root = query.from(clazz);
             query.select(root);
-            PaginatedQuery<I> paginatedQuery = paginateQuery(after, before, maxResults, query, builder, em, root.get(idAttribute));
-            List<I> result = paginatedQuery
-                    .getTypedQuery()
+            Paginated<TypedQuery<I>> paginated = paginateQuery(after, before, maxResults, query, builder, em, root.get(idAttribute));
+            List<I> result = paginated.get()
                     .getResultList();
-            if (paginatedQuery.isReversed()) {
+            if (paginated.isReversed()) {
                 Collections.reverse(result);
             }
             return result;

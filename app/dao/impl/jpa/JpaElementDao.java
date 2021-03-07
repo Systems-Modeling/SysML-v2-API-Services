@@ -47,6 +47,7 @@ import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 import java.beans.PropertyDescriptor;
 import java.util.*;
@@ -119,13 +120,12 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
             Root<MofObjectImpl> root = query.from(MofObjectImpl.class);
             query.select(root);
             Expression<Boolean> where = getTypeExpression(builder, root);
-            PaginatedQuery<MofObjectImpl> paginatedQuery = paginateQuery(after, before, maxResults, query, builder, em, root.get(MofObjectImpl_.identifier), where);
-            List<Element> result = paginatedQuery
-                    .getTypedQuery()
+            Paginated<TypedQuery<MofObjectImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, root.get(MofObjectImpl_.identifier), where);
+            List<Element> result = paginated.get()
                     .getResultStream()
                     .map(o -> (Element) o)
                     .collect(Collectors.toList());
-            if (paginatedQuery.isReversed()) {
+            if (paginated.isReversed()) {
                 Collections.reverse(result);
             }
             return result;
@@ -159,16 +159,15 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
             Path<UUID> idPath = elementIdentityJoin.get(ElementIdentityImpl_.id);
             Expression<Boolean> where = builder.equal(commitIndexRoot.get(CommitIndexImpl_.id), commitIndex.getId());
             query.select(workingElementVersionsJoin);
-            PaginatedQuery<ElementVersionImpl> paginatedQuery = paginateQuery(after, before, maxResults, query, builder, em, idPath, where);
-            List<Element> result = paginatedQuery
-                    .getTypedQuery()
+            Paginated<TypedQuery<ElementVersionImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, idPath, where);
+            List<Element> result = paginated.get()
                     .getResultStream()
                     .map(ElementVersion::getData)
                     .filter(mof -> mof instanceof Element)
                     .map(mof -> (Element) mof)
                     .map(PROXY_RESOLVER)
                     .collect(Collectors.toList());
-            if (paginatedQuery.isReversed()) {
+            if (paginated.isReversed()) {
                 Collections.reverse(result);
             }
             return result;
@@ -204,22 +203,23 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
     }
 
     @Override
-    public List<Element> findRootsByCommit(Commit commit, UUID after, UUID before, int maxResults) {
-        return null;
-    }
-
-    @Override
-    public List<Element> findRootsByCommit(Commit commit) {
+    public List<Element> findRootsByCommit(Commit commit, @Nullable UUID after, @Nullable UUID before, int maxResults) {
         return jpaManager.transact(em -> {
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
             Commit c = em.contains(commit) ? commit : em.find(CommitImpl.class, commit.getId());
-            return getCommitIndex(c, em).getWorkingElementVersions().stream()
+            Stream<Element> stream = getCommitIndex(c, em).getWorkingElementVersions().stream()
                     .map(ElementVersion::getData)
                     .filter(mof -> (mof instanceof Element) && !(mof instanceof Relationship))
                     .map(mof -> (Element) mof)
-                    .filter(element -> element.getOwner() == null)
+                    .filter(element -> element.getOwner() == null);
+            Paginated<Stream<Element>> paginatedStream = paginateStream(after, before, maxResults, stream, Element::getIdentifier);
+            List<Element> result = paginatedStream.get()
                     .map(PROXY_RESOLVER)
                     .collect(Collectors.toList());
+            if (paginatedStream.isReversed()) {
+                Collections.reverse(result);
+            }
+            return result;
         });
     }
 
