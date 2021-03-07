@@ -22,17 +22,32 @@
 package controllers;
 
 import com.google.common.primitives.Bytes;
+import config.MetamodelProvider;
+import jackson.JacksonHelper;
+import jackson.JsonLdMofObjectAdornment;
+import org.omg.sysml.metamodel.MofObject;
+import play.Environment;
 import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
+import play.mvc.Results;
 
 import java.time.Instant;
 import java.util.Base64;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Function;
+import java.util.stream.Collectors;
+
+import static jackson.JsonLdMofObjectAdornment.JSONLD_MIME_TYPE;
 
 public abstract class BaseController extends Controller {
+
+    protected static final boolean INLINE_JSON_LD_CONTEXT_DEFAULT = true;
+    protected static final boolean INLINE_JSON_LD_CONTEXT = Optional.ofNullable(System.getenv("INLINE_JSON_LD_CONTEXT"))
+            .map(Boolean::parseBoolean)
+            .orElse(INLINE_JSON_LD_CONTEXT_DEFAULT);
 
     protected static char CURSOR_SEPARATOR = '|';
     protected static int DEFAULT_PAGE_SIZE = 100;
@@ -97,7 +112,7 @@ public abstract class BaseController extends Controller {
         }
     }
 
-    protected Result paginateResult(Result result, int resultSize, Function<Integer, UUID> idAtIndex, Http.Request request, PageRequest pageRequest) {
+    protected static Result paginateResult(Result result, int resultSize, Function<Integer, UUID> idAtIndex, Http.Request request, PageRequest pageRequest) {
         if (resultSize > 0) {
             boolean pageFull = resultSize == pageRequest.getSize();
             boolean hasNext = pageFull || pageRequest.getBefore() != null;
@@ -126,5 +141,43 @@ public abstract class BaseController extends Controller {
             }
         }
         return result;
+    }
+
+    protected static <X extends MofObject> Result buildResult(List<X> mofs, Class<X> clazz, Function<X, UUID> idFunction, UUID projectId, UUID commitId, Http.Request request, PageRequest pageRequest, MetamodelProvider metamodelProvider, Environment environment) {
+        boolean respondWithJsonLd = respondWithJsonLd(request);
+        return Optional.of(
+                mofs.stream()
+                        .map(e -> respondWithJsonLd ?
+                                adornMofObject(e, request, metamodelProvider, environment, projectId, commitId) :
+                                e
+                        )
+                        .collect(Collectors.toList())
+        )
+                .map(collection -> JacksonHelper.collectionToTree(collection, List.class, respondWithJsonLd ?
+                        JsonLdMofObjectAdornment.class :
+                        metamodelProvider.getImplementationClass(clazz))
+                )
+                .map(Results::ok)
+                .map(result -> respondWithJsonLd ? result.as(JSONLD_MIME_TYPE) : result)
+                .map(result -> paginateResult(
+                        result,
+                        mofs.size(),
+                        idx -> idFunction.apply(mofs.get(idx)),
+                        request,
+                        pageRequest
+                ))
+                .orElseThrow();
+    }
+
+    protected static JsonLdMofObjectAdornment adornMofObject(MofObject mof, Http.Request request, MetamodelProvider metamodelProvider, Environment environment, UUID projectId, UUID commitId) {
+        return new JsonLdMofObjectAdornment(mof, metamodelProvider, environment,
+                String.format("http://%s", request.host()),
+                String.format("/projects/%s/commits/%s/elements/", projectId, commitId),
+                INLINE_JSON_LD_CONTEXT
+        );
+    }
+
+    protected static boolean respondWithJsonLd(Http.Request request) {
+        return request.accepts(JSONLD_MIME_TYPE);
     }
 }

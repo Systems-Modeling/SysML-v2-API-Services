@@ -46,7 +46,7 @@ import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-public class QueryController extends Controller {
+public class QueryController extends BaseController {
 
     private final MetamodelProvider metamodelProvider;
     private final QueryService queryService;
@@ -108,9 +108,9 @@ public class QueryController extends Controller {
     private Result buildResponse(QueryService.QueryResults result, UUID projectId, Http.Request request) {
         List<Element> elements = result.getElements();
         AllowedPropertyFilter filter = result.getPropertyFilter();
-        boolean respondWithJsonLd = ElementController.respondWithJsonLd(request);
+        boolean respondWithJsonLd = respondWithJsonLd(request);
         JsonNode json = JacksonHelper.collectionToTree(elements.stream()
-                        .map(e -> respondWithJsonLd ? ElementController.adornMofObject(e, request, metamodelProvider, environment, projectId, result.getCommit().getId()) : e)
+                        .map(e -> respondWithJsonLd ? adornMofObject(e, request, metamodelProvider, environment, projectId, result.getCommit().getId()) : e)
                         .collect(Collectors.toSet()), Set.class,
                 respondWithJsonLd ? JsonLdMofObjectAdornment.class : metamodelProvider.getImplementationClass(Element.class),
                 filter != null ? () -> Json.mapper().copy().addMixIn(MofObject.class, DynamicFilterMixin.class) : Json::mapper,
