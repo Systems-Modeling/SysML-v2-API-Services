@@ -688,6 +688,8 @@ definitions:
         type: string
         enum:
           - 'Project'
+      description:
+        type: string
       id:
         type: string
         format: uuid

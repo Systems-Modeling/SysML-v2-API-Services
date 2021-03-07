@@ -9,8 +9,10 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class ProjectImpl_ extends org.omg.sysml.record.impl.RecordImpl_ {
 
 	public static volatile SingularAttribute<ProjectImpl, String> name;
+	public static volatile SingularAttribute<ProjectImpl, String> description;
 
 	public static final String NAME = "name";
+	public static final String DESCRIPTION = "description";
 
 }
 
