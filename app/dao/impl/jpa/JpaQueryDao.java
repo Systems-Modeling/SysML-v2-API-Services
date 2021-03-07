@@ -24,19 +24,17 @@ package dao.impl.jpa;
 import dao.QueryDao;
 import jpa.manager.JPAManager;
 import org.omg.sysml.lifecycle.Project;
+import org.omg.sysml.lifecycle.impl.ElementVersionImpl;
 import org.omg.sysml.query.Query;
 import org.omg.sysml.query.impl.QueryImpl;
 import org.omg.sysml.query.impl.QueryImpl_;
 
+import javax.annotation.Nullable;
 import javax.inject.Inject;
 import javax.persistence.NoResultException;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.UUID;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.*;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class JpaQueryDao extends SimpleJpaDao<Query, QueryImpl> implements QueryDao {
@@ -60,14 +58,22 @@ public class JpaQueryDao extends SimpleJpaDao<Query, QueryImpl> implements Query
     }
 
     @Override
-    public List<Query> findAllByProject(Project project) {
+    public List<Query> findAllByProject(Project project, @Nullable UUID after, @Nullable UUID before, int maxResults) {
         return jpaManager.transact(em -> {
             CriteriaBuilder builder = em.getCriteriaBuilder();
             CriteriaQuery<QueryImpl> query = builder.createQuery(QueryImpl.class);
             Root<QueryImpl> root = query.from(QueryImpl.class);
-            query.select(root)
-                    .where(builder.equal(root.get(QueryImpl_.containingProject), project));
-            return em.createQuery(query).getResultStream().collect(Collectors.toList());
+            Path<UUID> idPath = root.get(QueryImpl_.id);
+            Expression<Boolean> where = builder.equal(root.get(QueryImpl_.containingProject), project);
+            query.select(root);
+            Paginated<TypedQuery<QueryImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, idPath, where);
+            List<Query> result = paginated.get()
+                    .getResultStream()
+                    .collect(Collectors.toList());
+            if (paginated.isReversed()) {
+                Collections.reverse(result);
+            }
+            return result;
         });
     }
 

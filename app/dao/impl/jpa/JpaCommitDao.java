@@ -211,7 +211,6 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
             Paginated<TypedQuery<CommitImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, root.get(CommitImpl_.id), where);
             List<Commit> result = paginated.get()
                     .getResultStream()
-                    .map(commit -> (Commit) commit)
                     .collect(Collectors.toList());
             if (paginated.isReversed()) {
                 Collections.reverse(result);
