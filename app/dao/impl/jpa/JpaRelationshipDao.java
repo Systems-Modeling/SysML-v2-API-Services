@@ -26,32 +26,35 @@ import dao.RelationshipDao;
 import jpa.manager.JPAManager;
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.ElementVersion;
+import org.omg.sysml.lifecycle.impl.CommitImpl;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
 import org.omg.sysml.metamodel.impl.MofObjectImpl_;
 
+import javax.annotation.Nullable;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.persistence.NoResultException;
 import javax.persistence.criteria.*;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Singleton
 public class JpaRelationshipDao extends JpaDao<Relationship> implements RelationshipDao {
 
-    private final MetamodelProvider metamodelProvider;
     private final JpaElementDao elementDao;
+    private final Set<Class<?>> implementationClasses;
 
     @Inject
     public JpaRelationshipDao(JPAManager jpaManager, MetamodelProvider metamodelProvider, JpaElementDao elementDao) {
         super(jpaManager);
-        this.metamodelProvider = metamodelProvider;
+        this.implementationClasses = metamodelProvider
+                .getAllImplementationClasses()
+                .stream()
+                .filter(Relationship.class::isAssignableFrom)
+                .collect(Collectors.toSet());
         this.elementDao = elementDao;
     }
 
@@ -81,6 +84,27 @@ public class JpaRelationshipDao extends JpaDao<Relationship> implements Relation
             Root<MofObjectImpl> root = query.from(MofObjectImpl.class);
             query.select(root).where(getTypeExpression(builder, root));
             return em.createQuery(query).getResultStream().map(o -> (Relationship) o).collect(Collectors.toList());
+        });
+    }
+
+    @Override
+    public List<Relationship> findAll(@Nullable UUID after, @Nullable UUID before, int maxResults) {
+        return jpaManager.transact(em -> {
+            CriteriaBuilder builder = em.getCriteriaBuilder();
+            CriteriaQuery<MofObjectImpl> query = builder.createQuery(MofObjectImpl.class);
+            Root<MofObjectImpl> root = query.from(MofObjectImpl.class);
+            query.select(root);
+            Expression<Boolean> where = getTypeExpression(builder, root);
+            PaginatedQuery<MofObjectImpl> paginatedQuery = paginateQuery(after, before, maxResults, query, builder, em, root.get(MofObjectImpl_.identifier), where);
+            List<Relationship> result = paginatedQuery
+                    .getTypedQuery()
+                    .getResultStream()
+                    .map(o -> (Relationship) o)
+                    .collect(Collectors.toList());
+            if (paginatedQuery.isReversed()) {
+                Collections.reverse(result);
+            }
+            return result;
         });
     }
 
@@ -200,26 +224,25 @@ public class JpaRelationshipDao extends JpaDao<Relationship> implements Relation
 
             // Reverting to non-relational streaming
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
-            Commit c = em.contains(commit) ? commit : em.find(metamodelProvider.getImplementationClass(Commit.class), commit.getId());
+            Commit c = em.contains(commit) ? commit : em.find(CommitImpl.class, commit.getId());
             return elementDao.getCommitIndex(c, em).getWorkingElementVersions().stream()
                     .map(ElementVersion::getData).filter(mof -> mof instanceof Relationship)
                     .map(mof -> (Relationship) mof)
-                    .filter(relationship -> Stream.concat(relationship.getSource().stream(), relationship.getTarget().stream()).map(Element::getIdentifier)
-                            .anyMatch(id -> id.equals(relatedElement.getIdentifier())))
+                    .filter(relationship ->
+                            Stream.concat(relationship.getSource().stream(), relationship.getTarget().stream())
+                                    .map(Element::getIdentifier)
+                                    .anyMatch(id -> id.equals(relatedElement.getIdentifier()))
+                    )
                     .map(JpaElementDao.PROXY_RESOLVER)
                     .map(mof -> (Relationship) mof)
                     .collect(Collectors.toSet());
         });
     }
 
-    private Stream<Class<?>> getTypeStream() {
-        return metamodelProvider.getAllImplementationClasses().stream()
-                .filter(Relationship.class::isAssignableFrom);
-    }
-
     private Expression<Boolean> getTypeExpression(CriteriaBuilder builder, Root<?> root) {
-        return builder.or(getTypeStream()
+        return builder.or(implementationClasses.stream()
                 .map(c -> builder.equal(root.type(), c))
-                .toArray(Predicate[]::new));
+                .toArray(Predicate[]::new)
+        );
     }
 }

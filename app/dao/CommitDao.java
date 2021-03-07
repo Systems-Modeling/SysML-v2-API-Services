@@ -30,7 +30,7 @@ import java.util.UUID;
 
 public interface CommitDao extends Dao<Commit> {
 
-    List<Commit> findAllByProject(Project project);
+    List<Commit> findAllByProject(Project project, UUID after, UUID before, int maxResults);
 
     Optional<Commit> findByProjectAndId(Project project, UUID id);
 

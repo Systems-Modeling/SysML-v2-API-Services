@@ -35,6 +35,8 @@ public interface ElementDao extends Dao<Element> {
 
     Optional<Element> findByCommitAndId(Commit commit, UUID id);
 
+    List<Element> findRootsByCommit(Commit commit, UUID after, UUID before, int maxResults);
+
     List<Element> findRootsByCommit(Commit commit);
 
     List<Element> findByCommitAndQuery(Commit commit, Query query);

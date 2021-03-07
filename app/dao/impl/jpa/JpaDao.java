@@ -24,9 +24,14 @@ package dao.impl.jpa;
 import dao.Dao;
 import jpa.manager.JPAManager;
 
+import javax.annotation.Nullable;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.*;
 import java.util.Optional;
+import java.util.UUID;
+import java.util.function.Function;
 
 public abstract class JpaDao<E> implements Dao<E> {
     
@@ -67,5 +72,50 @@ public abstract class JpaDao<E> implements Dao<E> {
         jpaManager.transact(em -> {
             em.remove(e);
         });
+    }
+
+    protected static class PaginatedQuery<X> {
+        private final TypedQuery<X> typedQuery;
+        private final boolean reversed;
+
+        private PaginatedQuery(TypedQuery<X> typedQuery, boolean reversed) {
+            this.typedQuery = typedQuery;
+            this.reversed = reversed;
+        }
+
+        public TypedQuery<X> getTypedQuery() {
+            return typedQuery;
+        }
+
+        public boolean isReversed() {
+            return reversed;
+        }
+    }
+
+    protected <X> PaginatedQuery<X> paginateQuery(@Nullable UUID after, @Nullable UUID before, int maxResults, CriteriaQuery<X> query, CriteriaBuilder builder, EntityManager em, Path<UUID> idPath) {
+        return paginateQuery(after, before, maxResults, query, builder, em, idPath, null);
+    }
+
+    protected <X> PaginatedQuery<X> paginateQuery(@Nullable UUID after, @Nullable UUID before, int maxResults, CriteriaQuery<X> query, CriteriaBuilder builder, EntityManager em, Path<UUID> idPath, @Nullable Expression<Boolean> initialWhere) {
+        Expression<Boolean> where = initialWhere;
+        if (after != null) {
+            Expression<Boolean> expr = builder.greaterThan(idPath, after);
+            where = where != null ? builder.and(where, expr) : expr;
+        }
+        if (before != null) {
+            Expression<Boolean> expr = builder.lessThan(idPath, before);
+            where = where != null ? builder.and(where, expr) : expr;
+        }
+        if (where != null) {
+            query.where(where);
+        }
+        boolean reversed = after == null && before != null;
+        Function<Path<UUID>, Order> orderFunction = reversed ? builder::desc : builder::asc;
+        query.orderBy((orderFunction).apply(idPath));
+        TypedQuery<X> typedQuery = em.createQuery(query);
+        if (maxResults >= 0) {
+            typedQuery.setMaxResults(maxResults);
+        }
+        return new PaginatedQuery<>(typedQuery, reversed);
     }
 }

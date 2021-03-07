@@ -29,6 +29,7 @@ import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import javax.persistence.metamodel.SingularAttribute;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -66,9 +67,9 @@ public class SimpleJpaDao<I, C extends I> extends JpaDao<I> {
     @Override
     public List<I> findAll() {
         return jpaManager.transact(em -> {
-            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaBuilder builder = em.getCriteriaBuilder();
             @SuppressWarnings("unchecked")
-            CriteriaQuery<I> query = (CriteriaQuery<I>) cb.createQuery(clazz);
+            CriteriaQuery<I> query = (CriteriaQuery<I>) builder.createQuery(clazz);
             Root<C> root = query.from(clazz);
             query.select(root);
             return em.createQuery(query).getResultList();
@@ -76,11 +77,30 @@ public class SimpleJpaDao<I, C extends I> extends JpaDao<I> {
     }
 
     @Override
+    public List<I> findAll(UUID after, UUID before, int maxResults) {
+        return jpaManager.transact(em -> {
+            CriteriaBuilder builder = em.getCriteriaBuilder();
+            @SuppressWarnings("unchecked")
+            CriteriaQuery<I> query = (CriteriaQuery<I>) builder.createQuery(clazz);
+            Root<C> root = query.from(clazz);
+            query.select(root);
+            PaginatedQuery<I> paginatedQuery = paginateQuery(after, before, maxResults, query, builder, em, root.get(idAttribute));
+            List<I> result = paginatedQuery
+                    .getTypedQuery()
+                    .getResultList();
+            if (paginatedQuery.isReversed()) {
+                Collections.reverse(result);
+            }
+            return result;
+        });
+    }
+
+    @Override
     public void deleteAll() {
         jpaManager.transact(em -> {
-            CriteriaBuilder cb = em.getCriteriaBuilder();
+            CriteriaBuilder builder = em.getCriteriaBuilder();
             @SuppressWarnings("unchecked")
-            CriteriaDelete<I> query = (CriteriaDelete<I>) cb.createCriteriaDelete(clazz);
+            CriteriaDelete<I> query = (CriteriaDelete<I>) builder.createCriteriaDelete(clazz);
             return em.createQuery(query).getResultList();
         });
     }

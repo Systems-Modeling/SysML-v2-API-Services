@@ -13,6 +13,22 @@ tags:
 paths:
   /projects:
     get:
+      parameters:
+        - name: page[after]
+          in: query
+          description: Page after
+          type: string
+          required: false
+        - name: page[before]
+          in: query
+          description: Page before
+          type: string
+          required: false
+        - name: page[size]
+          in: query
+          description: Page size
+          type: integer
+          required: false
       tags:
         - Project
       operationId: getProjects
@@ -94,6 +110,22 @@ paths:
         format: uuid
         required: true
     get:
+      parameters:
+        - name: page[after]
+          in: query
+          description: Page after
+          type: string
+          required: false
+        - name: page[before]
+          in: query
+          description: Page before
+          type: string
+          required: false
+        - name: page[size]
+          in: query
+          description: Page size
+          type: integer
+          required: false
       tags:
         - Commit
       operationId: getCommitsByProject

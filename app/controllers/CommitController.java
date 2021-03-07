@@ -28,7 +28,6 @@ import jackson.JacksonHelper;
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.impl.CommitImpl;
 import play.libs.Json;
-import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Results;
@@ -40,7 +39,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class CommitController extends Controller {
+public class CommitController extends BaseController {
 
     private final MetamodelProvider metamodelProvider;
     private final CommitService commitService;
@@ -49,28 +48,6 @@ public class CommitController extends Controller {
     public CommitController(CommitService commitService, MetamodelProvider metamodelProvider) {
         this.commitService = commitService;
         this.metamodelProvider = metamodelProvider;
-    }
-
-    public Result byId(String id) {
-        UUID uuid = UUID.fromString(id);
-        Optional<Commit> commit = commitService.getById(uuid);
-        return commit.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
-    }
-
-    public Result all() {
-        List<Commit> commits = commitService.getAll();
-        return ok(JacksonHelper.collectionToTree(commits, List.class, metamodelProvider.getImplementationClass(Commit.class)));
-    }
-
-    public Result create(Http.Request request) {
-        JsonNode requestBodyJson = request.body().asJson();
-        Commit requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Commit.class));
-        if (requestedObject.getId() != null || requestedObject.getTimestamp() != null) {
-            return Results.badRequest();
-        }
-        requestedObject.setTimestamp(ZonedDateTime.now());
-        Optional<Commit> responseCommit = commitService.create(requestedObject);
-        return responseCommit.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 
     public Result createWithProjectId(UUID projectId, Http.Request request) {
@@ -84,9 +61,30 @@ public class CommitController extends Controller {
         return response.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 
-    public Result byProject(UUID projectId) {
-        List<Commit> commits = commitService.getByProjectId(projectId);
-        return ok(JacksonHelper.collectionToTree(commits, List.class, metamodelProvider.getImplementationClass(Commit.class), Json::mapper, writer -> writer.withView(CommitImpl.Views.Compact.class)));
+    public Result byProject(UUID projectId, Http.Request request) {
+        PageRequest pageRequest = PageRequest.from(request);
+        List<Commit> commits = commitService.getByProjectId(
+                projectId,
+                pageRequest.getAfter(),
+                pageRequest.getBefore(),
+                pageRequest.getSize()
+        );
+        return Optional.of(commits)
+                .map(collection -> JacksonHelper.collectionToTree(
+                        collection,
+                        List.class,
+                        metamodelProvider.getImplementationClass(Commit.class),
+                        Json::mapper,
+                        writer -> writer.withView(CommitImpl.Views.Compact.class)))
+                .map(Results::ok)
+                .map(result -> paginateResult(
+                        result,
+                        commits.size(),
+                        idx -> commits.get(idx).getId(),
+                        request,
+                        pageRequest
+                ))
+                .orElseThrow();
     }
 
     public Result byProjectAndId(UUID projectId, UUID commitId) {
@@ -96,6 +94,7 @@ public class CommitController extends Controller {
 
     public Result headByProject(UUID projectId) {
         Optional<Commit> commit = commitService.getHeadByProjectId(projectId);
-        return commit.map(e -> ok(JacksonHelper.objectToTree(commit, Json::mapper, mapper -> mapper.writer().withView(CommitImpl.Views.Compact.class), ObjectMapper::reader))).orElseGet(Results::notFound);
+        return commit.map(e -> ok(JacksonHelper.objectToTree(commit, Json::mapper, mapper -> mapper.writer().withView(CommitImpl.Views.Compact.class), ObjectMapper::reader)))
+                .orElseGet(Results::notFound);
     }
 }
