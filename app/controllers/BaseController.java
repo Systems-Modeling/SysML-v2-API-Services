@@ -44,7 +44,7 @@ import static jackson.JsonLdMofObjectAdornment.JSONLD_MIME_TYPE;
 
 public abstract class BaseController extends Controller {
 
-    protected static final boolean INLINE_JSON_LD_CONTEXT_DEFAULT = true;
+    protected static final boolean INLINE_JSON_LD_CONTEXT_DEFAULT = false;
     protected static final boolean INLINE_JSON_LD_CONTEXT = Optional.ofNullable(System.getenv("INLINE_JSON_LD_CONTEXT"))
             .map(Boolean::parseBoolean)
             .orElse(INLINE_JSON_LD_CONTEXT_DEFAULT);
