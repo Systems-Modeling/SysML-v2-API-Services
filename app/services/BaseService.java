@@ -23,6 +23,7 @@ package services;
 
 import dao.Dao;
 
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -37,6 +38,10 @@ public class BaseService<I, D extends Dao<I>> {
 
     public List<I> getAll() {
         return dao.findAll();
+    }
+
+    public List<I> getAll(@Nullable UUID after, @Nullable UUID before, int maxResults) {
+        return dao.findAll(after, before, maxResults);
     }
 
     public Optional<I> getById(UUID id) {

@@ -27,6 +27,7 @@ import dao.ProjectDao;
 import dao.QueryDao;
 import org.omg.sysml.metamodel.Element;
 
+import javax.annotation.Nullable;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.Collections;
@@ -39,14 +40,12 @@ public class ElementService extends BaseService<Element, ElementDao> {
 
     private final ProjectDao projectDao;
     private final CommitDao commitDao;
-    private final QueryDao queryDao;
 
     @Inject
-    public ElementService(ElementDao elementDao, ProjectDao projectDao, CommitDao commitDao, QueryDao queryDao) {
+    public ElementService(ElementDao elementDao, ProjectDao projectDao, CommitDao commitDao) {
         super(elementDao);
         this.projectDao = projectDao;
         this.commitDao = commitDao;
-        this.queryDao = queryDao;
     }
 
     public Optional<Element> create(Element element) {
@@ -58,7 +57,7 @@ public class ElementService extends BaseService<Element, ElementDao> {
                 .flatMap(m -> dao.findByCommitAndId(m, elementId));
     }
 
-    public List<Element> getElementsByProjectIdCommitId(UUID projectId, UUID commitId, UUID after, UUID before, int maxResults) {
+    public List<Element> getElementsByProjectIdCommitId(UUID projectId, UUID commitId, @Nullable UUID after, @Nullable UUID before, int maxResults) {
         return projectDao.findById(projectId)
                 .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
                 .map(commit -> dao.findAllByCommit(commit, after, before, maxResults))
@@ -71,10 +70,10 @@ public class ElementService extends BaseService<Element, ElementDao> {
                 .flatMap(commit -> dao.findByCommitAndId(commit, elementId));
     }
 
-    public List<Element> getRootsByProjectIdCommitId(UUID projectId, UUID commitId) {
+    public List<Element> getRootsByProjectIdCommitId(UUID projectId, UUID commitId, @Nullable UUID after, @Nullable UUID before, int maxResults) {
         return projectDao.findById(projectId)
                 .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
-                .map(dao::findRootsByCommit)
+                .map(commit -> dao.findRootsByCommit(commit, after, before, maxResults))
                 .orElse(Collections.emptyList());
     }
 }

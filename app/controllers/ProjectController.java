@@ -26,7 +26,6 @@ import config.MetamodelProvider;
 import jackson.JacksonHelper;
 import org.omg.sysml.lifecycle.Project;
 import play.libs.Json;
-import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Results;
@@ -37,7 +36,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class ProjectController extends Controller {
+public class ProjectController extends BaseController {
 
     private final MetamodelProvider metamodelProvider;
     private final ProjectService projectService;
@@ -53,9 +52,20 @@ public class ProjectController extends Controller {
         return project.map(m -> ok(Json.toJson(m))).orElseGet(Results::notFound);
     }
 
-    public Result all() {
-        List<Project> projects = projectService.getAll();
-        return ok(JacksonHelper.collectionToTree(projects, List.class, metamodelProvider.getImplementationClass(Project.class)));
+    public Result all(Http.Request request) {
+        PageRequest pageRequest = PageRequest.from(request);
+        List<Project> projects = projectService.getAll(pageRequest.getAfter(), pageRequest.getBefore(), pageRequest.getSize());
+        return Optional.of(projects)
+                .map(collection -> JacksonHelper.collectionToTree(collection, List.class, metamodelProvider.getImplementationClass(Project.class)))
+                .map(Results::ok)
+                .map(result -> paginateResult(
+                        result,
+                        projects.size(),
+                        idx -> projects.get(idx).getId(),
+                        request,
+                        pageRequest
+                ))
+                .orElseThrow();
     }
 
     public Result create(Http.Request request) {

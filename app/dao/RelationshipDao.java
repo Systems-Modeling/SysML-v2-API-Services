@@ -24,10 +24,14 @@ package dao;
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.utils.RelationshipDirection;
 
+import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 public interface RelationshipDao extends Dao<Relationship> {
 
-    Set<Relationship> findAllByCommitRelatedElement(Commit commit, Element relatedElement);
+    List<Relationship> findAllByCommitRelatedElement(Commit commit, Element relatedElement, RelationshipDirection direction, @Nullable UUID after, @Nullable UUID before, int maxResults);
 }

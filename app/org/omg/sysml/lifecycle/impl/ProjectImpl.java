@@ -52,6 +52,23 @@ public class ProjectImpl extends RecordImpl implements Project {
         this.name = name;
     }
 
+    private String description;
+
+    @JsonProperty(required = true)
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "description", table = "Project")
+    public String getDescription() {
+        return description;
+    }
+
+    @JsonProperty(required = true)
+    @JsonSetter
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Transient
     @JsonProperty("@type")
     public String getType() {
