@@ -24,28 +24,23 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import config.MetamodelProvider;
 import jackson.JacksonHelper;
-import jackson.JsonLdMofObjectAdornment;
-import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.MofObject;
 import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.utils.RelationshipDirection;
 import play.Environment;
 import play.libs.Json;
-import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Results;
 import services.RelationshipService;
 
 import javax.inject.Inject;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
-import static controllers.ElementController.adornMofObject;
-import static controllers.ElementController.respondWithJsonLd;
-import static jackson.JsonLdMofObjectAdornment.JSONLD_MIME_TYPE;
-
-public class RelationshipController extends Controller {
+public class RelationshipController extends BaseController {
 
     private final RelationshipService relationshipService;
     private final MetamodelProvider metamodelProvider;
@@ -79,29 +74,27 @@ public class RelationshipController extends Controller {
         return responseRelationship.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 
-    public Result getRelationshipsByProjectIdCommitIdRelatedElementId(UUID projectId, UUID commitId, UUID elementId, Optional<String> direction, Http.Request request) {
-        RelationshipDirection relDirection = direction
+    public Result getRelationshipsByProjectIdCommitIdRelatedElementId(UUID projectId, UUID commitId, UUID elementId, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<String> direction, Http.Request request) {
+        PageRequest pageRequest = PageRequest.from(request);
+        RelationshipDirection relationshipDirection = direction
                 .flatMap(d -> Arrays.stream(RelationshipDirection.values())
                         .filter(rd -> rd.toString().equalsIgnoreCase(d))
                         .findAny())
                 .orElse(RelationshipDirection.BOTH);
 
-        Set<Relationship> relationships = relationshipService.getRelationshipsByProjectCommitRelatedElement(projectId, commitId, elementId, relDirection);
-        boolean respondWithJsonLd = respondWithJsonLd(request);
-        return Optional.of(
-                ((Set<? extends Element>) relationships).stream()
-                        .map(e -> respondWithJsonLd ?
-                                adornMofObject(e, request, metamodelProvider, environment, projectId, commitId) :
-                                e
-                        )
-                        .collect(Collectors.toSet())
-        )
-                .map(set -> JacksonHelper.collectionToTree(set, Set.class, respondWithJsonLd ?
-                        JsonLdMofObjectAdornment.class :
-                        metamodelProvider.getImplementationClass(Relationship.class))
-                )
-                .map(Results::ok)
-                .map(result -> respondWithJsonLd ? result.as(JSONLD_MIME_TYPE) : result)
-                .orElseThrow();
+        List<Relationship> relationships = relationshipService.getRelationshipsByProjectCommitRelatedElement(
+                projectId,
+                commitId,
+                elementId,
+                relationshipDirection,
+                pageRequest.getAfter(),
+                pageRequest.getBefore(),
+                pageRequest.getSize()
+        );
+        return buildResult(relationships, projectId, commitId, request, pageRequest);
+    }
+
+    private Result buildResult(List<Relationship> relationships, UUID projectId, UUID commitId, Http.Request request, PageRequest pageRequest) {
+        return buildResult(relationships, Relationship.class, Relationship::getIdentifier, projectId, commitId, request, pageRequest, metamodelProvider, environment);
     }
 }

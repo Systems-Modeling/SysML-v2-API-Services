@@ -34,7 +34,6 @@ import org.omg.sysml.metamodel.MofObject;
 import org.omg.sysml.query.Query;
 import play.Environment;
 import play.libs.Json;
-import play.mvc.Controller;
 import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Results;
@@ -46,7 +45,7 @@ import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-public class QueryController extends Controller {
+public class QueryController extends BaseController {
 
     private final MetamodelProvider metamodelProvider;
     private final QueryService queryService;
@@ -59,23 +58,6 @@ public class QueryController extends Controller {
         this.environment = environment;
     }
 
-    public Result byId(UUID id) {
-        Optional<Query> query = queryService.getById(id);
-        return query.map(m -> ok(Json.toJson(m))).orElseGet(Results::notFound);
-    }
-
-    public Result all() {
-        List<Query> queries = queryService.getAll();
-        return ok(JacksonHelper.collectionToTree(queries, List.class, metamodelProvider.getImplementationClass(Query.class)));
-    }
-
-    public Result create(Http.Request request) {
-        JsonNode requestBodyJson = request.body().asJson();
-        Query requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Query.class));
-        Optional<Query> response = queryService.create(requestedObject);
-        return response.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
-    }
-
     public Result createWithProjectId(UUID projectId, Http.Request request) {
         JsonNode requestBodyJson = request.body().asJson();
         Query requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Query.class));
@@ -83,9 +65,20 @@ public class QueryController extends Controller {
         return response.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 
-    public Result byProject(UUID projectId) {
-        List<Query> queries = queryService.getByProjectId(projectId);
-        return ok(JacksonHelper.collectionToTree(queries, List.class, metamodelProvider.getImplementationClass(Query.class)));
+    public Result byProject(UUID projectId, Http.Request request) {
+        PageRequest pageRequest = PageRequest.from(request);
+        List<Query> queries = queryService.getByProjectId(projectId, pageRequest.getAfter(), pageRequest.getBefore(), pageRequest.getSize());
+        return Optional.of(queries)
+                .map(collection -> JacksonHelper.collectionToTree(collection, List.class, metamodelProvider.getImplementationClass(Query.class)))
+                .map(Results::ok)
+                .map(result -> paginateResult(
+                        result,
+                        queries.size(),
+                        idx -> queries.get(idx).getId(),
+                        request,
+                        pageRequest
+                ))
+                .orElseThrow();
     }
 
     public Result byProjectAndId(UUID projectId, UUID queryId) {
@@ -95,22 +88,22 @@ public class QueryController extends Controller {
 
     public Result getQueryResultsByProjectIdQueryId(UUID projectId, UUID queryId, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<UUID> commitId, Http.Request request) {
         QueryService.QueryResults result = queryService.getQueryResultsByProjectIdQueryId(projectId, queryId, commitId.orElse(null));
-        return buildResponse(result, projectId, request);
+        return buildResult(result, projectId, request);
     }
 
     public Result getQueryResultsByProjectIdQuery(UUID projectId, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<UUID> commitId, Http.Request request) {
         JsonNode requestBodyJson = request.body().asJson();
         Query query = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Query.class));
         QueryService.QueryResults result = queryService.getQueryResultsByProjectIdQuery(projectId, query, commitId.orElse(null));
-        return buildResponse(result, projectId, request);
+        return buildResult(result, projectId, request);
     }
 
-    private Result buildResponse(QueryService.QueryResults result, UUID projectId, Http.Request request) {
+    private Result buildResult(QueryService.QueryResults result, UUID projectId, Http.Request request) {
         List<Element> elements = result.getElements();
         AllowedPropertyFilter filter = result.getPropertyFilter();
-        boolean respondWithJsonLd = ElementController.respondWithJsonLd(request);
+        boolean respondWithJsonLd = respondWithJsonLd(request);
         JsonNode json = JacksonHelper.collectionToTree(elements.stream()
-                        .map(e -> respondWithJsonLd ? ElementController.adornMofObject(e, request, metamodelProvider, environment, projectId, result.getCommit().getId()) : e)
+                        .map(e -> respondWithJsonLd ? adornMofObject(e, request, metamodelProvider, environment, projectId, result.getCommit().getId()) : e)
                         .collect(Collectors.toSet()), Set.class,
                 respondWithJsonLd ? JsonLdMofObjectAdornment.class : metamodelProvider.getImplementationClass(Element.class),
                 filter != null ? () -> Json.mapper().copy().addMixIn(MofObject.class, DynamicFilterMixin.class) : Json::mapper,

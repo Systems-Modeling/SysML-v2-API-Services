@@ -26,6 +26,7 @@ import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.query.Query;
 
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -33,7 +34,7 @@ import java.util.UUID;
 
 public interface QueryDao extends Dao<Query> {
 
-    List<Query> findAllByProject(Project project);
+    List<Query> findAllByProject(Project project, @Nullable UUID after, @Nullable UUID before, int maxResults);
 
     Optional<Query> findByProjectAndId(Project project, UUID id);
 }

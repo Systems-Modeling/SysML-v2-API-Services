@@ -39,8 +39,10 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Root;
 import java.lang.reflect.Method;
 import java.util.*;
@@ -113,21 +115,6 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
                         }))
                 .collect(Collectors.toMap(change -> change.getIdentity().getId(), change -> Optional.ofNullable(change.getData()).orElse(tombstone)));
 
-        // Attempt #1 using a javassist proxy. Failed because Hibernate/JPA can't handle subclasses of Entities.
-/*        changeStream.get().map(ElementVersion::getData).filter(Objects::nonNull).map(JpaCommitDao::getBeanPropertyValues).flatMap(map -> map.values().stream()).flatMap(o -> o instanceof Collection ? ((Collection<?>) o).stream() : Stream.of(o)).filter(o -> o instanceof MofObject && o instanceof ProxyObject).map(o -> (MofObject & ProxyObject) o).forEach(mofProxy -> {
-            MofObject mof = identifierToMofMap.computeIfAbsent(mofProxy.getIdentifier(), identifier -> {
-                if (commit.getPreviousCommit() == null) {
-                    return tombstone;
-                }
-                return elementDao.findByCommitAndId(commit.getPreviousCommit(), identifier).map(element -> (MofObject) element).orElse(tombstone);
-            });
-            if (Objects.equals(mof, tombstone)) {
-                throw new IllegalArgumentException("Element with ID " + mofProxy.getIdentifier() + " not found.");
-            }
-            mofProxy.setHandler(new PassthroughMethodHandler(mof));
-            System.out.println("REFERENCE: " + mofProxy.getIdentifier());
-        });*/
-
         Function<MofObject, MofObject> reattachMofFunction = mof -> {
             MofObject reattachedMof = identifierToMofMap.computeIfAbsent(mof.getIdentifier(), identifier -> {
                 if (commit.getPreviousCommit() == null) {
@@ -188,15 +175,6 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
                         })
                 );
 
- /*       changeStream.get().map(ElementVersion::getData).filter(Objects::nonNull).filter(element -> element instanceof BlockImpl).map(element -> (BlockImpl) element).forEach(block -> {
-            if (block.getOwner() instanceof MofObjectImpl) {
-                MofObjectImpl owner = (MofObjectImpl) block.getOwner();
-                if (owner.getIdentifier() != null) {
-                    block.setOwner((Element) identifierToMofMap.get(owner.getIdentifier()));
-                }
-            }
-        });*/
-
         return jpaManager.transact(em -> {
             commit.getChange().stream()
                     .map(ElementVersion::getData)
@@ -223,14 +201,21 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
     }
 
     @Override
-    public List<Commit> findAllByProject(Project project) {
+    public List<Commit> findAllByProject(Project project, UUID after, UUID before, int maxResults) {
         return jpaManager.transact(em -> {
             CriteriaBuilder builder = em.getCriteriaBuilder();
             CriteriaQuery<CommitImpl> query = builder.createQuery(CommitImpl.class);
             Root<CommitImpl> root = query.from(CommitImpl.class);
-            query.select(root)
-                    .where(builder.equal(root.get(CommitImpl_.containingProject), project));
-            return em.createQuery(query).getResultStream().collect(Collectors.toList());
+            query.select(root);
+            Expression<Boolean> where = builder.equal(root.get(CommitImpl_.containingProject), project);
+            Paginated<TypedQuery<CommitImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, root.get(CommitImpl_.id), where);
+            List<Commit> result = paginated.get()
+                    .getResultStream()
+                    .collect(Collectors.toList());
+            if (paginated.isReversed()) {
+                Collections.reverse(result);
+            }
+            return result;
         });
     }
 
@@ -284,19 +269,4 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
             return commit;
         });
     }
-
-/*    private static class PassthroughMethodHandler implements MethodHandler {
-
-        private final Object target;
-
-        protected PassthroughMethodHandler(Object target) {
-            this.target = target;
-        }
-
-        @Override
-        public Object invoke(Object self, Method thisMethod, Method proceed, Object[] args) throws Throwable {
-            //return thisMethod.invoke(target, args);
-            return target.getClass().getMethod(thisMethod.getName(), thisMethod.getParameterTypes()).invoke(target, args);
-        }
-    }*/
 }

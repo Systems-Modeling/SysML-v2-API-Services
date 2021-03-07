@@ -25,17 +25,18 @@ import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.query.Query;
 
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 public interface ElementDao extends Dao<Element> {
 
-    List<Element> findAllByCommit(Commit commit, UUID after, UUID before, int maxResults);
+    List<Element> findAllByCommit(Commit commit, @Nullable UUID after, @Nullable UUID before, int maxResults);
 
     Optional<Element> findByCommitAndId(Commit commit, UUID id);
 
-    List<Element> findRootsByCommit(Commit commit);
+    List<Element> findRootsByCommit(Commit commit, @Nullable UUID after, @Nullable UUID before, int maxResults);
 
     List<Element> findByCommitAndQuery(Commit commit, Query query);
 }

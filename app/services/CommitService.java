@@ -24,6 +24,7 @@ package services;
 import dao.CommitDao;
 import dao.ProjectDao;
 import org.omg.sysml.lifecycle.Commit;
+import org.omg.sysml.lifecycle.Project;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -48,19 +49,24 @@ public class CommitService extends BaseService<Commit, CommitDao> {
     }
 
     public Optional<Commit> create(UUID projectId, Commit commit) {
-        commit.setContainingProject(projectDao.findById(projectId).orElseThrow(() -> new IllegalArgumentException("Project " + projectId + " not found.")));
+        commit.setContainingProject(projectDao.findById(projectId)
+                .orElseThrow(() -> new IllegalArgumentException("Project " + projectId + " not found.")));
         return create(commit);
     }
 
-    public List<Commit> getByProjectId(UUID projectId) {
-        return projectDao.findById(projectId).map(dao::findAllByProject).orElse(Collections.emptyList());
+    public List<Commit> getByProjectId(UUID projectId, UUID after, UUID before, int maxResults) {
+        return projectDao.findById(projectId)
+                .map(project -> dao.findAllByProject(project, after, before, maxResults))
+                .orElse(Collections.emptyList());
     }
 
     public Optional<Commit> getByProjectIdAndId(UUID projectId, UUID commitId) {
-        return projectDao.findById(projectId).flatMap(project -> dao.findByProjectAndIdResolved(project, commitId));
+        return projectDao.findById(projectId)
+                .flatMap(project -> dao.findByProjectAndIdResolved(project, commitId));
     }
 
     public Optional<Commit> getHeadByProjectId(UUID projectId) {
-        return projectDao.findById(projectId).flatMap(dao::findHeadByProject);
+        return projectDao.findById(projectId)
+                .flatMap(dao::findHeadByProject);
     }
 }

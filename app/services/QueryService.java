@@ -64,8 +64,10 @@ public class QueryService extends BaseService<Query, QueryDao> {
         return create(query);
     }
 
-    public List<Query> getByProjectId(UUID projectId) {
-        return projectDao.findById(projectId).map(dao::findAllByProject).orElse(Collections.emptyList());
+    public List<Query> getByProjectId(UUID projectId, @Nullable UUID after, @Nullable UUID before, int maxResults) {
+        return projectDao.findById(projectId)
+                .map(project -> dao.findAllByProject(project, after, before, maxResults))
+                .orElse(Collections.emptyList());
     }
 
     public Optional<Query> getByProjectIdAndId(UUID projectId, UUID queryId) {

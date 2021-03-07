@@ -21,6 +21,7 @@
 
 package dao;
 
+import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -34,6 +35,8 @@ public interface Dao<E> {
     Optional<E> findById(UUID id);
 
     List<E> findAll();
+
+    List<E> findAll(@Nullable UUID after, @Nullable UUID before, int maxResults);
 
     void delete(E entity);
 
