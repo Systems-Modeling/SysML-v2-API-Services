@@ -21,12 +21,12 @@ public abstract class SubjectMembershipImpl_ extends org.omg.sysml.metamodel.imp
 
 	public static volatile SingularAttribute<SubjectMembershipImpl, UUID> identifier;
 	public static volatile SingularAttribute<SubjectMembershipImpl, Boolean> isDerived;
-	public static volatile CollectionAttribute<SubjectMembershipImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<SubjectMembershipImpl, Element> ownedElement;
+	public static volatile ListAttribute<SubjectMembershipImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<SubjectMembershipImpl, Element> ownedElement;
 	public static volatile SingularAttribute<SubjectMembershipImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<SubjectMembershipImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<SubjectMembershipImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<SubjectMembershipImpl, Documentation> documentation;
+	public static volatile ListAttribute<SubjectMembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<SubjectMembershipImpl, String> memberName;
 	public static volatile ListAttribute<SubjectMembershipImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<SubjectMembershipImpl, Element> source;
@@ -37,10 +37,10 @@ public abstract class SubjectMembershipImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile SingularAttribute<SubjectMembershipImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<SubjectMembershipImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<SubjectMembershipImpl, String> humanId;
-	public static volatile CollectionAttribute<SubjectMembershipImpl, String> aliasId;
+	public static volatile ListAttribute<SubjectMembershipImpl, String> aliasId;
 	public static volatile ListAttribute<SubjectMembershipImpl, Element> relatedElement;
 	public static volatile SingularAttribute<SubjectMembershipImpl, String> name;
-	public static volatile CollectionAttribute<SubjectMembershipImpl, Comment> documentationComment;
+	public static volatile ListAttribute<SubjectMembershipImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<SubjectMembershipImpl, FeatureDirectionKind> direction;
 
 	public static final String IDENTIFIER = "identifier";

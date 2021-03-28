@@ -18,20 +18,20 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 public abstract class TypeFeaturingImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile SingularAttribute<TypeFeaturingImpl, UUID> identifier;
-	public static volatile CollectionAttribute<TypeFeaturingImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<TypeFeaturingImpl, Element> ownedElement;
+	public static volatile ListAttribute<TypeFeaturingImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<TypeFeaturingImpl, Element> ownedElement;
 	public static volatile ListAttribute<TypeFeaturingImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<TypeFeaturingImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<TypeFeaturingImpl, Documentation> documentation;
+	public static volatile ListAttribute<TypeFeaturingImpl, Documentation> documentation;
 	public static volatile ListAttribute<TypeFeaturingImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<TypeFeaturingImpl, Element> source;
 	public static volatile ListAttribute<TypeFeaturingImpl, Element> target;
 	public static volatile CollectionAttribute<TypeFeaturingImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<TypeFeaturingImpl, String> humanId;
-	public static volatile CollectionAttribute<TypeFeaturingImpl, String> aliasId;
+	public static volatile ListAttribute<TypeFeaturingImpl, String> aliasId;
 	public static volatile ListAttribute<TypeFeaturingImpl, Element> relatedElement;
 	public static volatile SingularAttribute<TypeFeaturingImpl, String> name;
-	public static volatile CollectionAttribute<TypeFeaturingImpl, Comment> documentationComment;
+	public static volatile ListAttribute<TypeFeaturingImpl, Comment> documentationComment;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

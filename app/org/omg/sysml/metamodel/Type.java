@@ -30,21 +30,21 @@ public interface Type extends Namespace, MofObject {
 
     List<? extends FeatureMembership> getOwnedFeatureMembership();
 
-    Collection<? extends Feature> getFeature();
+    List<? extends Feature> getFeature();
 
-    Collection<? extends Feature> getOwnedFeature();
+    List<? extends Feature> getOwnedFeature();
 
-    Collection<? extends Feature> getInput();
+    List<? extends Feature> getInput();
 
-    Collection<? extends Feature> getOutput();
+    List<? extends Feature> getOutput();
 
     Boolean getIsAbstract();
 
     List<? extends Membership> getInheritedMembership();
 
-    Collection<? extends Feature> getEndFeature();
+    List<? extends Feature> getEndFeature();
 
-    Collection<? extends Feature> getOwnedEndFeature();
+    List<? extends Feature> getOwnedEndFeature();
 
     Boolean getIsSufficient();
 
@@ -54,7 +54,7 @@ public interface Type extends Namespace, MofObject {
 
     List<? extends FeatureMembership> getFeatureMembership();
 
-    Collection<? extends Feature> getInheritedFeature();
+    List<? extends Feature> getInheritedFeature();
 
     Multiplicity getMultiplicity();
 }

@@ -19,22 +19,22 @@ import org.omg.sysml.metamodel.VisibilityKind;
 public abstract class FeatureValueImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile SingularAttribute<FeatureValueImpl, UUID> identifier;
-	public static volatile CollectionAttribute<FeatureValueImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<FeatureValueImpl, Element> ownedElement;
+	public static volatile ListAttribute<FeatureValueImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<FeatureValueImpl, Element> ownedElement;
 	public static volatile SingularAttribute<FeatureValueImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<FeatureValueImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<FeatureValueImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<FeatureValueImpl, Documentation> documentation;
+	public static volatile ListAttribute<FeatureValueImpl, Documentation> documentation;
 	public static volatile SingularAttribute<FeatureValueImpl, String> memberName;
 	public static volatile ListAttribute<FeatureValueImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<FeatureValueImpl, Element> source;
 	public static volatile ListAttribute<FeatureValueImpl, Element> target;
 	public static volatile CollectionAttribute<FeatureValueImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<FeatureValueImpl, String> humanId;
-	public static volatile CollectionAttribute<FeatureValueImpl, String> aliasId;
+	public static volatile ListAttribute<FeatureValueImpl, String> aliasId;
 	public static volatile ListAttribute<FeatureValueImpl, Element> relatedElement;
 	public static volatile SingularAttribute<FeatureValueImpl, String> name;
-	public static volatile CollectionAttribute<FeatureValueImpl, Comment> documentationComment;
+	public static volatile ListAttribute<FeatureValueImpl, Comment> documentationComment;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

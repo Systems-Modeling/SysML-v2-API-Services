@@ -70,7 +70,7 @@ import java.util.HashSet;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public class NamespaceImpl extends MofObjectImpl implements Namespace {
     // @info.archinnov.achilles.annotations.Column("aliasId")
-    private Collection<String> aliasId;
+    private List<String> aliasId;
 
     @JsonGetter
     @Lob
@@ -78,7 +78,7 @@ public class NamespaceImpl extends MofObjectImpl implements Namespace {
     @ElementCollection(targetClass = String.class)
     @CollectionTable(name = "Namespace_aliasId",
             joinColumns = @JoinColumn(name = "NamespaceId"))
-    public Collection<String> getAliasId() {
+    public List<String> getAliasId() {
         if (aliasId == null) {
             aliasId = new ArrayList<>();
         }
@@ -86,22 +86,24 @@ public class NamespaceImpl extends MofObjectImpl implements Namespace {
     }
 
     @JsonSetter
-    public void setAliasId(Collection<String> aliasId) {
+    public void setAliasId(List<String> aliasId) {
         this.aliasId = aliasId;
     }
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("documentation")
-    private Collection<Documentation> documentation;
+    private List<Documentation> documentation;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
     @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Namespace_documentation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Documentation> getDocumentation() {
+    public List<Documentation> getDocumentation() {
         if (documentation == null) {
             documentation = new ArrayList<>();
         }
@@ -110,7 +112,7 @@ public class NamespaceImpl extends MofObjectImpl implements Namespace {
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DocumentationImpl.class)
-    public void setDocumentation(Collection<Documentation> documentation) {
+    public void setDocumentation(List<Documentation> documentation) {
         this.documentation = documentation;
     }
 
@@ -118,7 +120,7 @@ public class NamespaceImpl extends MofObjectImpl implements Namespace {
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("documentationComment")
-    private Collection<Comment> documentationComment;
+    private List<Comment> documentationComment;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -127,7 +129,7 @@ public class NamespaceImpl extends MofObjectImpl implements Namespace {
     @JoinTable(name = "Namespace_documentationComment",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Comment> getDocumentationComment() {
+    public List<Comment> getDocumentationComment() {
         if (documentationComment == null) {
             documentationComment = new ArrayList<>();
         }
@@ -136,7 +138,7 @@ public class NamespaceImpl extends MofObjectImpl implements Namespace {
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CommentImpl.class)
-    public void setDocumentationComment(Collection<Comment> documentationComment) {
+    public void setDocumentationComment(List<Comment> documentationComment) {
         this.documentationComment = documentationComment;
     }
 
@@ -274,16 +276,18 @@ public class NamespaceImpl extends MofObjectImpl implements Namespace {
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedAnnotation")
-    private Collection<Annotation> ownedAnnotation;
+    private List<Annotation> ownedAnnotation;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Namespace_ownedAnnotation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Annotation> getOwnedAnnotation() {
+    public List<Annotation> getOwnedAnnotation() {
         if (ownedAnnotation == null) {
             ownedAnnotation = new ArrayList<>();
         }
@@ -292,7 +296,7 @@ public class NamespaceImpl extends MofObjectImpl implements Namespace {
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnnotationImpl.class)
-    public void setOwnedAnnotation(Collection<Annotation> ownedAnnotation) {
+    public void setOwnedAnnotation(List<Annotation> ownedAnnotation) {
         this.ownedAnnotation = ownedAnnotation;
     }
 
@@ -300,7 +304,7 @@ public class NamespaceImpl extends MofObjectImpl implements Namespace {
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedElement")
-    private Collection<Element> ownedElement;
+    private List<Element> ownedElement;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -309,7 +313,7 @@ public class NamespaceImpl extends MofObjectImpl implements Namespace {
     @JoinTable(name = "Namespace_ownedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Element> getOwnedElement() {
+    public List<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
         }
@@ -318,17 +322,19 @@ public class NamespaceImpl extends MofObjectImpl implements Namespace {
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
-    public void setOwnedElement(Collection<Element> ownedElement) {
+    public void setOwnedElement(List<Element> ownedElement) {
         this.ownedElement = ownedElement;
     }
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedImport")
     private List<Import> ownedImport;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
     @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Namespace_ownedImport",
             joinColumns = @JoinColumn(name = "classId"),
@@ -374,11 +380,13 @@ public class NamespaceImpl extends MofObjectImpl implements Namespace {
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedMembership")
     private List<Membership> ownedMembership;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Namespace_ownedMembership",
             joinColumns = @JoinColumn(name = "classId"),

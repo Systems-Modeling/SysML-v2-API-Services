@@ -21,19 +21,19 @@ public abstract class NamespaceImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 
 	public static volatile SingularAttribute<NamespaceImpl, UUID> identifier;
 	public static volatile ListAttribute<NamespaceImpl, Membership> importedMembership;
-	public static volatile CollectionAttribute<NamespaceImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<NamespaceImpl, Element> ownedElement;
+	public static volatile ListAttribute<NamespaceImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<NamespaceImpl, Element> ownedElement;
 	public static volatile ListAttribute<NamespaceImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<NamespaceImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<NamespaceImpl, Documentation> documentation;
+	public static volatile ListAttribute<NamespaceImpl, Documentation> documentation;
 	public static volatile ListAttribute<NamespaceImpl, Membership> membership;
 	public static volatile ListAttribute<NamespaceImpl, Import> ownedImport;
 	public static volatile CollectionAttribute<NamespaceImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<NamespaceImpl, String> humanId;
-	public static volatile CollectionAttribute<NamespaceImpl, String> aliasId;
+	public static volatile ListAttribute<NamespaceImpl, String> aliasId;
 	public static volatile ListAttribute<NamespaceImpl, Element> member;
 	public static volatile SingularAttribute<NamespaceImpl, String> name;
-	public static volatile CollectionAttribute<NamespaceImpl, Comment> documentationComment;
+	public static volatile ListAttribute<NamespaceImpl, Comment> documentationComment;
 	public static volatile ListAttribute<NamespaceImpl, Element> ownedMember;
 	public static volatile ListAttribute<NamespaceImpl, Membership> ownedMembership;
 

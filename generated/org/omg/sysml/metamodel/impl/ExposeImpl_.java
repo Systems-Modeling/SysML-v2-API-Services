@@ -19,22 +19,22 @@ import org.omg.sysml.metamodel.VisibilityKind;
 public abstract class ExposeImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile SingularAttribute<ExposeImpl, UUID> identifier;
-	public static volatile CollectionAttribute<ExposeImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<ExposeImpl, Element> ownedElement;
+	public static volatile ListAttribute<ExposeImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<ExposeImpl, Element> ownedElement;
 	public static volatile SingularAttribute<ExposeImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<ExposeImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<ExposeImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<ExposeImpl, Documentation> documentation;
+	public static volatile ListAttribute<ExposeImpl, Documentation> documentation;
 	public static volatile ListAttribute<ExposeImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<ExposeImpl, Element> source;
 	public static volatile ListAttribute<ExposeImpl, Element> target;
 	public static volatile SingularAttribute<ExposeImpl, Boolean> isRecursive;
 	public static volatile CollectionAttribute<ExposeImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<ExposeImpl, String> humanId;
-	public static volatile CollectionAttribute<ExposeImpl, String> aliasId;
+	public static volatile ListAttribute<ExposeImpl, String> aliasId;
 	public static volatile ListAttribute<ExposeImpl, Element> relatedElement;
 	public static volatile SingularAttribute<ExposeImpl, String> name;
-	public static volatile CollectionAttribute<ExposeImpl, Comment> documentationComment;
+	public static volatile ListAttribute<ExposeImpl, Comment> documentationComment;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

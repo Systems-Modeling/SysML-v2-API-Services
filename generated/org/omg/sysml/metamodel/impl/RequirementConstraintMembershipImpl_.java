@@ -22,13 +22,13 @@ public abstract class RequirementConstraintMembershipImpl_ extends org.omg.sysml
 
 	public static volatile SingularAttribute<RequirementConstraintMembershipImpl, UUID> identifier;
 	public static volatile SingularAttribute<RequirementConstraintMembershipImpl, Boolean> isDerived;
-	public static volatile CollectionAttribute<RequirementConstraintMembershipImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<RequirementConstraintMembershipImpl, Element> ownedElement;
+	public static volatile ListAttribute<RequirementConstraintMembershipImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<RequirementConstraintMembershipImpl, Element> ownedElement;
 	public static volatile SingularAttribute<RequirementConstraintMembershipImpl, VisibilityKind> visibility;
 	public static volatile SingularAttribute<RequirementConstraintMembershipImpl, RequirementConstraintKind> kind;
 	public static volatile ListAttribute<RequirementConstraintMembershipImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<RequirementConstraintMembershipImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<RequirementConstraintMembershipImpl, Documentation> documentation;
+	public static volatile ListAttribute<RequirementConstraintMembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<RequirementConstraintMembershipImpl, String> memberName;
 	public static volatile ListAttribute<RequirementConstraintMembershipImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<RequirementConstraintMembershipImpl, Element> source;
@@ -39,10 +39,10 @@ public abstract class RequirementConstraintMembershipImpl_ extends org.omg.sysml
 	public static volatile SingularAttribute<RequirementConstraintMembershipImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<RequirementConstraintMembershipImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<RequirementConstraintMembershipImpl, String> humanId;
-	public static volatile CollectionAttribute<RequirementConstraintMembershipImpl, String> aliasId;
+	public static volatile ListAttribute<RequirementConstraintMembershipImpl, String> aliasId;
 	public static volatile ListAttribute<RequirementConstraintMembershipImpl, Element> relatedElement;
 	public static volatile SingularAttribute<RequirementConstraintMembershipImpl, String> name;
-	public static volatile CollectionAttribute<RequirementConstraintMembershipImpl, Comment> documentationComment;
+	public static volatile ListAttribute<RequirementConstraintMembershipImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<RequirementConstraintMembershipImpl, FeatureDirectionKind> direction;
 
 	public static final String IDENTIFIER = "identifier";

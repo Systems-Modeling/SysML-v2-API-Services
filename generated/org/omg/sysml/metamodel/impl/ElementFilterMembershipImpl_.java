@@ -19,22 +19,22 @@ import org.omg.sysml.metamodel.VisibilityKind;
 public abstract class ElementFilterMembershipImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile SingularAttribute<ElementFilterMembershipImpl, UUID> identifier;
-	public static volatile CollectionAttribute<ElementFilterMembershipImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<ElementFilterMembershipImpl, Element> ownedElement;
+	public static volatile ListAttribute<ElementFilterMembershipImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<ElementFilterMembershipImpl, Element> ownedElement;
 	public static volatile SingularAttribute<ElementFilterMembershipImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<ElementFilterMembershipImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<ElementFilterMembershipImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<ElementFilterMembershipImpl, Documentation> documentation;
+	public static volatile ListAttribute<ElementFilterMembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<ElementFilterMembershipImpl, String> memberName;
 	public static volatile ListAttribute<ElementFilterMembershipImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<ElementFilterMembershipImpl, Element> source;
 	public static volatile ListAttribute<ElementFilterMembershipImpl, Element> target;
 	public static volatile CollectionAttribute<ElementFilterMembershipImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<ElementFilterMembershipImpl, String> humanId;
-	public static volatile CollectionAttribute<ElementFilterMembershipImpl, String> aliasId;
+	public static volatile ListAttribute<ElementFilterMembershipImpl, String> aliasId;
 	public static volatile ListAttribute<ElementFilterMembershipImpl, Element> relatedElement;
 	public static volatile SingularAttribute<ElementFilterMembershipImpl, String> name;
-	public static volatile CollectionAttribute<ElementFilterMembershipImpl, Comment> documentationComment;
+	public static volatile ListAttribute<ElementFilterMembershipImpl, Comment> documentationComment;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

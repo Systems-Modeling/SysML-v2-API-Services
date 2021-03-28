@@ -22,13 +22,13 @@ public abstract class TransitionFeatureMembershipImpl_ extends org.omg.sysml.met
 
 	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, UUID> identifier;
 	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, Boolean> isDerived;
-	public static volatile CollectionAttribute<TransitionFeatureMembershipImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<TransitionFeatureMembershipImpl, Element> ownedElement;
+	public static volatile ListAttribute<TransitionFeatureMembershipImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<TransitionFeatureMembershipImpl, Element> ownedElement;
 	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, VisibilityKind> visibility;
 	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, TransitionFeatureKind> kind;
 	public static volatile ListAttribute<TransitionFeatureMembershipImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<TransitionFeatureMembershipImpl, Documentation> documentation;
+	public static volatile ListAttribute<TransitionFeatureMembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, String> memberName;
 	public static volatile ListAttribute<TransitionFeatureMembershipImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<TransitionFeatureMembershipImpl, Element> source;
@@ -39,10 +39,10 @@ public abstract class TransitionFeatureMembershipImpl_ extends org.omg.sysml.met
 	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, String> humanId;
-	public static volatile CollectionAttribute<TransitionFeatureMembershipImpl, String> aliasId;
+	public static volatile ListAttribute<TransitionFeatureMembershipImpl, String> aliasId;
 	public static volatile ListAttribute<TransitionFeatureMembershipImpl, Element> relatedElement;
 	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, String> name;
-	public static volatile CollectionAttribute<TransitionFeatureMembershipImpl, Comment> documentationComment;
+	public static volatile ListAttribute<TransitionFeatureMembershipImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, FeatureDirectionKind> direction;
 
 	public static final String IDENTIFIER = "identifier";

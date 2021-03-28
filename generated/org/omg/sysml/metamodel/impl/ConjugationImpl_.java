@@ -18,20 +18,20 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 public abstract class ConjugationImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile SingularAttribute<ConjugationImpl, UUID> identifier;
-	public static volatile CollectionAttribute<ConjugationImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<ConjugationImpl, Element> ownedElement;
+	public static volatile ListAttribute<ConjugationImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<ConjugationImpl, Element> ownedElement;
 	public static volatile ListAttribute<ConjugationImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<ConjugationImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<ConjugationImpl, Documentation> documentation;
+	public static volatile ListAttribute<ConjugationImpl, Documentation> documentation;
 	public static volatile ListAttribute<ConjugationImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<ConjugationImpl, Element> source;
 	public static volatile ListAttribute<ConjugationImpl, Element> target;
 	public static volatile CollectionAttribute<ConjugationImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<ConjugationImpl, String> humanId;
-	public static volatile CollectionAttribute<ConjugationImpl, String> aliasId;
+	public static volatile ListAttribute<ConjugationImpl, String> aliasId;
 	public static volatile ListAttribute<ConjugationImpl, Element> relatedElement;
 	public static volatile SingularAttribute<ConjugationImpl, String> name;
-	public static volatile CollectionAttribute<ConjugationImpl, Comment> documentationComment;
+	public static volatile ListAttribute<ConjugationImpl, Comment> documentationComment;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

@@ -19,22 +19,22 @@ import org.omg.sysml.metamodel.VisibilityKind;
 public abstract class VariantMembershipImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile SingularAttribute<VariantMembershipImpl, UUID> identifier;
-	public static volatile CollectionAttribute<VariantMembershipImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<VariantMembershipImpl, Element> ownedElement;
+	public static volatile ListAttribute<VariantMembershipImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<VariantMembershipImpl, Element> ownedElement;
 	public static volatile SingularAttribute<VariantMembershipImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<VariantMembershipImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<VariantMembershipImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<VariantMembershipImpl, Documentation> documentation;
+	public static volatile ListAttribute<VariantMembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<VariantMembershipImpl, String> memberName;
 	public static volatile ListAttribute<VariantMembershipImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<VariantMembershipImpl, Element> source;
 	public static volatile ListAttribute<VariantMembershipImpl, Element> target;
 	public static volatile CollectionAttribute<VariantMembershipImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<VariantMembershipImpl, String> humanId;
-	public static volatile CollectionAttribute<VariantMembershipImpl, String> aliasId;
+	public static volatile ListAttribute<VariantMembershipImpl, String> aliasId;
 	public static volatile ListAttribute<VariantMembershipImpl, Element> relatedElement;
 	public static volatile SingularAttribute<VariantMembershipImpl, String> name;
-	public static volatile CollectionAttribute<VariantMembershipImpl, Comment> documentationComment;
+	public static volatile ListAttribute<VariantMembershipImpl, Comment> documentationComment;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

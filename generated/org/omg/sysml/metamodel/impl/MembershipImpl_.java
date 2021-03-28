@@ -19,22 +19,22 @@ import org.omg.sysml.metamodel.VisibilityKind;
 public abstract class MembershipImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile SingularAttribute<MembershipImpl, UUID> identifier;
-	public static volatile CollectionAttribute<MembershipImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<MembershipImpl, Element> ownedElement;
+	public static volatile ListAttribute<MembershipImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<MembershipImpl, Element> ownedElement;
 	public static volatile SingularAttribute<MembershipImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<MembershipImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<MembershipImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<MembershipImpl, Documentation> documentation;
+	public static volatile ListAttribute<MembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<MembershipImpl, String> memberName;
 	public static volatile ListAttribute<MembershipImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<MembershipImpl, Element> source;
 	public static volatile ListAttribute<MembershipImpl, Element> target;
 	public static volatile CollectionAttribute<MembershipImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<MembershipImpl, String> humanId;
-	public static volatile CollectionAttribute<MembershipImpl, String> aliasId;
+	public static volatile ListAttribute<MembershipImpl, String> aliasId;
 	public static volatile ListAttribute<MembershipImpl, Element> relatedElement;
 	public static volatile SingularAttribute<MembershipImpl, String> name;
-	public static volatile CollectionAttribute<MembershipImpl, Comment> documentationComment;
+	public static volatile ListAttribute<MembershipImpl, Comment> documentationComment;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
