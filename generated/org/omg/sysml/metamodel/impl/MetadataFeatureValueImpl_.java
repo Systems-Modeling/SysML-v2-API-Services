@@ -19,22 +19,22 @@ import org.omg.sysml.metamodel.VisibilityKind;
 public abstract class MetadataFeatureValueImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile SingularAttribute<MetadataFeatureValueImpl, UUID> identifier;
-	public static volatile CollectionAttribute<MetadataFeatureValueImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<MetadataFeatureValueImpl, Element> ownedElement;
+	public static volatile ListAttribute<MetadataFeatureValueImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<MetadataFeatureValueImpl, Element> ownedElement;
 	public static volatile SingularAttribute<MetadataFeatureValueImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<MetadataFeatureValueImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<MetadataFeatureValueImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<MetadataFeatureValueImpl, Documentation> documentation;
+	public static volatile ListAttribute<MetadataFeatureValueImpl, Documentation> documentation;
 	public static volatile SingularAttribute<MetadataFeatureValueImpl, String> memberName;
 	public static volatile ListAttribute<MetadataFeatureValueImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<MetadataFeatureValueImpl, Element> source;
 	public static volatile ListAttribute<MetadataFeatureValueImpl, Element> target;
 	public static volatile CollectionAttribute<MetadataFeatureValueImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<MetadataFeatureValueImpl, String> humanId;
-	public static volatile CollectionAttribute<MetadataFeatureValueImpl, String> aliasId;
+	public static volatile ListAttribute<MetadataFeatureValueImpl, String> aliasId;
 	public static volatile ListAttribute<MetadataFeatureValueImpl, Element> relatedElement;
 	public static volatile SingularAttribute<MetadataFeatureValueImpl, String> name;
-	public static volatile CollectionAttribute<MetadataFeatureValueImpl, Comment> documentationComment;
+	public static volatile ListAttribute<MetadataFeatureValueImpl, Comment> documentationComment;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

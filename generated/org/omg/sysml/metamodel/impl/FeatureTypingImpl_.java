@@ -18,20 +18,20 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 public abstract class FeatureTypingImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile SingularAttribute<FeatureTypingImpl, UUID> identifier;
-	public static volatile CollectionAttribute<FeatureTypingImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<FeatureTypingImpl, Element> ownedElement;
+	public static volatile ListAttribute<FeatureTypingImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<FeatureTypingImpl, Element> ownedElement;
 	public static volatile ListAttribute<FeatureTypingImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<FeatureTypingImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<FeatureTypingImpl, Documentation> documentation;
+	public static volatile ListAttribute<FeatureTypingImpl, Documentation> documentation;
 	public static volatile ListAttribute<FeatureTypingImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<FeatureTypingImpl, Element> source;
 	public static volatile ListAttribute<FeatureTypingImpl, Element> target;
 	public static volatile CollectionAttribute<FeatureTypingImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<FeatureTypingImpl, String> humanId;
-	public static volatile CollectionAttribute<FeatureTypingImpl, String> aliasId;
+	public static volatile ListAttribute<FeatureTypingImpl, String> aliasId;
 	public static volatile ListAttribute<FeatureTypingImpl, Element> relatedElement;
 	public static volatile SingularAttribute<FeatureTypingImpl, String> name;
-	public static volatile CollectionAttribute<FeatureTypingImpl, Comment> documentationComment;
+	public static volatile ListAttribute<FeatureTypingImpl, Comment> documentationComment;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

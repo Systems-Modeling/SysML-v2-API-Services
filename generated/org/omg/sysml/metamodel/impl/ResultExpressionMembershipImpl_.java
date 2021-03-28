@@ -21,12 +21,12 @@ public abstract class ResultExpressionMembershipImpl_ extends org.omg.sysml.meta
 
 	public static volatile SingularAttribute<ResultExpressionMembershipImpl, UUID> identifier;
 	public static volatile SingularAttribute<ResultExpressionMembershipImpl, Boolean> isDerived;
-	public static volatile CollectionAttribute<ResultExpressionMembershipImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<ResultExpressionMembershipImpl, Element> ownedElement;
+	public static volatile ListAttribute<ResultExpressionMembershipImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<ResultExpressionMembershipImpl, Element> ownedElement;
 	public static volatile SingularAttribute<ResultExpressionMembershipImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<ResultExpressionMembershipImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<ResultExpressionMembershipImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<ResultExpressionMembershipImpl, Documentation> documentation;
+	public static volatile ListAttribute<ResultExpressionMembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<ResultExpressionMembershipImpl, String> memberName;
 	public static volatile ListAttribute<ResultExpressionMembershipImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<ResultExpressionMembershipImpl, Element> source;
@@ -37,10 +37,10 @@ public abstract class ResultExpressionMembershipImpl_ extends org.omg.sysml.meta
 	public static volatile SingularAttribute<ResultExpressionMembershipImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<ResultExpressionMembershipImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<ResultExpressionMembershipImpl, String> humanId;
-	public static volatile CollectionAttribute<ResultExpressionMembershipImpl, String> aliasId;
+	public static volatile ListAttribute<ResultExpressionMembershipImpl, String> aliasId;
 	public static volatile ListAttribute<ResultExpressionMembershipImpl, Element> relatedElement;
 	public static volatile SingularAttribute<ResultExpressionMembershipImpl, String> name;
-	public static volatile CollectionAttribute<ResultExpressionMembershipImpl, Comment> documentationComment;
+	public static volatile ListAttribute<ResultExpressionMembershipImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<ResultExpressionMembershipImpl, FeatureDirectionKind> direction;
 
 	public static final String IDENTIFIER = "identifier";

@@ -28,5 +28,5 @@ import java.util.Set;
 public interface AnnotatingFeature extends AnnotatingElement, Feature, MofObject {
     DataType getMetadataType();
 
-    Collection<? extends MetadataFeature> getOwnedMetadata();
+    List<? extends MetadataFeature> getOwnedMetadata();
 }

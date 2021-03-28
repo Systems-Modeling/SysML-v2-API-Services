@@ -19,11 +19,11 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 public abstract class ExternalRelationshipImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile SingularAttribute<ExternalRelationshipImpl, UUID> identifier;
-	public static volatile CollectionAttribute<ExternalRelationshipImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<ExternalRelationshipImpl, Element> ownedElement;
+	public static volatile ListAttribute<ExternalRelationshipImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<ExternalRelationshipImpl, Element> ownedElement;
 	public static volatile ListAttribute<ExternalRelationshipImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<ExternalRelationshipImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<ExternalRelationshipImpl, Documentation> documentation;
+	public static volatile ListAttribute<ExternalRelationshipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<ExternalRelationshipImpl, String> specification;
 	public static volatile ListAttribute<ExternalRelationshipImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<ExternalRelationshipImpl, Element> source;
@@ -31,10 +31,10 @@ public abstract class ExternalRelationshipImpl_ extends org.omg.sysml.metamodel.
 	public static volatile CollectionAttribute<ExternalRelationshipImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<ExternalRelationshipImpl, URI> resourceIdentifier;
 	public static volatile SingularAttribute<ExternalRelationshipImpl, String> humanId;
-	public static volatile CollectionAttribute<ExternalRelationshipImpl, String> aliasId;
+	public static volatile ListAttribute<ExternalRelationshipImpl, String> aliasId;
 	public static volatile ListAttribute<ExternalRelationshipImpl, Element> relatedElement;
 	public static volatile SingularAttribute<ExternalRelationshipImpl, String> name;
-	public static volatile CollectionAttribute<ExternalRelationshipImpl, Comment> documentationComment;
+	public static volatile ListAttribute<ExternalRelationshipImpl, Comment> documentationComment;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

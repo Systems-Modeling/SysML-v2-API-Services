@@ -18,20 +18,20 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 public abstract class PortConjugationImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile SingularAttribute<PortConjugationImpl, UUID> identifier;
-	public static volatile CollectionAttribute<PortConjugationImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<PortConjugationImpl, Element> ownedElement;
+	public static volatile ListAttribute<PortConjugationImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<PortConjugationImpl, Element> ownedElement;
 	public static volatile ListAttribute<PortConjugationImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<PortConjugationImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<PortConjugationImpl, Documentation> documentation;
+	public static volatile ListAttribute<PortConjugationImpl, Documentation> documentation;
 	public static volatile ListAttribute<PortConjugationImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<PortConjugationImpl, Element> source;
 	public static volatile ListAttribute<PortConjugationImpl, Element> target;
 	public static volatile CollectionAttribute<PortConjugationImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<PortConjugationImpl, String> humanId;
-	public static volatile CollectionAttribute<PortConjugationImpl, String> aliasId;
+	public static volatile ListAttribute<PortConjugationImpl, String> aliasId;
 	public static volatile ListAttribute<PortConjugationImpl, Element> relatedElement;
 	public static volatile SingularAttribute<PortConjugationImpl, String> name;
-	public static volatile CollectionAttribute<PortConjugationImpl, Comment> documentationComment;
+	public static volatile ListAttribute<PortConjugationImpl, Comment> documentationComment;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

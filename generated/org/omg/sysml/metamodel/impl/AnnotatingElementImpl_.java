@@ -17,19 +17,19 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 @StaticMetamodel(AnnotatingElementImpl.class)
 public abstract class AnnotatingElementImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
-	public static volatile CollectionAttribute<AnnotatingElementImpl, Annotation> annotation;
+	public static volatile ListAttribute<AnnotatingElementImpl, Annotation> annotation;
 	public static volatile SingularAttribute<AnnotatingElementImpl, UUID> identifier;
-	public static volatile CollectionAttribute<AnnotatingElementImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<AnnotatingElementImpl, Element> ownedElement;
+	public static volatile ListAttribute<AnnotatingElementImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<AnnotatingElementImpl, Element> ownedElement;
 	public static volatile ListAttribute<AnnotatingElementImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<AnnotatingElementImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<AnnotatingElementImpl, Documentation> documentation;
-	public static volatile CollectionAttribute<AnnotatingElementImpl, Element> annotatedElement;
+	public static volatile ListAttribute<AnnotatingElementImpl, Documentation> documentation;
+	public static volatile ListAttribute<AnnotatingElementImpl, Element> annotatedElement;
 	public static volatile CollectionAttribute<AnnotatingElementImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<AnnotatingElementImpl, String> humanId;
-	public static volatile CollectionAttribute<AnnotatingElementImpl, String> aliasId;
+	public static volatile ListAttribute<AnnotatingElementImpl, String> aliasId;
 	public static volatile SingularAttribute<AnnotatingElementImpl, String> name;
-	public static volatile CollectionAttribute<AnnotatingElementImpl, Comment> documentationComment;
+	public static volatile ListAttribute<AnnotatingElementImpl, Comment> documentationComment;
 
 	public static final String ANNOTATION = "annotation";
 	public static final String IDENTIFIER = "identifier";

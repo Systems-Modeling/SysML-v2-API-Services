@@ -19,15 +19,15 @@ public abstract class ElementImpl_ extends org.omg.sysml.metamodel.impl.MofObjec
 
 	public static volatile SingularAttribute<ElementImpl, UUID> identifier;
 	public static volatile CollectionAttribute<ElementImpl, TextualRepresentation> ownedTextualRepresentation;
-	public static volatile CollectionAttribute<ElementImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<ElementImpl, Element> ownedElement;
+	public static volatile ListAttribute<ElementImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<ElementImpl, Element> ownedElement;
 	public static volatile SingularAttribute<ElementImpl, String> humanId;
-	public static volatile CollectionAttribute<ElementImpl, String> aliasId;
+	public static volatile ListAttribute<ElementImpl, String> aliasId;
 	public static volatile ListAttribute<ElementImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<ElementImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<ElementImpl, Documentation> documentation;
+	public static volatile ListAttribute<ElementImpl, Documentation> documentation;
 	public static volatile SingularAttribute<ElementImpl, String> name;
-	public static volatile CollectionAttribute<ElementImpl, Comment> documentationComment;
+	public static volatile ListAttribute<ElementImpl, Comment> documentationComment;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";

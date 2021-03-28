@@ -28,5 +28,5 @@ import java.util.Set;
 public interface Behavior extends Class, MofObject {
     Collection<? extends Step> getStep();
 
-    Collection<? extends Feature> getParameter();
+    List<? extends Feature> getParameter();
 }

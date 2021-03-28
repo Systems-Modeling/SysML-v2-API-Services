@@ -17,20 +17,20 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 @StaticMetamodel(CommentImpl.class)
 public abstract class CommentImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
-	public static volatile CollectionAttribute<CommentImpl, Annotation> annotation;
+	public static volatile ListAttribute<CommentImpl, Annotation> annotation;
 	public static volatile SingularAttribute<CommentImpl, UUID> identifier;
-	public static volatile CollectionAttribute<CommentImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<CommentImpl, Element> ownedElement;
+	public static volatile ListAttribute<CommentImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<CommentImpl, Element> ownedElement;
 	public static volatile ListAttribute<CommentImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<CommentImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<CommentImpl, Documentation> documentation;
-	public static volatile CollectionAttribute<CommentImpl, Element> annotatedElement;
+	public static volatile ListAttribute<CommentImpl, Documentation> documentation;
+	public static volatile ListAttribute<CommentImpl, Element> annotatedElement;
 	public static volatile SingularAttribute<CommentImpl, String> body;
 	public static volatile CollectionAttribute<CommentImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<CommentImpl, String> humanId;
-	public static volatile CollectionAttribute<CommentImpl, String> aliasId;
+	public static volatile ListAttribute<CommentImpl, String> aliasId;
 	public static volatile SingularAttribute<CommentImpl, String> name;
-	public static volatile CollectionAttribute<CommentImpl, Comment> documentationComment;
+	public static volatile ListAttribute<CommentImpl, Comment> documentationComment;
 
 	public static final String ANNOTATION = "annotation";
 	public static final String IDENTIFIER = "identifier";

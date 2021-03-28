@@ -32,7 +32,7 @@ public interface Feature extends Type, MofObject {
 
     Boolean getIsOrdered();
 
-    Collection<? extends Type> getType();
+    List<? extends Type> getType();
 
     Collection<? extends Redefinition> getOwnedRedefinition();
 
@@ -46,11 +46,11 @@ public interface Feature extends Type, MofObject {
 
     Type getEndOwningType();
 
-    Collection<? extends FeatureTyping> getOwnedTyping();
+    List<? extends FeatureTyping> getOwnedTyping();
 
-    Collection<? extends Type> getFeaturingType();
+    List<? extends Type> getFeaturingType();
 
-    Collection<? extends TypeFeaturing> getOwnedTypeFeaturing();
+    List<? extends TypeFeaturing> getOwnedTypeFeaturing();
 
     Boolean getIsNonunique();
 }

@@ -18,20 +18,20 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 public abstract class RedefinitionImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile SingularAttribute<RedefinitionImpl, UUID> identifier;
-	public static volatile CollectionAttribute<RedefinitionImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<RedefinitionImpl, Element> ownedElement;
+	public static volatile ListAttribute<RedefinitionImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<RedefinitionImpl, Element> ownedElement;
 	public static volatile ListAttribute<RedefinitionImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<RedefinitionImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<RedefinitionImpl, Documentation> documentation;
+	public static volatile ListAttribute<RedefinitionImpl, Documentation> documentation;
 	public static volatile ListAttribute<RedefinitionImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<RedefinitionImpl, Element> source;
 	public static volatile ListAttribute<RedefinitionImpl, Element> target;
 	public static volatile CollectionAttribute<RedefinitionImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<RedefinitionImpl, String> humanId;
-	public static volatile CollectionAttribute<RedefinitionImpl, String> aliasId;
+	public static volatile ListAttribute<RedefinitionImpl, String> aliasId;
 	public static volatile ListAttribute<RedefinitionImpl, Element> relatedElement;
 	public static volatile SingularAttribute<RedefinitionImpl, String> name;
-	public static volatile CollectionAttribute<RedefinitionImpl, Comment> documentationComment;
+	public static volatile ListAttribute<RedefinitionImpl, Comment> documentationComment;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

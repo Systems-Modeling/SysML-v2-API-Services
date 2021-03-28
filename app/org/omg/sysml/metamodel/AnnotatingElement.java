@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface AnnotatingElement extends Element, MofObject {
-    Collection<? extends Annotation> getAnnotation();
+    List<? extends Annotation> getAnnotation();
 
-    Collection<? extends Element> getAnnotatedElement();
+    List<? extends Element> getAnnotatedElement();
 }
