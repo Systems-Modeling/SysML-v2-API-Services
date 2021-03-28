@@ -22,13 +22,13 @@ public abstract class RequirementVerificationMembershipImpl_ extends org.omg.sys
 
 	public static volatile SingularAttribute<RequirementVerificationMembershipImpl, UUID> identifier;
 	public static volatile SingularAttribute<RequirementVerificationMembershipImpl, Boolean> isDerived;
-	public static volatile CollectionAttribute<RequirementVerificationMembershipImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<RequirementVerificationMembershipImpl, Element> ownedElement;
+	public static volatile ListAttribute<RequirementVerificationMembershipImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<RequirementVerificationMembershipImpl, Element> ownedElement;
 	public static volatile SingularAttribute<RequirementVerificationMembershipImpl, VisibilityKind> visibility;
 	public static volatile SingularAttribute<RequirementVerificationMembershipImpl, RequirementConstraintKind> kind;
 	public static volatile ListAttribute<RequirementVerificationMembershipImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<RequirementVerificationMembershipImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<RequirementVerificationMembershipImpl, Documentation> documentation;
+	public static volatile ListAttribute<RequirementVerificationMembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<RequirementVerificationMembershipImpl, String> memberName;
 	public static volatile ListAttribute<RequirementVerificationMembershipImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<RequirementVerificationMembershipImpl, Element> source;
@@ -39,10 +39,10 @@ public abstract class RequirementVerificationMembershipImpl_ extends org.omg.sys
 	public static volatile SingularAttribute<RequirementVerificationMembershipImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<RequirementVerificationMembershipImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<RequirementVerificationMembershipImpl, String> humanId;
-	public static volatile CollectionAttribute<RequirementVerificationMembershipImpl, String> aliasId;
+	public static volatile ListAttribute<RequirementVerificationMembershipImpl, String> aliasId;
 	public static volatile ListAttribute<RequirementVerificationMembershipImpl, Element> relatedElement;
 	public static volatile SingularAttribute<RequirementVerificationMembershipImpl, String> name;
-	public static volatile CollectionAttribute<RequirementVerificationMembershipImpl, Comment> documentationComment;
+	public static volatile ListAttribute<RequirementVerificationMembershipImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<RequirementVerificationMembershipImpl, FeatureDirectionKind> direction;
 
 	public static final String IDENTIFIER = "identifier";

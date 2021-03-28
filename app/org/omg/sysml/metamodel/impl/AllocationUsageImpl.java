@@ -70,7 +70,7 @@ import java.util.HashSet;
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsage {
     // @info.archinnov.achilles.annotations.Column("aliasId")
-    private Collection<String> aliasId;
+    private List<String> aliasId;
 
     @JsonGetter
     @Lob
@@ -78,7 +78,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
     @ElementCollection(targetClass = String.class)
     @CollectionTable(name = "AllocationUsage_aliasId",
             joinColumns = @JoinColumn(name = "AllocationUsageId"))
-    public Collection<String> getAliasId() {
+    public List<String> getAliasId() {
         if (aliasId == null) {
             aliasId = new ArrayList<>();
         }
@@ -86,7 +86,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
     }
 
     @JsonSetter
-    public void setAliasId(Collection<String> aliasId) {
+    public void setAliasId(List<String> aliasId) {
         this.aliasId = aliasId;
     }
 
@@ -196,16 +196,18 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("documentation")
-    private Collection<Documentation> documentation;
+    private List<Documentation> documentation;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
     @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "AllocationUsage_documentation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Documentation> getDocumentation() {
+    public List<Documentation> getDocumentation() {
         if (documentation == null) {
             documentation = new ArrayList<>();
         }
@@ -214,7 +216,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DocumentationImpl.class)
-    public void setDocumentation(Collection<Documentation> documentation) {
+    public void setDocumentation(List<Documentation> documentation) {
         this.documentation = documentation;
     }
 
@@ -222,7 +224,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("documentationComment")
-    private Collection<Comment> documentationComment;
+    private List<Comment> documentationComment;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -231,7 +233,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
     @JoinTable(name = "AllocationUsage_documentationComment",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Comment> getDocumentationComment() {
+    public List<Comment> getDocumentationComment() {
         if (documentationComment == null) {
             documentationComment = new ArrayList<>();
         }
@@ -240,7 +242,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CommentImpl.class)
-    public void setDocumentationComment(Collection<Comment> documentationComment) {
+    public void setDocumentationComment(List<Comment> documentationComment) {
         this.documentationComment = documentationComment;
     }
 
@@ -248,7 +250,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("endFeature")
-    private Collection<Feature> endFeature;
+    private List<Feature> endFeature;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -257,7 +259,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
     @JoinTable(name = "AllocationUsage_endFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Feature> getEndFeature() {
+    public List<Feature> getEndFeature() {
         if (endFeature == null) {
             endFeature = new ArrayList<>();
         }
@@ -266,7 +268,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
-    public void setEndFeature(Collection<Feature> endFeature) {
+    public void setEndFeature(List<Feature> endFeature) {
         this.endFeature = endFeature;
     }
 
@@ -295,7 +297,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("feature")
-    private Collection<Feature> feature;
+    private List<Feature> feature;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -304,7 +306,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
     @JoinTable(name = "AllocationUsage_feature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Feature> getFeature() {
+    public List<Feature> getFeature() {
         if (feature == null) {
             feature = new ArrayList<>();
         }
@@ -313,7 +315,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
-    public void setFeature(Collection<Feature> feature) {
+    public void setFeature(List<Feature> feature) {
         this.feature = feature;
     }
 
@@ -347,7 +349,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("featuringType")
-    private Collection<Type> featuringType;
+    private List<Type> featuringType;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -356,7 +358,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
     @JoinTable(name = "AllocationUsage_featuringType",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Type> getFeaturingType() {
+    public List<Type> getFeaturingType() {
         if (featuringType == null) {
             featuringType = new ArrayList<>();
         }
@@ -365,7 +367,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
-    public void setFeaturingType(Collection<Type> featuringType) {
+    public void setFeaturingType(List<Type> featuringType) {
         this.featuringType = featuringType;
     }
 
@@ -459,7 +461,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("inheritedFeature")
-    private Collection<Feature> inheritedFeature;
+    private List<Feature> inheritedFeature;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -468,7 +470,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
     @JoinTable(name = "AllocationUsage_inheritedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Feature> getInheritedFeature() {
+    public List<Feature> getInheritedFeature() {
         if (inheritedFeature == null) {
             inheritedFeature = new ArrayList<>();
         }
@@ -477,7 +479,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
-    public void setInheritedFeature(Collection<Feature> inheritedFeature) {
+    public void setInheritedFeature(List<Feature> inheritedFeature) {
         this.inheritedFeature = inheritedFeature;
     }
 
@@ -511,7 +513,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("input")
-    private Collection<Feature> input;
+    private List<Feature> input;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -520,7 +522,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
     @JoinTable(name = "AllocationUsage_input",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Feature> getInput() {
+    public List<Feature> getInput() {
         if (input == null) {
             input = new ArrayList<>();
         }
@@ -529,7 +531,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
-    public void setInput(Collection<Feature> input) {
+    public void setInput(List<Feature> input) {
         this.input = input;
     }
 
@@ -1422,7 +1424,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("output")
-    private Collection<Feature> output;
+    private List<Feature> output;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1431,7 +1433,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
     @JoinTable(name = "AllocationUsage_output",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Feature> getOutput() {
+    public List<Feature> getOutput() {
         if (output == null) {
             output = new ArrayList<>();
         }
@@ -1440,22 +1442,24 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
-    public void setOutput(Collection<Feature> output) {
+    public void setOutput(List<Feature> output) {
         this.output = output;
     }
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedAnnotation")
-    private Collection<Annotation> ownedAnnotation;
+    private List<Annotation> ownedAnnotation;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "AllocationUsage_ownedAnnotation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Annotation> getOwnedAnnotation() {
+    public List<Annotation> getOwnedAnnotation() {
         if (ownedAnnotation == null) {
             ownedAnnotation = new ArrayList<>();
         }
@@ -1464,7 +1468,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnnotationImpl.class)
-    public void setOwnedAnnotation(Collection<Annotation> ownedAnnotation) {
+    public void setOwnedAnnotation(List<Annotation> ownedAnnotation) {
         this.ownedAnnotation = ownedAnnotation;
     }
 
@@ -1493,7 +1497,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedElement")
-    private Collection<Element> ownedElement;
+    private List<Element> ownedElement;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1502,7 +1506,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
     @JoinTable(name = "AllocationUsage_ownedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Element> getOwnedElement() {
+    public List<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
         }
@@ -1511,7 +1515,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
-    public void setOwnedElement(Collection<Element> ownedElement) {
+    public void setOwnedElement(List<Element> ownedElement) {
         this.ownedElement = ownedElement;
     }
 
@@ -1519,7 +1523,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedEndFeature")
-    private Collection<Feature> ownedEndFeature;
+    private List<Feature> ownedEndFeature;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1528,7 +1532,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
     @JoinTable(name = "AllocationUsage_ownedEndFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Feature> getOwnedEndFeature() {
+    public List<Feature> getOwnedEndFeature() {
         if (ownedEndFeature == null) {
             ownedEndFeature = new ArrayList<>();
         }
@@ -1537,7 +1541,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
-    public void setOwnedEndFeature(Collection<Feature> ownedEndFeature) {
+    public void setOwnedEndFeature(List<Feature> ownedEndFeature) {
         this.ownedEndFeature = ownedEndFeature;
     }
 
@@ -1545,7 +1549,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedFeature")
-    private Collection<Feature> ownedFeature;
+    private List<Feature> ownedFeature;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1554,7 +1558,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
     @JoinTable(name = "AllocationUsage_ownedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Feature> getOwnedFeature() {
+    public List<Feature> getOwnedFeature() {
         if (ownedFeature == null) {
             ownedFeature = new ArrayList<>();
         }
@@ -1563,17 +1567,19 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
-    public void setOwnedFeature(Collection<Feature> ownedFeature) {
+    public void setOwnedFeature(List<Feature> ownedFeature) {
         this.ownedFeature = ownedFeature;
     }
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedFeatureMembership")
     private List<FeatureMembership> ownedFeatureMembership;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "AllocationUsage_ownedFeatureMembership",
             joinColumns = @JoinColumn(name = "classId"),
@@ -1619,11 +1625,13 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedImport")
     private List<Import> ownedImport;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
     @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "AllocationUsage_ownedImport",
             joinColumns = @JoinColumn(name = "classId"),
@@ -1669,11 +1677,13 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedMembership")
     private List<Membership> ownedMembership;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "AllocationUsage_ownedMembership",
             joinColumns = @JoinColumn(name = "classId"),
@@ -1821,7 +1831,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedTypeFeaturing")
-    private Collection<TypeFeaturing> ownedTypeFeaturing;
+    private List<TypeFeaturing> ownedTypeFeaturing;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1830,7 +1840,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
     @JoinTable(name = "AllocationUsage_ownedTypeFeaturing",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<TypeFeaturing> getOwnedTypeFeaturing() {
+    public List<TypeFeaturing> getOwnedTypeFeaturing() {
         if (ownedTypeFeaturing == null) {
             ownedTypeFeaturing = new ArrayList<>();
         }
@@ -1839,7 +1849,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeFeaturingImpl.class)
-    public void setOwnedTypeFeaturing(Collection<TypeFeaturing> ownedTypeFeaturing) {
+    public void setOwnedTypeFeaturing(List<TypeFeaturing> ownedTypeFeaturing) {
         this.ownedTypeFeaturing = ownedTypeFeaturing;
     }
 
@@ -1847,7 +1857,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedTyping")
-    private Collection<FeatureTyping> ownedTyping;
+    private List<FeatureTyping> ownedTyping;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1856,7 +1866,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
     @JoinTable(name = "AllocationUsage_ownedTyping",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<FeatureTyping> getOwnedTyping() {
+    public List<FeatureTyping> getOwnedTyping() {
         if (ownedTyping == null) {
             ownedTyping = new ArrayList<>();
         }
@@ -1865,7 +1875,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureTypingImpl.class)
-    public void setOwnedTyping(Collection<FeatureTyping> ownedTyping) {
+    public void setOwnedTyping(List<FeatureTyping> ownedTyping) {
         this.ownedTyping = ownedTyping;
     }
 
@@ -2247,7 +2257,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("type")
-    private Collection<Type> type;
+    private List<Type> type;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -2256,7 +2266,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
     @JoinTable(name = "AllocationUsage_type",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Type> getType() {
+    public List<Type> getType() {
         if (type == null) {
             type = new ArrayList<>();
         }
@@ -2265,7 +2275,7 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
-    public void setType(Collection<Type> type) {
+    public void setType(List<Type> type) {
         this.type = type;
     }
 
@@ -2323,11 +2333,13 @@ public class AllocationUsageImpl extends MofObjectImpl implements AllocationUsag
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("variantMembership")
     private Collection<VariantMembership> variantMembership;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
     @ManyToAny(metaDef = "VariantMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "AllocationUsage_variantMembership",
             joinColumns = @JoinColumn(name = "classId"),

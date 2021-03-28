@@ -17,21 +17,21 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 @StaticMetamodel(TextualRepresentationImpl.class)
 public abstract class TextualRepresentationImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
-	public static volatile CollectionAttribute<TextualRepresentationImpl, Annotation> annotation;
+	public static volatile ListAttribute<TextualRepresentationImpl, Annotation> annotation;
 	public static volatile SingularAttribute<TextualRepresentationImpl, UUID> identifier;
-	public static volatile CollectionAttribute<TextualRepresentationImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<TextualRepresentationImpl, Element> ownedElement;
+	public static volatile ListAttribute<TextualRepresentationImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<TextualRepresentationImpl, Element> ownedElement;
 	public static volatile ListAttribute<TextualRepresentationImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<TextualRepresentationImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<TextualRepresentationImpl, Documentation> documentation;
+	public static volatile ListAttribute<TextualRepresentationImpl, Documentation> documentation;
 	public static volatile SingularAttribute<TextualRepresentationImpl, String> language;
-	public static volatile CollectionAttribute<TextualRepresentationImpl, Element> annotatedElement;
+	public static volatile ListAttribute<TextualRepresentationImpl, Element> annotatedElement;
 	public static volatile SingularAttribute<TextualRepresentationImpl, String> body;
 	public static volatile CollectionAttribute<TextualRepresentationImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<TextualRepresentationImpl, String> humanId;
-	public static volatile CollectionAttribute<TextualRepresentationImpl, String> aliasId;
+	public static volatile ListAttribute<TextualRepresentationImpl, String> aliasId;
 	public static volatile SingularAttribute<TextualRepresentationImpl, String> name;
-	public static volatile CollectionAttribute<TextualRepresentationImpl, Comment> documentationComment;
+	public static volatile ListAttribute<TextualRepresentationImpl, Comment> documentationComment;
 
 	public static final String ANNOTATION = "annotation";
 	public static final String IDENTIFIER = "identifier";

@@ -18,20 +18,20 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 public abstract class SubsettingImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile SingularAttribute<SubsettingImpl, UUID> identifier;
-	public static volatile CollectionAttribute<SubsettingImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<SubsettingImpl, Element> ownedElement;
+	public static volatile ListAttribute<SubsettingImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<SubsettingImpl, Element> ownedElement;
 	public static volatile ListAttribute<SubsettingImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<SubsettingImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<SubsettingImpl, Documentation> documentation;
+	public static volatile ListAttribute<SubsettingImpl, Documentation> documentation;
 	public static volatile ListAttribute<SubsettingImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<SubsettingImpl, Element> source;
 	public static volatile ListAttribute<SubsettingImpl, Element> target;
 	public static volatile CollectionAttribute<SubsettingImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<SubsettingImpl, String> humanId;
-	public static volatile CollectionAttribute<SubsettingImpl, String> aliasId;
+	public static volatile ListAttribute<SubsettingImpl, String> aliasId;
 	public static volatile ListAttribute<SubsettingImpl, Element> relatedElement;
 	public static volatile SingularAttribute<SubsettingImpl, String> name;
-	public static volatile CollectionAttribute<SubsettingImpl, Comment> documentationComment;
+	public static volatile ListAttribute<SubsettingImpl, Comment> documentationComment;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

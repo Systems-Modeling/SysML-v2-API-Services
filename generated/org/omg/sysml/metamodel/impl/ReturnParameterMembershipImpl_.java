@@ -21,12 +21,12 @@ public abstract class ReturnParameterMembershipImpl_ extends org.omg.sysml.metam
 
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, UUID> identifier;
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, Boolean> isDerived;
-	public static volatile CollectionAttribute<ReturnParameterMembershipImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<ReturnParameterMembershipImpl, Element> ownedElement;
+	public static volatile ListAttribute<ReturnParameterMembershipImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<ReturnParameterMembershipImpl, Element> ownedElement;
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<ReturnParameterMembershipImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<ReturnParameterMembershipImpl, Documentation> documentation;
+	public static volatile ListAttribute<ReturnParameterMembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, String> memberName;
 	public static volatile ListAttribute<ReturnParameterMembershipImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<ReturnParameterMembershipImpl, Element> source;
@@ -37,10 +37,10 @@ public abstract class ReturnParameterMembershipImpl_ extends org.omg.sysml.metam
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, String> humanId;
-	public static volatile CollectionAttribute<ReturnParameterMembershipImpl, String> aliasId;
+	public static volatile ListAttribute<ReturnParameterMembershipImpl, String> aliasId;
 	public static volatile ListAttribute<ReturnParameterMembershipImpl, Element> relatedElement;
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, String> name;
-	public static volatile CollectionAttribute<ReturnParameterMembershipImpl, Comment> documentationComment;
+	public static volatile ListAttribute<ReturnParameterMembershipImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<ReturnParameterMembershipImpl, FeatureDirectionKind> direction;
 
 	public static final String IDENTIFIER = "identifier";

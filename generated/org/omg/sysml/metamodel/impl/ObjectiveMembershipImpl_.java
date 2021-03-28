@@ -21,12 +21,12 @@ public abstract class ObjectiveMembershipImpl_ extends org.omg.sysml.metamodel.i
 
 	public static volatile SingularAttribute<ObjectiveMembershipImpl, UUID> identifier;
 	public static volatile SingularAttribute<ObjectiveMembershipImpl, Boolean> isDerived;
-	public static volatile CollectionAttribute<ObjectiveMembershipImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<ObjectiveMembershipImpl, Element> ownedElement;
+	public static volatile ListAttribute<ObjectiveMembershipImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<ObjectiveMembershipImpl, Element> ownedElement;
 	public static volatile SingularAttribute<ObjectiveMembershipImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<ObjectiveMembershipImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<ObjectiveMembershipImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<ObjectiveMembershipImpl, Documentation> documentation;
+	public static volatile ListAttribute<ObjectiveMembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<ObjectiveMembershipImpl, String> memberName;
 	public static volatile ListAttribute<ObjectiveMembershipImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<ObjectiveMembershipImpl, Element> source;
@@ -37,10 +37,10 @@ public abstract class ObjectiveMembershipImpl_ extends org.omg.sysml.metamodel.i
 	public static volatile SingularAttribute<ObjectiveMembershipImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<ObjectiveMembershipImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<ObjectiveMembershipImpl, String> humanId;
-	public static volatile CollectionAttribute<ObjectiveMembershipImpl, String> aliasId;
+	public static volatile ListAttribute<ObjectiveMembershipImpl, String> aliasId;
 	public static volatile ListAttribute<ObjectiveMembershipImpl, Element> relatedElement;
 	public static volatile SingularAttribute<ObjectiveMembershipImpl, String> name;
-	public static volatile CollectionAttribute<ObjectiveMembershipImpl, Comment> documentationComment;
+	public static volatile ListAttribute<ObjectiveMembershipImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<ObjectiveMembershipImpl, FeatureDirectionKind> direction;
 
 	public static final String IDENTIFIER = "identifier";

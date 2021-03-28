@@ -20,16 +20,16 @@ public abstract class ExternalElementImpl_ extends org.omg.sysml.metamodel.impl.
 
 	public static volatile SingularAttribute<ExternalElementImpl, UUID> identifier;
 	public static volatile CollectionAttribute<ExternalElementImpl, TextualRepresentation> ownedTextualRepresentation;
-	public static volatile CollectionAttribute<ExternalElementImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<ExternalElementImpl, Element> ownedElement;
+	public static volatile ListAttribute<ExternalElementImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<ExternalElementImpl, Element> ownedElement;
 	public static volatile SingularAttribute<ExternalElementImpl, URI> resourceIdentifier;
 	public static volatile SingularAttribute<ExternalElementImpl, String> humanId;
-	public static volatile CollectionAttribute<ExternalElementImpl, String> aliasId;
+	public static volatile ListAttribute<ExternalElementImpl, String> aliasId;
 	public static volatile ListAttribute<ExternalElementImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<ExternalElementImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<ExternalElementImpl, Documentation> documentation;
+	public static volatile ListAttribute<ExternalElementImpl, Documentation> documentation;
 	public static volatile SingularAttribute<ExternalElementImpl, String> name;
-	public static volatile CollectionAttribute<ExternalElementImpl, Comment> documentationComment;
+	public static volatile ListAttribute<ExternalElementImpl, Comment> documentationComment;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";

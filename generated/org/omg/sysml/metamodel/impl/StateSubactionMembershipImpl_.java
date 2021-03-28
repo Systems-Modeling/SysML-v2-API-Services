@@ -22,13 +22,13 @@ public abstract class StateSubactionMembershipImpl_ extends org.omg.sysml.metamo
 
 	public static volatile SingularAttribute<StateSubactionMembershipImpl, UUID> identifier;
 	public static volatile SingularAttribute<StateSubactionMembershipImpl, Boolean> isDerived;
-	public static volatile CollectionAttribute<StateSubactionMembershipImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<StateSubactionMembershipImpl, Element> ownedElement;
+	public static volatile ListAttribute<StateSubactionMembershipImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<StateSubactionMembershipImpl, Element> ownedElement;
 	public static volatile SingularAttribute<StateSubactionMembershipImpl, VisibilityKind> visibility;
 	public static volatile SingularAttribute<StateSubactionMembershipImpl, StateSubactionKind> kind;
 	public static volatile ListAttribute<StateSubactionMembershipImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<StateSubactionMembershipImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<StateSubactionMembershipImpl, Documentation> documentation;
+	public static volatile ListAttribute<StateSubactionMembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<StateSubactionMembershipImpl, String> memberName;
 	public static volatile ListAttribute<StateSubactionMembershipImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<StateSubactionMembershipImpl, Element> source;
@@ -39,10 +39,10 @@ public abstract class StateSubactionMembershipImpl_ extends org.omg.sysml.metamo
 	public static volatile SingularAttribute<StateSubactionMembershipImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<StateSubactionMembershipImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<StateSubactionMembershipImpl, String> humanId;
-	public static volatile CollectionAttribute<StateSubactionMembershipImpl, String> aliasId;
+	public static volatile ListAttribute<StateSubactionMembershipImpl, String> aliasId;
 	public static volatile ListAttribute<StateSubactionMembershipImpl, Element> relatedElement;
 	public static volatile SingularAttribute<StateSubactionMembershipImpl, String> name;
-	public static volatile CollectionAttribute<StateSubactionMembershipImpl, Comment> documentationComment;
+	public static volatile ListAttribute<StateSubactionMembershipImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<StateSubactionMembershipImpl, FeatureDirectionKind> direction;
 
 	public static final String IDENTIFIER = "identifier";

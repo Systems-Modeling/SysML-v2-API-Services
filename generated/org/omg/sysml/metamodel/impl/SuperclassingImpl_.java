@@ -18,20 +18,20 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 public abstract class SuperclassingImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile SingularAttribute<SuperclassingImpl, UUID> identifier;
-	public static volatile CollectionAttribute<SuperclassingImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<SuperclassingImpl, Element> ownedElement;
+	public static volatile ListAttribute<SuperclassingImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<SuperclassingImpl, Element> ownedElement;
 	public static volatile ListAttribute<SuperclassingImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<SuperclassingImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<SuperclassingImpl, Documentation> documentation;
+	public static volatile ListAttribute<SuperclassingImpl, Documentation> documentation;
 	public static volatile ListAttribute<SuperclassingImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<SuperclassingImpl, Element> source;
 	public static volatile ListAttribute<SuperclassingImpl, Element> target;
 	public static volatile CollectionAttribute<SuperclassingImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<SuperclassingImpl, String> humanId;
-	public static volatile CollectionAttribute<SuperclassingImpl, String> aliasId;
+	public static volatile ListAttribute<SuperclassingImpl, String> aliasId;
 	public static volatile ListAttribute<SuperclassingImpl, Element> relatedElement;
 	public static volatile SingularAttribute<SuperclassingImpl, String> name;
-	public static volatile CollectionAttribute<SuperclassingImpl, Comment> documentationComment;
+	public static volatile ListAttribute<SuperclassingImpl, Comment> documentationComment;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

@@ -40,19 +40,19 @@ public interface Element extends MofObject {
 
     Element getOwner();
 
-    Collection<? extends Element> getOwnedElement();
+    List<? extends Element> getOwnedElement();
 
-    Collection<? extends Documentation> getDocumentation();
+    List<? extends Documentation> getDocumentation();
 
-    Collection<? extends Comment> getDocumentationComment();
+    List<? extends Comment> getDocumentationComment();
 
-    Collection<? extends Annotation> getOwnedAnnotation();
+    List<? extends Annotation> getOwnedAnnotation();
 
     Collection<? extends TextualRepresentation> getOwnedTextualRepresentation();
 
     String getQualifiedName();
 
-    Collection<? extends String> getAliasId();
+    List<? extends String> getAliasId();
 
     String getHumanId();
 }

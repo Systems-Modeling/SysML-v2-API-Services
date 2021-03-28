@@ -18,20 +18,20 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 public abstract class DocumentationImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile SingularAttribute<DocumentationImpl, UUID> identifier;
-	public static volatile CollectionAttribute<DocumentationImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<DocumentationImpl, Element> ownedElement;
+	public static volatile ListAttribute<DocumentationImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<DocumentationImpl, Element> ownedElement;
 	public static volatile ListAttribute<DocumentationImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<DocumentationImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<DocumentationImpl, Documentation> documentation;
+	public static volatile ListAttribute<DocumentationImpl, Documentation> documentation;
 	public static volatile ListAttribute<DocumentationImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<DocumentationImpl, Element> source;
 	public static volatile ListAttribute<DocumentationImpl, Element> target;
 	public static volatile CollectionAttribute<DocumentationImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<DocumentationImpl, String> humanId;
-	public static volatile CollectionAttribute<DocumentationImpl, String> aliasId;
+	public static volatile ListAttribute<DocumentationImpl, String> aliasId;
 	public static volatile ListAttribute<DocumentationImpl, Element> relatedElement;
 	public static volatile SingularAttribute<DocumentationImpl, String> name;
-	public static volatile CollectionAttribute<DocumentationImpl, Comment> documentationComment;
+	public static volatile ListAttribute<DocumentationImpl, Comment> documentationComment;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

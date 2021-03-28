@@ -36,7 +36,6 @@
         <class>org.omg.sysml.metamodel.impl.AttributeUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.BehaviorImpl</class>
         <class>org.omg.sysml.metamodel.impl.BindingConnectorImpl</class>
-        <class>org.omg.sysml.metamodel.impl.BlockExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.BooleanExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.CalculationDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.CalculationUsageImpl</class>
@@ -78,7 +77,6 @@
         <class>org.omg.sysml.metamodel.impl.ImportImpl</class>
         <class>org.omg.sysml.metamodel.impl.IndividualDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.IndividualUsageImpl</class>
-        <class>org.omg.sysml.metamodel.impl.InstanceCreationExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.InteractionImpl</class>
         <class>org.omg.sysml.metamodel.impl.InterfaceDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.InterfaceUsageImpl</class>

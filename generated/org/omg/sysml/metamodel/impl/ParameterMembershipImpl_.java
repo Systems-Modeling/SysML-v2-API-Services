@@ -21,12 +21,12 @@ public abstract class ParameterMembershipImpl_ extends org.omg.sysml.metamodel.i
 
 	public static volatile SingularAttribute<ParameterMembershipImpl, UUID> identifier;
 	public static volatile SingularAttribute<ParameterMembershipImpl, Boolean> isDerived;
-	public static volatile CollectionAttribute<ParameterMembershipImpl, Annotation> ownedAnnotation;
-	public static volatile CollectionAttribute<ParameterMembershipImpl, Element> ownedElement;
+	public static volatile ListAttribute<ParameterMembershipImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<ParameterMembershipImpl, Element> ownedElement;
 	public static volatile SingularAttribute<ParameterMembershipImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<ParameterMembershipImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<ParameterMembershipImpl, String> qualifiedName;
-	public static volatile CollectionAttribute<ParameterMembershipImpl, Documentation> documentation;
+	public static volatile ListAttribute<ParameterMembershipImpl, Documentation> documentation;
 	public static volatile SingularAttribute<ParameterMembershipImpl, String> memberName;
 	public static volatile ListAttribute<ParameterMembershipImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<ParameterMembershipImpl, Element> source;
@@ -37,10 +37,10 @@ public abstract class ParameterMembershipImpl_ extends org.omg.sysml.metamodel.i
 	public static volatile SingularAttribute<ParameterMembershipImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<ParameterMembershipImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<ParameterMembershipImpl, String> humanId;
-	public static volatile CollectionAttribute<ParameterMembershipImpl, String> aliasId;
+	public static volatile ListAttribute<ParameterMembershipImpl, String> aliasId;
 	public static volatile ListAttribute<ParameterMembershipImpl, Element> relatedElement;
 	public static volatile SingularAttribute<ParameterMembershipImpl, String> name;
-	public static volatile CollectionAttribute<ParameterMembershipImpl, Comment> documentationComment;
+	public static volatile ListAttribute<ParameterMembershipImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<ParameterMembershipImpl, FeatureDirectionKind> direction;
 
 	public static final String IDENTIFIER = "identifier";
