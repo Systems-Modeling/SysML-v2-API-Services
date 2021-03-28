@@ -270,8 +270,8 @@ paths:
       operationId: getElementsByProjectCommit
       summary: Get elements by project and commit
       produces:
-        - application/ld+json
         - application/json
+        - application/ld+json
       responses:
         200:
           description: Ok
@@ -313,8 +313,8 @@ paths:
       operationId: getElementByProjectCommitId
       summary: Get element by project, commit and ID
       produces:
-        - application/ld+json
         - application/json
+        - application/ld+json
       responses:
         200:
           description: Ok
@@ -364,8 +364,8 @@ paths:
       operationId: getRootsByProjectCommit
       summary: Get root elements by project and commit
       produces:
-        - application/ld+json
         - application/json
+        - application/ld+json
       responses:
         200:
           description: Ok
@@ -433,8 +433,8 @@ paths:
       operationId: getRelationshipsByProjectCommitRelatedElement
       summary: Get relationships by project, commit, and related element
       produces:
-        - application/ld+json
         - application/json
+        - application/ld+json
       responses:
         200:
           description: Ok
@@ -580,8 +580,8 @@ paths:
       operationId: getQueryResultsByProjectIdQueryId
       summary: Get query results by project and query
       produces:
-        - application/ld+json
         - application/json
+        - application/ld+json
       responses:
         200:
           description: Ok
@@ -619,8 +619,8 @@ paths:
       consumes:
         - application/json
       produces:
-        - application/ld+json
         - application/json
+        - application/ld+json
       parameters:
         - in: body
           name: body
@@ -651,8 +651,8 @@ paths:
       consumes:
         - application/json
       produces:
-        - application/ld+json
         - application/json
+        - application/ld+json
       parameters:
         - in: body
           name: body
