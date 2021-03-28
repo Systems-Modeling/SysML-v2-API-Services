@@ -44,7 +44,7 @@ import static jackson.JsonLdMofObjectAdornment.JSONLD_MIME_TYPE;
 
 public abstract class BaseController extends Controller {
 
-    protected static final boolean INLINE_JSON_LD_CONTEXT_DEFAULT = false;
+    protected static final boolean INLINE_JSON_LD_CONTEXT_DEFAULT = true;
     protected static final boolean INLINE_JSON_LD_CONTEXT = Optional.ofNullable(System.getenv("INLINE_JSON_LD_CONTEXT"))
             .map(Boolean::parseBoolean)
             .orElse(INLINE_JSON_LD_CONTEXT_DEFAULT);
@@ -178,6 +178,6 @@ public abstract class BaseController extends Controller {
     }
 
     protected static boolean respondWithJsonLd(Http.Request request) {
-        return request.accepts(JSONLD_MIME_TYPE);
+        return request.accepts(JSONLD_MIME_TYPE) && !request.accepts(Http.MimeTypes.JSON);
     }
 }
