@@ -60,7 +60,7 @@ public class QueryService extends BaseService<Query, QueryDao> {
     }
 
     public Optional<Query> create(UUID projectId, Query query) {
-        query.setContainingProject(projectDao.findById(projectId).orElseThrow(() -> new IllegalArgumentException("Project " + projectId + " not found.")));
+        query.setOwningProject(projectDao.findById(projectId).orElseThrow(() -> new IllegalArgumentException("Project " + projectId + " not found.")));
         return create(query);
     }
 

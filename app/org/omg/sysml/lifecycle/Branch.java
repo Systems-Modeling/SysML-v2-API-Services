@@ -19,27 +19,5 @@
  * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
  */
 
-package org.omg.sysml.lifecycle;
-
-import org.omg.sysml.record.Record;
-
-import java.time.ZonedDateTime;
-import java.util.Set;
-
-public interface Commit extends Record {
-    Project getOwningProject();
-
-    void setOwningProject(Project owningProject);
-
-    Set<ElementVersion> getChange();
-
-    void setChange(Set<ElementVersion> changes);
-
-    Commit getPreviousCommit();
-
-    void setPreviousCommit(Commit previousCommit);
-
-    ZonedDateTime getTimestamp();
-
-    void setTimestamp(ZonedDateTime timestamp);
+package org.omg.sysml.lifecycle;public interface Branch {
 }

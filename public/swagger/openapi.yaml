@@ -706,7 +706,7 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/ElementVersion'
-      containingProject:
+      owningProject:
         type: object
         properties:
           id:
@@ -786,7 +786,7 @@ definitions:
         type: string
         enum:
           - 'Query'
-      containingProject:
+      owningProject:
         type: object
         properties:
           id:

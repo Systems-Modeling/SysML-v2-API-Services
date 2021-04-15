@@ -64,7 +64,7 @@ public class JpaQueryDao extends SimpleJpaDao<Query, QueryImpl> implements Query
             CriteriaQuery<QueryImpl> query = builder.createQuery(QueryImpl.class);
             Root<QueryImpl> root = query.from(QueryImpl.class);
             Path<UUID> idPath = root.get(QueryImpl_.id);
-            Expression<Boolean> where = builder.equal(root.get(QueryImpl_.containingProject), project);
+            Expression<Boolean> where = builder.equal(root.get(QueryImpl_.owningProject), project);
             query.select(root);
             Paginated<TypedQuery<QueryImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, idPath, where);
             List<Query> result = paginated.get()
@@ -85,7 +85,7 @@ public class JpaQueryDao extends SimpleJpaDao<Query, QueryImpl> implements Query
             Root<QueryImpl> root = query.from(QueryImpl.class);
             query.select(root)
                     .where(builder.and(
-                            builder.equal(root.get(QueryImpl_.containingProject), project),
+                            builder.equal(root.get(QueryImpl_.owningProject), project),
                             builder.equal(root.get(QueryImpl_.id), id)
                     ));
             try {

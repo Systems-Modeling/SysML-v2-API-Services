@@ -38,7 +38,7 @@ import java.util.Set;
 
 @Entity(name = "Commit")
 public class CommitImpl extends RecordImpl implements Commit {
-    private Project containingProject;
+    private Project owningProject;
     private Set<ElementVersion> change;
     private ZonedDateTime timestamp;
     private Commit previousCommit;
@@ -47,13 +47,13 @@ public class CommitImpl extends RecordImpl implements Commit {
     @ManyToOne(targetEntity = ProjectImpl.class, fetch = FetchType.LAZY)
     @JsonSerialize(as = ProjectImpl.class, using = RecordSerialization.RecordSerializer.class)
     @JsonView(Views.Compact.class)
-    public Project getContainingProject() {
-        return containingProject;
+    public Project getOwningProject() {
+        return owningProject;
     }
 
     @JsonDeserialize(as = ProjectImpl.class, using = RecordSerialization.ProjectDeserializer.class)
-    public void setContainingProject(Project containingProject) {
-        this.containingProject = containingProject;
+    public void setOwningProject(Project owningProject) {
+        this.owningProject = owningProject;
     }
 
     @OneToMany(targetEntity = ElementVersionImpl.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)

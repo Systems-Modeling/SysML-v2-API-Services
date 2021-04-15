@@ -28,9 +28,9 @@ import org.omg.sysml.record.Record;
 import java.util.Set;
 
 public interface Query extends Record {
-    Project getContainingProject();
+    Project getOwningProject();
 
-    void setContainingProject(Project project);
+    void setOwningProject(Project owningProject);
 
     Set<String> getSelect();
 

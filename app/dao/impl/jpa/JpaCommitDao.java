@@ -79,8 +79,8 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
     @Override
     public Optional<Commit> persist(Commit commit) {
         // If previousCommit is not specified, default to head commit.
-        if (commit.getPreviousCommit() == null && commit.getContainingProject() != null) {
-            findHeadByProject(commit.getContainingProject()).ifPresent(commit::setPreviousCommit);
+        if (commit.getPreviousCommit() == null && commit.getOwningProject() != null) {
+            findHeadByProject(commit.getOwningProject()).ifPresent(commit::setPreviousCommit);
         }
 
         MofObject tombstone = new MofObjectImpl() {
@@ -207,7 +207,7 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
             CriteriaQuery<CommitImpl> query = builder.createQuery(CommitImpl.class);
             Root<CommitImpl> root = query.from(CommitImpl.class);
             query.select(root);
-            Expression<Boolean> where = builder.equal(root.get(CommitImpl_.containingProject), project);
+            Expression<Boolean> where = builder.equal(root.get(CommitImpl_.owningProject), project);
             Paginated<TypedQuery<CommitImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, root.get(CommitImpl_.id), where);
             List<Commit> result = paginated.get()
                     .getResultStream()
@@ -232,7 +232,7 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
         Root<CommitImpl> root = query.from(CommitImpl.class);
         query.select(root)
                 .where(builder.and(
-                        builder.equal(root.get(CommitImpl_.containingProject), project),
+                        builder.equal(root.get(CommitImpl_.owningProject), project),
                         builder.equal(root.get(CommitImpl_.id), id)
                 ));
         Optional<Commit> commit;
@@ -258,7 +258,7 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
             CriteriaQuery<CommitImpl> query = builder.createQuery(CommitImpl.class);
             Root<CommitImpl> root = query.from(CommitImpl.class);
             query.select(root)
-                    .where(builder.equal(root.get(CommitImpl_.containingProject), project))
+                    .where(builder.equal(root.get(CommitImpl_.owningProject), project))
                     .orderBy(builder.desc(root.get(CommitImpl_.timestamp)));
             Optional<Commit> commit;
             try {
