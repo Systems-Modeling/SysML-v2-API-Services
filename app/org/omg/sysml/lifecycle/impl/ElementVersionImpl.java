@@ -43,22 +43,22 @@ public class ElementVersionImpl extends RecordImpl implements ElementVersion {
     @Any(metaDef = "MofObjectMetaDef", metaColumn = @javax.persistence.Column(name = "dataType"), fetch = FetchType.EAGER)
     @JoinColumn(name = "dataId")
     @org.hibernate.annotations.Cascade(value = org.hibernate.annotations.CascadeType.ALL)
-    @JsonDeserialize(as = MofObjectImpl.class)
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
     public MofObject getData() {
         return data;
     }
 
+    @JsonDeserialize(as = MofObjectImpl.class)
     public void setData(MofObject data) {
         this.data = data;
     }
 
     @ManyToOne(targetEntity = ElementIdentityImpl.class, cascade = javax.persistence.CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonDeserialize(as = ElementIdentityImpl.class)
     public ElementIdentity getIdentity() {
         return identity;
     }
 
+    @JsonDeserialize(as = ElementIdentityImpl.class)
     public void setIdentity(ElementIdentity identity) {
         this.identity = identity;
     }

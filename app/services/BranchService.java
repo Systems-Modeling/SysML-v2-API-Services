@@ -22,11 +22,8 @@
 package services;
 
 import dao.BranchDao;
-import dao.CommitDao;
 import dao.ProjectDao;
 import org.omg.sysml.lifecycle.Branch;
-import org.omg.sysml.lifecycle.Commit;
-import org.omg.sysml.lifecycle.Project;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -36,38 +33,34 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Singleton
-public class CommitService extends BaseService<Commit, CommitDao> {
+public class BranchService extends BaseService<Branch, BranchDao> {
 
     private final ProjectDao projectDao;
-    private final BranchDao branchDao;
 
     @Inject
-    public CommitService(CommitDao commitDao, ProjectDao projectDao, BranchDao branchDao) {
-        super(commitDao);
+    public BranchService(BranchDao branchDao, ProjectDao projectDao) {
+        super(branchDao);
         this.projectDao = projectDao;
-        this.branchDao = branchDao;
     }
 
-    public Optional<Commit> create(UUID projectId, UUID branchId, Commit commit) {
-        Project project = projectDao.findById(projectId)
-                .orElseThrow(() -> new IllegalArgumentException("Project " + projectId + " not found"));
-        commit.setOwningProject(project);
-        Branch branch = branchId != null ?
-                branchDao.findByProjectAndId(project, branchId)
-                        .orElseThrow(() -> new IllegalArgumentException("Branch " + branchId + " not found")) :
-                Optional.ofNullable(project.getDefaultBranch())
-                        .orElseThrow(() -> new IllegalStateException("Branch not specified and project does not have default branch"));
-        return dao.persist(commit, branch);
+    public Optional<Branch> create(Branch branch) {
+        return branch.getId() != null ? dao.update(branch) : dao.persist(branch);
     }
 
-    public List<Commit> getByProjectId(UUID projectId, UUID after, UUID before, int maxResults) {
+    public Optional<Branch> create(UUID projectId, Branch branch) {
+        branch.setOwningProject(projectDao.findById(projectId)
+                .orElseThrow(() -> new IllegalArgumentException("Project " + projectId + " not found")));
+        return create(branch);
+    }
+
+    public List<Branch> getByProjectId(UUID projectId, UUID after, UUID before, int maxResults) {
         return projectDao.findById(projectId)
                 .map(project -> dao.findAllByProject(project, after, before, maxResults))
                 .orElse(Collections.emptyList());
     }
 
-    public Optional<Commit> getByProjectIdAndId(UUID projectId, UUID commitId) {
+    public Optional<Branch> getByProjectIdAndId(UUID projectId, UUID branchId) {
         return projectDao.findById(projectId)
-                .flatMap(project -> dao.findByProjectAndIdResolved(project, commitId));
+                .flatMap(project -> dao.findByProjectAndId(project, branchId));
     }
 }

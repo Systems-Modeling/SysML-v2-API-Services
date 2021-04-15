@@ -21,6 +21,7 @@
 
 package dao;
 
+import org.omg.sysml.lifecycle.Branch;
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.Project;
 
@@ -30,11 +31,21 @@ import java.util.UUID;
 
 public interface CommitDao extends Dao<Commit> {
 
+    @Override
+    default Optional<Commit> persist(Commit commit) {
+        throw new UnsupportedOperationException();
+    }
+
+    Optional<Commit> persist(Commit commit, Branch branch);
+
+    @Override
+    default Optional<Commit> update(Commit commit) {
+        throw new UnsupportedOperationException();
+    }
+
     List<Commit> findAllByProject(Project project, UUID after, UUID before, int maxResults);
 
     Optional<Commit> findByProjectAndId(Project project, UUID id);
 
     Optional<Commit> findByProjectAndIdResolved(Project project, UUID id);
-
-    Optional<Commit> findHeadByProject(Project project);
 }

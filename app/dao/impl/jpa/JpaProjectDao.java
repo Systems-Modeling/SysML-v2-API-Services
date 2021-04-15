@@ -23,12 +23,16 @@ package dao.impl.jpa;
 
 import dao.ProjectDao;
 import jpa.manager.JPAManager;
+import org.omg.sysml.lifecycle.Branch;
 import org.omg.sysml.lifecycle.Project;
+import org.omg.sysml.lifecycle.impl.BranchImpl;
 import org.omg.sysml.lifecycle.impl.ProjectImpl;
 import org.omg.sysml.lifecycle.impl.ProjectImpl_;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import java.time.ZonedDateTime;
+import java.util.Optional;
 
 @Singleton
 public class JpaProjectDao extends SimpleJpaDao<Project, ProjectImpl> implements ProjectDao {
@@ -36,5 +40,25 @@ public class JpaProjectDao extends SimpleJpaDao<Project, ProjectImpl> implements
     @Inject
     public JpaProjectDao(JPAManager jpaManager) {
         super(jpaManager, ProjectImpl.class, ProjectImpl_.id);
+    }
+
+    @Override
+    public Optional<Project> update(Project project) {
+        // TODO Implement
+        throw new UnsupportedOperationException();
+    }
+
+    @Override
+    public Optional<Project> persist(Project project) {
+        if (project.getDefaultBranch() != null) {
+            throw new IllegalArgumentException("Cannot specify default branch when creating Project");
+        }
+        Branch defaultBranch = new BranchImpl();
+        defaultBranch.setOwningProject(project);
+        defaultBranch.setName(Project.DEFAULT_BRANCH_NAME);
+        // TODO Add timestamp to Project and inherit into defaultBranch
+        defaultBranch.setTimestamp(ZonedDateTime.now());
+        project.setDefaultBranch(defaultBranch);
+        return super.persist(project);
     }
 }

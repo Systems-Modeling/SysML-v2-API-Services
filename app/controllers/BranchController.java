@@ -24,13 +24,12 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import config.MetamodelProvider;
 import jackson.JacksonHelper;
-import org.omg.sysml.lifecycle.Commit;
-import org.omg.sysml.lifecycle.impl.CommitImpl;
+import org.omg.sysml.lifecycle.Branch;
 import play.libs.Json;
 import play.mvc.Http;
 import play.mvc.Result;
 import play.mvc.Results;
-import services.CommitService;
+import services.BranchService;
 
 import javax.inject.Inject;
 import java.time.ZonedDateTime;
@@ -38,56 +37,55 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class CommitController extends BaseController {
+public class BranchController extends BaseController {
 
     private final MetamodelProvider metamodelProvider;
-    private final CommitService commitService;
+    private final BranchService branchService;
 
     @Inject
-    public CommitController(CommitService commitService, MetamodelProvider metamodelProvider) {
-        this.commitService = commitService;
+    public BranchController(BranchService branchService, MetamodelProvider metamodelProvider) {
+        this.branchService = branchService;
         this.metamodelProvider = metamodelProvider;
     }
 
-    public Result createWithProjectId(UUID projectId, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<UUID> branchId, Http.Request request) {
+    public Result createWithProjectId(UUID projectId, Http.Request request) {
         JsonNode requestBodyJson = request.body().asJson();
-        Commit requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Commit.class));
+        Branch requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Branch.class));
         if (requestedObject.getId() != null || requestedObject.getTimestamp() != null) {
             return Results.badRequest();
         }
         requestedObject.setTimestamp(ZonedDateTime.now());
-        Optional<Commit> response = commitService.create(projectId, branchId.orElse(null), requestedObject);
+        Optional<Branch> response = branchService.create(projectId, requestedObject);
         return response.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 
     public Result byProject(UUID projectId, Http.Request request) {
         PageRequest pageRequest = PageRequest.from(request);
-        List<Commit> commits = commitService.getByProjectId(
+        List<Branch> branches = branchService.getByProjectId(
                 projectId,
                 pageRequest.getAfter(),
                 pageRequest.getBefore(),
                 pageRequest.getSize()
         );
-        return Optional.of(commits)
+        return Optional.of(branches)
                 .map(collection -> JacksonHelper.collectionToTree(
                         collection,
                         List.class,
-                        metamodelProvider.getImplementationClass(Commit.class),
-                        Json::mapper,
-                        writer -> writer.withView(CommitImpl.Views.Compact.class)))
+                        metamodelProvider.getImplementationClass(Branch.class)
+                ))
                 .map(Results::ok)
                 .map(result -> paginateResult(
                         result,
-                        commits.size(),
-                        idx -> commits.get(idx).getId(),
+                        branches.size(),
+                        idx -> branches.get(idx).getId(),
                         request,
                         pageRequest
                 ))
                 .orElseThrow();
     }
 
-    public Result byProjectAndId(UUID projectId, UUID commitId) {
-        Optional<Commit> commit = commitService.getByProjectIdAndId(projectId, commitId);
-        return commit.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
+    public Result byProjectAndId(UUID projectId, UUID branchId) {
+        Optional<Branch> branch = branchService.getByProjectIdAndId(projectId, branchId);
+        return branch.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
     }
 }

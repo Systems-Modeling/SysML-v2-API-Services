@@ -8,9 +8,11 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(ProjectImpl.class)
 public abstract class ProjectImpl_ extends org.omg.sysml.record.impl.RecordImpl_ {
 
+	public static volatile SingularAttribute<ProjectImpl, BranchImpl> defaultBranch;
 	public static volatile SingularAttribute<ProjectImpl, String> name;
 	public static volatile SingularAttribute<ProjectImpl, String> description;
 
+	public static final String DEFAULT_BRANCH = "defaultBranch";
 	public static final String NAME = "name";
 	public static final String DESCRIPTION = "description";
 

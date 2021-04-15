@@ -41,5 +41,6 @@ public class Module extends AbstractModule {
         bind(RelationshipDao.class).to(JpaRelationshipDao.class);
         bind(CommitDao.class).to(JpaCommitDao.class);
         bind(QueryDao.class).to(JpaQueryDao.class);
+        bind(BranchDao.class).to(JpaBranchDao.class);
     }
 }

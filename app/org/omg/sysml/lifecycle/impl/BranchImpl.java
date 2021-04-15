@@ -28,22 +28,49 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jackson.RecordSerialization;
 import org.omg.sysml.lifecycle.Branch;
+import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.record.impl.RecordImpl;
 
 import javax.persistence.*;
+import java.time.ZonedDateTime;
 
-// import info.archinnov.achilles.annotations.UDT;
-
-@Entity(name = "Project")
-public class ProjectImpl extends RecordImpl implements Project {
+@Entity(name = "Branch")
+public class BranchImpl extends RecordImpl implements Branch {
+    private Project owningProject;
+    private Commit head;
     private String name;
+    private ZonedDateTime timestamp;
+
+    @Override
+    @ManyToOne(targetEntity = ProjectImpl.class, fetch = FetchType.LAZY)
+    @JsonSerialize(as = ProjectImpl.class, using = RecordSerialization.RecordSerializer.class)
+    public Project getOwningProject() {
+        return owningProject;
+    }
+
+    @JsonDeserialize(as = ProjectImpl.class, using = RecordSerialization.ProjectDeserializer.class)
+    public void setOwningProject(Project owningProject) {
+        this.owningProject = owningProject;
+    }
+
+    @Override
+    @ManyToOne(targetEntity = CommitImpl.class, fetch = FetchType.LAZY)
+    @JsonSerialize(as = CommitImpl.class, using = RecordSerialization.RecordSerializer.class)
+    public Commit getHead() {
+        return head;
+    }
+
+    @JsonDeserialize(as = CommitImpl.class, using = RecordSerialization.CommitDeserializer.class)
+    public void setHead(Commit head) {
+        this.head = head;
+    }
 
     @JsonProperty(required = true)
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "name", table = "Project")
+    @javax.persistence.Column(name = "name", table = "Branch")
     public String getName() {
         return name;
     }
@@ -54,39 +81,19 @@ public class ProjectImpl extends RecordImpl implements Project {
         this.name = name;
     }
 
-    private Branch defaultBranch;
-
-    @OneToOne(targetEntity = BranchImpl.class, cascade = javax.persistence.CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonSerialize(as = BranchImpl.class, using = RecordSerialization.RecordSerializer.class)
-    public Branch getDefaultBranch() {
-        return defaultBranch;
+    @Override
+    @Column
+    public ZonedDateTime getTimestamp() {
+        return timestamp;
     }
 
-    @JsonDeserialize(as = BranchImpl.class, using = RecordSerialization.BranchDeserializer.class)
-    public void setDefaultBranch(Branch defaultBranch) {
-        this.defaultBranch = defaultBranch;
-    }
-
-    private String description;
-
-    @JsonProperty(required = true)
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "description", table = "Project")
-    public String getDescription() {
-        return description;
-    }
-
-    @JsonProperty(required = true)
-    @JsonSetter
-    public void setDescription(String description) {
-        this.description = description;
+    public void setTimestamp(ZonedDateTime timestamp) {
+        this.timestamp = timestamp;
     }
 
     @Transient
     @JsonProperty("@type")
     public String getType() {
-        return Project.class.getSimpleName();
+        return Branch.class.getSimpleName();
     }
 }

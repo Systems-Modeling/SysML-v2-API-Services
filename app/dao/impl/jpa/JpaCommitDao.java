@@ -24,6 +24,7 @@ package dao.impl.jpa;
 import dao.CommitDao;
 import javabean.JavaBeanHelper;
 import jpa.manager.JPAManager;
+import org.omg.sysml.lifecycle.Branch;
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.ElementVersion;
 import org.omg.sysml.lifecycle.Project;
@@ -69,18 +70,20 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
     };
 
     private final JpaElementDao elementDao;
+    private final JpaBranchDao branchDao;
 
     @Inject
-    public JpaCommitDao(JPAManager jpaManager, JpaElementDao elementDao) {
+    public JpaCommitDao(JPAManager jpaManager, JpaElementDao elementDao, JpaBranchDao branchDao) {
         super(jpaManager, CommitImpl.class, CommitImpl_.id);
         this.elementDao = elementDao;
+        this.branchDao = branchDao;
     }
 
     @Override
-    public Optional<Commit> persist(Commit commit) {
-        // If previousCommit is not specified, default to head commit.
-        if (commit.getPreviousCommit() == null && commit.getOwningProject() != null) {
-            findHeadByProject(commit.getOwningProject()).ifPresent(commit::setPreviousCommit);
+    public Optional<Commit> persist(Commit commit, Branch branch) {
+        commit.setPreviousCommit(null);
+        if (branch.getHead() != null) {
+            commit.setPreviousCommit(branch.getHead());
         }
 
         MofObject tombstone = new MofObjectImpl() {
@@ -125,7 +128,7 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
                         .orElse(tombstone);
             });
             if (Objects.equals(reattachedMof, tombstone)) {
-                throw new IllegalArgumentException("Element with ID " + mof.getIdentifier() + " not found.");
+                throw new IllegalArgumentException("Element with ID " + mof.getIdentifier() + " not found");
             }
             return reattachedMof;
         };
@@ -196,6 +199,10 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
                             .collect(Collectors.toSet())
             );
             Optional<Commit> persistedCommit = super.persist(commit, em);
+            persistedCommit.ifPresent(c -> {
+                branch.setHead(c);
+                branchDao.update(branch, em);
+            });
             return persistedCommit.map(PROXY_RESOLVER);
         });
     }
@@ -248,25 +255,6 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
     public Optional<Commit> findByProjectAndIdResolved(Project project, UUID id) {
         return jpaManager.transact(em -> {
             return findByProjectAndId(project, id, em).map(PROXY_RESOLVER);
-        });
-    }
-
-    @Override
-    public Optional<Commit> findHeadByProject(Project project) {
-        return jpaManager.transact(em -> {
-            CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaQuery<CommitImpl> query = builder.createQuery(CommitImpl.class);
-            Root<CommitImpl> root = query.from(CommitImpl.class);
-            query.select(root)
-                    .where(builder.equal(root.get(CommitImpl_.owningProject), project))
-                    .orderBy(builder.desc(root.get(CommitImpl_.timestamp)));
-            Optional<Commit> commit;
-            try {
-                commit = Optional.of(em.createQuery(query).setMaxResults(1).getSingleResult());
-            } catch (NoResultException e) {
-                return Optional.empty();
-            }
-            return commit;
         });
     }
 }

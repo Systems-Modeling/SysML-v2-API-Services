@@ -19,5 +19,26 @@
  * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
  */
 
-package org.omg.sysml.lifecycle;public interface Branch {
+package org.omg.sysml.lifecycle;
+
+import org.omg.sysml.record.Record;
+
+import java.time.ZonedDateTime;
+
+public interface Branch extends Record {
+    Project getOwningProject();
+
+    void setOwningProject(Project owningProject);
+
+    Commit getHead();
+
+    void setHead(Commit head);
+
+    String getName();
+
+    void setName(String name);
+
+    ZonedDateTime getTimestamp();
+
+    void setTimestamp(ZonedDateTime timestamp);
 }

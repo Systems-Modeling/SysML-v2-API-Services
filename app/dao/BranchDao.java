@@ -19,24 +19,18 @@
  * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
  */
 
-package org.omg.sysml.lifecycle;
+package dao;
 
-import org.omg.sysml.record.Record;
+import org.omg.sysml.lifecycle.Branch;
+import org.omg.sysml.lifecycle.Project;
 
-public interface Project extends Record {
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
-    String DEFAULT_BRANCH_NAME = "main";
+public interface BranchDao extends Dao<Branch> {
 
-    // Collection<Element> getContainedElement();
-    String getName();
+    List<Branch> findAllByProject(Project project, UUID after, UUID before, int maxResults);
 
-    void setName(String name);
-
-    String getDescription();
-
-    void setDescription(String description);
-
-    Branch getDefaultBranch();
-
-    void setDefaultBranch(Branch defaultBranch);
+    Optional<Branch> findByProjectAndId(Project project, UUID id);
 }
