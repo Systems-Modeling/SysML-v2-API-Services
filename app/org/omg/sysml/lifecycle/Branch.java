@@ -24,20 +24,19 @@ package org.omg.sysml.lifecycle;
 import org.omg.sysml.record.Record;
 
 import java.time.ZonedDateTime;
-import java.util.Set;
 
-public interface Commit extends Record {
+public interface Branch extends Record {
     Project getOwningProject();
 
     void setOwningProject(Project owningProject);
 
-    Set<ElementVersion> getChange();
+    Commit getHead();
 
-    void setChange(Set<ElementVersion> changes);
+    void setHead(Commit head);
 
-    Commit getPreviousCommit();
+    String getName();
 
-    void setPreviousCommit(Commit previousCommit);
+    void setName(String name);
 
     ZonedDateTime getTimestamp();
 

@@ -22,6 +22,7 @@
 package jackson;
 
 import com.fasterxml.jackson.core.JsonParser;
+import org.omg.sysml.lifecycle.impl.BranchImpl;
 import org.omg.sysml.lifecycle.impl.CommitImpl;
 import org.omg.sysml.lifecycle.impl.ProjectImpl;
 import org.omg.sysml.record.Record;
@@ -101,6 +102,21 @@ public class RecordSerialization {
         @Override
         protected Class<ProjectImpl> getRecordClass() {
             return ProjectImpl.class;
+        }
+    }
+
+    public static class BranchDeserializer extends RecordDeserializer<BranchImpl> {
+        public BranchDeserializer(EntityManager entityManager) {
+            super(entityManager);
+        }
+
+        public BranchDeserializer() {
+            super();
+        }
+
+        @Override
+        protected Class<BranchImpl> getRecordClass() {
+            return BranchImpl.class;
         }
     }
 }

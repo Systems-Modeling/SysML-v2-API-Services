@@ -24,8 +24,19 @@ package org.omg.sysml.lifecycle;
 import org.omg.sysml.record.Record;
 
 public interface Project extends Record {
+
+    String DEFAULT_BRANCH_NAME = "main";
+
     // Collection<Element> getContainedElement();
     String getName();
 
+    void setName(String name);
+
     String getDescription();
+
+    void setDescription(String description);
+
+    Branch getDefaultBranch();
+
+    void setDefaultBranch(Branch defaultBranch);
 }

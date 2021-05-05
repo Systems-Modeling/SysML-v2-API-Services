@@ -19,27 +19,18 @@
  * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
  */
 
-package org.omg.sysml.lifecycle;
+package dao;
 
-import org.omg.sysml.record.Record;
+import org.omg.sysml.lifecycle.Branch;
+import org.omg.sysml.lifecycle.Project;
 
-import java.time.ZonedDateTime;
-import java.util.Set;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
-public interface Commit extends Record {
-    Project getOwningProject();
+public interface BranchDao extends Dao<Branch> {
 
-    void setOwningProject(Project owningProject);
+    List<Branch> findAllByProject(Project project, UUID after, UUID before, int maxResults);
 
-    Set<ElementVersion> getChange();
-
-    void setChange(Set<ElementVersion> changes);
-
-    Commit getPreviousCommit();
-
-    void setPreviousCommit(Commit previousCommit);
-
-    ZonedDateTime getTimestamp();
-
-    void setTimestamp(ZonedDateTime timestamp);
+    Optional<Branch> findByProjectAndId(Project project, UUID id);
 }

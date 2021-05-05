@@ -56,7 +56,7 @@ public abstract class BaseController extends Controller {
         byte[] decoded = Base64.getUrlDecoder().decode(cursor);
         int separatorIndex = Bytes.indexOf(decoded, (byte) CURSOR_SEPARATOR);
         if (separatorIndex < 0) {
-            throw new IllegalArgumentException("Cursor separator missing");
+            throw new IllegalArgumentException("Provided cursor is malformed");
         }
         return UUID.fromString(
                 new String(decoded, separatorIndex + 1, decoded.length - separatorIndex - 1)
@@ -106,7 +106,7 @@ public abstract class BaseController extends Controller {
                     .map(Integer::parseInt)
                     .orElse(DEFAULT_PAGE_SIZE);
             if (size <= 0) {
-                throw new IllegalArgumentException("Page size must be greater than zero.");
+                throw new IllegalArgumentException("Page size must be greater than zero");
             }
             return new PageRequest(after, before, size);
         }

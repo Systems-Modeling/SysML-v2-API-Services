@@ -21,32 +21,30 @@
 
 package org.omg.sysml.lifecycle.impl;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jackson.RecordSerialization;
+import org.omg.sysml.lifecycle.Branch;
 import org.omg.sysml.lifecycle.Commit;
-import org.omg.sysml.lifecycle.ElementVersion;
 import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.record.impl.RecordImpl;
 
 import javax.persistence.*;
 import java.time.ZonedDateTime;
-import java.util.HashSet;
-import java.util.Set;
 
-@Entity(name = "Commit")
-public class CommitImpl extends RecordImpl implements Commit {
+@Entity(name = "Branch")
+public class BranchImpl extends RecordImpl implements Branch {
     private Project owningProject;
-    private Set<ElementVersion> change;
+    private Commit head;
+    private String name;
     private ZonedDateTime timestamp;
-    private Commit previousCommit;
 
     @Override
     @ManyToOne(targetEntity = ProjectImpl.class, fetch = FetchType.LAZY)
     @JsonSerialize(as = ProjectImpl.class, using = RecordSerialization.RecordSerializer.class)
-    @JsonView(Views.Compact.class)
     public Project getOwningProject() {
         return owningProject;
     }
@@ -56,23 +54,35 @@ public class CommitImpl extends RecordImpl implements Commit {
         this.owningProject = owningProject;
     }
 
-    @OneToMany(targetEntity = ElementVersionImpl.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonView(Views.Complete.class)
-    public Set<ElementVersion> getChange() {
-        if (change == null) {
-            change = new HashSet<>();
-        }
-        return change;
+    @Override
+    @ManyToOne(targetEntity = CommitImpl.class, fetch = FetchType.LAZY)
+    @JsonSerialize(as = CommitImpl.class, using = RecordSerialization.RecordSerializer.class)
+    public Commit getHead() {
+        return head;
     }
 
-    @JsonDeserialize(contentAs = ElementVersionImpl.class)
-    public void setChange(Set<ElementVersion> change) {
-        this.change = change;
+    @JsonDeserialize(as = CommitImpl.class, using = RecordSerialization.CommitDeserializer.class)
+    public void setHead(Commit head) {
+        this.head = head;
+    }
+
+    @JsonProperty(required = true)
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "name", table = "Branch")
+    public String getName() {
+        return name;
+    }
+
+    @JsonProperty(required = true)
+    @JsonSetter
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
     @Column
-    @JsonView(Views.Compact.class)
     public ZonedDateTime getTimestamp() {
         return timestamp;
     }
@@ -81,30 +91,9 @@ public class CommitImpl extends RecordImpl implements Commit {
         this.timestamp = timestamp;
     }
 
-    @ManyToOne(targetEntity = CommitImpl.class, fetch = FetchType.LAZY)
-    @JsonSerialize(as = CommitImpl.class, using = RecordSerialization.RecordSerializer.class)
-    @JsonView(Views.Compact.class)
-    public Commit getPreviousCommit() {
-        return previousCommit;
-    }
-
-    @JsonDeserialize(as = CommitImpl.class, using = RecordSerialization.CommitDeserializer.class)
-    public void setPreviousCommit(Commit previousCommit) {
-        this.previousCommit = previousCommit;
-    }
-
     @Transient
     @JsonProperty("@type")
-    @JsonView(Views.Compact.class)
     public String getType() {
-        return Commit.class.getSimpleName();
-    }
-
-    public static class Views {
-        public interface Compact {
-        }
-
-        public interface Complete extends Compact {
-        }
+        return Branch.class.getSimpleName();
     }
 }
