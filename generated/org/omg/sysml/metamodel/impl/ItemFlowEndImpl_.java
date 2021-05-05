@@ -45,6 +45,7 @@ public abstract class ItemFlowEndImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static volatile ListAttribute<ItemFlowEndImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<ItemFlowEndImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<ItemFlowEndImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<ItemFlowEndImpl, String> effectiveName;
 	public static volatile SingularAttribute<ItemFlowEndImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<ItemFlowEndImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<ItemFlowEndImpl, UUID> identifier;
@@ -88,6 +89,7 @@ public abstract class ItemFlowEndImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";

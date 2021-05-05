@@ -145,6 +145,26 @@ public class ViewDefinitionImpl extends MofObjectImpl implements ViewDefinition 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("effectiveName")
+    private String effectiveName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "effectiveName", table = "ViewDefinition")
+    public String getEffectiveName() {
+        return effectiveName;
+    }
+
+    @JsonSetter
+    public void setEffectiveName(String effectiveName) {
+        this.effectiveName = effectiveName;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("endFeature")
     private List<Feature> endFeature;
 
@@ -754,6 +774,32 @@ public class ViewDefinitionImpl extends MofObjectImpl implements ViewDefinition 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedConcern")
+    private Collection<ConcernUsage> ownedConcern;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ConcernUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ViewDefinition_ownedConcern",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ConcernUsage> getOwnedConcern() {
+        if (ownedConcern == null) {
+            ownedConcern = new ArrayList<>();
+        }
+        return ownedConcern;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConcernUsageImpl.class)
+    public void setOwnedConcern(Collection<ConcernUsage> ownedConcern) {
+        this.ownedConcern = ownedConcern;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedConjugator")
     private Conjugation ownedConjugator;
 
@@ -1293,6 +1339,32 @@ public class ViewDefinitionImpl extends MofObjectImpl implements ViewDefinition 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedStakeholder")
+    private Collection<StakeholderUsage> ownedStakeholder;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "StakeholderUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ViewDefinition_ownedStakeholder",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<StakeholderUsage> getOwnedStakeholder() {
+        if (ownedStakeholder == null) {
+            ownedStakeholder = new ArrayList<>();
+        }
+        return ownedStakeholder;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StakeholderUsageImpl.class)
+    public void setOwnedStakeholder(Collection<StakeholderUsage> ownedStakeholder) {
+        this.ownedStakeholder = ownedStakeholder;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedState")
     private Collection<StateUsage> ownedState;
 
@@ -1601,27 +1673,6 @@ public class ViewDefinitionImpl extends MofObjectImpl implements ViewDefinition 
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("rendering")
-    private RenderingUsage rendering;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "RenderingUsageMetaDef", metaColumn = @javax.persistence.Column(name = "renderingType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "renderingId", table = "ViewDefinition")
-    public RenderingUsage getRendering() {
-        return rendering;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = RenderingUsageImpl.class)
-    public void setRendering(RenderingUsage rendering) {
-        this.rendering = rendering;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("satisfiedViewpoint")
     private Collection<ViewpointUsage> satisfiedViewpoint;
 
@@ -1773,6 +1824,27 @@ public class ViewDefinitionImpl extends MofObjectImpl implements ViewDefinition 
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ExpressionImpl.class)
     public void setViewCondition(Collection<Expression> viewCondition) {
         this.viewCondition = viewCondition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("viewRendering")
+    private RenderingUsage viewRendering;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "RenderingUsageMetaDef", metaColumn = @javax.persistence.Column(name = "viewRenderingType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "viewRenderingId", table = "ViewDefinition")
+    public RenderingUsage getViewRendering() {
+        return viewRendering;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = RenderingUsageImpl.class)
+    public void setViewRendering(RenderingUsage viewRendering) {
+        this.viewRendering = viewRendering;
     }
 
 

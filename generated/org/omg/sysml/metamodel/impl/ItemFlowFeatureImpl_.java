@@ -45,6 +45,7 @@ public abstract class ItemFlowFeatureImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile ListAttribute<ItemFlowFeatureImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<ItemFlowFeatureImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<ItemFlowFeatureImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<ItemFlowFeatureImpl, String> effectiveName;
 	public static volatile SingularAttribute<ItemFlowFeatureImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<ItemFlowFeatureImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<ItemFlowFeatureImpl, UUID> identifier;
@@ -88,6 +89,7 @@ public abstract class ItemFlowFeatureImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";

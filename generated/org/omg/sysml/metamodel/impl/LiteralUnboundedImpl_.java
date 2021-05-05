@@ -48,6 +48,7 @@ public abstract class LiteralUnboundedImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile ListAttribute<LiteralUnboundedImpl, Behavior> behavior;
 	public static volatile SingularAttribute<LiteralUnboundedImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<LiteralUnboundedImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<LiteralUnboundedImpl, String> effectiveName;
 	public static volatile SingularAttribute<LiteralUnboundedImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<LiteralUnboundedImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<LiteralUnboundedImpl, UUID> identifier;
@@ -94,6 +95,7 @@ public abstract class LiteralUnboundedImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String BEHAVIOR = "behavior";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";

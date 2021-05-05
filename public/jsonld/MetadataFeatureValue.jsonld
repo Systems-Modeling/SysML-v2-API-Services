@@ -8,6 +8,8 @@
         "aliasId": {"@type": "xsd:string"},
         "documentation": {"@type": "@id"},
         "documentationComment": {"@type": "@id"},
+        "effectiveMemberName": {"@type": "xsd:string"},
+        "effectiveName": {"@type": "xsd:string"},
         "featureWithValue": {"@type": "@id"},
         "humanId": {"@type": "xsd:string"},
         "identifier": {"@type": "dcterms:identifier"},

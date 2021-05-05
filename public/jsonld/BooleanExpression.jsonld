@@ -9,6 +9,7 @@
         "behavior": {"@type": "@id"},
         "documentation": {"@type": "@id"},
         "documentationComment": {"@type": "@id"},
+        "effectiveName": {"@type": "xsd:string"},
         "endFeature": {"@type": "@id"},
         "endOwningType": {"@type": "@id"},
         "feature": {"@type": "@id"},

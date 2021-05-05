@@ -14,6 +14,7 @@ import org.omg.sysml.metamodel.AttributeUsage;
 import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
 import org.omg.sysml.metamodel.Comment;
+import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectionUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
 import org.omg.sysml.metamodel.Documentation;
@@ -33,6 +34,7 @@ import org.omg.sysml.metamodel.ReferenceUsage;
 import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.RenderingUsage;
 import org.omg.sysml.metamodel.RequirementUsage;
+import org.omg.sysml.metamodel.StakeholderUsage;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Superclassing;
 import org.omg.sysml.metamodel.TextualRepresentation;
@@ -93,6 +95,7 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.metamodel
 	public static volatile ListAttribute<EnumerationDefinitionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Feature> inheritedFeature;
 	public static volatile CollectionAttribute<EnumerationDefinitionImpl, TransitionUsage> ownedTransition;
+	public static volatile SingularAttribute<EnumerationDefinitionImpl, String> effectiveName;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Element> ownedElement;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Relationship> ownedRelationship;
@@ -104,8 +107,10 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.metamodel
 	public static volatile CollectionAttribute<EnumerationDefinitionImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<EnumerationDefinitionImpl, VariantMembership> variantMembership;
 	public static volatile SingularAttribute<EnumerationDefinitionImpl, String> humanId;
+	public static volatile CollectionAttribute<EnumerationDefinitionImpl, StakeholderUsage> ownedStakeholder;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, String> aliasId;
 	public static volatile CollectionAttribute<EnumerationDefinitionImpl, EnumerationUsage> enumeratedValue;
+	public static volatile CollectionAttribute<EnumerationDefinitionImpl, ConcernUsage> ownedConcern;
 	public static volatile CollectionAttribute<EnumerationDefinitionImpl, AttributeUsage> ownedAttribute;
 	public static volatile CollectionAttribute<EnumerationDefinitionImpl, PartUsage> ownedPart;
 
@@ -155,6 +160,7 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.metamodel
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String OWNED_TRANSITION = "ownedTransition";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
@@ -166,8 +172,10 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.metamodel
 	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String HUMAN_ID = "humanId";
+	public static final String OWNED_STAKEHOLDER = "ownedStakeholder";
 	public static final String ALIAS_ID = "aliasId";
 	public static final String ENUMERATED_VALUE = "enumeratedValue";
+	public static final String OWNED_CONCERN = "ownedConcern";
 	public static final String OWNED_ATTRIBUTE = "ownedAttribute";
 	public static final String OWNED_PART = "ownedPart";
 

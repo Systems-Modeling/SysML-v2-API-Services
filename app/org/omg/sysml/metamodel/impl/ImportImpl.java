@@ -144,6 +144,26 @@ public class ImportImpl extends MofObjectImpl implements Import {
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("effectiveName")
+    private String effectiveName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "effectiveName", table = "Import")
+    public String getEffectiveName() {
+        return effectiveName;
+    }
+
+    @JsonSetter
+    public void setEffectiveName(String effectiveName) {
+        this.effectiveName = effectiveName;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("humanId")
     private String humanId;
 
@@ -178,11 +198,13 @@ public class ImportImpl extends MofObjectImpl implements Import {
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("importOwningNamespace")
     private Namespace importOwningNamespace;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "importOwningNamespaceType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "importOwningNamespaceId", table = "Import")
     public Namespace getImportOwningNamespace() {

@@ -5,12 +5,14 @@
         "dcterms": "http://purl.org/dc/terms/",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
 
+        "addressedConcern": {"@type": "@id"},
         "aliasId": {"@type": "xsd:string"},
         "assumedConstraint": {"@type": "@id"},
         "behavior": {"@type": "@id"},
         "constraintDefinition": {"@type": "@id"},
         "documentation": {"@type": "@id"},
         "documentationComment": {"@type": "@id"},
+        "effectiveName": {"@type": "xsd:string"},
         "endFeature": {"@type": "@id"},
         "endOwningType": {"@type": "@id"},
         "feature": {"@type": "@id"},
@@ -44,6 +46,7 @@
         "nestedAttribute": {"@type": "@id"},
         "nestedCalculation": {"@type": "@id"},
         "nestedCase": {"@type": "@id"},
+        "nestedConcern": {"@type": "@id"},
         "nestedConnection": {"@type": "@id"},
         "nestedConstraint": {"@type": "@id"},
         "nestedEnumeration": {"@type": "@id"},
@@ -55,6 +58,7 @@
         "nestedReference": {"@type": "@id"},
         "nestedRendering": {"@type": "@id"},
         "nestedRequirement": {"@type": "@id"},
+        "nestedStakeholder": {"@type": "@id"},
         "nestedState": {"@type": "@id"},
         "nestedTransition": {"@type": "@id"},
         "nestedUsage": {"@type": "@id"},
@@ -99,7 +103,8 @@
         "usage": {"@type": "@id"},
         "variant": {"@type": "@id"},
         "variantMembership": {"@type": "@id"},
-        "viewpointDefinition": {"@type": "@id"}
+        "viewpointDefinition": {"@type": "@id"},
+        "viewpointStakeholder": {"@type": "@id"}
 
     }
 }

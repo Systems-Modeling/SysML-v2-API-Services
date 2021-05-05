@@ -28,6 +28,7 @@ public abstract class ElementImpl_ extends org.omg.sysml.metamodel.impl.MofObjec
 	public static volatile ListAttribute<ElementImpl, Documentation> documentation;
 	public static volatile SingularAttribute<ElementImpl, String> name;
 	public static volatile ListAttribute<ElementImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<ElementImpl, String> effectiveName;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
@@ -40,6 +41,7 @@ public abstract class ElementImpl_ extends org.omg.sysml.metamodel.impl.MofObjec
 	public static final String DOCUMENTATION = "documentation";
 	public static final String NAME = "name";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 
 }
 

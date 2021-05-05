@@ -197,6 +197,26 @@ public class CalculationDefinitionImpl extends MofObjectImpl implements Calculat
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("effectiveName")
+    private String effectiveName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "effectiveName", table = "CalculationDefinition")
+    public String getEffectiveName() {
+        return effectiveName;
+    }
+
+    @JsonSetter
+    public void setEffectiveName(String effectiveName) {
+        this.effectiveName = effectiveName;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("endFeature")
     private List<Feature> endFeature;
 
@@ -494,6 +514,24 @@ public class CalculationDefinitionImpl extends MofObjectImpl implements Calculat
     @JsonSetter
     public void setIsConjugated(Boolean isConjugated) {
         this.isConjugated = isConjugated;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("isModelLevelEvaluable")
+    private Boolean isModelLevelEvaluable;
+
+    @JsonGetter
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "isModelLevelEvaluable", table = "CalculationDefinition")
+    public Boolean getIsModelLevelEvaluable() {
+        return isModelLevelEvaluable;
+    }
+
+    @JsonSetter
+    public void setIsModelLevelEvaluable(Boolean isModelLevelEvaluable) {
+        this.isModelLevelEvaluable = isModelLevelEvaluable;
     }
 
 
@@ -827,6 +865,32 @@ public class CalculationDefinitionImpl extends MofObjectImpl implements Calculat
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CaseUsageImpl.class)
     public void setOwnedCase(Collection<CaseUsage> ownedCase) {
         this.ownedCase = ownedCase;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedConcern")
+    private Collection<ConcernUsage> ownedConcern;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ConcernUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "CalculationDefinition_ownedConcern",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ConcernUsage> getOwnedConcern() {
+        if (ownedConcern == null) {
+            ownedConcern = new ArrayList<>();
+        }
+        return ownedConcern;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConcernUsageImpl.class)
+    public void setOwnedConcern(Collection<ConcernUsage> ownedConcern) {
+        this.ownedConcern = ownedConcern;
     }
 
 
@@ -1366,6 +1430,32 @@ public class CalculationDefinitionImpl extends MofObjectImpl implements Calculat
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RequirementUsageImpl.class)
     public void setOwnedRequirement(Collection<RequirementUsage> ownedRequirement) {
         this.ownedRequirement = ownedRequirement;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedStakeholder")
+    private Collection<StakeholderUsage> ownedStakeholder;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "StakeholderUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "CalculationDefinition_ownedStakeholder",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<StakeholderUsage> getOwnedStakeholder() {
+        if (ownedStakeholder == null) {
+            ownedStakeholder = new ArrayList<>();
+        }
+        return ownedStakeholder;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StakeholderUsageImpl.class)
+    public void setOwnedStakeholder(Collection<StakeholderUsage> ownedStakeholder) {
+        this.ownedStakeholder = ownedStakeholder;
     }
 
 

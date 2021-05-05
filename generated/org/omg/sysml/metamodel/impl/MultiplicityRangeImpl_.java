@@ -46,6 +46,7 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile ListAttribute<MultiplicityRangeImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<MultiplicityRangeImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<MultiplicityRangeImpl, String> effectiveName;
 	public static volatile SingularAttribute<MultiplicityRangeImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<MultiplicityRangeImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<MultiplicityRangeImpl, UUID> identifier;
@@ -90,6 +91,7 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";

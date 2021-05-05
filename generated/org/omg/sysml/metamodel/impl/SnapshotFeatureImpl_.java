@@ -45,6 +45,7 @@ public abstract class SnapshotFeatureImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile ListAttribute<SnapshotFeatureImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<SnapshotFeatureImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<SnapshotFeatureImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<SnapshotFeatureImpl, String> effectiveName;
 	public static volatile SingularAttribute<SnapshotFeatureImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<SnapshotFeatureImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<SnapshotFeatureImpl, UUID> identifier;
@@ -88,6 +89,7 @@ public abstract class SnapshotFeatureImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";

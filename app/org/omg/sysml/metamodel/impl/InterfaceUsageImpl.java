@@ -223,6 +223,26 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("effectiveName")
+    private String effectiveName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "effectiveName", table = "InterfaceUsage")
+    public String getEffectiveName() {
+        return effectiveName;
+    }
+
+    @JsonSetter
+    public void setEffectiveName(String effectiveName) {
+        this.effectiveName = effectiveName;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("endFeature")
     private List<Feature> endFeature;
 
@@ -976,6 +996,32 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedConcern")
+    private Collection<ConcernUsage> nestedConcern;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ConcernUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InterfaceUsage_nestedConcern",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ConcernUsage> getNestedConcern() {
+        if (nestedConcern == null) {
+            nestedConcern = new ArrayList<>();
+        }
+        return nestedConcern;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConcernUsageImpl.class)
+    public void setNestedConcern(Collection<ConcernUsage> nestedConcern) {
+        this.nestedConcern = nestedConcern;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedConnection")
     private Collection<ConnectionUsage> nestedConnection;
 
@@ -1257,6 +1303,32 @@ public class InterfaceUsageImpl extends MofObjectImpl implements InterfaceUsage 
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RequirementUsageImpl.class)
     public void setNestedRequirement(Collection<RequirementUsage> nestedRequirement) {
         this.nestedRequirement = nestedRequirement;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedStakeholder")
+    private Collection<StakeholderUsage> nestedStakeholder;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "StakeholderUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "InterfaceUsage_nestedStakeholder",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<StakeholderUsage> getNestedStakeholder() {
+        if (nestedStakeholder == null) {
+            nestedStakeholder = new ArrayList<>();
+        }
+        return nestedStakeholder;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StakeholderUsageImpl.class)
+    public void setNestedStakeholder(Collection<StakeholderUsage> nestedStakeholder) {
+        this.nestedStakeholder = nestedStakeholder;
     }
 
 

@@ -48,6 +48,7 @@ public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.meta
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Behavior> behavior;
 	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, String> effectiveName;
 	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, UUID> identifier;
@@ -94,6 +95,7 @@ public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.meta
 	public static final String BEHAVIOR = "behavior";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";

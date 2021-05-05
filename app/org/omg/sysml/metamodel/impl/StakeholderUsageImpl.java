@@ -61,14 +61,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
-@Entity(name = "QueryQualifierExpressionImpl")
-@SecondaryTable(name = "QueryQualifierExpression")
-@org.hibernate.annotations.Table(appliesTo = "QueryQualifierExpression", fetch = FetchMode.SELECT, optional = false)
-// @info.archinnov.achilles.annotations.Table(table = "QueryQualifierExpression")
-@DiscriminatorValue(value = "QueryQualifierExpression")
-@JsonTypeName(value = "QueryQualifierExpression")
+@Entity(name = "StakeholderUsageImpl")
+@SecondaryTable(name = "StakeholderUsage")
+@org.hibernate.annotations.Table(appliesTo = "StakeholderUsage", fetch = FetchMode.SELECT, optional = false)
+// @info.archinnov.achilles.annotations.Table(table = "StakeholderUsage")
+@DiscriminatorValue(value = "StakeholderUsage")
+@JsonTypeName(value = "StakeholderUsage")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class QueryQualifierExpressionImpl extends MofObjectImpl implements QueryQualifierExpression {
+public class StakeholderUsageImpl extends MofObjectImpl implements StakeholderUsage {
     // @info.archinnov.achilles.annotations.Column("aliasId")
     private List<String> aliasId;
 
@@ -76,8 +76,8 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "QueryQualifierExpression_aliasId",
-            joinColumns = @JoinColumn(name = "QueryQualifierExpressionId"))
+    @CollectionTable(name = "StakeholderUsage_aliasId",
+            joinColumns = @JoinColumn(name = "StakeholderUsageId"))
     public List<String> getAliasId() {
         if (aliasId == null) {
             aliasId = new ArrayList<>();
@@ -93,58 +93,6 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("argument")
-    private List<Expression> argument;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_argument",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Expression> getArgument() {
-        if (argument == null) {
-            argument = new ArrayList<>();
-        }
-        return argument;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ExpressionImpl.class)
-    public void setArgument(List<Expression> argument) {
-        this.argument = argument;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("behavior")
-    private List<Behavior> behavior;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "BehaviorMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_behavior",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Behavior> getBehavior() {
-        if (behavior == null) {
-            behavior = new ArrayList<>();
-        }
-        return behavior;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = BehaviorImpl.class)
-    public void setBehavior(List<Behavior> behavior) {
-        this.behavior = behavior;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("documentation")
     private List<Documentation> documentation;
 
@@ -152,7 +100,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_documentation",
+    @JoinTable(name = "StakeholderUsage_documentation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Documentation> getDocumentation() {
@@ -178,7 +126,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_documentationComment",
+    @JoinTable(name = "StakeholderUsage_documentationComment",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Comment> getDocumentationComment() {
@@ -197,6 +145,26 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("effectiveName")
+    private String effectiveName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "effectiveName", table = "StakeholderUsage")
+    public String getEffectiveName() {
+        return effectiveName;
+    }
+
+    @JsonSetter
+    public void setEffectiveName(String effectiveName) {
+        this.effectiveName = effectiveName;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("endFeature")
     private List<Feature> endFeature;
 
@@ -204,7 +172,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_endFeature",
+    @JoinTable(name = "StakeholderUsage_endFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getEndFeature() {
@@ -230,7 +198,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "endOwningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "endOwningTypeId", table = "QueryQualifierExpression")
+    @JoinColumn(name = "endOwningTypeId", table = "StakeholderUsage")
     public Type getEndOwningType() {
         return endOwningType;
     }
@@ -251,7 +219,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_feature",
+    @JoinTable(name = "StakeholderUsage_feature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getFeature() {
@@ -277,7 +245,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_featureMembership",
+    @JoinTable(name = "StakeholderUsage_featureMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureMembership> getFeatureMembership() {
@@ -303,7 +271,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_featuringType",
+    @JoinTable(name = "StakeholderUsage_featuringType",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Type> getFeaturingType() {
@@ -322,22 +290,27 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("function")
-    private Function function;
+    // @info.archinnov.achilles.annotations.Column("flowFeature")
+    private Collection<Usage> flowFeature;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "FunctionMetaDef", metaColumn = @javax.persistence.Column(name = "functionType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "functionId", table = "QueryQualifierExpression")
-    public Function getFunction() {
-        return function;
+    @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_flowFeature",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Usage> getFlowFeature() {
+        if (flowFeature == null) {
+            flowFeature = new ArrayList<>();
+        }
+        return flowFeature;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FunctionImpl.class)
-    public void setFunction(Function function) {
-        this.function = function;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
+    public void setFlowFeature(Collection<Usage> flowFeature) {
+        this.flowFeature = flowFeature;
     }
 
 
@@ -348,7 +321,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "humanId", table = "QueryQualifierExpression")
+    @javax.persistence.Column(name = "humanId", table = "StakeholderUsage")
     public String getHumanId() {
         return humanId;
     }
@@ -364,7 +337,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     private java.util.UUID identifier;
 
     @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "QueryQualifierExpression")
+    @javax.persistence.Column(name = "identifier", table = "StakeholderUsage")
     public java.util.UUID getIdentifier() {
         return identifier;
     }
@@ -384,7 +357,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_importedMembership",
+    @JoinTable(name = "StakeholderUsage_importedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getImportedMembership() {
@@ -410,7 +383,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_inheritedFeature",
+    @JoinTable(name = "StakeholderUsage_inheritedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getInheritedFeature() {
@@ -436,7 +409,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_inheritedMembership",
+    @JoinTable(name = "StakeholderUsage_inheritedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getInheritedMembership() {
@@ -462,7 +435,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_input",
+    @JoinTable(name = "StakeholderUsage_input",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getInput() {
@@ -484,7 +457,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     private Boolean isAbstract;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isAbstract", table = "QueryQualifierExpression")
+    @javax.persistence.Column(name = "isAbstract", table = "StakeholderUsage")
     public Boolean getIsAbstract() {
         return isAbstract;
     }
@@ -502,7 +475,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isComposite", table = "QueryQualifierExpression")
+    @javax.persistence.Column(name = "isComposite", table = "StakeholderUsage")
     public Boolean getIsComposite() {
         return isComposite;
     }
@@ -520,7 +493,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isConjugated", table = "QueryQualifierExpression")
+    @javax.persistence.Column(name = "isConjugated", table = "StakeholderUsage")
     public Boolean getIsConjugated() {
         return isConjugated;
     }
@@ -538,7 +511,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isEnd", table = "QueryQualifierExpression")
+    @javax.persistence.Column(name = "isEnd", table = "StakeholderUsage")
     public Boolean getIsEnd() {
         return isEnd;
     }
@@ -551,30 +524,12 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("isModelLevelEvaluable")
-    private Boolean isModelLevelEvaluable;
-
-    @JsonGetter
-    // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isModelLevelEvaluable", table = "QueryQualifierExpression")
-    public Boolean getIsModelLevelEvaluable() {
-        return isModelLevelEvaluable;
-    }
-
-    @JsonSetter
-    public void setIsModelLevelEvaluable(Boolean isModelLevelEvaluable) {
-        this.isModelLevelEvaluable = isModelLevelEvaluable;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("isNonunique")
     private Boolean isNonunique;
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isNonunique", table = "QueryQualifierExpression")
+    @javax.persistence.Column(name = "isNonunique", table = "StakeholderUsage")
     public Boolean getIsNonunique() {
         return isNonunique;
     }
@@ -590,7 +545,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     private Boolean isOrdered;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isOrdered", table = "QueryQualifierExpression")
+    @javax.persistence.Column(name = "isOrdered", table = "StakeholderUsage")
     public Boolean getIsOrdered() {
         return isOrdered;
     }
@@ -606,7 +561,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     private Boolean isSufficient;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isSufficient", table = "QueryQualifierExpression")
+    @javax.persistence.Column(name = "isSufficient", table = "StakeholderUsage")
     public Boolean getIsSufficient() {
         return isSufficient;
     }
@@ -622,7 +577,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     private Boolean isUnique;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isUnique", table = "QueryQualifierExpression")
+    @javax.persistence.Column(name = "isUnique", table = "StakeholderUsage")
     public Boolean getIsUnique() {
         return isUnique;
     }
@@ -630,6 +585,48 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSetter
     public void setIsUnique(Boolean isUnique) {
         this.isUnique = isUnique;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isVariation")
+    private Boolean isVariation;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isVariation", table = "StakeholderUsage")
+    public Boolean getIsVariation() {
+        return isVariation;
+    }
+
+    @JsonSetter
+    public void setIsVariation(Boolean isVariation) {
+        this.isVariation = isVariation;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("itemDefinition")
+    private Collection<Structure> itemDefinition;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "StructureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_itemDefinition",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Structure> getItemDefinition() {
+        if (itemDefinition == null) {
+            itemDefinition = new ArrayList<>();
+        }
+        return itemDefinition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StructureImpl.class)
+    public void setItemDefinition(Collection<Structure> itemDefinition) {
+        this.itemDefinition = itemDefinition;
     }
 
 
@@ -642,7 +639,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_member",
+    @JoinTable(name = "StakeholderUsage_member",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getMember() {
@@ -668,7 +665,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_membership",
+    @JoinTable(name = "StakeholderUsage_membership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getMembership() {
@@ -694,7 +691,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "multiplicityId", table = "QueryQualifierExpression")
+    @JoinColumn(name = "multiplicityId", table = "StakeholderUsage")
     public Multiplicity getMultiplicity() {
         return multiplicity;
     }
@@ -715,7 +712,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "name", table = "QueryQualifierExpression")
+    @javax.persistence.Column(name = "name", table = "StakeholderUsage")
     public String getName() {
         return name;
     }
@@ -727,44 +724,652 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
 
 
 
-    // @info.archinnov.achilles.annotations.Column("operand")
-    private List<Expression> operand;
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedAction")
+    private Collection<ActionUsage> nestedAction;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_operand",
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedAction",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Expression> getOperand() {
-        if (operand == null) {
-            operand = new ArrayList<>();
+    public Collection<ActionUsage> getNestedAction() {
+        if (nestedAction == null) {
+            nestedAction = new ArrayList<>();
         }
-        return operand;
+        return nestedAction;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ExpressionImpl.class)
-    public void setOperand(List<Expression> operand) {
-        this.operand = operand;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ActionUsageImpl.class)
+    public void setNestedAction(Collection<ActionUsage> nestedAction) {
+        this.nestedAction = nestedAction;
     }
 
 
 
-    // @info.archinnov.achilles.annotations.Column("operator")
-    private String operator;
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedAllocation")
+    private Collection<AllocationUsage> nestedAllocation;
 
     @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "operator", table = "QueryQualifierExpression")
-    public String getOperator() {
-        return operator;
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "AllocationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedAllocation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<AllocationUsage> getNestedAllocation() {
+        if (nestedAllocation == null) {
+            nestedAllocation = new ArrayList<>();
+        }
+        return nestedAllocation;
     }
 
     @JsonSetter
-    public void setOperator(String operator) {
-        this.operator = operator;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AllocationUsageImpl.class)
+    public void setNestedAllocation(Collection<AllocationUsage> nestedAllocation) {
+        this.nestedAllocation = nestedAllocation;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedAnalysisCase")
+    private Collection<AnalysisCaseUsage> nestedAnalysisCase;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "AnalysisCaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedAnalysisCase",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<AnalysisCaseUsage> getNestedAnalysisCase() {
+        if (nestedAnalysisCase == null) {
+            nestedAnalysisCase = new ArrayList<>();
+        }
+        return nestedAnalysisCase;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnalysisCaseUsageImpl.class)
+    public void setNestedAnalysisCase(Collection<AnalysisCaseUsage> nestedAnalysisCase) {
+        this.nestedAnalysisCase = nestedAnalysisCase;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedAttribute")
+    private Collection<AttributeUsage> nestedAttribute;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "AttributeUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedAttribute",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<AttributeUsage> getNestedAttribute() {
+        if (nestedAttribute == null) {
+            nestedAttribute = new ArrayList<>();
+        }
+        return nestedAttribute;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AttributeUsageImpl.class)
+    public void setNestedAttribute(Collection<AttributeUsage> nestedAttribute) {
+        this.nestedAttribute = nestedAttribute;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedCalculation")
+    private Collection<CalculationUsage> nestedCalculation;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "CalculationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedCalculation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<CalculationUsage> getNestedCalculation() {
+        if (nestedCalculation == null) {
+            nestedCalculation = new ArrayList<>();
+        }
+        return nestedCalculation;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CalculationUsageImpl.class)
+    public void setNestedCalculation(Collection<CalculationUsage> nestedCalculation) {
+        this.nestedCalculation = nestedCalculation;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedCase")
+    private Collection<CaseUsage> nestedCase;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "CaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedCase",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<CaseUsage> getNestedCase() {
+        if (nestedCase == null) {
+            nestedCase = new ArrayList<>();
+        }
+        return nestedCase;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CaseUsageImpl.class)
+    public void setNestedCase(Collection<CaseUsage> nestedCase) {
+        this.nestedCase = nestedCase;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedConcern")
+    private Collection<ConcernUsage> nestedConcern;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ConcernUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedConcern",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ConcernUsage> getNestedConcern() {
+        if (nestedConcern == null) {
+            nestedConcern = new ArrayList<>();
+        }
+        return nestedConcern;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConcernUsageImpl.class)
+    public void setNestedConcern(Collection<ConcernUsage> nestedConcern) {
+        this.nestedConcern = nestedConcern;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedConnection")
+    private Collection<ConnectionUsage> nestedConnection;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ConnectionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedConnection",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ConnectionUsage> getNestedConnection() {
+        if (nestedConnection == null) {
+            nestedConnection = new ArrayList<>();
+        }
+        return nestedConnection;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConnectionUsageImpl.class)
+    public void setNestedConnection(Collection<ConnectionUsage> nestedConnection) {
+        this.nestedConnection = nestedConnection;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedConstraint")
+    private Collection<ConstraintUsage> nestedConstraint;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ConstraintUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedConstraint",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ConstraintUsage> getNestedConstraint() {
+        if (nestedConstraint == null) {
+            nestedConstraint = new ArrayList<>();
+        }
+        return nestedConstraint;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConstraintUsageImpl.class)
+    public void setNestedConstraint(Collection<ConstraintUsage> nestedConstraint) {
+        this.nestedConstraint = nestedConstraint;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedEnumeration")
+    private Collection<EnumerationUsage> nestedEnumeration;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "EnumerationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedEnumeration",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<EnumerationUsage> getNestedEnumeration() {
+        if (nestedEnumeration == null) {
+            nestedEnumeration = new ArrayList<>();
+        }
+        return nestedEnumeration;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = EnumerationUsageImpl.class)
+    public void setNestedEnumeration(Collection<EnumerationUsage> nestedEnumeration) {
+        this.nestedEnumeration = nestedEnumeration;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedIndividual")
+    private Collection<IndividualUsage> nestedIndividual;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "IndividualUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedIndividual",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<IndividualUsage> getNestedIndividual() {
+        if (nestedIndividual == null) {
+            nestedIndividual = new ArrayList<>();
+        }
+        return nestedIndividual;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = IndividualUsageImpl.class)
+    public void setNestedIndividual(Collection<IndividualUsage> nestedIndividual) {
+        this.nestedIndividual = nestedIndividual;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedInterface")
+    private Collection<InterfaceUsage> nestedInterface;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "InterfaceUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedInterface",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<InterfaceUsage> getNestedInterface() {
+        if (nestedInterface == null) {
+            nestedInterface = new ArrayList<>();
+        }
+        return nestedInterface;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = InterfaceUsageImpl.class)
+    public void setNestedInterface(Collection<InterfaceUsage> nestedInterface) {
+        this.nestedInterface = nestedInterface;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedItem")
+    private Collection<ItemUsage> nestedItem;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ItemUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedItem",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ItemUsage> getNestedItem() {
+        if (nestedItem == null) {
+            nestedItem = new ArrayList<>();
+        }
+        return nestedItem;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ItemUsageImpl.class)
+    public void setNestedItem(Collection<ItemUsage> nestedItem) {
+        this.nestedItem = nestedItem;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedPart")
+    private Collection<PartUsage> nestedPart;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "PartUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedPart",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<PartUsage> getNestedPart() {
+        if (nestedPart == null) {
+            nestedPart = new ArrayList<>();
+        }
+        return nestedPart;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PartUsageImpl.class)
+    public void setNestedPart(Collection<PartUsage> nestedPart) {
+        this.nestedPart = nestedPart;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedPort")
+    private Collection<PortUsage> nestedPort;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "PortUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedPort",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<PortUsage> getNestedPort() {
+        if (nestedPort == null) {
+            nestedPort = new ArrayList<>();
+        }
+        return nestedPort;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PortUsageImpl.class)
+    public void setNestedPort(Collection<PortUsage> nestedPort) {
+        this.nestedPort = nestedPort;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedReference")
+    private Collection<ReferenceUsage> nestedReference;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ReferenceUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedReference",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ReferenceUsage> getNestedReference() {
+        if (nestedReference == null) {
+            nestedReference = new ArrayList<>();
+        }
+        return nestedReference;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ReferenceUsageImpl.class)
+    public void setNestedReference(Collection<ReferenceUsage> nestedReference) {
+        this.nestedReference = nestedReference;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedRendering")
+    private Collection<RenderingUsage> nestedRendering;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "RenderingUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedRendering",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<RenderingUsage> getNestedRendering() {
+        if (nestedRendering == null) {
+            nestedRendering = new ArrayList<>();
+        }
+        return nestedRendering;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RenderingUsageImpl.class)
+    public void setNestedRendering(Collection<RenderingUsage> nestedRendering) {
+        this.nestedRendering = nestedRendering;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedRequirement")
+    private Collection<RequirementUsage> nestedRequirement;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "RequirementUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedRequirement",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<RequirementUsage> getNestedRequirement() {
+        if (nestedRequirement == null) {
+            nestedRequirement = new ArrayList<>();
+        }
+        return nestedRequirement;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RequirementUsageImpl.class)
+    public void setNestedRequirement(Collection<RequirementUsage> nestedRequirement) {
+        this.nestedRequirement = nestedRequirement;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedStakeholder")
+    private Collection<StakeholderUsage> nestedStakeholder;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "StakeholderUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedStakeholder",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<StakeholderUsage> getNestedStakeholder() {
+        if (nestedStakeholder == null) {
+            nestedStakeholder = new ArrayList<>();
+        }
+        return nestedStakeholder;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StakeholderUsageImpl.class)
+    public void setNestedStakeholder(Collection<StakeholderUsage> nestedStakeholder) {
+        this.nestedStakeholder = nestedStakeholder;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedState")
+    private Collection<StateUsage> nestedState;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "StateUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedState",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<StateUsage> getNestedState() {
+        if (nestedState == null) {
+            nestedState = new ArrayList<>();
+        }
+        return nestedState;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StateUsageImpl.class)
+    public void setNestedState(Collection<StateUsage> nestedState) {
+        this.nestedState = nestedState;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedTransition")
+    private Collection<TransitionUsage> nestedTransition;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TransitionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedTransition",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<TransitionUsage> getNestedTransition() {
+        if (nestedTransition == null) {
+            nestedTransition = new ArrayList<>();
+        }
+        return nestedTransition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TransitionUsageImpl.class)
+    public void setNestedTransition(Collection<TransitionUsage> nestedTransition) {
+        this.nestedTransition = nestedTransition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedUsage")
+    private Collection<Usage> nestedUsage;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedUsage",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Usage> getNestedUsage() {
+        if (nestedUsage == null) {
+            nestedUsage = new ArrayList<>();
+        }
+        return nestedUsage;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
+    public void setNestedUsage(Collection<Usage> nestedUsage) {
+        this.nestedUsage = nestedUsage;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedVerificationCase")
+    private Collection<VerificationCaseUsage> nestedVerificationCase;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "VerificationCaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedVerificationCase",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<VerificationCaseUsage> getNestedVerificationCase() {
+        if (nestedVerificationCase == null) {
+            nestedVerificationCase = new ArrayList<>();
+        }
+        return nestedVerificationCase;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = VerificationCaseUsageImpl.class)
+    public void setNestedVerificationCase(Collection<VerificationCaseUsage> nestedVerificationCase) {
+        this.nestedVerificationCase = nestedVerificationCase;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedView")
+    private Collection<ViewUsage> nestedView;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ViewUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedView",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ViewUsage> getNestedView() {
+        if (nestedView == null) {
+            nestedView = new ArrayList<>();
+        }
+        return nestedView;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ViewUsageImpl.class)
+    public void setNestedView(Collection<ViewUsage> nestedView) {
+        this.nestedView = nestedView;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedViewpoint")
+    private Collection<ViewpointUsage> nestedViewpoint;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ViewpointUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_nestedViewpoint",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ViewpointUsage> getNestedViewpoint() {
+        if (nestedViewpoint == null) {
+            nestedViewpoint = new ArrayList<>();
+        }
+        return nestedViewpoint;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ViewpointUsageImpl.class)
+    public void setNestedViewpoint(Collection<ViewpointUsage> nestedViewpoint) {
+        this.nestedViewpoint = nestedViewpoint;
     }
 
 
@@ -777,7 +1382,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_output",
+    @JoinTable(name = "StakeholderUsage_output",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getOutput() {
@@ -803,7 +1408,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_ownedAnnotation",
+    @JoinTable(name = "StakeholderUsage_ownedAnnotation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Annotation> getOwnedAnnotation() {
@@ -829,7 +1434,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConjugatorType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedConjugatorId", table = "QueryQualifierExpression")
+    @JoinColumn(name = "ownedConjugatorId", table = "StakeholderUsage")
     public Conjugation getOwnedConjugator() {
         return ownedConjugator;
     }
@@ -850,7 +1455,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_ownedElement",
+    @JoinTable(name = "StakeholderUsage_ownedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getOwnedElement() {
@@ -876,7 +1481,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_ownedEndFeature",
+    @JoinTable(name = "StakeholderUsage_ownedEndFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getOwnedEndFeature() {
@@ -902,7 +1507,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_ownedFeature",
+    @JoinTable(name = "StakeholderUsage_ownedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getOwnedFeature() {
@@ -928,7 +1533,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_ownedFeatureMembership",
+    @JoinTable(name = "StakeholderUsage_ownedFeatureMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureMembership> getOwnedFeatureMembership() {
@@ -954,7 +1559,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "GeneralizationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_ownedGeneralization",
+    @JoinTable(name = "StakeholderUsage_ownedGeneralization",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Generalization> getOwnedGeneralization() {
@@ -980,7 +1585,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_ownedImport",
+    @JoinTable(name = "StakeholderUsage_ownedImport",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Import> getOwnedImport() {
@@ -1006,7 +1611,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_ownedMember",
+    @JoinTable(name = "StakeholderUsage_ownedMember",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getOwnedMember() {
@@ -1032,7 +1637,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_ownedMembership",
+    @JoinTable(name = "StakeholderUsage_ownedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getOwnedMembership() {
@@ -1058,7 +1663,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "RedefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_ownedRedefinition",
+    @JoinTable(name = "StakeholderUsage_ownedRedefinition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Redefinition> getOwnedRedefinition() {
@@ -1082,7 +1687,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_ownedRelationship",
+    @JoinTable(name = "StakeholderUsage_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Relationship> getOwnedRelationship() {
@@ -1108,7 +1713,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "SubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_ownedSubsetting",
+    @JoinTable(name = "StakeholderUsage_ownedSubsetting",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Subsetting> getOwnedSubsetting() {
@@ -1134,7 +1739,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_ownedTextualRepresentation",
+    @JoinTable(name = "StakeholderUsage_ownedTextualRepresentation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<TextualRepresentation> getOwnedTextualRepresentation() {
@@ -1160,7 +1765,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeFeaturingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_ownedTypeFeaturing",
+    @JoinTable(name = "StakeholderUsage_ownedTypeFeaturing",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<TypeFeaturing> getOwnedTypeFeaturing() {
@@ -1186,7 +1791,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_ownedTyping",
+    @JoinTable(name = "StakeholderUsage_ownedTyping",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureTyping> getOwnedTyping() {
@@ -1212,7 +1817,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownerId", table = "QueryQualifierExpression")
+    @JoinColumn(name = "ownerId", table = "StakeholderUsage")
     public Element getOwner() {
         return owner;
     }
@@ -1225,13 +1830,34 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("owningDefinition")
+    private Definition owningDefinition;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "DefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "owningDefinitionType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningDefinitionId", table = "StakeholderUsage")
+    public Definition getOwningDefinition() {
+        return owningDefinition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = DefinitionImpl.class)
+    public void setOwningDefinition(Definition owningDefinition) {
+        this.owningDefinition = owningDefinition;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("owningFeatureMembership")
     private FeatureMembership owningFeatureMembership;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningFeatureMembershipId", table = "QueryQualifierExpression")
+    @JoinColumn(name = "owningFeatureMembershipId", table = "StakeholderUsage")
     public FeatureMembership getOwningFeatureMembership() {
         return owningFeatureMembership;
     }
@@ -1250,7 +1876,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningMembershipId", table = "QueryQualifierExpression")
+    @JoinColumn(name = "owningMembershipId", table = "StakeholderUsage")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -1271,7 +1897,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "QueryQualifierExpression")
+    @JoinColumn(name = "owningNamespaceId", table = "StakeholderUsage")
     public Namespace getOwningNamespace() {
         return owningNamespace;
     }
@@ -1290,7 +1916,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelationshipId", table = "QueryQualifierExpression")
+    @JoinColumn(name = "owningRelationshipId", table = "StakeholderUsage")
     public Relationship getOwningRelationship() {
         return owningRelationship;
     }
@@ -1311,7 +1937,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningTypeId", table = "QueryQualifierExpression")
+    @JoinColumn(name = "owningTypeId", table = "StakeholderUsage")
     public Type getOwningType() {
         return owningType;
     }
@@ -1325,27 +1951,48 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("parameter")
-    private List<Feature> parameter;
+    // @info.archinnov.achilles.annotations.Column("owningUsage")
+    private Usage owningUsage;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "owningUsageType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningUsageId", table = "StakeholderUsage")
+    public Usage getOwningUsage() {
+        return owningUsage;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = UsageImpl.class)
+    public void setOwningUsage(Usage owningUsage) {
+        this.owningUsage = owningUsage;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("partDefinition")
+    private Collection<PartDefinition> partDefinition;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_parameter",
+    @ManyToAny(metaDef = "PartDefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_partDefinition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Feature> getParameter() {
-        if (parameter == null) {
-            parameter = new ArrayList<>();
+    public Collection<PartDefinition> getPartDefinition() {
+        if (partDefinition == null) {
+            partDefinition = new ArrayList<>();
         }
-        return parameter;
+        return partDefinition;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
-    public void setParameter(List<Feature> parameter) {
-        this.parameter = parameter;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PartDefinitionImpl.class)
+    public void setPartDefinition(Collection<PartDefinition> partDefinition) {
+        this.partDefinition = partDefinition;
     }
 
 
@@ -1358,7 +2005,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "qualifiedName", table = "QueryQualifierExpression")
+    @javax.persistence.Column(name = "qualifiedName", table = "StakeholderUsage")
     public String getQualifiedName() {
         return qualifiedName;
     }
@@ -1371,22 +2018,27 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("result")
-    private Feature result;
+    // @info.archinnov.achilles.annotations.Column("stakeholderDefinition")
+    private Collection<StakeholderDefinition> stakeholderDefinition;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "resultType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "resultId", table = "QueryQualifierExpression")
-    public Feature getResult() {
-        return result;
+    @ManyToAny(metaDef = "StakeholderDefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_stakeholderDefinition",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<StakeholderDefinition> getStakeholderDefinition() {
+        if (stakeholderDefinition == null) {
+            stakeholderDefinition = new ArrayList<>();
+        }
+        return stakeholderDefinition;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
-    public void setResult(Feature result) {
-        this.result = result;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StakeholderDefinitionImpl.class)
+    public void setStakeholderDefinition(Collection<StakeholderDefinition> stakeholderDefinition) {
+        this.stakeholderDefinition = stakeholderDefinition;
     }
 
 
@@ -1399,7 +2051,7 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryQualifierExpression_type",
+    @JoinTable(name = "StakeholderUsage_type",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Type> getType() {
@@ -1413,6 +2065,84 @@ public class QueryQualifierExpressionImpl extends MofObjectImpl implements Query
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
     public void setType(List<Type> type) {
         this.type = type;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("usage")
+    private Collection<Usage> usage;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_usage",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Usage> getUsage() {
+        if (usage == null) {
+            usage = new ArrayList<>();
+        }
+        return usage;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
+    public void setUsage(Collection<Usage> usage) {
+        this.usage = usage;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("variant")
+    private Collection<Usage> variant;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_variant",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Usage> getVariant() {
+        if (variant == null) {
+            variant = new ArrayList<>();
+        }
+        return variant;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
+    public void setVariant(Collection<Usage> variant) {
+        this.variant = variant;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("variantMembership")
+    private Collection<VariantMembership> variantMembership;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "VariantMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "StakeholderUsage_variantMembership",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<VariantMembership> getVariantMembership() {
+        if (variantMembership == null) {
+            variantMembership = new ArrayList<>();
+        }
+        return variantMembership;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = VariantMembershipImpl.class)
+    public void setVariantMembership(Collection<VariantMembership> variantMembership) {
+        this.variantMembership = variantMembership;
     }
 
 

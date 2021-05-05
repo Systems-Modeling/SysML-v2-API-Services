@@ -31,6 +31,7 @@ public abstract class CommentImpl_ extends org.omg.sysml.metamodel.impl.MofObjec
 	public static volatile ListAttribute<CommentImpl, String> aliasId;
 	public static volatile SingularAttribute<CommentImpl, String> name;
 	public static volatile ListAttribute<CommentImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<CommentImpl, String> effectiveName;
 
 	public static final String ANNOTATION = "annotation";
 	public static final String IDENTIFIER = "identifier";
@@ -46,6 +47,7 @@ public abstract class CommentImpl_ extends org.omg.sysml.metamodel.impl.MofObjec
 	public static final String ALIAS_ID = "aliasId";
 	public static final String NAME = "name";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 
 }
 

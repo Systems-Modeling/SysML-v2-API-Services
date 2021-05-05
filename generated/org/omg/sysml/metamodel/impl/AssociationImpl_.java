@@ -40,6 +40,7 @@ public abstract class AssociationImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static volatile ListAttribute<AssociationImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<AssociationImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<AssociationImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<AssociationImpl, String> effectiveName;
 	public static volatile SingularAttribute<AssociationImpl, UUID> identifier;
 	public static volatile ListAttribute<AssociationImpl, Membership> importedMembership;
 	public static volatile ListAttribute<AssociationImpl, Annotation> ownedAnnotation;
@@ -80,6 +81,7 @@ public abstract class AssociationImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

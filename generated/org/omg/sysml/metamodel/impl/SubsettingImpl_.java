@@ -32,6 +32,7 @@ public abstract class SubsettingImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile ListAttribute<SubsettingImpl, Element> relatedElement;
 	public static volatile SingularAttribute<SubsettingImpl, String> name;
 	public static volatile ListAttribute<SubsettingImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<SubsettingImpl, String> effectiveName;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -48,6 +49,7 @@ public abstract class SubsettingImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NAME = "name";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 
 }
 

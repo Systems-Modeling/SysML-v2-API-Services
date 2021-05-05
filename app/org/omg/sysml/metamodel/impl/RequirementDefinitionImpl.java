@@ -69,6 +69,32 @@ import java.util.HashSet;
 @JsonTypeName(value = "RequirementDefinition")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public class RequirementDefinitionImpl extends MofObjectImpl implements RequirementDefinition {
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("addressedConcern")
+    private Collection<ConcernUsage> addressedConcern;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ConcernUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "RequirementDefinition_addressedConcern",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ConcernUsage> getAddressedConcern() {
+        if (addressedConcern == null) {
+            addressedConcern = new ArrayList<>();
+        }
+        return addressedConcern;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConcernUsageImpl.class)
+    public void setAddressedConcern(Collection<ConcernUsage> addressedConcern) {
+        this.addressedConcern = addressedConcern;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("aliasId")
     private List<String> aliasId;
 
@@ -166,6 +192,26 @@ public class RequirementDefinitionImpl extends MofObjectImpl implements Requirem
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CommentImpl.class)
     public void setDocumentationComment(List<Comment> documentationComment) {
         this.documentationComment = documentationComment;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("effectiveName")
+    private String effectiveName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "effectiveName", table = "RequirementDefinition")
+    public String getEffectiveName() {
+        return effectiveName;
+    }
+
+    @JsonSetter
+    public void setEffectiveName(String effectiveName) {
+        this.effectiveName = effectiveName;
     }
 
 
@@ -468,6 +514,24 @@ public class RequirementDefinitionImpl extends MofObjectImpl implements Requirem
     @JsonSetter
     public void setIsConjugated(Boolean isConjugated) {
         this.isConjugated = isConjugated;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("isModelLevelEvaluable")
+    private Boolean isModelLevelEvaluable;
+
+    @JsonGetter
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "isModelLevelEvaluable", table = "RequirementDefinition")
+    public Boolean getIsModelLevelEvaluable() {
+        return isModelLevelEvaluable;
+    }
+
+    @JsonSetter
+    public void setIsModelLevelEvaluable(Boolean isModelLevelEvaluable) {
+        this.isModelLevelEvaluable = isModelLevelEvaluable;
     }
 
 
@@ -801,6 +865,32 @@ public class RequirementDefinitionImpl extends MofObjectImpl implements Requirem
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CaseUsageImpl.class)
     public void setOwnedCase(Collection<CaseUsage> ownedCase) {
         this.ownedCase = ownedCase;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedConcern")
+    private Collection<ConcernUsage> ownedConcern;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ConcernUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "RequirementDefinition_ownedConcern",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ConcernUsage> getOwnedConcern() {
+        if (ownedConcern == null) {
+            ownedConcern = new ArrayList<>();
+        }
+        return ownedConcern;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConcernUsageImpl.class)
+    public void setOwnedConcern(Collection<ConcernUsage> ownedConcern) {
+        this.ownedConcern = ownedConcern;
     }
 
 
@@ -1340,6 +1430,32 @@ public class RequirementDefinitionImpl extends MofObjectImpl implements Requirem
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RequirementUsageImpl.class)
     public void setOwnedRequirement(Collection<RequirementUsage> ownedRequirement) {
         this.ownedRequirement = ownedRequirement;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedStakeholder")
+    private Collection<StakeholderUsage> ownedStakeholder;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "StakeholderUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "RequirementDefinition_ownedStakeholder",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<StakeholderUsage> getOwnedStakeholder() {
+        if (ownedStakeholder == null) {
+            ownedStakeholder = new ArrayList<>();
+        }
+        return ownedStakeholder;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StakeholderUsageImpl.class)
+    public void setOwnedStakeholder(Collection<StakeholderUsage> ownedStakeholder) {
+        this.ownedStakeholder = ownedStakeholder;
     }
 
 

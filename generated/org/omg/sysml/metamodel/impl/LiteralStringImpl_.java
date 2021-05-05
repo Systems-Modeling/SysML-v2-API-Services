@@ -48,6 +48,7 @@ public abstract class LiteralStringImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static volatile ListAttribute<LiteralStringImpl, Behavior> behavior;
 	public static volatile SingularAttribute<LiteralStringImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<LiteralStringImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<LiteralStringImpl, String> effectiveName;
 	public static volatile SingularAttribute<LiteralStringImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<LiteralStringImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<LiteralStringImpl, String> value;
@@ -95,6 +96,7 @@ public abstract class LiteralStringImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static final String BEHAVIOR = "behavior";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String VALUE = "value";

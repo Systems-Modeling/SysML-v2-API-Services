@@ -32,6 +32,7 @@ public abstract class TextualRepresentationImpl_ extends org.omg.sysml.metamodel
 	public static volatile ListAttribute<TextualRepresentationImpl, String> aliasId;
 	public static volatile SingularAttribute<TextualRepresentationImpl, String> name;
 	public static volatile ListAttribute<TextualRepresentationImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<TextualRepresentationImpl, String> effectiveName;
 
 	public static final String ANNOTATION = "annotation";
 	public static final String IDENTIFIER = "identifier";
@@ -48,6 +49,7 @@ public abstract class TextualRepresentationImpl_ extends org.omg.sysml.metamodel
 	public static final String ALIAS_ID = "aliasId";
 	public static final String NAME = "name";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 
 }
 

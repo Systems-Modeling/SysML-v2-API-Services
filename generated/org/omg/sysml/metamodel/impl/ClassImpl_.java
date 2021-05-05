@@ -36,6 +36,7 @@ public abstract class ClassImpl_ extends org.omg.sysml.metamodel.impl.MofObjectI
 	public static volatile ListAttribute<ClassImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<ClassImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<ClassImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<ClassImpl, String> effectiveName;
 	public static volatile SingularAttribute<ClassImpl, UUID> identifier;
 	public static volatile ListAttribute<ClassImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ClassImpl, Annotation> ownedAnnotation;
@@ -69,6 +70,7 @@ public abstract class ClassImpl_ extends org.omg.sysml.metamodel.impl.MofObjectI
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

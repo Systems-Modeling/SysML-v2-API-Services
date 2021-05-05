@@ -50,6 +50,7 @@ public abstract class InvocationExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static volatile ListAttribute<InvocationExpressionImpl, Behavior> behavior;
 	public static volatile SingularAttribute<InvocationExpressionImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<InvocationExpressionImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<InvocationExpressionImpl, String> effectiveName;
 	public static volatile SingularAttribute<InvocationExpressionImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<InvocationExpressionImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<InvocationExpressionImpl, UUID> identifier;
@@ -97,6 +98,7 @@ public abstract class InvocationExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static final String BEHAVIOR = "behavior";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";

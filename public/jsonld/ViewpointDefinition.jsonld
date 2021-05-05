@@ -5,10 +5,12 @@
         "dcterms": "http://purl.org/dc/terms/",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
 
+        "addressedConcern": {"@type": "@id"},
         "aliasId": {"@type": "xsd:string"},
         "assumedConstraint": {"@type": "@id"},
         "documentation": {"@type": "@id"},
         "documentationComment": {"@type": "@id"},
+        "effectiveName": {"@type": "xsd:string"},
         "endFeature": {"@type": "@id"},
         "expression": {"@type": "@id"},
         "feature": {"@type": "@id"},
@@ -22,6 +24,7 @@
         "input": {"@type": "@id"},
         "isAbstract": {"@type": "xsd:boolean"},
         "isConjugated": {"@type": "xsd:boolean"},
+        "isModelLevelEvaluable": {"@type": "xsd:boolean"},
         "isSufficient": {"@type": "xsd:boolean"},
         "isVariation": {"@type": "xsd:boolean"},
         "member": {"@type": "@id"},
@@ -36,6 +39,7 @@
         "ownedAttribute": {"@type": "@id"},
         "ownedCalculation": {"@type": "@id"},
         "ownedCase": {"@type": "@id"},
+        "ownedConcern": {"@type": "@id"},
         "ownedConjugator": {"@type": "@id"},
         "ownedConnection": {"@type": "@id"},
         "ownedConstraint": {"@type": "@id"},
@@ -57,6 +61,7 @@
         "ownedRelationship": {"@type": "@id"},
         "ownedRendering": {"@type": "@id"},
         "ownedRequirement": {"@type": "@id"},
+        "ownedStakeholder": {"@type": "@id"},
         "ownedState": {"@type": "@id"},
         "ownedSuperclassing": {"@type": "@id"},
         "ownedTextualRepresentation": {"@type": "@id"},
@@ -79,7 +84,8 @@
         "text": {"@type": "xsd:string"},
         "usage": {"@type": "@id"},
         "variant": {"@type": "@id"},
-        "variantMembership": {"@type": "@id"}
+        "variantMembership": {"@type": "@id"},
+        "viewpointStakeholder": {"@type": "@id"}
 
     }
 }

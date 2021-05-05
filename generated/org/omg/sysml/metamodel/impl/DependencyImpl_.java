@@ -34,6 +34,7 @@ public abstract class DependencyImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile SingularAttribute<DependencyImpl, String> name;
 	public static volatile CollectionAttribute<DependencyImpl, Element> client;
 	public static volatile ListAttribute<DependencyImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<DependencyImpl, String> effectiveName;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -52,6 +53,7 @@ public abstract class DependencyImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String NAME = "name";
 	public static final String CLIENT = "client";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 
 }
 

@@ -28,5 +28,7 @@ import java.util.Set;
 public interface RequirementConstraintMembership extends FeatureMembership, MofObject {
     RequirementConstraintKind getKind();
 
-    ConstraintUsage getConstraint();
+    ConstraintUsage getOwnedConstraint();
+
+    ConstraintUsage getReferencedConstraint();
 }
