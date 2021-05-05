@@ -45,6 +45,7 @@ public abstract class FeatureImpl_ extends org.omg.sysml.metamodel.impl.MofObjec
 	public static volatile ListAttribute<FeatureImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<FeatureImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<FeatureImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<FeatureImpl, String> effectiveName;
 	public static volatile SingularAttribute<FeatureImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<FeatureImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<FeatureImpl, UUID> identifier;
@@ -88,6 +89,7 @@ public abstract class FeatureImpl_ extends org.omg.sysml.metamodel.impl.MofObjec
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";

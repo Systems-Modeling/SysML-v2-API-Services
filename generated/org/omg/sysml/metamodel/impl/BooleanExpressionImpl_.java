@@ -48,6 +48,7 @@ public abstract class BooleanExpressionImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile ListAttribute<BooleanExpressionImpl, Behavior> behavior;
 	public static volatile SingularAttribute<BooleanExpressionImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<BooleanExpressionImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<BooleanExpressionImpl, String> effectiveName;
 	public static volatile SingularAttribute<BooleanExpressionImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<BooleanExpressionImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<BooleanExpressionImpl, UUID> identifier;
@@ -94,6 +95,7 @@ public abstract class BooleanExpressionImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String BEHAVIOR = "behavior";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";

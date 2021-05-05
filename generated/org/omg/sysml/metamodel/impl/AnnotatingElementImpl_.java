@@ -30,6 +30,7 @@ public abstract class AnnotatingElementImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile ListAttribute<AnnotatingElementImpl, String> aliasId;
 	public static volatile SingularAttribute<AnnotatingElementImpl, String> name;
 	public static volatile ListAttribute<AnnotatingElementImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<AnnotatingElementImpl, String> effectiveName;
 
 	public static final String ANNOTATION = "annotation";
 	public static final String IDENTIFIER = "identifier";
@@ -44,6 +45,7 @@ public abstract class AnnotatingElementImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String ALIAS_ID = "aliasId";
 	public static final String NAME = "name";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 
 }
 

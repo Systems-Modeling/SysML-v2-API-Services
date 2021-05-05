@@ -79,6 +79,7 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile ListAttribute<ItemFlowImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<ItemFlowImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<ItemFlowImpl, Behavior> behavior;
+	public static volatile SingularAttribute<ItemFlowImpl, String> effectiveName;
 	public static volatile CollectionAttribute<ItemFlowImpl, ItemFlowFeature> itemFlowFeature;
 	public static volatile ListAttribute<ItemFlowImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ItemFlowImpl, Element> ownedElement;
@@ -139,6 +140,7 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String ITEM_FLOW_FEATURE = "itemFlowFeature";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";

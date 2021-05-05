@@ -162,6 +162,46 @@ public class FeatureMembershipImpl extends MofObjectImpl implements FeatureMembe
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("effectiveMemberName")
+    private String effectiveMemberName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "effectiveMemberName", table = "FeatureMembership")
+    public String getEffectiveMemberName() {
+        return effectiveMemberName;
+    }
+
+    @JsonSetter
+    public void setEffectiveMemberName(String effectiveMemberName) {
+        this.effectiveMemberName = effectiveMemberName;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("effectiveName")
+    private String effectiveName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "effectiveName", table = "FeatureMembership")
+    public String getEffectiveName() {
+        return effectiveName;
+    }
+
+    @JsonSetter
+    public void setEffectiveName(String effectiveName) {
+        this.effectiveName = effectiveName;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("featureOfType")
     private Feature featureOfType;
 
@@ -370,11 +410,13 @@ public class FeatureMembershipImpl extends MofObjectImpl implements FeatureMembe
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("membershipOwningNamespace")
     private Namespace membershipOwningNamespace;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "membershipOwningNamespaceType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "membershipOwningNamespaceId", table = "FeatureMembership")
     public Namespace getMembershipOwningNamespace() {
@@ -693,11 +735,13 @@ public class FeatureMembershipImpl extends MofObjectImpl implements FeatureMembe
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningType")
     private Type owningType;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningTypeId", table = "FeatureMembership")
     public Type getOwningType() {

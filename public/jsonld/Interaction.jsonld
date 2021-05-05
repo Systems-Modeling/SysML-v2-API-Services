@@ -9,6 +9,7 @@
         "associationEnd": {"@type": "@id"},
         "documentation": {"@type": "@id"},
         "documentationComment": {"@type": "@id"},
+        "effectiveName": {"@type": "xsd:string"},
         "endFeature": {"@type": "@id"},
         "feature": {"@type": "@id"},
         "featureMembership": {"@type": "@id"},

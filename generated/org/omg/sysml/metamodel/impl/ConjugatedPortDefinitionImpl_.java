@@ -14,6 +14,7 @@ import org.omg.sysml.metamodel.AttributeUsage;
 import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
 import org.omg.sysml.metamodel.Comment;
+import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectionUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
 import org.omg.sysml.metamodel.Documentation;
@@ -33,6 +34,7 @@ import org.omg.sysml.metamodel.ReferenceUsage;
 import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.RenderingUsage;
 import org.omg.sysml.metamodel.RequirementUsage;
+import org.omg.sysml.metamodel.StakeholderUsage;
 import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Superclassing;
 import org.omg.sysml.metamodel.TextualRepresentation;
@@ -93,6 +95,7 @@ public abstract class ConjugatedPortDefinitionImpl_ extends org.omg.sysml.metamo
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, Feature> inheritedFeature;
 	public static volatile CollectionAttribute<ConjugatedPortDefinitionImpl, TransitionUsage> ownedTransition;
+	public static volatile SingularAttribute<ConjugatedPortDefinitionImpl, String> effectiveName;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, Element> ownedElement;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, Relationship> ownedRelationship;
@@ -104,7 +107,9 @@ public abstract class ConjugatedPortDefinitionImpl_ extends org.omg.sysml.metamo
 	public static volatile CollectionAttribute<ConjugatedPortDefinitionImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<ConjugatedPortDefinitionImpl, VariantMembership> variantMembership;
 	public static volatile SingularAttribute<ConjugatedPortDefinitionImpl, String> humanId;
+	public static volatile CollectionAttribute<ConjugatedPortDefinitionImpl, StakeholderUsage> ownedStakeholder;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, String> aliasId;
+	public static volatile CollectionAttribute<ConjugatedPortDefinitionImpl, ConcernUsage> ownedConcern;
 	public static volatile CollectionAttribute<ConjugatedPortDefinitionImpl, AttributeUsage> ownedAttribute;
 	public static volatile CollectionAttribute<ConjugatedPortDefinitionImpl, PartUsage> ownedPart;
 
@@ -154,6 +159,7 @@ public abstract class ConjugatedPortDefinitionImpl_ extends org.omg.sysml.metamo
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String OWNED_TRANSITION = "ownedTransition";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
@@ -165,7 +171,9 @@ public abstract class ConjugatedPortDefinitionImpl_ extends org.omg.sysml.metamo
 	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String HUMAN_ID = "humanId";
+	public static final String OWNED_STAKEHOLDER = "ownedStakeholder";
 	public static final String ALIAS_ID = "aliasId";
+	public static final String OWNED_CONCERN = "ownedConcern";
 	public static final String OWNED_ATTRIBUTE = "ownedAttribute";
 	public static final String OWNED_PART = "ownedPart";
 

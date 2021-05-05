@@ -32,6 +32,7 @@ public abstract class SuperclassingImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static volatile ListAttribute<SuperclassingImpl, Element> relatedElement;
 	public static volatile SingularAttribute<SuperclassingImpl, String> name;
 	public static volatile ListAttribute<SuperclassingImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<SuperclassingImpl, String> effectiveName;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -48,6 +49,7 @@ public abstract class SuperclassingImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NAME = "name";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 
 }
 

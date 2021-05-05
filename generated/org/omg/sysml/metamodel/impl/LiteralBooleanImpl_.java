@@ -48,6 +48,7 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile ListAttribute<LiteralBooleanImpl, Behavior> behavior;
 	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<LiteralBooleanImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<LiteralBooleanImpl, String> effectiveName;
 	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<LiteralBooleanImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> value;
@@ -95,6 +96,7 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String BEHAVIOR = "behavior";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String VALUE = "value";

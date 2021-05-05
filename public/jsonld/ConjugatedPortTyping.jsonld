@@ -9,6 +9,7 @@
         "conjugatedPortDefinition": {"@type": "@id"},
         "documentation": {"@type": "@id"},
         "documentationComment": {"@type": "@id"},
+        "effectiveName": {"@type": "xsd:string"},
         "general": {"@type": "@id"},
         "humanId": {"@type": "xsd:string"},
         "identifier": {"@type": "dcterms:identifier"},

@@ -37,4 +37,6 @@ public interface RequirementUsage extends ConstraintUsage, MofObject {
     Collection<? extends ConstraintUsage> getAssumedConstraint();
 
     Usage getSubjectParameter();
+
+    Collection<? extends ConcernUsage> getAddressedConcern();
 }

@@ -92,25 +92,6 @@ public class RequirementConstraintMembershipImpl extends MofObjectImpl implement
 
 
 
-    // @info.archinnov.achilles.annotations.Column("constraint")
-    private ConstraintUsage constraint;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    @Any(metaDef = "ConstraintUsageMetaDef", metaColumn = @javax.persistence.Column(name = "constraintType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "constraintId", table = "RequirementConstraintMembership")
-    public ConstraintUsage getConstraint() {
-        return constraint;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ConstraintUsageImpl.class)
-    public void setConstraint(ConstraintUsage constraint) {
-        this.constraint = constraint;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("direction")
     // @info.archinnov.achilles.annotations.Enumerated(info.archinnov.achilles.annotations.Enumerated.Encoding.NAME)
     private FeatureDirectionKind direction;
@@ -177,6 +158,46 @@ public class RequirementConstraintMembershipImpl extends MofObjectImpl implement
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CommentImpl.class)
     public void setDocumentationComment(List<Comment> documentationComment) {
         this.documentationComment = documentationComment;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("effectiveMemberName")
+    private String effectiveMemberName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "effectiveMemberName", table = "RequirementConstraintMembership")
+    public String getEffectiveMemberName() {
+        return effectiveMemberName;
+    }
+
+    @JsonSetter
+    public void setEffectiveMemberName(String effectiveMemberName) {
+        this.effectiveMemberName = effectiveMemberName;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("effectiveName")
+    private String effectiveName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "effectiveName", table = "RequirementConstraintMembership")
+    public String getEffectiveName() {
+        return effectiveName;
+    }
+
+    @JsonSetter
+    public void setEffectiveName(String effectiveName) {
+        this.effectiveName = effectiveName;
     }
 
 
@@ -407,11 +428,13 @@ public class RequirementConstraintMembershipImpl extends MofObjectImpl implement
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("membershipOwningNamespace")
     private Namespace membershipOwningNamespace;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "membershipOwningNamespaceType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "membershipOwningNamespaceId", table = "RequirementConstraintMembership")
     public Namespace getMembershipOwningNamespace() {
@@ -468,6 +491,25 @@ public class RequirementConstraintMembershipImpl extends MofObjectImpl implement
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnnotationImpl.class)
     public void setOwnedAnnotation(List<Annotation> ownedAnnotation) {
         this.ownedAnnotation = ownedAnnotation;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("ownedConstraint")
+    private ConstraintUsage ownedConstraint;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    @Any(metaDef = "ConstraintUsageMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConstraintType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedConstraintId", table = "RequirementConstraintMembership")
+    public ConstraintUsage getOwnedConstraint() {
+        return ownedConstraint;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ConstraintUsageImpl.class)
+    public void setOwnedConstraint(ConstraintUsage ownedConstraint) {
+        this.ownedConstraint = ownedConstraint;
     }
 
 
@@ -730,11 +772,13 @@ public class RequirementConstraintMembershipImpl extends MofObjectImpl implement
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningType")
     private Type owningType;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningTypeId", table = "RequirementConstraintMembership")
     public Type getOwningType() {
@@ -765,6 +809,27 @@ public class RequirementConstraintMembershipImpl extends MofObjectImpl implement
     @JsonSetter
     public void setQualifiedName(String qualifiedName) {
         this.qualifiedName = qualifiedName;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("referencedConstraint")
+    private ConstraintUsage referencedConstraint;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "ConstraintUsageMetaDef", metaColumn = @javax.persistence.Column(name = "referencedConstraintType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "referencedConstraintId", table = "RequirementConstraintMembership")
+    public ConstraintUsage getReferencedConstraint() {
+        return referencedConstraint;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = ConstraintUsageImpl.class)
+    public void setReferencedConstraint(ConstraintUsage referencedConstraint) {
+        this.referencedConstraint = referencedConstraint;
     }
 
 

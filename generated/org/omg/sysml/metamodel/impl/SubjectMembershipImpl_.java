@@ -19,6 +19,14 @@ import org.omg.sysml.metamodel.VisibilityKind;
 @StaticMetamodel(SubjectMembershipImpl.class)
 public abstract class SubjectMembershipImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
+	public static volatile SingularAttribute<SubjectMembershipImpl, String> memberName;
+	public static volatile ListAttribute<SubjectMembershipImpl, Element> ownedRelatedElement;
+	public static volatile ListAttribute<SubjectMembershipImpl, Element> source;
+	public static volatile SingularAttribute<SubjectMembershipImpl, Boolean> isPortion;
+	public static volatile SingularAttribute<SubjectMembershipImpl, Boolean> isReadOnly;
+	public static volatile ListAttribute<SubjectMembershipImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<SubjectMembershipImpl, String> effectiveName;
+	public static volatile SingularAttribute<SubjectMembershipImpl, FeatureDirectionKind> direction;
 	public static volatile SingularAttribute<SubjectMembershipImpl, UUID> identifier;
 	public static volatile SingularAttribute<SubjectMembershipImpl, Boolean> isDerived;
 	public static volatile ListAttribute<SubjectMembershipImpl, Annotation> ownedAnnotation;
@@ -27,22 +35,24 @@ public abstract class SubjectMembershipImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile ListAttribute<SubjectMembershipImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<SubjectMembershipImpl, String> qualifiedName;
 	public static volatile ListAttribute<SubjectMembershipImpl, Documentation> documentation;
-	public static volatile SingularAttribute<SubjectMembershipImpl, String> memberName;
-	public static volatile ListAttribute<SubjectMembershipImpl, Element> ownedRelatedElement;
-	public static volatile ListAttribute<SubjectMembershipImpl, Element> source;
+	public static volatile SingularAttribute<SubjectMembershipImpl, String> effectiveMemberName;
 	public static volatile SingularAttribute<SubjectMembershipImpl, Boolean> isPort;
-	public static volatile SingularAttribute<SubjectMembershipImpl, Boolean> isPortion;
 	public static volatile ListAttribute<SubjectMembershipImpl, Element> target;
 	public static volatile CollectionAttribute<SubjectMembershipImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<SubjectMembershipImpl, Boolean> isComposite;
-	public static volatile SingularAttribute<SubjectMembershipImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<SubjectMembershipImpl, String> humanId;
 	public static volatile ListAttribute<SubjectMembershipImpl, String> aliasId;
 	public static volatile ListAttribute<SubjectMembershipImpl, Element> relatedElement;
 	public static volatile SingularAttribute<SubjectMembershipImpl, String> name;
-	public static volatile ListAttribute<SubjectMembershipImpl, Comment> documentationComment;
-	public static volatile SingularAttribute<SubjectMembershipImpl, FeatureDirectionKind> direction;
 
+	public static final String MEMBER_NAME = "memberName";
+	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
+	public static final String SOURCE = "source";
+	public static final String IS_PORTION = "isPortion";
+	public static final String IS_READ_ONLY = "isReadOnly";
+	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
+	public static final String DIRECTION = "direction";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -51,21 +61,15 @@ public abstract class SubjectMembershipImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
-	public static final String MEMBER_NAME = "memberName";
-	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
-	public static final String SOURCE = "source";
+	public static final String EFFECTIVE_MEMBER_NAME = "effectiveMemberName";
 	public static final String IS_PORT = "isPort";
-	public static final String IS_PORTION = "isPortion";
 	public static final String TARGET = "target";
 	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String IS_COMPOSITE = "isComposite";
-	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NAME = "name";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
-	public static final String DIRECTION = "direction";
 
 }
 

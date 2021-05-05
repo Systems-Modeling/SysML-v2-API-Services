@@ -52,6 +52,8 @@ public interface Element extends MofObject {
 
     String getQualifiedName();
 
+    String getEffectiveName();
+
     List<? extends String> getAliasId();
 
     String getHumanId();

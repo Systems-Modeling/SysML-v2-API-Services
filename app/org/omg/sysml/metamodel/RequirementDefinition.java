@@ -35,4 +35,6 @@ public interface RequirementDefinition extends ConstraintDefinition, MofObject {
     Collection<? extends ConstraintUsage> getRequiredConstraint();
 
     Usage getSubjectParameter();
+
+    Collection<? extends ConcernUsage> getAddressedConcern();
 }

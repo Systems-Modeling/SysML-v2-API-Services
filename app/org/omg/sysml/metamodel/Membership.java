@@ -28,11 +28,13 @@ import java.util.Set;
 public interface Membership extends Relationship, MofObject {
     String getMemberName();
 
-    VisibilityKind getVisibility();
+    String getEffectiveMemberName();
 
     Element getMemberElement();
 
     Element getOwnedMemberElement();
 
     Namespace getMembershipOwningNamespace();
+
+    VisibilityKind getVisibility();
 }

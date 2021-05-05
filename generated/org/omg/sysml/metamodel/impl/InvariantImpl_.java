@@ -48,6 +48,7 @@ public abstract class InvariantImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile ListAttribute<InvariantImpl, Behavior> behavior;
 	public static volatile SingularAttribute<InvariantImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<InvariantImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<InvariantImpl, String> effectiveName;
 	public static volatile SingularAttribute<InvariantImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<InvariantImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<InvariantImpl, UUID> identifier;
@@ -94,6 +95,7 @@ public abstract class InvariantImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String BEHAVIOR = "behavior";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";

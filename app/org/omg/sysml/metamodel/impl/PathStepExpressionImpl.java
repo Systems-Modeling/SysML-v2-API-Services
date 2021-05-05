@@ -61,14 +61,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
-@Entity(name = "QueryPathExpressionImpl")
-@SecondaryTable(name = "QueryPathExpression")
-@org.hibernate.annotations.Table(appliesTo = "QueryPathExpression", fetch = FetchMode.SELECT, optional = false)
-// @info.archinnov.achilles.annotations.Table(table = "QueryPathExpression")
-@DiscriminatorValue(value = "QueryPathExpression")
-@JsonTypeName(value = "QueryPathExpression")
+@Entity(name = "PathStepExpressionImpl")
+@SecondaryTable(name = "PathStepExpression")
+@org.hibernate.annotations.Table(appliesTo = "PathStepExpression", fetch = FetchMode.SELECT, optional = false)
+// @info.archinnov.achilles.annotations.Table(table = "PathStepExpression")
+@DiscriminatorValue(value = "PathStepExpression")
+@JsonTypeName(value = "PathStepExpression")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathExpression {
+public class PathStepExpressionImpl extends MofObjectImpl implements PathStepExpression {
     // @info.archinnov.achilles.annotations.Column("aliasId")
     private List<String> aliasId;
 
@@ -76,8 +76,8 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "QueryPathExpression_aliasId",
-            joinColumns = @JoinColumn(name = "QueryPathExpressionId"))
+    @CollectionTable(name = "PathStepExpression_aliasId",
+            joinColumns = @JoinColumn(name = "PathStepExpressionId"))
     public List<String> getAliasId() {
         if (aliasId == null) {
             aliasId = new ArrayList<>();
@@ -93,6 +93,32 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("argument")
+    private List<Expression> argument;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "PathStepExpression_argument",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Expression> getArgument() {
+        if (argument == null) {
+            argument = new ArrayList<>();
+        }
+        return argument;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ExpressionImpl.class)
+    public void setArgument(List<Expression> argument) {
+        this.argument = argument;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("behavior")
     private List<Behavior> behavior;
 
@@ -100,7 +126,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "BehaviorMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_behavior",
+    @JoinTable(name = "PathStepExpression_behavior",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Behavior> getBehavior() {
@@ -126,7 +152,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_documentation",
+    @JoinTable(name = "PathStepExpression_documentation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Documentation> getDocumentation() {
@@ -152,7 +178,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_documentationComment",
+    @JoinTable(name = "PathStepExpression_documentationComment",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Comment> getDocumentationComment() {
@@ -171,6 +197,26 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("effectiveName")
+    private String effectiveName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "effectiveName", table = "PathStepExpression")
+    public String getEffectiveName() {
+        return effectiveName;
+    }
+
+    @JsonSetter
+    public void setEffectiveName(String effectiveName) {
+        this.effectiveName = effectiveName;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("endFeature")
     private List<Feature> endFeature;
 
@@ -178,7 +224,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_endFeature",
+    @JoinTable(name = "PathStepExpression_endFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getEndFeature() {
@@ -204,7 +250,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "endOwningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "endOwningTypeId", table = "QueryPathExpression")
+    @JoinColumn(name = "endOwningTypeId", table = "PathStepExpression")
     public Type getEndOwningType() {
         return endOwningType;
     }
@@ -225,7 +271,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_feature",
+    @JoinTable(name = "PathStepExpression_feature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getFeature() {
@@ -251,7 +297,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_featureMembership",
+    @JoinTable(name = "PathStepExpression_featureMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureMembership> getFeatureMembership() {
@@ -277,7 +323,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_featuringType",
+    @JoinTable(name = "PathStepExpression_featuringType",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Type> getFeaturingType() {
@@ -303,7 +349,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "FunctionMetaDef", metaColumn = @javax.persistence.Column(name = "functionType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "functionId", table = "QueryPathExpression")
+    @JoinColumn(name = "functionId", table = "PathStepExpression")
     public Function getFunction() {
         return function;
     }
@@ -322,7 +368,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "humanId", table = "QueryPathExpression")
+    @javax.persistence.Column(name = "humanId", table = "PathStepExpression")
     public String getHumanId() {
         return humanId;
     }
@@ -338,7 +384,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     private java.util.UUID identifier;
 
     @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "QueryPathExpression")
+    @javax.persistence.Column(name = "identifier", table = "PathStepExpression")
     public java.util.UUID getIdentifier() {
         return identifier;
     }
@@ -358,7 +404,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_importedMembership",
+    @JoinTable(name = "PathStepExpression_importedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getImportedMembership() {
@@ -384,7 +430,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_inheritedFeature",
+    @JoinTable(name = "PathStepExpression_inheritedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getInheritedFeature() {
@@ -410,7 +456,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_inheritedMembership",
+    @JoinTable(name = "PathStepExpression_inheritedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getInheritedMembership() {
@@ -436,7 +482,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_input",
+    @JoinTable(name = "PathStepExpression_input",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getInput() {
@@ -458,7 +504,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     private Boolean isAbstract;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isAbstract", table = "QueryPathExpression")
+    @javax.persistence.Column(name = "isAbstract", table = "PathStepExpression")
     public Boolean getIsAbstract() {
         return isAbstract;
     }
@@ -476,7 +522,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isComposite", table = "QueryPathExpression")
+    @javax.persistence.Column(name = "isComposite", table = "PathStepExpression")
     public Boolean getIsComposite() {
         return isComposite;
     }
@@ -494,7 +540,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isConjugated", table = "QueryPathExpression")
+    @javax.persistence.Column(name = "isConjugated", table = "PathStepExpression")
     public Boolean getIsConjugated() {
         return isConjugated;
     }
@@ -512,7 +558,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isEnd", table = "QueryPathExpression")
+    @javax.persistence.Column(name = "isEnd", table = "PathStepExpression")
     public Boolean getIsEnd() {
         return isEnd;
     }
@@ -530,7 +576,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isModelLevelEvaluable", table = "QueryPathExpression")
+    @javax.persistence.Column(name = "isModelLevelEvaluable", table = "PathStepExpression")
     public Boolean getIsModelLevelEvaluable() {
         return isModelLevelEvaluable;
     }
@@ -548,7 +594,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isNonunique", table = "QueryPathExpression")
+    @javax.persistence.Column(name = "isNonunique", table = "PathStepExpression")
     public Boolean getIsNonunique() {
         return isNonunique;
     }
@@ -564,7 +610,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     private Boolean isOrdered;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isOrdered", table = "QueryPathExpression")
+    @javax.persistence.Column(name = "isOrdered", table = "PathStepExpression")
     public Boolean getIsOrdered() {
         return isOrdered;
     }
@@ -580,7 +626,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     private Boolean isSufficient;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isSufficient", table = "QueryPathExpression")
+    @javax.persistence.Column(name = "isSufficient", table = "PathStepExpression")
     public Boolean getIsSufficient() {
         return isSufficient;
     }
@@ -596,7 +642,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     private Boolean isUnique;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isUnique", table = "QueryPathExpression")
+    @javax.persistence.Column(name = "isUnique", table = "PathStepExpression")
     public Boolean getIsUnique() {
         return isUnique;
     }
@@ -616,7 +662,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_member",
+    @JoinTable(name = "PathStepExpression_member",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getMember() {
@@ -642,7 +688,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_membership",
+    @JoinTable(name = "PathStepExpression_membership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getMembership() {
@@ -668,7 +714,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "multiplicityId", table = "QueryPathExpression")
+    @JoinColumn(name = "multiplicityId", table = "PathStepExpression")
     public Multiplicity getMultiplicity() {
         return multiplicity;
     }
@@ -689,7 +735,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "name", table = "QueryPathExpression")
+    @javax.persistence.Column(name = "name", table = "PathStepExpression")
     public String getName() {
         return name;
     }
@@ -697,6 +743,48 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSetter
     public void setName(String name) {
         this.name = name;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("operand")
+    private List<Expression> operand;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "PathStepExpression_operand",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Expression> getOperand() {
+        if (operand == null) {
+            operand = new ArrayList<>();
+        }
+        return operand;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ExpressionImpl.class)
+    public void setOperand(List<Expression> operand) {
+        this.operand = operand;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("operator")
+    private String operator;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "operator", table = "PathStepExpression")
+    public String getOperator() {
+        return operator;
+    }
+
+    @JsonSetter
+    public void setOperator(String operator) {
+        this.operator = operator;
     }
 
 
@@ -709,7 +797,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_output",
+    @JoinTable(name = "PathStepExpression_output",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getOutput() {
@@ -735,7 +823,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_ownedAnnotation",
+    @JoinTable(name = "PathStepExpression_ownedAnnotation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Annotation> getOwnedAnnotation() {
@@ -761,7 +849,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConjugatorType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedConjugatorId", table = "QueryPathExpression")
+    @JoinColumn(name = "ownedConjugatorId", table = "PathStepExpression")
     public Conjugation getOwnedConjugator() {
         return ownedConjugator;
     }
@@ -782,7 +870,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_ownedElement",
+    @JoinTable(name = "PathStepExpression_ownedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getOwnedElement() {
@@ -808,7 +896,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_ownedEndFeature",
+    @JoinTable(name = "PathStepExpression_ownedEndFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getOwnedEndFeature() {
@@ -834,7 +922,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_ownedFeature",
+    @JoinTable(name = "PathStepExpression_ownedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getOwnedFeature() {
@@ -860,7 +948,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_ownedFeatureMembership",
+    @JoinTable(name = "PathStepExpression_ownedFeatureMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureMembership> getOwnedFeatureMembership() {
@@ -886,7 +974,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "GeneralizationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_ownedGeneralization",
+    @JoinTable(name = "PathStepExpression_ownedGeneralization",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Generalization> getOwnedGeneralization() {
@@ -912,7 +1000,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_ownedImport",
+    @JoinTable(name = "PathStepExpression_ownedImport",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Import> getOwnedImport() {
@@ -938,7 +1026,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_ownedMember",
+    @JoinTable(name = "PathStepExpression_ownedMember",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getOwnedMember() {
@@ -964,7 +1052,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_ownedMembership",
+    @JoinTable(name = "PathStepExpression_ownedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getOwnedMembership() {
@@ -990,7 +1078,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "RedefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_ownedRedefinition",
+    @JoinTable(name = "PathStepExpression_ownedRedefinition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Redefinition> getOwnedRedefinition() {
@@ -1014,7 +1102,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_ownedRelationship",
+    @JoinTable(name = "PathStepExpression_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Relationship> getOwnedRelationship() {
@@ -1040,7 +1128,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "SubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_ownedSubsetting",
+    @JoinTable(name = "PathStepExpression_ownedSubsetting",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Subsetting> getOwnedSubsetting() {
@@ -1066,7 +1154,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_ownedTextualRepresentation",
+    @JoinTable(name = "PathStepExpression_ownedTextualRepresentation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<TextualRepresentation> getOwnedTextualRepresentation() {
@@ -1092,7 +1180,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeFeaturingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_ownedTypeFeaturing",
+    @JoinTable(name = "PathStepExpression_ownedTypeFeaturing",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<TypeFeaturing> getOwnedTypeFeaturing() {
@@ -1118,7 +1206,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_ownedTyping",
+    @JoinTable(name = "PathStepExpression_ownedTyping",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureTyping> getOwnedTyping() {
@@ -1144,7 +1232,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownerId", table = "QueryPathExpression")
+    @JoinColumn(name = "ownerId", table = "PathStepExpression")
     public Element getOwner() {
         return owner;
     }
@@ -1163,7 +1251,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningFeatureMembershipId", table = "QueryPathExpression")
+    @JoinColumn(name = "owningFeatureMembershipId", table = "PathStepExpression")
     public FeatureMembership getOwningFeatureMembership() {
         return owningFeatureMembership;
     }
@@ -1182,7 +1270,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningMembershipId", table = "QueryPathExpression")
+    @JoinColumn(name = "owningMembershipId", table = "PathStepExpression")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -1203,7 +1291,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "QueryPathExpression")
+    @JoinColumn(name = "owningNamespaceId", table = "PathStepExpression")
     public Namespace getOwningNamespace() {
         return owningNamespace;
     }
@@ -1222,7 +1310,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelationshipId", table = "QueryPathExpression")
+    @JoinColumn(name = "owningRelationshipId", table = "PathStepExpression")
     public Relationship getOwningRelationship() {
         return owningRelationship;
     }
@@ -1243,7 +1331,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningTypeId", table = "QueryPathExpression")
+    @JoinColumn(name = "owningTypeId", table = "PathStepExpression")
     public Type getOwningType() {
         return owningType;
     }
@@ -1264,7 +1352,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_parameter",
+    @JoinTable(name = "PathStepExpression_parameter",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getParameter() {
@@ -1290,7 +1378,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "qualifiedName", table = "QueryPathExpression")
+    @javax.persistence.Column(name = "qualifiedName", table = "PathStepExpression")
     public String getQualifiedName() {
         return qualifiedName;
     }
@@ -1303,27 +1391,6 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("referent")
-    private Feature referent;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "referentType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "referentId", table = "QueryPathExpression")
-    public Feature getReferent() {
-        return referent;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
-    public void setReferent(Feature referent) {
-        this.referent = referent;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("result")
     private Feature result;
 
@@ -1331,7 +1398,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "resultType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "resultId", table = "QueryPathExpression")
+    @JoinColumn(name = "resultId", table = "PathStepExpression")
     public Feature getResult() {
         return result;
     }
@@ -1352,7 +1419,7 @@ public class QueryPathExpressionImpl extends MofObjectImpl implements QueryPathE
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "QueryPathExpression_type",
+    @JoinTable(name = "PathStepExpression_type",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Type> getType() {

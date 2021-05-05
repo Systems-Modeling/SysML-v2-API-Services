@@ -29,4 +29,6 @@ public interface Function extends Behavior, MofObject {
     Collection<? extends Expression> getExpression();
 
     Feature getResult();
+
+    Boolean getIsModelLevelEvaluable();
 }

@@ -48,6 +48,7 @@ public abstract class StepImpl_ extends org.omg.sysml.metamodel.impl.MofObjectIm
 	public static volatile ListAttribute<StepImpl, Behavior> behavior;
 	public static volatile SingularAttribute<StepImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<StepImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<StepImpl, String> effectiveName;
 	public static volatile SingularAttribute<StepImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<StepImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<StepImpl, UUID> identifier;
@@ -93,6 +94,7 @@ public abstract class StepImpl_ extends org.omg.sysml.metamodel.impl.MofObjectIm
 	public static final String BEHAVIOR = "behavior";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";

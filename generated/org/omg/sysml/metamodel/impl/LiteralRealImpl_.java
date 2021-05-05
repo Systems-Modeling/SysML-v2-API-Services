@@ -48,6 +48,7 @@ public abstract class LiteralRealImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static volatile ListAttribute<LiteralRealImpl, Behavior> behavior;
 	public static volatile SingularAttribute<LiteralRealImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<LiteralRealImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<LiteralRealImpl, String> effectiveName;
 	public static volatile SingularAttribute<LiteralRealImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<LiteralRealImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<LiteralRealImpl, Double> value;
@@ -95,6 +96,7 @@ public abstract class LiteralRealImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static final String BEHAVIOR = "behavior";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String VALUE = "value";

@@ -8,6 +8,7 @@
         "aliasId": {"@type": "xsd:string"},
         "documentation": {"@type": "@id"},
         "documentationComment": {"@type": "@id"},
+        "effectiveName": {"@type": "xsd:string"},
         "endFeature": {"@type": "@id"},
         "endOwningType": {"@type": "@id"},
         "exposedNamespace": {"@type": "@id"},
@@ -41,6 +42,7 @@
         "nestedAttribute": {"@type": "@id"},
         "nestedCalculation": {"@type": "@id"},
         "nestedCase": {"@type": "@id"},
+        "nestedConcern": {"@type": "@id"},
         "nestedConnection": {"@type": "@id"},
         "nestedConstraint": {"@type": "@id"},
         "nestedEnumeration": {"@type": "@id"},
@@ -52,6 +54,7 @@
         "nestedReference": {"@type": "@id"},
         "nestedRendering": {"@type": "@id"},
         "nestedRequirement": {"@type": "@id"},
+        "nestedStakeholder": {"@type": "@id"},
         "nestedState": {"@type": "@id"},
         "nestedTransition": {"@type": "@id"},
         "nestedUsage": {"@type": "@id"},
@@ -85,7 +88,6 @@
         "owningUsage": {"@type": "@id"},
         "partDefinition": {"@type": "@id"},
         "qualifiedName": {"@type": "xsd:string"},
-        "rendering": {"@type": "@id"},
         "satisfiedViewpoint": {"@type": "@id"},
         "type": {"@type": "@id"},
         "usage": {"@type": "@id"},
@@ -93,6 +95,7 @@
         "variantMembership": {"@type": "@id"},
         "viewCondition": {"@type": "@id"},
         "viewDefinition": {"@type": "@id"},
+        "viewRendering": {"@type": "@id"},
         "viewedElement": {"@type": "@id"}
 
     }

@@ -45,6 +45,7 @@ public abstract class MultiplicityImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static volatile ListAttribute<MultiplicityImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<MultiplicityImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<MultiplicityImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<MultiplicityImpl, String> effectiveName;
 	public static volatile SingularAttribute<MultiplicityImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<MultiplicityImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<MultiplicityImpl, UUID> identifier;
@@ -88,6 +89,7 @@ public abstract class MultiplicityImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";
