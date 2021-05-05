@@ -36,6 +36,7 @@ public abstract class PackageImpl_ extends org.omg.sysml.metamodel.impl.MofObjec
 	public static volatile ListAttribute<PackageImpl, Element> member;
 	public static volatile SingularAttribute<PackageImpl, String> name;
 	public static volatile ListAttribute<PackageImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<PackageImpl, String> effectiveName;
 	public static volatile ListAttribute<PackageImpl, Element> ownedMember;
 	public static volatile ListAttribute<PackageImpl, Membership> ownedMembership;
 
@@ -55,6 +56,7 @@ public abstract class PackageImpl_ extends org.omg.sysml.metamodel.impl.MofObjec
 	public static final String MEMBER = "member";
 	public static final String NAME = "name";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 

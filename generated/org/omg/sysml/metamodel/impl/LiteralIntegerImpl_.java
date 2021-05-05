@@ -48,6 +48,7 @@ public abstract class LiteralIntegerImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile ListAttribute<LiteralIntegerImpl, Behavior> behavior;
 	public static volatile SingularAttribute<LiteralIntegerImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<LiteralIntegerImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<LiteralIntegerImpl, String> effectiveName;
 	public static volatile SingularAttribute<LiteralIntegerImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<LiteralIntegerImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<LiteralIntegerImpl, Integer> value;
@@ -95,6 +96,7 @@ public abstract class LiteralIntegerImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String BEHAVIOR = "behavior";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String VALUE = "value";

@@ -32,6 +32,7 @@ public abstract class FeatureTypingImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static volatile ListAttribute<FeatureTypingImpl, Element> relatedElement;
 	public static volatile SingularAttribute<FeatureTypingImpl, String> name;
 	public static volatile ListAttribute<FeatureTypingImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<FeatureTypingImpl, String> effectiveName;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -48,6 +49,7 @@ public abstract class FeatureTypingImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NAME = "name";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 
 }
 

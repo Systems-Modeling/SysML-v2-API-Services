@@ -85,4 +85,8 @@ public interface Usage extends Feature, MofObject {
     Collection<? extends EnumerationUsage> getNestedEnumeration();
 
     Collection<? extends AllocationUsage> getNestedAllocation();
+
+    Collection<? extends ConcernUsage> getNestedConcern();
+
+    Collection<? extends StakeholderUsage> getNestedStakeholder();
 }

@@ -13,11 +13,11 @@ public abstract class QueryImpl_ extends org.omg.sysml.record.impl.RecordImpl_ {
 
 	public static volatile SetAttribute<QueryImpl, String> select;
 	public static volatile SetAttribute<QueryImpl, ElementIdentityImpl> scope;
-	public static volatile SingularAttribute<QueryImpl, ProjectImpl> containingProject;
+	public static volatile SingularAttribute<QueryImpl, ProjectImpl> owningProject;
 
 	public static final String SELECT = "select";
 	public static final String SCOPE = "scope";
-	public static final String CONTAINING_PROJECT = "containingProject";
+	public static final String OWNING_PROJECT = "owningProject";
 
 }
 

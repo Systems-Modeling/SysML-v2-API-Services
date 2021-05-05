@@ -30,7 +30,7 @@ public interface ViewDefinition extends PartDefinition, MofObject {
 
     Collection<? extends ViewpointUsage> getSatisfiedViewpoint();
 
-    RenderingUsage getRendering();
+    RenderingUsage getViewRendering();
 
     Collection<? extends Expression> getViewCondition();
 }

@@ -19,30 +19,32 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 public abstract class ExternalElementImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
 	public static volatile SingularAttribute<ExternalElementImpl, UUID> identifier;
-	public static volatile CollectionAttribute<ExternalElementImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile ListAttribute<ExternalElementImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ExternalElementImpl, Element> ownedElement;
-	public static volatile SingularAttribute<ExternalElementImpl, URI> resourceIdentifier;
-	public static volatile SingularAttribute<ExternalElementImpl, String> humanId;
-	public static volatile ListAttribute<ExternalElementImpl, String> aliasId;
 	public static volatile ListAttribute<ExternalElementImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<ExternalElementImpl, String> qualifiedName;
 	public static volatile ListAttribute<ExternalElementImpl, Documentation> documentation;
+	public static volatile CollectionAttribute<ExternalElementImpl, TextualRepresentation> ownedTextualRepresentation;
+	public static volatile SingularAttribute<ExternalElementImpl, URI> resourceIdentifier;
+	public static volatile SingularAttribute<ExternalElementImpl, String> humanId;
+	public static volatile ListAttribute<ExternalElementImpl, String> aliasId;
 	public static volatile SingularAttribute<ExternalElementImpl, String> name;
 	public static volatile ListAttribute<ExternalElementImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<ExternalElementImpl, String> effectiveName;
 
 	public static final String IDENTIFIER = "identifier";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
-	public static final String RESOURCE_IDENTIFIER = "resourceIdentifier";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
+	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
+	public static final String RESOURCE_IDENTIFIER = "resourceIdentifier";
+	public static final String HUMAN_ID = "humanId";
+	public static final String ALIAS_ID = "aliasId";
 	public static final String NAME = "name";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 
 }
 

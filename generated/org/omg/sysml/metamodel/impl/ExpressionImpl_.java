@@ -48,6 +48,7 @@ public abstract class ExpressionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile ListAttribute<ExpressionImpl, Behavior> behavior;
 	public static volatile SingularAttribute<ExpressionImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<ExpressionImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<ExpressionImpl, String> effectiveName;
 	public static volatile SingularAttribute<ExpressionImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<ExpressionImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<ExpressionImpl, UUID> identifier;
@@ -94,6 +95,7 @@ public abstract class ExpressionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String BEHAVIOR = "behavior";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";

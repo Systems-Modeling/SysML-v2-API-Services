@@ -42,6 +42,7 @@ public abstract class InteractionImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static volatile ListAttribute<InteractionImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<InteractionImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<InteractionImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<InteractionImpl, String> effectiveName;
 	public static volatile SingularAttribute<InteractionImpl, UUID> identifier;
 	public static volatile ListAttribute<InteractionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<InteractionImpl, Annotation> ownedAnnotation;
@@ -84,6 +85,7 @@ public abstract class InteractionImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

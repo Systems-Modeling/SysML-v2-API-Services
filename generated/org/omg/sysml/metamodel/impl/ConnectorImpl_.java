@@ -67,6 +67,7 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile ListAttribute<ConnectorImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<ConnectorImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<ConnectorImpl, Feature> inheritedFeature;
+	public static volatile SingularAttribute<ConnectorImpl, String> effectiveName;
 	public static volatile ListAttribute<ConnectorImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ConnectorImpl, Element> ownedElement;
 	public static volatile ListAttribute<ConnectorImpl, Relationship> ownedRelationship;
@@ -119,6 +120,7 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";

@@ -45,6 +45,7 @@ public abstract class TargetEndImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile ListAttribute<TargetEndImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<TargetEndImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<TargetEndImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<TargetEndImpl, String> effectiveName;
 	public static volatile SingularAttribute<TargetEndImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<TargetEndImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<TargetEndImpl, UUID> identifier;
@@ -88,6 +89,7 @@ public abstract class TargetEndImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";

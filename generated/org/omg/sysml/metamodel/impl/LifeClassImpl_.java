@@ -36,6 +36,7 @@ public abstract class LifeClassImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile ListAttribute<LifeClassImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<LifeClassImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<LifeClassImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<LifeClassImpl, String> effectiveName;
 	public static volatile SingularAttribute<LifeClassImpl, UUID> identifier;
 	public static volatile ListAttribute<LifeClassImpl, Membership> importedMembership;
 	public static volatile ListAttribute<LifeClassImpl, Annotation> ownedAnnotation;
@@ -69,6 +70,7 @@ public abstract class LifeClassImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

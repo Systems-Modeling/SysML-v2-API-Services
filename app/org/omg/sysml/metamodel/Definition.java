@@ -81,4 +81,8 @@ public interface Definition extends Classifier, MofObject {
     Collection<? extends EnumerationUsage> getOwnedEnumeration();
 
     Collection<? extends AllocationUsage> getOwnedAllocation();
+
+    Collection<? extends ConcernUsage> getOwnedConcern();
+
+    Collection<? extends StakeholderUsage> getOwnedStakeholder();
 }

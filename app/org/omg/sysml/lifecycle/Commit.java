@@ -27,9 +27,9 @@ import java.time.ZonedDateTime;
 import java.util.Set;
 
 public interface Commit extends Record {
-    Project getContainingProject();
+    Project getOwningProject();
 
-    void setContainingProject(Project containingProject);
+    void setOwningProject(Project owningProject);
 
     Set<ElementVersion> getChange();
 

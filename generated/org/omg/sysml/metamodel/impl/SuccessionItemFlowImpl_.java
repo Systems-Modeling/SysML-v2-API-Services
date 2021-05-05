@@ -84,6 +84,7 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.metamodel.im
 	public static volatile ListAttribute<SuccessionItemFlowImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Behavior> behavior;
+	public static volatile SingularAttribute<SuccessionItemFlowImpl, String> effectiveName;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, ItemFlowFeature> itemFlowFeature;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Membership> importedMembership;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Element> ownedElement;
@@ -147,6 +148,7 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.metamodel.im
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String ITEM_FLOW_FEATURE = "itemFlowFeature";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";

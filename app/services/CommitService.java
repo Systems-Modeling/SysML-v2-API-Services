@@ -21,8 +21,10 @@
 
 package services;
 
+import dao.BranchDao;
 import dao.CommitDao;
 import dao.ProjectDao;
+import org.omg.sysml.lifecycle.Branch;
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.Project;
 
@@ -37,21 +39,25 @@ import java.util.UUID;
 public class CommitService extends BaseService<Commit, CommitDao> {
 
     private final ProjectDao projectDao;
+    private final BranchDao branchDao;
 
     @Inject
-    public CommitService(CommitDao commitDao, ProjectDao projectDao) {
+    public CommitService(CommitDao commitDao, ProjectDao projectDao, BranchDao branchDao) {
         super(commitDao);
         this.projectDao = projectDao;
+        this.branchDao = branchDao;
     }
 
-    public Optional<Commit> create(Commit commit) {
-        return commit.getId() != null ? dao.update(commit) : dao.persist(commit);
-    }
-
-    public Optional<Commit> create(UUID projectId, Commit commit) {
-        commit.setContainingProject(projectDao.findById(projectId)
-                .orElseThrow(() -> new IllegalArgumentException("Project " + projectId + " not found.")));
-        return create(commit);
+    public Optional<Commit> create(UUID projectId, UUID branchId, Commit commit) {
+        Project project = projectDao.findById(projectId)
+                .orElseThrow(() -> new IllegalArgumentException("Project " + projectId + " not found"));
+        commit.setOwningProject(project);
+        Branch branch = branchId != null ?
+                branchDao.findByProjectAndId(project, branchId)
+                        .orElseThrow(() -> new IllegalArgumentException("Branch " + branchId + " not found")) :
+                Optional.ofNullable(project.getDefaultBranch())
+                        .orElseThrow(() -> new IllegalStateException("Branch not specified and project does not have default branch"));
+        return dao.persist(commit, branch);
     }
 
     public List<Commit> getByProjectId(UUID projectId, UUID after, UUID before, int maxResults) {
@@ -63,10 +69,5 @@ public class CommitService extends BaseService<Commit, CommitDao> {
     public Optional<Commit> getByProjectIdAndId(UUID projectId, UUID commitId) {
         return projectDao.findById(projectId)
                 .flatMap(project -> dao.findByProjectAndIdResolved(project, commitId));
-    }
-
-    public Optional<Commit> getHeadByProjectId(UUID projectId) {
-        return projectDao.findById(projectId)
-                .flatMap(dao::findHeadByProject);
     }
 }

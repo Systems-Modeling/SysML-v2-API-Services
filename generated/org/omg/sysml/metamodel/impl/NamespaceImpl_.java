@@ -34,6 +34,7 @@ public abstract class NamespaceImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile ListAttribute<NamespaceImpl, Element> member;
 	public static volatile SingularAttribute<NamespaceImpl, String> name;
 	public static volatile ListAttribute<NamespaceImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<NamespaceImpl, String> effectiveName;
 	public static volatile ListAttribute<NamespaceImpl, Element> ownedMember;
 	public static volatile ListAttribute<NamespaceImpl, Membership> ownedMembership;
 
@@ -52,6 +53,7 @@ public abstract class NamespaceImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String MEMBER = "member";
 	public static final String NAME = "name";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 

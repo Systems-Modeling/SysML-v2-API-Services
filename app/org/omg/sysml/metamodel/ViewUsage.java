@@ -32,7 +32,7 @@ public interface ViewUsage extends PartUsage, MofObject {
 
     Collection<? extends Namespace> getExposedNamespace();
 
-    RenderingUsage getRendering();
+    RenderingUsage getViewRendering();
 
     Collection<? extends Expression> getViewCondition();
 

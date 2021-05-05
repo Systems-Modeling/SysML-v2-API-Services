@@ -39,11 +39,13 @@ public abstract class PredicateImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile ListAttribute<PredicateImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<PredicateImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<PredicateImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<PredicateImpl, String> effectiveName;
 	public static volatile SingularAttribute<PredicateImpl, UUID> identifier;
 	public static volatile ListAttribute<PredicateImpl, Membership> importedMembership;
 	public static volatile ListAttribute<PredicateImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<PredicateImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<PredicateImpl, Expression> expression;
+	public static volatile SingularAttribute<PredicateImpl, Boolean> isModelLevelEvaluable;
 	public static volatile ListAttribute<PredicateImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<PredicateImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<PredicateImpl, String> qualifiedName;
@@ -75,11 +77,13 @@ public abstract class PredicateImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String EXPRESSION = "expression";
+	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String QUALIFIED_NAME = "qualifiedName";

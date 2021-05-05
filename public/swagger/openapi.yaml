@@ -5,6 +5,7 @@ info:
   version: 1.0.0
 tags:
   - name: Project
+  - name: Branch
   - name: Commit
   - name: Element
   - name: Relationship
@@ -58,8 +59,8 @@ paths:
       produces:
         - application/json
       parameters:
-        - in: body
-          name: body
+        - name: body
+          in: body
           schema:
             $ref: '#/definitions/Project'
       responses:
@@ -93,6 +94,112 @@ paths:
           description: Ok
           schema:
             $ref: '#/definitions/Project'
+        404:
+          $ref: '#/responses/NotFound'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+  /projects/{projectId}/branches:
+    parameters:
+      - name: projectId
+        in: path
+        description: ID of the project
+        type: string
+        format: uuid
+        required: true
+    get:
+      parameters:
+        - name: page[after]
+          in: query
+          description: Page after
+          type: string
+          required: false
+        - name: page[before]
+          in: query
+          description: Page before
+          type: string
+          required: false
+        - name: page[size]
+          in: query
+          description: Page size
+          type: integer
+          required: false
+      tags:
+        - Branch
+      operationId: getBranchesByProject
+      summary: Get branches by project
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Branch'
+        404:
+          $ref: '#/responses/NotFound'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    post:
+      tags:
+        - Branch
+      operationId: postBranchByProject
+      summary: Create branch by project
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Branch'
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/Branch'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+  /projects/{projectId}/branches/{branchId}:
+    parameters:
+      - name: projectId
+        in: path
+        description: ID of the project
+        type: string
+        format: uuid
+        required: true
+      - name: branchId
+        in: path
+        description: ID of the branch
+        type: string
+        format: uuid
+        required: true
+    get:
+      tags:
+        - Branch
+      operationId: getBranchesByProjectAndId
+      summary: Get branch by project and ID
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Branch'
         404:
           $ref: '#/responses/NotFound'
         415:
@@ -157,11 +264,17 @@ paths:
       produces:
         - application/json
       parameters:
-        - in: body
-          name: body
+        - name: body
+          in: body
           required: true
           schema:
             $ref: '#/definitions/Commit'
+        - name: branchId
+          in: query
+          description: ID of the branch - project's default branch if unspecified
+          type: string
+          format: uuid
+          required: false
       responses:
         201:
           description: Created
@@ -192,34 +305,6 @@ paths:
         - Commit
       operationId: getCommitByProjectAndId
       summary: Get commit by project and ID
-      produces:
-        - application/json
-      responses:
-        200:
-          description: Ok
-          schema:
-            $ref: '#/definitions/Commit'
-        404:
-          $ref: '#/responses/NotFound'
-        415:
-          $ref: '#/responses/BadContentType'
-        500:
-          $ref: '#/responses/InternalServerError'
-        default:
-          $ref: '#/responses/Default'
-  /projects/{projectId}/head:
-    parameters:
-      - name: projectId
-        in: path
-        description: ID of the project
-        type: string
-        format: uuid
-        required: true
-    get:
-      tags:
-        - Commit
-      operationId: getHeadCommitByProject
-      summary: Get head commit by project
       produces:
         - application/json
       responses:
@@ -504,8 +589,8 @@ paths:
       produces:
         - application/json
       parameters:
-        - in: body
-          name: body
+        - name: body
+          in: body
           required: true
           schema:
             $ref: '#/definitions/Query'
@@ -622,8 +707,8 @@ paths:
         - application/json
         - application/ld+json
       parameters:
-        - in: body
-          name: body
+        - name: body
+          in: body
           required: true
           schema:
             $ref: '#/definitions/Query'
@@ -654,8 +739,8 @@ paths:
         - application/json
         - application/ld+json
       parameters:
-        - in: body
-          name: body
+        - name: body
+          in: body
           required: true
           schema:
             $ref: '#/definitions/Query'
@@ -675,12 +760,6 @@ paths:
         default:
           $ref: '#/responses/Default'
 definitions:
-  Record:
-    type: object
-    properties:
-      id:
-        type: string
-        format: uuid
   Project:
     type: object
     properties:
@@ -690,6 +769,32 @@ definitions:
           - 'Project'
       description:
         type: string
+      id:
+        type: string
+        format: uuid
+      name:
+        type: string
+  Branch:
+    type: object
+    properties:
+      '@type':
+        type: string
+        enum:
+          - 'Branch'
+      head:
+        description: Commit
+        type: object
+        properties:
+          id:
+            type: string
+            format: uuid
+      owningProject:
+        description: Project
+        type: object
+        properties:
+          id:
+            type: string
+            format: uuid
       id:
         type: string
         format: uuid
@@ -706,7 +811,8 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/ElementVersion'
-      containingProject:
+      owningProject:
+        description: Project
         type: object
         properties:
           id:
@@ -716,7 +822,12 @@ definitions:
         type: string
         format: uuid
       previousCommit:
-        $ref: '#/definitions/Record'
+        description: Commit
+        type: object
+        properties:
+          id:
+            type: string
+            format: uuid
   ElementVersion:
     type: object
     properties:
@@ -786,7 +897,8 @@ definitions:
         type: string
         enum:
           - 'Query'
-      containingProject:
+      owningProject:
+        description: Project
         type: object
         properties:
           id:

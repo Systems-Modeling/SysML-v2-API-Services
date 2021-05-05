@@ -32,6 +32,7 @@ public abstract class ConjugationImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static volatile ListAttribute<ConjugationImpl, Element> relatedElement;
 	public static volatile SingularAttribute<ConjugationImpl, String> name;
 	public static volatile ListAttribute<ConjugationImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<ConjugationImpl, String> effectiveName;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -48,6 +49,7 @@ public abstract class ConjugationImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NAME = "name";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 
 }
 

@@ -48,6 +48,7 @@ public abstract class LiteralExpressionImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile ListAttribute<LiteralExpressionImpl, Behavior> behavior;
 	public static volatile SingularAttribute<LiteralExpressionImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<LiteralExpressionImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<LiteralExpressionImpl, String> effectiveName;
 	public static volatile SingularAttribute<LiteralExpressionImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<LiteralExpressionImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<LiteralExpressionImpl, UUID> identifier;
@@ -94,6 +95,7 @@ public abstract class LiteralExpressionImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String BEHAVIOR = "behavior";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";

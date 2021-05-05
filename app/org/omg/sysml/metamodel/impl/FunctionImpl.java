@@ -145,6 +145,26 @@ public class FunctionImpl extends MofObjectImpl implements Function {
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("effectiveName")
+    private String effectiveName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "effectiveName", table = "Function")
+    public String getEffectiveName() {
+        return effectiveName;
+    }
+
+    @JsonSetter
+    public void setEffectiveName(String effectiveName) {
+        this.effectiveName = effectiveName;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("endFeature")
     private List<Feature> endFeature;
 
@@ -416,6 +436,24 @@ public class FunctionImpl extends MofObjectImpl implements Function {
     @JsonSetter
     public void setIsConjugated(Boolean isConjugated) {
         this.isConjugated = isConjugated;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("isModelLevelEvaluable")
+    private Boolean isModelLevelEvaluable;
+
+    @JsonGetter
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "isModelLevelEvaluable", table = "Function")
+    public Boolean getIsModelLevelEvaluable() {
+        return isModelLevelEvaluable;
+    }
+
+    @JsonSetter
+    public void setIsModelLevelEvaluable(Boolean isModelLevelEvaluable) {
+        this.isModelLevelEvaluable = isModelLevelEvaluable;
     }
 
 

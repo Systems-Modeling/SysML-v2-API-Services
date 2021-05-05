@@ -25,6 +25,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface QueryPathExpression extends FeatureReferenceExpression, MofObject {
+public interface AddressedConcernMembership extends RequirementConstraintMembership, MofObject {
+    RequirementConstraintKind getKind();
 
+    ConcernUsage getOwnedConcern();
+
+    ConcernUsage getReferencedConcern();
 }

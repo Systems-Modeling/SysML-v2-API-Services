@@ -72,6 +72,7 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile ListAttribute<SuccessionImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<SuccessionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<SuccessionImpl, Feature> inheritedFeature;
+	public static volatile SingularAttribute<SuccessionImpl, String> effectiveName;
 	public static volatile ListAttribute<SuccessionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<SuccessionImpl, Element> ownedElement;
 	public static volatile ListAttribute<SuccessionImpl, Relationship> ownedRelationship;
@@ -127,6 +128,7 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";

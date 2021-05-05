@@ -60,7 +60,7 @@ public class QueryService extends BaseService<Query, QueryDao> {
     }
 
     public Optional<Query> create(UUID projectId, Query query) {
-        query.setContainingProject(projectDao.findById(projectId).orElseThrow(() -> new IllegalArgumentException("Project " + projectId + " not found.")));
+        query.setOwningProject(projectDao.findById(projectId).orElseThrow(() -> new IllegalArgumentException("Project " + projectId + " not found")));
         return create(query);
     }
 
@@ -75,7 +75,7 @@ public class QueryService extends BaseService<Query, QueryDao> {
     }
 
     public QueryResults getQueryResultsByProjectIdQueryId(UUID projectId, UUID queryId, @Nullable UUID commitId) {
-        return getQueryResults(projectId, project -> dao.findByProjectAndId(project, queryId).orElseThrow(() -> new IllegalArgumentException("Query " + queryId + " not found.")), commitId);
+        return getQueryResults(projectId, project -> dao.findByProjectAndId(project, queryId).orElseThrow(() -> new IllegalArgumentException("Query " + queryId + " not found")), commitId);
     }
 
     public QueryResults getQueryResultsByProjectIdQuery(UUID projectId, Query query, @Nullable UUID commitId) {
@@ -83,11 +83,21 @@ public class QueryService extends BaseService<Query, QueryDao> {
     }
 
     private QueryResults getQueryResults(UUID projectId, Function<Project, Query> queryFunction, @Nullable UUID commitId) {
-        Project project = projectDao.findById(projectId).orElseThrow(() -> new IllegalArgumentException("Project " + projectId + " not found."));
+        Project project = projectDao.findById(projectId).orElseThrow(() -> new IllegalArgumentException("Project " + projectId + " not found"));
 
-        Commit commit = commitId != null ?
-                commitDao.findByProjectAndId(project, commitId).orElseThrow(() -> new IllegalArgumentException("Commit " + commitId + " not found.")) :
-                commitDao.findHeadByProject(project).orElseThrow(() -> new IllegalStateException("Project " + projectId + " has no commits."));
+        final Commit commit;
+        if (commitId != null) {
+            commit = commitDao.findByProjectAndId(project, commitId).orElseThrow(() -> new IllegalArgumentException("Commit " + commitId + " not found"));
+        }
+        else if (project.getDefaultBranch() == null) {
+            throw new IllegalStateException("Project does not have a default branch");
+        }
+        else if (project.getDefaultBranch().getHead() == null) {
+            throw new IllegalStateException("Project's default branch does not have a head");
+        }
+        else {
+            commit = project.getDefaultBranch().getHead();
+        }
 
         Query query = queryFunction.apply(project);
         AllowedPropertyFilter propertyFilter = getPropertyFilter(query);

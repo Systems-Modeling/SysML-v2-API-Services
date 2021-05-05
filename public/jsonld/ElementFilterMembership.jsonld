@@ -9,6 +9,8 @@
         "condition": {"@type": "@id"},
         "documentation": {"@type": "@id"},
         "documentationComment": {"@type": "@id"},
+        "effectiveMemberName": {"@type": "xsd:string"},
+        "effectiveName": {"@type": "xsd:string"},
         "humanId": {"@type": "xsd:string"},
         "identifier": {"@type": "dcterms:identifier"},
         "memberElement": {"@type": "@id"},

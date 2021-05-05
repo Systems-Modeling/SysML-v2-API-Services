@@ -22,7 +22,6 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import config.MetamodelProvider;
 import jackson.JacksonHelper;
 import org.omg.sysml.lifecycle.Commit;
@@ -50,14 +49,14 @@ public class CommitController extends BaseController {
         this.metamodelProvider = metamodelProvider;
     }
 
-    public Result createWithProjectId(UUID projectId, Http.Request request) {
+    public Result createWithProjectId(UUID projectId, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<UUID> branchId, Http.Request request) {
         JsonNode requestBodyJson = request.body().asJson();
         Commit requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Commit.class));
         if (requestedObject.getId() != null || requestedObject.getTimestamp() != null) {
             return Results.badRequest();
         }
         requestedObject.setTimestamp(ZonedDateTime.now());
-        Optional<Commit> response = commitService.create(projectId, requestedObject);
+        Optional<Commit> response = commitService.create(projectId, branchId.orElse(null), requestedObject);
         return response.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 
@@ -90,11 +89,5 @@ public class CommitController extends BaseController {
     public Result byProjectAndId(UUID projectId, UUID commitId) {
         Optional<Commit> commit = commitService.getByProjectIdAndId(projectId, commitId);
         return commit.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
-    }
-
-    public Result headByProject(UUID projectId) {
-        Optional<Commit> commit = commitService.getHeadByProjectId(projectId);
-        return commit.map(e -> ok(JacksonHelper.objectToTree(commit, Json::mapper, mapper -> mapper.writer().withView(CommitImpl.Views.Compact.class), ObjectMapper::reader)))
-                .orElseGet(Results::notFound);
     }
 }

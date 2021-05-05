@@ -45,6 +45,7 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile ListAttribute<MetadataFeatureImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<MetadataFeatureImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<MetadataFeatureImpl, String> effectiveName;
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<MetadataFeatureImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<MetadataFeatureImpl, UUID> identifier;
@@ -88,6 +89,7 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";

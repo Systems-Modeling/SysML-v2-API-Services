@@ -36,7 +36,7 @@ import java.util.function.Function;
 import java.util.stream.Stream;
 
 public abstract class JpaDao<E> implements Dao<E> {
-    
+
     protected final JPAManager jpaManager;
 
     protected JpaDao(JPAManager jpaManager) {
@@ -45,13 +45,20 @@ public abstract class JpaDao<E> implements Dao<E> {
 
     @Override
     public Optional<E> update(E e) {
-        return Optional.ofNullable(jpaManager.transact(em -> {
-            EntityTransaction transaction = em.getTransaction();
-            transaction.begin();
-            em.merge(e);
-            transaction.commit();
-            return e;
-        }));
+        return jpaManager.transact(em -> {
+            return update(e, em);
+        });
+    }
+
+    protected Optional<E> update(E e, EntityManager em) {
+        if (e == null) {
+            return Optional.empty();
+        }
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        e = em.merge(e);
+        transaction.commit();
+        return Optional.of(e);
     }
 
     @Override
@@ -62,11 +69,14 @@ public abstract class JpaDao<E> implements Dao<E> {
     }
 
     protected Optional<E> persist(E e, EntityManager em) {
+        if (e == null) {
+            return Optional.empty();
+        }
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
         em.persist(e);
         transaction.commit();
-        return Optional.ofNullable(e);
+        return Optional.of(e);
     }
 
     @Override

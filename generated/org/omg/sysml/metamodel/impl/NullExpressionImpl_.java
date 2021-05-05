@@ -48,6 +48,7 @@ public abstract class NullExpressionImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile ListAttribute<NullExpressionImpl, Behavior> behavior;
 	public static volatile SingularAttribute<NullExpressionImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<NullExpressionImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<NullExpressionImpl, String> effectiveName;
 	public static volatile SingularAttribute<NullExpressionImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<NullExpressionImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<NullExpressionImpl, UUID> identifier;
@@ -94,6 +95,7 @@ public abstract class NullExpressionImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String BEHAVIOR = "behavior";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";

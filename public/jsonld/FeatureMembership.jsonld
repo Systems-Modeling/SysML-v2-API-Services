@@ -9,6 +9,8 @@
         "direction": {"@type": "@vocab"},
         "documentation": {"@type": "@id"},
         "documentationComment": {"@type": "@id"},
+        "effectiveMemberName": {"@type": "xsd:string"},
+        "effectiveName": {"@type": "xsd:string"},
         "featureOfType": {"@type": "@id"},
         "featuringType": {"@type": "@id"},
         "humanId": {"@type": "xsd:string"},

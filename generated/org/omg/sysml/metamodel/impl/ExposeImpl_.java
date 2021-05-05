@@ -35,6 +35,7 @@ public abstract class ExposeImpl_ extends org.omg.sysml.metamodel.impl.MofObject
 	public static volatile ListAttribute<ExposeImpl, Element> relatedElement;
 	public static volatile SingularAttribute<ExposeImpl, String> name;
 	public static volatile ListAttribute<ExposeImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<ExposeImpl, String> effectiveName;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -53,6 +54,7 @@ public abstract class ExposeImpl_ extends org.omg.sysml.metamodel.impl.MofObject
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NAME = "name";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 
 }
 

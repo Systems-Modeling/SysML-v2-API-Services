@@ -40,6 +40,7 @@ public abstract class AssociationStructureImpl_ extends org.omg.sysml.metamodel.
 	public static volatile ListAttribute<AssociationStructureImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<AssociationStructureImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<AssociationStructureImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<AssociationStructureImpl, String> effectiveName;
 	public static volatile SingularAttribute<AssociationStructureImpl, UUID> identifier;
 	public static volatile ListAttribute<AssociationStructureImpl, Membership> importedMembership;
 	public static volatile ListAttribute<AssociationStructureImpl, Annotation> ownedAnnotation;
@@ -80,6 +81,7 @@ public abstract class AssociationStructureImpl_ extends org.omg.sysml.metamodel.
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

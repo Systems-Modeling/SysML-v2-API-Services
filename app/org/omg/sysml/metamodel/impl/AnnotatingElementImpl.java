@@ -194,6 +194,26 @@ public class AnnotatingElementImpl extends MofObjectImpl implements AnnotatingEl
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("effectiveName")
+    private String effectiveName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "effectiveName", table = "AnnotatingElement")
+    public String getEffectiveName() {
+        return effectiveName;
+    }
+
+    @JsonSetter
+    public void setEffectiveName(String effectiveName) {
+        this.effectiveName = effectiveName;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("humanId")
     private String humanId;
 

@@ -11,11 +11,15 @@ GET         /projects                                                           
 POST        /projects                                                                              controllers.ProjectController.create(request : Request)
 GET         /projects/:projectId                                                                   controllers.ProjectController.byId(projectId : java.util.UUID)
 
+# Branch endpoints
+GET         /projects/:projectId/branches                                                          controllers.BranchController.byProject(projectId : java.util.UUID, request : Request)
+POST        /projects/:projectId/branches                                                          controllers.BranchController.createWithProjectId(projectId : java.util.UUID, request : Request)
+GET         /projects/:projectId/branches/:branchId                                                controllers.BranchController.byProjectAndId(projectId : java.util.UUID, branchId : java.util.UUID)
+
 # Commit endpoints
 GET         /projects/:projectId/commits                                                           controllers.CommitController.byProject(projectId : java.util.UUID, request : Request)
-POST        /projects/:projectId/commits                                                           controllers.CommitController.createWithProjectId(projectId : java.util.UUID, request : Request)
+POST        /projects/:projectId/commits                                                           controllers.CommitController.createWithProjectId(projectId : java.util.UUID, branchId : java.util.Optional[java.util.UUID], request : Request)
 GET         /projects/:projectId/commits/:commitId                                                 controllers.CommitController.byProjectAndId(projectId : java.util.UUID, commitId : java.util.UUID)
-GET         /projects/:projectId/head                                                              controllers.CommitController.headByProject(projectId : java.util.UUID)
 
 # Element endpoints
 GET         /projects/:projectId/commits/:commitId/elements                                        controllers.ElementController.getElementsByProjectIdCommitId(projectId : java.util.UUID, commitId : java.util.UUID, request : Request)

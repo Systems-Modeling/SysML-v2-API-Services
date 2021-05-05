@@ -67,6 +67,7 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile ListAttribute<BindingConnectorImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<BindingConnectorImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<BindingConnectorImpl, Feature> inheritedFeature;
+	public static volatile SingularAttribute<BindingConnectorImpl, String> effectiveName;
 	public static volatile ListAttribute<BindingConnectorImpl, Membership> importedMembership;
 	public static volatile ListAttribute<BindingConnectorImpl, Element> ownedElement;
 	public static volatile ListAttribute<BindingConnectorImpl, Relationship> ownedRelationship;
@@ -119,6 +120,7 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
+	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";

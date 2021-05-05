@@ -26,5 +26,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface ViewpointDefinition extends RequirementDefinition, MofObject {
-
+    Collection<? extends StakeholderUsage> getViewpointStakeholder();
 }

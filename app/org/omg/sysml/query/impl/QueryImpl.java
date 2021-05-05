@@ -42,7 +42,7 @@ import java.util.Set;
 
 @Entity(name = "Query")
 public class QueryImpl extends RecordImpl implements Query {
-    private Project containingProject;
+    private Project owningProject;
     private Set<String> select;
     private Set<ElementIdentity> scope;
 /*
@@ -54,14 +54,14 @@ public class QueryImpl extends RecordImpl implements Query {
     @Override
     @ManyToOne(targetEntity = ProjectImpl.class, fetch = FetchType.LAZY)
     @JsonSerialize(as = ProjectImpl.class, using = RecordSerialization.RecordSerializer.class)
-    public Project getContainingProject() {
-        return containingProject;
+    public Project getOwningProject() {
+        return owningProject;
     }
 
     @Override
     @JsonDeserialize(as = ProjectImpl.class, using = RecordSerialization.ProjectDeserializer.class)
-    public void setContainingProject(Project containingProject) {
-        this.containingProject = containingProject;
+    public void setOwningProject(Project owningProject) {
+        this.owningProject = owningProject;
     }
 
     @Override

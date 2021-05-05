@@ -69,6 +69,32 @@ import java.util.HashSet;
 @JsonTypeName(value = "SatisfyRequirementUsage")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public class SatisfyRequirementUsageImpl extends MofObjectImpl implements SatisfyRequirementUsage {
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("addressedConcern")
+    private Collection<ConcernUsage> addressedConcern;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ConcernUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "SatisfyRequirementUsage_addressedConcern",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ConcernUsage> getAddressedConcern() {
+        if (addressedConcern == null) {
+            addressedConcern = new ArrayList<>();
+        }
+        return addressedConcern;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConcernUsageImpl.class)
+    public void setAddressedConcern(Collection<ConcernUsage> addressedConcern) {
+        this.addressedConcern = addressedConcern;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("aliasId")
     private List<String> aliasId;
 
@@ -255,6 +281,26 @@ public class SatisfyRequirementUsageImpl extends MofObjectImpl implements Satisf
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CommentImpl.class)
     public void setDocumentationComment(List<Comment> documentationComment) {
         this.documentationComment = documentationComment;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("effectiveName")
+    private String effectiveName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "effectiveName", table = "SatisfyRequirementUsage")
+    public String getEffectiveName() {
+        return effectiveName;
+    }
+
+    @JsonSetter
+    public void setEffectiveName(String effectiveName) {
+        this.effectiveName = effectiveName;
     }
 
 
@@ -989,6 +1035,32 @@ public class SatisfyRequirementUsageImpl extends MofObjectImpl implements Satisf
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedConcern")
+    private Collection<ConcernUsage> nestedConcern;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ConcernUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "SatisfyRequirementUsage_nestedConcern",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<ConcernUsage> getNestedConcern() {
+        if (nestedConcern == null) {
+            nestedConcern = new ArrayList<>();
+        }
+        return nestedConcern;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConcernUsageImpl.class)
+    public void setNestedConcern(Collection<ConcernUsage> nestedConcern) {
+        this.nestedConcern = nestedConcern;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedConnection")
     private Collection<ConnectionUsage> nestedConnection;
 
@@ -1270,6 +1342,32 @@ public class SatisfyRequirementUsageImpl extends MofObjectImpl implements Satisf
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RequirementUsageImpl.class)
     public void setNestedRequirement(Collection<RequirementUsage> nestedRequirement) {
         this.nestedRequirement = nestedRequirement;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedStakeholder")
+    private Collection<StakeholderUsage> nestedStakeholder;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "StakeholderUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "SatisfyRequirementUsage_nestedStakeholder",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<StakeholderUsage> getNestedStakeholder() {
+        if (nestedStakeholder == null) {
+            nestedStakeholder = new ArrayList<>();
+        }
+        return nestedStakeholder;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StakeholderUsageImpl.class)
+    public void setNestedStakeholder(Collection<StakeholderUsage> nestedStakeholder) {
+        this.nestedStakeholder = nestedStakeholder;
     }
 
 

@@ -24,12 +24,14 @@ package org.omg.sysml.lifecycle.impl;
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import jackson.RecordSerialization;
+import org.omg.sysml.lifecycle.Branch;
 import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.record.impl.RecordImpl;
 
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 // import info.archinnov.achilles.annotations.UDT;
 
@@ -50,6 +52,19 @@ public class ProjectImpl extends RecordImpl implements Project {
     @JsonSetter
     public void setName(String name) {
         this.name = name;
+    }
+
+    private Branch defaultBranch;
+
+    @OneToOne(targetEntity = BranchImpl.class, cascade = javax.persistence.CascadeType.ALL, fetch = FetchType.EAGER)
+    @JsonSerialize(as = BranchImpl.class, using = RecordSerialization.RecordSerializer.class)
+    public Branch getDefaultBranch() {
+        return defaultBranch;
+    }
+
+    @JsonDeserialize(as = BranchImpl.class, using = RecordSerialization.BranchDeserializer.class)
+    public void setDefaultBranch(Branch defaultBranch) {
+        this.defaultBranch = defaultBranch;
     }
 
     private String description;
