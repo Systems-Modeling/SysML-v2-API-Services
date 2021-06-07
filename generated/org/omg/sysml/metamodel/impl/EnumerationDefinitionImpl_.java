@@ -24,10 +24,10 @@ import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.Generalization;
 import org.omg.sysml.metamodel.Import;
-import org.omg.sysml.metamodel.IndividualUsage;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.ItemUsage;
 import org.omg.sysml.metamodel.Membership;
+import org.omg.sysml.metamodel.OccurrenceUsage;
 import org.omg.sysml.metamodel.PartUsage;
 import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.ReferenceUsage;
@@ -61,7 +61,6 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.metamodel
 	public static volatile CollectionAttribute<EnumerationDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Feature> output;
 	public static volatile CollectionAttribute<EnumerationDefinitionImpl, Usage> variant;
-	public static volatile CollectionAttribute<EnumerationDefinitionImpl, IndividualUsage> ownedIndividual;
 	public static volatile CollectionAttribute<EnumerationDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<EnumerationDefinitionImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Comment> documentationComment;
@@ -79,6 +78,7 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.metamodel
 	public static volatile CollectionAttribute<EnumerationDefinitionImpl, ActionUsage> ownedAction;
 	public static volatile CollectionAttribute<EnumerationDefinitionImpl, CaseUsage> ownedCase;
 	public static volatile CollectionAttribute<EnumerationDefinitionImpl, CalculationUsage> ownedCalculation;
+	public static volatile CollectionAttribute<EnumerationDefinitionImpl, OccurrenceUsage> ownedOccurrence;
 	public static volatile SingularAttribute<EnumerationDefinitionImpl, String> name;
 	public static volatile CollectionAttribute<EnumerationDefinitionImpl, ReferenceUsage> ownedReference;
 	public static volatile CollectionAttribute<EnumerationDefinitionImpl, Usage> ownedUsage;
@@ -126,7 +126,6 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.metamodel
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
 	public static final String VARIANT = "variant";
-	public static final String OWNED_INDIVIDUAL = "ownedIndividual";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
@@ -144,6 +143,7 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.metamodel
 	public static final String OWNED_ACTION = "ownedAction";
 	public static final String OWNED_CASE = "ownedCase";
 	public static final String OWNED_CALCULATION = "ownedCalculation";
+	public static final String OWNED_OCCURRENCE = "ownedOccurrence";
 	public static final String NAME = "name";
 	public static final String OWNED_REFERENCE = "ownedReference";
 	public static final String OWNED_USAGE = "ownedUsage";

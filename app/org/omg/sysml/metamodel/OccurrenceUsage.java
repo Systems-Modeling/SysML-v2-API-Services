@@ -25,6 +25,14 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface IndividualDefinition extends ItemDefinition, MofObject {
-    Class getLifeClass();
+public interface OccurrenceUsage extends Usage, MofObject {
+    List<? extends Class> getOccurrenceDefinition();
+
+    PortioningFeature getPortioningFeature();
+
+    OccurrenceDefinition getIndividualDefinition();
+
+    Boolean getIsIndividual();
+
+    PortionKind getPortionKind();
 }

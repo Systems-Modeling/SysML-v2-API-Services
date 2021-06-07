@@ -7,6 +7,7 @@
 
         "aliasId": {"@type": "xsd:string"},
         "attributeDefinition": {"@type": "@id"},
+        "definition": {"@type": "@id"},
         "documentation": {"@type": "@id"},
         "documentationComment": {"@type": "@id"},
         "effectiveName": {"@type": "xsd:string"},
@@ -46,9 +47,9 @@
         "nestedConnection": {"@type": "@id"},
         "nestedConstraint": {"@type": "@id"},
         "nestedEnumeration": {"@type": "@id"},
-        "nestedIndividual": {"@type": "@id"},
         "nestedInterface": {"@type": "@id"},
         "nestedItem": {"@type": "@id"},
+        "nestedOccurrence": {"@type": "@id"},
         "nestedPart": {"@type": "@id"},
         "nestedPort": {"@type": "@id"},
         "nestedReference": {"@type": "@id"},

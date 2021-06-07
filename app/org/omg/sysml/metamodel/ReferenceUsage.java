@@ -26,5 +26,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface ReferenceUsage extends Usage, MofObject {
-    Collection<? extends Classifier> getReferenceType();
+
 }

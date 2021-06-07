@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ConstraintDefinition extends Definition, Predicate, MofObject {
+public interface ConstraintDefinition extends OccurrenceDefinition, Predicate, MofObject {
 
 }
