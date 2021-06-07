@@ -68,8 +68,6 @@ public interface Usage extends Feature, MofObject {
 
     Collection<? extends PartUsage> getNestedPart();
 
-    Collection<? extends IndividualUsage> getNestedIndividual();
-
     Collection<? extends InterfaceUsage> getNestedInterface();
 
     Collection<? extends AttributeUsage> getNestedAttribute();
@@ -89,4 +87,8 @@ public interface Usage extends Feature, MofObject {
     Collection<? extends ConcernUsage> getNestedConcern();
 
     Collection<? extends StakeholderUsage> getNestedStakeholder();
+
+    Collection<? extends OccurrenceUsage> getNestedOccurrence();
+
+    List<? extends Classifier> getDefinition();
 }

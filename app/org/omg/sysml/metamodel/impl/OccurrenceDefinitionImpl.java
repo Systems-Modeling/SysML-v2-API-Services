@@ -61,14 +61,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
-@Entity(name = "IndividualDefinitionImpl")
-@SecondaryTable(name = "IndividualDefinition")
-@org.hibernate.annotations.Table(appliesTo = "IndividualDefinition", fetch = FetchMode.SELECT, optional = false)
-// @info.archinnov.achilles.annotations.Table(table = "IndividualDefinition")
-@DiscriminatorValue(value = "IndividualDefinition")
-@JsonTypeName(value = "IndividualDefinition")
+@Entity(name = "OccurrenceDefinitionImpl")
+@SecondaryTable(name = "OccurrenceDefinition")
+@org.hibernate.annotations.Table(appliesTo = "OccurrenceDefinition", fetch = FetchMode.SELECT, optional = false)
+// @info.archinnov.achilles.annotations.Table(table = "OccurrenceDefinition")
+@DiscriminatorValue(value = "OccurrenceDefinition")
+@JsonTypeName(value = "OccurrenceDefinition")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class IndividualDefinitionImpl extends MofObjectImpl implements IndividualDefinition {
+public class OccurrenceDefinitionImpl extends MofObjectImpl implements OccurrenceDefinition {
     // @info.archinnov.achilles.annotations.Column("aliasId")
     private List<String> aliasId;
 
@@ -76,8 +76,8 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "IndividualDefinition_aliasId",
-            joinColumns = @JoinColumn(name = "IndividualDefinitionId"))
+    @CollectionTable(name = "OccurrenceDefinition_aliasId",
+            joinColumns = @JoinColumn(name = "OccurrenceDefinitionId"))
     public List<String> getAliasId() {
         if (aliasId == null) {
             aliasId = new ArrayList<>();
@@ -100,7 +100,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_documentation",
+    @JoinTable(name = "OccurrenceDefinition_documentation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Documentation> getDocumentation() {
@@ -126,7 +126,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_documentationComment",
+    @JoinTable(name = "OccurrenceDefinition_documentationComment",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Comment> getDocumentationComment() {
@@ -152,7 +152,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "effectiveName", table = "IndividualDefinition")
+    @javax.persistence.Column(name = "effectiveName", table = "OccurrenceDefinition")
     public String getEffectiveName() {
         return effectiveName;
     }
@@ -172,7 +172,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_endFeature",
+    @JoinTable(name = "OccurrenceDefinition_endFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getEndFeature() {
@@ -198,7 +198,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_feature",
+    @JoinTable(name = "OccurrenceDefinition_feature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getFeature() {
@@ -224,7 +224,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_featureMembership",
+    @JoinTable(name = "OccurrenceDefinition_featureMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureMembership> getFeatureMembership() {
@@ -250,7 +250,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_flowFeature",
+    @JoinTable(name = "OccurrenceDefinition_flowFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Usage> getFlowFeature() {
@@ -274,7 +274,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "humanId", table = "IndividualDefinition")
+    @javax.persistence.Column(name = "humanId", table = "OccurrenceDefinition")
     public String getHumanId() {
         return humanId;
     }
@@ -290,7 +290,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     private java.util.UUID identifier;
 
     @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "IndividualDefinition")
+    @javax.persistence.Column(name = "identifier", table = "OccurrenceDefinition")
     public java.util.UUID getIdentifier() {
         return identifier;
     }
@@ -310,7 +310,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_importedMembership",
+    @JoinTable(name = "OccurrenceDefinition_importedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getImportedMembership() {
@@ -336,7 +336,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_inheritedFeature",
+    @JoinTable(name = "OccurrenceDefinition_inheritedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getInheritedFeature() {
@@ -362,7 +362,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_inheritedMembership",
+    @JoinTable(name = "OccurrenceDefinition_inheritedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getInheritedMembership() {
@@ -388,7 +388,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_input",
+    @JoinTable(name = "OccurrenceDefinition_input",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getInput() {
@@ -410,7 +410,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     private Boolean isAbstract;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isAbstract", table = "IndividualDefinition")
+    @javax.persistence.Column(name = "isAbstract", table = "OccurrenceDefinition")
     public Boolean getIsAbstract() {
         return isAbstract;
     }
@@ -428,7 +428,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isConjugated", table = "IndividualDefinition")
+    @javax.persistence.Column(name = "isConjugated", table = "OccurrenceDefinition")
     public Boolean getIsConjugated() {
         return isConjugated;
     }
@@ -440,11 +440,27 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
 
 
 
+    // @info.archinnov.achilles.annotations.Column("isIndividual")
+    private Boolean isIndividual;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isIndividual", table = "OccurrenceDefinition")
+    public Boolean getIsIndividual() {
+        return isIndividual;
+    }
+
+    @JsonSetter
+    public void setIsIndividual(Boolean isIndividual) {
+        this.isIndividual = isIndividual;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("isSufficient")
     private Boolean isSufficient;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isSufficient", table = "IndividualDefinition")
+    @javax.persistence.Column(name = "isSufficient", table = "OccurrenceDefinition")
     public Boolean getIsSufficient() {
         return isSufficient;
     }
@@ -460,7 +476,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     private Boolean isVariation;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isVariation", table = "IndividualDefinition")
+    @javax.persistence.Column(name = "isVariation", table = "OccurrenceDefinition")
     public Boolean getIsVariation() {
         return isVariation;
     }
@@ -474,20 +490,20 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("lifeClass")
-    private Class lifeClass;
+    private LifeClass lifeClass;
 
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "ClassMetaDef", metaColumn = @javax.persistence.Column(name = "lifeClassType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "lifeClassId", table = "IndividualDefinition")
-    public Class getLifeClass() {
+    @Any(metaDef = "LifeClassMetaDef", metaColumn = @javax.persistence.Column(name = "lifeClassType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "lifeClassId", table = "OccurrenceDefinition")
+    public LifeClass getLifeClass() {
         return lifeClass;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ClassImpl.class)
-    public void setLifeClass(Class lifeClass) {
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = LifeClassImpl.class)
+    public void setLifeClass(LifeClass lifeClass) {
         this.lifeClass = lifeClass;
     }
 
@@ -501,7 +517,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_member",
+    @JoinTable(name = "OccurrenceDefinition_member",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getMember() {
@@ -527,7 +543,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_membership",
+    @JoinTable(name = "OccurrenceDefinition_membership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getMembership() {
@@ -553,7 +569,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "multiplicityId", table = "IndividualDefinition")
+    @JoinColumn(name = "multiplicityId", table = "OccurrenceDefinition")
     public Multiplicity getMultiplicity() {
         return multiplicity;
     }
@@ -574,7 +590,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "name", table = "IndividualDefinition")
+    @javax.persistence.Column(name = "name", table = "OccurrenceDefinition")
     public String getName() {
         return name;
     }
@@ -594,7 +610,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_output",
+    @JoinTable(name = "OccurrenceDefinition_output",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getOutput() {
@@ -620,7 +636,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedAction",
+    @JoinTable(name = "OccurrenceDefinition_ownedAction",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<ActionUsage> getOwnedAction() {
@@ -646,7 +662,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AllocationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedAllocation",
+    @JoinTable(name = "OccurrenceDefinition_ownedAllocation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<AllocationUsage> getOwnedAllocation() {
@@ -672,7 +688,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnalysisCaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedAnalysisCase",
+    @JoinTable(name = "OccurrenceDefinition_ownedAnalysisCase",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<AnalysisCaseUsage> getOwnedAnalysisCase() {
@@ -698,7 +714,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedAnnotation",
+    @JoinTable(name = "OccurrenceDefinition_ownedAnnotation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Annotation> getOwnedAnnotation() {
@@ -724,7 +740,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AttributeUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedAttribute",
+    @JoinTable(name = "OccurrenceDefinition_ownedAttribute",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<AttributeUsage> getOwnedAttribute() {
@@ -750,7 +766,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CalculationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedCalculation",
+    @JoinTable(name = "OccurrenceDefinition_ownedCalculation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<CalculationUsage> getOwnedCalculation() {
@@ -776,7 +792,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedCase",
+    @JoinTable(name = "OccurrenceDefinition_ownedCase",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<CaseUsage> getOwnedCase() {
@@ -802,7 +818,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ConcernUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedConcern",
+    @JoinTable(name = "OccurrenceDefinition_ownedConcern",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<ConcernUsage> getOwnedConcern() {
@@ -828,7 +844,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConjugatorType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedConjugatorId", table = "IndividualDefinition")
+    @JoinColumn(name = "ownedConjugatorId", table = "OccurrenceDefinition")
     public Conjugation getOwnedConjugator() {
         return ownedConjugator;
     }
@@ -849,7 +865,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ConnectionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedConnection",
+    @JoinTable(name = "OccurrenceDefinition_ownedConnection",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<ConnectionUsage> getOwnedConnection() {
@@ -875,7 +891,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ConstraintUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedConstraint",
+    @JoinTable(name = "OccurrenceDefinition_ownedConstraint",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<ConstraintUsage> getOwnedConstraint() {
@@ -901,7 +917,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedElement",
+    @JoinTable(name = "OccurrenceDefinition_ownedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getOwnedElement() {
@@ -927,7 +943,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedEndFeature",
+    @JoinTable(name = "OccurrenceDefinition_ownedEndFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getOwnedEndFeature() {
@@ -953,7 +969,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "EnumerationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedEnumeration",
+    @JoinTable(name = "OccurrenceDefinition_ownedEnumeration",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<EnumerationUsage> getOwnedEnumeration() {
@@ -979,7 +995,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedFeature",
+    @JoinTable(name = "OccurrenceDefinition_ownedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getOwnedFeature() {
@@ -1005,7 +1021,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedFeatureMembership",
+    @JoinTable(name = "OccurrenceDefinition_ownedFeatureMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureMembership> getOwnedFeatureMembership() {
@@ -1031,7 +1047,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "GeneralizationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedGeneralization",
+    @JoinTable(name = "OccurrenceDefinition_ownedGeneralization",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Generalization> getOwnedGeneralization() {
@@ -1057,7 +1073,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedImport",
+    @JoinTable(name = "OccurrenceDefinition_ownedImport",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Import> getOwnedImport() {
@@ -1076,32 +1092,6 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedIndividual")
-    private Collection<IndividualUsage> ownedIndividual;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "IndividualUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedIndividual",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<IndividualUsage> getOwnedIndividual() {
-        if (ownedIndividual == null) {
-            ownedIndividual = new ArrayList<>();
-        }
-        return ownedIndividual;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = IndividualUsageImpl.class)
-    public void setOwnedIndividual(Collection<IndividualUsage> ownedIndividual) {
-        this.ownedIndividual = ownedIndividual;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedInterface")
     private Collection<InterfaceUsage> ownedInterface;
 
@@ -1109,7 +1099,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "InterfaceUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedInterface",
+    @JoinTable(name = "OccurrenceDefinition_ownedInterface",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<InterfaceUsage> getOwnedInterface() {
@@ -1135,7 +1125,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ItemUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedItem",
+    @JoinTable(name = "OccurrenceDefinition_ownedItem",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<ItemUsage> getOwnedItem() {
@@ -1161,7 +1151,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedMember",
+    @JoinTable(name = "OccurrenceDefinition_ownedMember",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getOwnedMember() {
@@ -1187,7 +1177,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedMembership",
+    @JoinTable(name = "OccurrenceDefinition_ownedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getOwnedMembership() {
@@ -1206,6 +1196,32 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedOccurrence")
+    private Collection<OccurrenceUsage> ownedOccurrence;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "OccurrenceUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "OccurrenceDefinition_ownedOccurrence",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<OccurrenceUsage> getOwnedOccurrence() {
+        if (ownedOccurrence == null) {
+            ownedOccurrence = new ArrayList<>();
+        }
+        return ownedOccurrence;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = OccurrenceUsageImpl.class)
+    public void setOwnedOccurrence(Collection<OccurrenceUsage> ownedOccurrence) {
+        this.ownedOccurrence = ownedOccurrence;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedPart")
     private Collection<PartUsage> ownedPart;
 
@@ -1213,7 +1229,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "PartUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedPart",
+    @JoinTable(name = "OccurrenceDefinition_ownedPart",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<PartUsage> getOwnedPart() {
@@ -1239,7 +1255,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "PortUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedPort",
+    @JoinTable(name = "OccurrenceDefinition_ownedPort",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<PortUsage> getOwnedPort() {
@@ -1265,7 +1281,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ReferenceUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedReference",
+    @JoinTable(name = "OccurrenceDefinition_ownedReference",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<ReferenceUsage> getOwnedReference() {
@@ -1289,7 +1305,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedRelationship",
+    @JoinTable(name = "OccurrenceDefinition_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Relationship> getOwnedRelationship() {
@@ -1315,7 +1331,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "RenderingUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedRendering",
+    @JoinTable(name = "OccurrenceDefinition_ownedRendering",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<RenderingUsage> getOwnedRendering() {
@@ -1341,7 +1357,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "RequirementUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedRequirement",
+    @JoinTable(name = "OccurrenceDefinition_ownedRequirement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<RequirementUsage> getOwnedRequirement() {
@@ -1367,7 +1383,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "StakeholderUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedStakeholder",
+    @JoinTable(name = "OccurrenceDefinition_ownedStakeholder",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<StakeholderUsage> getOwnedStakeholder() {
@@ -1393,7 +1409,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "StateUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedState",
+    @JoinTable(name = "OccurrenceDefinition_ownedState",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<StateUsage> getOwnedState() {
@@ -1419,7 +1435,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "SuperclassingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedSuperclassing",
+    @JoinTable(name = "OccurrenceDefinition_ownedSuperclassing",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Superclassing> getOwnedSuperclassing() {
@@ -1445,7 +1461,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedTextualRepresentation",
+    @JoinTable(name = "OccurrenceDefinition_ownedTextualRepresentation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<TextualRepresentation> getOwnedTextualRepresentation() {
@@ -1471,7 +1487,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TransitionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedTransition",
+    @JoinTable(name = "OccurrenceDefinition_ownedTransition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<TransitionUsage> getOwnedTransition() {
@@ -1497,7 +1513,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedUsage",
+    @JoinTable(name = "OccurrenceDefinition_ownedUsage",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Usage> getOwnedUsage() {
@@ -1523,7 +1539,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "VerificationCaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedVerificationCase",
+    @JoinTable(name = "OccurrenceDefinition_ownedVerificationCase",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<VerificationCaseUsage> getOwnedVerificationCase() {
@@ -1549,7 +1565,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ViewUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedView",
+    @JoinTable(name = "OccurrenceDefinition_ownedView",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<ViewUsage> getOwnedView() {
@@ -1575,7 +1591,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ViewpointUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_ownedViewpoint",
+    @JoinTable(name = "OccurrenceDefinition_ownedViewpoint",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<ViewpointUsage> getOwnedViewpoint() {
@@ -1601,7 +1617,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownerId", table = "IndividualDefinition")
+    @JoinColumn(name = "ownerId", table = "OccurrenceDefinition")
     public Element getOwner() {
         return owner;
     }
@@ -1620,7 +1636,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningMembershipId", table = "IndividualDefinition")
+    @JoinColumn(name = "owningMembershipId", table = "OccurrenceDefinition")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -1641,7 +1657,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "IndividualDefinition")
+    @JoinColumn(name = "owningNamespaceId", table = "OccurrenceDefinition")
     public Namespace getOwningNamespace() {
         return owningNamespace;
     }
@@ -1660,7 +1676,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelationshipId", table = "IndividualDefinition")
+    @JoinColumn(name = "owningRelationshipId", table = "OccurrenceDefinition")
     public Relationship getOwningRelationship() {
         return owningRelationship;
     }
@@ -1681,7 +1697,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "qualifiedName", table = "IndividualDefinition")
+    @javax.persistence.Column(name = "qualifiedName", table = "OccurrenceDefinition")
     public String getQualifiedName() {
         return qualifiedName;
     }
@@ -1701,7 +1717,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_usage",
+    @JoinTable(name = "OccurrenceDefinition_usage",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Usage> getUsage() {
@@ -1727,7 +1743,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_variant",
+    @JoinTable(name = "OccurrenceDefinition_variant",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Usage> getVariant() {
@@ -1753,7 +1769,7 @@ public class IndividualDefinitionImpl extends MofObjectImpl implements Individua
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "VariantMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "IndividualDefinition_variantMembership",
+    @JoinTable(name = "OccurrenceDefinition_variantMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<VariantMembership> getVariantMembership() {

@@ -93,6 +93,32 @@ public class RenderingUsageImpl extends MofObjectImpl implements RenderingUsage 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("definition")
+    private List<Classifier> definition;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ClassifierMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "RenderingUsage_definition",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Classifier> getDefinition() {
+        if (definition == null) {
+            definition = new ArrayList<>();
+        }
+        return definition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ClassifierImpl.class)
+    public void setDefinition(List<Classifier> definition) {
+        this.definition = definition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("documentation")
     private List<Documentation> documentation;
 
@@ -376,6 +402,27 @@ public class RenderingUsageImpl extends MofObjectImpl implements RenderingUsage 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("individualDefinition")
+    private OccurrenceDefinition individualDefinition;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "OccurrenceDefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "individualDefinitionType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "individualDefinitionId", table = "RenderingUsage")
+    public OccurrenceDefinition getIndividualDefinition() {
+        return individualDefinition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = OccurrenceDefinitionImpl.class)
+    public void setIndividualDefinition(OccurrenceDefinition individualDefinition) {
+        this.individualDefinition = individualDefinition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("inheritedFeature")
     private List<Feature> inheritedFeature;
 
@@ -519,6 +566,22 @@ public class RenderingUsageImpl extends MofObjectImpl implements RenderingUsage 
     @JsonSetter
     public void setIsEnd(Boolean isEnd) {
         this.isEnd = isEnd;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isIndividual")
+    private Boolean isIndividual;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isIndividual", table = "RenderingUsage")
+    public Boolean getIsIndividual() {
+        return isIndividual;
+    }
+
+    @JsonSetter
+    public void setIsIndividual(Boolean isIndividual) {
+        this.isIndividual = isIndividual;
     }
 
 
@@ -985,32 +1048,6 @@ public class RenderingUsageImpl extends MofObjectImpl implements RenderingUsage 
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("nestedIndividual")
-    private Collection<IndividualUsage> nestedIndividual;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "IndividualUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "RenderingUsage_nestedIndividual",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<IndividualUsage> getNestedIndividual() {
-        if (nestedIndividual == null) {
-            nestedIndividual = new ArrayList<>();
-        }
-        return nestedIndividual;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = IndividualUsageImpl.class)
-    public void setNestedIndividual(Collection<IndividualUsage> nestedIndividual) {
-        this.nestedIndividual = nestedIndividual;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedInterface")
     private Collection<InterfaceUsage> nestedInterface;
 
@@ -1058,6 +1095,32 @@ public class RenderingUsageImpl extends MofObjectImpl implements RenderingUsage 
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ItemUsageImpl.class)
     public void setNestedItem(Collection<ItemUsage> nestedItem) {
         this.nestedItem = nestedItem;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedOccurrence")
+    private Collection<OccurrenceUsage> nestedOccurrence;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "OccurrenceUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "RenderingUsage_nestedOccurrence",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<OccurrenceUsage> getNestedOccurrence() {
+        if (nestedOccurrence == null) {
+            nestedOccurrence = new ArrayList<>();
+        }
+        return nestedOccurrence;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = OccurrenceUsageImpl.class)
+    public void setNestedOccurrence(Collection<OccurrenceUsage> nestedOccurrence) {
+        this.nestedOccurrence = nestedOccurrence;
     }
 
 
@@ -1370,6 +1433,32 @@ public class RenderingUsageImpl extends MofObjectImpl implements RenderingUsage 
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ViewpointUsageImpl.class)
     public void setNestedViewpoint(Collection<ViewpointUsage> nestedViewpoint) {
         this.nestedViewpoint = nestedViewpoint;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("occurrenceDefinition")
+    private List<Class> occurrenceDefinition;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ClassMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "RenderingUsage_occurrenceDefinition",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Class> getOccurrenceDefinition() {
+        if (occurrenceDefinition == null) {
+            occurrenceDefinition = new ArrayList<>();
+        }
+        return occurrenceDefinition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ClassImpl.class)
+    public void setOccurrenceDefinition(List<Class> occurrenceDefinition) {
+        this.occurrenceDefinition = occurrenceDefinition;
     }
 
 
@@ -1993,6 +2082,45 @@ public class RenderingUsageImpl extends MofObjectImpl implements RenderingUsage 
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PartDefinitionImpl.class)
     public void setPartDefinition(Collection<PartDefinition> partDefinition) {
         this.partDefinition = partDefinition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("portionKind")
+    // @info.archinnov.achilles.annotations.Enumerated(info.archinnov.achilles.annotations.Enumerated.Encoding.NAME)
+    private PortionKind portionKind;
+
+    @JsonGetter
+    @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "portionKind", table = "RenderingUsage")
+    public PortionKind getPortionKind() {
+        return portionKind;
+    }
+
+    @JsonSetter
+    public void setPortionKind(PortionKind portionKind) {
+        this.portionKind = portionKind;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("portioningFeature")
+    private PortioningFeature portioningFeature;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "PortioningFeatureMetaDef", metaColumn = @javax.persistence.Column(name = "portioningFeatureType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "portioningFeatureId", table = "RenderingUsage")
+    public PortioningFeature getPortioningFeature() {
+        return portioningFeature;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = PortioningFeatureImpl.class)
+    public void setPortioningFeature(PortioningFeature portioningFeature) {
+        this.portioningFeature = portioningFeature;
     }
 
 
