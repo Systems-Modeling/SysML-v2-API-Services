@@ -25,10 +25,10 @@ import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.Generalization;
 import org.omg.sysml.metamodel.Import;
-import org.omg.sysml.metamodel.IndividualUsage;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.ItemUsage;
 import org.omg.sysml.metamodel.Membership;
+import org.omg.sysml.metamodel.OccurrenceUsage;
 import org.omg.sysml.metamodel.PartUsage;
 import org.omg.sysml.metamodel.PortUsage;
 import org.omg.sysml.metamodel.ReferenceUsage;
@@ -65,7 +65,6 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.metamode
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Feature> output;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, Usage> variant;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, ActionUsage> action;
-	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, IndividualUsage> ownedIndividual;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Comment> documentationComment;
@@ -83,6 +82,7 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.metamode
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, ActionUsage> ownedAction;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, CaseUsage> ownedCase;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, CalculationUsage> ownedCalculation;
+	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, OccurrenceUsage> ownedOccurrence;
 	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, String> name;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, ReferenceUsage> ownedReference;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, Usage> ownedUsage;
@@ -90,6 +90,7 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.metamode
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, ActionUsage> analysisAction;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, StateUsage> ownedState;
+	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Membership> membership;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, Superclassing> ownedSuperclassing;
 	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, Boolean> isVariation;
@@ -136,7 +137,6 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.metamode
 	public static final String OUTPUT = "output";
 	public static final String VARIANT = "variant";
 	public static final String ACTION = "action";
-	public static final String OWNED_INDIVIDUAL = "ownedIndividual";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
@@ -154,6 +154,7 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.metamode
 	public static final String OWNED_ACTION = "ownedAction";
 	public static final String OWNED_CASE = "ownedCase";
 	public static final String OWNED_CALCULATION = "ownedCalculation";
+	public static final String OWNED_OCCURRENCE = "ownedOccurrence";
 	public static final String NAME = "name";
 	public static final String OWNED_REFERENCE = "ownedReference";
 	public static final String OWNED_USAGE = "ownedUsage";
@@ -161,6 +162,7 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.metamode
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String ANALYSIS_ACTION = "analysisAction";
 	public static final String OWNED_STATE = "ownedState";
+	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_SUPERCLASSING = "ownedSuperclassing";
 	public static final String IS_VARIATION = "isVariation";

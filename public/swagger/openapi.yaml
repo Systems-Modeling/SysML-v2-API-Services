@@ -767,6 +767,13 @@ definitions:
         type: string
         enum:
           - 'Project'
+      defaultBranch:
+        description: Branch
+        type: object
+        properties:
+          id:
+            type: string
+            format: uuid
       description:
         type: string
       id:

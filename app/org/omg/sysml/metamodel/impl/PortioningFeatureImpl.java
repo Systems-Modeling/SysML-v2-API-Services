@@ -61,14 +61,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
-@Entity(name = "SnapshotFeatureImpl")
-@SecondaryTable(name = "SnapshotFeature")
-@org.hibernate.annotations.Table(appliesTo = "SnapshotFeature", fetch = FetchMode.SELECT, optional = false)
-// @info.archinnov.achilles.annotations.Table(table = "SnapshotFeature")
-@DiscriminatorValue(value = "SnapshotFeature")
-@JsonTypeName(value = "SnapshotFeature")
+@Entity(name = "PortioningFeatureImpl")
+@SecondaryTable(name = "PortioningFeature")
+@org.hibernate.annotations.Table(appliesTo = "PortioningFeature", fetch = FetchMode.SELECT, optional = false)
+// @info.archinnov.achilles.annotations.Table(table = "PortioningFeature")
+@DiscriminatorValue(value = "PortioningFeature")
+@JsonTypeName(value = "PortioningFeature")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeature {
+public class PortioningFeatureImpl extends MofObjectImpl implements PortioningFeature {
     // @info.archinnov.achilles.annotations.Column("aliasId")
     private List<String> aliasId;
 
@@ -76,8 +76,8 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "SnapshotFeature_aliasId",
-            joinColumns = @JoinColumn(name = "SnapshotFeatureId"))
+    @CollectionTable(name = "PortioningFeature_aliasId",
+            joinColumns = @JoinColumn(name = "PortioningFeatureId"))
     public List<String> getAliasId() {
         if (aliasId == null) {
             aliasId = new ArrayList<>();
@@ -100,7 +100,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_documentation",
+    @JoinTable(name = "PortioningFeature_documentation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Documentation> getDocumentation() {
@@ -126,7 +126,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_documentationComment",
+    @JoinTable(name = "PortioningFeature_documentationComment",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Comment> getDocumentationComment() {
@@ -152,7 +152,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "effectiveName", table = "SnapshotFeature")
+    @javax.persistence.Column(name = "effectiveName", table = "PortioningFeature")
     public String getEffectiveName() {
         return effectiveName;
     }
@@ -172,7 +172,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_endFeature",
+    @JoinTable(name = "PortioningFeature_endFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getEndFeature() {
@@ -198,7 +198,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "endOwningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "endOwningTypeId", table = "SnapshotFeature")
+    @JoinColumn(name = "endOwningTypeId", table = "PortioningFeature")
     public Type getEndOwningType() {
         return endOwningType;
     }
@@ -219,7 +219,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_feature",
+    @JoinTable(name = "PortioningFeature_feature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getFeature() {
@@ -245,7 +245,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_featureMembership",
+    @JoinTable(name = "PortioningFeature_featureMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureMembership> getFeatureMembership() {
@@ -271,7 +271,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_featuringType",
+    @JoinTable(name = "PortioningFeature_featuringType",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Type> getFeaturingType() {
@@ -295,7 +295,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "humanId", table = "SnapshotFeature")
+    @javax.persistence.Column(name = "humanId", table = "PortioningFeature")
     public String getHumanId() {
         return humanId;
     }
@@ -311,7 +311,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     private java.util.UUID identifier;
 
     @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "SnapshotFeature")
+    @javax.persistence.Column(name = "identifier", table = "PortioningFeature")
     public java.util.UUID getIdentifier() {
         return identifier;
     }
@@ -331,7 +331,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_importedMembership",
+    @JoinTable(name = "PortioningFeature_importedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getImportedMembership() {
@@ -357,7 +357,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_inheritedFeature",
+    @JoinTable(name = "PortioningFeature_inheritedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getInheritedFeature() {
@@ -383,7 +383,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_inheritedMembership",
+    @JoinTable(name = "PortioningFeature_inheritedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getInheritedMembership() {
@@ -409,7 +409,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_input",
+    @JoinTable(name = "PortioningFeature_input",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getInput() {
@@ -431,7 +431,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     private Boolean isAbstract;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isAbstract", table = "SnapshotFeature")
+    @javax.persistence.Column(name = "isAbstract", table = "PortioningFeature")
     public Boolean getIsAbstract() {
         return isAbstract;
     }
@@ -449,7 +449,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isComposite", table = "SnapshotFeature")
+    @javax.persistence.Column(name = "isComposite", table = "PortioningFeature")
     public Boolean getIsComposite() {
         return isComposite;
     }
@@ -467,7 +467,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isConjugated", table = "SnapshotFeature")
+    @javax.persistence.Column(name = "isConjugated", table = "PortioningFeature")
     public Boolean getIsConjugated() {
         return isConjugated;
     }
@@ -485,7 +485,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isEnd", table = "SnapshotFeature")
+    @javax.persistence.Column(name = "isEnd", table = "PortioningFeature")
     public Boolean getIsEnd() {
         return isEnd;
     }
@@ -503,7 +503,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isNonunique", table = "SnapshotFeature")
+    @javax.persistence.Column(name = "isNonunique", table = "PortioningFeature")
     public Boolean getIsNonunique() {
         return isNonunique;
     }
@@ -519,7 +519,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     private Boolean isOrdered;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isOrdered", table = "SnapshotFeature")
+    @javax.persistence.Column(name = "isOrdered", table = "PortioningFeature")
     public Boolean getIsOrdered() {
         return isOrdered;
     }
@@ -535,7 +535,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     private Boolean isSufficient;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isSufficient", table = "SnapshotFeature")
+    @javax.persistence.Column(name = "isSufficient", table = "PortioningFeature")
     public Boolean getIsSufficient() {
         return isSufficient;
     }
@@ -551,7 +551,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     private Boolean isUnique;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isUnique", table = "SnapshotFeature")
+    @javax.persistence.Column(name = "isUnique", table = "PortioningFeature")
     public Boolean getIsUnique() {
         return isUnique;
     }
@@ -571,7 +571,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_member",
+    @JoinTable(name = "PortioningFeature_member",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getMember() {
@@ -597,7 +597,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_membership",
+    @JoinTable(name = "PortioningFeature_membership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getMembership() {
@@ -623,7 +623,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "multiplicityId", table = "SnapshotFeature")
+    @JoinColumn(name = "multiplicityId", table = "PortioningFeature")
     public Multiplicity getMultiplicity() {
         return multiplicity;
     }
@@ -644,7 +644,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "name", table = "SnapshotFeature")
+    @javax.persistence.Column(name = "name", table = "PortioningFeature")
     public String getName() {
         return name;
     }
@@ -664,7 +664,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_output",
+    @JoinTable(name = "PortioningFeature_output",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getOutput() {
@@ -690,7 +690,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_ownedAnnotation",
+    @JoinTable(name = "PortioningFeature_ownedAnnotation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Annotation> getOwnedAnnotation() {
@@ -716,7 +716,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConjugatorType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedConjugatorId", table = "SnapshotFeature")
+    @JoinColumn(name = "ownedConjugatorId", table = "PortioningFeature")
     public Conjugation getOwnedConjugator() {
         return ownedConjugator;
     }
@@ -737,7 +737,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_ownedElement",
+    @JoinTable(name = "PortioningFeature_ownedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getOwnedElement() {
@@ -763,7 +763,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_ownedEndFeature",
+    @JoinTable(name = "PortioningFeature_ownedEndFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getOwnedEndFeature() {
@@ -789,7 +789,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_ownedFeature",
+    @JoinTable(name = "PortioningFeature_ownedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getOwnedFeature() {
@@ -815,7 +815,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_ownedFeatureMembership",
+    @JoinTable(name = "PortioningFeature_ownedFeatureMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureMembership> getOwnedFeatureMembership() {
@@ -841,7 +841,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "GeneralizationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_ownedGeneralization",
+    @JoinTable(name = "PortioningFeature_ownedGeneralization",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Generalization> getOwnedGeneralization() {
@@ -867,7 +867,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_ownedImport",
+    @JoinTable(name = "PortioningFeature_ownedImport",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Import> getOwnedImport() {
@@ -893,7 +893,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_ownedMember",
+    @JoinTable(name = "PortioningFeature_ownedMember",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getOwnedMember() {
@@ -919,7 +919,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_ownedMembership",
+    @JoinTable(name = "PortioningFeature_ownedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getOwnedMembership() {
@@ -945,7 +945,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "RedefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_ownedRedefinition",
+    @JoinTable(name = "PortioningFeature_ownedRedefinition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Redefinition> getOwnedRedefinition() {
@@ -969,7 +969,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_ownedRelationship",
+    @JoinTable(name = "PortioningFeature_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Relationship> getOwnedRelationship() {
@@ -995,7 +995,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "SubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_ownedSubsetting",
+    @JoinTable(name = "PortioningFeature_ownedSubsetting",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Subsetting> getOwnedSubsetting() {
@@ -1021,7 +1021,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_ownedTextualRepresentation",
+    @JoinTable(name = "PortioningFeature_ownedTextualRepresentation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<TextualRepresentation> getOwnedTextualRepresentation() {
@@ -1047,7 +1047,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeFeaturingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_ownedTypeFeaturing",
+    @JoinTable(name = "PortioningFeature_ownedTypeFeaturing",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<TypeFeaturing> getOwnedTypeFeaturing() {
@@ -1073,7 +1073,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_ownedTyping",
+    @JoinTable(name = "PortioningFeature_ownedTyping",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureTyping> getOwnedTyping() {
@@ -1099,7 +1099,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownerId", table = "SnapshotFeature")
+    @JoinColumn(name = "ownerId", table = "PortioningFeature")
     public Element getOwner() {
         return owner;
     }
@@ -1118,7 +1118,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningFeatureMembershipId", table = "SnapshotFeature")
+    @JoinColumn(name = "owningFeatureMembershipId", table = "PortioningFeature")
     public FeatureMembership getOwningFeatureMembership() {
         return owningFeatureMembership;
     }
@@ -1137,7 +1137,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningMembershipId", table = "SnapshotFeature")
+    @JoinColumn(name = "owningMembershipId", table = "PortioningFeature")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -1158,7 +1158,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "SnapshotFeature")
+    @JoinColumn(name = "owningNamespaceId", table = "PortioningFeature")
     public Namespace getOwningNamespace() {
         return owningNamespace;
     }
@@ -1177,7 +1177,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonGetter
     @JsonSerialize(using = MofObjectSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelationshipId", table = "SnapshotFeature")
+    @JoinColumn(name = "owningRelationshipId", table = "PortioningFeature")
     public Relationship getOwningRelationship() {
         return owningRelationship;
     }
@@ -1198,7 +1198,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(using = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningTypeId", table = "SnapshotFeature")
+    @JoinColumn(name = "owningTypeId", table = "PortioningFeature")
     public Type getOwningType() {
         return owningType;
     }
@@ -1212,6 +1212,26 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("portionKind")
+    // @info.archinnov.achilles.annotations.Enumerated(info.archinnov.achilles.annotations.Enumerated.Encoding.NAME)
+    private PortionKind portionKind;
+
+    @JsonGetter
+    @javax.persistence.Enumerated(EnumType.STRING)
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "portionKind", table = "PortioningFeature")
+    public PortionKind getPortionKind() {
+        return portionKind;
+    }
+
+    @JsonSetter
+    public void setPortionKind(PortionKind portionKind) {
+        this.portionKind = portionKind;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("qualifiedName")
     private String qualifiedName;
 
@@ -1219,7 +1239,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "qualifiedName", table = "SnapshotFeature")
+    @javax.persistence.Column(name = "qualifiedName", table = "PortioningFeature")
     public String getQualifiedName() {
         return qualifiedName;
     }
@@ -1239,7 +1259,7 @@ public class SnapshotFeatureImpl extends MofObjectImpl implements SnapshotFeatur
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SnapshotFeature_type",
+    @JoinTable(name = "PortioningFeature_type",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Type> getType() {

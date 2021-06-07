@@ -64,8 +64,6 @@ public interface Definition extends Classifier, MofObject {
 
     Collection<? extends PartUsage> getOwnedPart();
 
-    Collection<? extends IndividualUsage> getOwnedIndividual();
-
     Collection<? extends InterfaceUsage> getOwnedInterface();
 
     Collection<? extends AttributeUsage> getOwnedAttribute();
@@ -85,4 +83,6 @@ public interface Definition extends Classifier, MofObject {
     Collection<? extends ConcernUsage> getOwnedConcern();
 
     Collection<? extends StakeholderUsage> getOwnedStakeholder();
+
+    Collection<? extends OccurrenceUsage> getOwnedOccurrence();
 }

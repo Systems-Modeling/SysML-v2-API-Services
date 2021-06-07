@@ -518,6 +518,22 @@ public class AllocationDefinitionImpl extends MofObjectImpl implements Allocatio
 
 
 
+    // @info.archinnov.achilles.annotations.Column("isIndividual")
+    private Boolean isIndividual;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isIndividual", table = "AllocationDefinition")
+    public Boolean getIsIndividual() {
+        return isIndividual;
+    }
+
+    @JsonSetter
+    public void setIsIndividual(Boolean isIndividual) {
+        this.isIndividual = isIndividual;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("isSufficient")
     private Boolean isSufficient;
 
@@ -546,6 +562,27 @@ public class AllocationDefinitionImpl extends MofObjectImpl implements Allocatio
     @JsonSetter
     public void setIsVariation(Boolean isVariation) {
         this.isVariation = isVariation;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("lifeClass")
+    private LifeClass lifeClass;
+
+    @JsonGetter
+    @JsonSerialize(using = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "LifeClassMetaDef", metaColumn = @javax.persistence.Column(name = "lifeClassType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "lifeClassId", table = "AllocationDefinition")
+    public LifeClass getLifeClass() {
+        return lifeClass;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = MofObjectDeserializer.class, as = LifeClassImpl.class)
+    public void setLifeClass(LifeClass lifeClass) {
+        this.lifeClass = lifeClass;
     }
 
 
@@ -1133,32 +1170,6 @@ public class AllocationDefinitionImpl extends MofObjectImpl implements Allocatio
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedIndividual")
-    private Collection<IndividualUsage> ownedIndividual;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "IndividualUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "AllocationDefinition_ownedIndividual",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<IndividualUsage> getOwnedIndividual() {
-        if (ownedIndividual == null) {
-            ownedIndividual = new ArrayList<>();
-        }
-        return ownedIndividual;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = IndividualUsageImpl.class)
-    public void setOwnedIndividual(Collection<IndividualUsage> ownedIndividual) {
-        this.ownedIndividual = ownedIndividual;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedInterface")
     private Collection<InterfaceUsage> ownedInterface;
 
@@ -1258,6 +1269,32 @@ public class AllocationDefinitionImpl extends MofObjectImpl implements Allocatio
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
     public void setOwnedMembership(List<Membership> ownedMembership) {
         this.ownedMembership = ownedMembership;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedOccurrence")
+    private Collection<OccurrenceUsage> ownedOccurrence;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "OccurrenceUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "AllocationDefinition_ownedOccurrence",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<OccurrenceUsage> getOwnedOccurrence() {
+        if (ownedOccurrence == null) {
+            ownedOccurrence = new ArrayList<>();
+        }
+        return ownedOccurrence;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = OccurrenceUsageImpl.class)
+    public void setOwnedOccurrence(Collection<OccurrenceUsage> ownedOccurrence) {
+        this.ownedOccurrence = ownedOccurrence;
     }
 
 

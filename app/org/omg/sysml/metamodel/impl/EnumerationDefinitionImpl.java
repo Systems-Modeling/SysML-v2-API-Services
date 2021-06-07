@@ -1081,32 +1081,6 @@ public class EnumerationDefinitionImpl extends MofObjectImpl implements Enumerat
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedIndividual")
-    private Collection<IndividualUsage> ownedIndividual;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "IndividualUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "EnumerationDefinition_ownedIndividual",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<IndividualUsage> getOwnedIndividual() {
-        if (ownedIndividual == null) {
-            ownedIndividual = new ArrayList<>();
-        }
-        return ownedIndividual;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = IndividualUsageImpl.class)
-    public void setOwnedIndividual(Collection<IndividualUsage> ownedIndividual) {
-        this.ownedIndividual = ownedIndividual;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedInterface")
     private Collection<InterfaceUsage> ownedInterface;
 
@@ -1206,6 +1180,32 @@ public class EnumerationDefinitionImpl extends MofObjectImpl implements Enumerat
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
     public void setOwnedMembership(List<Membership> ownedMembership) {
         this.ownedMembership = ownedMembership;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedOccurrence")
+    private Collection<OccurrenceUsage> ownedOccurrence;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "OccurrenceUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "EnumerationDefinition_ownedOccurrence",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<OccurrenceUsage> getOwnedOccurrence() {
+        if (ownedOccurrence == null) {
+            ownedOccurrence = new ArrayList<>();
+        }
+        return ownedOccurrence;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = OccurrenceUsageImpl.class)
+    public void setOwnedOccurrence(Collection<OccurrenceUsage> ownedOccurrence) {
+        this.ownedOccurrence = ownedOccurrence;
     }
 
 
