@@ -57,16 +57,20 @@ public class JsonLdMofObjectAdornment {
             contextObjectNode.put("@base", URI.create(host).resolve(basePath).toString());
         }
         if (inline) {
-            JsonNode cachedContext = CONTEXT_CACHE.computeIfAbsent(type, t -> Json.parse(environment.resourceAsStream(String.format("public/jsonld/%s.jsonld", t))));
+            JsonNode cachedContext = CONTEXT_CACHE.computeIfAbsent(type, t -> Json.parse(environment.resourceAsStream("public/" + getContextPath(type))));
             if (!(cachedContext instanceof ObjectNode)) {
                 throw new IllegalStateException("context expected to be an ObjectNode");
             }
             contextObjectNode.setAll((ObjectNode) cachedContext.get("@context"));
         }
         else {
-            contextObjectNode.put("@import", URI.create(host).resolve(String.format("/jsonld/%s.jsonld", type)).toString());
+            contextObjectNode.put("@import", URI.create(host).resolve("/" + getContextPath(type)).toString());
         }
         this.context = contextObjectNode;
+    }
+
+    private String getContextPath(String type) {
+        return String.format("jsonld/metamodel/%s.jsonld", type);
     }
 
     @JsonUnwrapped

@@ -1,0 +1,10 @@
+{
+    "@context": {
+        "@vocab": "http://omg.org/ns/sysml/v2/api#",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "head": {"@type": "@id"},
+        "name": {"@type": "xsd:string"},
+        "owningProject": {"@type": "@id"},
+        "timestamp": {"@type": "xsd:dateTime"}
+    }
+}
