@@ -24,12 +24,13 @@ package jackson;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import javax.persistence.PersistenceException;
 import org.omg.sysml.metamodel.MofObject;
 import org.omg.sysml.metamodel.impl.MofObjectImpl;
 
+import javax.persistence.PersistenceException;
 import java.io.IOException;
 
+// TODO inherit from JpaIdentitySerializer
 public class MofObjectSerializer extends StdSerializer<MofObject> {
     public MofObjectSerializer() {
         this(null);

@@ -27,6 +27,9 @@ import java.time.ZonedDateTime;
 import java.util.Set;
 
 public interface Commit extends Record {
+
+    String NAME = "Commit";
+
     Project getOwningProject();
 
     void setOwningProject(Project owningProject);

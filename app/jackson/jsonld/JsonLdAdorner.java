@@ -19,25 +19,12 @@
  * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
  */
 
-package org.omg.sysml.lifecycle;
+package jackson.jsonld;
 
-import org.omg.sysml.record.Record;
+import play.mvc.Http.Request;
 
-public interface Project extends Record {
+@FunctionalInterface
+public interface JsonLdAdorner<N, P> {
 
-    String NAME = "Project";
-    String DEFAULT_BRANCH_NAME = "main";
-
-    // Collection<Element> getContainedElement();
-    String getName();
-
-    void setName(String name);
-
-    String getDescription();
-
-    void setDescription(String description);
-
-    Branch getDefaultBranch();
-
-    void setDefaultBranch(Branch defaultBranch);
+    JsonLdNode<N> adorn(N entity, Request request, P parameters);
 }

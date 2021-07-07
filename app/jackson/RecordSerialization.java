@@ -26,7 +26,6 @@ import org.omg.sysml.lifecycle.impl.BranchImpl;
 import org.omg.sysml.lifecycle.impl.CommitImpl;
 import org.omg.sysml.lifecycle.impl.ProjectImpl;
 import org.omg.sysml.record.Record;
-import org.omg.sysml.record.impl.RecordImpl_;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityNotFoundException;
@@ -34,11 +33,14 @@ import java.io.IOException;
 import java.util.UUID;
 
 public class RecordSerialization {
+
+    private static final String IDENTITY_FIELD = "@id";
+
     public static class RecordSerializer extends JpaIdentitySerializer<Record> {
 
         @Override
         protected String getIdentityField() {
-            return RecordImpl_.ID;
+            return IDENTITY_FIELD;
         }
 
         @Override
@@ -60,7 +62,7 @@ public class RecordSerialization {
 
         @Override
         protected boolean isIdentityField(String field) {
-            return RecordImpl_.ID.equals(field);
+            return IDENTITY_FIELD.equals(field);
         }
 
         @Override

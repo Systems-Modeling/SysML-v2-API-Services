@@ -23,10 +23,12 @@ package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import config.MetamodelProvider;
-import jackson.JacksonHelper;
+import jackson.jsonld.JsonLdAdorner;
+import jackson.jsonld.RecordAdorners.ProjectAdorner;
 import org.omg.sysml.lifecycle.Project;
+import play.Environment;
 import play.libs.Json;
-import play.mvc.Http;
+import play.mvc.Http.Request;
 import play.mvc.Result;
 import play.mvc.Results;
 import services.ProjectService;
@@ -36,42 +38,48 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class ProjectController extends BaseController {
+public class ProjectController extends JsonLdController<Project, Void> {
 
     private final MetamodelProvider metamodelProvider;
     private final ProjectService projectService;
+    private final JsonLdAdorner<Project, Void> adorner;
 
     @Inject
-    public ProjectController(ProjectService projectService, MetamodelProvider metamodelProvider) {
+    public ProjectController(ProjectService projectService, MetamodelProvider metamodelProvider, Environment environment) {
         this.projectService = projectService;
         this.metamodelProvider = metamodelProvider;
+        this.adorner = new ProjectAdorner(environment, INLINE_JSON_LD_CONTEXT);
     }
 
-    public Result byId(UUID id) {
+    public Result getProjectById(UUID id, Request request) {
         Optional<Project> project = projectService.getById(id);
-        return project.map(m -> ok(Json.toJson(m))).orElseGet(Results::notFound);
+        return buildResult(project.orElse(null), request, null);
     }
 
-    public Result all(Http.Request request) {
+    public Result getProjects(Request request) {
         PageRequest pageRequest = PageRequest.from(request);
         List<Project> projects = projectService.getAll(pageRequest.getAfter(), pageRequest.getBefore(), pageRequest.getSize());
-        return Optional.of(projects)
-                .map(collection -> JacksonHelper.collectionToTree(collection, List.class, metamodelProvider.getImplementationClass(Project.class)))
-                .map(Results::ok)
-                .map(result -> paginateResult(
-                        result,
-                        projects.size(),
-                        idx -> projects.get(idx).getId(),
-                        request,
-                        pageRequest
-                ))
-                .orElseThrow();
+        return paginateResult(
+                buildResult(projects, List.class, metamodelProvider.getImplementationClass(Project.class), request, null),
+                projects.size(),
+                idx -> projects.get(idx).getId(),
+                request,
+                pageRequest
+        );
     }
 
-    public Result create(Http.Request request) {
+    public Result postProject(Request request) {
         JsonNode requestBodyJson = request.body().asJson();
         Project requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Project.class));
-        Optional<Project> response = projectService.create(requestedObject);
-        return response.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
+        Optional<Project> project = projectService.create(requestedObject);
+        if (project.isEmpty()) {
+            return Results.internalServerError();
+        }
+        return buildResult(project.get(), request, null);
+    }
+
+    @Override
+    protected JsonLdAdorner<Project, Void> getAdorner() {
+        return adorner;
     }
 }

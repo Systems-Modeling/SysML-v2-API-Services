@@ -21,6 +21,8 @@
 
 package org.omg.sysml.record.impl;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import org.omg.sysml.record.Record;
 
 import javax.persistence.GeneratedValue;
@@ -35,10 +37,12 @@ public abstract class RecordImpl implements Record {
     @Override
     @Id
     @GeneratedValue(generator = "UseExistingOrGenerateUUIDGenerator")
+    @JsonGetter(value = "@id")
     public UUID getId() {
         return id;
     }
 
+    @JsonSetter(value = "@id")
     public void setId(UUID id) {
         this.id = id;
     }

@@ -104,7 +104,8 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
 
         // Give all Commit#changes an identity, if they don't already have one, and all Commit#changes#identity an id, if they don't already have one.
         changeStream.get()
-                .peek(change -> change.setIdentity(change.getIdentity() != null ? change.getIdentity() : new ElementIdentityImpl())).map(ElementVersion::getIdentity)
+                .peek(change -> change.setIdentity(change.getIdentity() != null ? change.getIdentity() : new ElementIdentityImpl()))
+                .map(ElementVersion::getIdentity)
                 .filter(identity -> identity instanceof ElementIdentityImpl)
                 .map(identity -> (ElementIdentityImpl) identity)
                 .forEach(identity -> identity.setId(identity.getId() != null ? identity.getId() : UUID.randomUUID()));
