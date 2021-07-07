@@ -23,10 +23,13 @@ package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import config.MetamodelProvider;
-import jackson.JacksonHelper;
+import jackson.jsonld.JsonLdAdorner;
+import jackson.jsonld.RecordAdorners.BranchAdorner;
+import jackson.jsonld.RecordAdorners.ProjectContainmentParameters;
 import org.omg.sysml.lifecycle.Branch;
+import play.Environment;
 import play.libs.Json;
-import play.mvc.Http;
+import play.mvc.Http.Request;
 import play.mvc.Result;
 import play.mvc.Results;
 import services.BranchService;
@@ -37,29 +40,34 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class BranchController extends BaseController {
+public class BranchController extends JsonLdController<Branch, ProjectContainmentParameters> {
 
     private final MetamodelProvider metamodelProvider;
     private final BranchService branchService;
+    private final JsonLdAdorner<Branch, ProjectContainmentParameters> adorner;
 
     @Inject
-    public BranchController(BranchService branchService, MetamodelProvider metamodelProvider) {
+    public BranchController(BranchService branchService, MetamodelProvider metamodelProvider, Environment environment) {
         this.branchService = branchService;
         this.metamodelProvider = metamodelProvider;
+        this.adorner = new BranchAdorner(environment, INLINE_JSON_LD_CONTEXT);
     }
 
-    public Result createWithProjectId(UUID projectId, Http.Request request) {
+    public Result postBranchByProject(UUID projectId, Request request) {
         JsonNode requestBodyJson = request.body().asJson();
         Branch requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Branch.class));
         if (requestedObject.getId() != null || requestedObject.getTimestamp() != null) {
             return Results.badRequest();
         }
         requestedObject.setTimestamp(ZonedDateTime.now());
-        Optional<Branch> response = branchService.create(projectId, requestedObject);
-        return response.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
+        Optional<Branch> branch = branchService.create(projectId, requestedObject);
+        if (branch.isEmpty()) {
+            return Results.internalServerError();
+        }
+        return buildResult(branch.get(), request, new ProjectContainmentParameters(projectId));
     }
 
-    public Result byProject(UUID projectId, Http.Request request) {
+    public Result getBranchesByProject(UUID projectId, Request request) {
         PageRequest pageRequest = PageRequest.from(request);
         List<Branch> branches = branchService.getByProjectId(
                 projectId,
@@ -67,25 +75,22 @@ public class BranchController extends BaseController {
                 pageRequest.getBefore(),
                 pageRequest.getSize()
         );
-        return Optional.of(branches)
-                .map(collection -> JacksonHelper.collectionToTree(
-                        collection,
-                        List.class,
-                        metamodelProvider.getImplementationClass(Branch.class)
-                ))
-                .map(Results::ok)
-                .map(result -> paginateResult(
-                        result,
-                        branches.size(),
-                        idx -> branches.get(idx).getId(),
-                        request,
-                        pageRequest
-                ))
-                .orElseThrow();
+        return paginateResult(
+                buildResult(branches, List.class, metamodelProvider.getImplementationClass(Branch.class), request, new ProjectContainmentParameters(projectId)),
+                branches.size(),
+                idx -> branches.get(idx).getId(),
+                request,
+                pageRequest
+        );
     }
 
-    public Result byProjectAndId(UUID projectId, UUID branchId) {
+    public Result getBranchesByProjectAndId(UUID projectId, UUID branchId, Request request) {
         Optional<Branch> branch = branchService.getByProjectIdAndId(projectId, branchId);
-        return branch.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
+        return buildResult(branch.orElse(null), request, new ProjectContainmentParameters(projectId));
+    }
+
+    @Override
+    protected JsonLdAdorner<Branch, ProjectContainmentParameters> getAdorner() {
+        return adorner;
     }
 }

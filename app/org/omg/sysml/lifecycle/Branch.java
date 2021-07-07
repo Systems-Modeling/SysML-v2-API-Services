@@ -26,6 +26,9 @@ import org.omg.sysml.record.Record;
 import java.time.ZonedDateTime;
 
 public interface Branch extends Record {
+
+    String NAME = "Branch";
+
     Project getOwningProject();
 
     void setOwningProject(Project owningProject);

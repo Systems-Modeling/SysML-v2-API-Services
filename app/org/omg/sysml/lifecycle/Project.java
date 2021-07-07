@@ -25,6 +25,7 @@ import org.omg.sysml.record.Record;
 
 public interface Project extends Record {
 
+    String NAME = "Project";
     String DEFAULT_BRANCH_NAME = "main";
 
     // Collection<Element> getContainedElement();

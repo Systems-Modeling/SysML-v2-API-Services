@@ -23,14 +23,8 @@ package jackson.jsonld;
 
 import play.mvc.Http.Request;
 
-import java.net.URI;
-
 @FunctionalInterface
-public interface JsonLdAdorner<N, C> {
+public interface JsonLdAdorner<N, P> {
 
-    JsonLdNode<N> adorn(N entity, Request request, C context);
-
-    default URI getHost(Request request) {
-        return URI.create(String.format("http://%s", request.host()));
-    }
+    JsonLdNode<N> adorn(N entity, Request request, P parameters);
 }

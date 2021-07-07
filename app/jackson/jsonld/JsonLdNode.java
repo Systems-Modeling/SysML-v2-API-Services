@@ -25,16 +25,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonUnwrapped;
 import com.fasterxml.jackson.databind.JsonNode;
 
+import java.util.function.UnaryOperator;
+
 public final class JsonLdNode<N> {
 
     private final JsonNode context;
     private final N entity;
     private final String type;
+    private final UnaryOperator<JsonNode> postProcessor;
 
-    public JsonLdNode(JsonNode context, N entity, String type) {
+    public JsonLdNode(JsonNode context, N entity, String type, UnaryOperator<JsonNode> postProcessor) {
         this.context = context;
         this.entity = entity;
         this.type = type;
+        this.postProcessor = postProcessor;
     }
 
     @JsonProperty("@context")
@@ -52,5 +56,9 @@ public final class JsonLdNode<N> {
     @JsonProperty("@type")
     public String getType() {
         return type;
+    }
+
+    public JsonNode postProcess(JsonNode json) {
+        return postProcessor.apply(json);
     }
 }

@@ -23,11 +23,14 @@ package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import config.MetamodelProvider;
-import jackson.JacksonHelper;
+import jackson.jsonld.JsonLdAdorner;
+import jackson.jsonld.RecordAdorners.CommitAdorner;
+import jackson.jsonld.RecordAdorners.ProjectContainmentParameters;
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.impl.CommitImpl;
+import play.Environment;
 import play.libs.Json;
-import play.mvc.Http;
+import play.mvc.Http.Request;
 import play.mvc.Result;
 import play.mvc.Results;
 import services.CommitService;
@@ -38,29 +41,43 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class CommitController extends BaseController {
+public class CommitController extends JsonLdController<Commit, ProjectContainmentParameters> {
 
     private final MetamodelProvider metamodelProvider;
     private final CommitService commitService;
+    private final JsonLdAdorner<Commit, ProjectContainmentParameters> adorner;
 
     @Inject
-    public CommitController(CommitService commitService, MetamodelProvider metamodelProvider) {
+    public CommitController(CommitService commitService, MetamodelProvider metamodelProvider, Environment environment) {
         this.commitService = commitService;
         this.metamodelProvider = metamodelProvider;
+        this.adorner = new CommitAdorner(environment, INLINE_JSON_LD_CONTEXT);
     }
 
-    public Result createWithProjectId(UUID projectId, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<UUID> branchId, Http.Request request) {
+    public Result postCommitByProject(UUID projectId, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<UUID> branchId, Request request) {
         JsonNode requestBodyJson = request.body().asJson();
         Commit requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Commit.class));
         if (requestedObject.getId() != null || requestedObject.getTimestamp() != null) {
             return Results.badRequest();
         }
         requestedObject.setTimestamp(ZonedDateTime.now());
-        Optional<Commit> response = commitService.create(projectId, branchId.orElse(null), requestedObject);
-        return response.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
+        Optional<Commit> commit = commitService.create(projectId, branchId.orElse(null), requestedObject);
+        if (commit.isEmpty()) {
+            return Results.internalServerError();
+        }
+        boolean ld = respondWithJsonLd(request);
+        JsonNode json = buildJson(
+                commit.get(),
+                request,
+                new ProjectContainmentParameters(projectId),
+                ld,
+                Json.mapper(),
+                writer -> writer.withView(CommitImpl.Views.Compact.class)
+        );
+        return buildResult(json, ld);
     }
 
-    public Result byProject(UUID projectId, Http.Request request) {
+    public Result getCommitsByProject(UUID projectId, Request request) {
         PageRequest pageRequest = PageRequest.from(request);
         List<Commit> commits = commitService.getByProjectId(
                 projectId,
@@ -68,26 +85,38 @@ public class CommitController extends BaseController {
                 pageRequest.getBefore(),
                 pageRequest.getSize()
         );
-        return Optional.of(commits)
-                .map(collection -> JacksonHelper.collectionToTree(
-                        collection,
-                        List.class,
-                        metamodelProvider.getImplementationClass(Commit.class),
-                        Json::mapper,
-                        writer -> writer.withView(CommitImpl.Views.Compact.class)))
-                .map(Results::ok)
-                .map(result -> paginateResult(
-                        result,
-                        commits.size(),
-                        idx -> commits.get(idx).getId(),
-                        request,
-                        pageRequest
-                ))
-                .orElseThrow();
+        boolean ld = respondWithJsonLd(request);
+        JsonNode json = buildJson(
+                commits,
+                List.class,
+                metamodelProvider.getImplementationClass(Commit.class),
+                request,
+                new ProjectContainmentParameters(projectId),
+                ld,
+                Json.mapper(),
+                writer -> writer.withView(CommitImpl.Views.Compact.class)
+        );
+        Result result = buildResult(json, ld);
+        return paginateResult(
+                result,
+                commits.size(),
+                idx -> commits.get(idx).getId(),
+                request,
+                pageRequest
+        );
     }
 
-    public Result byProjectAndId(UUID projectId, UUID commitId) {
+    public Result getCommitByProjectAndId(UUID projectId, UUID commitId, Request request) {
+        if (respondWithJsonLd(request)) {
+            // TODO implement
+            return Results.status(NOT_IMPLEMENTED);
+        }
         Optional<Commit> commit = commitService.getByProjectIdAndId(projectId, commitId);
-        return commit.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
+        return buildResult(commit.orElse(null), request, new ProjectContainmentParameters(projectId));
+    }
+
+    @Override
+    protected JsonLdAdorner<Commit, ProjectContainmentParameters> getAdorner() {
+        return adorner;
     }
 }

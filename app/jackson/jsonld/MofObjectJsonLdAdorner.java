@@ -21,21 +21,17 @@
 
 package jackson.jsonld;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 import config.MetamodelProvider;
 import org.omg.sysml.metamodel.MofObject;
 import play.Environment;
-import play.libs.Json;
 import play.mvc.Http.Request;
 
-import java.net.URI;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class MofObjectJsonLdAdorner<M extends MofObject> implements JsonLdAdorner<M, MofObjectJsonLdAdorner.Parameters> {
-    private static final Map<String, ObjectNode> CONTEXT_CACHE = new HashMap<>();
+    private final Map<String, JsonLdAdorner<M, MofObjectJsonLdAdorner.Parameters>> delegates = new ConcurrentHashMap<>();
 
     private final MetamodelProvider metamodelProvider;
     private final Environment environment;
@@ -47,41 +43,36 @@ public final class MofObjectJsonLdAdorner<M extends MofObject> implements JsonLd
         this.inline = inline;
     }
 
-    private static String getContextPath(String type) {
-        return String.format("jsonld/metamodel/%s.jsonld", type);
-    }
-
     @Override
     public JsonLdNode<M> adorn(M entity, Request request, Parameters parameters) {
-        URI host = getHost(request);
         String type;
         try {
             type = metamodelProvider.getInterface(entity.getClass()).getSimpleName();
         } catch (ClassNotFoundException | NullPointerException e) {
             throw new IllegalStateException(e);
         }
-        ObjectNode contextObjectNode = Json.mapper().createObjectNode();
-        contextObjectNode.put("@base",
-                host.resolve(
-                        String.format("/projects/%s/commits/%s/elements/",
-                                parameters.getProjectId(),
-                                parameters.getCommitId())
-                ).toString()
-        );
-        if (inline) {
-            JsonNode cachedContext = CONTEXT_CACHE.computeIfAbsent(type, t -> {
-                JsonNode json = Json.parse(environment.resourceAsStream("public/" + getContextPath(type)));
-                if (!(json instanceof ObjectNode)) {
-                    throw new IllegalStateException("malformed context file");
+        return delegates.computeIfAbsent(type, t -> {
+            String contextPath = String.format("jsonld/metamodel/%s.jsonld", t);
+            return new SimpleJsonLdAdorner<>(environment, inline) {
+                @Override
+                protected String getType(Parameters parameters) {
+                    return t;
                 }
-                return (ObjectNode) json;
-            });
-            contextObjectNode.setAll((ObjectNode) cachedContext.get("@context"));
-        }
-        else {
-            contextObjectNode.put("@import", host.resolve("/" + getContextPath(type)).toString());
-        }
-        return new JsonLdNode<>(contextObjectNode, entity, type);
+
+                @Override
+                protected String getContextPath(Parameters parameters) {
+                    return contextPath;
+                }
+
+                @Override
+                protected String getBasePath(Parameters parameters) {
+                    return String.format("/projects/%s/commits/%s/elements/",
+                            parameters.getProjectId(),
+                            parameters.getCommitId()
+                    );
+                }
+            };
+        }).adorn(entity, request, parameters);
     }
 
     public static class Parameters {

@@ -101,18 +101,16 @@ public class QueryController extends JsonLdController<Element, MofObjectJsonLdAd
     private Result buildResult(QueryService.QueryResults queryResults, UUID projectId, Request request) {
         List<Element> elements = queryResults.getElements();
         AllowedPropertyFilter filter = queryResults.getPropertyFilter();
-        boolean jsonLd = respondWithJsonLd(request);
+        boolean ld = respondWithJsonLd(request);
         JsonNode json = buildJson(
                 new HashSet<>(elements),
                 Set.class,
                 metamodelProvider.getImplementationClass(Element.class),
                 request,
                 new MofObjectJsonLdAdorner.Parameters(projectId, queryResults.getCommit().getId()),
-                (collection, collectionClass, elementClass) -> JacksonHelper.collectionToTree(collection, collectionClass, elementClass,
-                        filter != null ? () -> Json.mapper().copy().addMixIn(MofObject.class, DynamicFilterMixin.class) : Json::mapper,
-                        filter != null ? writer -> writer.with(new SimpleFilterProvider().addFilter(DynamicFilterMixin.FILTER_NAME, filter)) : UnaryOperator.identity()
-                ),
-                jsonLd
+                ld,
+                filter != null ? Json.mapper().copy().addMixIn(MofObject.class, DynamicFilterMixin.class) : Json.mapper(),
+                filter != null ? writer -> writer.with(new SimpleFilterProvider().addFilter(DynamicFilterMixin.FILTER_NAME, filter)) : UnaryOperator.identity()
         );
         // Workaround for JSON always containing "@type"
         if (filter != null && !filter.getAllowedProperties().contains("@type")) {
@@ -120,7 +118,7 @@ public class QueryController extends JsonLdController<Element, MofObjectJsonLdAd
                     .filter(n -> n instanceof ObjectNode)
                     .forEach(n -> ((ObjectNode) n).remove("@type"));
         }
-        return buildResult(json, jsonLd);
+        return buildResult(json, ld);
     }
 
     @Override

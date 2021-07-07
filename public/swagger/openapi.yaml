@@ -36,6 +36,7 @@ paths:
       summary: Get projects
       produces:
         - application/json
+        - application/ld+json
       responses:
         200:
           description: Ok
@@ -58,6 +59,7 @@ paths:
         - application/json
       produces:
         - application/json
+        - application/ld+json
       parameters:
         - name: body
           in: body
@@ -89,6 +91,7 @@ paths:
       summary: Get project by ID
       produces:
         - application/json
+        - application/ld+json
       responses:
         200:
           description: Ok
@@ -133,6 +136,7 @@ paths:
       summary: Get branches by project
       produces:
         - application/json
+        - application/ld+json
       responses:
         200:
           description: Ok
@@ -157,6 +161,7 @@ paths:
         - application/json
       produces:
         - application/json
+        - application/ld+json
       parameters:
         - name: body
           in: body
@@ -195,6 +200,7 @@ paths:
       summary: Get branch by project and ID
       produces:
         - application/json
+        - application/ld+json
       responses:
         200:
           description: Ok
@@ -239,6 +245,7 @@ paths:
       summary: Get commits by project
       produces:
         - application/json
+        - application/ld+json
       responses:
         200:
           description: Ok
@@ -263,6 +270,7 @@ paths:
         - application/json
       produces:
         - application/json
+        - application/ld+json
       parameters:
         - name: body
           in: body
@@ -307,6 +315,7 @@ paths:
       summary: Get commit by project and ID
       produces:
         - application/json
+        - application/ld+json
       responses:
         200:
           description: Ok
@@ -763,6 +772,9 @@ definitions:
   Project:
     type: object
     properties:
+      '@id':
+        type: string
+        format: uuid
       '@type':
         type: string
         enum:
@@ -771,19 +783,20 @@ definitions:
         description: Branch
         type: object
         properties:
-          id:
+          '@id':
             type: string
             format: uuid
       description:
         type: string
-      id:
-        type: string
-        format: uuid
       name:
         type: string
   Branch:
     type: object
     properties:
+      '@id':
+        type: string
+        format:
+          uuid
       '@type':
         type: string
         enum:
@@ -792,24 +805,25 @@ definitions:
         description: Commit
         type: object
         properties:
-          id:
+          '@id':
             type: string
             format: uuid
       owningProject:
         description: Project
         type: object
         properties:
-          id:
+          '@id':
             type: string
             format: uuid
-      id:
-        type: string
-        format: uuid
       name:
         type: string
   Commit:
     type: object
     properties:
+      '@id':
+        type: string
+        format:
+          uuid
       '@type':
         type: string
         enum:
@@ -822,43 +836,42 @@ definitions:
         description: Project
         type: object
         properties:
-          id:
+          '@id':
             type: string
             format: uuid
-      id:
-        type: string
-        format: uuid
       previousCommit:
         description: Commit
         type: object
         properties:
-          id:
+          '@id':
             type: string
             format: uuid
   ElementVersion:
     type: object
     properties:
+      '@id':
+        type: string
+        format:
+          uuid
       '@type':
         type: string
         enum:
           - 'ElementVersion'
       data:
         $ref: '#/definitions/Element'
-      id:
-        type: string
-        format: uuid
       identity:
         $ref: '#/definitions/ElementIdentity'
   ElementIdentity:
     type: object
     properties:
+      '@id':
+        type: string
+        format:
+          uuid
       '@type':
         type: string
         enum:
           - 'ElementIdentity'
-      id:
-        type: string
-        format: uuid
   Identified:
     type: object
     properties:
@@ -868,11 +881,12 @@ definitions:
   Element:
     type: object
     properties:
-      '@type':
-        type: string
       '@id':
         type: string
-        format: uuid
+        format:
+          uuid
+      '@type':
+        type: string
       identifier:
         type: string
         format: uuid
@@ -881,11 +895,12 @@ definitions:
   Relationship:
     type: object
     properties:
-      '@type':
-        type: string
       '@id':
         type: string
-        format: uuid
+        format:
+          uuid
+      '@type':
+        type: string
       identifier:
         type: string
         format: uuid
@@ -900,6 +915,10 @@ definitions:
   Query:
     type: object
     properties:
+      '@id':
+        type: string
+        format:
+          uuid
       '@type':
         type: string
         enum:
@@ -908,12 +927,9 @@ definitions:
         description: Project
         type: object
         properties:
-          id:
+          '@id':
             type: string
             format: uuid
-      id:
-        type: string
-        format: uuid
       # orderBy:
       #   type: array
       #   items:
