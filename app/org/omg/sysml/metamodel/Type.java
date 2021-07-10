@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface Type extends Namespace, MofObject {
-    List<? extends Generalization> getOwnedGeneralization();
+    List<? extends Specialization> getOwnedSpecialization();
 
     List<? extends FeatureMembership> getOwnedFeatureMembership();
 
@@ -57,4 +57,10 @@ public interface Type extends Namespace, MofObject {
     List<? extends Feature> getInheritedFeature();
 
     Multiplicity getMultiplicity();
+
+    Collection<? extends Type> getDisjointType();
+
+    Collection<? extends Disjoining> getDisjoiningTypeDisjoining();
+
+    List<? extends Feature> getDirectedFeature();
 }

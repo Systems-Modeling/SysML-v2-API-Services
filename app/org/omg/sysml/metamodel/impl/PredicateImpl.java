@@ -93,6 +93,82 @@ public class PredicateImpl extends MofObjectImpl implements Predicate {
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("directedFeature")
+    private List<Feature> directedFeature;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Predicate_directedFeature",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Feature> getDirectedFeature() {
+        if (directedFeature == null) {
+            directedFeature = new ArrayList<>();
+        }
+        return directedFeature;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    public void setDirectedFeature(List<Feature> directedFeature) {
+        this.directedFeature = directedFeature;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("disjoiningTypeDisjoining")
+    private Collection<Disjoining> disjoiningTypeDisjoining;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "DisjoiningMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Predicate_disjoiningTypeDisjoining",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Disjoining> getDisjoiningTypeDisjoining() {
+        if (disjoiningTypeDisjoining == null) {
+            disjoiningTypeDisjoining = new ArrayList<>();
+        }
+        return disjoiningTypeDisjoining;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DisjoiningImpl.class)
+    public void setDisjoiningTypeDisjoining(Collection<Disjoining> disjoiningTypeDisjoining) {
+        this.disjoiningTypeDisjoining = disjoiningTypeDisjoining;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("disjointType")
+    private Collection<Type> disjointType;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Predicate_disjointType",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Type> getDisjointType() {
+        if (disjointType == null) {
+            disjointType = new ArrayList<>();
+        }
+        return disjointType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
+    public void setDisjointType(Collection<Type> disjointType) {
+        this.disjointType = disjointType;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("documentation")
     private List<Documentation> documentation;
 
@@ -745,32 +821,6 @@ public class PredicateImpl extends MofObjectImpl implements Predicate {
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedGeneralization")
-    private List<Generalization> ownedGeneralization;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "GeneralizationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Predicate_ownedGeneralization",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Generalization> getOwnedGeneralization() {
-        if (ownedGeneralization == null) {
-            ownedGeneralization = new ArrayList<>();
-        }
-        return ownedGeneralization;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = GeneralizationImpl.class)
-    public void setOwnedGeneralization(List<Generalization> ownedGeneralization) {
-        this.ownedGeneralization = ownedGeneralization;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedImport")
     private List<Import> ownedImport;
 
@@ -873,27 +923,53 @@ public class PredicateImpl extends MofObjectImpl implements Predicate {
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedSuperclassing")
-    private Collection<Superclassing> ownedSuperclassing;
+    // @info.archinnov.achilles.annotations.Column("ownedSpecialization")
+    private List<Specialization> ownedSpecialization;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "SuperclassingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Predicate_ownedSuperclassing",
+    @ManyToAny(metaDef = "SpecializationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Predicate_ownedSpecialization",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Superclassing> getOwnedSuperclassing() {
-        if (ownedSuperclassing == null) {
-            ownedSuperclassing = new ArrayList<>();
+    public List<Specialization> getOwnedSpecialization() {
+        if (ownedSpecialization == null) {
+            ownedSpecialization = new ArrayList<>();
         }
-        return ownedSuperclassing;
+        return ownedSpecialization;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SuperclassingImpl.class)
-    public void setOwnedSuperclassing(Collection<Superclassing> ownedSuperclassing) {
-        this.ownedSuperclassing = ownedSuperclassing;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SpecializationImpl.class)
+    public void setOwnedSpecialization(List<Specialization> ownedSpecialization) {
+        this.ownedSpecialization = ownedSpecialization;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedSubclassification")
+    private Collection<Subclassification> ownedSubclassification;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "SubclassificationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Predicate_ownedSubclassification",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Subclassification> getOwnedSubclassification() {
+        if (ownedSubclassification == null) {
+            ownedSubclassification = new ArrayList<>();
+        }
+        return ownedSubclassification;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SubclassificationImpl.class)
+    public void setOwnedSubclassification(Collection<Subclassification> ownedSubclassification) {
+        this.ownedSubclassification = ownedSubclassification;
     }
 
 

@@ -219,6 +219,24 @@ public class ImportImpl extends MofObjectImpl implements Import {
 
 
 
+    // @info.archinnov.achilles.annotations.Column("importedMemberName")
+    private String importedMemberName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "importedMemberName", table = "Import")
+    public String getImportedMemberName() {
+        return importedMemberName;
+    }
+
+    @JsonSetter
+    public void setImportedMemberName(String importedMemberName) {
+        this.importedMemberName = importedMemberName;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("importedNamespace")
     private Namespace importedNamespace;
 
@@ -234,6 +252,22 @@ public class ImportImpl extends MofObjectImpl implements Import {
     @JsonDeserialize(using = MofObjectDeserializer.class, as = NamespaceImpl.class)
     public void setImportedNamespace(Namespace importedNamespace) {
         this.importedNamespace = importedNamespace;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isImportAll")
+    private Boolean isImportAll;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isImportAll", table = "Import")
+    public Boolean getIsImportAll() {
+        return isImportAll;
+    }
+
+    @JsonSetter
+    public void setIsImportAll(Boolean isImportAll) {
+        this.isImportAll = isImportAll;
     }
 
 

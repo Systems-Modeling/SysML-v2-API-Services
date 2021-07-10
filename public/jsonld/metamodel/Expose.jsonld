@@ -1,7 +1,7 @@
 {
     "@context": {
-        "@vocab": "http://omg.org/ns/sysml#",
-        "sysml": "http://omg.org/ns/sysml#",
+        "@vocab": "http://omg.org/ns/sysml/v2/metamodel#",
+        "sysml": "http://omg.org/ns/sysml/v2/metamodel#",
         "dcterms": "http://purl.org/dc/terms/",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
 
@@ -12,7 +12,9 @@
         "humanId": {"@type": "xsd:string"},
         "identifier": {"@type": "dcterms:identifier"},
         "importOwningNamespace": {"@type": "@id"},
+        "importedMemberName": {"@type": "xsd:string"},
         "importedNamespace": {"@type": "@id"},
+        "isImportAll": {"@type": "xsd:boolean"},
         "isRecursive": {"@type": "xsd:boolean"},
         "name": {"@type": "xsd:string"},
         "ownedAnnotation": {"@type": "@id"},

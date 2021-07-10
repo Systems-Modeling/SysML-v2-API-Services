@@ -30,5 +30,7 @@ public interface FeatureValue extends Membership, MofObject {
 
     Expression getValue();
 
-    BindingConnector getValueConnector();
+    Boolean getIsInitial();
+
+    Boolean getIsDefault();
 }

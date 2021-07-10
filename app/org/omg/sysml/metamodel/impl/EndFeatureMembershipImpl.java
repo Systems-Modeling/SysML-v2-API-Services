@@ -92,24 +92,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
 
 
 
-    // @info.archinnov.achilles.annotations.Column("direction")
-    // @info.archinnov.achilles.annotations.Enumerated(info.archinnov.achilles.annotations.Enumerated.Encoding.NAME)
-    private FeatureDirectionKind direction;
-
-    @JsonGetter
-    @javax.persistence.Enumerated(EnumType.STRING)
-    @javax.persistence.Column(name = "direction", table = "EndFeatureMembership")
-    public FeatureDirectionKind getDirection() {
-        return direction;
-    }
-
-    @JsonSetter
-    public void setDirection(FeatureDirectionKind direction) {
-        this.direction = direction;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("documentation")
     private List<Documentation> documentation;
@@ -270,86 +252,6 @@ public class EndFeatureMembershipImpl extends MofObjectImpl implements EndFeatur
     @JsonSetter
     public void setIdentifier(java.util.UUID identifier) {
         this.identifier = identifier;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("isComposite")
-    private Boolean isComposite;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isComposite", table = "EndFeatureMembership")
-    public Boolean getIsComposite() {
-        return isComposite;
-    }
-
-    @JsonSetter
-    public void setIsComposite(Boolean isComposite) {
-        this.isComposite = isComposite;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("isDerived")
-    private Boolean isDerived;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isDerived", table = "EndFeatureMembership")
-    public Boolean getIsDerived() {
-        return isDerived;
-    }
-
-    @JsonSetter
-    public void setIsDerived(Boolean isDerived) {
-        this.isDerived = isDerived;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("isPort")
-    private Boolean isPort;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isPort", table = "EndFeatureMembership")
-    public Boolean getIsPort() {
-        return isPort;
-    }
-
-    @JsonSetter
-    public void setIsPort(Boolean isPort) {
-        this.isPort = isPort;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("isPortion")
-    private Boolean isPortion;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isPortion", table = "EndFeatureMembership")
-    public Boolean getIsPortion() {
-        return isPortion;
-    }
-
-    @JsonSetter
-    public void setIsPortion(Boolean isPortion) {
-        this.isPortion = isPortion;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("isReadOnly")
-    private Boolean isReadOnly;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isReadOnly", table = "EndFeatureMembership")
-    public Boolean getIsReadOnly() {
-        return isReadOnly;
-    }
-
-    @JsonSetter
-    public void setIsReadOnly(Boolean isReadOnly) {
-        this.isReadOnly = isReadOnly;
     }
 
 

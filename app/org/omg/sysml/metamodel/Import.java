@@ -32,5 +32,9 @@ public interface Import extends Relationship, MofObject {
 
     VisibilityKind getVisibility();
 
+    String getImportedMemberName();
+
     Boolean getIsRecursive();
+
+    Boolean getIsImportAll();
 }

@@ -26,5 +26,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface ConnectionDefinition extends AssociationStructure, PartDefinition, MofObject {
-    Collection<? extends Usage> getConnectionEnd();
+    List<? extends Usage> getConnectionEnd();
 }

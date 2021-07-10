@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface AnalysisCaseUsage extends CaseUsage, MofObject {
-    Collection<? extends ActionUsage> getAnalysisAction();
+    List<? extends ActionUsage> getAnalysisAction();
 
     AnalysisCaseDefinition getAnalysisCaseDefinition();
 

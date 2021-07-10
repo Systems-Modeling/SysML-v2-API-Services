@@ -25,8 +25,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface PortUsage extends Usage, MofObject {
-    Collection<? extends PortDefinition> getPortDefinition();
+public interface PortUsage extends OccurrenceUsage, MofObject {
+    List<? extends PortDefinition> getPortDefinition();
 
     Usage getPortOwningUsage();
 }

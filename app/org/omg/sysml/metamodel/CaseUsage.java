@@ -31,4 +31,6 @@ public interface CaseUsage extends CalculationUsage, MofObject {
     CaseDefinition getCaseDefinition();
 
     Usage getSubjectParameter();
+
+    List<? extends PartUsage> getActorParameter();
 }

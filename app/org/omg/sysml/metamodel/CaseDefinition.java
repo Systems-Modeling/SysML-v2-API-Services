@@ -29,4 +29,6 @@ public interface CaseDefinition extends CalculationDefinition, MofObject {
     RequirementUsage getObjectiveRequirement();
 
     Usage getSubjectParameter();
+
+    List<? extends PartUsage> getActorParameter();
 }
