@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Subsetting extends Generalization, MofObject {
+public interface Subsetting extends Specialization, MofObject {
     Feature getSubsettedFeature();
 
     Feature getSubsettingFeature();

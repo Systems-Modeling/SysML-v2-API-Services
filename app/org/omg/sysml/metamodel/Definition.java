@@ -26,63 +26,65 @@ import java.util.List;
 import java.util.Set;
 
 public interface Definition extends Classifier, MofObject {
-    Collection<? extends Usage> getOwnedUsage();
+    List<? extends Usage> getOwnedUsage();
 
-    Collection<? extends PortUsage> getOwnedPort();
+    List<? extends PortUsage> getOwnedPort();
 
-    Collection<? extends Usage> getFlowFeature();
+    List<? extends Usage> getDirectedUsage();
 
-    Collection<? extends Usage> getUsage();
+    List<? extends Usage> getUsage();
 
-    Collection<? extends StateUsage> getOwnedState();
+    List<? extends StateUsage> getOwnedState();
 
-    Collection<? extends ConstraintUsage> getOwnedConstraint();
+    List<? extends ConstraintUsage> getOwnedConstraint();
 
     Collection<? extends TransitionUsage> getOwnedTransition();
 
-    Collection<? extends RequirementUsage> getOwnedRequirement();
+    List<? extends RequirementUsage> getOwnedRequirement();
 
-    Collection<? extends CalculationUsage> getOwnedCalculation();
+    List<? extends CalculationUsage> getOwnedCalculation();
 
     Boolean getIsVariation();
 
     Collection<? extends VariantMembership> getVariantMembership();
 
-    Collection<? extends AnalysisCaseUsage> getOwnedAnalysisCase();
+    List<? extends AnalysisCaseUsage> getOwnedAnalysisCase();
 
     Collection<? extends Usage> getVariant();
 
-    Collection<? extends CaseUsage> getOwnedCase();
+    List<? extends CaseUsage> getOwnedCase();
 
-    Collection<? extends ReferenceUsage> getOwnedReference();
+    List<? extends ReferenceUsage> getOwnedReference();
 
-    Collection<? extends ActionUsage> getOwnedAction();
+    List<? extends ActionUsage> getOwnedAction();
 
-    Collection<? extends ConnectionUsage> getOwnedConnection();
+    List<? extends ConnectorAsUsage> getOwnedConnection();
 
-    Collection<? extends ItemUsage> getOwnedItem();
+    List<? extends ItemUsage> getOwnedItem();
 
-    Collection<? extends PartUsage> getOwnedPart();
+    List<? extends PartUsage> getOwnedPart();
 
-    Collection<? extends InterfaceUsage> getOwnedInterface();
+    List<? extends InterfaceUsage> getOwnedInterface();
 
-    Collection<? extends AttributeUsage> getOwnedAttribute();
+    List<? extends AttributeUsage> getOwnedAttribute();
 
-    Collection<? extends ViewUsage> getOwnedView();
+    List<? extends ViewUsage> getOwnedView();
 
-    Collection<? extends ViewpointUsage> getOwnedViewpoint();
+    List<? extends ViewpointUsage> getOwnedViewpoint();
 
-    Collection<? extends RenderingUsage> getOwnedRendering();
+    List<? extends RenderingUsage> getOwnedRendering();
 
-    Collection<? extends VerificationCaseUsage> getOwnedVerificationCase();
+    List<? extends VerificationCaseUsage> getOwnedVerificationCase();
 
-    Collection<? extends EnumerationUsage> getOwnedEnumeration();
+    List<? extends EnumerationUsage> getOwnedEnumeration();
 
-    Collection<? extends AllocationUsage> getOwnedAllocation();
+    List<? extends AllocationUsage> getOwnedAllocation();
 
     Collection<? extends ConcernUsage> getOwnedConcern();
 
-    Collection<? extends StakeholderUsage> getOwnedStakeholder();
+    List<? extends OccurrenceUsage> getOwnedOccurrence();
 
-    Collection<? extends OccurrenceUsage> getOwnedOccurrence();
+    List<? extends UseCaseUsage> getOwnedUseCase();
+
+    Collection<? extends FlowConnectionUsage> getOwnedFlow();
 }

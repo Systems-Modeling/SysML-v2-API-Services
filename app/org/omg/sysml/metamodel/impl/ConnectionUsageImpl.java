@@ -119,8 +119,34 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("chainingFeature")
+    private List<Feature> chainingFeature;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConnectionUsage_chainingFeature",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Feature> getChainingFeature() {
+        if (chainingFeature == null) {
+            chainingFeature = new ArrayList<>();
+        }
+        return chainingFeature;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    public void setChainingFeature(List<Feature> chainingFeature) {
+        this.chainingFeature = chainingFeature;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("connectionDefinition")
-    private Collection<AssociationStructure> connectionDefinition;
+    private List<AssociationStructure> connectionDefinition;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -129,7 +155,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_connectionDefinition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<AssociationStructure> getConnectionDefinition() {
+    public List<AssociationStructure> getConnectionDefinition() {
         if (connectionDefinition == null) {
             connectionDefinition = new ArrayList<>();
         }
@@ -138,7 +164,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AssociationStructureImpl.class)
-    public void setConnectionDefinition(Collection<AssociationStructure> connectionDefinition) {
+    public void setConnectionDefinition(List<AssociationStructure> connectionDefinition) {
         this.connectionDefinition = connectionDefinition;
     }
 
@@ -192,6 +218,126 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ClassifierImpl.class)
     public void setDefinition(List<Classifier> definition) {
         this.definition = definition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("directedFeature")
+    private List<Feature> directedFeature;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConnectionUsage_directedFeature",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Feature> getDirectedFeature() {
+        if (directedFeature == null) {
+            directedFeature = new ArrayList<>();
+        }
+        return directedFeature;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    public void setDirectedFeature(List<Feature> directedFeature) {
+        this.directedFeature = directedFeature;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("directedUsage")
+    private List<Usage> directedUsage;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConnectionUsage_directedUsage",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Usage> getDirectedUsage() {
+        if (directedUsage == null) {
+            directedUsage = new ArrayList<>();
+        }
+        return directedUsage;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
+    public void setDirectedUsage(List<Usage> directedUsage) {
+        this.directedUsage = directedUsage;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("direction")
+    // @info.archinnov.achilles.annotations.Enumerated(info.archinnov.achilles.annotations.Enumerated.Encoding.NAME)
+    private FeatureDirectionKind direction;
+
+    @JsonGetter
+    @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "direction", table = "ConnectionUsage")
+    public FeatureDirectionKind getDirection() {
+        return direction;
+    }
+
+    @JsonSetter
+    public void setDirection(FeatureDirectionKind direction) {
+        this.direction = direction;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("disjoiningTypeDisjoining")
+    private Collection<Disjoining> disjoiningTypeDisjoining;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "DisjoiningMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConnectionUsage_disjoiningTypeDisjoining",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Disjoining> getDisjoiningTypeDisjoining() {
+        if (disjoiningTypeDisjoining == null) {
+            disjoiningTypeDisjoining = new ArrayList<>();
+        }
+        return disjoiningTypeDisjoining;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DisjoiningImpl.class)
+    public void setDisjoiningTypeDisjoining(Collection<Disjoining> disjoiningTypeDisjoining) {
+        this.disjoiningTypeDisjoining = disjoiningTypeDisjoining;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("disjointType")
+    private Collection<Type> disjointType;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConnectionUsage_disjointType",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Type> getDisjointType() {
+        if (disjointType == null) {
+            disjointType = new ArrayList<>();
+        }
+        return disjointType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
+    public void setDisjointType(Collection<Type> disjointType) {
+        this.disjointType = disjointType;
     }
 
 
@@ -393,32 +539,6 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("flowFeature")
-    private Collection<Usage> flowFeature;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ConnectionUsage_flowFeature",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Usage> getFlowFeature() {
-        if (flowFeature == null) {
-            flowFeature = new ArrayList<>();
-        }
-        return flowFeature;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
-    public void setFlowFeature(Collection<Usage> flowFeature) {
-        this.flowFeature = flowFeature;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("humanId")
     private String humanId;
 
@@ -594,12 +714,10 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("isComposite")
     private Boolean isComposite;
 
     @JsonGetter
-    // @javax.persistence.Transient
     @javax.persistence.Column(name = "isComposite", table = "ConnectionUsage")
     public Boolean getIsComposite() {
         return isComposite;
@@ -630,6 +748,22 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
 
 
+    // @info.archinnov.achilles.annotations.Column("isDerived")
+    private Boolean isDerived;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isDerived", table = "ConnectionUsage")
+    public Boolean getIsDerived() {
+        return isDerived;
+    }
+
+    @JsonSetter
+    public void setIsDerived(Boolean isDerived) {
+        this.isDerived = isDerived;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("isDirected")
     private Boolean isDirected;
 
@@ -646,12 +780,10 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("isEnd")
     private Boolean isEnd;
 
     @JsonGetter
-    // @javax.persistence.Transient
     @javax.persistence.Column(name = "isEnd", table = "ConnectionUsage")
     public Boolean getIsEnd() {
         return isEnd;
@@ -714,6 +846,56 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
 
 
+    // @info.archinnov.achilles.annotations.Column("isPortion")
+    private Boolean isPortion;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isPortion", table = "ConnectionUsage")
+    public Boolean getIsPortion() {
+        return isPortion;
+    }
+
+    @JsonSetter
+    public void setIsPortion(Boolean isPortion) {
+        this.isPortion = isPortion;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isReadOnly")
+    private Boolean isReadOnly;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isReadOnly", table = "ConnectionUsage")
+    public Boolean getIsReadOnly() {
+        return isReadOnly;
+    }
+
+    @JsonSetter
+    public void setIsReadOnly(Boolean isReadOnly) {
+        this.isReadOnly = isReadOnly;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("isReference")
+    private Boolean isReference;
+
+    @JsonGetter
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "isReference", table = "ConnectionUsage")
+    public Boolean getIsReference() {
+        return isReference;
+    }
+
+    @JsonSetter
+    public void setIsReference(Boolean isReference) {
+        this.isReference = isReference;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("isSufficient")
     private Boolean isSufficient;
 
@@ -764,7 +946,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("itemDefinition")
-    private Collection<Structure> itemDefinition;
+    private List<Structure> itemDefinition;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -773,7 +955,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_itemDefinition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Structure> getItemDefinition() {
+    public List<Structure> getItemDefinition() {
         if (itemDefinition == null) {
             itemDefinition = new ArrayList<>();
         }
@@ -782,7 +964,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StructureImpl.class)
-    public void setItemDefinition(Collection<Structure> itemDefinition) {
+    public void setItemDefinition(List<Structure> itemDefinition) {
         this.itemDefinition = itemDefinition;
     }
 
@@ -883,7 +1065,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedAction")
-    private Collection<ActionUsage> nestedAction;
+    private List<ActionUsage> nestedAction;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -892,7 +1074,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_nestedAction",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<ActionUsage> getNestedAction() {
+    public List<ActionUsage> getNestedAction() {
         if (nestedAction == null) {
             nestedAction = new ArrayList<>();
         }
@@ -901,7 +1083,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ActionUsageImpl.class)
-    public void setNestedAction(Collection<ActionUsage> nestedAction) {
+    public void setNestedAction(List<ActionUsage> nestedAction) {
         this.nestedAction = nestedAction;
     }
 
@@ -909,7 +1091,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedAllocation")
-    private Collection<AllocationUsage> nestedAllocation;
+    private List<AllocationUsage> nestedAllocation;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -918,7 +1100,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_nestedAllocation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<AllocationUsage> getNestedAllocation() {
+    public List<AllocationUsage> getNestedAllocation() {
         if (nestedAllocation == null) {
             nestedAllocation = new ArrayList<>();
         }
@@ -927,7 +1109,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AllocationUsageImpl.class)
-    public void setNestedAllocation(Collection<AllocationUsage> nestedAllocation) {
+    public void setNestedAllocation(List<AllocationUsage> nestedAllocation) {
         this.nestedAllocation = nestedAllocation;
     }
 
@@ -935,7 +1117,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedAnalysisCase")
-    private Collection<AnalysisCaseUsage> nestedAnalysisCase;
+    private List<AnalysisCaseUsage> nestedAnalysisCase;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -944,7 +1126,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_nestedAnalysisCase",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<AnalysisCaseUsage> getNestedAnalysisCase() {
+    public List<AnalysisCaseUsage> getNestedAnalysisCase() {
         if (nestedAnalysisCase == null) {
             nestedAnalysisCase = new ArrayList<>();
         }
@@ -953,7 +1135,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnalysisCaseUsageImpl.class)
-    public void setNestedAnalysisCase(Collection<AnalysisCaseUsage> nestedAnalysisCase) {
+    public void setNestedAnalysisCase(List<AnalysisCaseUsage> nestedAnalysisCase) {
         this.nestedAnalysisCase = nestedAnalysisCase;
     }
 
@@ -961,7 +1143,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedAttribute")
-    private Collection<AttributeUsage> nestedAttribute;
+    private List<AttributeUsage> nestedAttribute;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -970,7 +1152,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_nestedAttribute",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<AttributeUsage> getNestedAttribute() {
+    public List<AttributeUsage> getNestedAttribute() {
         if (nestedAttribute == null) {
             nestedAttribute = new ArrayList<>();
         }
@@ -979,7 +1161,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AttributeUsageImpl.class)
-    public void setNestedAttribute(Collection<AttributeUsage> nestedAttribute) {
+    public void setNestedAttribute(List<AttributeUsage> nestedAttribute) {
         this.nestedAttribute = nestedAttribute;
     }
 
@@ -987,7 +1169,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedCalculation")
-    private Collection<CalculationUsage> nestedCalculation;
+    private List<CalculationUsage> nestedCalculation;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -996,7 +1178,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_nestedCalculation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<CalculationUsage> getNestedCalculation() {
+    public List<CalculationUsage> getNestedCalculation() {
         if (nestedCalculation == null) {
             nestedCalculation = new ArrayList<>();
         }
@@ -1005,7 +1187,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CalculationUsageImpl.class)
-    public void setNestedCalculation(Collection<CalculationUsage> nestedCalculation) {
+    public void setNestedCalculation(List<CalculationUsage> nestedCalculation) {
         this.nestedCalculation = nestedCalculation;
     }
 
@@ -1013,7 +1195,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedCase")
-    private Collection<CaseUsage> nestedCase;
+    private List<CaseUsage> nestedCase;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1022,7 +1204,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_nestedCase",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<CaseUsage> getNestedCase() {
+    public List<CaseUsage> getNestedCase() {
         if (nestedCase == null) {
             nestedCase = new ArrayList<>();
         }
@@ -1031,7 +1213,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CaseUsageImpl.class)
-    public void setNestedCase(Collection<CaseUsage> nestedCase) {
+    public void setNestedCase(List<CaseUsage> nestedCase) {
         this.nestedCase = nestedCase;
     }
 
@@ -1065,16 +1247,16 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedConnection")
-    private Collection<ConnectionUsage> nestedConnection;
+    private List<ConnectorAsUsage> nestedConnection;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ConnectionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ConnectorAsUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "ConnectionUsage_nestedConnection",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<ConnectionUsage> getNestedConnection() {
+    public List<ConnectorAsUsage> getNestedConnection() {
         if (nestedConnection == null) {
             nestedConnection = new ArrayList<>();
         }
@@ -1082,8 +1264,8 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConnectionUsageImpl.class)
-    public void setNestedConnection(Collection<ConnectionUsage> nestedConnection) {
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConnectorAsUsageImpl.class)
+    public void setNestedConnection(List<ConnectorAsUsage> nestedConnection) {
         this.nestedConnection = nestedConnection;
     }
 
@@ -1091,7 +1273,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedConstraint")
-    private Collection<ConstraintUsage> nestedConstraint;
+    private List<ConstraintUsage> nestedConstraint;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1100,7 +1282,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_nestedConstraint",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<ConstraintUsage> getNestedConstraint() {
+    public List<ConstraintUsage> getNestedConstraint() {
         if (nestedConstraint == null) {
             nestedConstraint = new ArrayList<>();
         }
@@ -1109,7 +1291,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConstraintUsageImpl.class)
-    public void setNestedConstraint(Collection<ConstraintUsage> nestedConstraint) {
+    public void setNestedConstraint(List<ConstraintUsage> nestedConstraint) {
         this.nestedConstraint = nestedConstraint;
     }
 
@@ -1117,7 +1299,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedEnumeration")
-    private Collection<EnumerationUsage> nestedEnumeration;
+    private List<EnumerationUsage> nestedEnumeration;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1126,7 +1308,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_nestedEnumeration",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<EnumerationUsage> getNestedEnumeration() {
+    public List<EnumerationUsage> getNestedEnumeration() {
         if (nestedEnumeration == null) {
             nestedEnumeration = new ArrayList<>();
         }
@@ -1135,15 +1317,41 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = EnumerationUsageImpl.class)
-    public void setNestedEnumeration(Collection<EnumerationUsage> nestedEnumeration) {
+    public void setNestedEnumeration(List<EnumerationUsage> nestedEnumeration) {
         this.nestedEnumeration = nestedEnumeration;
     }
 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedFlow")
+    private Collection<FlowConnectionUsage> nestedFlow;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FlowConnectionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConnectionUsage_nestedFlow",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<FlowConnectionUsage> getNestedFlow() {
+        if (nestedFlow == null) {
+            nestedFlow = new ArrayList<>();
+        }
+        return nestedFlow;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FlowConnectionUsageImpl.class)
+    public void setNestedFlow(Collection<FlowConnectionUsage> nestedFlow) {
+        this.nestedFlow = nestedFlow;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedInterface")
-    private Collection<InterfaceUsage> nestedInterface;
+    private List<InterfaceUsage> nestedInterface;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1152,7 +1360,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_nestedInterface",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<InterfaceUsage> getNestedInterface() {
+    public List<InterfaceUsage> getNestedInterface() {
         if (nestedInterface == null) {
             nestedInterface = new ArrayList<>();
         }
@@ -1161,7 +1369,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = InterfaceUsageImpl.class)
-    public void setNestedInterface(Collection<InterfaceUsage> nestedInterface) {
+    public void setNestedInterface(List<InterfaceUsage> nestedInterface) {
         this.nestedInterface = nestedInterface;
     }
 
@@ -1169,7 +1377,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedItem")
-    private Collection<ItemUsage> nestedItem;
+    private List<ItemUsage> nestedItem;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1178,7 +1386,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_nestedItem",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<ItemUsage> getNestedItem() {
+    public List<ItemUsage> getNestedItem() {
         if (nestedItem == null) {
             nestedItem = new ArrayList<>();
         }
@@ -1187,7 +1395,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ItemUsageImpl.class)
-    public void setNestedItem(Collection<ItemUsage> nestedItem) {
+    public void setNestedItem(List<ItemUsage> nestedItem) {
         this.nestedItem = nestedItem;
     }
 
@@ -1195,7 +1403,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedOccurrence")
-    private Collection<OccurrenceUsage> nestedOccurrence;
+    private List<OccurrenceUsage> nestedOccurrence;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1204,7 +1412,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_nestedOccurrence",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<OccurrenceUsage> getNestedOccurrence() {
+    public List<OccurrenceUsage> getNestedOccurrence() {
         if (nestedOccurrence == null) {
             nestedOccurrence = new ArrayList<>();
         }
@@ -1213,7 +1421,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = OccurrenceUsageImpl.class)
-    public void setNestedOccurrence(Collection<OccurrenceUsage> nestedOccurrence) {
+    public void setNestedOccurrence(List<OccurrenceUsage> nestedOccurrence) {
         this.nestedOccurrence = nestedOccurrence;
     }
 
@@ -1221,7 +1429,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedPart")
-    private Collection<PartUsage> nestedPart;
+    private List<PartUsage> nestedPart;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1230,7 +1438,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_nestedPart",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<PartUsage> getNestedPart() {
+    public List<PartUsage> getNestedPart() {
         if (nestedPart == null) {
             nestedPart = new ArrayList<>();
         }
@@ -1239,7 +1447,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PartUsageImpl.class)
-    public void setNestedPart(Collection<PartUsage> nestedPart) {
+    public void setNestedPart(List<PartUsage> nestedPart) {
         this.nestedPart = nestedPart;
     }
 
@@ -1247,7 +1455,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedPort")
-    private Collection<PortUsage> nestedPort;
+    private List<PortUsage> nestedPort;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1256,7 +1464,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_nestedPort",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<PortUsage> getNestedPort() {
+    public List<PortUsage> getNestedPort() {
         if (nestedPort == null) {
             nestedPort = new ArrayList<>();
         }
@@ -1265,7 +1473,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PortUsageImpl.class)
-    public void setNestedPort(Collection<PortUsage> nestedPort) {
+    public void setNestedPort(List<PortUsage> nestedPort) {
         this.nestedPort = nestedPort;
     }
 
@@ -1273,7 +1481,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedReference")
-    private Collection<ReferenceUsage> nestedReference;
+    private List<ReferenceUsage> nestedReference;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1282,7 +1490,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_nestedReference",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<ReferenceUsage> getNestedReference() {
+    public List<ReferenceUsage> getNestedReference() {
         if (nestedReference == null) {
             nestedReference = new ArrayList<>();
         }
@@ -1291,7 +1499,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ReferenceUsageImpl.class)
-    public void setNestedReference(Collection<ReferenceUsage> nestedReference) {
+    public void setNestedReference(List<ReferenceUsage> nestedReference) {
         this.nestedReference = nestedReference;
     }
 
@@ -1299,7 +1507,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedRendering")
-    private Collection<RenderingUsage> nestedRendering;
+    private List<RenderingUsage> nestedRendering;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1308,7 +1516,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_nestedRendering",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<RenderingUsage> getNestedRendering() {
+    public List<RenderingUsage> getNestedRendering() {
         if (nestedRendering == null) {
             nestedRendering = new ArrayList<>();
         }
@@ -1317,7 +1525,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RenderingUsageImpl.class)
-    public void setNestedRendering(Collection<RenderingUsage> nestedRendering) {
+    public void setNestedRendering(List<RenderingUsage> nestedRendering) {
         this.nestedRendering = nestedRendering;
     }
 
@@ -1325,7 +1533,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedRequirement")
-    private Collection<RequirementUsage> nestedRequirement;
+    private List<RequirementUsage> nestedRequirement;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1334,7 +1542,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_nestedRequirement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<RequirementUsage> getNestedRequirement() {
+    public List<RequirementUsage> getNestedRequirement() {
         if (nestedRequirement == null) {
             nestedRequirement = new ArrayList<>();
         }
@@ -1343,41 +1551,15 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RequirementUsageImpl.class)
-    public void setNestedRequirement(Collection<RequirementUsage> nestedRequirement) {
+    public void setNestedRequirement(List<RequirementUsage> nestedRequirement) {
         this.nestedRequirement = nestedRequirement;
     }
 
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("nestedStakeholder")
-    private Collection<StakeholderUsage> nestedStakeholder;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "StakeholderUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ConnectionUsage_nestedStakeholder",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<StakeholderUsage> getNestedStakeholder() {
-        if (nestedStakeholder == null) {
-            nestedStakeholder = new ArrayList<>();
-        }
-        return nestedStakeholder;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StakeholderUsageImpl.class)
-    public void setNestedStakeholder(Collection<StakeholderUsage> nestedStakeholder) {
-        this.nestedStakeholder = nestedStakeholder;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedState")
-    private Collection<StateUsage> nestedState;
+    private List<StateUsage> nestedState;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1386,7 +1568,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_nestedState",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<StateUsage> getNestedState() {
+    public List<StateUsage> getNestedState() {
         if (nestedState == null) {
             nestedState = new ArrayList<>();
         }
@@ -1395,7 +1577,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StateUsageImpl.class)
-    public void setNestedState(Collection<StateUsage> nestedState) {
+    public void setNestedState(List<StateUsage> nestedState) {
         this.nestedState = nestedState;
     }
 
@@ -1429,7 +1611,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedUsage")
-    private Collection<Usage> nestedUsage;
+    private List<Usage> nestedUsage;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1438,7 +1620,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_nestedUsage",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Usage> getNestedUsage() {
+    public List<Usage> getNestedUsage() {
         if (nestedUsage == null) {
             nestedUsage = new ArrayList<>();
         }
@@ -1447,15 +1629,41 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
-    public void setNestedUsage(Collection<Usage> nestedUsage) {
+    public void setNestedUsage(List<Usage> nestedUsage) {
         this.nestedUsage = nestedUsage;
     }
 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedUseCase")
+    private List<UseCaseUsage> nestedUseCase;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "UseCaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConnectionUsage_nestedUseCase",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<UseCaseUsage> getNestedUseCase() {
+        if (nestedUseCase == null) {
+            nestedUseCase = new ArrayList<>();
+        }
+        return nestedUseCase;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UseCaseUsageImpl.class)
+    public void setNestedUseCase(List<UseCaseUsage> nestedUseCase) {
+        this.nestedUseCase = nestedUseCase;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedVerificationCase")
-    private Collection<VerificationCaseUsage> nestedVerificationCase;
+    private List<VerificationCaseUsage> nestedVerificationCase;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1464,7 +1672,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_nestedVerificationCase",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<VerificationCaseUsage> getNestedVerificationCase() {
+    public List<VerificationCaseUsage> getNestedVerificationCase() {
         if (nestedVerificationCase == null) {
             nestedVerificationCase = new ArrayList<>();
         }
@@ -1473,7 +1681,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = VerificationCaseUsageImpl.class)
-    public void setNestedVerificationCase(Collection<VerificationCaseUsage> nestedVerificationCase) {
+    public void setNestedVerificationCase(List<VerificationCaseUsage> nestedVerificationCase) {
         this.nestedVerificationCase = nestedVerificationCase;
     }
 
@@ -1481,7 +1689,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedView")
-    private Collection<ViewUsage> nestedView;
+    private List<ViewUsage> nestedView;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1490,7 +1698,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_nestedView",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<ViewUsage> getNestedView() {
+    public List<ViewUsage> getNestedView() {
         if (nestedView == null) {
             nestedView = new ArrayList<>();
         }
@@ -1499,7 +1707,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ViewUsageImpl.class)
-    public void setNestedView(Collection<ViewUsage> nestedView) {
+    public void setNestedView(List<ViewUsage> nestedView) {
         this.nestedView = nestedView;
     }
 
@@ -1507,7 +1715,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedViewpoint")
-    private Collection<ViewpointUsage> nestedViewpoint;
+    private List<ViewpointUsage> nestedViewpoint;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1516,7 +1724,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_nestedViewpoint",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<ViewpointUsage> getNestedViewpoint() {
+    public List<ViewpointUsage> getNestedViewpoint() {
         if (nestedViewpoint == null) {
             nestedViewpoint = new ArrayList<>();
         }
@@ -1525,7 +1733,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ViewpointUsageImpl.class)
-    public void setNestedViewpoint(Collection<ViewpointUsage> nestedViewpoint) {
+    public void setNestedViewpoint(List<ViewpointUsage> nestedViewpoint) {
         this.nestedViewpoint = nestedViewpoint;
     }
 
@@ -1709,6 +1917,32 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedFeatureChaining")
+    private List<FeatureChaining> ownedFeatureChaining;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureChainingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConnectionUsage_ownedFeatureChaining",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<FeatureChaining> getOwnedFeatureChaining() {
+        if (ownedFeatureChaining == null) {
+            ownedFeatureChaining = new ArrayList<>();
+        }
+        return ownedFeatureChaining;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureChainingImpl.class)
+    public void setOwnedFeatureChaining(List<FeatureChaining> ownedFeatureChaining) {
+        this.ownedFeatureChaining = ownedFeatureChaining;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedFeatureMembership")
     private List<FeatureMembership> ownedFeatureMembership;
 
@@ -1730,32 +1964,6 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureMembershipImpl.class)
     public void setOwnedFeatureMembership(List<FeatureMembership> ownedFeatureMembership) {
         this.ownedFeatureMembership = ownedFeatureMembership;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedGeneralization")
-    private List<Generalization> ownedGeneralization;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "GeneralizationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ConnectionUsage_ownedGeneralization",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Generalization> getOwnedGeneralization() {
-        if (ownedGeneralization == null) {
-            ownedGeneralization = new ArrayList<>();
-        }
-        return ownedGeneralization;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = GeneralizationImpl.class)
-    public void setOwnedGeneralization(List<Generalization> ownedGeneralization) {
-        this.ownedGeneralization = ownedGeneralization;
     }
 
 
@@ -1908,6 +2116,32 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
     public void setOwnedRelationship(List<Relationship> ownedRelationship) {
         this.ownedRelationship = ownedRelationship;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedSpecialization")
+    private List<Specialization> ownedSpecialization;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "SpecializationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConnectionUsage_ownedSpecialization",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Specialization> getOwnedSpecialization() {
+        if (ownedSpecialization == null) {
+            ownedSpecialization = new ArrayList<>();
+        }
+        return ownedSpecialization;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SpecializationImpl.class)
+    public void setOwnedSpecialization(List<Specialization> ownedSpecialization) {
+        this.ownedSpecialization = ownedSpecialization;
     }
 
 
@@ -2199,7 +2433,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("partDefinition")
-    private Collection<PartDefinition> partDefinition;
+    private List<PartDefinition> partDefinition;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -2208,7 +2442,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_partDefinition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<PartDefinition> getPartDefinition() {
+    public List<PartDefinition> getPartDefinition() {
         if (partDefinition == null) {
             partDefinition = new ArrayList<>();
         }
@@ -2217,7 +2451,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PartDefinitionImpl.class)
-    public void setPartDefinition(Collection<PartDefinition> partDefinition) {
+    public void setPartDefinition(List<PartDefinition> partDefinition) {
         this.partDefinition = partDefinition;
     }
 
@@ -2457,7 +2691,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("usage")
-    private Collection<Usage> usage;
+    private List<Usage> usage;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -2466,7 +2700,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
     @JoinTable(name = "ConnectionUsage_usage",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Usage> getUsage() {
+    public List<Usage> getUsage() {
         if (usage == null) {
             usage = new ArrayList<>();
         }
@@ -2475,7 +2709,7 @@ public class ConnectionUsageImpl extends MofObjectImpl implements ConnectionUsag
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
-    public void setUsage(Collection<Usage> usage) {
+    public void setUsage(List<Usage> usage) {
         this.usage = usage;
     }
 

@@ -30,11 +30,15 @@ public interface RequirementDefinition extends ConstraintDefinition, MofObject {
 
     Collection<? extends String> getText();
 
-    Collection<? extends ConstraintUsage> getAssumedConstraint();
+    List<? extends ConstraintUsage> getAssumedConstraint();
 
-    Collection<? extends ConstraintUsage> getRequiredConstraint();
+    List<? extends ConstraintUsage> getRequiredConstraint();
 
     Usage getSubjectParameter();
 
-    Collection<? extends ConcernUsage> getAddressedConcern();
+    List<? extends ConcernUsage> getFramedConcern();
+
+    List<? extends PartUsage> getActorParameter();
+
+    List<? extends PartUsage> getStakeholderParameter();
 }

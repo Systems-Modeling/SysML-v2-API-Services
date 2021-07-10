@@ -26,5 +26,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface EventOccurrenceUsage extends OccurrenceUsage, MofObject {
-    OccurrenceUsage getOccurringEvent();
+    OccurrenceUsage getEventOccurrence();
 }

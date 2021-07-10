@@ -26,11 +26,11 @@ import java.util.List;
 import java.util.Set;
 
 public interface ViewDefinition extends PartDefinition, MofObject {
-    Collection<? extends ViewUsage> getView();
+    List<? extends ViewUsage> getView();
 
-    Collection<? extends ViewpointUsage> getSatisfiedViewpoint();
+    List<? extends ViewpointUsage> getSatisfiedViewpoint();
 
     RenderingUsage getViewRendering();
 
-    Collection<? extends Expression> getViewCondition();
+    List<? extends Expression> getViewCondition();
 }

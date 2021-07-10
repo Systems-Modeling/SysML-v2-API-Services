@@ -119,6 +119,32 @@ public class ConnectorImpl extends MofObjectImpl implements Connector {
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("chainingFeature")
+    private List<Feature> chainingFeature;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Connector_chainingFeature",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Feature> getChainingFeature() {
+        if (chainingFeature == null) {
+            chainingFeature = new ArrayList<>();
+        }
+        return chainingFeature;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    public void setChainingFeature(List<Feature> chainingFeature) {
+        this.chainingFeature = chainingFeature;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("connectorEnd")
     private Collection<Feature> connectorEnd;
 
@@ -140,6 +166,100 @@ public class ConnectorImpl extends MofObjectImpl implements Connector {
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
     public void setConnectorEnd(Collection<Feature> connectorEnd) {
         this.connectorEnd = connectorEnd;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("directedFeature")
+    private List<Feature> directedFeature;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Connector_directedFeature",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Feature> getDirectedFeature() {
+        if (directedFeature == null) {
+            directedFeature = new ArrayList<>();
+        }
+        return directedFeature;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    public void setDirectedFeature(List<Feature> directedFeature) {
+        this.directedFeature = directedFeature;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("direction")
+    // @info.archinnov.achilles.annotations.Enumerated(info.archinnov.achilles.annotations.Enumerated.Encoding.NAME)
+    private FeatureDirectionKind direction;
+
+    @JsonGetter
+    @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "direction", table = "Connector")
+    public FeatureDirectionKind getDirection() {
+        return direction;
+    }
+
+    @JsonSetter
+    public void setDirection(FeatureDirectionKind direction) {
+        this.direction = direction;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("disjoiningTypeDisjoining")
+    private Collection<Disjoining> disjoiningTypeDisjoining;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "DisjoiningMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Connector_disjoiningTypeDisjoining",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Disjoining> getDisjoiningTypeDisjoining() {
+        if (disjoiningTypeDisjoining == null) {
+            disjoiningTypeDisjoining = new ArrayList<>();
+        }
+        return disjoiningTypeDisjoining;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DisjoiningImpl.class)
+    public void setDisjoiningTypeDisjoining(Collection<Disjoining> disjoiningTypeDisjoining) {
+        this.disjoiningTypeDisjoining = disjoiningTypeDisjoining;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("disjointType")
+    private Collection<Type> disjointType;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Connector_disjointType",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Type> getDisjointType() {
+        if (disjointType == null) {
+            disjointType = new ArrayList<>();
+        }
+        return disjointType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
+    public void setDisjointType(Collection<Type> disjointType) {
+        this.disjointType = disjointType;
     }
 
 
@@ -495,12 +615,10 @@ public class ConnectorImpl extends MofObjectImpl implements Connector {
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("isComposite")
     private Boolean isComposite;
 
     @JsonGetter
-    // @javax.persistence.Transient
     @javax.persistence.Column(name = "isComposite", table = "Connector")
     public Boolean getIsComposite() {
         return isComposite;
@@ -531,6 +649,22 @@ public class ConnectorImpl extends MofObjectImpl implements Connector {
 
 
 
+    // @info.archinnov.achilles.annotations.Column("isDerived")
+    private Boolean isDerived;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isDerived", table = "Connector")
+    public Boolean getIsDerived() {
+        return isDerived;
+    }
+
+    @JsonSetter
+    public void setIsDerived(Boolean isDerived) {
+        this.isDerived = isDerived;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("isDirected")
     private Boolean isDirected;
 
@@ -547,12 +681,10 @@ public class ConnectorImpl extends MofObjectImpl implements Connector {
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("isEnd")
     private Boolean isEnd;
 
     @JsonGetter
-    // @javax.persistence.Transient
     @javax.persistence.Column(name = "isEnd", table = "Connector")
     public Boolean getIsEnd() {
         return isEnd;
@@ -595,6 +727,38 @@ public class ConnectorImpl extends MofObjectImpl implements Connector {
     @JsonSetter
     public void setIsOrdered(Boolean isOrdered) {
         this.isOrdered = isOrdered;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isPortion")
+    private Boolean isPortion;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isPortion", table = "Connector")
+    public Boolean getIsPortion() {
+        return isPortion;
+    }
+
+    @JsonSetter
+    public void setIsPortion(Boolean isPortion) {
+        this.isPortion = isPortion;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isReadOnly")
+    private Boolean isReadOnly;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isReadOnly", table = "Connector")
+    public Boolean getIsReadOnly() {
+        return isReadOnly;
+    }
+
+    @JsonSetter
+    public void setIsReadOnly(Boolean isReadOnly) {
+        this.isReadOnly = isReadOnly;
     }
 
 
@@ -876,6 +1040,32 @@ public class ConnectorImpl extends MofObjectImpl implements Connector {
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedFeatureChaining")
+    private List<FeatureChaining> ownedFeatureChaining;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureChainingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Connector_ownedFeatureChaining",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<FeatureChaining> getOwnedFeatureChaining() {
+        if (ownedFeatureChaining == null) {
+            ownedFeatureChaining = new ArrayList<>();
+        }
+        return ownedFeatureChaining;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureChainingImpl.class)
+    public void setOwnedFeatureChaining(List<FeatureChaining> ownedFeatureChaining) {
+        this.ownedFeatureChaining = ownedFeatureChaining;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedFeatureMembership")
     private List<FeatureMembership> ownedFeatureMembership;
 
@@ -897,32 +1087,6 @@ public class ConnectorImpl extends MofObjectImpl implements Connector {
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureMembershipImpl.class)
     public void setOwnedFeatureMembership(List<FeatureMembership> ownedFeatureMembership) {
         this.ownedFeatureMembership = ownedFeatureMembership;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedGeneralization")
-    private List<Generalization> ownedGeneralization;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "GeneralizationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Connector_ownedGeneralization",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Generalization> getOwnedGeneralization() {
-        if (ownedGeneralization == null) {
-            ownedGeneralization = new ArrayList<>();
-        }
-        return ownedGeneralization;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = GeneralizationImpl.class)
-    public void setOwnedGeneralization(List<Generalization> ownedGeneralization) {
-        this.ownedGeneralization = ownedGeneralization;
     }
 
 
@@ -1075,6 +1239,32 @@ public class ConnectorImpl extends MofObjectImpl implements Connector {
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
     public void setOwnedRelationship(List<Relationship> ownedRelationship) {
         this.ownedRelationship = ownedRelationship;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedSpecialization")
+    private List<Specialization> ownedSpecialization;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "SpecializationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Connector_ownedSpecialization",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Specialization> getOwnedSpecialization() {
+        if (ownedSpecialization == null) {
+            ownedSpecialization = new ArrayList<>();
+        }
+        return ownedSpecialization;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SpecializationImpl.class)
+    public void setOwnedSpecialization(List<Specialization> ownedSpecialization) {
+        this.ownedSpecialization = ownedSpecialization;
     }
 
 

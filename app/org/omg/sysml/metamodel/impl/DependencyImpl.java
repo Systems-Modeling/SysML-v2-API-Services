@@ -93,7 +93,7 @@ public class DependencyImpl extends MofObjectImpl implements Dependency {
 
 
     // @info.archinnov.achilles.annotations.Column("client")
-    private Collection<Element> client;
+    private List<Element> client;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -101,7 +101,7 @@ public class DependencyImpl extends MofObjectImpl implements Dependency {
     @JoinTable(name = "Dependency_client",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Element> getClient() {
+    public List<Element> getClient() {
         if (client == null) {
             client = new ArrayList<>();
         }
@@ -110,7 +110,7 @@ public class DependencyImpl extends MofObjectImpl implements Dependency {
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
-    public void setClient(Collection<Element> client) {
+    public void setClient(List<Element> client) {
         this.client = client;
     }
 
@@ -538,7 +538,7 @@ public class DependencyImpl extends MofObjectImpl implements Dependency {
 
 
     // @info.archinnov.achilles.annotations.Column("supplier")
-    private Collection<Element> supplier;
+    private List<Element> supplier;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -546,7 +546,7 @@ public class DependencyImpl extends MofObjectImpl implements Dependency {
     @JoinTable(name = "Dependency_supplier",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Element> getSupplier() {
+    public List<Element> getSupplier() {
         if (supplier == null) {
             supplier = new ArrayList<>();
         }
@@ -555,7 +555,7 @@ public class DependencyImpl extends MofObjectImpl implements Dependency {
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
-    public void setSupplier(Collection<Element> supplier) {
+    public void setSupplier(List<Element> supplier) {
         this.supplier = supplier;
     }
 

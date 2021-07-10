@@ -28,7 +28,5 @@ import java.util.Set;
 public interface ParameterMembership extends FeatureMembership, MofObject {
     Feature getOwnedMemberParameter();
 
-    FeatureDirectionKind getDirection();
-
     Feature getMemberParameter();
 }

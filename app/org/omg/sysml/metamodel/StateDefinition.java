@@ -26,11 +26,13 @@ import java.util.List;
 import java.util.Set;
 
 public interface StateDefinition extends ActionDefinition, MofObject {
-    Collection<? extends StateUsage> getState();
+    List<? extends StateUsage> getState();
 
     ActionUsage getEntryAction();
 
     ActionUsage getDoAction();
 
     ActionUsage getExitAction();
+
+    Boolean getIsParallel();
 }

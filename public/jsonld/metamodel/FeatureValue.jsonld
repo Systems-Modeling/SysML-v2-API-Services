@@ -1,7 +1,7 @@
 {
     "@context": {
-        "@vocab": "http://omg.org/ns/sysml#",
-        "sysml": "http://omg.org/ns/sysml#",
+        "@vocab": "http://omg.org/ns/sysml/v2/metamodel#",
+        "sysml": "http://omg.org/ns/sysml/v2/metamodel#",
         "dcterms": "http://purl.org/dc/terms/",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
 
@@ -13,6 +13,8 @@
         "featureWithValue": {"@type": "@id"},
         "humanId": {"@type": "xsd:string"},
         "identifier": {"@type": "dcterms:identifier"},
+        "isDefault": {"@type": "xsd:boolean"},
+        "isInitial": {"@type": "xsd:boolean"},
         "memberElement": {"@type": "@id"},
         "memberName": {"@type": "xsd:string"},
         "membershipOwningNamespace": {"@type": "@id"},
@@ -33,7 +35,6 @@
         "source": {"@type": "@id"},
         "target": {"@type": "@id"},
         "value": {"@type": "@id"},
-        "valueConnector": {"@type": "@id"},
         "visibility": {"@type": "@vocab"}
 
     }

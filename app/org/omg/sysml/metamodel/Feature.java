@@ -42,7 +42,7 @@ public interface Feature extends Type, MofObject {
 
     Boolean getIsComposite();
 
-    Boolean getIsEnd();
+    Boolean getIsPortion();
 
     Type getEndOwningType();
 
@@ -51,6 +51,18 @@ public interface Feature extends Type, MofObject {
     List<? extends Type> getFeaturingType();
 
     List<? extends TypeFeaturing> getOwnedTypeFeaturing();
+
+    List<? extends Feature> getChainingFeature();
+
+    List<? extends FeatureChaining> getOwnedFeatureChaining();
+
+    Boolean getIsDerived();
+
+    Boolean getIsReadOnly();
+
+    Boolean getIsEnd();
+
+    FeatureDirectionKind getDirection();
 
     Boolean getIsNonunique();
 }

@@ -26,5 +26,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface ItemUsage extends OccurrenceUsage, MofObject {
-    Collection<? extends Structure> getItemDefinition();
+    List<? extends Structure> getItemDefinition();
 }

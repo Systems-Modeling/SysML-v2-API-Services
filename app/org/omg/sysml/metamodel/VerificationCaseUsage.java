@@ -28,5 +28,5 @@ import java.util.Set;
 public interface VerificationCaseUsage extends CaseUsage, MofObject {
     VerificationCaseDefinition getVerificationCaseDefinition();
 
-    Collection<? extends RequirementUsage> getVerifiedRequirement();
+    List<? extends RequirementUsage> getVerifiedRequirement();
 }
