@@ -237,6 +237,38 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
 
 
 
+    // @info.archinnov.achilles.annotations.Column("isDefault")
+    private Boolean isDefault;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isDefault", table = "FeatureValue")
+    public Boolean getIsDefault() {
+        return isDefault;
+    }
+
+    @JsonSetter
+    public void setIsDefault(Boolean isDefault) {
+        this.isDefault = isDefault;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isInitial")
+    private Boolean isInitial;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isInitial", table = "FeatureValue")
+    public Boolean getIsInitial() {
+        return isInitial;
+    }
+
+    @JsonSetter
+    public void setIsInitial(Boolean isInitial) {
+        this.isInitial = isInitial;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("memberElement")
     private Element memberElement;
 
@@ -668,27 +700,6 @@ public class FeatureValueImpl extends MofObjectImpl implements FeatureValue {
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ExpressionImpl.class)
     public void setValue(Expression value) {
         this.value = value;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("valueConnector")
-    private BindingConnector valueConnector;
-
-    @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "BindingConnectorMetaDef", metaColumn = @javax.persistence.Column(name = "valueConnectorType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "valueConnectorId", table = "FeatureValue")
-    public BindingConnector getValueConnector() {
-        return valueConnector;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = BindingConnectorImpl.class)
-    public void setValueConnector(BindingConnector valueConnector) {
-        this.valueConnector = valueConnector;
     }
 
 

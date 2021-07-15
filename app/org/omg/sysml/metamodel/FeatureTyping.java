@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface FeatureTyping extends Generalization, MofObject {
+public interface FeatureTyping extends Specialization, MofObject {
     Feature getTypedFeature();
 
     Type getType();

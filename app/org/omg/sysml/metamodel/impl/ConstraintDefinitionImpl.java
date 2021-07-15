@@ -93,6 +93,108 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("directedFeature")
+    private List<Feature> directedFeature;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConstraintDefinition_directedFeature",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Feature> getDirectedFeature() {
+        if (directedFeature == null) {
+            directedFeature = new ArrayList<>();
+        }
+        return directedFeature;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    public void setDirectedFeature(List<Feature> directedFeature) {
+        this.directedFeature = directedFeature;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("directedUsage")
+    private List<Usage> directedUsage;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConstraintDefinition_directedUsage",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Usage> getDirectedUsage() {
+        if (directedUsage == null) {
+            directedUsage = new ArrayList<>();
+        }
+        return directedUsage;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
+    public void setDirectedUsage(List<Usage> directedUsage) {
+        this.directedUsage = directedUsage;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("disjoiningTypeDisjoining")
+    private Collection<Disjoining> disjoiningTypeDisjoining;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @ManyToAny(metaDef = "DisjoiningMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConstraintDefinition_disjoiningTypeDisjoining",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Disjoining> getDisjoiningTypeDisjoining() {
+        if (disjoiningTypeDisjoining == null) {
+            disjoiningTypeDisjoining = new ArrayList<>();
+        }
+        return disjoiningTypeDisjoining;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DisjoiningImpl.class)
+    public void setDisjoiningTypeDisjoining(Collection<Disjoining> disjoiningTypeDisjoining) {
+        this.disjoiningTypeDisjoining = disjoiningTypeDisjoining;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("disjointType")
+    private Collection<Type> disjointType;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConstraintDefinition_disjointType",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Type> getDisjointType() {
+        if (disjointType == null) {
+            disjointType = new ArrayList<>();
+        }
+        return disjointType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
+    public void setDisjointType(Collection<Type> disjointType) {
+        this.disjointType = disjointType;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("documentation")
     private List<Documentation> documentation;
 
@@ -264,32 +366,6 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureMembershipImpl.class)
     public void setFeatureMembership(List<FeatureMembership> featureMembership) {
         this.featureMembership = featureMembership;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("flowFeature")
-    private Collection<Usage> flowFeature;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ConstraintDefinition_flowFeature",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Usage> getFlowFeature() {
-        if (flowFeature == null) {
-            flowFeature = new ArrayList<>();
-        }
-        return flowFeature;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
-    public void setFlowFeature(Collection<Usage> flowFeature) {
-        this.flowFeature = flowFeature;
     }
 
 
@@ -674,7 +750,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedAction")
-    private Collection<ActionUsage> ownedAction;
+    private List<ActionUsage> ownedAction;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -683,7 +759,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_ownedAction",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<ActionUsage> getOwnedAction() {
+    public List<ActionUsage> getOwnedAction() {
         if (ownedAction == null) {
             ownedAction = new ArrayList<>();
         }
@@ -692,7 +768,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ActionUsageImpl.class)
-    public void setOwnedAction(Collection<ActionUsage> ownedAction) {
+    public void setOwnedAction(List<ActionUsage> ownedAction) {
         this.ownedAction = ownedAction;
     }
 
@@ -700,7 +776,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedAllocation")
-    private Collection<AllocationUsage> ownedAllocation;
+    private List<AllocationUsage> ownedAllocation;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -709,7 +785,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_ownedAllocation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<AllocationUsage> getOwnedAllocation() {
+    public List<AllocationUsage> getOwnedAllocation() {
         if (ownedAllocation == null) {
             ownedAllocation = new ArrayList<>();
         }
@@ -718,7 +794,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AllocationUsageImpl.class)
-    public void setOwnedAllocation(Collection<AllocationUsage> ownedAllocation) {
+    public void setOwnedAllocation(List<AllocationUsage> ownedAllocation) {
         this.ownedAllocation = ownedAllocation;
     }
 
@@ -726,7 +802,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedAnalysisCase")
-    private Collection<AnalysisCaseUsage> ownedAnalysisCase;
+    private List<AnalysisCaseUsage> ownedAnalysisCase;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -735,7 +811,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_ownedAnalysisCase",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<AnalysisCaseUsage> getOwnedAnalysisCase() {
+    public List<AnalysisCaseUsage> getOwnedAnalysisCase() {
         if (ownedAnalysisCase == null) {
             ownedAnalysisCase = new ArrayList<>();
         }
@@ -744,7 +820,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnalysisCaseUsageImpl.class)
-    public void setOwnedAnalysisCase(Collection<AnalysisCaseUsage> ownedAnalysisCase) {
+    public void setOwnedAnalysisCase(List<AnalysisCaseUsage> ownedAnalysisCase) {
         this.ownedAnalysisCase = ownedAnalysisCase;
     }
 
@@ -778,7 +854,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedAttribute")
-    private Collection<AttributeUsage> ownedAttribute;
+    private List<AttributeUsage> ownedAttribute;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -787,7 +863,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_ownedAttribute",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<AttributeUsage> getOwnedAttribute() {
+    public List<AttributeUsage> getOwnedAttribute() {
         if (ownedAttribute == null) {
             ownedAttribute = new ArrayList<>();
         }
@@ -796,7 +872,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AttributeUsageImpl.class)
-    public void setOwnedAttribute(Collection<AttributeUsage> ownedAttribute) {
+    public void setOwnedAttribute(List<AttributeUsage> ownedAttribute) {
         this.ownedAttribute = ownedAttribute;
     }
 
@@ -804,7 +880,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedCalculation")
-    private Collection<CalculationUsage> ownedCalculation;
+    private List<CalculationUsage> ownedCalculation;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -813,7 +889,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_ownedCalculation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<CalculationUsage> getOwnedCalculation() {
+    public List<CalculationUsage> getOwnedCalculation() {
         if (ownedCalculation == null) {
             ownedCalculation = new ArrayList<>();
         }
@@ -822,7 +898,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CalculationUsageImpl.class)
-    public void setOwnedCalculation(Collection<CalculationUsage> ownedCalculation) {
+    public void setOwnedCalculation(List<CalculationUsage> ownedCalculation) {
         this.ownedCalculation = ownedCalculation;
     }
 
@@ -830,7 +906,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedCase")
-    private Collection<CaseUsage> ownedCase;
+    private List<CaseUsage> ownedCase;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -839,7 +915,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_ownedCase",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<CaseUsage> getOwnedCase() {
+    public List<CaseUsage> getOwnedCase() {
         if (ownedCase == null) {
             ownedCase = new ArrayList<>();
         }
@@ -848,7 +924,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CaseUsageImpl.class)
-    public void setOwnedCase(Collection<CaseUsage> ownedCase) {
+    public void setOwnedCase(List<CaseUsage> ownedCase) {
         this.ownedCase = ownedCase;
     }
 
@@ -903,16 +979,16 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedConnection")
-    private Collection<ConnectionUsage> ownedConnection;
+    private List<ConnectorAsUsage> ownedConnection;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ConnectionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ConnectorAsUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "ConstraintDefinition_ownedConnection",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<ConnectionUsage> getOwnedConnection() {
+    public List<ConnectorAsUsage> getOwnedConnection() {
         if (ownedConnection == null) {
             ownedConnection = new ArrayList<>();
         }
@@ -920,8 +996,8 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConnectionUsageImpl.class)
-    public void setOwnedConnection(Collection<ConnectionUsage> ownedConnection) {
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConnectorAsUsageImpl.class)
+    public void setOwnedConnection(List<ConnectorAsUsage> ownedConnection) {
         this.ownedConnection = ownedConnection;
     }
 
@@ -929,7 +1005,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedConstraint")
-    private Collection<ConstraintUsage> ownedConstraint;
+    private List<ConstraintUsage> ownedConstraint;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -938,7 +1014,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_ownedConstraint",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<ConstraintUsage> getOwnedConstraint() {
+    public List<ConstraintUsage> getOwnedConstraint() {
         if (ownedConstraint == null) {
             ownedConstraint = new ArrayList<>();
         }
@@ -947,7 +1023,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConstraintUsageImpl.class)
-    public void setOwnedConstraint(Collection<ConstraintUsage> ownedConstraint) {
+    public void setOwnedConstraint(List<ConstraintUsage> ownedConstraint) {
         this.ownedConstraint = ownedConstraint;
     }
 
@@ -1007,7 +1083,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedEnumeration")
-    private Collection<EnumerationUsage> ownedEnumeration;
+    private List<EnumerationUsage> ownedEnumeration;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1016,7 +1092,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_ownedEnumeration",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<EnumerationUsage> getOwnedEnumeration() {
+    public List<EnumerationUsage> getOwnedEnumeration() {
         if (ownedEnumeration == null) {
             ownedEnumeration = new ArrayList<>();
         }
@@ -1025,7 +1101,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = EnumerationUsageImpl.class)
-    public void setOwnedEnumeration(Collection<EnumerationUsage> ownedEnumeration) {
+    public void setOwnedEnumeration(List<EnumerationUsage> ownedEnumeration) {
         this.ownedEnumeration = ownedEnumeration;
     }
 
@@ -1084,27 +1160,27 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedGeneralization")
-    private List<Generalization> ownedGeneralization;
+    // @info.archinnov.achilles.annotations.Column("ownedFlow")
+    private Collection<FlowConnectionUsage> ownedFlow;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "GeneralizationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ConstraintDefinition_ownedGeneralization",
+    @ManyToAny(metaDef = "FlowConnectionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConstraintDefinition_ownedFlow",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Generalization> getOwnedGeneralization() {
-        if (ownedGeneralization == null) {
-            ownedGeneralization = new ArrayList<>();
+    public Collection<FlowConnectionUsage> getOwnedFlow() {
+        if (ownedFlow == null) {
+            ownedFlow = new ArrayList<>();
         }
-        return ownedGeneralization;
+        return ownedFlow;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = GeneralizationImpl.class)
-    public void setOwnedGeneralization(List<Generalization> ownedGeneralization) {
-        this.ownedGeneralization = ownedGeneralization;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FlowConnectionUsageImpl.class)
+    public void setOwnedFlow(Collection<FlowConnectionUsage> ownedFlow) {
+        this.ownedFlow = ownedFlow;
     }
 
 
@@ -1137,7 +1213,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedInterface")
-    private Collection<InterfaceUsage> ownedInterface;
+    private List<InterfaceUsage> ownedInterface;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1146,7 +1222,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_ownedInterface",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<InterfaceUsage> getOwnedInterface() {
+    public List<InterfaceUsage> getOwnedInterface() {
         if (ownedInterface == null) {
             ownedInterface = new ArrayList<>();
         }
@@ -1155,7 +1231,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = InterfaceUsageImpl.class)
-    public void setOwnedInterface(Collection<InterfaceUsage> ownedInterface) {
+    public void setOwnedInterface(List<InterfaceUsage> ownedInterface) {
         this.ownedInterface = ownedInterface;
     }
 
@@ -1163,7 +1239,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedItem")
-    private Collection<ItemUsage> ownedItem;
+    private List<ItemUsage> ownedItem;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1172,7 +1248,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_ownedItem",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<ItemUsage> getOwnedItem() {
+    public List<ItemUsage> getOwnedItem() {
         if (ownedItem == null) {
             ownedItem = new ArrayList<>();
         }
@@ -1181,7 +1257,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ItemUsageImpl.class)
-    public void setOwnedItem(Collection<ItemUsage> ownedItem) {
+    public void setOwnedItem(List<ItemUsage> ownedItem) {
         this.ownedItem = ownedItem;
     }
 
@@ -1241,7 +1317,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedOccurrence")
-    private Collection<OccurrenceUsage> ownedOccurrence;
+    private List<OccurrenceUsage> ownedOccurrence;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1250,7 +1326,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_ownedOccurrence",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<OccurrenceUsage> getOwnedOccurrence() {
+    public List<OccurrenceUsage> getOwnedOccurrence() {
         if (ownedOccurrence == null) {
             ownedOccurrence = new ArrayList<>();
         }
@@ -1259,7 +1335,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = OccurrenceUsageImpl.class)
-    public void setOwnedOccurrence(Collection<OccurrenceUsage> ownedOccurrence) {
+    public void setOwnedOccurrence(List<OccurrenceUsage> ownedOccurrence) {
         this.ownedOccurrence = ownedOccurrence;
     }
 
@@ -1267,7 +1343,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedPart")
-    private Collection<PartUsage> ownedPart;
+    private List<PartUsage> ownedPart;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1276,7 +1352,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_ownedPart",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<PartUsage> getOwnedPart() {
+    public List<PartUsage> getOwnedPart() {
         if (ownedPart == null) {
             ownedPart = new ArrayList<>();
         }
@@ -1285,7 +1361,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PartUsageImpl.class)
-    public void setOwnedPart(Collection<PartUsage> ownedPart) {
+    public void setOwnedPart(List<PartUsage> ownedPart) {
         this.ownedPart = ownedPart;
     }
 
@@ -1293,7 +1369,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedPort")
-    private Collection<PortUsage> ownedPort;
+    private List<PortUsage> ownedPort;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1302,7 +1378,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_ownedPort",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<PortUsage> getOwnedPort() {
+    public List<PortUsage> getOwnedPort() {
         if (ownedPort == null) {
             ownedPort = new ArrayList<>();
         }
@@ -1311,7 +1387,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PortUsageImpl.class)
-    public void setOwnedPort(Collection<PortUsage> ownedPort) {
+    public void setOwnedPort(List<PortUsage> ownedPort) {
         this.ownedPort = ownedPort;
     }
 
@@ -1319,7 +1395,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedReference")
-    private Collection<ReferenceUsage> ownedReference;
+    private List<ReferenceUsage> ownedReference;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1328,7 +1404,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_ownedReference",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<ReferenceUsage> getOwnedReference() {
+    public List<ReferenceUsage> getOwnedReference() {
         if (ownedReference == null) {
             ownedReference = new ArrayList<>();
         }
@@ -1337,7 +1413,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ReferenceUsageImpl.class)
-    public void setOwnedReference(Collection<ReferenceUsage> ownedReference) {
+    public void setOwnedReference(List<ReferenceUsage> ownedReference) {
         this.ownedReference = ownedReference;
     }
 
@@ -1369,7 +1445,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedRendering")
-    private Collection<RenderingUsage> ownedRendering;
+    private List<RenderingUsage> ownedRendering;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1378,7 +1454,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_ownedRendering",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<RenderingUsage> getOwnedRendering() {
+    public List<RenderingUsage> getOwnedRendering() {
         if (ownedRendering == null) {
             ownedRendering = new ArrayList<>();
         }
@@ -1387,7 +1463,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RenderingUsageImpl.class)
-    public void setOwnedRendering(Collection<RenderingUsage> ownedRendering) {
+    public void setOwnedRendering(List<RenderingUsage> ownedRendering) {
         this.ownedRendering = ownedRendering;
     }
 
@@ -1395,7 +1471,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedRequirement")
-    private Collection<RequirementUsage> ownedRequirement;
+    private List<RequirementUsage> ownedRequirement;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1404,7 +1480,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_ownedRequirement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<RequirementUsage> getOwnedRequirement() {
+    public List<RequirementUsage> getOwnedRequirement() {
         if (ownedRequirement == null) {
             ownedRequirement = new ArrayList<>();
         }
@@ -1413,41 +1489,41 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RequirementUsageImpl.class)
-    public void setOwnedRequirement(Collection<RequirementUsage> ownedRequirement) {
+    public void setOwnedRequirement(List<RequirementUsage> ownedRequirement) {
         this.ownedRequirement = ownedRequirement;
     }
 
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedStakeholder")
-    private Collection<StakeholderUsage> ownedStakeholder;
+    // @info.archinnov.achilles.annotations.Column("ownedSpecialization")
+    private List<Specialization> ownedSpecialization;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "StakeholderUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ConstraintDefinition_ownedStakeholder",
+    @ManyToAny(metaDef = "SpecializationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConstraintDefinition_ownedSpecialization",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<StakeholderUsage> getOwnedStakeholder() {
-        if (ownedStakeholder == null) {
-            ownedStakeholder = new ArrayList<>();
+    public List<Specialization> getOwnedSpecialization() {
+        if (ownedSpecialization == null) {
+            ownedSpecialization = new ArrayList<>();
         }
-        return ownedStakeholder;
+        return ownedSpecialization;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StakeholderUsageImpl.class)
-    public void setOwnedStakeholder(Collection<StakeholderUsage> ownedStakeholder) {
-        this.ownedStakeholder = ownedStakeholder;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SpecializationImpl.class)
+    public void setOwnedSpecialization(List<Specialization> ownedSpecialization) {
+        this.ownedSpecialization = ownedSpecialization;
     }
 
 
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedState")
-    private Collection<StateUsage> ownedState;
+    private List<StateUsage> ownedState;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1456,7 +1532,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_ownedState",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<StateUsage> getOwnedState() {
+    public List<StateUsage> getOwnedState() {
         if (ownedState == null) {
             ownedState = new ArrayList<>();
         }
@@ -1465,34 +1541,34 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StateUsageImpl.class)
-    public void setOwnedState(Collection<StateUsage> ownedState) {
+    public void setOwnedState(List<StateUsage> ownedState) {
         this.ownedState = ownedState;
     }
 
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedSuperclassing")
-    private Collection<Superclassing> ownedSuperclassing;
+    // @info.archinnov.achilles.annotations.Column("ownedSubclassification")
+    private Collection<Subclassification> ownedSubclassification;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "SuperclassingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ConstraintDefinition_ownedSuperclassing",
+    @ManyToAny(metaDef = "SubclassificationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConstraintDefinition_ownedSubclassification",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Superclassing> getOwnedSuperclassing() {
-        if (ownedSuperclassing == null) {
-            ownedSuperclassing = new ArrayList<>();
+    public Collection<Subclassification> getOwnedSubclassification() {
+        if (ownedSubclassification == null) {
+            ownedSubclassification = new ArrayList<>();
         }
-        return ownedSuperclassing;
+        return ownedSubclassification;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SuperclassingImpl.class)
-    public void setOwnedSuperclassing(Collection<Superclassing> ownedSuperclassing) {
-        this.ownedSuperclassing = ownedSuperclassing;
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SubclassificationImpl.class)
+    public void setOwnedSubclassification(Collection<Subclassification> ownedSubclassification) {
+        this.ownedSubclassification = ownedSubclassification;
     }
 
 
@@ -1551,7 +1627,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedUsage")
-    private Collection<Usage> ownedUsage;
+    private List<Usage> ownedUsage;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1560,7 +1636,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_ownedUsage",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Usage> getOwnedUsage() {
+    public List<Usage> getOwnedUsage() {
         if (ownedUsage == null) {
             ownedUsage = new ArrayList<>();
         }
@@ -1569,15 +1645,41 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
-    public void setOwnedUsage(Collection<Usage> ownedUsage) {
+    public void setOwnedUsage(List<Usage> ownedUsage) {
         this.ownedUsage = ownedUsage;
     }
 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedUseCase")
+    private List<UseCaseUsage> ownedUseCase;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "UseCaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConstraintDefinition_ownedUseCase",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<UseCaseUsage> getOwnedUseCase() {
+        if (ownedUseCase == null) {
+            ownedUseCase = new ArrayList<>();
+        }
+        return ownedUseCase;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UseCaseUsageImpl.class)
+    public void setOwnedUseCase(List<UseCaseUsage> ownedUseCase) {
+        this.ownedUseCase = ownedUseCase;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedVerificationCase")
-    private Collection<VerificationCaseUsage> ownedVerificationCase;
+    private List<VerificationCaseUsage> ownedVerificationCase;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1586,7 +1688,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_ownedVerificationCase",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<VerificationCaseUsage> getOwnedVerificationCase() {
+    public List<VerificationCaseUsage> getOwnedVerificationCase() {
         if (ownedVerificationCase == null) {
             ownedVerificationCase = new ArrayList<>();
         }
@@ -1595,7 +1697,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = VerificationCaseUsageImpl.class)
-    public void setOwnedVerificationCase(Collection<VerificationCaseUsage> ownedVerificationCase) {
+    public void setOwnedVerificationCase(List<VerificationCaseUsage> ownedVerificationCase) {
         this.ownedVerificationCase = ownedVerificationCase;
     }
 
@@ -1603,7 +1705,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedView")
-    private Collection<ViewUsage> ownedView;
+    private List<ViewUsage> ownedView;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1612,7 +1714,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_ownedView",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<ViewUsage> getOwnedView() {
+    public List<ViewUsage> getOwnedView() {
         if (ownedView == null) {
             ownedView = new ArrayList<>();
         }
@@ -1621,7 +1723,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ViewUsageImpl.class)
-    public void setOwnedView(Collection<ViewUsage> ownedView) {
+    public void setOwnedView(List<ViewUsage> ownedView) {
         this.ownedView = ownedView;
     }
 
@@ -1629,7 +1731,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedViewpoint")
-    private Collection<ViewpointUsage> ownedViewpoint;
+    private List<ViewpointUsage> ownedViewpoint;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1638,7 +1740,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_ownedViewpoint",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<ViewpointUsage> getOwnedViewpoint() {
+    public List<ViewpointUsage> getOwnedViewpoint() {
         if (ownedViewpoint == null) {
             ownedViewpoint = new ArrayList<>();
         }
@@ -1647,7 +1749,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ViewpointUsageImpl.class)
-    public void setOwnedViewpoint(Collection<ViewpointUsage> ownedViewpoint) {
+    public void setOwnedViewpoint(List<ViewpointUsage> ownedViewpoint) {
         this.ownedViewpoint = ownedViewpoint;
     }
 
@@ -1828,7 +1930,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("usage")
-    private Collection<Usage> usage;
+    private List<Usage> usage;
 
     @JsonGetter
     @JsonSerialize(contentUsing = MofObjectSerializer.class)
@@ -1837,7 +1939,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
     @JoinTable(name = "ConstraintDefinition_usage",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Usage> getUsage() {
+    public List<Usage> getUsage() {
         if (usage == null) {
             usage = new ArrayList<>();
         }
@@ -1846,7 +1948,7 @@ public class ConstraintDefinitionImpl extends MofObjectImpl implements Constrain
 
     @JsonSetter
     @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
-    public void setUsage(Collection<Usage> usage) {
+    public void setUsage(List<Usage> usage) {
         this.usage = usage;
     }
 

@@ -28,13 +28,13 @@ import java.util.Set;
 public interface ViewUsage extends PartUsage, MofObject {
     ViewDefinition getViewDefinition();
 
-    Collection<? extends ViewpointUsage> getSatisfiedViewpoint();
+    List<? extends ViewpointUsage> getSatisfiedViewpoint();
 
-    Collection<? extends Namespace> getExposedNamespace();
+    List<? extends Namespace> getExposedNamespace();
 
     RenderingUsage getViewRendering();
 
-    Collection<? extends Expression> getViewCondition();
+    List<? extends Expression> getViewCondition();
 
-    Collection<? extends Element> getViewedElement();
+    List<? extends Element> getViewedElement();
 }

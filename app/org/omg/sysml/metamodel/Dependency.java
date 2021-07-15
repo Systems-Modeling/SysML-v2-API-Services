@@ -26,7 +26,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface Dependency extends Relationship, MofObject {
-    Collection<? extends Element> getClient();
+    List<? extends Element> getClient();
 
-    Collection<? extends Element> getSupplier();
+    List<? extends Element> getSupplier();
 }

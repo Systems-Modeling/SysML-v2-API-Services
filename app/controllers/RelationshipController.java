@@ -21,17 +21,14 @@
 
 package controllers;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import config.MetamodelProvider;
-import jackson.JacksonHelper;
-import org.omg.sysml.metamodel.MofObject;
+import jackson.jsonld.JsonLdAdorner;
+import jackson.jsonld.MofObjectJsonLdAdorner;
 import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.utils.RelationshipDirection;
 import play.Environment;
-import play.libs.Json;
-import play.mvc.Http;
+import play.mvc.Http.Request;
 import play.mvc.Result;
-import play.mvc.Results;
 import services.RelationshipService;
 
 import javax.inject.Inject;
@@ -40,41 +37,20 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class RelationshipController extends BaseController {
+public final class RelationshipController extends JsonLdController<Relationship, MofObjectJsonLdAdorner.Parameters> {
 
     private final RelationshipService relationshipService;
     private final MetamodelProvider metamodelProvider;
-    private final Environment environment;
+    private final JsonLdAdorner<Relationship, MofObjectJsonLdAdorner.Parameters> adorner;
 
     @Inject
     public RelationshipController(RelationshipService relationshipService, MetamodelProvider metamodelProvider, Environment environment) {
         this.relationshipService = relationshipService;
         this.metamodelProvider = metamodelProvider;
-        this.environment = environment;
+        this.adorner = new MofObjectJsonLdAdorner<>(metamodelProvider, environment, INLINE_JSON_LD_CONTEXT);
     }
 
-    public Result byId(String id) {
-        UUID uuid = UUID.fromString(id);
-        Optional<Relationship> relationship = relationshipService.getById(uuid);
-        return relationship.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
-    }
-
-    public Result all() {
-        List<Relationship> relationships = relationshipService.getAll();
-        return ok(JacksonHelper.collectionToTree(relationships, List.class, metamodelProvider.getImplementationClass(Relationship.class)));
-    }
-
-    public Result create(Http.Request request) {
-        JsonNode requestBodyJson = request.body().asJson();
-        MofObject requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(MofObject.class));
-        if (!(requestedObject instanceof Relationship)) {
-            return Results.badRequest();
-        }
-        Optional<Relationship> responseRelationship = relationshipService.create((Relationship) requestedObject);
-        return responseRelationship.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
-    }
-
-    public Result getRelationshipsByProjectIdCommitIdRelatedElementId(UUID projectId, UUID commitId, UUID elementId, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<String> direction, Http.Request request) {
+    public Result getRelationshipsByProjectIdCommitIdRelatedElementId(UUID projectId, UUID commitId, UUID relatedElementId, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<String> direction, Request request) {
         PageRequest pageRequest = PageRequest.from(request);
         RelationshipDirection relationshipDirection = direction
                 .flatMap(d -> Arrays.stream(RelationshipDirection.values())
@@ -85,16 +61,27 @@ public class RelationshipController extends BaseController {
         List<Relationship> relationships = relationshipService.getRelationshipsByProjectCommitRelatedElement(
                 projectId,
                 commitId,
-                elementId,
+                relatedElementId,
                 relationshipDirection,
                 pageRequest.getAfter(),
                 pageRequest.getBefore(),
                 pageRequest.getSize()
         );
-        return buildResult(relationships, projectId, commitId, request, pageRequest);
+        return buildPaginatedResult(relationships, projectId, commitId, request, pageRequest);
     }
 
-    private Result buildResult(List<Relationship> relationships, UUID projectId, UUID commitId, Http.Request request, PageRequest pageRequest) {
-        return buildResult(relationships, Relationship.class, Relationship::getIdentifier, projectId, commitId, request, pageRequest, metamodelProvider, environment);
+    private Result buildPaginatedResult(List<Relationship> relationships, UUID projectId, UUID commitId, Request request, PageRequest pageRequest) {
+        return paginateResult(
+                buildResult(relationships, List.class, metamodelProvider.getImplementationClass(Relationship.class), request, new MofObjectJsonLdAdorner.Parameters(projectId, commitId)),
+                relationships.size(),
+                idx -> relationships.get(idx).getIdentifier(),
+                request,
+                pageRequest
+        );
+    }
+
+    @Override
+    protected JsonLdAdorner<Relationship, MofObjectJsonLdAdorner.Parameters> getAdorner() {
+        return adorner;
     }
 }

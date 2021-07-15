@@ -28,19 +28,7 @@ import java.util.Set;
 public interface FeatureMembership extends Membership, TypeFeaturing, MofObject {
     Type getOwningType();
 
-    Boolean getIsDerived();
-
-    Boolean getIsReadOnly();
-
     Feature getMemberFeature();
 
     Feature getOwnedMemberFeature();
-
-    Boolean getIsComposite();
-
-    Boolean getIsPortion();
-
-    Boolean getIsPort();
-
-    FeatureDirectionKind getDirection();
 }

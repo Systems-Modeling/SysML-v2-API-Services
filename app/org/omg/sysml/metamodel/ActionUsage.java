@@ -26,5 +26,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface ActionUsage extends Step, OccurrenceUsage, MofObject {
-    Collection<? extends Behavior> getActionDefinition();
+    List<? extends Behavior> getActionDefinition();
 }

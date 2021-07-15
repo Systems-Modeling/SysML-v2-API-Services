@@ -27,22 +27,40 @@ import play.libs.Json;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.function.Function;
-import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
 public class JacksonHelper {
     // Java type erasure necessitates explicitly specifying JavaType for Collections. See https://github.com/FasterXML/jackson-databind/issues/23#issuecomment-6251193.
     public static JsonNode collectionToTree(Collection<?> collection, @SuppressWarnings("rawtypes") Class<? extends Collection> collectionClass, Class<?> elementClass) {
-        return collectionToTree(collection, collectionClass, elementClass, Json::mapper, UnaryOperator.identity());
+        return collectionToTree(collection, collectionClass, elementClass, Json.mapper());
     }
 
-    public static JsonNode collectionToTree(Collection<?> collection, @SuppressWarnings("rawtypes") Class<? extends Collection> collectionClass, Class<?> elementClass, Supplier<ObjectMapper> mapperSupplier, UnaryOperator<ObjectWriter> writerOperator) {
-        JavaType javaType = mapperSupplier.get().getTypeFactory().constructCollectionType(collectionClass, elementClass);
-        return objectToTree(collection, mapperSupplier, mapper -> writerOperator.apply(mapper.writerFor(javaType)), mapper -> mapper.readerFor(javaType));
+    public static JsonNode collectionToTree(Collection<?> collection, @SuppressWarnings("rawtypes") Class<? extends Collection> collectionClass, Class<?> elementClass, ObjectMapper mapper) {
+        return collectionToTree(collection, collectionClass, elementClass, mapper, UnaryOperator.identity());
     }
 
-    public static JsonNode objectToTree(Object o, Supplier<ObjectMapper> mapperSupplier, Function<ObjectMapper, ObjectWriter> writerFunction, Function<ObjectMapper, ObjectReader> readerFunction) {
-        ObjectMapper mapper = mapperSupplier.get();
+    public static JsonNode collectionToTree(Collection<?> collection, @SuppressWarnings("rawtypes") Class<? extends Collection> collectionClass, Class<?> elementClass, ObjectMapper mapper, UnaryOperator<ObjectWriter> writerOperator) {
+        return collectionToTree(collection, collectionClass, elementClass, mapper, writerOperator, UnaryOperator.identity());
+    }
+
+    public static JsonNode collectionToTree(Collection<?> collection, @SuppressWarnings("rawtypes") Class<? extends Collection> collectionClass, Class<?> elementClass, ObjectMapper mapper, UnaryOperator<ObjectWriter> writerOperator, UnaryOperator<ObjectReader> readerOperator) {
+        JavaType javaType = collectionType(collectionClass, elementClass, mapper);
+        return objectToTree(collection, mapper, om -> writerOperator.apply(om.writerFor(javaType)), om -> readerOperator.apply(om.readerFor(javaType)));
+    }
+
+    public static JavaType collectionType(@SuppressWarnings("rawtypes") Class<? extends Collection> collectionClass, Class<?> elementClass, ObjectMapper mapper) {
+        return mapper.getTypeFactory().constructCollectionType(collectionClass, elementClass);
+    }
+
+    public static ObjectWriter writer(Object o, ObjectMapper mapper, UnaryOperator<ObjectWriter> writerOperator) {
+        return writerOperator.apply(mapper.writerFor(o.getClass()));
+    }
+
+    public static ObjectReader reader(Object o, ObjectMapper mapper, UnaryOperator<ObjectReader> readerOperator) {
+        return readerOperator.apply(mapper.readerFor(o.getClass()));
+    }
+
+    public static JsonNode objectToTree(Object o, ObjectMapper mapper, Function<ObjectMapper, ObjectWriter> writerFunction, Function<ObjectMapper, ObjectReader> readerFunction) {
         try {
             return readerFunction.apply(mapper).readTree(writerFunction.apply(mapper).writeValueAsString(o));
         } catch (IOException e) {

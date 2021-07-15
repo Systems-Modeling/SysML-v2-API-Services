@@ -30,9 +30,9 @@ public abstract class DependencyImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile SingularAttribute<DependencyImpl, String> humanId;
 	public static volatile ListAttribute<DependencyImpl, String> aliasId;
 	public static volatile ListAttribute<DependencyImpl, Element> relatedElement;
-	public static volatile CollectionAttribute<DependencyImpl, Element> supplier;
+	public static volatile ListAttribute<DependencyImpl, Element> supplier;
 	public static volatile SingularAttribute<DependencyImpl, String> name;
-	public static volatile CollectionAttribute<DependencyImpl, Element> client;
+	public static volatile ListAttribute<DependencyImpl, Element> client;
 	public static volatile ListAttribute<DependencyImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<DependencyImpl, String> effectiveName;
 

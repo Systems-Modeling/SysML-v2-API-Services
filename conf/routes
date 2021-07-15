@@ -7,19 +7,19 @@
 GET         /                                                                                      controllers.HomeController.index
 
 # Project endpoints
-GET         /projects                                                                              controllers.ProjectController.all(request : Request)
-POST        /projects                                                                              controllers.ProjectController.create(request : Request)
-GET         /projects/:projectId                                                                   controllers.ProjectController.byId(projectId : java.util.UUID)
+GET         /projects                                                                              controllers.ProjectController.getProjects(request : Request)
+POST        /projects                                                                              controllers.ProjectController.postProject(request : Request)
+GET         /projects/:projectId                                                                   controllers.ProjectController.getProjectById(projectId : java.util.UUID, request : Request)
 
 # Branch endpoints
-GET         /projects/:projectId/branches                                                          controllers.BranchController.byProject(projectId : java.util.UUID, request : Request)
-POST        /projects/:projectId/branches                                                          controllers.BranchController.createWithProjectId(projectId : java.util.UUID, request : Request)
-GET         /projects/:projectId/branches/:branchId                                                controllers.BranchController.byProjectAndId(projectId : java.util.UUID, branchId : java.util.UUID)
+GET         /projects/:projectId/branches                                                          controllers.BranchController.getBranchesByProject(projectId : java.util.UUID, request : Request)
+POST        /projects/:projectId/branches                                                          controllers.BranchController.postBranchByProject(projectId : java.util.UUID, request : Request)
+GET         /projects/:projectId/branches/:branchId                                                controllers.BranchController.getBranchesByProjectAndId(projectId : java.util.UUID, branchId : java.util.UUID, request : Request)
 
 # Commit endpoints
-GET         /projects/:projectId/commits                                                           controllers.CommitController.byProject(projectId : java.util.UUID, request : Request)
-POST        /projects/:projectId/commits                                                           controllers.CommitController.createWithProjectId(projectId : java.util.UUID, branchId : java.util.Optional[java.util.UUID], request : Request)
-GET         /projects/:projectId/commits/:commitId                                                 controllers.CommitController.byProjectAndId(projectId : java.util.UUID, commitId : java.util.UUID)
+GET         /projects/:projectId/commits                                                           controllers.CommitController.getCommitsByProject(projectId : java.util.UUID, request : Request)
+POST        /projects/:projectId/commits                                                           controllers.CommitController.postCommitByProject(projectId : java.util.UUID, branchId : java.util.Optional[java.util.UUID], request : Request)
+GET         /projects/:projectId/commits/:commitId                                                 controllers.CommitController.getCommitByProjectAndId(projectId : java.util.UUID, commitId : java.util.UUID, request : Request)
 
 # Element endpoints
 GET         /projects/:projectId/commits/:commitId/elements                                        controllers.ElementController.getElementsByProjectIdCommitId(projectId : java.util.UUID, commitId : java.util.UUID, request : Request)

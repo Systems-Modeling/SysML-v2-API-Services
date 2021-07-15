@@ -26,5 +26,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface AllocationUsage extends ConnectionUsage, MofObject {
-    Collection<? extends AllocationDefinition> getAllocationDefinition();
+    List<? extends AllocationDefinition> getAllocationDefinition();
 }

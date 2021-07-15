@@ -26,5 +26,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface CalculationDefinition extends Function, ActionDefinition, MofObject {
-    Collection<? extends CalculationUsage> getCalculation();
+    List<? extends CalculationUsage> getCalculation();
 }

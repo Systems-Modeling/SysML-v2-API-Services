@@ -11,12 +11,14 @@ import org.omg.sysml.metamodel.Association;
 import org.omg.sysml.metamodel.Behavior;
 import org.omg.sysml.metamodel.Classifier;
 import org.omg.sysml.metamodel.Comment;
+import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Feature;
+import org.omg.sysml.metamodel.FeatureChaining;
+import org.omg.sysml.metamodel.FeatureDirectionKind;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
-import org.omg.sysml.metamodel.Generalization;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.ItemFeature;
 import org.omg.sysml.metamodel.ItemFlowEnd;
@@ -24,6 +26,7 @@ import org.omg.sysml.metamodel.ItemFlowFeature;
 import org.omg.sysml.metamodel.Membership;
 import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.Specialization;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.Type;
@@ -33,7 +36,7 @@ import org.omg.sysml.metamodel.TypeFeaturing;
 @StaticMetamodel(ItemFlowImpl.class)
 public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
-	public static volatile ListAttribute<ItemFlowImpl, Generalization> ownedGeneralization;
+	public static volatile ListAttribute<ItemFlowImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<ItemFlowImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isConjugated;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isUnique;
@@ -42,16 +45,19 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile ListAttribute<ItemFlowImpl, Type> type;
 	public static volatile ListAttribute<ItemFlowImpl, Feature> output;
 	public static volatile ListAttribute<ItemFlowImpl, Feature> sourceOutputFeature;
+	public static volatile CollectionAttribute<ItemFlowImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<ItemFlowImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<ItemFlowImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<ItemFlowImpl, UUID> identifier;
+	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isDerived;
 	public static volatile ListAttribute<ItemFlowImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ItemFlowImpl, Feature> ownedFeature;
 	public static volatile SingularAttribute<ItemFlowImpl, String> qualifiedName;
 	public static volatile ListAttribute<ItemFlowImpl, Documentation> documentation;
 	public static volatile ListAttribute<ItemFlowImpl, Feature> endFeature;
+	public static volatile ListAttribute<ItemFlowImpl, Feature> directedFeature;
 	public static volatile CollectionAttribute<ItemFlowImpl, ItemFeature> itemFeature;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isEnd;
 	public static volatile ListAttribute<ItemFlowImpl, Type> featuringType;
@@ -64,12 +70,16 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile CollectionAttribute<ItemFlowImpl, ItemFlowEnd> itemFlowEnd;
 	public static volatile ListAttribute<ItemFlowImpl, Element> ownedMember;
 	public static volatile ListAttribute<ItemFlowImpl, Membership> ownedMembership;
+	public static volatile CollectionAttribute<ItemFlowImpl, Type> disjointType;
 	public static volatile ListAttribute<ItemFlowImpl, Classifier> itemType;
 	public static volatile CollectionAttribute<ItemFlowImpl, Association> association;
 	public static volatile ListAttribute<ItemFlowImpl, Membership> membership;
 	public static volatile ListAttribute<ItemFlowImpl, Element> ownedRelatedElement;
+	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<ItemFlowImpl, Feature> targetFeature;
+	public static volatile ListAttribute<ItemFlowImpl, FeatureChaining> ownedFeatureChaining;
+	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isReadOnly;
 	public static volatile ListAttribute<ItemFlowImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<ItemFlowImpl, Feature> feature;
 	public static volatile ListAttribute<ItemFlowImpl, Membership> inheritedMembership;
@@ -80,6 +90,7 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile ListAttribute<ItemFlowImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<ItemFlowImpl, Behavior> behavior;
 	public static volatile SingularAttribute<ItemFlowImpl, String> effectiveName;
+	public static volatile SingularAttribute<ItemFlowImpl, FeatureDirectionKind> direction;
 	public static volatile CollectionAttribute<ItemFlowImpl, ItemFlowFeature> itemFlowFeature;
 	public static volatile ListAttribute<ItemFlowImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ItemFlowImpl, Element> ownedElement;
@@ -93,8 +104,9 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isDirected;
 	public static volatile SingularAttribute<ItemFlowImpl, String> humanId;
 	public static volatile ListAttribute<ItemFlowImpl, String> aliasId;
+	public static volatile ListAttribute<ItemFlowImpl, Specialization> ownedSpecialization;
 
-	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String IS_UNIQUE = "isUnique";
@@ -103,16 +115,19 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static final String TYPE = "type";
 	public static final String OUTPUT = "output";
 	public static final String SOURCE_OUTPUT_FEATURE = "sourceOutputFeature";
+	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";
+	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String END_FEATURE = "endFeature";
+	public static final String DIRECTED_FEATURE = "directedFeature";
 	public static final String ITEM_FEATURE = "itemFeature";
 	public static final String IS_END = "isEnd";
 	public static final String FEATURING_TYPE = "featuringType";
@@ -125,12 +140,16 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static final String ITEM_FLOW_END = "itemFlowEnd";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
+	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String ITEM_TYPE = "itemType";
 	public static final String ASSOCIATION = "association";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
+	public static final String IS_PORTION = "isPortion";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String TARGET_FEATURE = "targetFeature";
+	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
+	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
@@ -141,6 +160,7 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
 	public static final String EFFECTIVE_NAME = "effectiveName";
+	public static final String DIRECTION = "direction";
 	public static final String ITEM_FLOW_FEATURE = "itemFlowFeature";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
@@ -154,6 +174,7 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.metamodel.impl.MofObje
 	public static final String IS_DIRECTED = "isDirected";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
+	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 
 }
 

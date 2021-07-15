@@ -9,16 +9,19 @@ import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.Association;
 import org.omg.sysml.metamodel.Comment;
+import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Feature;
+import org.omg.sysml.metamodel.FeatureChaining;
+import org.omg.sysml.metamodel.FeatureDirectionKind;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
-import org.omg.sysml.metamodel.Generalization;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.Membership;
 import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.Specialization;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.Type;
@@ -28,7 +31,7 @@ import org.omg.sysml.metamodel.TypeFeaturing;
 @StaticMetamodel(ConnectorImpl.class)
 public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
-	public static volatile ListAttribute<ConnectorImpl, Generalization> ownedGeneralization;
+	public static volatile ListAttribute<ConnectorImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<ConnectorImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isConjugated;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isUnique;
@@ -36,16 +39,19 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile ListAttribute<ConnectorImpl, Element> source;
 	public static volatile ListAttribute<ConnectorImpl, Type> type;
 	public static volatile ListAttribute<ConnectorImpl, Feature> output;
+	public static volatile CollectionAttribute<ConnectorImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<ConnectorImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<ConnectorImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<ConnectorImpl, UUID> identifier;
+	public static volatile SingularAttribute<ConnectorImpl, Boolean> isDerived;
 	public static volatile ListAttribute<ConnectorImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ConnectorImpl, Feature> ownedFeature;
 	public static volatile SingularAttribute<ConnectorImpl, String> qualifiedName;
 	public static volatile ListAttribute<ConnectorImpl, Documentation> documentation;
 	public static volatile ListAttribute<ConnectorImpl, Feature> endFeature;
+	public static volatile ListAttribute<ConnectorImpl, Feature> directedFeature;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isEnd;
 	public static volatile ListAttribute<ConnectorImpl, Type> featuringType;
 	public static volatile ListAttribute<ConnectorImpl, Feature> input;
@@ -55,11 +61,15 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile CollectionAttribute<ConnectorImpl, Feature> connectorEnd;
 	public static volatile ListAttribute<ConnectorImpl, Element> ownedMember;
 	public static volatile ListAttribute<ConnectorImpl, Membership> ownedMembership;
+	public static volatile CollectionAttribute<ConnectorImpl, Type> disjointType;
 	public static volatile CollectionAttribute<ConnectorImpl, Association> association;
 	public static volatile ListAttribute<ConnectorImpl, Membership> membership;
 	public static volatile ListAttribute<ConnectorImpl, Element> ownedRelatedElement;
+	public static volatile SingularAttribute<ConnectorImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isNonunique;
 	public static volatile CollectionAttribute<ConnectorImpl, Feature> targetFeature;
+	public static volatile ListAttribute<ConnectorImpl, FeatureChaining> ownedFeatureChaining;
+	public static volatile SingularAttribute<ConnectorImpl, Boolean> isReadOnly;
 	public static volatile ListAttribute<ConnectorImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<ConnectorImpl, Feature> feature;
 	public static volatile ListAttribute<ConnectorImpl, Membership> inheritedMembership;
@@ -68,6 +78,7 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile ListAttribute<ConnectorImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<ConnectorImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<ConnectorImpl, String> effectiveName;
+	public static volatile SingularAttribute<ConnectorImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<ConnectorImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ConnectorImpl, Element> ownedElement;
 	public static volatile ListAttribute<ConnectorImpl, Relationship> ownedRelationship;
@@ -80,8 +91,9 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isDirected;
 	public static volatile SingularAttribute<ConnectorImpl, String> humanId;
 	public static volatile ListAttribute<ConnectorImpl, String> aliasId;
+	public static volatile ListAttribute<ConnectorImpl, Specialization> ownedSpecialization;
 
-	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
+	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String IS_UNIQUE = "isUnique";
@@ -89,16 +101,19 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String SOURCE = "source";
 	public static final String TYPE = "type";
 	public static final String OUTPUT = "output";
+	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";
+	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String END_FEATURE = "endFeature";
+	public static final String DIRECTED_FEATURE = "directedFeature";
 	public static final String IS_END = "isEnd";
 	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
@@ -108,11 +123,15 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String CONNECTOR_END = "connectorEnd";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
+	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String ASSOCIATION = "association";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
+	public static final String IS_PORTION = "isPortion";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String TARGET_FEATURE = "targetFeature";
+	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
+	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
@@ -121,6 +140,7 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String EFFECTIVE_NAME = "effectiveName";
+	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
@@ -133,6 +153,7 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String IS_DIRECTED = "isDirected";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
+	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 
 }
 

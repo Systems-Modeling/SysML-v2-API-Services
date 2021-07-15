@@ -1,0 +1,33 @@
+{
+    "@context": {
+        "@vocab": "http://omg.org/ns/sysml/v2/metamodel#",
+        "sysml": "http://omg.org/ns/sysml/v2/metamodel#",
+        "dcterms": "http://purl.org/dc/terms/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+        "aliasId": {"@type": "xsd:string"},
+        "disjoiningType": {"@type": "@id"},
+        "documentation": {"@type": "@id"},
+        "documentationComment": {"@type": "@id"},
+        "effectiveName": {"@type": "xsd:string"},
+        "humanId": {"@type": "xsd:string"},
+        "identifier": {"@type": "dcterms:identifier"},
+        "name": {"@type": "xsd:string"},
+        "ownedAnnotation": {"@type": "@id"},
+        "ownedElement": {"@type": "@id"},
+        "ownedRelatedElement": {"@type": "@id"},
+        "ownedRelationship": {"@type": "@id"},
+        "ownedTextualRepresentation": {"@type": "@id"},
+        "owner": {"@type": "@id"},
+        "owningMembership": {"@type": "@id"},
+        "owningNamespace": {"@type": "@id"},
+        "owningRelatedElement": {"@type": "@id"},
+        "owningRelationship": {"@type": "@id"},
+        "qualifiedName": {"@type": "xsd:string"},
+        "relatedElement": {"@type": "@id"},
+        "source": {"@type": "@id"},
+        "target": {"@type": "@id"},
+        "typeDisjoined": {"@type": "@id"}
+
+    }
+}

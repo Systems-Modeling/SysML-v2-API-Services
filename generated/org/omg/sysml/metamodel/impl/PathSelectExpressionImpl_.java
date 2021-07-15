@@ -9,17 +9,20 @@ import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.Behavior;
 import org.omg.sysml.metamodel.Comment;
+import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Expression;
 import org.omg.sysml.metamodel.Feature;
+import org.omg.sysml.metamodel.FeatureChaining;
+import org.omg.sysml.metamodel.FeatureDirectionKind;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
-import org.omg.sysml.metamodel.Generalization;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.Membership;
 import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
+import org.omg.sysml.metamodel.Specialization;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.Type;
@@ -29,8 +32,8 @@ import org.omg.sysml.metamodel.TypeFeaturing;
 @StaticMetamodel(PathSelectExpressionImpl.class)
 public abstract class PathSelectExpressionImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
 
-	public static volatile ListAttribute<PathSelectExpressionImpl, Generalization> ownedGeneralization;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Expression> argument;
+	public static volatile ListAttribute<PathSelectExpressionImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<PathSelectExpressionImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<PathSelectExpressionImpl, Boolean> isConjugated;
 	public static volatile SingularAttribute<PathSelectExpressionImpl, Boolean> isUnique;
@@ -38,16 +41,19 @@ public abstract class PathSelectExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static volatile ListAttribute<PathSelectExpressionImpl, Type> type;
 	public static volatile SingularAttribute<PathSelectExpressionImpl, String> operator;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Feature> output;
+	public static volatile CollectionAttribute<PathSelectExpressionImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile SingularAttribute<PathSelectExpressionImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<PathSelectExpressionImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<PathSelectExpressionImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<PathSelectExpressionImpl, UUID> identifier;
+	public static volatile SingularAttribute<PathSelectExpressionImpl, Boolean> isDerived;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Feature> ownedFeature;
 	public static volatile SingularAttribute<PathSelectExpressionImpl, String> qualifiedName;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Documentation> documentation;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Feature> endFeature;
+	public static volatile ListAttribute<PathSelectExpressionImpl, Feature> directedFeature;
 	public static volatile SingularAttribute<PathSelectExpressionImpl, Boolean> isEnd;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Type> featuringType;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Feature> input;
@@ -55,8 +61,12 @@ public abstract class PathSelectExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static volatile SingularAttribute<PathSelectExpressionImpl, String> name;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Membership> ownedMembership;
+	public static volatile CollectionAttribute<PathSelectExpressionImpl, Type> disjointType;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Membership> membership;
+	public static volatile SingularAttribute<PathSelectExpressionImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<PathSelectExpressionImpl, Boolean> isNonunique;
+	public static volatile ListAttribute<PathSelectExpressionImpl, FeatureChaining> ownedFeatureChaining;
+	public static volatile SingularAttribute<PathSelectExpressionImpl, Boolean> isReadOnly;
 	public static volatile ListAttribute<PathSelectExpressionImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Feature> feature;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Membership> inheritedMembership;
@@ -67,6 +77,7 @@ public abstract class PathSelectExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static volatile ListAttribute<PathSelectExpressionImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Behavior> behavior;
 	public static volatile SingularAttribute<PathSelectExpressionImpl, String> effectiveName;
+	public static volatile SingularAttribute<PathSelectExpressionImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Element> ownedElement;
 	public static volatile SingularAttribute<PathSelectExpressionImpl, Boolean> isModelLevelEvaluable;
@@ -77,10 +88,11 @@ public abstract class PathSelectExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static volatile CollectionAttribute<PathSelectExpressionImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<PathSelectExpressionImpl, String> humanId;
 	public static volatile ListAttribute<PathSelectExpressionImpl, String> aliasId;
+	public static volatile ListAttribute<PathSelectExpressionImpl, Specialization> ownedSpecialization;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Expression> operand;
 
-	public static final String OWNED_GENERALIZATION = "ownedGeneralization";
 	public static final String ARGUMENT = "argument";
+	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String IS_UNIQUE = "isUnique";
@@ -88,16 +100,19 @@ public abstract class PathSelectExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static final String TYPE = "type";
 	public static final String OPERATOR = "operator";
 	public static final String OUTPUT = "output";
+	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";
+	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String END_FEATURE = "endFeature";
+	public static final String DIRECTED_FEATURE = "directedFeature";
 	public static final String IS_END = "isEnd";
 	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
@@ -105,8 +120,12 @@ public abstract class PathSelectExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
+	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String MEMBERSHIP = "membership";
+	public static final String IS_PORTION = "isPortion";
 	public static final String IS_NONUNIQUE = "isNonunique";
+	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
+	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
@@ -117,6 +136,7 @@ public abstract class PathSelectExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
 	public static final String EFFECTIVE_NAME = "effectiveName";
+	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
@@ -127,6 +147,7 @@ public abstract class PathSelectExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
+	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String OPERAND = "operand";
 
 }

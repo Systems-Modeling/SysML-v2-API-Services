@@ -26,5 +26,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface Invariant extends BooleanExpression, MofObject {
-    BindingConnector getAssertionConnector();
+    Boolean getIsNegated();
 }

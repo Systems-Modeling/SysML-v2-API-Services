@@ -22,12 +22,12 @@
 package controllers;
 
 import config.MetamodelProvider;
+import jackson.jsonld.JsonLdAdorner;
+import jackson.jsonld.MofObjectJsonLdAdorner;
 import org.omg.sysml.metamodel.Element;
 import play.Environment;
-import play.libs.Json;
-import play.mvc.Http;
+import play.mvc.Http.Request;
 import play.mvc.Result;
-import play.mvc.Results;
 import services.ElementService;
 
 import javax.inject.Inject;
@@ -35,46 +35,48 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static jackson.JsonLdMofObjectAdornment.JSONLD_MIME_TYPE;
-
-public class ElementController extends BaseController {
+public final class ElementController extends JsonLdController<Element, MofObjectJsonLdAdorner.Parameters> {
 
     private final ElementService elementService;
     private final MetamodelProvider metamodelProvider;
-    private final Environment environment;
+    private final JsonLdAdorner<Element, MofObjectJsonLdAdorner.Parameters> adorner;
 
     @Inject
     public ElementController(ElementService elementService, MetamodelProvider metamodelProvider, Environment environment) {
         this.elementService = elementService;
         this.metamodelProvider = metamodelProvider;
-        this.environment = environment;
+        this.adorner = new MofObjectJsonLdAdorner<>(metamodelProvider, environment, INLINE_JSON_LD_CONTEXT);
     }
 
-    public Result getElementsByProjectIdCommitId(UUID projectId, UUID commitId, Http.Request request) {
+    public Result getElementsByProjectIdCommitId(UUID projectId, UUID commitId, Request request) {
         PageRequest pageRequest = PageRequest.from(request);
         List<Element> elements = elementService.getElementsByProjectIdCommitId(projectId, commitId, pageRequest.getAfter(), pageRequest.getBefore(), pageRequest.getSize());
-        return buildResult(elements, projectId, commitId, request, pageRequest);
+        return buildPaginatedResult(elements, projectId, commitId, request, pageRequest);
     }
 
-    public Result getElementByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId, Http.Request request) {
+    public Result getElementByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId, Request request) {
         Optional<Element> element = elementService.getElementsByProjectIdCommitIdElementId(projectId, commitId, elementId);
-        boolean respondWithJsonLd = respondWithJsonLd(request);
-        return element
-                .map(e -> respondWithJsonLd ? adornMofObject(e, request, metamodelProvider, environment, projectId, commitId) : e)
-                .map(Json::toJson)
-                .map(Results::ok)
-                .map(result -> respondWithJsonLd ? result.as(JSONLD_MIME_TYPE) : result)
-                .orElseGet(Results::notFound);
-
+        return buildResult(element.orElse(null), request, new MofObjectJsonLdAdorner.Parameters(projectId, commitId));
     }
 
-    public Result getRootsByProjectIdCommitId(UUID projectId, UUID commitId, Http.Request request) {
+    public Result getRootsByProjectIdCommitId(UUID projectId, UUID commitId, Request request) {
         PageRequest pageRequest = PageRequest.from(request);
         List<Element> roots = elementService.getRootsByProjectIdCommitId(projectId, commitId, pageRequest.getAfter(), pageRequest.getBefore(), pageRequest.getSize());
-        return buildResult(roots, projectId, commitId, request, pageRequest);
+        return buildPaginatedResult(roots, projectId, commitId, request, pageRequest);
     }
 
-    private Result buildResult(List<Element> elements, UUID projectId, UUID commitId, Http.Request request, PageRequest pageRequest) {
-        return buildResult(elements, Element.class, Element::getIdentifier, projectId, commitId, request, pageRequest, metamodelProvider, environment);
+    private Result buildPaginatedResult(List<Element> elements, UUID projectId, UUID commitId, Request request, PageRequest pageRequest) {
+        return paginateResult(
+                buildResult(elements, List.class, metamodelProvider.getImplementationClass(Element.class), request, new MofObjectJsonLdAdorner.Parameters(projectId, commitId)),
+                elements.size(),
+                idx -> elements.get(idx).getIdentifier(),
+                request,
+                pageRequest
+        );
+    }
+
+    @Override
+    protected JsonLdAdorner<Element, MofObjectJsonLdAdorner.Parameters> getAdorner() {
+        return adorner;
     }
 }
