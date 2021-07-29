@@ -67,7 +67,6 @@ public abstract class ConcernDefinitionImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile ListAttribute<ConcernDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile ListAttribute<ConcernDefinitionImpl, Feature> output;
 	public static volatile ListAttribute<ConcernDefinitionImpl, ConcernUsage> framedConcern;
-	public static volatile CollectionAttribute<ConcernDefinitionImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<ConcernDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<ConcernDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile CollectionAttribute<ConcernDefinitionImpl, String> text;
@@ -100,6 +99,7 @@ public abstract class ConcernDefinitionImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile ListAttribute<ConcernDefinitionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<ConcernDefinitionImpl, Type> disjointType;
 	public static volatile ListAttribute<ConcernDefinitionImpl, UseCaseUsage> ownedUseCase;
+	public static volatile CollectionAttribute<ConcernDefinitionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<ConcernDefinitionImpl, StateUsage> ownedState;
 	public static volatile SingularAttribute<ConcernDefinitionImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<ConcernDefinitionImpl, Membership> membership;
@@ -147,7 +147,6 @@ public abstract class ConcernDefinitionImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
 	public static final String FRAMED_CONCERN = "framedConcern";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String TEXT = "text";
@@ -180,6 +179,7 @@ public abstract class ConcernDefinitionImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String OWNED_STATE = "ownedState";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";

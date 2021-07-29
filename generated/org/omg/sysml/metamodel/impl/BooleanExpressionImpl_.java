@@ -38,7 +38,6 @@ public abstract class BooleanExpressionImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile CollectionAttribute<BooleanExpressionImpl, Subsetting> ownedSubsetting;
 	public static volatile ListAttribute<BooleanExpressionImpl, Type> type;
 	public static volatile ListAttribute<BooleanExpressionImpl, Feature> output;
-	public static volatile CollectionAttribute<BooleanExpressionImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile SingularAttribute<BooleanExpressionImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<BooleanExpressionImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<BooleanExpressionImpl, Boolean> isOrdered;
@@ -59,6 +58,7 @@ public abstract class BooleanExpressionImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile ListAttribute<BooleanExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<BooleanExpressionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<BooleanExpressionImpl, Type> disjointType;
+	public static volatile CollectionAttribute<BooleanExpressionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<BooleanExpressionImpl, Membership> membership;
 	public static volatile SingularAttribute<BooleanExpressionImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<BooleanExpressionImpl, Boolean> isNonunique;
@@ -94,7 +94,6 @@ public abstract class BooleanExpressionImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String TYPE = "type";
 	public static final String OUTPUT = "output";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
@@ -115,6 +114,7 @@ public abstract class BooleanExpressionImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_NONUNIQUE = "isNonunique";

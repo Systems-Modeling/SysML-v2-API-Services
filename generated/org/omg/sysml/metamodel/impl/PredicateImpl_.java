@@ -29,12 +29,12 @@ public abstract class PredicateImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 
 	public static volatile CollectionAttribute<PredicateImpl, Type> disjointType;
 	public static volatile SingularAttribute<PredicateImpl, Boolean> isConjugated;
+	public static volatile CollectionAttribute<PredicateImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<PredicateImpl, Membership> membership;
 	public static volatile ListAttribute<PredicateImpl, Feature> output;
 	public static volatile ListAttribute<PredicateImpl, Feature> feature;
 	public static volatile ListAttribute<PredicateImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<PredicateImpl, Feature> parameter;
-	public static volatile CollectionAttribute<PredicateImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile ListAttribute<PredicateImpl, Element> member;
 	public static volatile ListAttribute<PredicateImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<PredicateImpl, FeatureMembership> ownedFeatureMembership;
@@ -70,12 +70,12 @@ public abstract class PredicateImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String IS_CONJUGATED = "isConjugated";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OUTPUT = "output";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String PARAMETER = "parameter";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";

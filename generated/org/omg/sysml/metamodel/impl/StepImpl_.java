@@ -38,7 +38,6 @@ public abstract class StepImpl_ extends org.omg.sysml.metamodel.impl.MofObjectIm
 	public static volatile CollectionAttribute<StepImpl, Subsetting> ownedSubsetting;
 	public static volatile ListAttribute<StepImpl, Type> type;
 	public static volatile ListAttribute<StepImpl, Feature> output;
-	public static volatile CollectionAttribute<StepImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile SingularAttribute<StepImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<StepImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<StepImpl, Boolean> isOrdered;
@@ -59,6 +58,7 @@ public abstract class StepImpl_ extends org.omg.sysml.metamodel.impl.MofObjectIm
 	public static volatile ListAttribute<StepImpl, Element> ownedMember;
 	public static volatile ListAttribute<StepImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<StepImpl, Type> disjointType;
+	public static volatile CollectionAttribute<StepImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<StepImpl, Membership> membership;
 	public static volatile SingularAttribute<StepImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<StepImpl, Boolean> isNonunique;
@@ -93,7 +93,6 @@ public abstract class StepImpl_ extends org.omg.sysml.metamodel.impl.MofObjectIm
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String TYPE = "type";
 	public static final String OUTPUT = "output";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
@@ -114,6 +113,7 @@ public abstract class StepImpl_ extends org.omg.sysml.metamodel.impl.MofObjectIm
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_NONUNIQUE = "isNonunique";

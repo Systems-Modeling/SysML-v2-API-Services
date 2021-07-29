@@ -72,7 +72,6 @@ public abstract class ConcernUsageImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static volatile ListAttribute<ConcernUsageImpl, ConcernUsage> framedConcern;
 	public static volatile CollectionAttribute<ConcernUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<ConcernUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<ConcernUsageImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<ConcernUsageImpl, String> text;
 	public static volatile SingularAttribute<ConcernUsageImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<ConcernUsageImpl, Redefinition> ownedRedefinition;
@@ -139,6 +138,7 @@ public abstract class ConcernUsageImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static volatile CollectionAttribute<ConcernUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<ConcernUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<ConcernUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<ConcernUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile SingularAttribute<ConcernUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<ConcernUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<ConcernUsageImpl, Boolean> isNonunique;
@@ -171,7 +171,6 @@ public abstract class ConcernUsageImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static final String FRAMED_CONCERN = "framedConcern";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String TEXT = "text";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
@@ -238,6 +237,7 @@ public abstract class ConcernUsageImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_NONUNIQUE = "isNonunique";

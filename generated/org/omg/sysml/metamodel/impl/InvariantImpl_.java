@@ -39,7 +39,6 @@ public abstract class InvariantImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile SingularAttribute<InvariantImpl, Boolean> isNegated;
 	public static volatile ListAttribute<InvariantImpl, Type> type;
 	public static volatile ListAttribute<InvariantImpl, Feature> output;
-	public static volatile CollectionAttribute<InvariantImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile SingularAttribute<InvariantImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<InvariantImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<InvariantImpl, Boolean> isOrdered;
@@ -60,6 +59,7 @@ public abstract class InvariantImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static volatile ListAttribute<InvariantImpl, Element> ownedMember;
 	public static volatile ListAttribute<InvariantImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<InvariantImpl, Type> disjointType;
+	public static volatile CollectionAttribute<InvariantImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<InvariantImpl, Membership> membership;
 	public static volatile SingularAttribute<InvariantImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<InvariantImpl, Boolean> isNonunique;
@@ -96,7 +96,6 @@ public abstract class InvariantImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String IS_NEGATED = "isNegated";
 	public static final String TYPE = "type";
 	public static final String OUTPUT = "output";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
@@ -117,6 +116,7 @@ public abstract class InvariantImpl_ extends org.omg.sysml.metamodel.impl.MofObj
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_NONUNIQUE = "isNonunique";

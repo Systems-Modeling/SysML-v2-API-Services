@@ -65,7 +65,6 @@ public abstract class ConstraintDefinitionImpl_ extends org.omg.sysml.metamodel.
 	public static volatile ListAttribute<ConstraintDefinitionImpl, RenderingUsage> ownedRendering;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, Feature> output;
-	public static volatile CollectionAttribute<ConstraintDefinitionImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<ConstraintDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<ConstraintDefinitionImpl, Boolean> isSufficient;
@@ -93,6 +92,7 @@ public abstract class ConstraintDefinitionImpl_ extends org.omg.sysml.metamodel.
 	public static volatile ListAttribute<ConstraintDefinitionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<ConstraintDefinitionImpl, Type> disjointType;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, UseCaseUsage> ownedUseCase;
+	public static volatile CollectionAttribute<ConstraintDefinitionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, StateUsage> ownedState;
 	public static volatile SingularAttribute<ConstraintDefinitionImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, Membership> membership;
@@ -138,7 +138,6 @@ public abstract class ConstraintDefinitionImpl_ extends org.omg.sysml.metamodel.
 	public static final String OWNED_RENDERING = "ownedRendering";
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
@@ -166,6 +165,7 @@ public abstract class ConstraintDefinitionImpl_ extends org.omg.sysml.metamodel.
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String OWNED_STATE = "ownedState";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";

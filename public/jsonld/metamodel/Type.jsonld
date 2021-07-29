@@ -7,7 +7,6 @@
 
         "aliasId": {"@type": "xsd:string"},
         "directedFeature": {"@type": "@id"},
-        "disjoiningTypeDisjoining": {"@type": "@id"},
         "disjointType": {"@type": "@id"},
         "documentation": {"@type": "@id"},
         "documentationComment": {"@type": "@id"},
@@ -31,6 +30,7 @@
         "output": {"@type": "@id"},
         "ownedAnnotation": {"@type": "@id"},
         "ownedConjugator": {"@type": "@id"},
+        "ownedDisjoining": {"@type": "@id"},
         "ownedElement": {"@type": "@id"},
         "ownedEndFeature": {"@type": "@id"},
         "ownedFeature": {"@type": "@id"},

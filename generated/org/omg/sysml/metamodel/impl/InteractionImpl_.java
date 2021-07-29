@@ -28,6 +28,7 @@ public abstract class InteractionImpl_ extends org.omg.sysml.metamodel.impl.MofO
 
 	public static volatile CollectionAttribute<InteractionImpl, Type> disjointType;
 	public static volatile SingularAttribute<InteractionImpl, Boolean> isConjugated;
+	public static volatile CollectionAttribute<InteractionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<InteractionImpl, Membership> membership;
 	public static volatile ListAttribute<InteractionImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<InteractionImpl, Element> source;
@@ -36,7 +37,6 @@ public abstract class InteractionImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static volatile ListAttribute<InteractionImpl, Feature> feature;
 	public static volatile ListAttribute<InteractionImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<InteractionImpl, Feature> parameter;
-	public static volatile CollectionAttribute<InteractionImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile ListAttribute<InteractionImpl, Element> member;
 	public static volatile ListAttribute<InteractionImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<InteractionImpl, FeatureMembership> ownedFeatureMembership;
@@ -74,6 +74,7 @@ public abstract class InteractionImpl_ extends org.omg.sysml.metamodel.impl.MofO
 
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String IS_CONJUGATED = "isConjugated";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
@@ -82,7 +83,6 @@ public abstract class InteractionImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String PARAMETER = "parameter";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";

@@ -42,7 +42,6 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile ListAttribute<SuccessionImpl, Type> type;
 	public static volatile ListAttribute<SuccessionImpl, Feature> output;
 	public static volatile CollectionAttribute<SuccessionImpl, Expression> guardExpression;
-	public static volatile CollectionAttribute<SuccessionImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<SuccessionImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isOrdered;
@@ -66,6 +65,7 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile ListAttribute<SuccessionImpl, Element> ownedMember;
 	public static volatile ListAttribute<SuccessionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<SuccessionImpl, Type> disjointType;
+	public static volatile CollectionAttribute<SuccessionImpl, Disjoining> ownedDisjoining;
 	public static volatile CollectionAttribute<SuccessionImpl, Association> association;
 	public static volatile ListAttribute<SuccessionImpl, Membership> membership;
 	public static volatile ListAttribute<SuccessionImpl, Element> ownedRelatedElement;
@@ -107,7 +107,6 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String TYPE = "type";
 	public static final String OUTPUT = "output";
 	public static final String GUARD_EXPRESSION = "guardExpression";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
@@ -131,6 +130,7 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String ASSOCIATION = "association";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";

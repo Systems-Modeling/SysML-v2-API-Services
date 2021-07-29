@@ -73,7 +73,6 @@ public abstract class ReferenceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile ListAttribute<ReferenceUsageImpl, PortUsage> nestedPort;
 	public static volatile CollectionAttribute<ReferenceUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<ReferenceUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<ReferenceUsageImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<ReferenceUsageImpl, Usage> variant;
 	public static volatile SingularAttribute<ReferenceUsageImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<ReferenceUsageImpl, StateUsage> nestedState;
@@ -106,6 +105,7 @@ public abstract class ReferenceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<ReferenceUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<ReferenceUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<ReferenceUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<ReferenceUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<ReferenceUsageImpl, AllocationUsage> nestedAllocation;
 	public static volatile ListAttribute<ReferenceUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<ReferenceUsageImpl, Boolean> isPortion;
@@ -159,7 +159,6 @@ public abstract class ReferenceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String NESTED_PORT = "nestedPort";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String NESTED_STATE = "nestedState";
@@ -192,6 +191,7 @@ public abstract class ReferenceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";

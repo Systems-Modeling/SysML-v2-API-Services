@@ -64,7 +64,6 @@ public abstract class AllocationDefinitionImpl_ extends org.omg.sysml.metamodel.
 	public static volatile ListAttribute<AllocationDefinitionImpl, RenderingUsage> ownedRendering;
 	public static volatile ListAttribute<AllocationDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile ListAttribute<AllocationDefinitionImpl, Feature> output;
-	public static volatile CollectionAttribute<AllocationDefinitionImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<AllocationDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<AllocationDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<AllocationDefinitionImpl, Boolean> isSufficient;
@@ -93,6 +92,7 @@ public abstract class AllocationDefinitionImpl_ extends org.omg.sysml.metamodel.
 	public static volatile ListAttribute<AllocationDefinitionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<AllocationDefinitionImpl, Type> disjointType;
 	public static volatile ListAttribute<AllocationDefinitionImpl, UseCaseUsage> ownedUseCase;
+	public static volatile CollectionAttribute<AllocationDefinitionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<AllocationDefinitionImpl, StateUsage> ownedState;
 	public static volatile SingularAttribute<AllocationDefinitionImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<AllocationDefinitionImpl, Membership> membership;
@@ -142,7 +142,6 @@ public abstract class AllocationDefinitionImpl_ extends org.omg.sysml.metamodel.
 	public static final String OWNED_RENDERING = "ownedRendering";
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
@@ -171,6 +170,7 @@ public abstract class AllocationDefinitionImpl_ extends org.omg.sysml.metamodel.
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String OWNED_STATE = "ownedState";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";

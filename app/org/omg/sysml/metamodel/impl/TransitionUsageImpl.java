@@ -266,30 +266,6 @@ public class TransitionUsageImpl extends MofObjectImpl implements TransitionUsag
 
 
 
-    // @info.archinnov.achilles.annotations.Column("disjoiningTypeDisjoining")
-    private Collection<Disjoining> disjoiningTypeDisjoining;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
-    @ManyToAny(metaDef = "DisjoiningMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "TransitionUsage_disjoiningTypeDisjoining",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<Disjoining> getDisjoiningTypeDisjoining() {
-        if (disjoiningTypeDisjoining == null) {
-            disjoiningTypeDisjoining = new ArrayList<>();
-        }
-        return disjoiningTypeDisjoining;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DisjoiningImpl.class)
-    public void setDisjoiningTypeDisjoining(Collection<Disjoining> disjoiningTypeDisjoining) {
-        this.disjoiningTypeDisjoining = disjoiningTypeDisjoining;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("disjointType")
     private Collection<Type> disjointType;
@@ -1818,6 +1794,32 @@ public class TransitionUsageImpl extends MofObjectImpl implements TransitionUsag
     @JsonDeserialize(using = MofObjectDeserializer.class, as = ConjugationImpl.class)
     public void setOwnedConjugator(Conjugation ownedConjugator) {
         this.ownedConjugator = ownedConjugator;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedDisjoining")
+    private Collection<Disjoining> ownedDisjoining;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "DisjoiningMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TransitionUsage_ownedDisjoining",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public Collection<Disjoining> getOwnedDisjoining() {
+        if (ownedDisjoining == null) {
+            ownedDisjoining = new ArrayList<>();
+        }
+        return ownedDisjoining;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DisjoiningImpl.class)
+    public void setOwnedDisjoining(Collection<Disjoining> ownedDisjoining) {
+        this.ownedDisjoining = ownedDisjoining;
     }
 
 

@@ -72,7 +72,6 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile ListAttribute<ViewpointUsageImpl, ConcernUsage> framedConcern;
 	public static volatile CollectionAttribute<ViewpointUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<ViewpointUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<ViewpointUsageImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<ViewpointUsageImpl, String> text;
 	public static volatile SingularAttribute<ViewpointUsageImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<ViewpointUsageImpl, Redefinition> ownedRedefinition;
@@ -140,6 +139,7 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<ViewpointUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<ViewpointUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<ViewpointUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<ViewpointUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile SingularAttribute<ViewpointUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<ViewpointUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<ViewpointUsageImpl, Boolean> isNonunique;
@@ -172,7 +172,6 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String FRAMED_CONCERN = "framedConcern";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String TEXT = "text";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
@@ -240,6 +239,7 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_NONUNIQUE = "isNonunique";
