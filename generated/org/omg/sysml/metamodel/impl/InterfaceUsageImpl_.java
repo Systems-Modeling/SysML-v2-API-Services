@@ -74,7 +74,6 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile ListAttribute<InterfaceUsageImpl, PortUsage> nestedPort;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<InterfaceUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<InterfaceUsageImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<InterfaceUsageImpl, UUID> identifier;
@@ -142,6 +141,7 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<InterfaceUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<InterfaceUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<InterfaceUsageImpl, Membership> membership;
 	public static volatile ListAttribute<InterfaceUsageImpl, Element> ownedRelatedElement;
@@ -176,7 +176,6 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String NESTED_PORT = "nestedPort";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";
@@ -244,6 +243,7 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";

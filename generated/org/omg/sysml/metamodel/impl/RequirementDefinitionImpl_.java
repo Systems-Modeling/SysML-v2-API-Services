@@ -67,7 +67,6 @@ public abstract class RequirementDefinitionImpl_ extends org.omg.sysml.metamodel
 	public static volatile ListAttribute<RequirementDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile ListAttribute<RequirementDefinitionImpl, Feature> output;
 	public static volatile ListAttribute<RequirementDefinitionImpl, ConcernUsage> framedConcern;
-	public static volatile CollectionAttribute<RequirementDefinitionImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<RequirementDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<RequirementDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile CollectionAttribute<RequirementDefinitionImpl, String> text;
@@ -100,6 +99,7 @@ public abstract class RequirementDefinitionImpl_ extends org.omg.sysml.metamodel
 	public static volatile ListAttribute<RequirementDefinitionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<RequirementDefinitionImpl, Type> disjointType;
 	public static volatile ListAttribute<RequirementDefinitionImpl, UseCaseUsage> ownedUseCase;
+	public static volatile CollectionAttribute<RequirementDefinitionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<RequirementDefinitionImpl, StateUsage> ownedState;
 	public static volatile SingularAttribute<RequirementDefinitionImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<RequirementDefinitionImpl, Membership> membership;
@@ -147,7 +147,6 @@ public abstract class RequirementDefinitionImpl_ extends org.omg.sysml.metamodel
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
 	public static final String FRAMED_CONCERN = "framedConcern";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String TEXT = "text";
@@ -180,6 +179,7 @@ public abstract class RequirementDefinitionImpl_ extends org.omg.sysml.metamodel
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String OWNED_STATE = "ownedState";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";

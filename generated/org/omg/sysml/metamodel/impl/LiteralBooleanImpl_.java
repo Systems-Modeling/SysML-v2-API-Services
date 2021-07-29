@@ -38,7 +38,6 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile CollectionAttribute<LiteralBooleanImpl, Subsetting> ownedSubsetting;
 	public static volatile ListAttribute<LiteralBooleanImpl, Type> type;
 	public static volatile ListAttribute<LiteralBooleanImpl, Feature> output;
-	public static volatile CollectionAttribute<LiteralBooleanImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<LiteralBooleanImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isOrdered;
@@ -59,6 +58,7 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile ListAttribute<LiteralBooleanImpl, Element> ownedMember;
 	public static volatile ListAttribute<LiteralBooleanImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<LiteralBooleanImpl, Type> disjointType;
+	public static volatile CollectionAttribute<LiteralBooleanImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<LiteralBooleanImpl, Membership> membership;
 	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isNonunique;
@@ -95,7 +95,6 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String TYPE = "type";
 	public static final String OUTPUT = "output";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
@@ -116,6 +115,7 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_NONUNIQUE = "isNonunique";

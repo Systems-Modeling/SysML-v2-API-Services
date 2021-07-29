@@ -66,7 +66,6 @@ public abstract class VerificationCaseDefinitionImpl_ extends org.omg.sysml.meta
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, RenderingUsage> ownedRendering;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, Feature> output;
-	public static volatile CollectionAttribute<VerificationCaseDefinitionImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<VerificationCaseDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, ActionUsage> action;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, ItemUsage> ownedItem;
@@ -96,6 +95,7 @@ public abstract class VerificationCaseDefinitionImpl_ extends org.omg.sysml.meta
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<VerificationCaseDefinitionImpl, Type> disjointType;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, UseCaseUsage> ownedUseCase;
+	public static volatile CollectionAttribute<VerificationCaseDefinitionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, StateUsage> ownedState;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, RequirementUsage> verifiedRequirement;
 	public static volatile SingularAttribute<VerificationCaseDefinitionImpl, Boolean> isIndividual;
@@ -143,7 +143,6 @@ public abstract class VerificationCaseDefinitionImpl_ extends org.omg.sysml.meta
 	public static final String OWNED_RENDERING = "ownedRendering";
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String ACTION = "action";
 	public static final String OWNED_ITEM = "ownedItem";
@@ -173,6 +172,7 @@ public abstract class VerificationCaseDefinitionImpl_ extends org.omg.sysml.meta
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String OWNED_STATE = "ownedState";
 	public static final String VERIFIED_REQUIREMENT = "verifiedRequirement";
 	public static final String IS_INDIVIDUAL = "isIndividual";

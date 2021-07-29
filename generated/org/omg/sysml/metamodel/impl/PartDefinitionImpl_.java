@@ -63,7 +63,6 @@ public abstract class PartDefinitionImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile ListAttribute<PartDefinitionImpl, RenderingUsage> ownedRendering;
 	public static volatile ListAttribute<PartDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile ListAttribute<PartDefinitionImpl, Feature> output;
-	public static volatile CollectionAttribute<PartDefinitionImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<PartDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<PartDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<PartDefinitionImpl, Boolean> isSufficient;
@@ -91,6 +90,7 @@ public abstract class PartDefinitionImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static volatile ListAttribute<PartDefinitionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<PartDefinitionImpl, Type> disjointType;
 	public static volatile ListAttribute<PartDefinitionImpl, UseCaseUsage> ownedUseCase;
+	public static volatile CollectionAttribute<PartDefinitionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<PartDefinitionImpl, StateUsage> ownedState;
 	public static volatile SingularAttribute<PartDefinitionImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<PartDefinitionImpl, Membership> membership;
@@ -132,7 +132,6 @@ public abstract class PartDefinitionImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String OWNED_RENDERING = "ownedRendering";
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
@@ -160,6 +159,7 @@ public abstract class PartDefinitionImpl_ extends org.omg.sysml.metamodel.impl.M
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String OWNED_STATE = "ownedState";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";

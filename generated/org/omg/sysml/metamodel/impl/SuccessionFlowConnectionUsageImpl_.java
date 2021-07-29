@@ -80,7 +80,6 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.m
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Feature> sourceOutputFeature;
 	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, UUID> identifier;
@@ -155,6 +154,7 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.m
 	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Classifier> itemType;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Membership> membership;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Element> ownedRelatedElement;
@@ -192,7 +192,6 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.m
 	public static final String SOURCE_OUTPUT_FEATURE = "sourceOutputFeature";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";
@@ -267,6 +266,7 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.m
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String ITEM_TYPE = "itemType";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";

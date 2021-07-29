@@ -79,7 +79,6 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<TransitionUsageImpl, Expression> guardExpression;
 	public static volatile CollectionAttribute<TransitionUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<TransitionUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<TransitionUsageImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<TransitionUsageImpl, Usage> variant;
 	public static volatile SingularAttribute<TransitionUsageImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<TransitionUsageImpl, StateUsage> nestedState;
@@ -114,6 +113,7 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<TransitionUsageImpl, AcceptActionUsage> triggerAction;
 	public static volatile CollectionAttribute<TransitionUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<TransitionUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<TransitionUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<TransitionUsageImpl, AllocationUsage> nestedAllocation;
 	public static volatile SingularAttribute<TransitionUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<TransitionUsageImpl, Membership> membership;
@@ -174,7 +174,6 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String GUARD_EXPRESSION = "guardExpression";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String NESTED_STATE = "nestedState";
@@ -209,6 +208,7 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String TRIGGER_ACTION = "triggerAction";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";

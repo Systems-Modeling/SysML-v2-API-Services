@@ -66,7 +66,6 @@ public abstract class CalculationDefinitionImpl_ extends org.omg.sysml.metamodel
 	public static volatile ListAttribute<CalculationDefinitionImpl, RenderingUsage> ownedRendering;
 	public static volatile ListAttribute<CalculationDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile ListAttribute<CalculationDefinitionImpl, Feature> output;
-	public static volatile CollectionAttribute<CalculationDefinitionImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<CalculationDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<CalculationDefinitionImpl, ActionUsage> action;
 	public static volatile ListAttribute<CalculationDefinitionImpl, ItemUsage> ownedItem;
@@ -95,6 +94,7 @@ public abstract class CalculationDefinitionImpl_ extends org.omg.sysml.metamodel
 	public static volatile ListAttribute<CalculationDefinitionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<CalculationDefinitionImpl, Type> disjointType;
 	public static volatile ListAttribute<CalculationDefinitionImpl, UseCaseUsage> ownedUseCase;
+	public static volatile CollectionAttribute<CalculationDefinitionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<CalculationDefinitionImpl, StateUsage> ownedState;
 	public static volatile SingularAttribute<CalculationDefinitionImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<CalculationDefinitionImpl, Membership> membership;
@@ -141,7 +141,6 @@ public abstract class CalculationDefinitionImpl_ extends org.omg.sysml.metamodel
 	public static final String OWNED_RENDERING = "ownedRendering";
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String ACTION = "action";
 	public static final String OWNED_ITEM = "ownedItem";
@@ -170,6 +169,7 @@ public abstract class CalculationDefinitionImpl_ extends org.omg.sysml.metamodel
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String OWNED_STATE = "ownedState";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";

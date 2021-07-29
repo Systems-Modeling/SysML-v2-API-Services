@@ -41,7 +41,6 @@ public abstract class PathSelectExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static volatile ListAttribute<PathSelectExpressionImpl, Type> type;
 	public static volatile SingularAttribute<PathSelectExpressionImpl, String> operator;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Feature> output;
-	public static volatile CollectionAttribute<PathSelectExpressionImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile SingularAttribute<PathSelectExpressionImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<PathSelectExpressionImpl, Boolean> isOrdered;
@@ -62,6 +61,7 @@ public abstract class PathSelectExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static volatile ListAttribute<PathSelectExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<PathSelectExpressionImpl, Type> disjointType;
+	public static volatile CollectionAttribute<PathSelectExpressionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Membership> membership;
 	public static volatile SingularAttribute<PathSelectExpressionImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<PathSelectExpressionImpl, Boolean> isNonunique;
@@ -100,7 +100,6 @@ public abstract class PathSelectExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static final String TYPE = "type";
 	public static final String OPERATOR = "operator";
 	public static final String OUTPUT = "output";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
@@ -121,6 +120,7 @@ public abstract class PathSelectExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_NONUNIQUE = "isNonunique";

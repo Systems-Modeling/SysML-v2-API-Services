@@ -76,7 +76,6 @@ public abstract class ControlNodeImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static volatile ListAttribute<ControlNodeImpl, PortUsage> nestedPort;
 	public static volatile CollectionAttribute<ControlNodeImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<ControlNodeImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<ControlNodeImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<ControlNodeImpl, Usage> variant;
 	public static volatile SingularAttribute<ControlNodeImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<ControlNodeImpl, StateUsage> nestedState;
@@ -110,6 +109,7 @@ public abstract class ControlNodeImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static volatile CollectionAttribute<ControlNodeImpl, Type> disjointType;
 	public static volatile CollectionAttribute<ControlNodeImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<ControlNodeImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<ControlNodeImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<ControlNodeImpl, AllocationUsage> nestedAllocation;
 	public static volatile SingularAttribute<ControlNodeImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<ControlNodeImpl, Membership> membership;
@@ -168,7 +168,6 @@ public abstract class ControlNodeImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static final String NESTED_PORT = "nestedPort";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String NESTED_STATE = "nestedState";
@@ -202,6 +201,7 @@ public abstract class ControlNodeImpl_ extends org.omg.sysml.metamodel.impl.MofO
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";

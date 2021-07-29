@@ -77,7 +77,6 @@ public abstract class IncludeUseCaseUsageImpl_ extends org.omg.sysml.metamodel.i
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, PortUsage> nestedPort;
 	public static volatile CollectionAttribute<IncludeUseCaseUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<IncludeUseCaseUsageImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<IncludeUseCaseUsageImpl, Usage> variant;
 	public static volatile SingularAttribute<IncludeUseCaseUsageImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, StateUsage> nestedState;
@@ -112,6 +111,7 @@ public abstract class IncludeUseCaseUsageImpl_ extends org.omg.sysml.metamodel.i
 	public static volatile CollectionAttribute<IncludeUseCaseUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<IncludeUseCaseUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<IncludeUseCaseUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, AllocationUsage> nestedAllocation;
 	public static volatile SingularAttribute<IncludeUseCaseUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, Membership> membership;
@@ -172,7 +172,6 @@ public abstract class IncludeUseCaseUsageImpl_ extends org.omg.sysml.metamodel.i
 	public static final String NESTED_PORT = "nestedPort";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String NESTED_STATE = "nestedState";
@@ -207,6 +206,7 @@ public abstract class IncludeUseCaseUsageImpl_ extends org.omg.sysml.metamodel.i
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";

@@ -74,7 +74,6 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile ListAttribute<AllocationUsageImpl, PortUsage> nestedPort;
 	public static volatile CollectionAttribute<AllocationUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<AllocationUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<AllocationUsageImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<AllocationUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<AllocationUsageImpl, UUID> identifier;
@@ -142,6 +141,7 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<AllocationUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<AllocationUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<AllocationUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<AllocationUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<AllocationUsageImpl, Membership> membership;
 	public static volatile ListAttribute<AllocationUsageImpl, Element> ownedRelatedElement;
@@ -176,7 +176,6 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String NESTED_PORT = "nestedPort";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";
@@ -244,6 +243,7 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";

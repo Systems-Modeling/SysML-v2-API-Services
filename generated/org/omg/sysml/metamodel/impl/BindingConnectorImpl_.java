@@ -39,7 +39,6 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile ListAttribute<BindingConnectorImpl, Element> source;
 	public static volatile ListAttribute<BindingConnectorImpl, Type> type;
 	public static volatile ListAttribute<BindingConnectorImpl, Feature> output;
-	public static volatile CollectionAttribute<BindingConnectorImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<BindingConnectorImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isOrdered;
@@ -62,6 +61,7 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile ListAttribute<BindingConnectorImpl, Element> ownedMember;
 	public static volatile ListAttribute<BindingConnectorImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Type> disjointType;
+	public static volatile CollectionAttribute<BindingConnectorImpl, Disjoining> ownedDisjoining;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Association> association;
 	public static volatile ListAttribute<BindingConnectorImpl, Membership> membership;
 	public static volatile ListAttribute<BindingConnectorImpl, Element> ownedRelatedElement;
@@ -101,7 +101,6 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String SOURCE = "source";
 	public static final String TYPE = "type";
 	public static final String OUTPUT = "output";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
@@ -124,6 +123,7 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String ASSOCIATION = "association";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";

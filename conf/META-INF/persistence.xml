@@ -122,7 +122,6 @@
         <class>org.omg.sysml.metamodel.impl.OccurrenceDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.OccurrenceUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.OperatorExpressionImpl</class>
-        <class>org.omg.sysml.metamodel.impl.package-info</class>
         <class>org.omg.sysml.metamodel.impl.PackageImpl</class>
         <class>org.omg.sysml.metamodel.impl.ParameterMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.PartDefinitionImpl</class>

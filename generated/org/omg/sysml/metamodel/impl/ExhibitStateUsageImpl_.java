@@ -77,7 +77,6 @@ public abstract class ExhibitStateUsageImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile ListAttribute<ExhibitStateUsageImpl, PortUsage> nestedPort;
 	public static volatile CollectionAttribute<ExhibitStateUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<ExhibitStateUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<ExhibitStateUsageImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<ExhibitStateUsageImpl, Usage> variant;
 	public static volatile SingularAttribute<ExhibitStateUsageImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<ExhibitStateUsageImpl, StateUsage> nestedState;
@@ -111,6 +110,7 @@ public abstract class ExhibitStateUsageImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile CollectionAttribute<ExhibitStateUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<ExhibitStateUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<ExhibitStateUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<ExhibitStateUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<ExhibitStateUsageImpl, AllocationUsage> nestedAllocation;
 	public static volatile SingularAttribute<ExhibitStateUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<ExhibitStateUsageImpl, Membership> membership;
@@ -171,7 +171,6 @@ public abstract class ExhibitStateUsageImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String NESTED_PORT = "nestedPort";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String NESTED_STATE = "nestedState";
@@ -205,6 +204,7 @@ public abstract class ExhibitStateUsageImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";

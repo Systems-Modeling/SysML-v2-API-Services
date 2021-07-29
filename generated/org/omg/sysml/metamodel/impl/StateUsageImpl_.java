@@ -77,7 +77,6 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile ListAttribute<StateUsageImpl, PortUsage> nestedPort;
 	public static volatile CollectionAttribute<StateUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<StateUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<StateUsageImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<StateUsageImpl, Usage> variant;
 	public static volatile SingularAttribute<StateUsageImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<StateUsageImpl, StateUsage> nestedState;
@@ -111,6 +110,7 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static volatile CollectionAttribute<StateUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<StateUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<StateUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<StateUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<StateUsageImpl, AllocationUsage> nestedAllocation;
 	public static volatile SingularAttribute<StateUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<StateUsageImpl, Membership> membership;
@@ -171,7 +171,6 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String NESTED_PORT = "nestedPort";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String NESTED_STATE = "nestedState";
@@ -205,6 +204,7 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.metamodel.impl.MofOb
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";

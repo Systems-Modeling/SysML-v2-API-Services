@@ -67,7 +67,6 @@ public abstract class UseCaseDefinitionImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile ListAttribute<UseCaseDefinitionImpl, RenderingUsage> ownedRendering;
 	public static volatile ListAttribute<UseCaseDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile ListAttribute<UseCaseDefinitionImpl, Feature> output;
-	public static volatile CollectionAttribute<UseCaseDefinitionImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<UseCaseDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<UseCaseDefinitionImpl, ActionUsage> action;
 	public static volatile ListAttribute<UseCaseDefinitionImpl, ItemUsage> ownedItem;
@@ -97,6 +96,7 @@ public abstract class UseCaseDefinitionImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile ListAttribute<UseCaseDefinitionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<UseCaseDefinitionImpl, Type> disjointType;
 	public static volatile ListAttribute<UseCaseDefinitionImpl, UseCaseUsage> ownedUseCase;
+	public static volatile CollectionAttribute<UseCaseDefinitionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<UseCaseDefinitionImpl, StateUsage> ownedState;
 	public static volatile SingularAttribute<UseCaseDefinitionImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<UseCaseDefinitionImpl, Membership> membership;
@@ -144,7 +144,6 @@ public abstract class UseCaseDefinitionImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String OWNED_RENDERING = "ownedRendering";
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String ACTION = "action";
 	public static final String OWNED_ITEM = "ownedItem";
@@ -174,6 +173,7 @@ public abstract class UseCaseDefinitionImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String OWNED_STATE = "ownedState";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";

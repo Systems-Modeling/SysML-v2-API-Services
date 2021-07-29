@@ -70,7 +70,6 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile ListAttribute<SuccessionAsUsageImpl, PortUsage> nestedPort;
 	public static volatile CollectionAttribute<SuccessionAsUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<SuccessionAsUsageImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<SuccessionAsUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<SuccessionAsUsageImpl, UUID> identifier;
@@ -136,6 +135,7 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile CollectionAttribute<SuccessionAsUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<SuccessionAsUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<SuccessionAsUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Membership> membership;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Element> ownedRelatedElement;
 	public static volatile CollectionAttribute<SuccessionAsUsageImpl, Step> triggerStep;
@@ -168,7 +168,6 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String NESTED_PORT = "nestedPort";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";
@@ -234,6 +233,7 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String TRIGGER_STEP = "triggerStep";

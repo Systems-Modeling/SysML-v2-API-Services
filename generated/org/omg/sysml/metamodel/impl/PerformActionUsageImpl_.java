@@ -76,7 +76,6 @@ public abstract class PerformActionUsageImpl_ extends org.omg.sysml.metamodel.im
 	public static volatile ListAttribute<PerformActionUsageImpl, PortUsage> nestedPort;
 	public static volatile CollectionAttribute<PerformActionUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<PerformActionUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<PerformActionUsageImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<PerformActionUsageImpl, Usage> variant;
 	public static volatile SingularAttribute<PerformActionUsageImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<PerformActionUsageImpl, StateUsage> nestedState;
@@ -110,6 +109,7 @@ public abstract class PerformActionUsageImpl_ extends org.omg.sysml.metamodel.im
 	public static volatile CollectionAttribute<PerformActionUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<PerformActionUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<PerformActionUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<PerformActionUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<PerformActionUsageImpl, AllocationUsage> nestedAllocation;
 	public static volatile SingularAttribute<PerformActionUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<PerformActionUsageImpl, Membership> membership;
@@ -168,7 +168,6 @@ public abstract class PerformActionUsageImpl_ extends org.omg.sysml.metamodel.im
 	public static final String NESTED_PORT = "nestedPort";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String NESTED_STATE = "nestedState";
@@ -202,6 +201,7 @@ public abstract class PerformActionUsageImpl_ extends org.omg.sysml.metamodel.im
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";

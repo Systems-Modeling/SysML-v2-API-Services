@@ -63,7 +63,6 @@ public abstract class ConjugatedPortDefinitionImpl_ extends org.omg.sysml.metamo
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, RenderingUsage> ownedRendering;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, Feature> output;
-	public static volatile CollectionAttribute<ConjugatedPortDefinitionImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<ConjugatedPortDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<ConjugatedPortDefinitionImpl, Boolean> isSufficient;
@@ -91,6 +90,7 @@ public abstract class ConjugatedPortDefinitionImpl_ extends org.omg.sysml.metamo
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<ConjugatedPortDefinitionImpl, Type> disjointType;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, UseCaseUsage> ownedUseCase;
+	public static volatile CollectionAttribute<ConjugatedPortDefinitionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, StateUsage> ownedState;
 	public static volatile SingularAttribute<ConjugatedPortDefinitionImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, Membership> membership;
@@ -132,7 +132,6 @@ public abstract class ConjugatedPortDefinitionImpl_ extends org.omg.sysml.metamo
 	public static final String OWNED_RENDERING = "ownedRendering";
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
@@ -160,6 +159,7 @@ public abstract class ConjugatedPortDefinitionImpl_ extends org.omg.sysml.metamo
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String OWNED_STATE = "ownedState";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
