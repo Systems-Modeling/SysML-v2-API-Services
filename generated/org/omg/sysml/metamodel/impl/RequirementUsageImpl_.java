@@ -72,7 +72,6 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile ListAttribute<RequirementUsageImpl, ConcernUsage> framedConcern;
 	public static volatile CollectionAttribute<RequirementUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<RequirementUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<RequirementUsageImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<RequirementUsageImpl, String> text;
 	public static volatile SingularAttribute<RequirementUsageImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<RequirementUsageImpl, Redefinition> ownedRedefinition;
@@ -139,6 +138,7 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile CollectionAttribute<RequirementUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<RequirementUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<RequirementUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<RequirementUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile SingularAttribute<RequirementUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<RequirementUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<RequirementUsageImpl, Boolean> isNonunique;
@@ -171,7 +171,6 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String FRAMED_CONCERN = "framedConcern";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String TEXT = "text";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
@@ -238,6 +237,7 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_NONUNIQUE = "isNonunique";

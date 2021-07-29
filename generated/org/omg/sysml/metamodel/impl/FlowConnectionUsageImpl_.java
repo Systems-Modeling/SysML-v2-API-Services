@@ -78,7 +78,6 @@ public abstract class FlowConnectionUsageImpl_ extends org.omg.sysml.metamodel.i
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Feature> sourceOutputFeature;
 	public static volatile CollectionAttribute<FlowConnectionUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<FlowConnectionUsageImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile SingularAttribute<FlowConnectionUsageImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<FlowConnectionUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<FlowConnectionUsageImpl, UUID> identifier;
@@ -151,6 +150,7 @@ public abstract class FlowConnectionUsageImpl_ extends org.omg.sysml.metamodel.i
 	public static volatile CollectionAttribute<FlowConnectionUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Classifier> itemType;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<FlowConnectionUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile SingularAttribute<FlowConnectionUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Membership> membership;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Element> ownedRelatedElement;
@@ -187,7 +187,6 @@ public abstract class FlowConnectionUsageImpl_ extends org.omg.sysml.metamodel.i
 	public static final String SOURCE_OUTPUT_FEATURE = "sourceOutputFeature";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";
@@ -260,6 +259,7 @@ public abstract class FlowConnectionUsageImpl_ extends org.omg.sysml.metamodel.i
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String ITEM_TYPE = "itemType";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";

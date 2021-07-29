@@ -40,7 +40,6 @@ public abstract class InvocationExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static volatile CollectionAttribute<InvocationExpressionImpl, Subsetting> ownedSubsetting;
 	public static volatile ListAttribute<InvocationExpressionImpl, Type> type;
 	public static volatile ListAttribute<InvocationExpressionImpl, Feature> output;
-	public static volatile CollectionAttribute<InvocationExpressionImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile SingularAttribute<InvocationExpressionImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<InvocationExpressionImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<InvocationExpressionImpl, Boolean> isOrdered;
@@ -61,6 +60,7 @@ public abstract class InvocationExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static volatile ListAttribute<InvocationExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<InvocationExpressionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<InvocationExpressionImpl, Type> disjointType;
+	public static volatile CollectionAttribute<InvocationExpressionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<InvocationExpressionImpl, Membership> membership;
 	public static volatile SingularAttribute<InvocationExpressionImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<InvocationExpressionImpl, Boolean> isNonunique;
@@ -97,7 +97,6 @@ public abstract class InvocationExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String TYPE = "type";
 	public static final String OUTPUT = "output";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
@@ -118,6 +117,7 @@ public abstract class InvocationExpressionImpl_ extends org.omg.sysml.metamodel.
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_NONUNIQUE = "isNonunique";

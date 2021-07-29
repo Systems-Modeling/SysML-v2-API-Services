@@ -72,7 +72,6 @@ public abstract class SatisfyRequirementUsageImpl_ extends org.omg.sysml.metamod
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, ConcernUsage> framedConcern;
 	public static volatile CollectionAttribute<SatisfyRequirementUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<SatisfyRequirementUsageImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<SatisfyRequirementUsageImpl, String> text;
 	public static volatile SingularAttribute<SatisfyRequirementUsageImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<SatisfyRequirementUsageImpl, Redefinition> ownedRedefinition;
@@ -140,6 +139,7 @@ public abstract class SatisfyRequirementUsageImpl_ extends org.omg.sysml.metamod
 	public static volatile CollectionAttribute<SatisfyRequirementUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<SatisfyRequirementUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<SatisfyRequirementUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile SingularAttribute<SatisfyRequirementUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<SatisfyRequirementUsageImpl, Boolean> isNonunique;
@@ -172,7 +172,6 @@ public abstract class SatisfyRequirementUsageImpl_ extends org.omg.sysml.metamod
 	public static final String FRAMED_CONCERN = "framedConcern";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String TEXT = "text";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
@@ -240,6 +239,7 @@ public abstract class SatisfyRequirementUsageImpl_ extends org.omg.sysml.metamod
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_NONUNIQUE = "isNonunique";

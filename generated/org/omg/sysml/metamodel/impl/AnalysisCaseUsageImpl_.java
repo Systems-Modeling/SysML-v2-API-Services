@@ -76,7 +76,6 @@ public abstract class AnalysisCaseUsageImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, PortUsage> nestedPort;
 	public static volatile CollectionAttribute<AnalysisCaseUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<AnalysisCaseUsageImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<AnalysisCaseUsageImpl, Usage> variant;
 	public static volatile SingularAttribute<AnalysisCaseUsageImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, StateUsage> nestedState;
@@ -112,6 +111,7 @@ public abstract class AnalysisCaseUsageImpl_ extends org.omg.sysml.metamodel.imp
 	public static volatile CollectionAttribute<AnalysisCaseUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<AnalysisCaseUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<AnalysisCaseUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, AllocationUsage> nestedAllocation;
 	public static volatile SingularAttribute<AnalysisCaseUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, Membership> membership;
@@ -171,7 +171,6 @@ public abstract class AnalysisCaseUsageImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String NESTED_PORT = "nestedPort";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String NESTED_STATE = "nestedState";
@@ -207,6 +206,7 @@ public abstract class AnalysisCaseUsageImpl_ extends org.omg.sysml.metamodel.imp
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";

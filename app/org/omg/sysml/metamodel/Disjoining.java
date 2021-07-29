@@ -29,4 +29,6 @@ public interface Disjoining extends Relationship, MofObject {
     Type getTypeDisjoined();
 
     Type getDisjoiningType();
+
+    Type getOwningType();
 }

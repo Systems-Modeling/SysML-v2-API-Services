@@ -66,7 +66,6 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.metamode
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, RenderingUsage> ownedRendering;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Feature> output;
-	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, ActionUsage> action;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, ItemUsage> ownedItem;
@@ -97,6 +96,7 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.metamode
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, ActionUsage> analysisAction;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, Type> disjointType;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, UseCaseUsage> ownedUseCase;
+	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, StateUsage> ownedState;
 	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Membership> membership;
@@ -143,7 +143,6 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.metamode
 	public static final String OWNED_RENDERING = "ownedRendering";
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String ACTION = "action";
 	public static final String OWNED_ITEM = "ownedItem";
@@ -174,6 +173,7 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.metamode
 	public static final String ANALYSIS_ACTION = "analysisAction";
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String OWNED_STATE = "ownedState";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";

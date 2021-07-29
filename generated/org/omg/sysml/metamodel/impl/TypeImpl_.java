@@ -26,11 +26,11 @@ public abstract class TypeImpl_ extends org.omg.sysml.metamodel.impl.MofObjectIm
 
 	public static volatile CollectionAttribute<TypeImpl, Type> disjointType;
 	public static volatile SingularAttribute<TypeImpl, Boolean> isConjugated;
+	public static volatile CollectionAttribute<TypeImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<TypeImpl, Membership> membership;
 	public static volatile ListAttribute<TypeImpl, Feature> output;
 	public static volatile ListAttribute<TypeImpl, Feature> feature;
 	public static volatile ListAttribute<TypeImpl, Membership> inheritedMembership;
-	public static volatile CollectionAttribute<TypeImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile ListAttribute<TypeImpl, Element> member;
 	public static volatile ListAttribute<TypeImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<TypeImpl, FeatureMembership> ownedFeatureMembership;
@@ -62,11 +62,11 @@ public abstract class TypeImpl_ extends org.omg.sysml.metamodel.impl.MofObjectIm
 
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String IS_CONJUGATED = "isConjugated";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OUTPUT = "output";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";

@@ -64,7 +64,6 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile ListAttribute<ActionDefinitionImpl, RenderingUsage> ownedRendering;
 	public static volatile ListAttribute<ActionDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile ListAttribute<ActionDefinitionImpl, Feature> output;
-	public static volatile CollectionAttribute<ActionDefinitionImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<ActionDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<ActionDefinitionImpl, ActionUsage> action;
 	public static volatile ListAttribute<ActionDefinitionImpl, ItemUsage> ownedItem;
@@ -93,6 +92,7 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.metamodel.impl
 	public static volatile ListAttribute<ActionDefinitionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<ActionDefinitionImpl, Type> disjointType;
 	public static volatile ListAttribute<ActionDefinitionImpl, UseCaseUsage> ownedUseCase;
+	public static volatile CollectionAttribute<ActionDefinitionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<ActionDefinitionImpl, StateUsage> ownedState;
 	public static volatile SingularAttribute<ActionDefinitionImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<ActionDefinitionImpl, Membership> membership;
@@ -136,7 +136,6 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String OWNED_RENDERING = "ownedRendering";
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String ACTION = "action";
 	public static final String OWNED_ITEM = "ownedItem";
@@ -165,6 +164,7 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.metamodel.impl
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String OWNED_STATE = "ownedState";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";

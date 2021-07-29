@@ -38,7 +38,6 @@ public abstract class LiteralStringImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static volatile CollectionAttribute<LiteralStringImpl, Subsetting> ownedSubsetting;
 	public static volatile ListAttribute<LiteralStringImpl, Type> type;
 	public static volatile ListAttribute<LiteralStringImpl, Feature> output;
-	public static volatile CollectionAttribute<LiteralStringImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile SingularAttribute<LiteralStringImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<LiteralStringImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<LiteralStringImpl, Boolean> isOrdered;
@@ -59,6 +58,7 @@ public abstract class LiteralStringImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static volatile ListAttribute<LiteralStringImpl, Element> ownedMember;
 	public static volatile ListAttribute<LiteralStringImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<LiteralStringImpl, Type> disjointType;
+	public static volatile CollectionAttribute<LiteralStringImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<LiteralStringImpl, Membership> membership;
 	public static volatile SingularAttribute<LiteralStringImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<LiteralStringImpl, Boolean> isNonunique;
@@ -95,7 +95,6 @@ public abstract class LiteralStringImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String TYPE = "type";
 	public static final String OUTPUT = "output";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
@@ -116,6 +115,7 @@ public abstract class LiteralStringImpl_ extends org.omg.sysml.metamodel.impl.Mo
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_NONUNIQUE = "isNonunique";

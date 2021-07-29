@@ -48,7 +48,6 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.metamodel.im
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Feature> output;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Feature> sourceOutputFeature;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Expression> guardExpression;
-	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, Boolean> isOrdered;
@@ -76,6 +75,7 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.metamodel.im
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Type> disjointType;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Classifier> itemType;
+	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Disjoining> ownedDisjoining;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Association> association;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Membership> membership;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Element> ownedRelatedElement;
@@ -121,7 +121,6 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.metamodel.im
 	public static final String OUTPUT = "output";
 	public static final String SOURCE_OUTPUT_FEATURE = "sourceOutputFeature";
 	public static final String GUARD_EXPRESSION = "guardExpression";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
@@ -149,6 +148,7 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.metamodel.im
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String ITEM_TYPE = "itemType";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String ASSOCIATION = "association";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";

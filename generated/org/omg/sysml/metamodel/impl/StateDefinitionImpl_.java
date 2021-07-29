@@ -64,7 +64,6 @@ public abstract class StateDefinitionImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile ListAttribute<StateDefinitionImpl, RenderingUsage> ownedRendering;
 	public static volatile ListAttribute<StateDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile ListAttribute<StateDefinitionImpl, Feature> output;
-	public static volatile CollectionAttribute<StateDefinitionImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<StateDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<StateDefinitionImpl, ActionUsage> action;
 	public static volatile ListAttribute<StateDefinitionImpl, ItemUsage> ownedItem;
@@ -94,6 +93,7 @@ public abstract class StateDefinitionImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile ListAttribute<StateDefinitionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<StateDefinitionImpl, Type> disjointType;
 	public static volatile ListAttribute<StateDefinitionImpl, UseCaseUsage> ownedUseCase;
+	public static volatile CollectionAttribute<StateDefinitionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<StateDefinitionImpl, StateUsage> ownedState;
 	public static volatile SingularAttribute<StateDefinitionImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<StateDefinitionImpl, Membership> membership;
@@ -138,7 +138,6 @@ public abstract class StateDefinitionImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String OWNED_RENDERING = "ownedRendering";
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String ACTION = "action";
 	public static final String OWNED_ITEM = "ownedItem";
@@ -168,6 +167,7 @@ public abstract class StateDefinitionImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String OWNED_STATE = "ownedState";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";

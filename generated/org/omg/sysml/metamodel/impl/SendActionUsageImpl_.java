@@ -76,7 +76,6 @@ public abstract class SendActionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile ListAttribute<SendActionUsageImpl, PortUsage> nestedPort;
 	public static volatile CollectionAttribute<SendActionUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<SendActionUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<SendActionUsageImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<SendActionUsageImpl, Usage> variant;
 	public static volatile SingularAttribute<SendActionUsageImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<SendActionUsageImpl, StateUsage> nestedState;
@@ -110,6 +109,7 @@ public abstract class SendActionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<SendActionUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<SendActionUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<SendActionUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<SendActionUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<SendActionUsageImpl, AllocationUsage> nestedAllocation;
 	public static volatile SingularAttribute<SendActionUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<SendActionUsageImpl, Membership> membership;
@@ -168,7 +168,6 @@ public abstract class SendActionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String NESTED_PORT = "nestedPort";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String NESTED_STATE = "nestedState";
@@ -202,6 +201,7 @@ public abstract class SendActionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";

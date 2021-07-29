@@ -77,7 +77,6 @@ public abstract class UseCaseUsageImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static volatile ListAttribute<UseCaseUsageImpl, PortUsage> nestedPort;
 	public static volatile CollectionAttribute<UseCaseUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<UseCaseUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<UseCaseUsageImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<UseCaseUsageImpl, Usage> variant;
 	public static volatile SingularAttribute<UseCaseUsageImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<UseCaseUsageImpl, StateUsage> nestedState;
@@ -112,6 +111,7 @@ public abstract class UseCaseUsageImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static volatile CollectionAttribute<UseCaseUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<UseCaseUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<UseCaseUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<UseCaseUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<UseCaseUsageImpl, AllocationUsage> nestedAllocation;
 	public static volatile SingularAttribute<UseCaseUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<UseCaseUsageImpl, Membership> membership;
@@ -172,7 +172,6 @@ public abstract class UseCaseUsageImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static final String NESTED_PORT = "nestedPort";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String NESTED_STATE = "nestedState";
@@ -207,6 +206,7 @@ public abstract class UseCaseUsageImpl_ extends org.omg.sysml.metamodel.impl.Mof
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";

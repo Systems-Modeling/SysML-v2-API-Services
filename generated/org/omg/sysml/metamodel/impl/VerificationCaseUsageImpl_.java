@@ -76,7 +76,6 @@ public abstract class VerificationCaseUsageImpl_ extends org.omg.sysml.metamodel
 	public static volatile ListAttribute<VerificationCaseUsageImpl, PortUsage> nestedPort;
 	public static volatile CollectionAttribute<VerificationCaseUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<VerificationCaseUsageImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<VerificationCaseUsageImpl, Usage> variant;
 	public static volatile SingularAttribute<VerificationCaseUsageImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, StateUsage> nestedState;
@@ -111,6 +110,7 @@ public abstract class VerificationCaseUsageImpl_ extends org.omg.sysml.metamodel
 	public static volatile CollectionAttribute<VerificationCaseUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<VerificationCaseUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<VerificationCaseUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, RequirementUsage> verifiedRequirement;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, AllocationUsage> nestedAllocation;
 	public static volatile SingularAttribute<VerificationCaseUsageImpl, Boolean> isIndividual;
@@ -171,7 +171,6 @@ public abstract class VerificationCaseUsageImpl_ extends org.omg.sysml.metamodel
 	public static final String NESTED_PORT = "nestedPort";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String NESTED_STATE = "nestedState";
@@ -206,6 +205,7 @@ public abstract class VerificationCaseUsageImpl_ extends org.omg.sysml.metamodel
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String VERIFIED_REQUIREMENT = "verifiedRequirement";
 	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String IS_INDIVIDUAL = "isIndividual";

@@ -76,7 +76,6 @@ public abstract class WhileLoopActionUsageImpl_ extends org.omg.sysml.metamodel.
 	public static volatile ListAttribute<WhileLoopActionUsageImpl, PortUsage> nestedPort;
 	public static volatile CollectionAttribute<WhileLoopActionUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<WhileLoopActionUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<WhileLoopActionUsageImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<WhileLoopActionUsageImpl, Usage> variant;
 	public static volatile SingularAttribute<WhileLoopActionUsageImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<WhileLoopActionUsageImpl, StateUsage> nestedState;
@@ -110,6 +109,7 @@ public abstract class WhileLoopActionUsageImpl_ extends org.omg.sysml.metamodel.
 	public static volatile CollectionAttribute<WhileLoopActionUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<WhileLoopActionUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<WhileLoopActionUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<WhileLoopActionUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<WhileLoopActionUsageImpl, AllocationUsage> nestedAllocation;
 	public static volatile SingularAttribute<WhileLoopActionUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<WhileLoopActionUsageImpl, Membership> membership;
@@ -168,7 +168,6 @@ public abstract class WhileLoopActionUsageImpl_ extends org.omg.sysml.metamodel.
 	public static final String NESTED_PORT = "nestedPort";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String NESTED_STATE = "nestedState";
@@ -202,6 +201,7 @@ public abstract class WhileLoopActionUsageImpl_ extends org.omg.sysml.metamodel.
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";

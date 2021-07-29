@@ -67,7 +67,6 @@ public abstract class ViewpointDefinitionImpl_ extends org.omg.sysml.metamodel.i
 	public static volatile ListAttribute<ViewpointDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, Feature> output;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, ConcernUsage> framedConcern;
-	public static volatile CollectionAttribute<ViewpointDefinitionImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile CollectionAttribute<ViewpointDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile CollectionAttribute<ViewpointDefinitionImpl, String> text;
@@ -100,6 +99,7 @@ public abstract class ViewpointDefinitionImpl_ extends org.omg.sysml.metamodel.i
 	public static volatile ListAttribute<ViewpointDefinitionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<ViewpointDefinitionImpl, Type> disjointType;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, UseCaseUsage> ownedUseCase;
+	public static volatile CollectionAttribute<ViewpointDefinitionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, StateUsage> ownedState;
 	public static volatile SingularAttribute<ViewpointDefinitionImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, Membership> membership;
@@ -148,7 +148,6 @@ public abstract class ViewpointDefinitionImpl_ extends org.omg.sysml.metamodel.i
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
 	public static final String FRAMED_CONCERN = "framedConcern";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String VARIANT = "variant";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String TEXT = "text";
@@ -181,6 +180,7 @@ public abstract class ViewpointDefinitionImpl_ extends org.omg.sysml.metamodel.i
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String OWNED_STATE = "ownedState";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";

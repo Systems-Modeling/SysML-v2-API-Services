@@ -73,7 +73,6 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile ListAttribute<ConnectionUsageImpl, PortUsage> nestedPort;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<ConnectionUsageImpl, ConstraintUsage> nestedConstraint;
-	public static volatile CollectionAttribute<ConnectionUsageImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<ConnectionUsageImpl, UUID> identifier;
@@ -140,6 +139,7 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<ConnectionUsageImpl, CaseUsage> nestedCase;
+	public static volatile CollectionAttribute<ConnectionUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<ConnectionUsageImpl, Membership> membership;
 	public static volatile ListAttribute<ConnectionUsageImpl, Element> ownedRelatedElement;
@@ -174,7 +174,6 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String NESTED_PORT = "nestedPort";
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String IDENTIFIER = "identifier";
@@ -241,6 +240,7 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.metamodel.impl.
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";

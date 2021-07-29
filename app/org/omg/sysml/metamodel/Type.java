@@ -60,7 +60,7 @@ public interface Type extends Namespace, MofObject {
 
     Collection<? extends Type> getDisjointType();
 
-    Collection<? extends Disjoining> getDisjoiningTypeDisjoining();
-
     List<? extends Feature> getDirectedFeature();
+
+    Collection<? extends Disjoining> getOwnedDisjoining();
 }

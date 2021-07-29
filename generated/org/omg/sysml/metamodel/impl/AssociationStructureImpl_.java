@@ -27,6 +27,7 @@ public abstract class AssociationStructureImpl_ extends org.omg.sysml.metamodel.
 
 	public static volatile CollectionAttribute<AssociationStructureImpl, Type> disjointType;
 	public static volatile SingularAttribute<AssociationStructureImpl, Boolean> isConjugated;
+	public static volatile CollectionAttribute<AssociationStructureImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<AssociationStructureImpl, Membership> membership;
 	public static volatile ListAttribute<AssociationStructureImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<AssociationStructureImpl, Element> source;
@@ -34,7 +35,6 @@ public abstract class AssociationStructureImpl_ extends org.omg.sysml.metamodel.
 	public static volatile ListAttribute<AssociationStructureImpl, Type> relatedType;
 	public static volatile ListAttribute<AssociationStructureImpl, Feature> feature;
 	public static volatile ListAttribute<AssociationStructureImpl, Membership> inheritedMembership;
-	public static volatile CollectionAttribute<AssociationStructureImpl, Disjoining> disjoiningTypeDisjoining;
 	public static volatile ListAttribute<AssociationStructureImpl, Element> member;
 	public static volatile ListAttribute<AssociationStructureImpl, Feature> ownedEndFeature;
 	public static volatile ListAttribute<AssociationStructureImpl, FeatureMembership> ownedFeatureMembership;
@@ -71,6 +71,7 @@ public abstract class AssociationStructureImpl_ extends org.omg.sysml.metamodel.
 
 	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String IS_CONJUGATED = "isConjugated";
+	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
@@ -78,7 +79,6 @@ public abstract class AssociationStructureImpl_ extends org.omg.sysml.metamodel.
 	public static final String RELATED_TYPE = "relatedType";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
-	public static final String DISJOINING_TYPE_DISJOINING = "disjoiningTypeDisjoining";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
