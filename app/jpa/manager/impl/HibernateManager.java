@@ -58,7 +58,6 @@ public class HibernateManager implements JPAManager {
         } finally {
             entityManager.close();
         }
-
     }
 
     @Override
@@ -69,6 +68,5 @@ public class HibernateManager implements JPAManager {
         } finally {
             entityManager.close();
         }
-
     }
 }

@@ -37,6 +37,6 @@ public class ProjectService extends BaseService<Project, ProjectDao> {
     }
 
     public Optional<Project> create(Project project) {
-        return project.getId() != null ? dao.update(project) : dao.persist(project);
+        return dao.persist(project);
     }
 }

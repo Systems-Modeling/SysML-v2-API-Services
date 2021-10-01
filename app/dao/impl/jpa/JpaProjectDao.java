@@ -33,6 +33,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.time.ZonedDateTime;
 import java.util.Optional;
+import java.util.UUID;
 
 @Singleton
 public class JpaProjectDao extends SimpleJpaDao<Project, ProjectImpl> implements ProjectDao {
@@ -44,8 +45,10 @@ public class JpaProjectDao extends SimpleJpaDao<Project, ProjectImpl> implements
 
     @Override
     public Optional<Project> update(Project project) {
-        // TODO Implement
-        throw new UnsupportedOperationException();
+        if (project.getDefaultBranch() == null) {
+            throw new IllegalArgumentException("Default branch must be provided");
+        }
+        return super.update(project);
     }
 
     @Override

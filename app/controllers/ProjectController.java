@@ -56,6 +56,29 @@ public class ProjectController extends JsonLdController<Project, Void> {
         return buildResult(project.orElse(null), request, null);
     }
 
+    public Result putProjectById(UUID id, Request request) {
+        Optional<Project> existingProject = projectService.getById(id);
+        if (existingProject.isEmpty()) {
+            return Results.notFound();
+        }
+        JsonNode requestBodyJson = request.body().asJson();
+        Project requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Project.class));
+        if (requestedObject.getId() != null && !id.equals(requestedObject.getId())) {
+            return Results.badRequest();
+        }
+        requestedObject.setId(id);
+        Optional<Project> project = projectService.update(requestedObject);
+        if (project.isEmpty()) {
+            return Results.internalServerError();
+        }
+        return buildResult(project.get(), request, null);
+    }
+
+    public Result deleteProjectById(UUID id, Request request) {
+        Optional<Project> project = projectService.deleteById(id);
+        return buildResult(project.orElse(null), request, null);
+    }
+
     public Result getProjects(Request request) {
         PageRequest pageRequest = PageRequest.from(request);
         List<Project> projects = projectService.getAll(pageRequest.getAfter(), pageRequest.getBefore(), pageRequest.getSize());

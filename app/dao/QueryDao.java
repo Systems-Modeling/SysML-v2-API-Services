@@ -37,4 +37,6 @@ public interface QueryDao extends Dao<Query> {
     List<Query> findAllByProject(Project project, @Nullable UUID after, @Nullable UUID before, int maxResults);
 
     Optional<Query> findByProjectAndId(Project project, UUID id);
+
+    Optional<Query> deleteByProjectAndId(Project project, UUID id);
 }

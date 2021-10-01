@@ -25,4 +25,6 @@ import java.util.UUID;
 
 public interface Record {
     UUID getId();
+
+    void setId(UUID id);
 }

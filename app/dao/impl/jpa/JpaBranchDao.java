@@ -30,6 +30,8 @@ import org.omg.sysml.lifecycle.impl.BranchImpl_;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -71,22 +73,40 @@ public class JpaBranchDao extends SimpleJpaDao<Branch, BranchImpl> implements Br
 
     @Override
     public Optional<Branch> findByProjectAndId(Project project, UUID id) {
+        return jpaManager.transact(em ->  {
+            return _findByProjectAndId(project, id, em);
+        });
+    }
+
+    protected Optional<Branch> _findByProjectAndId(Project project, UUID id, EntityManager em) {
+        CriteriaBuilder builder = em.getCriteriaBuilder();
+        CriteriaQuery<BranchImpl> query = builder.createQuery(BranchImpl.class);
+        Root<BranchImpl> root = query.from(BranchImpl.class);
+        query.select(root)
+                .where(builder.and(
+                        builder.equal(root.get(BranchImpl_.owningProject), project),
+                        builder.equal(root.get(BranchImpl_.id), id)
+                ));
+        Optional<Branch> branch;
+        try {
+            branch = Optional.of(em.createQuery(query).getSingleResult());
+        } catch (NoResultException e) {
+            return Optional.empty();
+        }
+        return branch;
+    }
+
+    @Override
+    public Optional<Branch> deleteByProjectAndId(Project project, UUID id) {
         return jpaManager.transact(em -> {
-            CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaQuery<BranchImpl> query = builder.createQuery(BranchImpl.class);
-            Root<BranchImpl> root = query.from(BranchImpl.class);
-            query.select(root)
-                    .where(builder.and(
-                            builder.equal(root.get(BranchImpl_.owningProject), project),
-                            builder.equal(root.get(BranchImpl_.id), id)
-                    ));
-            Optional<Branch> commit;
-            try {
-                commit = Optional.of(em.createQuery(query).getSingleResult());
-            } catch (NoResultException e) {
-                return Optional.empty();
-            }
-            return commit;
+            Optional<Branch> branch = _findByProjectAndId(project, id, em);
+            branch.ifPresent(b -> {
+                EntityTransaction transaction = em.getTransaction();
+                transaction.begin();
+                em.remove(b);
+                transaction.commit();
+            });
+            return branch;
         });
     }
 }

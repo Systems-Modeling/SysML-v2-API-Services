@@ -55,4 +55,8 @@ public class BaseService<I, D extends Dao<I>> {
     public Optional<I> update(I i) {
         return dao.update(i);
     }
+
+    public Optional<I> deleteById(UUID id) {
+        return dao.deleteById(id);
+    }
 }

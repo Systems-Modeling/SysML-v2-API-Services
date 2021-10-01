@@ -84,8 +84,13 @@ public class BranchController extends JsonLdController<Branch, ProjectContainmen
         );
     }
 
-    public Result getBranchesByProjectAndId(UUID projectId, UUID branchId, Request request) {
+    public Result getBranchByProjectAndId(UUID projectId, UUID branchId, Request request) {
         Optional<Branch> branch = branchService.getByProjectIdAndId(projectId, branchId);
+        return buildResult(branch.orElse(null), request, new ProjectContainmentParameters(projectId));
+    }
+
+    public Result deleteBranchByProjectAndId(UUID projectId, UUID branchId, Request request) {
+        Optional<Branch> branch = branchService.deleteByProjectIdAndId(projectId, branchId);
         return buildResult(branch.orElse(null), request, new ProjectContainmentParameters(projectId));
     }
 

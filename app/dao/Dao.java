@@ -38,7 +38,7 @@ public interface Dao<E> {
 
     List<E> findAll(@Nullable UUID after, @Nullable UUID before, int maxResults);
 
-    void delete(E entity);
+    Optional<E> deleteById(UUID id);
 
     void deleteAll();
 }

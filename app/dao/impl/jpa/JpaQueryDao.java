@@ -23,6 +23,7 @@ package dao.impl.jpa;
 
 import dao.QueryDao;
 import jpa.manager.JPAManager;
+import org.omg.sysml.lifecycle.Branch;
 import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.lifecycle.impl.ElementVersionImpl;
 import org.omg.sysml.query.Query;
@@ -31,6 +32,8 @@ import org.omg.sysml.query.impl.QueryImpl_;
 
 import javax.annotation.Nullable;
 import javax.inject.Inject;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
@@ -80,19 +83,37 @@ public class JpaQueryDao extends SimpleJpaDao<Query, QueryImpl> implements Query
     @Override
     public Optional<Query> findByProjectAndId(Project project, UUID id) {
         return jpaManager.transact(em -> {
-            CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaQuery<QueryImpl> query = builder.createQuery(QueryImpl.class);
-            Root<QueryImpl> root = query.from(QueryImpl.class);
-            query.select(root)
-                    .where(builder.and(
-                            builder.equal(root.get(QueryImpl_.owningProject), project),
-                            builder.equal(root.get(QueryImpl_.id), id)
-                    ));
-            try {
-                return Optional.of(em.createQuery(query).getSingleResult());
-            } catch (NoResultException e) {
-                return Optional.empty();
-            }
+            return _findByProjectAndId(project, id, em);
+        });
+    }
+
+    private Optional<Query> _findByProjectAndId(Project project, UUID id, EntityManager em) {
+        CriteriaBuilder builder = em.getCriteriaBuilder();
+        CriteriaQuery<QueryImpl> query = builder.createQuery(QueryImpl.class);
+        Root<QueryImpl> root = query.from(QueryImpl.class);
+        query.select(root)
+                .where(builder.and(
+                        builder.equal(root.get(QueryImpl_.owningProject), project),
+                        builder.equal(root.get(QueryImpl_.id), id)
+                ));
+        try {
+            return Optional.of(em.createQuery(query).getSingleResult());
+        } catch (NoResultException e) {
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public Optional<Query> deleteByProjectAndId(Project project, UUID id) {
+        return jpaManager.transact(em -> {
+            Optional<Query> query = _findByProjectAndId(project, id, em);
+            query.ifPresent(q -> {
+                EntityTransaction transaction = em.getTransaction();
+                transaction.begin();
+                em.remove(q);
+                transaction.commit();
+            });
+            return query;
         });
     }
 }

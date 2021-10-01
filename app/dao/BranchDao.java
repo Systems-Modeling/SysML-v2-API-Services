@@ -33,4 +33,6 @@ public interface BranchDao extends Dao<Branch> {
     List<Branch> findAllByProject(Project project, UUID after, UUID before, int maxResults);
 
     Optional<Branch> findByProjectAndId(Project project, UUID id);
+
+    Optional<Branch> deleteByProjectAndId(Project project, UUID id);
 }

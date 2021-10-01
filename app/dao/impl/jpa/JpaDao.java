@@ -23,6 +23,7 @@ package dao.impl.jpa;
 
 import dao.Dao;
 import jpa.manager.JPAManager;
+import org.omg.sysml.lifecycle.Project;
 
 import javax.annotation.Nullable;
 import javax.persistence.EntityManager;
@@ -80,10 +81,15 @@ public abstract class JpaDao<E> implements Dao<E> {
     }
 
     @Override
-    public void delete(E e) {
-        jpaManager.transact(em -> {
-            em.remove(e);
-        });
+    public Optional<E> deleteById(UUID id) {
+        return findById(id).map(e -> jpaManager.transact(em -> {
+            EntityTransaction transaction = em.getTransaction();
+            transaction.begin();
+            E merged = em.merge(e);
+            em.remove(merged);
+            transaction.commit();
+            return merged;
+        }));
     }
 
     protected static class Paginated<X> {

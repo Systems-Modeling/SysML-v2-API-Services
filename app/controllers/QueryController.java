@@ -58,14 +58,14 @@ public class QueryController extends JsonLdController<Element, MofObjectJsonLdAd
         this.adorner = new MofObjectJsonLdAdorner<>(metamodelProvider, environment, INLINE_JSON_LD_CONTEXT);
     }
 
-    public Result createWithProjectId(UUID projectId, Request request) {
+    public Result postQueryByProject(UUID projectId, Request request) {
         JsonNode requestBodyJson = request.body().asJson();
         Query requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Query.class));
         Optional<Query> response = queryService.create(projectId, requestedObject);
         return response.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 
-    public Result byProject(UUID projectId, Request request) {
+    public Result getQueriesByProject(UUID projectId, Request request) {
         PageRequest pageRequest = PageRequest.from(request);
         List<Query> queries = queryService.getByProjectId(projectId, pageRequest.getAfter(), pageRequest.getBefore(), pageRequest.getSize());
         return Optional.of(queries)
@@ -81,8 +81,13 @@ public class QueryController extends JsonLdController<Element, MofObjectJsonLdAd
                 .orElseThrow();
     }
 
-    public Result byProjectAndId(UUID projectId, UUID queryId) {
+    public Result getQueryByProjectAndId(UUID projectId, UUID queryId) {
         Optional<Query> query = queryService.getByProjectIdAndId(projectId, queryId);
+        return query.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
+    }
+
+    public Result deleteQueryByProjectAndId(UUID projectId, UUID queryId) {
+        Optional<Query> query = queryService.deleteByProjectIdAndId(projectId, queryId);
         return query.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
     }
 

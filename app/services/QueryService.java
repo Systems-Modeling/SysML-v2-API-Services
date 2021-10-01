@@ -74,6 +74,10 @@ public class QueryService extends BaseService<Query, QueryDao> {
         return projectDao.findById(projectId).flatMap(project -> dao.findByProjectAndId(project, queryId));
     }
 
+    public Optional<Query> deleteByProjectIdAndId(UUID projectId, UUID queryId) {
+        return projectDao.findById(projectId).flatMap(project -> dao.deleteByProjectAndId(project, queryId));
+    }
+
     public QueryResults getQueryResultsByProjectIdQueryId(UUID projectId, UUID queryId, @Nullable UUID commitId) {
         return getQueryResults(projectId, project -> dao.findByProjectAndId(project, queryId).orElseThrow(() -> new IllegalArgumentException("Query " + queryId + " not found")), commitId);
     }
