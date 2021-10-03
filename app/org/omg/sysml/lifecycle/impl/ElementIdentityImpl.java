@@ -35,6 +35,6 @@ public class ElementIdentityImpl extends RecordImpl implements ElementIdentity {
     @Transient
     @JsonProperty("@type")
     public String getType() {
-        return ElementIdentity.class.getSimpleName();
+        return ElementIdentity.NAME;
     }
 }

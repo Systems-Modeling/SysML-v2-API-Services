@@ -1,7 +1,5 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020 InterCAX LLC
- * Copyright (C) 2020 California Institute of Technology ("Caltech")
  * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
@@ -22,14 +20,23 @@
 
 package org.omg.sysml.lifecycle;
 
-import org.omg.sysml.metamodel.MofObject;
 import org.omg.sysml.record.Record;
 
-public interface ElementVersion extends Record {
+import java.time.ZonedDateTime;
 
-    String NAME = "ElementVersion";
+public interface CommitReference extends Record {
 
-    MofObject getData();
+    String getName();
 
-    ElementIdentity getIdentity();
+    void setName(String name);
+
+    Project getOwningProject();
+
+    void setOwningProject(Project owningProject);
+
+    Commit getReferencedCommit();
+
+    ZonedDateTime getTimestamp();
+
+    void setTimestamp(ZonedDateTime timestamp);
 }

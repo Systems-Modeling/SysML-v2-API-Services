@@ -19,6 +19,12 @@ POST          /projects/:projectId/branches                                     
 GET           /projects/:projectId/branches/:branchId                                                controllers.BranchController.getBranchByProjectAndId(projectId : java.util.UUID, branchId : java.util.UUID, request : Request)
 DELETE        /projects/:projectId/branches/:branchId                                                controllers.BranchController.deleteBranchByProjectAndId(projectId : java.util.UUID, branchId : java.util.UUID, request : Request)
 
+# Tag endpoints
+GET           /projects/:projectId/tags                                                              controllers.TagController.getTagsByProject(projectId : java.util.UUID, request : Request)
+POST          /projects/:projectId/tags                                                              controllers.TagController.postTagByProject(projectId : java.util.UUID, request : Request)
+GET           /projects/:projectId/tags/:tagId                                                       controllers.TagController.getTagByProjectAndId(projectId : java.util.UUID, tagId : java.util.UUID, request : Request)
+DELETE        /projects/:projectId/tags/:tagId                                                       controllers.TagController.deleteTagByProjectAndId(projectId : java.util.UUID, tagId : java.util.UUID, request : Request)
+
 # Commit endpoints
 GET           /projects/:projectId/commits                                                           controllers.CommitController.getCommitsByProject(projectId : java.util.UUID, request : Request)
 POST          /projects/:projectId/commits                                                           controllers.CommitController.postCommitByProject(projectId : java.util.UUID, branchId : java.util.Optional[java.util.UUID], request : Request)
