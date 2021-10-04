@@ -1,7 +1,5 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020 InterCAX LLC
- * Copyright (C) 2020 California Institute of Technology ("Caltech")
  * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
@@ -25,15 +23,15 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import config.MetamodelProvider;
 import jackson.jsonld.JsonLdAdorner;
-import jackson.jsonld.RecordAdorners.BranchAdorner;
 import jackson.jsonld.RecordAdorners.ProjectContainmentParameters;
-import org.omg.sysml.lifecycle.Branch;
+import jackson.jsonld.RecordAdorners.TagAdorner;
+import org.omg.sysml.lifecycle.Tag;
 import play.Environment;
 import play.libs.Json;
 import play.mvc.Http.Request;
 import play.mvc.Result;
 import play.mvc.Results;
-import services.BranchService;
+import services.TagService;
 
 import javax.inject.Inject;
 import java.time.ZonedDateTime;
@@ -41,62 +39,62 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public class BranchController extends JsonLdController<Branch, ProjectContainmentParameters> {
+public class TagController extends JsonLdController<Tag, ProjectContainmentParameters> {
 
     private final MetamodelProvider metamodelProvider;
-    private final BranchService branchService;
-    private final JsonLdAdorner<Branch, ProjectContainmentParameters> adorner;
+    private final TagService tagService;
+    private final JsonLdAdorner<Tag, ProjectContainmentParameters> adorner;
 
     @Inject
-    public BranchController(BranchService branchService, MetamodelProvider metamodelProvider, Environment environment) {
-        this.branchService = branchService;
+    public TagController(TagService tagService, MetamodelProvider metamodelProvider, Environment environment) {
+        this.tagService = tagService;
         this.metamodelProvider = metamodelProvider;
-        this.adorner = new BranchAdorner(environment, INLINE_JSON_LD_CONTEXT);
+        this.adorner = new TagAdorner(environment, INLINE_JSON_LD_CONTEXT);
     }
 
-    public Result postBranchByProject(UUID projectId, Request request) {
+    public Result postTagByProject(UUID projectId, Request request) {
         JsonNode requestBodyJson = request.body().asJson();
-        Branch requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Branch.class));
+        Tag requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Tag.class));
         if (requestedObject.getId() != null || requestedObject.getTimestamp() != null) {
             return Results.badRequest();
         }
         requestedObject.setTimestamp(ZonedDateTime.now());
-        Optional<Branch> branch = branchService.create(projectId, requestedObject);
-        if (branch.isEmpty()) {
+        Optional<Tag> tag = tagService.create(projectId, requestedObject);
+        if (tag.isEmpty()) {
             return Results.internalServerError();
         }
-        return buildResult(branch.get(), request, new ProjectContainmentParameters(projectId));
+        return buildResult(tag.get(), request, new ProjectContainmentParameters(projectId));
     }
 
-    public Result getBranchesByProject(UUID projectId, Request request) {
+    public Result getTagsByProject(UUID projectId, Request request) {
         PageRequest pageRequest = PageRequest.from(request);
-        List<Branch> branches = branchService.getByProjectId(
+        List<Tag> tags = tagService.getByProjectId(
                 projectId,
                 pageRequest.getAfter(),
                 pageRequest.getBefore(),
                 pageRequest.getSize()
         );
         return paginateResult(
-                buildResult(branches, List.class, metamodelProvider.getImplementationClass(Branch.class), request, new ProjectContainmentParameters(projectId)),
-                branches.size(),
-                idx -> branches.get(idx).getId(),
+                buildResult(tags, List.class, metamodelProvider.getImplementationClass(Tag.class), request, new ProjectContainmentParameters(projectId)),
+                tags.size(),
+                idx -> tags.get(idx).getId(),
                 request,
                 pageRequest
         );
     }
 
-    public Result getBranchByProjectAndId(UUID projectId, UUID branchId, Request request) {
-        Optional<Branch> branch = branchService.getByProjectIdAndId(projectId, branchId);
-        return buildResult(branch.orElse(null), request, new ProjectContainmentParameters(projectId));
+    public Result getTagByProjectAndId(UUID projectId, UUID tagId, Request request) {
+        Optional<Tag> tag = tagService.getByProjectIdAndId(projectId, tagId);
+        return buildResult(tag.orElse(null), request, new ProjectContainmentParameters(projectId));
     }
 
-    public Result deleteBranchByProjectAndId(UUID projectId, UUID branchId, Request request) {
-        Optional<Branch> branch = branchService.deleteByProjectIdAndId(projectId, branchId);
-        return buildResult(branch.orElse(null), request, new ProjectContainmentParameters(projectId));
+    public Result deleteTagByProjectAndId(UUID projectId, UUID tagId, Request request) {
+        Optional<Tag> tag = tagService.deleteByProjectIdAndId(projectId, tagId);
+        return buildResult(tag.orElse(null), request, new ProjectContainmentParameters(projectId));
     }
 
     @Override
-    protected JsonLdAdorner<Branch, ProjectContainmentParameters> getAdorner() {
+    protected JsonLdAdorner<Tag, ProjectContainmentParameters> getAdorner() {
         return adorner;
     }
 }

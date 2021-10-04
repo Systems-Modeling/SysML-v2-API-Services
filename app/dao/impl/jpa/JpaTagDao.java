@@ -1,7 +1,5 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020 InterCAX LLC
- * Copyright (C) 2020 California Institute of Technology ("Caltech")
  * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
@@ -22,12 +20,12 @@
 
 package dao.impl.jpa;
 
-import dao.BranchDao;
+import dao.TagDao;
 import jpa.manager.JPAManager;
-import org.omg.sysml.lifecycle.Branch;
 import org.omg.sysml.lifecycle.Project;
-import org.omg.sysml.lifecycle.impl.BranchImpl;
-import org.omg.sysml.lifecycle.impl.BranchImpl_;
+import org.omg.sysml.lifecycle.Tag;
+import org.omg.sysml.lifecycle.impl.TagImpl;
+import org.omg.sysml.lifecycle.impl.TagImpl_;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -46,23 +44,23 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Singleton
-public class JpaBranchDao extends SimpleJpaDao<Branch, BranchImpl> implements BranchDao {
+public class JpaTagDao extends SimpleJpaDao<Tag, TagImpl> implements TagDao {
 
     @Inject
-    public JpaBranchDao(JPAManager jpaManager) {
-        super(jpaManager, BranchImpl.class, BranchImpl_.id);
+    public JpaTagDao(JPAManager jpaManager) {
+        super(jpaManager, TagImpl.class, TagImpl_.id);
     }
 
     @Override
-    public List<Branch> findAllByProject(Project project, UUID after, UUID before, int maxResults) {
+    public List<Tag> findAllByProject(Project project, UUID after, UUID before, int maxResults) {
         return jpaManager.transact(em -> {
             CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaQuery<BranchImpl> query = builder.createQuery(BranchImpl.class);
-            Root<BranchImpl> root = query.from(BranchImpl.class);
+            CriteriaQuery<TagImpl> query = builder.createQuery(TagImpl.class);
+            Root<TagImpl> root = query.from(TagImpl.class);
             query.select(root);
-            Expression<Boolean> where = builder.equal(root.get(BranchImpl_.owningProject), project);
-            Paginated<TypedQuery<BranchImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, root.get(BranchImpl_.id), where);
-            List<Branch> result = paginated.get()
+            Expression<Boolean> where = builder.equal(root.get(TagImpl_.owningProject), project);
+            Paginated<TypedQuery<TagImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, root.get(TagImpl_.id), where);
+            List<Tag> result = paginated.get()
                     .getResultStream()
                     .collect(Collectors.toList());
             if (paginated.isReversed()) {
@@ -73,41 +71,41 @@ public class JpaBranchDao extends SimpleJpaDao<Branch, BranchImpl> implements Br
     }
 
     @Override
-    public Optional<Branch> findByProjectAndId(Project project, UUID id) {
-        return jpaManager.transact(em ->  {
+    public Optional<Tag> findByProjectAndId(Project project, UUID id) {
+        return jpaManager.transact(em -> {
             return _findByProjectAndId(project, id, em);
         });
     }
 
-    protected Optional<Branch> _findByProjectAndId(Project project, UUID id, EntityManager em) {
+    protected Optional<Tag> _findByProjectAndId(Project project, UUID id, EntityManager em) {
         CriteriaBuilder builder = em.getCriteriaBuilder();
-        CriteriaQuery<BranchImpl> query = builder.createQuery(BranchImpl.class);
-        Root<BranchImpl> root = query.from(BranchImpl.class);
+        CriteriaQuery<TagImpl> query = builder.createQuery(TagImpl.class);
+        Root<TagImpl> root = query.from(TagImpl.class);
         query.select(root)
                 .where(builder.and(
-                        builder.equal(root.get(BranchImpl_.owningProject), project),
-                        builder.equal(root.get(BranchImpl_.id), id)
+                        builder.equal(root.get(TagImpl_.owningProject), project),
+                        builder.equal(root.get(TagImpl_.id), id)
                 ));
-        Optional<Branch> branch;
+        Optional<Tag> tag;
         try {
-            branch = Optional.of(em.createQuery(query).getSingleResult());
+            tag = Optional.of(em.createQuery(query).getSingleResult());
         } catch (NoResultException e) {
             return Optional.empty();
         }
-        return branch;
+        return tag;
     }
 
     @Override
-    public Optional<Branch> deleteByProjectAndId(Project project, UUID id) {
+    public Optional<Tag> deleteByProjectAndId(Project project, UUID id) {
         return jpaManager.transact(em -> {
-            Optional<Branch> branch = _findByProjectAndId(project, id, em);
-            branch.ifPresent(b -> {
+            Optional<Tag> tag = _findByProjectAndId(project, id, em);
+            tag.ifPresent(b -> {
                 EntityTransaction transaction = em.getTransaction();
                 transaction.begin();
                 em.remove(b);
                 transaction.commit();
             });
-            return branch;
+            return tag;
         });
     }
 }

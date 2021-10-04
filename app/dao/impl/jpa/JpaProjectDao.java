@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -33,6 +34,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.time.ZonedDateTime;
 import java.util.Optional;
+import java.util.UUID;
 
 @Singleton
 public class JpaProjectDao extends SimpleJpaDao<Project, ProjectImpl> implements ProjectDao {
@@ -44,8 +46,10 @@ public class JpaProjectDao extends SimpleJpaDao<Project, ProjectImpl> implements
 
     @Override
     public Optional<Project> update(Project project) {
-        // TODO Implement
-        throw new UnsupportedOperationException();
+        if (project.getDefaultBranch() == null) {
+            throw new IllegalArgumentException("Default branch must be provided");
+        }
+        return super.update(project);
     }
 
     @Override

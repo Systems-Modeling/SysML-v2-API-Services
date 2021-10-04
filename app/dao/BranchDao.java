@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -33,4 +34,6 @@ public interface BranchDao extends Dao<Branch> {
     List<Branch> findAllByProject(Project project, UUID after, UUID before, int maxResults);
 
     Optional<Branch> findByProjectAndId(Project project, UUID id);
+
+    Optional<Branch> deleteByProjectAndId(Project project, UUID id);
 }

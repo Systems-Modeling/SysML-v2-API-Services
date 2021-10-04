@@ -18,6 +18,7 @@
         <class>org.omg.sysml.lifecycle.impl.ElementIdentityImpl</class>
         <class>org.omg.sysml.lifecycle.impl.ElementVersionImpl</class>
         <class>org.omg.sysml.lifecycle.impl.ProjectImpl</class>
+        <class>org.omg.sysml.lifecycle.impl.TagImpl</class>
 
         <class>org.omg.sysml.metamodel.impl</class>
         <class>org.omg.sysml.metamodel.impl.AcceptActionUsageImpl</class>

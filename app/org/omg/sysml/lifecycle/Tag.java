@@ -1,7 +1,5 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020 InterCAX LLC
- * Copyright (C) 2020 California Institute of Technology ("Caltech")
  * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
@@ -22,14 +20,16 @@
 
 package org.omg.sysml.lifecycle;
 
-import org.omg.sysml.metamodel.MofObject;
-import org.omg.sysml.record.Record;
+public interface Tag extends CommitReference {
 
-public interface ElementVersion extends Record {
+    String NAME = "Tag";
 
-    String NAME = "ElementVersion";
+    Commit getTaggedCommit();
 
-    MofObject getData();
+    void setTaggedCommit(Commit head);
 
-    ElementIdentity getIdentity();
+    @Override
+    default Commit getReferencedCommit() {
+        return getTaggedCommit();
+    }
 }

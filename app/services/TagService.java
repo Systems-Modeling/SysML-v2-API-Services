@@ -1,7 +1,5 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020 InterCAX LLC
- * Copyright (C) 2020 California Institute of Technology ("Caltech")
  * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
@@ -22,10 +20,9 @@
 
 package services;
 
-import dao.BranchDao;
 import dao.ProjectDao;
-import org.omg.sysml.lifecycle.Branch;
-import org.omg.sysml.lifecycle.Project;
+import dao.TagDao;
+import org.omg.sysml.lifecycle.Tag;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -35,42 +32,45 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Singleton
-public class BranchService extends BaseService<Branch, BranchDao> {
+public class TagService extends BaseService<Tag, TagDao> {
 
     private final ProjectDao projectDao;
 
     @Inject
-    public BranchService(BranchDao branchDao, ProjectDao projectDao) {
-        super(branchDao);
+    public TagService(TagDao tagDao, ProjectDao projectDao) {
+        super(tagDao);
         this.projectDao = projectDao;
     }
 
-    public Optional<Branch> create(Branch branch) {
-        return branch.getId() != null ? dao.update(branch) : dao.persist(branch);
+    public Optional<Tag> create(Tag tag) {
+        if (tag.getName() == null || tag.getName().isBlank()) {
+            throw new IllegalArgumentException("Tag must have name");
+        }
+        if (tag.getTaggedCommit() == null) {
+            throw new IllegalArgumentException("Tag must have taggedCommit");
+        }
+        return dao.persist(tag);
     }
 
-    public Optional<Branch> create(UUID projectId, Branch branch) {
-        branch.setOwningProject(projectDao.findById(projectId)
+    public Optional<Tag> create(UUID projectId, Tag tag) {
+        tag.setOwningProject(projectDao.findById(projectId)
                 .orElseThrow(() -> new IllegalArgumentException("Project " + projectId + " not found")));
-        return create(branch);
+        return create(tag);
     }
 
-    public List<Branch> getByProjectId(UUID projectId, UUID after, UUID before, int maxResults) {
+    public List<Tag> getByProjectId(UUID projectId, UUID after, UUID before, int maxResults) {
         return projectDao.findById(projectId)
                 .map(project -> dao.findAllByProject(project, after, before, maxResults))
                 .orElse(Collections.emptyList());
     }
 
-    public Optional<Branch> getByProjectIdAndId(UUID projectId, UUID branchId) {
+    public Optional<Tag> getByProjectIdAndId(UUID projectId, UUID branchId) {
         return projectDao.findById(projectId)
                 .flatMap(project -> dao.findByProjectAndId(project, branchId));
     }
 
-    public Optional<Branch> deleteByProjectIdAndId(UUID projectId, UUID branchId) {
-        Optional<Project> project = projectDao.findById(projectId);
-        project.map(Project::getDefaultBranch).map(Branch::getId).filter(branchId::equals).ifPresent(ignored -> {
-            throw new IllegalArgumentException("Cannot delete the default branch of the Project");
-        });
-        return project.flatMap(proj -> dao.deleteByProjectAndId(proj, branchId));
+    public Optional<Tag> deleteByProjectIdAndId(UUID projectId, UUID branchId) {
+        return projectDao.findById(projectId)
+                .flatMap(proj -> dao.deleteByProjectAndId(proj, branchId));
     }
 }

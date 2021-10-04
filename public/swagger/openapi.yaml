@@ -1027,6 +1027,8 @@ definitions:
           '@id':
             type: string
             format: uuid
+      name:
+        type: string
       owningProject:
         description: Project
         type: object
@@ -1034,8 +1036,16 @@ definitions:
           '@id':
             type: string
             format: uuid
-      name:
+      referencedCommit:
+        description: Commit
+        type: object
+        properties:
+          '@id':
+            type: string
+            format: uuid
+      timestamp:
         type: string
+        format: date-time
   Tag:
     type: object
     properties:
@@ -1047,13 +1057,8 @@ definitions:
         type: string
         enum:
           - 'Tag'
-      taggedCommit:
-        description: Commit
-        type: object
-        properties:
-          '@id':
-            type: string
-            format: uuid
+      name:
+        type: string
       owningProject:
         description: Project
         type: object
@@ -1061,8 +1066,23 @@ definitions:
           '@id':
             type: string
             format: uuid
-      name:
+      referencedCommit:
+        description: Commit
+        type: object
+        properties:
+          '@id':
+            type: string
+            format: uuid
+      taggedCommit:
+        description: Commit
+        type: object
+        properties:
+          '@id':
+            type: string
+            format: uuid
+      timestamp:
         type: string
+        format: date-time
   Commit:
     type: object
     properties:

@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -72,6 +73,10 @@ public class QueryService extends BaseService<Query, QueryDao> {
 
     public Optional<Query> getByProjectIdAndId(UUID projectId, UUID queryId) {
         return projectDao.findById(projectId).flatMap(project -> dao.findByProjectAndId(project, queryId));
+    }
+
+    public Optional<Query> deleteByProjectIdAndId(UUID projectId, UUID queryId) {
+        return projectDao.findById(projectId).flatMap(project -> dao.deleteByProjectAndId(project, queryId));
     }
 
     public QueryResults getQueryResultsByProjectIdQueryId(UUID projectId, UUID queryId, @Nullable UUID commitId) {

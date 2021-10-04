@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -23,6 +24,7 @@ package dao.impl.jpa;
 
 import dao.Dao;
 import jpa.manager.JPAManager;
+import org.omg.sysml.lifecycle.Project;
 
 import javax.annotation.Nullable;
 import javax.persistence.EntityManager;
@@ -80,10 +82,15 @@ public abstract class JpaDao<E> implements Dao<E> {
     }
 
     @Override
-    public void delete(E e) {
-        jpaManager.transact(em -> {
-            em.remove(e);
-        });
+    public Optional<E> deleteById(UUID id) {
+        return findById(id).map(e -> jpaManager.transact(em -> {
+            EntityTransaction transaction = em.getTransaction();
+            transaction.begin();
+            E merged = em.merge(e);
+            em.remove(merged);
+            transaction.commit();
+            return merged;
+        }));
     }
 
     protected static class Paginated<X> {

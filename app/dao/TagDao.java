@@ -1,7 +1,5 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020 InterCAX LLC
- * Copyright (C) 2020 California Institute of Technology ("Caltech")
  * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,16 +18,20 @@
  * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
  */
 
-package org.omg.sysml.lifecycle;
+package dao;
 
-import org.omg.sysml.metamodel.MofObject;
-import org.omg.sysml.record.Record;
+import org.omg.sysml.lifecycle.Project;
+import org.omg.sysml.lifecycle.Tag;
 
-public interface ElementVersion extends Record {
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
-    String NAME = "ElementVersion";
+public interface TagDao extends Dao<Tag> {
 
-    MofObject getData();
+    List<Tag> findAllByProject(Project project, UUID after, UUID before, int maxResults);
 
-    ElementIdentity getIdentity();
+    Optional<Tag> findByProjectAndId(Project project, UUID id);
+
+    Optional<Tag> deleteByProjectAndId(Project project, UUID id);
 }
