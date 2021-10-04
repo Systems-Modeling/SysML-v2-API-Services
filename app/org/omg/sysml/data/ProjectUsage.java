@@ -1,7 +1,5 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020 InterCAX LLC
- * Copyright (C) 2020 California Institute of Technology ("Caltech")
  * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
@@ -20,18 +18,15 @@
  * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
  */
 
-package dao;
+package org.omg.sysml.data;
 
 import org.omg.sysml.lifecycle.Commit;
-import org.omg.sysml.metamodel.Element;
-import org.omg.sysml.metamodel.Relationship;
-import org.omg.sysml.util.RelationshipDirection;
+import org.omg.sysml.lifecycle.Data;
+import org.omg.sysml.lifecycle.Project;
 
-import javax.annotation.Nullable;
-import java.util.List;
-import java.util.UUID;
+public interface ProjectUsage extends Data {
 
-public interface RelationshipDao extends Dao<Relationship> {
+    Commit getUsedProjectCommit();
 
-    List<Relationship> findAllByCommitRelatedElement(Commit commit, Element relatedElement, RelationshipDirection direction, @Nullable UUID after, @Nullable UUID before, int maxResults);
+    Project getUsedProject();
 }

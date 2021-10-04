@@ -29,7 +29,7 @@ import dao.RelationshipDao;
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Relationship;
-import org.omg.sysml.utils.RelationshipDirection;
+import org.omg.sysml.util.RelationshipDirection;
 
 import javax.annotation.Nullable;
 import javax.inject.Inject;

@@ -25,6 +25,7 @@
                 metaValues = {
                         @MetaValue(value = "ExternalData", targetEntity = ExternalDataImpl.class),
                         @MetaValue(value = "ExternalRelationship", targetEntity = ExternalRelationshipImpl.class),
+                        @MetaValue(value = "ProjectUsage", targetEntity = ProjectUsageImpl.class),
 
                         @MetaValue(value = "AcceptActionUsage", targetEntity = AcceptActionUsageImpl.class),
                         @MetaValue(value = "ActionDefinition", targetEntity = ActionDefinitionImpl.class),
@@ -194,6 +195,7 @@
 package org.omg.sysml.lifecycle.impl;
 
 import org.hibernate.annotations.*;
-import org.omg.sysml.external.impl.ExternalDataImpl;
-import org.omg.sysml.external.impl.ExternalRelationshipImpl;
+import org.omg.sysml.data.impl.ExternalDataImpl;
+import org.omg.sysml.data.impl.ExternalRelationshipImpl;
+import org.omg.sysml.data.impl.ProjectUsageImpl;
 import org.omg.sysml.metamodel.impl.*;

@@ -26,7 +26,7 @@ import config.MetamodelProvider;
 import jackson.jsonld.DataJsonLdAdorner;
 import jackson.jsonld.JsonLdAdorner;
 import org.omg.sysml.metamodel.Relationship;
-import org.omg.sysml.utils.RelationshipDirection;
+import org.omg.sysml.util.RelationshipDirection;
 import play.Environment;
 import play.mvc.Http.Request;
 import play.mvc.Result;

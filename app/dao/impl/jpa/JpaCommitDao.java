@@ -195,6 +195,7 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
         return jpaManager.transact(em -> {
             commit.getChange().stream()
                     .map(DataVersion::getPayload)
+                    .filter(Objects::nonNull)
                     .map(payload -> {
                         try {
                             Data dataFirstPass = payload.getClass().getConstructor().newInstance();
