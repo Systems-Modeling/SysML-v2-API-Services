@@ -1,4 +1,4 @@
-package org.omg.sysml.external.impl;
+package org.omg.sysml.data.impl;
 
 import java.net.URI;
 import java.util.UUID;

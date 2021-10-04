@@ -30,9 +30,9 @@ import org.omg.sysml.lifecycle.DataVersion;
 import org.omg.sysml.lifecycle.impl.CommitImpl;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Relationship;
-import org.omg.sysml.metamodel.impl.SysMLTypeImpl;
-import org.omg.sysml.metamodel.impl.SysMLTypeImpl_;
-import org.omg.sysml.utils.RelationshipDirection;
+import org.omg.sysml.metamodel.impl.RelationshipImpl;
+import org.omg.sysml.metamodel.impl.RelationshipImpl_;
+import org.omg.sysml.util.RelationshipDirection;
 
 import javax.annotation.Nullable;
 import javax.inject.Inject;
@@ -65,14 +65,14 @@ public class JpaRelationshipDao extends JpaDao<Relationship> implements Relation
     public Optional<Relationship> findById(UUID id) {
         return jpaManager.transact(em -> {
             CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaQuery<SysMLTypeImpl> query = builder.createQuery(SysMLTypeImpl.class);
-            Root<SysMLTypeImpl> root = query.from(SysMLTypeImpl.class);
+            CriteriaQuery<RelationshipImpl> query = builder.createQuery(RelationshipImpl.class);
+            Root<RelationshipImpl> root = query.from(RelationshipImpl.class);
             query.select(root).where(builder.and(
-                    builder.equal(root.get(SysMLTypeImpl_.identifier), id),
+                    builder.equal(root.get(RelationshipImpl_.identifier), id),
                     getTypeExpression(builder, root)
             ));
             try {
-                return Optional.of((Relationship) em.createQuery(query).getSingleResult());
+                return Optional.of(em.createQuery(query).getSingleResult());
             } catch (NoResultException e) {
                 return Optional.empty();
             }
@@ -83,8 +83,8 @@ public class JpaRelationshipDao extends JpaDao<Relationship> implements Relation
     public List<Relationship> findAll() {
         return jpaManager.transact(em -> {
             CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaQuery<SysMLTypeImpl> query = builder.createQuery(SysMLTypeImpl.class);
-            Root<SysMLTypeImpl> root = query.from(SysMLTypeImpl.class);
+            CriteriaQuery<RelationshipImpl> query = builder.createQuery(RelationshipImpl.class);
+            Root<RelationshipImpl> root = query.from(RelationshipImpl.class);
             query.select(root).where(getTypeExpression(builder, root));
             return em.createQuery(query).getResultStream().map(o -> (Relationship) o).collect(Collectors.toList());
         });
@@ -94,11 +94,11 @@ public class JpaRelationshipDao extends JpaDao<Relationship> implements Relation
     public List<Relationship> findAll(@Nullable UUID after, @Nullable UUID before, int maxResults) {
         return jpaManager.transact(em -> {
             CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaQuery<SysMLTypeImpl> query = builder.createQuery(SysMLTypeImpl.class);
-            Root<SysMLTypeImpl> root = query.from(SysMLTypeImpl.class);
+            CriteriaQuery<RelationshipImpl> query = builder.createQuery(RelationshipImpl.class);
+            Root<RelationshipImpl> root = query.from(RelationshipImpl.class);
             query.select(root);
             Expression<Boolean> where = getTypeExpression(builder, root);
-            Paginated<TypedQuery<SysMLTypeImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, root.get(SysMLTypeImpl_.identifier), where);
+            Paginated<TypedQuery<RelationshipImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, root.get(RelationshipImpl_.identifier), where);
             List<Relationship> result = paginated.get()
                     .getResultStream()
                     .map(o -> (Relationship) o)
@@ -114,8 +114,8 @@ public class JpaRelationshipDao extends JpaDao<Relationship> implements Relation
     public void deleteAll() {
         jpaManager.transact(em -> {
             CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaDelete<SysMLTypeImpl> query = builder.createCriteriaDelete(SysMLTypeImpl.class);
-            Root<SysMLTypeImpl> root = query.from(SysMLTypeImpl.class);
+            CriteriaDelete<RelationshipImpl> query = builder.createCriteriaDelete(RelationshipImpl.class);
+            Root<RelationshipImpl> root = query.from(RelationshipImpl.class);
             query.where(getTypeExpression(builder, root));
             return ((Stream<?>) em.createQuery(query).getResultStream()).map(o -> (Relationship) o).collect(Collectors.toList());
         });

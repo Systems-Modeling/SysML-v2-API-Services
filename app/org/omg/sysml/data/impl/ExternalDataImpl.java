@@ -20,14 +20,14 @@
  * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
  */
 
-package org.omg.sysml.external.impl;
+package org.omg.sysml.data.impl;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import org.hibernate.annotations.FetchMode;
-import org.omg.sysml.external.ExternalData;
+import org.omg.sysml.data.ExternalData;
 import org.omg.sysml.lifecycle.impl.DataImpl;
 
 import javax.persistence.Column;

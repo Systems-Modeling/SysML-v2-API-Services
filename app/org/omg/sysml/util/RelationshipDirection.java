@@ -20,18 +20,10 @@
  * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
  */
 
-package org.omg.sysml.external;
+package org.omg.sysml.util;
 
-import org.omg.sysml.lifecycle.Data;
-import org.omg.sysml.metamodel.Element;
-
-public interface ExternalRelationship extends Data {
-
-    String getSpecification();
-
-    String getLanguage();
-
-    Element getElementEnd();
-
-    ExternalData getExternalDataEnd();
+public enum RelationshipDirection {
+    IN,
+    OUT,
+    BOTH
 }

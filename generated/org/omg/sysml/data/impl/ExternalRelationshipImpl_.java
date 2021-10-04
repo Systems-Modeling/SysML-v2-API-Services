@@ -1,4 +1,4 @@
-package org.omg.sysml.external.impl;
+package org.omg.sysml.data.impl;
 
 import java.util.UUID;
 import javax.annotation.processing.Generated;
