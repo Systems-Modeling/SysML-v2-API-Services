@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ViewpointUsage extends RequirementUsage, MofObject {
+public interface ViewpointUsage extends RequirementUsage, SysMLType {
     ViewpointDefinition getViewpointDefinition();
 
     List<? extends PartUsage> getViewpointStakeholder();

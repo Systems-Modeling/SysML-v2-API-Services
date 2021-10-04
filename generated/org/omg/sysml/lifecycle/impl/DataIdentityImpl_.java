@@ -4,8 +4,8 @@ import javax.annotation.processing.Generated;
 import javax.persistence.metamodel.StaticMetamodel;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
-@StaticMetamodel(ElementIdentityImpl.class)
-public abstract class ElementIdentityImpl_ extends org.omg.sysml.record.impl.RecordImpl_ {
+@StaticMetamodel(DataIdentityImpl.class)
+public abstract class DataIdentityImpl_ extends org.omg.sysml.record.impl.RecordImpl_ {
 
 
 

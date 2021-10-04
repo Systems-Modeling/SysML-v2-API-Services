@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ConnectionDefinition extends AssociationStructure, PartDefinition, MofObject {
+public interface ConnectionDefinition extends AssociationStructure, PartDefinition, SysMLType {
     List<? extends Usage> getConnectionEnd();
 }

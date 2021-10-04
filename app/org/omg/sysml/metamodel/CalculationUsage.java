@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface CalculationUsage extends Expression, ActionUsage, MofObject {
+public interface CalculationUsage extends Expression, ActionUsage, SysMLType {
     Function getCalculationDefinition();
 }

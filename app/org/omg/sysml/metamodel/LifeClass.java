@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface LifeClass extends Class, MofObject {
+public interface LifeClass extends Class, SysMLType {
 
 }

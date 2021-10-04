@@ -21,45 +21,23 @@
 
 package org.omg.sysml.metamodel.impl;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import jackson.DataDeserializer;
+import jackson.DataSerializer;
+import org.hibernate.annotations.Any;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.ManyToAny;
 import org.omg.sysml.metamodel.*;
 
-import org.omg.sysml.metamodel.Package;
-import org.omg.sysml.metamodel.Class;
-
-import jackson.MofObjectSerializer;
-import jackson.MofObjectDeserializer;
-
-import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
-import org.hibernate.annotations.Any;
-import org.hibernate.annotations.ManyToAny;
-import org.hibernate.annotations.FetchMode;
-
-// import info.archinnov.achilles.annotations.UDT;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.EnumType;
-import javax.persistence.ElementCollection;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.Lob;
-import javax.persistence.FetchType;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Table;
-import javax.persistence.SecondaryTable;
-import javax.persistence.CollectionTable;
-
-import java.util.Collection;
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
 
 @Entity(name = "MultiplicityRangeImpl")
 @SecondaryTable(name = "MultiplicityRange")
@@ -68,7 +46,7 @@ import java.util.HashSet;
 @DiscriminatorValue(value = "MultiplicityRange")
 @JsonTypeName(value = "MultiplicityRange")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class MultiplicityRangeImpl extends MofObjectImpl implements MultiplicityRange {
+public class MultiplicityRangeImpl extends SysMLTypeImpl implements MultiplicityRange {
     // @info.archinnov.achilles.annotations.Column("aliasId")
     private List<String> aliasId;
 
@@ -97,7 +75,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Expression> bound;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_bound",
@@ -111,7 +89,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ExpressionImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ExpressionImpl.class)
     public void setBound(List<Expression> bound) {
         this.bound = bound;
     }
@@ -123,7 +101,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Feature> chainingFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_chainingFeature",
@@ -137,7 +115,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setChainingFeature(List<Feature> chainingFeature) {
         this.chainingFeature = chainingFeature;
     }
@@ -149,7 +127,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Feature> directedFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_directedFeature",
@@ -163,7 +141,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setDirectedFeature(List<Feature> directedFeature) {
         this.directedFeature = directedFeature;
     }
@@ -193,7 +171,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private Collection<Type> disjointType;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_disjointType",
@@ -207,7 +185,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeImpl.class)
     public void setDisjointType(Collection<Type> disjointType) {
         this.disjointType = disjointType;
     }
@@ -219,7 +197,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Documentation> documentation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_documentation",
@@ -233,7 +211,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DocumentationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DocumentationImpl.class)
     public void setDocumentation(List<Documentation> documentation) {
         this.documentation = documentation;
     }
@@ -245,7 +223,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Comment> documentationComment;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_documentationComment",
@@ -259,7 +237,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CommentImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = CommentImpl.class)
     public void setDocumentationComment(List<Comment> documentationComment) {
         this.documentationComment = documentationComment;
     }
@@ -291,7 +269,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Feature> endFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_endFeature",
@@ -305,7 +283,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setEndFeature(List<Feature> endFeature) {
         this.endFeature = endFeature;
     }
@@ -317,7 +295,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private Type endOwningType;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "endOwningTypeType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "endOwningTypeId", table = "MultiplicityRange")
@@ -326,7 +304,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
     public void setEndOwningType(Type endOwningType) {
         this.endOwningType = endOwningType;
     }
@@ -338,7 +316,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Feature> feature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_feature",
@@ -352,7 +330,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setFeature(List<Feature> feature) {
         this.feature = feature;
     }
@@ -364,7 +342,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<FeatureMembership> featureMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_featureMembership",
@@ -378,7 +356,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureMembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureMembershipImpl.class)
     public void setFeatureMembership(List<FeatureMembership> featureMembership) {
         this.featureMembership = featureMembership;
     }
@@ -390,7 +368,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Type> featuringType;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_featuringType",
@@ -404,7 +382,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeImpl.class)
     public void setFeaturingType(List<Type> featuringType) {
         this.featuringType = featuringType;
     }
@@ -450,7 +428,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Membership> importedMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_importedMembership",
@@ -464,7 +442,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = MembershipImpl.class)
     public void setImportedMembership(List<Membership> importedMembership) {
         this.importedMembership = importedMembership;
     }
@@ -476,7 +454,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Feature> inheritedFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_inheritedFeature",
@@ -490,7 +468,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setInheritedFeature(List<Feature> inheritedFeature) {
         this.inheritedFeature = inheritedFeature;
     }
@@ -502,7 +480,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Membership> inheritedMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_inheritedMembership",
@@ -516,7 +494,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = MembershipImpl.class)
     public void setInheritedMembership(List<Membership> inheritedMembership) {
         this.inheritedMembership = inheritedMembership;
     }
@@ -528,7 +506,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Feature> input;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_input",
@@ -542,7 +520,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setInput(List<Feature> input) {
         this.input = input;
     }
@@ -734,7 +712,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private Expression lowerBound;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "lowerBoundType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "lowerBoundId", table = "MultiplicityRange")
@@ -743,7 +721,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ExpressionImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ExpressionImpl.class)
     public void setLowerBound(Expression lowerBound) {
         this.lowerBound = lowerBound;
     }
@@ -755,7 +733,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Element> member;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_member",
@@ -769,7 +747,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setMember(List<Element> member) {
         this.member = member;
     }
@@ -781,7 +759,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Membership> membership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_membership",
@@ -795,7 +773,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = MembershipImpl.class)
     public void setMembership(List<Membership> membership) {
         this.membership = membership;
     }
@@ -807,7 +785,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private Multiplicity multiplicity;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "multiplicityId", table = "MultiplicityRange")
@@ -816,7 +794,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = MultiplicityImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = MultiplicityImpl.class)
     public void setMultiplicity(Multiplicity multiplicity) {
         this.multiplicity = multiplicity;
     }
@@ -848,7 +826,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Feature> output;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_output",
@@ -862,7 +840,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setOutput(List<Feature> output) {
         this.output = output;
     }
@@ -874,7 +852,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Annotation> ownedAnnotation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_ownedAnnotation",
@@ -888,7 +866,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnnotationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AnnotationImpl.class)
     public void setOwnedAnnotation(List<Annotation> ownedAnnotation) {
         this.ownedAnnotation = ownedAnnotation;
     }
@@ -900,7 +878,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private Conjugation ownedConjugator;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConjugatorType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownedConjugatorId", table = "MultiplicityRange")
@@ -909,7 +887,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ConjugationImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ConjugationImpl.class)
     public void setOwnedConjugator(Conjugation ownedConjugator) {
         this.ownedConjugator = ownedConjugator;
     }
@@ -921,7 +899,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private Collection<Disjoining> ownedDisjoining;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "DisjoiningMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_ownedDisjoining",
@@ -935,7 +913,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DisjoiningImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DisjoiningImpl.class)
     public void setOwnedDisjoining(Collection<Disjoining> ownedDisjoining) {
         this.ownedDisjoining = ownedDisjoining;
     }
@@ -947,7 +925,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Element> ownedElement;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_ownedElement",
@@ -961,7 +939,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedElement(List<Element> ownedElement) {
         this.ownedElement = ownedElement;
     }
@@ -973,7 +951,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Feature> ownedEndFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_ownedEndFeature",
@@ -987,7 +965,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setOwnedEndFeature(List<Feature> ownedEndFeature) {
         this.ownedEndFeature = ownedEndFeature;
     }
@@ -999,7 +977,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Feature> ownedFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_ownedFeature",
@@ -1013,7 +991,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setOwnedFeature(List<Feature> ownedFeature) {
         this.ownedFeature = ownedFeature;
     }
@@ -1025,7 +1003,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<FeatureChaining> ownedFeatureChaining;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureChainingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_ownedFeatureChaining",
@@ -1039,7 +1017,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureChainingImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureChainingImpl.class)
     public void setOwnedFeatureChaining(List<FeatureChaining> ownedFeatureChaining) {
         this.ownedFeatureChaining = ownedFeatureChaining;
     }
@@ -1051,7 +1029,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<FeatureMembership> ownedFeatureMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_ownedFeatureMembership",
@@ -1065,7 +1043,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureMembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureMembershipImpl.class)
     public void setOwnedFeatureMembership(List<FeatureMembership> ownedFeatureMembership) {
         this.ownedFeatureMembership = ownedFeatureMembership;
     }
@@ -1077,7 +1055,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Import> ownedImport;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_ownedImport",
@@ -1091,7 +1069,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ImportImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ImportImpl.class)
     public void setOwnedImport(List<Import> ownedImport) {
         this.ownedImport = ownedImport;
     }
@@ -1103,7 +1081,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Element> ownedMember;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_ownedMember",
@@ -1117,7 +1095,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedMember(List<Element> ownedMember) {
         this.ownedMember = ownedMember;
     }
@@ -1129,7 +1107,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Membership> ownedMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_ownedMembership",
@@ -1143,7 +1121,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = MembershipImpl.class)
     public void setOwnedMembership(List<Membership> ownedMembership) {
         this.ownedMembership = ownedMembership;
     }
@@ -1155,7 +1133,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private Collection<Redefinition> ownedRedefinition;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "RedefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_ownedRedefinition",
@@ -1169,7 +1147,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RedefinitionImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = RedefinitionImpl.class)
     public void setOwnedRedefinition(Collection<Redefinition> ownedRedefinition) {
         this.ownedRedefinition = ownedRedefinition;
     }
@@ -1180,7 +1158,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Relationship> ownedRelationship;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
@@ -1193,7 +1171,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = RelationshipImpl.class)
     public void setOwnedRelationship(List<Relationship> ownedRelationship) {
         this.ownedRelationship = ownedRelationship;
     }
@@ -1205,7 +1183,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Specialization> ownedSpecialization;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "SpecializationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_ownedSpecialization",
@@ -1219,7 +1197,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SpecializationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = SpecializationImpl.class)
     public void setOwnedSpecialization(List<Specialization> ownedSpecialization) {
         this.ownedSpecialization = ownedSpecialization;
     }
@@ -1231,7 +1209,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private Collection<Subsetting> ownedSubsetting;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "SubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_ownedSubsetting",
@@ -1245,7 +1223,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SubsettingImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = SubsettingImpl.class)
     public void setOwnedSubsetting(Collection<Subsetting> ownedSubsetting) {
         this.ownedSubsetting = ownedSubsetting;
     }
@@ -1257,7 +1235,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private Collection<TextualRepresentation> ownedTextualRepresentation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_ownedTextualRepresentation",
@@ -1271,7 +1249,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TextualRepresentationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TextualRepresentationImpl.class)
     public void setOwnedTextualRepresentation(Collection<TextualRepresentation> ownedTextualRepresentation) {
         this.ownedTextualRepresentation = ownedTextualRepresentation;
     }
@@ -1283,7 +1261,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<TypeFeaturing> ownedTypeFeaturing;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeFeaturingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_ownedTypeFeaturing",
@@ -1297,7 +1275,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeFeaturingImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeFeaturingImpl.class)
     public void setOwnedTypeFeaturing(List<TypeFeaturing> ownedTypeFeaturing) {
         this.ownedTypeFeaturing = ownedTypeFeaturing;
     }
@@ -1309,7 +1287,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<FeatureTyping> ownedTyping;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_ownedTyping",
@@ -1323,7 +1301,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureTypingImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureTypingImpl.class)
     public void setOwnedTyping(List<FeatureTyping> ownedTyping) {
         this.ownedTyping = ownedTyping;
     }
@@ -1335,7 +1313,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private Element owner;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownerId", table = "MultiplicityRange")
@@ -1344,7 +1322,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
     public void setOwner(Element owner) {
         this.owner = owner;
     }
@@ -1355,7 +1333,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private FeatureMembership owningFeatureMembership;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureMembershipType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningFeatureMembershipId", table = "MultiplicityRange")
     public FeatureMembership getOwningFeatureMembership() {
@@ -1363,7 +1341,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureMembershipImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = FeatureMembershipImpl.class)
     public void setOwningFeatureMembership(FeatureMembership owningFeatureMembership) {
         this.owningFeatureMembership = owningFeatureMembership;
     }
@@ -1374,7 +1352,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private Membership owningMembership;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningMembershipId", table = "MultiplicityRange")
     public Membership getOwningMembership() {
@@ -1382,7 +1360,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = MembershipImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = MembershipImpl.class)
     public void setOwningMembership(Membership owningMembership) {
         this.owningMembership = owningMembership;
     }
@@ -1394,7 +1372,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private Namespace owningNamespace;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningNamespaceId", table = "MultiplicityRange")
@@ -1403,7 +1381,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = NamespaceImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = NamespaceImpl.class)
     public void setOwningNamespace(Namespace owningNamespace) {
         this.owningNamespace = owningNamespace;
     }
@@ -1414,7 +1392,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private Relationship owningRelationship;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningRelationshipId", table = "MultiplicityRange")
     public Relationship getOwningRelationship() {
@@ -1422,7 +1400,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = RelationshipImpl.class)
     public void setOwningRelationship(Relationship owningRelationship) {
         this.owningRelationship = owningRelationship;
     }
@@ -1434,7 +1412,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private Type owningType;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningTypeId", table = "MultiplicityRange")
@@ -1443,7 +1421,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
     public void setOwningType(Type owningType) {
         this.owningType = owningType;
     }
@@ -1475,7 +1453,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private List<Type> type;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "MultiplicityRange_type",
@@ -1489,7 +1467,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeImpl.class)
     public void setType(List<Type> type) {
         this.type = type;
     }
@@ -1501,7 +1479,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     private Expression upperBound;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "upperBoundType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "upperBoundId", table = "MultiplicityRange")
@@ -1510,7 +1488,7 @@ public class MultiplicityRangeImpl extends MofObjectImpl implements Multiplicity
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ExpressionImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ExpressionImpl.class)
     public void setUpperBound(Expression upperBound) {
         this.upperBound = upperBound;
     }

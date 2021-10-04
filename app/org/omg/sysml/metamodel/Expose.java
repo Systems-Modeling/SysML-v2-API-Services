@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Expose extends Import, MofObject {
+public interface Expose extends Import, SysMLType {
     Boolean getIsImportAll();
 }

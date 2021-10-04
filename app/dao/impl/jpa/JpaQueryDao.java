@@ -24,9 +24,7 @@ package dao.impl.jpa;
 
 import dao.QueryDao;
 import jpa.manager.JPAManager;
-import org.omg.sysml.lifecycle.Branch;
 import org.omg.sysml.lifecycle.Project;
-import org.omg.sysml.lifecycle.impl.ElementVersionImpl;
 import org.omg.sysml.query.Query;
 import org.omg.sysml.query.impl.QueryImpl;
 import org.omg.sysml.query.impl.QueryImpl_;

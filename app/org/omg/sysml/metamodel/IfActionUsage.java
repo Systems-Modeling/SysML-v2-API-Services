@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface IfActionUsage extends ActionUsage, MofObject {
+public interface IfActionUsage extends ActionUsage, SysMLType {
     ActionUsage getElseAction();
 
     ActionUsage getThenAction();

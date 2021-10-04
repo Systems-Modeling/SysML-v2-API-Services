@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface BooleanExpression extends Expression, MofObject {
+public interface BooleanExpression extends Expression, SysMLType {
     Predicate getPredicate();
 }

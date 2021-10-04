@@ -21,21 +21,21 @@
 
 package org.omg.sysml.metamodel.impl;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import org.omg.sysml.lifecycle.Data;
 
-import org.omg.sysml.metamodel.MofObject;
-
-//import info.archinnov.achilles.annotations.PartitionKey;
-
-import java.util.UUID;
 import javax.persistence.*;
+import java.util.UUID;
 
-@Entity(name = "MofObjectImpl")
-@Table(name = "MofObject")
+@Entity(name = "SysMLTypeImpl")
+@Table(name = "SysMLType")
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING, length = 63)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public abstract class MofObjectImpl implements MofObject {
+public abstract class SysMLTypeImpl implements Data {
     //@PartitionKey
     private UUID key;
 
@@ -55,17 +55,14 @@ public abstract class MofObjectImpl implements MofObject {
 
     public abstract void setIdentifier(java.util.UUID identifier);
 
-    //@PartitionKey
-    private java.util.UUID id;
-
     @Transient
     @JsonGetter(value = "@id")
-    public java.util.UUID getId_() {
+    public java.util.UUID getId() {
         return getIdentifier();
     }
 
     @JsonSetter(value = "@id")
-    public void setId_(java.util.UUID id_) {
-        setIdentifier(id_);
+    public void setId(java.util.UUID id) {
+        setIdentifier(id);
     }
 }

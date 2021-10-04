@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -22,7 +23,7 @@
 package config.impl;
 
 import config.MetamodelProvider;
-import org.omg.sysml.metamodel.MofObject;
+import org.omg.sysml.lifecycle.Data;
 import org.omg.sysml.query.Constraint;
 import org.omg.sysml.record.Record;
 import org.reflections.Reflections;
@@ -38,7 +39,7 @@ public class JPAMetamodelProvider implements MetamodelProvider {
 
     static {
         List<Class<?>> roots = Arrays.asList(
-                MofObject.class,
+                Data.class,
                 Record.class,
                 Constraint.class
         );

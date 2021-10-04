@@ -30,9 +30,9 @@ import jackson.JacksonHelper;
 import jackson.filter.AllowedPropertyFilter;
 import jackson.filter.DynamicFilterMixin;
 import jackson.jsonld.JsonLdAdorner;
-import jackson.jsonld.MofObjectJsonLdAdorner;
+import jackson.jsonld.SysMLTypeJsonLdAdorner;
+import org.omg.sysml.lifecycle.Data;
 import org.omg.sysml.metamodel.Element;
-import org.omg.sysml.metamodel.MofObject;
 import org.omg.sysml.query.Query;
 import play.Environment;
 import play.libs.Json;
@@ -46,17 +46,17 @@ import java.util.*;
 import java.util.function.UnaryOperator;
 import java.util.stream.StreamSupport;
 
-public class QueryController extends JsonLdController<Element, MofObjectJsonLdAdorner.Parameters> {
+public class QueryController extends JsonLdController<Element, SysMLTypeJsonLdAdorner.Parameters> {
 
     private final QueryService queryService;
     private final MetamodelProvider metamodelProvider;
-    private final JsonLdAdorner<Element, MofObjectJsonLdAdorner.Parameters> adorner;
+    private final JsonLdAdorner<Element, SysMLTypeJsonLdAdorner.Parameters> adorner;
 
     @Inject
     public QueryController(QueryService queryService, MetamodelProvider metamodelProvider, Environment environment) {
         this.queryService = queryService;
         this.metamodelProvider = metamodelProvider;
-        this.adorner = new MofObjectJsonLdAdorner<>(metamodelProvider, environment, INLINE_JSON_LD_CONTEXT);
+        this.adorner = new SysMLTypeJsonLdAdorner<>(metamodelProvider, environment, INLINE_JSON_LD_CONTEXT);
     }
 
     public Result postQueryByProject(UUID projectId, Request request) {
@@ -113,9 +113,9 @@ public class QueryController extends JsonLdController<Element, MofObjectJsonLdAd
                 Set.class,
                 metamodelProvider.getImplementationClass(Element.class),
                 request,
-                new MofObjectJsonLdAdorner.Parameters(projectId, queryResults.getCommit().getId()),
+                new SysMLTypeJsonLdAdorner.Parameters(projectId, queryResults.getCommit().getId()),
                 ld,
-                filter != null ? Json.mapper().copy().addMixIn(MofObject.class, DynamicFilterMixin.class) : Json.mapper(),
+                filter != null ? Json.mapper().copy().addMixIn(Data.class, DynamicFilterMixin.class) : Json.mapper(),
                 filter != null ? writer -> writer.with(new SimpleFilterProvider().addFilter(DynamicFilterMixin.FILTER_NAME, filter)) : UnaryOperator.identity()
         );
         // Workaround for JSON always containing "@type"
@@ -128,7 +128,7 @@ public class QueryController extends JsonLdController<Element, MofObjectJsonLdAd
     }
 
     @Override
-    protected JsonLdAdorner<Element, MofObjectJsonLdAdorner.Parameters> getAdorner() {
+    protected JsonLdAdorner<Element, SysMLTypeJsonLdAdorner.Parameters> getAdorner() {
         return adorner;
     }
 }

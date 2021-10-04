@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface EnumerationUsage extends AttributeUsage, MofObject {
+public interface EnumerationUsage extends AttributeUsage, SysMLType {
     EnumerationDefinition getEnumerationDefinition();
 }

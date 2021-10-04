@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -22,7 +23,7 @@
 package org.omg.sysml.internal;
 
 import org.omg.sysml.lifecycle.Commit;
-import org.omg.sysml.lifecycle.ElementVersion;
+import org.omg.sysml.lifecycle.DataVersion;
 
 import java.util.Set;
 import java.util.UUID;
@@ -34,7 +35,7 @@ public interface CommitIndex {
 
     void setCommit(Commit commit);
 
-    Set<ElementVersion> getWorkingElementVersions();
+    Set<DataVersion> getWorkingDataVersions();
 
-    void setWorkingElementVersions(Set<ElementVersion> elements);
+    void setWorkingDataVersions(Set<DataVersion> elements);
 }

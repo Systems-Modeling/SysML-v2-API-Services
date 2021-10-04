@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -32,7 +33,7 @@ import com.fasterxml.jackson.databind.deser.ContextualDeserializer;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.jsontype.TypeDeserializer;
 import javassist.util.proxy.ProxyFactory;
-import org.omg.sysml.metamodel.impl.MofObjectImpl;
+import org.omg.sysml.lifecycle.Data;
 
 import javax.persistence.EntityManager;
 import java.io.IOException;
@@ -40,42 +41,40 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class MofObjectDeserializer extends StdDeserializer<MofObjectImpl> implements ContextualDeserializer {
+public class DataDeserializer extends StdDeserializer<Data> implements ContextualDeserializer {
+    private static Map<Class<?>, Class<?>> PROXY_MAP = new HashMap<>();
     private EntityManager entityManager;
     private JavaType type;
 
-    private static Map<Class<?>, Class<?>> PROXY_MAP = new HashMap<>();
-
-    public MofObjectDeserializer(EntityManager entityManager) {
+    public DataDeserializer(EntityManager entityManager) {
         this(entityManager, null);
     }
 
-    public MofObjectDeserializer(EntityManager entityManager, JavaType type) {
+    public DataDeserializer(EntityManager entityManager, JavaType type) {
         super((Class<?>) null);
         this.entityManager = entityManager;
         this.type = type;
     }
 
-    public MofObjectDeserializer() {
+    public DataDeserializer() {
         this(null);
     }
 
     @Override
-    public MofObjectImpl deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+    public Data deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
         if (p.currentToken() != JsonToken.START_OBJECT) {
             throw new JsonParseException(p, "Expected START_OBJECT. Received " + p.getCurrentName() + ".");
         }
 
-        MofObjectImpl mof;
+        Data data;
         // Proxy class to handle abstract classes
-        Class<?> proxyClass = PROXY_MAP.computeIfAbsent(type.getRawClass(), clazz -> {
+        Class<?> proxyClass = PROXY_MAP.computeIfAbsent(this.type.getRawClass(), clazz -> {
             ProxyFactory factory = new ProxyFactory();
             factory.setSuperclass(clazz);
             return factory.createClass();
         });
         try {
-            mof = (MofObjectImpl) proxyClass.getConstructor().newInstance();
-            //mof = (MofObjectImpl) type.getRawClass().getConstructor().newInstance();
+            data = (Data) proxyClass.getConstructor().newInstance();
         } catch (ReflectiveOperationException e) {
             throw new IOException(e);
         }
@@ -84,14 +83,15 @@ public class MofObjectDeserializer extends StdDeserializer<MofObjectImpl> implem
         while ((token = p.nextToken()) != null && token != JsonToken.END_OBJECT) {
             if (token == JsonToken.FIELD_NAME && "@id".equals(p.getCurrentName())) {
                 p.nextToken();
-                mof.setIdentifier(UUID.fromString(p.getText()));
+                data.setId(UUID.fromString(p.getText()));
             }
         }
-        return mof;
+        return data;
     }
 
     @Override
-    public Object deserializeWithType(JsonParser p, DeserializationContext ctxt, TypeDeserializer typeDeserializer) throws IOException {
+    public Object deserializeWithType(
+            JsonParser p, DeserializationContext ctxt, TypeDeserializer typeDeserializer) throws IOException {
         return deserialize(p, ctxt);
     }
 
@@ -99,6 +99,6 @@ public class MofObjectDeserializer extends StdDeserializer<MofObjectImpl> implem
     public JsonDeserializer<?> createContextual(DeserializationContext ctxt, BeanProperty property) {
         //beanProperty is null when the type to deserialize is the top-level type or a generic type, not a type of a bean property
         JavaType type = ctxt.getContextualType() != null ? ctxt.getContextualType() : property.getMember().getType();
-        return new MofObjectDeserializer(entityManager, type);
+        return new DataDeserializer(entityManager, type);
     }
 }

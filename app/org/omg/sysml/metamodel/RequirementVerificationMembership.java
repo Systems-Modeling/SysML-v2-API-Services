@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface RequirementVerificationMembership extends RequirementConstraintMembership, MofObject {
+public interface RequirementVerificationMembership extends RequirementConstraintMembership, SysMLType {
     RequirementUsage getOwnedRequirement();
 
     RequirementConstraintKind getKind();

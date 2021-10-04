@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -28,9 +29,9 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jackson.RecordSerialization;
 import org.hibernate.annotations.Any;
 import org.hibernate.annotations.Cascade;
-import org.omg.sysml.lifecycle.ElementIdentity;
+import org.omg.sysml.lifecycle.DataIdentity;
 import org.omg.sysml.lifecycle.Project;
-import org.omg.sysml.lifecycle.impl.ElementIdentityImpl;
+import org.omg.sysml.lifecycle.impl.DataIdentityImpl;
 import org.omg.sysml.lifecycle.impl.ProjectImpl;
 import org.omg.sysml.query.Constraint;
 import org.omg.sysml.query.Query;
@@ -44,7 +45,7 @@ import java.util.Set;
 public class QueryImpl extends RecordImpl implements Query {
     private Project owningProject;
     private Set<String> select;
-    private Set<ElementIdentity> scope;
+    private Set<DataIdentity> scope;
 /*
     private Boolean recursiveInScope;
     private List<String> orderBy;
@@ -80,8 +81,8 @@ public class QueryImpl extends RecordImpl implements Query {
     }
 
     @Override
-    @ManyToMany(targetEntity = ElementIdentityImpl.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    public Set<ElementIdentity> getScope() {
+    @ManyToMany(targetEntity = DataIdentityImpl.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    public Set<DataIdentity> getScope() {
         if (scope == null) {
             scope = new HashSet<>();
         }
@@ -89,8 +90,8 @@ public class QueryImpl extends RecordImpl implements Query {
     }
 
     @Override
-    @JsonDeserialize(contentAs = ElementIdentityImpl.class)
-    public void setScope(Set<ElementIdentity> scope) {
+    @JsonDeserialize(contentAs = DataIdentityImpl.class)
+    public void setScope(Set<DataIdentity> scope) {
         this.scope = scope;
     }
 

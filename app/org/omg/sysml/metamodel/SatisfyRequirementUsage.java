@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface SatisfyRequirementUsage extends RequirementUsage, AssertConstraintUsage, MofObject {
+public interface SatisfyRequirementUsage extends RequirementUsage, AssertConstraintUsage, SysMLType {
     RequirementUsage getSatisfiedRequirement();
 
     Feature getSatisfyingFeature();

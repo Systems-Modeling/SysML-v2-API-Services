@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Behavior extends Class, MofObject {
+public interface Behavior extends Class, SysMLType {
     Collection<? extends Step> getStep();
 
     List<? extends Feature> getParameter();

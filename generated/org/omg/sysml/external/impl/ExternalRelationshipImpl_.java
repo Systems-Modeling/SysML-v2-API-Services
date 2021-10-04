@@ -16,7 +16,7 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(ExternalRelationshipImpl.class)
-public abstract class ExternalRelationshipImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
+public abstract class ExternalRelationshipImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
 
 	public static volatile SingularAttribute<ExternalRelationshipImpl, UUID> identifier;
 	public static volatile ListAttribute<ExternalRelationshipImpl, Annotation> ownedAnnotation;

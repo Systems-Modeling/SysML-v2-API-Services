@@ -6,11 +6,11 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
-@StaticMetamodel(MofObjectImpl.class)
-public abstract class MofObjectImpl_ {
+@StaticMetamodel(SysMLTypeImpl.class)
+public abstract class SysMLTypeImpl_ {
 
-	public static volatile SingularAttribute<MofObjectImpl, UUID> identifier;
-	public static volatile SingularAttribute<MofObjectImpl, UUID> key;
+	public static volatile SingularAttribute<SysMLTypeImpl, UUID> identifier;
+	public static volatile SingularAttribute<SysMLTypeImpl, UUID> key;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String KEY = "key";

@@ -20,7 +20,7 @@
  */
 
 @AnyMetaDefs(value = {
-        @AnyMetaDef(name = "MofObjectMetaDef", metaType = "string", idType = "java.util.UUID",
+        @AnyMetaDef(name = "SysMLTypeMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
                         @MetaValue(value = "AcceptActionUsage", targetEntity = AcceptActionUsageImpl.class),
                         @MetaValue(value = "ActionDefinition", targetEntity = ActionDefinitionImpl.class),
@@ -1890,11 +1890,6 @@
 })
 package org.omg.sysml.metamodel.impl;
 
-import org.hibernate.annotations.AnyMetaDef;
-import org.hibernate.annotations.AnyMetaDefs;
-import org.hibernate.annotations.MetaValue;
-
-// TODO Abstract this concept to cli option
-import org.hibernate.annotations.GenericGenerators;
-import org.hibernate.annotations.GenericGenerator;
-import org.omg.sysml.external.impl.*;
+import org.hibernate.annotations.*;
+import org.omg.sysml.external.impl.ExternalElementImpl;
+import org.omg.sysml.external.impl.ExternalRelationshipImpl;

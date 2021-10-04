@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface BindingConnector extends Connector, MofObject {
+public interface BindingConnector extends Connector, SysMLType {
 
 }

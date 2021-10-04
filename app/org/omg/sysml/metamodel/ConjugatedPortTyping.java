@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ConjugatedPortTyping extends FeatureTyping, MofObject {
+public interface ConjugatedPortTyping extends FeatureTyping, SysMLType {
     PortDefinition getPortDefinition();
 
     ConjugatedPortDefinition getConjugatedPortDefinition();

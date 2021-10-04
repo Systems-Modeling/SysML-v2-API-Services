@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface JoinNode extends ControlNode, MofObject {
+public interface JoinNode extends ControlNode, SysMLType {
 
 }

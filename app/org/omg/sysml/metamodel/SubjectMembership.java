@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface SubjectMembership extends ParameterMembership, MofObject {
+public interface SubjectMembership extends ParameterMembership, SysMLType {
     Usage getOwnedSubjectParameter();
 }

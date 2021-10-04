@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -19,14 +20,11 @@
  * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
  */
 
-package org.omg.sysml.metamodel;
+package org.omg.sysml.lifecycle;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
+import org.omg.sysml.record.Record;
 
-public interface AnnotatingFeature extends AnnotatingElement, Feature, SysMLType {
-    DataType getMetadataType();
+public interface DataIdentity extends Record {
 
-    List<? extends MetadataFeature> getOwnedMetadata();
+    String NAME = "DataIdentity";
 }

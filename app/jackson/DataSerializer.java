@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -24,26 +25,25 @@ package jackson;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;
 import com.fasterxml.jackson.databind.ser.std.StdSerializer;
-import org.omg.sysml.metamodel.MofObject;
-import org.omg.sysml.metamodel.impl.MofObjectImpl;
+import org.omg.sysml.lifecycle.Data;
 
 import javax.persistence.PersistenceException;
 import java.io.IOException;
 
 // TODO inherit from JpaIdentitySerializer
-public class MofObjectSerializer extends StdSerializer<MofObject> {
-    public MofObjectSerializer() {
+public class DataSerializer extends StdSerializer<Data> {
+    public DataSerializer() {
         this(null);
     }
 
-    public MofObjectSerializer(Class<MofObject> clazz) {
+    public DataSerializer(Class<Data> clazz) {
         super(clazz);
     }
 
     @Override
-    public void serialize(MofObject value, JsonGenerator gen, SerializerProvider provider) throws IOException {
+    public void serialize(Data value, JsonGenerator gen, SerializerProvider provider) throws IOException {
         try {
-            if (value == null || value.getId_() == null) {
+            if (value == null || value.getId() == null) {
                 gen.writeNull();
                 return;
             }
@@ -52,9 +52,7 @@ public class MofObjectSerializer extends StdSerializer<MofObject> {
             return;
         }
         gen.writeStartObject();
-        if (value instanceof MofObjectImpl) {
-            gen.writeObjectField("@id", value.getId_());
-        }
+        gen.writeObjectField("@id", value.getId());
         gen.writeEndObject();
     }
 }

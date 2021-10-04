@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Class extends Classifier, MofObject {
+public interface Class extends Classifier, SysMLType {
 
 }

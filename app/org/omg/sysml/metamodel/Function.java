@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Function extends Behavior, MofObject {
+public interface Function extends Behavior, SysMLType {
     Collection<? extends Expression> getExpression();
 
     Feature getResult();

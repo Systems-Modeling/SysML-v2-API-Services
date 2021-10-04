@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface StakeholderMembership extends ParameterMembership, MofObject {
+public interface StakeholderMembership extends ParameterMembership, SysMLType {
     PartUsage getOwnedStakeholderParameter();
 }

@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface AssignmentActionUsage extends ActionUsage, MofObject {
+public interface AssignmentActionUsage extends ActionUsage, SysMLType {
     Expression getTargetArgument();
 
     Expression getValueExpression();

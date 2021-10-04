@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface InterfaceUsage extends ConnectionUsage, MofObject {
+public interface InterfaceUsage extends ConnectionUsage, SysMLType {
     Collection<? extends InterfaceDefinition> getInterfaceDefinition();
 }

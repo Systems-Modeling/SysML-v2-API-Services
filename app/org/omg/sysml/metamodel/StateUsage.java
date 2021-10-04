@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface StateUsage extends ActionUsage, MofObject {
+public interface StateUsage extends ActionUsage, SysMLType {
     List<? extends Behavior> getStateDefinition();
 
     ActionUsage getEntryAction();

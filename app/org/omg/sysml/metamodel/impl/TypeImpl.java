@@ -21,45 +21,23 @@
 
 package org.omg.sysml.metamodel.impl;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import jackson.DataDeserializer;
+import jackson.DataSerializer;
+import org.hibernate.annotations.Any;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.ManyToAny;
 import org.omg.sysml.metamodel.*;
 
-import org.omg.sysml.metamodel.Package;
-import org.omg.sysml.metamodel.Class;
-
-import jackson.MofObjectSerializer;
-import jackson.MofObjectDeserializer;
-
-import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
-import org.hibernate.annotations.Any;
-import org.hibernate.annotations.ManyToAny;
-import org.hibernate.annotations.FetchMode;
-
-// import info.archinnov.achilles.annotations.UDT;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.EnumType;
-import javax.persistence.ElementCollection;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.Lob;
-import javax.persistence.FetchType;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Table;
-import javax.persistence.SecondaryTable;
-import javax.persistence.CollectionTable;
-
-import java.util.Collection;
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
 
 @Entity(name = "TypeImpl")
 @SecondaryTable(name = "Type")
@@ -68,7 +46,7 @@ import java.util.HashSet;
 @DiscriminatorValue(value = "Type")
 @JsonTypeName(value = "Type")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class TypeImpl extends MofObjectImpl implements Type {
+public class TypeImpl extends SysMLTypeImpl implements Type {
     // @info.archinnov.achilles.annotations.Column("aliasId")
     private List<String> aliasId;
 
@@ -97,7 +75,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<Feature> directedFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_directedFeature",
@@ -111,7 +89,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setDirectedFeature(List<Feature> directedFeature) {
         this.directedFeature = directedFeature;
     }
@@ -123,7 +101,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private Collection<Type> disjointType;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_disjointType",
@@ -137,7 +115,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeImpl.class)
     public void setDisjointType(Collection<Type> disjointType) {
         this.disjointType = disjointType;
     }
@@ -149,7 +127,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<Documentation> documentation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_documentation",
@@ -163,7 +141,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DocumentationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DocumentationImpl.class)
     public void setDocumentation(List<Documentation> documentation) {
         this.documentation = documentation;
     }
@@ -175,7 +153,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<Comment> documentationComment;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_documentationComment",
@@ -189,7 +167,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CommentImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = CommentImpl.class)
     public void setDocumentationComment(List<Comment> documentationComment) {
         this.documentationComment = documentationComment;
     }
@@ -221,7 +199,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<Feature> endFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_endFeature",
@@ -235,7 +213,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setEndFeature(List<Feature> endFeature) {
         this.endFeature = endFeature;
     }
@@ -247,7 +225,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<Feature> feature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_feature",
@@ -261,7 +239,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setFeature(List<Feature> feature) {
         this.feature = feature;
     }
@@ -273,7 +251,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<FeatureMembership> featureMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_featureMembership",
@@ -287,7 +265,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureMembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureMembershipImpl.class)
     public void setFeatureMembership(List<FeatureMembership> featureMembership) {
         this.featureMembership = featureMembership;
     }
@@ -333,7 +311,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<Membership> importedMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_importedMembership",
@@ -347,7 +325,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = MembershipImpl.class)
     public void setImportedMembership(List<Membership> importedMembership) {
         this.importedMembership = importedMembership;
     }
@@ -359,7 +337,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<Feature> inheritedFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_inheritedFeature",
@@ -373,7 +351,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setInheritedFeature(List<Feature> inheritedFeature) {
         this.inheritedFeature = inheritedFeature;
     }
@@ -385,7 +363,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<Membership> inheritedMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_inheritedMembership",
@@ -399,7 +377,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = MembershipImpl.class)
     public void setInheritedMembership(List<Membership> inheritedMembership) {
         this.inheritedMembership = inheritedMembership;
     }
@@ -411,7 +389,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<Feature> input;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_input",
@@ -425,7 +403,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setInput(List<Feature> input) {
         this.input = input;
     }
@@ -487,7 +465,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<Element> member;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_member",
@@ -501,7 +479,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setMember(List<Element> member) {
         this.member = member;
     }
@@ -513,7 +491,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<Membership> membership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_membership",
@@ -527,7 +505,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = MembershipImpl.class)
     public void setMembership(List<Membership> membership) {
         this.membership = membership;
     }
@@ -539,7 +517,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private Multiplicity multiplicity;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "multiplicityId", table = "Type")
@@ -548,7 +526,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = MultiplicityImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = MultiplicityImpl.class)
     public void setMultiplicity(Multiplicity multiplicity) {
         this.multiplicity = multiplicity;
     }
@@ -580,7 +558,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<Feature> output;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_output",
@@ -594,7 +572,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setOutput(List<Feature> output) {
         this.output = output;
     }
@@ -606,7 +584,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<Annotation> ownedAnnotation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_ownedAnnotation",
@@ -620,7 +598,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnnotationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AnnotationImpl.class)
     public void setOwnedAnnotation(List<Annotation> ownedAnnotation) {
         this.ownedAnnotation = ownedAnnotation;
     }
@@ -632,7 +610,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private Conjugation ownedConjugator;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConjugatorType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownedConjugatorId", table = "Type")
@@ -641,7 +619,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ConjugationImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ConjugationImpl.class)
     public void setOwnedConjugator(Conjugation ownedConjugator) {
         this.ownedConjugator = ownedConjugator;
     }
@@ -653,7 +631,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private Collection<Disjoining> ownedDisjoining;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "DisjoiningMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_ownedDisjoining",
@@ -667,7 +645,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DisjoiningImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DisjoiningImpl.class)
     public void setOwnedDisjoining(Collection<Disjoining> ownedDisjoining) {
         this.ownedDisjoining = ownedDisjoining;
     }
@@ -679,7 +657,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<Element> ownedElement;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_ownedElement",
@@ -693,7 +671,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedElement(List<Element> ownedElement) {
         this.ownedElement = ownedElement;
     }
@@ -705,7 +683,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<Feature> ownedEndFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_ownedEndFeature",
@@ -719,7 +697,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setOwnedEndFeature(List<Feature> ownedEndFeature) {
         this.ownedEndFeature = ownedEndFeature;
     }
@@ -731,7 +709,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<Feature> ownedFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_ownedFeature",
@@ -745,7 +723,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setOwnedFeature(List<Feature> ownedFeature) {
         this.ownedFeature = ownedFeature;
     }
@@ -757,7 +735,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<FeatureMembership> ownedFeatureMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_ownedFeatureMembership",
@@ -771,7 +749,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureMembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureMembershipImpl.class)
     public void setOwnedFeatureMembership(List<FeatureMembership> ownedFeatureMembership) {
         this.ownedFeatureMembership = ownedFeatureMembership;
     }
@@ -783,7 +761,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<Import> ownedImport;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_ownedImport",
@@ -797,7 +775,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ImportImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ImportImpl.class)
     public void setOwnedImport(List<Import> ownedImport) {
         this.ownedImport = ownedImport;
     }
@@ -809,7 +787,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<Element> ownedMember;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_ownedMember",
@@ -823,7 +801,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedMember(List<Element> ownedMember) {
         this.ownedMember = ownedMember;
     }
@@ -835,7 +813,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<Membership> ownedMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_ownedMembership",
@@ -849,7 +827,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = MembershipImpl.class)
     public void setOwnedMembership(List<Membership> ownedMembership) {
         this.ownedMembership = ownedMembership;
     }
@@ -860,7 +838,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<Relationship> ownedRelationship;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
@@ -873,7 +851,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = RelationshipImpl.class)
     public void setOwnedRelationship(List<Relationship> ownedRelationship) {
         this.ownedRelationship = ownedRelationship;
     }
@@ -885,7 +863,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private List<Specialization> ownedSpecialization;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "SpecializationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_ownedSpecialization",
@@ -899,7 +877,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SpecializationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = SpecializationImpl.class)
     public void setOwnedSpecialization(List<Specialization> ownedSpecialization) {
         this.ownedSpecialization = ownedSpecialization;
     }
@@ -911,7 +889,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private Collection<TextualRepresentation> ownedTextualRepresentation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Type_ownedTextualRepresentation",
@@ -925,7 +903,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TextualRepresentationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TextualRepresentationImpl.class)
     public void setOwnedTextualRepresentation(Collection<TextualRepresentation> ownedTextualRepresentation) {
         this.ownedTextualRepresentation = ownedTextualRepresentation;
     }
@@ -937,7 +915,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private Element owner;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownerId", table = "Type")
@@ -946,7 +924,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
     public void setOwner(Element owner) {
         this.owner = owner;
     }
@@ -957,7 +935,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private Membership owningMembership;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningMembershipId", table = "Type")
     public Membership getOwningMembership() {
@@ -965,7 +943,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = MembershipImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = MembershipImpl.class)
     public void setOwningMembership(Membership owningMembership) {
         this.owningMembership = owningMembership;
     }
@@ -977,7 +955,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private Namespace owningNamespace;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningNamespaceId", table = "Type")
@@ -986,7 +964,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = NamespaceImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = NamespaceImpl.class)
     public void setOwningNamespace(Namespace owningNamespace) {
         this.owningNamespace = owningNamespace;
     }
@@ -997,7 +975,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     private Relationship owningRelationship;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningRelationshipId", table = "Type")
     public Relationship getOwningRelationship() {
@@ -1005,7 +983,7 @@ public class TypeImpl extends MofObjectImpl implements Type {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = RelationshipImpl.class)
     public void setOwningRelationship(Relationship owningRelationship) {
         this.owningRelationship = owningRelationship;
     }

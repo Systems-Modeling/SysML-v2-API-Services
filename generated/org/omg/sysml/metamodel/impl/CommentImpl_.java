@@ -15,7 +15,7 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(CommentImpl.class)
-public abstract class CommentImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
+public abstract class CommentImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
 
 	public static volatile ListAttribute<CommentImpl, Annotation> annotation;
 	public static volatile SingularAttribute<CommentImpl, UUID> identifier;

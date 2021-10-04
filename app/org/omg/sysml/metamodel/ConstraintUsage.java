@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ConstraintUsage extends BooleanExpression, OccurrenceUsage, MofObject {
+public interface ConstraintUsage extends BooleanExpression, OccurrenceUsage, SysMLType {
     Predicate getConstraintDefinition();
 }

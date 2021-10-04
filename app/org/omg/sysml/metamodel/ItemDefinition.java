@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ItemDefinition extends Structure, OccurrenceDefinition, MofObject {
+public interface ItemDefinition extends Structure, OccurrenceDefinition, SysMLType {
 
 }

@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -21,12 +22,12 @@
 
 package org.omg.sysml.external;
 
-import org.omg.sysml.metamodel.MofObject;
+import org.omg.sysml.lifecycle.Data;
 import org.omg.sysml.metamodel.Relationship;
 
 import java.net.URI;
 
-public interface ExternalRelationship extends Relationship, MofObject {
+public interface ExternalRelationship extends Relationship, Data {
 
     URI getResourceIdentifier();
 

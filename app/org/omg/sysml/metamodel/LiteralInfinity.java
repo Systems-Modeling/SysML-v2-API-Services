@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface LiteralInfinity extends LiteralExpression, MofObject {
+public interface LiteralInfinity extends LiteralExpression, SysMLType {
 
 }

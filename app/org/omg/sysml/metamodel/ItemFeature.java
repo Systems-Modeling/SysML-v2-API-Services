@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ItemFeature extends Feature, MofObject {
+public interface ItemFeature extends Feature, SysMLType {
 
 }

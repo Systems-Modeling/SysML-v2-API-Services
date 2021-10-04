@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface RequirementDefinition extends ConstraintDefinition, MofObject {
+public interface RequirementDefinition extends ConstraintDefinition, SysMLType {
     String getReqId();
 
     Collection<? extends String> getText();

@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface StateSubactionMembership extends FeatureMembership, MofObject {
+public interface StateSubactionMembership extends FeatureMembership, SysMLType {
     StateSubactionKind getKind();
 
     ActionUsage getAction();
