@@ -22,14 +22,11 @@
 
 package services;
 
-import dao.CommitDao;
-import dao.ElementDao;
-import dao.ProjectDao;
-import dao.QueryDao;
+import dao.*;
 import jackson.filter.AllowedPropertyFilter;
 import org.omg.sysml.lifecycle.Commit;
+import org.omg.sysml.lifecycle.Data;
 import org.omg.sysml.lifecycle.Project;
-import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.query.Query;
 
 import javax.annotation.Nullable;
@@ -46,14 +43,14 @@ public class QueryService extends BaseService<Query, QueryDao> {
 
     private final ProjectDao projectDao;
     private final CommitDao commitDao;
-    private final ElementDao elementDao;
+    private final DataDao dataDao;
 
     @Inject
-    public QueryService(QueryDao queryDao, ProjectDao projectDao, CommitDao commitDao, ElementDao elementDao) {
+    public QueryService(QueryDao queryDao, ProjectDao projectDao, CommitDao commitDao, DataDao dataDao) {
         super(queryDao);
         this.projectDao = projectDao;
         this.commitDao = commitDao;
-        this.elementDao = elementDao;
+        this.dataDao = dataDao;
     }
 
     public Optional<Query> create(Query query) {
@@ -106,22 +103,22 @@ public class QueryService extends BaseService<Query, QueryDao> {
 
         Query query = queryFunction.apply(project);
         AllowedPropertyFilter propertyFilter = getPropertyFilter(query);
-        return new QueryResults(elementDao.findByCommitAndQuery(commit, query), commit, propertyFilter);
+        return new QueryResults(dataDao.findByCommitAndQuery(commit, query), commit, propertyFilter);
     }
 
     public static class QueryResults {
-        private final List<Element> elements;
+        private final List<Data> data;
         private final Commit commit;
         private final AllowedPropertyFilter propertyFilter;
 
-        public QueryResults(List<Element> elements, Commit commit, AllowedPropertyFilter propertyFilter) {
-            this.elements = elements;
+        public QueryResults(List<Data> data, Commit commit, AllowedPropertyFilter propertyFilter) {
+            this.data = data;
             this.commit = commit;
             this.propertyFilter = propertyFilter;
         }
 
-        public List<Element> getElements() {
-            return elements;
+        public List<Data> getData() {
+            return data;
         }
 
         public Commit getCommit() {

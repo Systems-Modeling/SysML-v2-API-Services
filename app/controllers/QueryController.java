@@ -29,8 +29,8 @@ import config.MetamodelProvider;
 import jackson.JacksonHelper;
 import jackson.filter.AllowedPropertyFilter;
 import jackson.filter.DynamicFilterMixin;
+import jackson.jsonld.DataJsonLdAdorner;
 import jackson.jsonld.JsonLdAdorner;
-import jackson.jsonld.SysMLTypeJsonLdAdorner;
 import org.omg.sysml.lifecycle.Data;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.query.Query;
@@ -46,17 +46,17 @@ import java.util.*;
 import java.util.function.UnaryOperator;
 import java.util.stream.StreamSupport;
 
-public class QueryController extends JsonLdController<Element, SysMLTypeJsonLdAdorner.Parameters> {
+public class QueryController extends JsonLdController<Data, DataJsonLdAdorner.Parameters> {
 
     private final QueryService queryService;
     private final MetamodelProvider metamodelProvider;
-    private final JsonLdAdorner<Element, SysMLTypeJsonLdAdorner.Parameters> adorner;
+    private final JsonLdAdorner<Data, DataJsonLdAdorner.Parameters> adorner;
 
     @Inject
     public QueryController(QueryService queryService, MetamodelProvider metamodelProvider, Environment environment) {
         this.queryService = queryService;
         this.metamodelProvider = metamodelProvider;
-        this.adorner = new SysMLTypeJsonLdAdorner<>(metamodelProvider, environment, INLINE_JSON_LD_CONTEXT);
+        this.adorner = new DataJsonLdAdorner<>(metamodelProvider, environment, INLINE_JSON_LD_CONTEXT);
     }
 
     public Result postQueryByProject(UUID projectId, Request request) {
@@ -105,15 +105,15 @@ public class QueryController extends JsonLdController<Element, SysMLTypeJsonLdAd
     }
 
     private Result buildResult(QueryService.QueryResults queryResults, UUID projectId, Request request) {
-        List<Element> elements = queryResults.getElements();
+        List<Data> data = queryResults.getData();
         AllowedPropertyFilter filter = queryResults.getPropertyFilter();
         boolean ld = respondWithJsonLd(request);
         JsonNode json = buildJson(
-                new HashSet<>(elements),
+                new HashSet<>(data),
                 Set.class,
                 metamodelProvider.getImplementationClass(Element.class),
                 request,
-                new SysMLTypeJsonLdAdorner.Parameters(projectId, queryResults.getCommit().getId()),
+                new DataJsonLdAdorner.Parameters(projectId, queryResults.getCommit().getId()),
                 ld,
                 filter != null ? Json.mapper().copy().addMixIn(Data.class, DynamicFilterMixin.class) : Json.mapper(),
                 filter != null ? writer -> writer.with(new SimpleFilterProvider().addFilter(DynamicFilterMixin.FILTER_NAME, filter)) : UnaryOperator.identity()
@@ -128,7 +128,7 @@ public class QueryController extends JsonLdController<Element, SysMLTypeJsonLdAd
     }
 
     @Override
-    protected JsonLdAdorner<Element, SysMLTypeJsonLdAdorner.Parameters> getAdorner() {
+    protected JsonLdAdorner<Data, DataJsonLdAdorner.Parameters> getAdorner() {
         return adorner;
     }
 }

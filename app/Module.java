@@ -37,6 +37,7 @@ public class Module extends AbstractModule {
         bind(MetamodelProvider.class).to(JPAMetamodelProvider.class).asEagerSingleton();
         bind(JPAManager.class).to(HibernateManager.class).asEagerSingleton();
         bind(ObjectMapperFactory.class).to(HibernateObjectMapperFactory.class).asEagerSingleton();
+        bind(DataDao.class).to(JpaDataDao.class);
         bind(ElementDao.class).to(JpaElementDao.class);
         bind(ProjectDao.class).to(JpaProjectDao.class);
         bind(RelationshipDao.class).to(JpaRelationshipDao.class);

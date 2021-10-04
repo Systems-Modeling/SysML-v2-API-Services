@@ -15,7 +15,7 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(FeatureTypingImpl.class)
-public abstract class FeatureTypingImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
+public abstract class FeatureTypingImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile SingularAttribute<FeatureTypingImpl, UUID> identifier;
 	public static volatile ListAttribute<FeatureTypingImpl, Annotation> ownedAnnotation;

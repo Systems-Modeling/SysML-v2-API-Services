@@ -59,7 +59,7 @@ import org.omg.sysml.metamodel.ViewpointUsage;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(SendActionUsageImpl.class)
-public abstract class SendActionUsageImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
+public abstract class SendActionUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile ListAttribute<SendActionUsageImpl, Usage> directedUsage;
 	public static volatile ListAttribute<SendActionUsageImpl, PartUsage> nestedPart;

@@ -30,7 +30,7 @@ import org.omg.sysml.metamodel.TypeFeaturing;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(InvocationExpressionImpl.class)
-public abstract class InvocationExpressionImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
+public abstract class InvocationExpressionImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile ListAttribute<InvocationExpressionImpl, Expression> argument;
 	public static volatile ListAttribute<InvocationExpressionImpl, Feature> chainingFeature;

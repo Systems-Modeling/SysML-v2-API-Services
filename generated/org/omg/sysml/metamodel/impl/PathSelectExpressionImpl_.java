@@ -30,7 +30,7 @@ import org.omg.sysml.metamodel.TypeFeaturing;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(PathSelectExpressionImpl.class)
-public abstract class PathSelectExpressionImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
+public abstract class PathSelectExpressionImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile ListAttribute<PathSelectExpressionImpl, Expression> argument;
 	public static volatile ListAttribute<PathSelectExpressionImpl, Feature> chainingFeature;

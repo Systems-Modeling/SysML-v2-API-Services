@@ -23,11 +23,10 @@
 package org.omg.sysml.external;
 
 import org.omg.sysml.lifecycle.Data;
-import org.omg.sysml.metamodel.Element;
 
 import java.net.URI;
 
-public interface ExternalElement extends Element, Data {
+public interface ExternalData extends Data {
 
     URI getResourceIdentifier();
 }

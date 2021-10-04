@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -22,34 +23,13 @@
 package org.omg.sysml.metamodel.impl;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.omg.sysml.lifecycle.Data;
+import org.omg.sysml.lifecycle.impl.DataImpl;
 
-import javax.persistence.*;
-import java.util.UUID;
+import javax.persistence.Transient;
 
-@Entity(name = "SysMLTypeImpl")
-@Table(name = "SysMLType")
-@DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING, length = 63)
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public abstract class SysMLTypeImpl implements Data {
-    //@PartitionKey
-    private UUID key;
-
-    @Id
-    @GeneratedValue(generator = "UseExistingOrGenerateUUIDGenerator")
-    @Column(name = "key")
-    @JsonIgnore
-    public UUID getKey() {
-        return key;
-    }
-
-    public void setKey(UUID key) {
-        this.key = key;
-    }
+public abstract class SysMLTypeImpl extends DataImpl implements Data {
 
     public abstract java.util.UUID getIdentifier();
 

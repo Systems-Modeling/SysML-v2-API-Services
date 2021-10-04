@@ -23,15 +23,12 @@
 package dao.impl.jpa;
 
 import dao.CommitDao;
+import dao.ElementDao;
 import javabean.JavaBeanHelper;
 import jpa.manager.JPAManager;
 import org.omg.sysml.lifecycle.*;
-import org.omg.sysml.lifecycle.impl.CommitImpl;
-import org.omg.sysml.lifecycle.impl.CommitImpl_;
-import org.omg.sysml.lifecycle.impl.DataIdentityImpl;
-import org.omg.sysml.lifecycle.impl.DataVersionImpl;
+import org.omg.sysml.lifecycle.impl.*;
 import org.omg.sysml.metamodel.Element;
-import org.omg.sysml.metamodel.impl.SysMLTypeImpl;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -66,11 +63,11 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
         return commit;
     };
 
-    private final JpaElementDao elementDao;
+    private final ElementDao elementDao;
     private final JpaBranchDao branchDao;
 
     @Inject
-    public JpaCommitDao(JPAManager jpaManager, JpaElementDao elementDao, JpaBranchDao branchDao) {
+    public JpaCommitDao(JPAManager jpaManager, ElementDao elementDao, JpaBranchDao branchDao) {
         super(jpaManager, CommitImpl.class, CommitImpl_.id);
         this.elementDao = elementDao;
         this.branchDao = branchDao;
@@ -83,17 +80,17 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
             commit.setPreviousCommit(branch.getHead());
         }
 
-        Data tombstone = new SysMLTypeImpl() {
-            final UUID identifier = UUID.randomUUID();
+        Data tombstone = new Data() {
+            final UUID id = UUID.randomUUID();
 
             @Override
-            public UUID getIdentifier() {
-                return identifier;
+            public UUID getId() {
+                return id;
             }
 
             @Override
-            public void setIdentifier(UUID identifier) {
-
+            public void setId(UUID id) {
+                throw new UnsupportedOperationException();
             }
         };
 
@@ -109,16 +106,19 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
                 .map(identity -> (DataIdentityImpl) identity)
                 .forEach(identity -> identity.setId(identity.getId() != null ? identity.getId() : UUID.randomUUID()));
 
-        // Copy all Commit#changes#identity#id to Commit#changes#data#identifier and give all Commit#changes#data a random id.
+        // Copy all Commit#change#identity#id to Commit#change#payload#id and assign Commit#change#payload#key to a random UUID
         Map<UUID, Data> identifierToDataMap = changeStream.get()
-                .peek(change -> Optional.ofNullable(change.getPayload())
-                        .filter(data -> data instanceof SysMLTypeImpl)
-                        .map(data -> (SysMLTypeImpl) data)
-                        .ifPresent(type -> {
-                            type.setIdentifier(change.getIdentity().getId());
-                            type.setKey(UUID.randomUUID());
-                        })
-                )
+                .peek(change -> {
+                    Data payload = change.getPayload();
+                    if (payload == null) {
+                        return;
+                    }
+                    payload.setId(change.getIdentity().getId());
+                    if (!(payload instanceof DataImpl)) {
+                        throw new IllegalStateException();
+                    }
+                    ((DataImpl) payload).setKey(UUID.randomUUID());
+                })
                 .collect(Collectors.toMap(
                         change -> change.getIdentity().getId(),
                         change -> change.getPayload() != null ? change.getPayload() : tombstone)
@@ -195,13 +195,17 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
         return jpaManager.transact(em -> {
             commit.getChange().stream()
                     .map(DataVersion::getPayload)
-                    .filter(data -> data instanceof SysMLTypeImpl)
-                    .map(data -> (SysMLTypeImpl) data)
-                    .map(type -> {
+                    .map(payload -> {
                         try {
-                            SysMLTypeImpl firstPassType = type.getClass().getConstructor().newInstance();
-                            firstPassType.setKey(type.getKey());
-                            return firstPassType;
+                            Data dataFirstPass = payload.getClass().getConstructor().newInstance();
+                            if (!(dataFirstPass instanceof DataImpl)) {
+                                throw new IllegalStateException();
+                            }
+                            if (!(payload instanceof DataImpl)) {
+                                throw new IllegalStateException();
+                            }
+                            ((DataImpl) dataFirstPass).setKey(((DataImpl) payload).getKey());
+                            return dataFirstPass;
                         } catch (ReflectiveOperationException e) {
                             throw new RuntimeException(e);
                         }

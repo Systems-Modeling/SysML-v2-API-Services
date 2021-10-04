@@ -15,7 +15,7 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(AnnotationImpl.class)
-public abstract class AnnotationImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
+public abstract class AnnotationImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile SingularAttribute<AnnotationImpl, UUID> identifier;
 	public static volatile ListAttribute<AnnotationImpl, Annotation> ownedAnnotation;

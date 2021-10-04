@@ -23,8 +23,8 @@
 package controllers;
 
 import config.MetamodelProvider;
+import jackson.jsonld.DataJsonLdAdorner;
 import jackson.jsonld.JsonLdAdorner;
-import jackson.jsonld.SysMLTypeJsonLdAdorner;
 import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.utils.RelationshipDirection;
 import play.Environment;
@@ -38,17 +38,17 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public final class RelationshipController extends JsonLdController<Relationship, SysMLTypeJsonLdAdorner.Parameters> {
+public final class RelationshipController extends JsonLdController<Relationship, DataJsonLdAdorner.Parameters> {
 
     private final RelationshipService relationshipService;
     private final MetamodelProvider metamodelProvider;
-    private final JsonLdAdorner<Relationship, SysMLTypeJsonLdAdorner.Parameters> adorner;
+    private final JsonLdAdorner<Relationship, DataJsonLdAdorner.Parameters> adorner;
 
     @Inject
     public RelationshipController(RelationshipService relationshipService, MetamodelProvider metamodelProvider, Environment environment) {
         this.relationshipService = relationshipService;
         this.metamodelProvider = metamodelProvider;
-        this.adorner = new SysMLTypeJsonLdAdorner<>(metamodelProvider, environment, INLINE_JSON_LD_CONTEXT);
+        this.adorner = new DataJsonLdAdorner<>(metamodelProvider, environment, INLINE_JSON_LD_CONTEXT);
     }
 
     public Result getRelationshipsByProjectIdCommitIdRelatedElementId(UUID projectId, UUID commitId, UUID relatedElementId, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<String> direction, Request request) {
@@ -73,7 +73,7 @@ public final class RelationshipController extends JsonLdController<Relationship,
 
     private Result buildPaginatedResult(List<Relationship> relationships, UUID projectId, UUID commitId, Request request, PageRequest pageRequest) {
         return paginateResult(
-                buildResult(relationships, List.class, metamodelProvider.getImplementationClass(Relationship.class), request, new SysMLTypeJsonLdAdorner.Parameters(projectId, commitId)),
+                buildResult(relationships, List.class, metamodelProvider.getImplementationClass(Relationship.class), request, new DataJsonLdAdorner.Parameters(projectId, commitId)),
                 relationships.size(),
                 idx -> relationships.get(idx).getIdentifier(),
                 request,
@@ -82,7 +82,7 @@ public final class RelationshipController extends JsonLdController<Relationship,
     }
 
     @Override
-    protected JsonLdAdorner<Relationship, SysMLTypeJsonLdAdorner.Parameters> getAdorner() {
+    protected JsonLdAdorner<Relationship, DataJsonLdAdorner.Parameters> getAdorner() {
         return adorner;
     }
 }

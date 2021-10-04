@@ -28,7 +28,7 @@ import org.omg.sysml.metamodel.TypeFeaturing;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(MultiplicityImpl.class)
-public abstract class MultiplicityImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
+public abstract class MultiplicityImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile ListAttribute<MultiplicityImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<MultiplicityImpl, TypeFeaturing> ownedTypeFeaturing;

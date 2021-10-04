@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -23,7 +24,6 @@ package dao;
 
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.metamodel.Element;
-import org.omg.sysml.query.Query;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -37,6 +37,4 @@ public interface ElementDao extends Dao<Element> {
     Optional<Element> findByCommitAndId(Commit commit, UUID id);
 
     List<Element> findRootsByCommit(Commit commit, @Nullable UUID after, @Nullable UUID before, int maxResults);
-
-    List<Element> findByCommitAndQuery(Commit commit, Query query);
 }

@@ -59,7 +59,7 @@ import org.omg.sysml.metamodel.ViewpointUsage;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(AssertConstraintUsageImpl.class)
-public abstract class AssertConstraintUsageImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
+public abstract class AssertConstraintUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile ListAttribute<AssertConstraintUsageImpl, Usage> directedUsage;
 	public static volatile ListAttribute<AssertConstraintUsageImpl, PartUsage> nestedPart;

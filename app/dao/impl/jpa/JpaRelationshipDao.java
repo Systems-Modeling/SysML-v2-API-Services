@@ -47,18 +47,18 @@ import java.util.stream.Stream;
 @Singleton
 public class JpaRelationshipDao extends JpaDao<Relationship> implements RelationshipDao {
 
-    private final JpaElementDao elementDao;
+    private final JpaDataDao dataDao;
     private final Set<Class<?>> implementationClasses;
 
     @Inject
-    public JpaRelationshipDao(JPAManager jpaManager, MetamodelProvider metamodelProvider, JpaElementDao elementDao) {
+    public JpaRelationshipDao(JPAManager jpaManager, MetamodelProvider metamodelProvider, JpaDataDao dataDao) {
         super(jpaManager);
         this.implementationClasses = metamodelProvider
                 .getAllImplementationClasses()
                 .stream()
                 .filter(Relationship.class::isAssignableFrom)
                 .collect(Collectors.toSet());
-        this.elementDao = elementDao;
+        this.dataDao = dataDao;
     }
 
     @Override
@@ -127,7 +127,7 @@ public class JpaRelationshipDao extends JpaDao<Relationship> implements Relation
             // Reverting to non-relational streaming
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
             Commit c = em.contains(commit) ? commit : em.find(CommitImpl.class, commit.getId());
-            Stream<Relationship> stream = elementDao.getCommitIndex(c, em).getWorkingDataVersions().stream()
+            Stream<Relationship> stream = dataDao.getCommitIndex(c, em).getWorkingDataVersions().stream()
                     .map(DataVersion::getPayload).filter(data -> data instanceof Relationship)
                     .map(data -> (Relationship) data)
                     .filter(relationship -> {

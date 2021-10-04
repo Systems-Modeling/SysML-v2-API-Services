@@ -27,10 +27,9 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.hibernate.annotations.Any;
+import org.omg.sysml.lifecycle.Data;
 import org.omg.sysml.lifecycle.DataIdentity;
 import org.omg.sysml.lifecycle.DataVersion;
-import org.omg.sysml.lifecycle.Data;
-import org.omg.sysml.metamodel.impl.SysMLTypeImpl;
 import org.omg.sysml.record.impl.RecordImpl;
 
 import javax.persistence.*;
@@ -42,8 +41,7 @@ public class DataVersionImpl extends RecordImpl implements DataVersion {
     private Data payload;
     private DataIdentity identity;
 
-    // FIXME generify
-    @Any(metaDef = "SysMLTypeMetaDef", metaColumn = @Column(name = "payloadType"), fetch = FetchType.EAGER)
+    @Any(metaDef = "DataMetaDef", metaColumn = @Column(name = "payloadType"), fetch = FetchType.EAGER)
     @JoinColumn(name = "payloadId")
     @org.hibernate.annotations.Cascade(value = org.hibernate.annotations.CascadeType.ALL)
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
@@ -51,7 +49,7 @@ public class DataVersionImpl extends RecordImpl implements DataVersion {
         return payload;
     }
 
-    @JsonDeserialize(as = SysMLTypeImpl.class)
+    @JsonDeserialize(as = DataImpl.class)
     public void setPayload(Data data) {
         this.payload = data;
     }

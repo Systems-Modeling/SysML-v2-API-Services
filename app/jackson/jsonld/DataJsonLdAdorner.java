@@ -23,7 +23,7 @@
 package jackson.jsonld;
 
 import config.MetamodelProvider;
-import org.omg.sysml.metamodel.SysMLType;
+import org.omg.sysml.lifecycle.Data;
 import play.Environment;
 import play.mvc.Http.Request;
 
@@ -31,14 +31,14 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-public final class SysMLTypeJsonLdAdorner<T extends SysMLType> implements JsonLdAdorner<T, SysMLTypeJsonLdAdorner.Parameters> {
-    private final Map<String, JsonLdAdorner<T, SysMLTypeJsonLdAdorner.Parameters>> delegates = new ConcurrentHashMap<>();
+public final class DataJsonLdAdorner<T extends Data> implements JsonLdAdorner<T, DataJsonLdAdorner.Parameters> {
+    private final Map<String, JsonLdAdorner<T, DataJsonLdAdorner.Parameters>> delegates = new ConcurrentHashMap<>();
 
     private final MetamodelProvider metamodelProvider;
     private final Environment environment;
     private final boolean inline;
 
-    public SysMLTypeJsonLdAdorner(MetamodelProvider metamodelProvider, Environment environment, boolean inline) {
+    public DataJsonLdAdorner(MetamodelProvider metamodelProvider, Environment environment, boolean inline) {
         this.metamodelProvider = metamodelProvider;
         this.environment = environment;
         this.inline = inline;
@@ -53,6 +53,7 @@ public final class SysMLTypeJsonLdAdorner<T extends SysMLType> implements JsonLd
             throw new IllegalStateException(e);
         }
         return delegates.computeIfAbsent(type, t -> {
+            // FIXME metamodel hard-coding
             String contextPath = String.format("jsonld/metamodel/%s.jsonld", t);
             return new SimpleJsonLdAdorner<>(environment, inline) {
                 @Override
@@ -67,6 +68,7 @@ public final class SysMLTypeJsonLdAdorner<T extends SysMLType> implements JsonLd
 
                 @Override
                 protected String getBasePath(Parameters parameters) {
+                    // FIXME element hard-coding
                     return String.format("/projects/%s/commits/%s/elements/",
                             parameters.getProjectId(),
                             parameters.getCommitId()

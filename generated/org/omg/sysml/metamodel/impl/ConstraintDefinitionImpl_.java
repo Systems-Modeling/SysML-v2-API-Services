@@ -52,7 +52,7 @@ import org.omg.sysml.metamodel.ViewpointUsage;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(ConstraintDefinitionImpl.class)
-public abstract class ConstraintDefinitionImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
+public abstract class ConstraintDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile ListAttribute<ConstraintDefinitionImpl, Usage> directedUsage;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, PortUsage> ownedPort;

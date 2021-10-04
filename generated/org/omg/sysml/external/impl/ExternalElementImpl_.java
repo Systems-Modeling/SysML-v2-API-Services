@@ -15,22 +15,22 @@ import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.TextualRepresentation;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
-@StaticMetamodel(ExternalElementImpl.class)
+@StaticMetamodel(ExternalDataImpl.class)
 public abstract class ExternalElementImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
 
-	public static volatile SingularAttribute<ExternalElementImpl, UUID> identifier;
-	public static volatile ListAttribute<ExternalElementImpl, Annotation> ownedAnnotation;
-	public static volatile ListAttribute<ExternalElementImpl, Element> ownedElement;
-	public static volatile ListAttribute<ExternalElementImpl, Relationship> ownedRelationship;
-	public static volatile SingularAttribute<ExternalElementImpl, String> qualifiedName;
-	public static volatile ListAttribute<ExternalElementImpl, Documentation> documentation;
-	public static volatile CollectionAttribute<ExternalElementImpl, TextualRepresentation> ownedTextualRepresentation;
-	public static volatile SingularAttribute<ExternalElementImpl, URI> resourceIdentifier;
-	public static volatile SingularAttribute<ExternalElementImpl, String> humanId;
-	public static volatile ListAttribute<ExternalElementImpl, String> aliasId;
-	public static volatile SingularAttribute<ExternalElementImpl, String> name;
-	public static volatile ListAttribute<ExternalElementImpl, Comment> documentationComment;
-	public static volatile SingularAttribute<ExternalElementImpl, String> effectiveName;
+	public static volatile SingularAttribute<ExternalDataImpl, UUID> identifier;
+	public static volatile ListAttribute<ExternalDataImpl, Annotation> ownedAnnotation;
+	public static volatile ListAttribute<ExternalDataImpl, Element> ownedElement;
+	public static volatile ListAttribute<ExternalDataImpl, Relationship> ownedRelationship;
+	public static volatile SingularAttribute<ExternalDataImpl, String> qualifiedName;
+	public static volatile ListAttribute<ExternalDataImpl, Documentation> documentation;
+	public static volatile CollectionAttribute<ExternalDataImpl, TextualRepresentation> ownedTextualRepresentation;
+	public static volatile SingularAttribute<ExternalDataImpl, URI> resourceIdentifier;
+	public static volatile SingularAttribute<ExternalDataImpl, String> humanId;
+	public static volatile ListAttribute<ExternalDataImpl, String> aliasId;
+	public static volatile SingularAttribute<ExternalDataImpl, String> name;
+	public static volatile ListAttribute<ExternalDataImpl, Comment> documentationComment;
+	public static volatile SingularAttribute<ExternalDataImpl, String> effectiveName;
 
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

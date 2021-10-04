@@ -52,7 +52,7 @@ import org.omg.sysml.metamodel.ViewpointUsage;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(CalculationDefinitionImpl.class)
-public abstract class CalculationDefinitionImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
+public abstract class CalculationDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile ListAttribute<CalculationDefinitionImpl, CalculationUsage> calculation;
 	public static volatile ListAttribute<CalculationDefinitionImpl, Usage> directedUsage;
