@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Dependency extends Relationship, MofObject {
+public interface Dependency extends Relationship, SysMLType {
     List<? extends Element> getClient();
 
     List<? extends Element> getSupplier();

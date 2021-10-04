@@ -21,45 +21,24 @@
 
 package org.omg.sysml.metamodel.impl;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import jackson.DataDeserializer;
+import jackson.DataSerializer;
+import org.hibernate.annotations.Any;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.ManyToAny;
+import org.omg.sysml.metamodel.Class;
 import org.omg.sysml.metamodel.*;
 
-import org.omg.sysml.metamodel.Package;
-import org.omg.sysml.metamodel.Class;
-
-import jackson.MofObjectSerializer;
-import jackson.MofObjectDeserializer;
-
-import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
-import org.hibernate.annotations.Any;
-import org.hibernate.annotations.ManyToAny;
-import org.hibernate.annotations.FetchMode;
-
-// import info.archinnov.achilles.annotations.UDT;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.EnumType;
-import javax.persistence.ElementCollection;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.Lob;
-import javax.persistence.FetchType;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Table;
-import javax.persistence.SecondaryTable;
-import javax.persistence.CollectionTable;
-
-import java.util.Collection;
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
 
 @Entity(name = "FlowConnectionUsageImpl")
 @SecondaryTable(name = "FlowConnectionUsage")
@@ -68,7 +47,7 @@ import java.util.HashSet;
 @DiscriminatorValue(value = "FlowConnectionUsage")
 @JsonTypeName(value = "FlowConnectionUsage")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnectionUsage {
+public class FlowConnectionUsageImpl extends SysMLTypeImpl implements FlowConnectionUsage {
     // @info.archinnov.achilles.annotations.Column("aliasId")
     private List<String> aliasId;
 
@@ -97,7 +76,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Collection<Association> association;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AssociationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_association",
@@ -111,7 +90,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AssociationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AssociationImpl.class)
     public void setAssociation(Collection<Association> association) {
         this.association = association;
     }
@@ -123,7 +102,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Behavior> behavior;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "BehaviorMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_behavior",
@@ -137,7 +116,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = BehaviorImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = BehaviorImpl.class)
     public void setBehavior(List<Behavior> behavior) {
         this.behavior = behavior;
     }
@@ -149,7 +128,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Feature> chainingFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_chainingFeature",
@@ -163,7 +142,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setChainingFeature(List<Feature> chainingFeature) {
         this.chainingFeature = chainingFeature;
     }
@@ -175,7 +154,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<AssociationStructure> connectionDefinition;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AssociationStructureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_connectionDefinition",
@@ -189,7 +168,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AssociationStructureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AssociationStructureImpl.class)
     public void setConnectionDefinition(List<AssociationStructure> connectionDefinition) {
         this.connectionDefinition = connectionDefinition;
     }
@@ -201,7 +180,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Collection<Feature> connectorEnd;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_connectorEnd",
@@ -215,7 +194,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setConnectorEnd(Collection<Feature> connectorEnd) {
         this.connectorEnd = connectorEnd;
     }
@@ -227,7 +206,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Classifier> definition;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ClassifierMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_definition",
@@ -241,7 +220,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ClassifierImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ClassifierImpl.class)
     public void setDefinition(List<Classifier> definition) {
         this.definition = definition;
     }
@@ -253,7 +232,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Feature> directedFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_directedFeature",
@@ -267,7 +246,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setDirectedFeature(List<Feature> directedFeature) {
         this.directedFeature = directedFeature;
     }
@@ -279,7 +258,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Usage> directedUsage;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_directedUsage",
@@ -293,7 +272,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = UsageImpl.class)
     public void setDirectedUsage(List<Usage> directedUsage) {
         this.directedUsage = directedUsage;
     }
@@ -323,7 +302,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Collection<Type> disjointType;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_disjointType",
@@ -337,7 +316,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeImpl.class)
     public void setDisjointType(Collection<Type> disjointType) {
         this.disjointType = disjointType;
     }
@@ -349,7 +328,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Documentation> documentation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_documentation",
@@ -363,7 +342,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DocumentationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DocumentationImpl.class)
     public void setDocumentation(List<Documentation> documentation) {
         this.documentation = documentation;
     }
@@ -375,7 +354,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Comment> documentationComment;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_documentationComment",
@@ -389,7 +368,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CommentImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = CommentImpl.class)
     public void setDocumentationComment(List<Comment> documentationComment) {
         this.documentationComment = documentationComment;
     }
@@ -421,7 +400,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Feature> endFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_endFeature",
@@ -435,7 +414,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setEndFeature(List<Feature> endFeature) {
         this.endFeature = endFeature;
     }
@@ -447,7 +426,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Type endOwningType;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "endOwningTypeType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "endOwningTypeId", table = "FlowConnectionUsage")
@@ -456,7 +435,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
     public void setEndOwningType(Type endOwningType) {
         this.endOwningType = endOwningType;
     }
@@ -468,7 +447,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Feature> feature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_feature",
@@ -482,7 +461,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setFeature(List<Feature> feature) {
         this.feature = feature;
     }
@@ -494,7 +473,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<FeatureMembership> featureMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_featureMembership",
@@ -508,7 +487,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureMembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureMembershipImpl.class)
     public void setFeatureMembership(List<FeatureMembership> featureMembership) {
         this.featureMembership = featureMembership;
     }
@@ -520,7 +499,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Type> featuringType;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_featuringType",
@@ -534,7 +513,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeImpl.class)
     public void setFeaturingType(List<Type> featuringType) {
         this.featuringType = featuringType;
     }
@@ -580,7 +559,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Membership> importedMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_importedMembership",
@@ -594,7 +573,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = MembershipImpl.class)
     public void setImportedMembership(List<Membership> importedMembership) {
         this.importedMembership = importedMembership;
     }
@@ -606,7 +585,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private OccurrenceDefinition individualDefinition;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "OccurrenceDefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "individualDefinitionType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "individualDefinitionId", table = "FlowConnectionUsage")
@@ -615,7 +594,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = OccurrenceDefinitionImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = OccurrenceDefinitionImpl.class)
     public void setIndividualDefinition(OccurrenceDefinition individualDefinition) {
         this.individualDefinition = individualDefinition;
     }
@@ -627,7 +606,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Feature> inheritedFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_inheritedFeature",
@@ -641,7 +620,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setInheritedFeature(List<Feature> inheritedFeature) {
         this.inheritedFeature = inheritedFeature;
     }
@@ -653,7 +632,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Membership> inheritedMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_inheritedMembership",
@@ -667,7 +646,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = MembershipImpl.class)
     public void setInheritedMembership(List<Membership> inheritedMembership) {
         this.inheritedMembership = inheritedMembership;
     }
@@ -679,7 +658,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Feature> input;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_input",
@@ -693,7 +672,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setInput(List<Feature> input) {
         this.input = input;
     }
@@ -951,7 +930,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Structure> itemDefinition;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "StructureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_itemDefinition",
@@ -965,7 +944,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StructureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = StructureImpl.class)
     public void setItemDefinition(List<Structure> itemDefinition) {
         this.itemDefinition = itemDefinition;
     }
@@ -977,7 +956,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Collection<ItemFeature> itemFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ItemFeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_itemFeature",
@@ -991,7 +970,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ItemFeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ItemFeatureImpl.class)
     public void setItemFeature(Collection<ItemFeature> itemFeature) {
         this.itemFeature = itemFeature;
     }
@@ -1003,7 +982,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Collection<ItemFlowEnd> itemFlowEnd;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ItemFlowEndMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_itemFlowEnd",
@@ -1017,7 +996,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ItemFlowEndImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ItemFlowEndImpl.class)
     public void setItemFlowEnd(Collection<ItemFlowEnd> itemFlowEnd) {
         this.itemFlowEnd = itemFlowEnd;
     }
@@ -1029,7 +1008,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Collection<ItemFlowFeature> itemFlowFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ItemFlowFeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_itemFlowFeature",
@@ -1043,7 +1022,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ItemFlowFeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ItemFlowFeatureImpl.class)
     public void setItemFlowFeature(Collection<ItemFlowFeature> itemFlowFeature) {
         this.itemFlowFeature = itemFlowFeature;
     }
@@ -1055,7 +1034,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Classifier> itemType;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ClassifierMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_itemType",
@@ -1069,7 +1048,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ClassifierImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ClassifierImpl.class)
     public void setItemType(List<Classifier> itemType) {
         this.itemType = itemType;
     }
@@ -1081,7 +1060,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Element> member;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_member",
@@ -1095,7 +1074,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setMember(List<Element> member) {
         this.member = member;
     }
@@ -1107,7 +1086,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Membership> membership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_membership",
@@ -1121,7 +1100,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = MembershipImpl.class)
     public void setMembership(List<Membership> membership) {
         this.membership = membership;
     }
@@ -1133,7 +1112,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Multiplicity multiplicity;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "multiplicityId", table = "FlowConnectionUsage")
@@ -1142,7 +1121,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = MultiplicityImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = MultiplicityImpl.class)
     public void setMultiplicity(Multiplicity multiplicity) {
         this.multiplicity = multiplicity;
     }
@@ -1174,7 +1153,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<ActionUsage> nestedAction;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedAction",
@@ -1188,7 +1167,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ActionUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ActionUsageImpl.class)
     public void setNestedAction(List<ActionUsage> nestedAction) {
         this.nestedAction = nestedAction;
     }
@@ -1200,7 +1179,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<AllocationUsage> nestedAllocation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AllocationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedAllocation",
@@ -1214,7 +1193,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AllocationUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AllocationUsageImpl.class)
     public void setNestedAllocation(List<AllocationUsage> nestedAllocation) {
         this.nestedAllocation = nestedAllocation;
     }
@@ -1226,7 +1205,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<AnalysisCaseUsage> nestedAnalysisCase;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnalysisCaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedAnalysisCase",
@@ -1240,7 +1219,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnalysisCaseUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AnalysisCaseUsageImpl.class)
     public void setNestedAnalysisCase(List<AnalysisCaseUsage> nestedAnalysisCase) {
         this.nestedAnalysisCase = nestedAnalysisCase;
     }
@@ -1252,7 +1231,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<AttributeUsage> nestedAttribute;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AttributeUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedAttribute",
@@ -1266,7 +1245,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AttributeUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AttributeUsageImpl.class)
     public void setNestedAttribute(List<AttributeUsage> nestedAttribute) {
         this.nestedAttribute = nestedAttribute;
     }
@@ -1278,7 +1257,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<CalculationUsage> nestedCalculation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CalculationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedCalculation",
@@ -1292,7 +1271,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CalculationUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = CalculationUsageImpl.class)
     public void setNestedCalculation(List<CalculationUsage> nestedCalculation) {
         this.nestedCalculation = nestedCalculation;
     }
@@ -1304,7 +1283,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<CaseUsage> nestedCase;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedCase",
@@ -1318,7 +1297,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CaseUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = CaseUsageImpl.class)
     public void setNestedCase(List<CaseUsage> nestedCase) {
         this.nestedCase = nestedCase;
     }
@@ -1330,7 +1309,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Collection<ConcernUsage> nestedConcern;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ConcernUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedConcern",
@@ -1344,7 +1323,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConcernUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ConcernUsageImpl.class)
     public void setNestedConcern(Collection<ConcernUsage> nestedConcern) {
         this.nestedConcern = nestedConcern;
     }
@@ -1356,7 +1335,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<ConnectorAsUsage> nestedConnection;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ConnectorAsUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedConnection",
@@ -1370,7 +1349,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConnectorAsUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ConnectorAsUsageImpl.class)
     public void setNestedConnection(List<ConnectorAsUsage> nestedConnection) {
         this.nestedConnection = nestedConnection;
     }
@@ -1382,7 +1361,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<ConstraintUsage> nestedConstraint;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ConstraintUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedConstraint",
@@ -1396,7 +1375,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConstraintUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ConstraintUsageImpl.class)
     public void setNestedConstraint(List<ConstraintUsage> nestedConstraint) {
         this.nestedConstraint = nestedConstraint;
     }
@@ -1408,7 +1387,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<EnumerationUsage> nestedEnumeration;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "EnumerationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedEnumeration",
@@ -1422,7 +1401,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = EnumerationUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = EnumerationUsageImpl.class)
     public void setNestedEnumeration(List<EnumerationUsage> nestedEnumeration) {
         this.nestedEnumeration = nestedEnumeration;
     }
@@ -1434,7 +1413,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Collection<FlowConnectionUsage> nestedFlow;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FlowConnectionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedFlow",
@@ -1448,7 +1427,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FlowConnectionUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FlowConnectionUsageImpl.class)
     public void setNestedFlow(Collection<FlowConnectionUsage> nestedFlow) {
         this.nestedFlow = nestedFlow;
     }
@@ -1460,7 +1439,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<InterfaceUsage> nestedInterface;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "InterfaceUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedInterface",
@@ -1474,7 +1453,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = InterfaceUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = InterfaceUsageImpl.class)
     public void setNestedInterface(List<InterfaceUsage> nestedInterface) {
         this.nestedInterface = nestedInterface;
     }
@@ -1486,7 +1465,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<ItemUsage> nestedItem;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ItemUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedItem",
@@ -1500,7 +1479,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ItemUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ItemUsageImpl.class)
     public void setNestedItem(List<ItemUsage> nestedItem) {
         this.nestedItem = nestedItem;
     }
@@ -1512,7 +1491,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<OccurrenceUsage> nestedOccurrence;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "OccurrenceUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedOccurrence",
@@ -1526,7 +1505,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = OccurrenceUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = OccurrenceUsageImpl.class)
     public void setNestedOccurrence(List<OccurrenceUsage> nestedOccurrence) {
         this.nestedOccurrence = nestedOccurrence;
     }
@@ -1538,7 +1517,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<PartUsage> nestedPart;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "PartUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedPart",
@@ -1552,7 +1531,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PartUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = PartUsageImpl.class)
     public void setNestedPart(List<PartUsage> nestedPart) {
         this.nestedPart = nestedPart;
     }
@@ -1564,7 +1543,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<PortUsage> nestedPort;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "PortUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedPort",
@@ -1578,7 +1557,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PortUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = PortUsageImpl.class)
     public void setNestedPort(List<PortUsage> nestedPort) {
         this.nestedPort = nestedPort;
     }
@@ -1590,7 +1569,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<ReferenceUsage> nestedReference;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ReferenceUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedReference",
@@ -1604,7 +1583,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ReferenceUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ReferenceUsageImpl.class)
     public void setNestedReference(List<ReferenceUsage> nestedReference) {
         this.nestedReference = nestedReference;
     }
@@ -1616,7 +1595,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<RenderingUsage> nestedRendering;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "RenderingUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedRendering",
@@ -1630,7 +1609,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RenderingUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = RenderingUsageImpl.class)
     public void setNestedRendering(List<RenderingUsage> nestedRendering) {
         this.nestedRendering = nestedRendering;
     }
@@ -1642,7 +1621,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<RequirementUsage> nestedRequirement;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "RequirementUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedRequirement",
@@ -1656,7 +1635,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RequirementUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = RequirementUsageImpl.class)
     public void setNestedRequirement(List<RequirementUsage> nestedRequirement) {
         this.nestedRequirement = nestedRequirement;
     }
@@ -1668,7 +1647,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<StateUsage> nestedState;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "StateUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedState",
@@ -1682,7 +1661,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StateUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = StateUsageImpl.class)
     public void setNestedState(List<StateUsage> nestedState) {
         this.nestedState = nestedState;
     }
@@ -1694,7 +1673,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Collection<TransitionUsage> nestedTransition;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TransitionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedTransition",
@@ -1708,7 +1687,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TransitionUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TransitionUsageImpl.class)
     public void setNestedTransition(Collection<TransitionUsage> nestedTransition) {
         this.nestedTransition = nestedTransition;
     }
@@ -1720,7 +1699,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Usage> nestedUsage;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedUsage",
@@ -1734,7 +1713,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = UsageImpl.class)
     public void setNestedUsage(List<Usage> nestedUsage) {
         this.nestedUsage = nestedUsage;
     }
@@ -1746,7 +1725,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<UseCaseUsage> nestedUseCase;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "UseCaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedUseCase",
@@ -1760,7 +1739,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UseCaseUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = UseCaseUsageImpl.class)
     public void setNestedUseCase(List<UseCaseUsage> nestedUseCase) {
         this.nestedUseCase = nestedUseCase;
     }
@@ -1772,7 +1751,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<VerificationCaseUsage> nestedVerificationCase;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "VerificationCaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedVerificationCase",
@@ -1786,7 +1765,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = VerificationCaseUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = VerificationCaseUsageImpl.class)
     public void setNestedVerificationCase(List<VerificationCaseUsage> nestedVerificationCase) {
         this.nestedVerificationCase = nestedVerificationCase;
     }
@@ -1798,7 +1777,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<ViewUsage> nestedView;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ViewUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedView",
@@ -1812,7 +1791,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ViewUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ViewUsageImpl.class)
     public void setNestedView(List<ViewUsage> nestedView) {
         this.nestedView = nestedView;
     }
@@ -1824,7 +1803,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<ViewpointUsage> nestedViewpoint;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ViewpointUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_nestedViewpoint",
@@ -1838,7 +1817,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ViewpointUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ViewpointUsageImpl.class)
     public void setNestedViewpoint(List<ViewpointUsage> nestedViewpoint) {
         this.nestedViewpoint = nestedViewpoint;
     }
@@ -1850,7 +1829,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Class> occurrenceDefinition;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ClassMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_occurrenceDefinition",
@@ -1864,7 +1843,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ClassImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ClassImpl.class)
     public void setOccurrenceDefinition(List<Class> occurrenceDefinition) {
         this.occurrenceDefinition = occurrenceDefinition;
     }
@@ -1876,7 +1855,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Feature> output;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_output",
@@ -1890,7 +1869,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setOutput(List<Feature> output) {
         this.output = output;
     }
@@ -1902,7 +1881,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Annotation> ownedAnnotation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_ownedAnnotation",
@@ -1916,7 +1895,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnnotationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AnnotationImpl.class)
     public void setOwnedAnnotation(List<Annotation> ownedAnnotation) {
         this.ownedAnnotation = ownedAnnotation;
     }
@@ -1928,7 +1907,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Conjugation ownedConjugator;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConjugatorType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownedConjugatorId", table = "FlowConnectionUsage")
@@ -1937,7 +1916,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ConjugationImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ConjugationImpl.class)
     public void setOwnedConjugator(Conjugation ownedConjugator) {
         this.ownedConjugator = ownedConjugator;
     }
@@ -1949,7 +1928,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Collection<Disjoining> ownedDisjoining;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "DisjoiningMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_ownedDisjoining",
@@ -1963,7 +1942,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DisjoiningImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DisjoiningImpl.class)
     public void setOwnedDisjoining(Collection<Disjoining> ownedDisjoining) {
         this.ownedDisjoining = ownedDisjoining;
     }
@@ -1975,7 +1954,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Element> ownedElement;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_ownedElement",
@@ -1989,7 +1968,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedElement(List<Element> ownedElement) {
         this.ownedElement = ownedElement;
     }
@@ -2001,7 +1980,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Feature> ownedEndFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_ownedEndFeature",
@@ -2015,7 +1994,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setOwnedEndFeature(List<Feature> ownedEndFeature) {
         this.ownedEndFeature = ownedEndFeature;
     }
@@ -2027,7 +2006,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Feature> ownedFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_ownedFeature",
@@ -2041,7 +2020,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setOwnedFeature(List<Feature> ownedFeature) {
         this.ownedFeature = ownedFeature;
     }
@@ -2053,7 +2032,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<FeatureChaining> ownedFeatureChaining;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureChainingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_ownedFeatureChaining",
@@ -2067,7 +2046,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureChainingImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureChainingImpl.class)
     public void setOwnedFeatureChaining(List<FeatureChaining> ownedFeatureChaining) {
         this.ownedFeatureChaining = ownedFeatureChaining;
     }
@@ -2079,7 +2058,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<FeatureMembership> ownedFeatureMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_ownedFeatureMembership",
@@ -2093,7 +2072,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureMembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureMembershipImpl.class)
     public void setOwnedFeatureMembership(List<FeatureMembership> ownedFeatureMembership) {
         this.ownedFeatureMembership = ownedFeatureMembership;
     }
@@ -2105,7 +2084,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Import> ownedImport;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_ownedImport",
@@ -2119,7 +2098,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ImportImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ImportImpl.class)
     public void setOwnedImport(List<Import> ownedImport) {
         this.ownedImport = ownedImport;
     }
@@ -2131,7 +2110,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Element> ownedMember;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_ownedMember",
@@ -2145,7 +2124,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedMember(List<Element> ownedMember) {
         this.ownedMember = ownedMember;
     }
@@ -2157,7 +2136,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Membership> ownedMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_ownedMembership",
@@ -2171,7 +2150,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = MembershipImpl.class)
     public void setOwnedMembership(List<Membership> ownedMembership) {
         this.ownedMembership = ownedMembership;
     }
@@ -2183,7 +2162,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Collection<Redefinition> ownedRedefinition;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "RedefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_ownedRedefinition",
@@ -2197,7 +2176,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RedefinitionImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = RedefinitionImpl.class)
     public void setOwnedRedefinition(Collection<Redefinition> ownedRedefinition) {
         this.ownedRedefinition = ownedRedefinition;
     }
@@ -2208,7 +2187,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Element> ownedRelatedElement;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_ownedRelatedElement",
             joinColumns = @JoinColumn(name = "classId"),
@@ -2221,7 +2200,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedRelatedElement(List<Element> ownedRelatedElement) {
         this.ownedRelatedElement = ownedRelatedElement;
     }
@@ -2232,7 +2211,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Relationship> ownedRelationship;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
@@ -2245,7 +2224,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = RelationshipImpl.class)
     public void setOwnedRelationship(List<Relationship> ownedRelationship) {
         this.ownedRelationship = ownedRelationship;
     }
@@ -2257,7 +2236,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Specialization> ownedSpecialization;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "SpecializationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_ownedSpecialization",
@@ -2271,7 +2250,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SpecializationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = SpecializationImpl.class)
     public void setOwnedSpecialization(List<Specialization> ownedSpecialization) {
         this.ownedSpecialization = ownedSpecialization;
     }
@@ -2283,7 +2262,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Collection<Subsetting> ownedSubsetting;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "SubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_ownedSubsetting",
@@ -2297,7 +2276,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SubsettingImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = SubsettingImpl.class)
     public void setOwnedSubsetting(Collection<Subsetting> ownedSubsetting) {
         this.ownedSubsetting = ownedSubsetting;
     }
@@ -2309,7 +2288,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Collection<TextualRepresentation> ownedTextualRepresentation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_ownedTextualRepresentation",
@@ -2323,7 +2302,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TextualRepresentationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TextualRepresentationImpl.class)
     public void setOwnedTextualRepresentation(Collection<TextualRepresentation> ownedTextualRepresentation) {
         this.ownedTextualRepresentation = ownedTextualRepresentation;
     }
@@ -2335,7 +2314,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<TypeFeaturing> ownedTypeFeaturing;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeFeaturingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_ownedTypeFeaturing",
@@ -2349,7 +2328,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeFeaturingImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeFeaturingImpl.class)
     public void setOwnedTypeFeaturing(List<TypeFeaturing> ownedTypeFeaturing) {
         this.ownedTypeFeaturing = ownedTypeFeaturing;
     }
@@ -2361,7 +2340,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<FeatureTyping> ownedTyping;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_ownedTyping",
@@ -2375,7 +2354,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureTypingImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureTypingImpl.class)
     public void setOwnedTyping(List<FeatureTyping> ownedTyping) {
         this.ownedTyping = ownedTyping;
     }
@@ -2387,7 +2366,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Element owner;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownerId", table = "FlowConnectionUsage")
@@ -2396,7 +2375,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
     public void setOwner(Element owner) {
         this.owner = owner;
     }
@@ -2408,7 +2387,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Definition owningDefinition;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "DefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "owningDefinitionType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningDefinitionId", table = "FlowConnectionUsage")
@@ -2417,7 +2396,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = DefinitionImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = DefinitionImpl.class)
     public void setOwningDefinition(Definition owningDefinition) {
         this.owningDefinition = owningDefinition;
     }
@@ -2428,7 +2407,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private FeatureMembership owningFeatureMembership;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureMembershipType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningFeatureMembershipId", table = "FlowConnectionUsage")
     public FeatureMembership getOwningFeatureMembership() {
@@ -2436,7 +2415,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureMembershipImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = FeatureMembershipImpl.class)
     public void setOwningFeatureMembership(FeatureMembership owningFeatureMembership) {
         this.owningFeatureMembership = owningFeatureMembership;
     }
@@ -2447,7 +2426,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Membership owningMembership;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningMembershipId", table = "FlowConnectionUsage")
     public Membership getOwningMembership() {
@@ -2455,7 +2434,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = MembershipImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = MembershipImpl.class)
     public void setOwningMembership(Membership owningMembership) {
         this.owningMembership = owningMembership;
     }
@@ -2467,7 +2446,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Namespace owningNamespace;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningNamespaceId", table = "FlowConnectionUsage")
@@ -2476,7 +2455,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = NamespaceImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = NamespaceImpl.class)
     public void setOwningNamespace(Namespace owningNamespace) {
         this.owningNamespace = owningNamespace;
     }
@@ -2487,7 +2466,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Element owningRelatedElement;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElementType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningRelatedElementId", table = "FlowConnectionUsage")
     public Element getOwningRelatedElement() {
@@ -2495,7 +2474,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
     public void setOwningRelatedElement(Element owningRelatedElement) {
         this.owningRelatedElement = owningRelatedElement;
     }
@@ -2506,7 +2485,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Relationship owningRelationship;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningRelationshipId", table = "FlowConnectionUsage")
     public Relationship getOwningRelationship() {
@@ -2514,7 +2493,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = RelationshipImpl.class)
     public void setOwningRelationship(Relationship owningRelationship) {
         this.owningRelationship = owningRelationship;
     }
@@ -2526,7 +2505,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Type owningType;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningTypeId", table = "FlowConnectionUsage")
@@ -2535,7 +2514,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
     public void setOwningType(Type owningType) {
         this.owningType = owningType;
     }
@@ -2547,7 +2526,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Usage owningUsage;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "owningUsageType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningUsageId", table = "FlowConnectionUsage")
@@ -2556,7 +2535,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = UsageImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = UsageImpl.class)
     public void setOwningUsage(Usage owningUsage) {
         this.owningUsage = owningUsage;
     }
@@ -2568,7 +2547,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Feature> parameter;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_parameter",
@@ -2582,7 +2561,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setParameter(List<Feature> parameter) {
         this.parameter = parameter;
     }
@@ -2594,7 +2573,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<PartDefinition> partDefinition;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "PartDefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_partDefinition",
@@ -2608,7 +2587,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PartDefinitionImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = PartDefinitionImpl.class)
     public void setPartDefinition(List<PartDefinition> partDefinition) {
         this.partDefinition = partDefinition;
     }
@@ -2638,7 +2617,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private PortioningFeature portioningFeature;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "PortioningFeatureMetaDef", metaColumn = @javax.persistence.Column(name = "portioningFeatureType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "portioningFeatureId", table = "FlowConnectionUsage")
@@ -2647,7 +2626,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = PortioningFeatureImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = PortioningFeatureImpl.class)
     public void setPortioningFeature(PortioningFeature portioningFeature) {
         this.portioningFeature = portioningFeature;
     }
@@ -2679,7 +2658,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Element> relatedElement;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_relatedElement",
@@ -2693,7 +2672,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setRelatedElement(List<Element> relatedElement) {
         this.relatedElement = relatedElement;
     }
@@ -2705,7 +2684,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Feature> relatedFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_relatedFeature",
@@ -2719,7 +2698,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setRelatedFeature(List<Feature> relatedFeature) {
         this.relatedFeature = relatedFeature;
     }
@@ -2730,7 +2709,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Element> source;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_source",
             joinColumns = @JoinColumn(name = "classId"),
@@ -2743,7 +2722,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setSource(List<Element> source) {
         this.source = source;
     }
@@ -2755,7 +2734,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Feature sourceFeature;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "sourceFeatureType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "sourceFeatureId", table = "FlowConnectionUsage")
@@ -2764,7 +2743,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
     public void setSourceFeature(Feature sourceFeature) {
         this.sourceFeature = sourceFeature;
     }
@@ -2776,7 +2755,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Feature> sourceOutputFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_sourceOutputFeature",
@@ -2790,7 +2769,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setSourceOutputFeature(List<Feature> sourceOutputFeature) {
         this.sourceOutputFeature = sourceOutputFeature;
     }
@@ -2801,7 +2780,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Element> target;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_target",
             joinColumns = @JoinColumn(name = "classId"),
@@ -2814,7 +2793,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setTarget(List<Element> target) {
         this.target = target;
     }
@@ -2826,7 +2805,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Collection<Feature> targetFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_targetFeature",
@@ -2840,7 +2819,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setTargetFeature(Collection<Feature> targetFeature) {
         this.targetFeature = targetFeature;
     }
@@ -2852,7 +2831,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Feature> targetInputFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_targetInputFeature",
@@ -2866,7 +2845,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setTargetInputFeature(List<Feature> targetInputFeature) {
         this.targetInputFeature = targetInputFeature;
     }
@@ -2878,7 +2857,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Type> type;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_type",
@@ -2892,7 +2871,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeImpl.class)
     public void setType(List<Type> type) {
         this.type = type;
     }
@@ -2904,7 +2883,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private List<Usage> usage;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_usage",
@@ -2918,7 +2897,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = UsageImpl.class)
     public void setUsage(List<Usage> usage) {
         this.usage = usage;
     }
@@ -2930,7 +2909,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Collection<Usage> variant;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_variant",
@@ -2944,7 +2923,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = UsageImpl.class)
     public void setVariant(Collection<Usage> variant) {
         this.variant = variant;
     }
@@ -2956,7 +2935,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     private Collection<VariantMembership> variantMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "VariantMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FlowConnectionUsage_variantMembership",
@@ -2970,7 +2949,7 @@ public class FlowConnectionUsageImpl extends MofObjectImpl implements FlowConnec
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = VariantMembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = VariantMembershipImpl.class)
     public void setVariantMembership(Collection<VariantMembership> variantMembership) {
         this.variantMembership = variantMembership;
     }

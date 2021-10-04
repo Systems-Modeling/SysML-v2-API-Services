@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface LiteralBoolean extends LiteralExpression, MofObject {
+public interface LiteralBoolean extends LiteralExpression, SysMLType {
     Boolean getValue();
 }

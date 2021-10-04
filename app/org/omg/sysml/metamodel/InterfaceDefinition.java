@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface InterfaceDefinition extends ConnectionDefinition, MofObject {
+public interface InterfaceDefinition extends ConnectionDefinition, SysMLType {
     List<? extends PortUsage> getInterfaceEnd();
 }

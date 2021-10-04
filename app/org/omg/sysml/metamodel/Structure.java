@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Structure extends Class, MofObject {
+public interface Structure extends Class, SysMLType {
 
 }

@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface AnnotatingElement extends Element, MofObject {
+public interface AnnotatingElement extends Element, SysMLType {
     List<? extends Annotation> getAnnotation();
 
     List<? extends Element> getAnnotatedElement();

@@ -21,45 +21,23 @@
 
 package org.omg.sysml.metamodel.impl;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import jackson.DataDeserializer;
+import jackson.DataSerializer;
+import org.hibernate.annotations.Any;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.ManyToAny;
 import org.omg.sysml.metamodel.*;
 
-import org.omg.sysml.metamodel.Package;
-import org.omg.sysml.metamodel.Class;
-
-import jackson.MofObjectSerializer;
-import jackson.MofObjectDeserializer;
-
-import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
-import org.hibernate.annotations.Any;
-import org.hibernate.annotations.ManyToAny;
-import org.hibernate.annotations.FetchMode;
-
-// import info.archinnov.achilles.annotations.UDT;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.EnumType;
-import javax.persistence.ElementCollection;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.Lob;
-import javax.persistence.FetchType;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Table;
-import javax.persistence.SecondaryTable;
-import javax.persistence.CollectionTable;
-
-import java.util.Collection;
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
 
 @Entity(name = "FeatureTypingImpl")
 @SecondaryTable(name = "FeatureTyping")
@@ -68,7 +46,7 @@ import java.util.HashSet;
 @DiscriminatorValue(value = "FeatureTyping")
 @JsonTypeName(value = "FeatureTyping")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
+public class FeatureTypingImpl extends SysMLTypeImpl implements FeatureTyping {
     // @info.archinnov.achilles.annotations.Column("aliasId")
     private List<String> aliasId;
 
@@ -97,7 +75,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private List<Documentation> documentation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FeatureTyping_documentation",
@@ -111,7 +89,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DocumentationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DocumentationImpl.class)
     public void setDocumentation(List<Documentation> documentation) {
         this.documentation = documentation;
     }
@@ -123,7 +101,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private List<Comment> documentationComment;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FeatureTyping_documentationComment",
@@ -137,7 +115,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CommentImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = CommentImpl.class)
     public void setDocumentationComment(List<Comment> documentationComment) {
         this.documentationComment = documentationComment;
     }
@@ -168,7 +146,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private Type general;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "generalType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "generalId", table = "FeatureTyping")
     public Type getGeneral() {
@@ -176,7 +154,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
     public void setGeneral(Type general) {
         this.general = general;
     }
@@ -242,7 +220,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private List<Annotation> ownedAnnotation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FeatureTyping_ownedAnnotation",
@@ -256,7 +234,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnnotationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AnnotationImpl.class)
     public void setOwnedAnnotation(List<Annotation> ownedAnnotation) {
         this.ownedAnnotation = ownedAnnotation;
     }
@@ -268,7 +246,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private List<Element> ownedElement;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FeatureTyping_ownedElement",
@@ -282,7 +260,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedElement(List<Element> ownedElement) {
         this.ownedElement = ownedElement;
     }
@@ -293,7 +271,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private List<Element> ownedRelatedElement;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FeatureTyping_ownedRelatedElement",
             joinColumns = @JoinColumn(name = "classId"),
@@ -306,7 +284,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedRelatedElement(List<Element> ownedRelatedElement) {
         this.ownedRelatedElement = ownedRelatedElement;
     }
@@ -317,7 +295,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private List<Relationship> ownedRelationship;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FeatureTyping_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
@@ -330,7 +308,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = RelationshipImpl.class)
     public void setOwnedRelationship(List<Relationship> ownedRelationship) {
         this.ownedRelationship = ownedRelationship;
     }
@@ -342,7 +320,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private Collection<TextualRepresentation> ownedTextualRepresentation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FeatureTyping_ownedTextualRepresentation",
@@ -356,7 +334,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TextualRepresentationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TextualRepresentationImpl.class)
     public void setOwnedTextualRepresentation(Collection<TextualRepresentation> ownedTextualRepresentation) {
         this.ownedTextualRepresentation = ownedTextualRepresentation;
     }
@@ -368,7 +346,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private Element owner;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownerId", table = "FeatureTyping")
@@ -377,7 +355,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
     public void setOwner(Element owner) {
         this.owner = owner;
     }
@@ -389,7 +367,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private Feature owningFeature;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningFeatureId", table = "FeatureTyping")
@@ -398,7 +376,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
     public void setOwningFeature(Feature owningFeature) {
         this.owningFeature = owningFeature;
     }
@@ -409,7 +387,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private Membership owningMembership;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningMembershipId", table = "FeatureTyping")
     public Membership getOwningMembership() {
@@ -417,7 +395,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = MembershipImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = MembershipImpl.class)
     public void setOwningMembership(Membership owningMembership) {
         this.owningMembership = owningMembership;
     }
@@ -429,7 +407,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private Namespace owningNamespace;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningNamespaceId", table = "FeatureTyping")
@@ -438,7 +416,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = NamespaceImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = NamespaceImpl.class)
     public void setOwningNamespace(Namespace owningNamespace) {
         this.owningNamespace = owningNamespace;
     }
@@ -449,7 +427,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private Element owningRelatedElement;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElementType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningRelatedElementId", table = "FeatureTyping")
     public Element getOwningRelatedElement() {
@@ -457,7 +435,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
     public void setOwningRelatedElement(Element owningRelatedElement) {
         this.owningRelatedElement = owningRelatedElement;
     }
@@ -468,7 +446,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private Relationship owningRelationship;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningRelationshipId", table = "FeatureTyping")
     public Relationship getOwningRelationship() {
@@ -476,7 +454,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = RelationshipImpl.class)
     public void setOwningRelationship(Relationship owningRelationship) {
         this.owningRelationship = owningRelationship;
     }
@@ -488,7 +466,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private Type owningType;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningTypeId", table = "FeatureTyping")
@@ -497,7 +475,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
     public void setOwningType(Type owningType) {
         this.owningType = owningType;
     }
@@ -529,7 +507,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private List<Element> relatedElement;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FeatureTyping_relatedElement",
@@ -543,7 +521,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setRelatedElement(List<Element> relatedElement) {
         this.relatedElement = relatedElement;
     }
@@ -554,7 +532,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private List<Element> source;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FeatureTyping_source",
             joinColumns = @JoinColumn(name = "classId"),
@@ -567,7 +545,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setSource(List<Element> source) {
         this.source = source;
     }
@@ -578,7 +556,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private Type specific;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "specificType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "specificId", table = "FeatureTyping")
     public Type getSpecific() {
@@ -586,7 +564,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
     public void setSpecific(Type specific) {
         this.specific = specific;
     }
@@ -597,7 +575,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private List<Element> target;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "FeatureTyping_target",
             joinColumns = @JoinColumn(name = "classId"),
@@ -610,7 +588,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setTarget(List<Element> target) {
         this.target = target;
     }
@@ -621,7 +599,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private Type type;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "typeType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "typeId", table = "FeatureTyping")
     public Type getType() {
@@ -629,7 +607,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
     public void setType(Type type) {
         this.type = type;
     }
@@ -640,7 +618,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     private Feature typedFeature;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "typedFeatureType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "typedFeatureId", table = "FeatureTyping")
     public Feature getTypedFeature() {
@@ -648,7 +626,7 @@ public class FeatureTypingImpl extends MofObjectImpl implements FeatureTyping {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
     public void setTypedFeature(Feature typedFeature) {
         this.typedFeature = typedFeature;
     }

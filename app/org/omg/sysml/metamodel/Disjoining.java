@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Disjoining extends Relationship, MofObject {
+public interface Disjoining extends Relationship, SysMLType {
     Type getTypeDisjoined();
 
     Type getDisjoiningType();

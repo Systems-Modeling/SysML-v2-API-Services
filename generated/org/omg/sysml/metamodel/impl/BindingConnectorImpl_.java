@@ -29,7 +29,7 @@ import org.omg.sysml.metamodel.TypeFeaturing;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(BindingConnectorImpl.class)
-public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
+public abstract class BindingConnectorImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
 
 	public static volatile ListAttribute<BindingConnectorImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<BindingConnectorImpl, TypeFeaturing> ownedTypeFeaturing;

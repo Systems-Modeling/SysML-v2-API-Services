@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Conjugation extends Relationship, MofObject {
+public interface Conjugation extends Relationship, SysMLType {
     Type getOriginalType();
 
     Type getConjugatedType();

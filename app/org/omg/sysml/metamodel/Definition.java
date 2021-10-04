@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Definition extends Classifier, MofObject {
+public interface Definition extends Classifier, SysMLType {
     List<? extends Usage> getOwnedUsage();
 
     List<? extends PortUsage> getOwnedPort();

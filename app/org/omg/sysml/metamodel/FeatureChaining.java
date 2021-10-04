@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface FeatureChaining extends Relationship, MofObject {
+public interface FeatureChaining extends Relationship, SysMLType {
     Feature getChainingFeature();
 
     Feature getFeatureChained();

@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -27,8 +28,8 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import jackson.MofObjectDeserializer;
-import jackson.MofObjectSerializer;
+import jackson.DataDeserializer;
+import jackson.DataSerializer;
 import org.hibernate.annotations.Any;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.ManyToAny;
@@ -50,7 +51,7 @@ import java.util.List;
 @DiscriminatorValue(value = "ExternalElement")
 @JsonTypeName(value = "ExternalElement")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class ExternalElementImpl extends MofObjectImpl implements ExternalElement {
+public class ExternalElementImpl extends SysMLTypeImpl implements ExternalElement {
 
     private URI resourceIdentifier;
 
@@ -90,7 +91,7 @@ public class ExternalElementImpl extends MofObjectImpl implements ExternalElemen
     private List<Documentation> documentation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "ExternalElement_documentation",
             joinColumns = @JoinColumn(name = "classId"),
@@ -103,7 +104,7 @@ public class ExternalElementImpl extends MofObjectImpl implements ExternalElemen
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DocumentationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DocumentationImpl.class)
     public void setDocumentation(List<Documentation> documentation) {
         this.documentation = documentation;
     }
@@ -115,7 +116,7 @@ public class ExternalElementImpl extends MofObjectImpl implements ExternalElemen
     private List<Comment> documentationComment;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "ExternalElement_documentationComment",
@@ -129,7 +130,7 @@ public class ExternalElementImpl extends MofObjectImpl implements ExternalElemen
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CommentImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = CommentImpl.class)
     public void setDocumentationComment(List<Comment> documentationComment) {
         this.documentationComment = documentationComment;
     }
@@ -214,7 +215,7 @@ public class ExternalElementImpl extends MofObjectImpl implements ExternalElemen
     private List<Annotation> ownedAnnotation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "ExternalElement_ownedAnnotation",
             joinColumns = @JoinColumn(name = "classId"),
@@ -227,7 +228,7 @@ public class ExternalElementImpl extends MofObjectImpl implements ExternalElemen
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnnotationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AnnotationImpl.class)
     public void setOwnedAnnotation(List<Annotation> ownedAnnotation) {
         this.ownedAnnotation = ownedAnnotation;
     }
@@ -239,7 +240,7 @@ public class ExternalElementImpl extends MofObjectImpl implements ExternalElemen
     private List<Element> ownedElement;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "ExternalElement_ownedElement",
@@ -253,7 +254,7 @@ public class ExternalElementImpl extends MofObjectImpl implements ExternalElemen
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ExternalElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ExternalElementImpl.class)
     public void setOwnedElement(List<Element> ownedElement) {
         this.ownedElement = ownedElement;
     }
@@ -264,7 +265,7 @@ public class ExternalElementImpl extends MofObjectImpl implements ExternalElemen
     private List<Relationship> ownedRelationship;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "ExternalElement_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
@@ -277,7 +278,7 @@ public class ExternalElementImpl extends MofObjectImpl implements ExternalElemen
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = RelationshipImpl.class)
     public void setOwnedRelationship(List<Relationship> ownedRelationship) {
         this.ownedRelationship = ownedRelationship;
     }
@@ -289,7 +290,7 @@ public class ExternalElementImpl extends MofObjectImpl implements ExternalElemen
     private Collection<TextualRepresentation> ownedTextualRepresentation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "ExternalElement_ownedTextualRepresentation",
@@ -303,7 +304,7 @@ public class ExternalElementImpl extends MofObjectImpl implements ExternalElemen
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TextualRepresentationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TextualRepresentationImpl.class)
     public void setOwnedTextualRepresentation(Collection<TextualRepresentation> ownedTextualRepresentation) {
         this.ownedTextualRepresentation = ownedTextualRepresentation;
     }
@@ -315,7 +316,7 @@ public class ExternalElementImpl extends MofObjectImpl implements ExternalElemen
     private Element owner;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownerId", table = "ExternalElement")
@@ -324,7 +325,7 @@ public class ExternalElementImpl extends MofObjectImpl implements ExternalElemen
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ExternalElementImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ExternalElementImpl.class)
     public void setOwner(Element owner) {
         this.owner = owner;
     }
@@ -335,7 +336,7 @@ public class ExternalElementImpl extends MofObjectImpl implements ExternalElemen
     private Membership owningMembership;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningMembershipId", table = "ExternalElement")
     public Membership getOwningMembership() {
@@ -343,7 +344,7 @@ public class ExternalElementImpl extends MofObjectImpl implements ExternalElemen
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = MembershipImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = MembershipImpl.class)
     public void setOwningMembership(Membership owningMembership) {
         this.owningMembership = owningMembership;
     }
@@ -355,7 +356,7 @@ public class ExternalElementImpl extends MofObjectImpl implements ExternalElemen
     private Package owningNamespace;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningNamespaceId", table = "ExternalElement")
@@ -364,7 +365,7 @@ public class ExternalElementImpl extends MofObjectImpl implements ExternalElemen
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = PackageImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = PackageImpl.class)
     public void setOwningNamespace(Package owningNamespace) {
         this.owningNamespace = owningNamespace;
     }
@@ -375,7 +376,7 @@ public class ExternalElementImpl extends MofObjectImpl implements ExternalElemen
     private Relationship owningRelationship;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningRelationshipId", table = "ExternalElement")
     public Relationship getOwningRelationship() {
@@ -383,7 +384,7 @@ public class ExternalElementImpl extends MofObjectImpl implements ExternalElemen
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = RelationshipImpl.class)
     public void setOwningRelationship(Relationship owningRelationship) {
         this.owningRelationship = owningRelationship;
     }

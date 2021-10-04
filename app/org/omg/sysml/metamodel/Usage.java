@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Usage extends Feature, MofObject {
+public interface Usage extends Feature, SysMLType {
     List<? extends Usage> getNestedUsage();
 
     Usage getOwningUsage();

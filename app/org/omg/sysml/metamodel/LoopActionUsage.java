@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface LoopActionUsage extends ActionUsage, MofObject {
+public interface LoopActionUsage extends ActionUsage, SysMLType {
     ActionUsage getBodyAction();
 }

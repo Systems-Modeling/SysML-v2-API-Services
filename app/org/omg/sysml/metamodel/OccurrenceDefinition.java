@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface OccurrenceDefinition extends Definition, Class, MofObject {
+public interface OccurrenceDefinition extends Definition, Class, SysMLType {
     LifeClass getLifeClass();
 
     Boolean getIsIndividual();

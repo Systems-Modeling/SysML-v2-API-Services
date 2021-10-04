@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface EnumerationDefinition extends AttributeDefinition, MofObject {
+public interface EnumerationDefinition extends AttributeDefinition, SysMLType {
     List<? extends EnumerationUsage> getEnumeratedValue();
 
     Boolean getIsVariation();

@@ -29,7 +29,7 @@ import org.omg.sysml.metamodel.TypeFeaturing;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(InvariantImpl.class)
-public abstract class InvariantImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
+public abstract class InvariantImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
 
 	public static volatile ListAttribute<InvariantImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<InvariantImpl, TypeFeaturing> ownedTypeFeaturing;

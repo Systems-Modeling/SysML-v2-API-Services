@@ -1123,7 +1123,7 @@ definitions:
         type: string
         enum:
           - 'DataVersion'
-      data:
+      payload:
         $ref: '#/definitions/Data'
       identity:
         $ref: '#/definitions/DataIdentity'

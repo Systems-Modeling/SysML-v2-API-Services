@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface UseCaseDefinition extends CaseDefinition, MofObject {
+public interface UseCaseDefinition extends CaseDefinition, SysMLType {
     List<? extends UseCaseUsage> getIncludedUseCase();
 }

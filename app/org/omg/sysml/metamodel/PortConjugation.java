@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface PortConjugation extends Conjugation, MofObject {
+public interface PortConjugation extends Conjugation, SysMLType {
     PortDefinition getOriginalPortDefinition();
 
     ConjugatedPortDefinition getConjugatedPortDefinition();

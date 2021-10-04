@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface FeatureValue extends Membership, MofObject {
+public interface FeatureValue extends Membership, SysMLType {
     Feature getFeatureWithValue();
 
     Expression getValue();

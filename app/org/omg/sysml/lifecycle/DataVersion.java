@@ -24,7 +24,11 @@ package org.omg.sysml.lifecycle;
 
 import org.omg.sysml.record.Record;
 
-public interface ElementIdentity extends Record {
+public interface DataVersion extends Record {
 
-    String NAME = "ElementIdentity";
+    String NAME = "DataVersion";
+
+    Data getPayload();
+
+    DataIdentity getIdentity();
 }

@@ -29,7 +29,7 @@ import org.omg.sysml.metamodel.TypeFeaturing;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(LiteralBooleanImpl.class)
-public abstract class LiteralBooleanImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
+public abstract class LiteralBooleanImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
 
 	public static volatile ListAttribute<LiteralBooleanImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<LiteralBooleanImpl, TypeFeaturing> ownedTypeFeaturing;

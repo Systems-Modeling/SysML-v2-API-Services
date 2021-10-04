@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Relationship extends Element, MofObject {
+public interface Relationship extends Element, SysMLType {
     List<? extends Element> getRelatedElement();
 
     List<? extends Element> getTarget();

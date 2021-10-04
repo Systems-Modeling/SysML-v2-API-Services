@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface AssociationStructure extends Structure, Association, MofObject {
+public interface AssociationStructure extends Structure, Association, SysMLType {
 
 }

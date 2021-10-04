@@ -27,46 +27,48 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import org.hibernate.annotations.Any;
-import org.omg.sysml.lifecycle.ElementIdentity;
-import org.omg.sysml.lifecycle.ElementVersion;
-import org.omg.sysml.metamodel.MofObject;
-import org.omg.sysml.metamodel.impl.MofObjectImpl;
+import org.omg.sysml.lifecycle.DataIdentity;
+import org.omg.sysml.lifecycle.DataVersion;
+import org.omg.sysml.lifecycle.Data;
+import org.omg.sysml.metamodel.impl.SysMLTypeImpl;
 import org.omg.sysml.record.impl.RecordImpl;
 
 import javax.persistence.*;
 
-@Entity(name = "ElementVersion")
-@JsonTypeName(value = "ElementVersion")
-public class ElementVersionImpl extends RecordImpl implements ElementVersion {
-    private MofObject data;
-    private ElementIdentity identity;
+@Entity(name = "DataVersionImpl")
+@Table(name = "DataVersion")
+@JsonTypeName(value = "DataVersion")
+public class DataVersionImpl extends RecordImpl implements DataVersion {
+    private Data payload;
+    private DataIdentity identity;
 
-    @Any(metaDef = "MofObjectMetaDef", metaColumn = @javax.persistence.Column(name = "dataType"), fetch = FetchType.EAGER)
-    @JoinColumn(name = "dataId")
+    // FIXME generify
+    @Any(metaDef = "SysMLTypeMetaDef", metaColumn = @Column(name = "payloadType"), fetch = FetchType.EAGER)
+    @JoinColumn(name = "payloadId")
     @org.hibernate.annotations.Cascade(value = org.hibernate.annotations.CascadeType.ALL)
     @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-    public MofObject getData() {
-        return data;
+    public Data getPayload() {
+        return payload;
     }
 
-    @JsonDeserialize(as = MofObjectImpl.class)
-    public void setData(MofObject data) {
-        this.data = data;
+    @JsonDeserialize(as = SysMLTypeImpl.class)
+    public void setPayload(Data data) {
+        this.payload = data;
     }
 
-    @ManyToOne(targetEntity = ElementIdentityImpl.class, cascade = javax.persistence.CascadeType.ALL, fetch = FetchType.EAGER)
-    public ElementIdentity getIdentity() {
+    @ManyToOne(targetEntity = DataIdentityImpl.class, cascade = javax.persistence.CascadeType.ALL, fetch = FetchType.EAGER)
+    public DataIdentity getIdentity() {
         return identity;
     }
 
-    @JsonDeserialize(as = ElementIdentityImpl.class)
-    public void setIdentity(ElementIdentity identity) {
+    @JsonDeserialize(as = DataIdentityImpl.class)
+    public void setIdentity(DataIdentity identity) {
         this.identity = identity;
     }
 
     @Transient
     @JsonProperty("@type")
     public static String getType() {
-        return ElementVersion.NAME;
+        return DataVersion.NAME;
     }
 }

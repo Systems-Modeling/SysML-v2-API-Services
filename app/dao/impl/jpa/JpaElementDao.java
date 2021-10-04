@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -31,13 +32,13 @@ import org.omg.sysml.internal.CommitIndex;
 import org.omg.sysml.internal.impl.CommitIndexImpl;
 import org.omg.sysml.internal.impl.CommitIndexImpl_;
 import org.omg.sysml.lifecycle.Commit;
-import org.omg.sysml.lifecycle.ElementIdentity;
-import org.omg.sysml.lifecycle.ElementVersion;
+import org.omg.sysml.lifecycle.DataIdentity;
+import org.omg.sysml.lifecycle.DataVersion;
 import org.omg.sysml.lifecycle.impl.*;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Relationship;
-import org.omg.sysml.metamodel.impl.MofObjectImpl;
-import org.omg.sysml.metamodel.impl.MofObjectImpl_;
+import org.omg.sysml.metamodel.impl.SysMLTypeImpl;
+import org.omg.sysml.metamodel.impl.SysMLTypeImpl_;
 import org.omg.sysml.query.*;
 import org.omg.sysml.query.impl.QueryImpl;
 
@@ -85,10 +86,10 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
     public Optional<Element> findById(UUID id) {
         return jpaManager.transact(em -> {
             CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaQuery<MofObjectImpl> query = builder.createQuery(MofObjectImpl.class);
-            Root<MofObjectImpl> root = query.from(MofObjectImpl.class);
+            CriteriaQuery<SysMLTypeImpl> query = builder.createQuery(SysMLTypeImpl.class);
+            Root<SysMLTypeImpl> root = query.from(SysMLTypeImpl.class);
             query.select(root).where(builder.and(
-                    builder.equal(root.get(MofObjectImpl_.identifier), id),
+                    builder.equal(root.get(SysMLTypeImpl_.identifier), id),
                     getTypeExpression(builder, root)
             ));
             try {
@@ -103,8 +104,8 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
     public List<Element> findAll() {
         return jpaManager.transact(em -> {
             CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaQuery<MofObjectImpl> query = builder.createQuery(MofObjectImpl.class);
-            Root<MofObjectImpl> root = query.from(MofObjectImpl.class);
+            CriteriaQuery<SysMLTypeImpl> query = builder.createQuery(SysMLTypeImpl.class);
+            Root<SysMLTypeImpl> root = query.from(SysMLTypeImpl.class);
             query.select(root).where(getTypeExpression(builder, root));
             return em.createQuery(query).getResultStream()
                     .map(o -> (Element) o)
@@ -116,11 +117,11 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
     public List<Element> findAll(@Nullable UUID after, @Nullable UUID before, int maxResults) {
         return jpaManager.transact(em -> {
             CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaQuery<MofObjectImpl> query = builder.createQuery(MofObjectImpl.class);
-            Root<MofObjectImpl> root = query.from(MofObjectImpl.class);
+            CriteriaQuery<SysMLTypeImpl> query = builder.createQuery(SysMLTypeImpl.class);
+            Root<SysMLTypeImpl> root = query.from(SysMLTypeImpl.class);
             query.select(root);
             Expression<Boolean> where = getTypeExpression(builder, root);
-            Paginated<TypedQuery<MofObjectImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, root.get(MofObjectImpl_.identifier), where);
+            Paginated<TypedQuery<SysMLTypeImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, root.get(SysMLTypeImpl_.identifier), where);
             List<Element> result = paginated.get()
                     .getResultStream()
                     .map(o -> (Element) o)
@@ -136,8 +137,8 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
     public void deleteAll() {
         jpaManager.transact(em -> {
             CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaDelete<MofObjectImpl> query = builder.createCriteriaDelete(MofObjectImpl.class);
-            Root<MofObjectImpl> root = query.from(MofObjectImpl.class);
+            CriteriaDelete<SysMLTypeImpl> query = builder.createCriteriaDelete(SysMLTypeImpl.class);
+            Root<SysMLTypeImpl> root = query.from(SysMLTypeImpl.class);
             query.where(getTypeExpression(builder, root));
             return ((Stream<?>) em.createQuery(query).getResultStream())
                     .map(o -> (Element) o)
@@ -152,19 +153,19 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
             CommitIndex commitIndex = getCommitIndex(c, em);
 
             CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaQuery<ElementVersionImpl> query = builder.createQuery(ElementVersionImpl.class);
+            CriteriaQuery<DataVersionImpl> query = builder.createQuery(DataVersionImpl.class);
             Root<CommitIndexImpl> commitIndexRoot = query.from(CommitIndexImpl.class);
-            SetJoin<CommitIndexImpl, ElementVersionImpl> workingElementVersionsJoin = commitIndexRoot.join(CommitIndexImpl_.workingElementVersions);
-            Join<ElementVersionImpl, ElementIdentityImpl> elementIdentityJoin = workingElementVersionsJoin.join(ElementVersionImpl_.identity);
-            Path<UUID> idPath = elementIdentityJoin.get(ElementIdentityImpl_.id);
+            SetJoin<CommitIndexImpl, DataVersionImpl> workingDataVersionsJoin = commitIndexRoot.join(CommitIndexImpl_.workingDataVersions);
+            Join<DataVersionImpl, DataIdentityImpl> dataIdentityJoin = workingDataVersionsJoin.join(DataVersionImpl_.identity);
+            Path<UUID> idPath = dataIdentityJoin.get(DataIdentityImpl_.id);
             Expression<Boolean> where = builder.equal(commitIndexRoot.get(CommitIndexImpl_.id), commitIndex.getId());
-            query.select(workingElementVersionsJoin);
-            Paginated<TypedQuery<ElementVersionImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, idPath, where);
+            query.select(workingDataVersionsJoin);
+            Paginated<TypedQuery<DataVersionImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, idPath, where);
             List<Element> result = paginated.get()
                     .getResultStream()
-                    .map(ElementVersion::getData)
-                    .filter(mof -> mof instanceof Element)
-                    .map(mof -> (Element) mof)
+                    .map(DataVersion::getPayload)
+                    .filter(data -> data instanceof Element)
+                    .map(data -> (Element) data)
                     .map(PROXY_RESOLVER)
                     .collect(Collectors.toList());
             if (paginated.isReversed()) {
@@ -182,19 +183,19 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
             CommitIndex commitIndex = getCommitIndex(c, em);
 
             CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaQuery<ElementVersionImpl> query = builder.createQuery(ElementVersionImpl.class);
+            CriteriaQuery<DataVersionImpl> query = builder.createQuery(DataVersionImpl.class);
             Root<CommitIndexImpl> commitIndexRoot = query.from(CommitIndexImpl.class);
-            SetJoin<CommitIndexImpl, ElementVersionImpl> workingElementVersionsJoin = commitIndexRoot.join(CommitIndexImpl_.workingElementVersions);
-            Join<ElementVersionImpl, ElementIdentityImpl> elementIdentityJoin = workingElementVersionsJoin.join(ElementVersionImpl_.identity);
-            query.select(workingElementVersionsJoin).where(
+            SetJoin<CommitIndexImpl, DataVersionImpl> workingDataVersionsJoin = commitIndexRoot.join(CommitIndexImpl_.workingDataVersions);
+            Join<DataVersionImpl, DataIdentityImpl> dataIdentityJoin = workingDataVersionsJoin.join(DataVersionImpl_.identity);
+            query.select(workingDataVersionsJoin).where(
                     builder.equal(commitIndexRoot.get(CommitIndexImpl_.id), commitIndex.getId()),
-                    builder.equal(elementIdentityJoin.get(ElementIdentityImpl_.id), id)
+                    builder.equal(dataIdentityJoin.get(DataIdentityImpl_.id), id)
             );
             try {
                 return Optional.of(em.createQuery(query).getSingleResult())
-                        .map(ElementVersion::getData)
-                        .filter(mof -> mof instanceof Element)
-                        .map(mof -> (Element) mof)
+                        .map(DataVersion::getPayload)
+                        .filter(data -> data instanceof Element)
+                        .map(data -> (Element) data)
                         .map(PROXY_RESOLVER);
             } catch (NoResultException e) {
                 return Optional.empty();
@@ -207,10 +208,10 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
         return jpaManager.transact(em -> {
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
             Commit c = em.contains(commit) ? commit : em.find(CommitImpl.class, commit.getId());
-            Stream<Element> stream = getCommitIndex(c, em).getWorkingElementVersions().stream()
-                    .map(ElementVersion::getData)
-                    .filter(mof -> (mof instanceof Element) && !(mof instanceof Relationship))
-                    .map(mof -> (Element) mof)
+            Stream<Element> stream = getCommitIndex(c, em).getWorkingDataVersions().stream()
+                    .map(DataVersion::getPayload)
+                    .filter(data -> (data instanceof Element) && !(data instanceof Relationship))
+                    .map(data -> (Element) data)
                     .filter(element -> element.getOwner() == null);
             Paginated<Stream<Element>> paginatedStream = paginateStream(after, before, maxResults, stream, Element::getIdentifier);
             List<Element> result = paginatedStream.get()
@@ -229,11 +230,11 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
             Commit c = em.contains(commit) ? commit : em.find(CommitImpl.class, commit.getId());
             Query q = query.getId() == null || em.contains(query) ? query : em.find(QueryImpl.class, query.getId());
-            return getCommitIndex(c, em).getWorkingElementVersions().stream()
+            return getCommitIndex(c, em).getWorkingDataVersions().stream()
                     .filter(scope(q))
-                    .map(ElementVersion::getData)
-                    .filter(mof -> mof instanceof Element)
-                    .map(mof -> (Element) mof)
+                    .map(DataVersion::getPayload)
+                    .filter(data -> data instanceof Element)
+                    .map(data -> (Element) data)
                     .filter(constrain(q.getWhere()))
                     .map(PROXY_RESOLVER)
                     .collect(Collectors.toList());
@@ -249,12 +250,12 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
     @SuppressWarnings({"unchecked", "rawtypes"})
     protected static Comparator<Object> UNSAFE_COMPARABLE_COMPARATOR = (o1, o2) -> ((Comparable) o1).compareTo(o2);
 
-    protected Predicate<ElementVersion> scope(Query query) {
+    protected Predicate<DataVersion> scope(Query query) {
         if (query.getScope() == null || query.getScope().isEmpty()) {
             return ev -> true;
         }
         return ev -> ev.getIdentity() != null && query.getScope().stream()
-                .map(ElementIdentity::getId)
+                .map(DataIdentity::getId)
                 .anyMatch(id -> Objects.equals(id, ev.getIdentity().getId()));
     }
 
@@ -344,11 +345,11 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
         return results;
     }
 
-    protected Stream<ElementVersion> streamWorkingElementVersions(Commit commit) {
+    protected Stream<DataVersion> streamWorkingDataVersions(Commit commit) {
         Set<UUID> visitedElements = ConcurrentHashMap.newKeySet();
-        Map<Commit, Stream<ElementVersion>> results = queryCommitTree(commit,
+        Map<Commit, Stream<DataVersion>> results = queryCommitTree(commit,
                 c -> c.getChange().stream()
-                        .filter(record -> record.getIdentity() != null && record.getIdentity().getId() != null && record.getData() != null)
+                        .filter(record -> record.getIdentity() != null && record.getIdentity().getId() != null && record.getPayload() != null)
                         .filter(record -> !visitedElements.contains(record.getIdentity().getId()))
                         .peek(record -> visitedElements.add(record.getIdentity().getId())));
         return results.values().stream().flatMap(Function.identity());
@@ -370,7 +371,7 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
 
         commitIndex = new CommitIndexImpl();
         commitIndex.setCommit(commit);
-        commitIndex.setWorkingElementVersions(streamWorkingElementVersions(commit).collect(Collectors.toSet()));
+        commitIndex.setWorkingDataVersions(streamWorkingDataVersions(commit).collect(Collectors.toSet()));
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
         em.persist(commitIndex);

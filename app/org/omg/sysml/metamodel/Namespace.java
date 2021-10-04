@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Namespace extends Element, MofObject {
+public interface Namespace extends Element, SysMLType {
     List<? extends Membership> getMembership();
 
     List<? extends Import> getOwnedImport();

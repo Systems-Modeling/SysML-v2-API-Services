@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ReferenceUsage extends Usage, MofObject {
+public interface ReferenceUsage extends Usage, SysMLType {
     Boolean getIsReference();
 }

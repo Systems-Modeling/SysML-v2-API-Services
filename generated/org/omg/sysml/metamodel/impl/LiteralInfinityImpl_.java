@@ -29,7 +29,7 @@ import org.omg.sysml.metamodel.TypeFeaturing;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(LiteralInfinityImpl.class)
-public abstract class LiteralInfinityImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
+public abstract class LiteralInfinityImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
 
 	public static volatile ListAttribute<LiteralInfinityImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<LiteralInfinityImpl, TypeFeaturing> ownedTypeFeaturing;

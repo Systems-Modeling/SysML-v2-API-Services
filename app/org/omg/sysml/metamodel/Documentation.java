@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Documentation extends Annotation, MofObject {
+public interface Documentation extends Annotation, SysMLType {
     Element getOwningDocumentedElement();
 
     Comment getDocumentingComment();

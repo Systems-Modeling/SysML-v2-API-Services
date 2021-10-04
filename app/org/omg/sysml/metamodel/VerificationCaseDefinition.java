@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface VerificationCaseDefinition extends CaseDefinition, MofObject {
+public interface VerificationCaseDefinition extends CaseDefinition, SysMLType {
     List<? extends RequirementUsage> getVerifiedRequirement();
 }

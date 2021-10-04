@@ -1,7 +1,5 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020 InterCAX LLC
- * Copyright (C) 2020 California Institute of Technology ("Caltech")
  * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
@@ -22,14 +20,12 @@
 
 package org.omg.sysml.lifecycle;
 
-import org.omg.sysml.metamodel.MofObject;
-import org.omg.sysml.record.Record;
 
-public interface ElementVersion extends Record {
+import java.util.UUID;
 
-    String NAME = "ElementVersion";
+public interface Data {
 
-    MofObject getData();
+    UUID getId();
 
-    ElementIdentity getIdentity();
+    void setId(UUID id);
 }

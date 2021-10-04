@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface PortDefinition extends OccurrenceDefinition, Structure, MofObject {
+public interface PortDefinition extends OccurrenceDefinition, Structure, SysMLType {
     ConjugatedPortDefinition getConjugatedPortDefinition();
 }

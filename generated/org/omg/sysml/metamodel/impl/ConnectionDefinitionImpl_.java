@@ -50,7 +50,7 @@ import org.omg.sysml.metamodel.ViewpointUsage;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(ConnectionDefinitionImpl.class)
-public abstract class ConnectionDefinitionImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
+public abstract class ConnectionDefinitionImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
 
 	public static volatile ListAttribute<ConnectionDefinitionImpl, Usage> directedUsage;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, PortUsage> ownedPort;

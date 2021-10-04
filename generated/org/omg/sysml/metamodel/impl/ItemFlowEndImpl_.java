@@ -28,7 +28,7 @@ import org.omg.sysml.metamodel.TypeFeaturing;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(ItemFlowEndImpl.class)
-public abstract class ItemFlowEndImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
+public abstract class ItemFlowEndImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
 
 	public static volatile ListAttribute<ItemFlowEndImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<ItemFlowEndImpl, TypeFeaturing> ownedTypeFeaturing;

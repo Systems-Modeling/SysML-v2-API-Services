@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -23,9 +24,9 @@ package org.omg.sysml.internal.impl;
 
 import org.omg.sysml.internal.CommitIndex;
 import org.omg.sysml.lifecycle.Commit;
-import org.omg.sysml.lifecycle.ElementVersion;
+import org.omg.sysml.lifecycle.DataVersion;
 import org.omg.sysml.lifecycle.impl.CommitImpl;
-import org.omg.sysml.lifecycle.impl.ElementVersionImpl;
+import org.omg.sysml.lifecycle.impl.DataVersionImpl;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -35,7 +36,7 @@ import java.util.UUID;
 public class CommitIndexImpl implements CommitIndex {
     private UUID id;
     private Commit commit;
-    private Set<ElementVersion> workingElementVersions;
+    private Set<DataVersion> workingDataVersions;
 
     @Id
     public UUID getId() {
@@ -60,13 +61,13 @@ public class CommitIndexImpl implements CommitIndex {
     }
 
     @Override
-    @ManyToMany(targetEntity = ElementVersionImpl.class, fetch = FetchType.LAZY)
-    public Set<ElementVersion> getWorkingElementVersions() {
-        return workingElementVersions;
+    @ManyToMany(targetEntity = DataVersionImpl.class, fetch = FetchType.LAZY)
+    public Set<DataVersion> getWorkingDataVersions() {
+        return workingDataVersions;
     }
 
     @Override
-    public void setWorkingElementVersions(Set<ElementVersion> workingElementVersions) {
-        this.workingElementVersions = workingElementVersions;
+    public void setWorkingDataVersions(Set<DataVersion> workingDataVersions) {
+        this.workingDataVersions = workingDataVersions;
     }
 }

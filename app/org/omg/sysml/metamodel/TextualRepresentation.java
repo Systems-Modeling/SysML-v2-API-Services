@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface TextualRepresentation extends AnnotatingElement, MofObject {
+public interface TextualRepresentation extends AnnotatingElement, SysMLType {
     String getLanguage();
 
     String getBody();
