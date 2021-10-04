@@ -7,13 +7,11 @@ import javax.persistence.metamodel.StaticMetamodel;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(SysMLTypeImpl.class)
-public abstract class SysMLTypeImpl_ {
+public abstract class SysMLTypeImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile SingularAttribute<SysMLTypeImpl, UUID> identifier;
-	public static volatile SingularAttribute<SysMLTypeImpl, UUID> key;
 
 	public static final String IDENTIFIER = "identifier";
-	public static final String KEY = "key";
 
 }
 

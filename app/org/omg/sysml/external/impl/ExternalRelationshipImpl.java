@@ -32,508 +32,87 @@ import jackson.DataDeserializer;
 import jackson.DataSerializer;
 import org.hibernate.annotations.Any;
 import org.hibernate.annotations.FetchMode;
-import org.hibernate.annotations.ManyToAny;
+import org.omg.sysml.external.ExternalData;
 import org.omg.sysml.external.ExternalRelationship;
-import org.omg.sysml.metamodel.Package;
-import org.omg.sysml.metamodel.*;
-import org.omg.sysml.metamodel.impl.*;
+import org.omg.sysml.lifecycle.impl.DataImpl;
+import org.omg.sysml.metamodel.Element;
+import org.omg.sysml.metamodel.impl.ElementImpl;
 
 import javax.persistence.*;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.UUID;
 
 @Entity(name = "ExternalRelationshipImpl")
 @SecondaryTable(name = "ExternalRelationship")
 @org.hibernate.annotations.Table(appliesTo = "ExternalRelationship", fetch = FetchMode.SELECT, optional = false)
-// @info.archinnov.achilles.annotations.Table(table = "Relationship")
 @DiscriminatorValue(value = "ExternalRelationship")
 @JsonTypeName(value = "ExternalRelationship")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class ExternalRelationshipImpl extends SysMLTypeImpl implements ExternalRelationship {
+public class ExternalRelationshipImpl extends DataImpl implements ExternalRelationship {
 
-    private URI resourceIdentifier;
+    private UUID id;
 
-    @JsonGetter
-    @javax.persistence.Column(name = "resourceIdentifier", table = "ExternalRelationship")
-    public URI getResourceIdentifier() { return resourceIdentifier; }
+    @Column(name = "id", table = "ExternalRelationship")
+    @JsonGetter(value = "@id")
+    public UUID getId() {
+        return id;
+    }
 
-    @JsonSetter
-    public void setResourceIdentifier(URI resourceIdentifier) {
-        this.resourceIdentifier = resourceIdentifier;
+    @JsonSetter(value = "@id")
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     private String specification;
 
     @JsonGetter
-    @javax.persistence.Column(name = "specification", table = "ExternalRelationship")
+    @Column(name = "specification", table = "ExternalRelationship")
     public String getSpecification() { return specification; }
 
     @JsonSetter
     public void setSpecification(String specification) {
         this.specification = specification;
     }
-    // @info.archinnov.achilles.annotations.Column("aliasId")
-    private List<String> aliasId;
+
+    private String language;
 
     @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "ExternalRelationship_aliasId",
-            joinColumns = @JoinColumn(name = "ExternalRelationshipId"))
-    public List<String> getAliasId() {
-        if (aliasId == null) {
-            aliasId = new ArrayList<>();
-        }
-        return aliasId;
-    }
+    @Column(name = "language", table = "ExternalRelationship")
+    public String getLanguage() { return language; }
 
     @JsonSetter
-    public void setAliasId(List<String> aliasId) {
-        this.aliasId = aliasId;
+    public void setLanguage(String language) {
+        this.language = language;
     }
 
-
-
-    // @info.archinnov.achilles.annotations.Column("documentation")
-    private List<Documentation> documentation;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ExternalRelationship_documentation",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Documentation> getDocumentation() {
-        if (documentation == null) {
-            documentation = new ArrayList<>();
-        }
-        return documentation;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DocumentationImpl.class)
-    public void setDocumentation(List<Documentation> documentation) {
-        this.documentation = documentation;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("documentationComment")
-    private List<Comment> documentationComment;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ExternalRelationship_documentationComment",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Comment> getDocumentationComment() {
-        if (documentationComment == null) {
-            documentationComment = new ArrayList<>();
-        }
-        return documentationComment;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = CommentImpl.class)
-    public void setDocumentationComment(List<Comment> documentationComment) {
-        this.documentationComment = documentationComment;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("effectiveName")
-    private String effectiveName;
-
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    // @javax.persistence.Transient
-    @javax.persistence.Column(name = "effectiveName", table = "ExternalRelationship")
-    public String getEffectiveName() {
-        return effectiveName;
-    }
-
-    @JsonSetter
-    public void setEffectiveName(String effectiveName) {
-        this.effectiveName = effectiveName;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("humanId")
-    private String humanId;
-
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "humanId", table = "ExternalRelationship")
-    public String getHumanId() {
-        return humanId;
-    }
-
-    @JsonSetter
-    public void setHumanId(String humanId) {
-        this.humanId = humanId;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("identifier")
-    private java.util.UUID identifier;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "ExternalRelationship")
-    public java.util.UUID getIdentifier() {
-        return identifier;
-    }
-
-    @JsonSetter
-    public void setIdentifier(java.util.UUID identifier) {
-        this.identifier = identifier;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("name")
-    private String name;
-
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    // @javax.persistence.Transient
-    @javax.persistence.Column(name = "name", table = "ExternalRelationship")
-    public String getName() {
-        return name;
-    }
-
-    @JsonSetter
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("ownedAnnotation")
-    private List<Annotation> ownedAnnotation;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ExternalRelationship_ownedAnnotation",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Annotation> getOwnedAnnotation() {
-        if (ownedAnnotation == null) {
-            ownedAnnotation = new ArrayList<>();
-        }
-        return ownedAnnotation;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AnnotationImpl.class)
-    public void setOwnedAnnotation(List<Annotation> ownedAnnotation) {
-        this.ownedAnnotation = ownedAnnotation;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedElement")
-    private List<Element> ownedElement;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ExternalRelationship_ownedElement",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Element> getOwnedElement() {
-        if (ownedElement == null) {
-            ownedElement = new ArrayList<>();
-        }
-        return ownedElement;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
-    public void setOwnedElement(List<Element> ownedElement) {
-        this.ownedElement = ownedElement;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("ownedRelatedElement")
-    private List<Element> ownedRelatedElement;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ExternalRelationship_ownedRelatedElement",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Element> getOwnedRelatedElement() {
-        if (ownedRelatedElement == null) {
-            ownedRelatedElement = new ArrayList<>();
-        }
-        return ownedRelatedElement;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
-    public void setOwnedRelatedElement(List<Element> ownedRelatedElement) {
-        this.ownedRelatedElement = ownedRelatedElement;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("ownedRelationship")
-    private List<Relationship> ownedRelationship;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ExternalRelationship_ownedRelationship",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Relationship> getOwnedRelationship() {
-        if (ownedRelationship == null) {
-            ownedRelationship = new ArrayList<>();
-        }
-        return ownedRelationship;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ExternalRelationshipImpl.class)
-    public void setOwnedRelationship(List<Relationship> ownedRelationship) {
-        this.ownedRelationship = ownedRelationship;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedTextualRepresentation")
-    private Collection<TextualRepresentation> ownedTextualRepresentation;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ExternalRelationship_ownedTextualRepresentation",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<TextualRepresentation> getOwnedTextualRepresentation() {
-        if (ownedTextualRepresentation == null) {
-            ownedTextualRepresentation = new ArrayList<>();
-        }
-        return ownedTextualRepresentation;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TextualRepresentationImpl.class)
-    public void setOwnedTextualRepresentation(Collection<TextualRepresentation> ownedTextualRepresentation) {
-        this.ownedTextualRepresentation = ownedTextualRepresentation;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("owner")
-    private Element owner;
+    private Element elementEnd;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownerId", table = "ExternalRelationship")
-    public Element getOwner() {
-        return owner;
+    @Any(metaDef = "ElementMetaDef", metaColumn = @Column(name = "elementEndType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "elementEndId", table = "ExternalRelationship")
+    public Element getElementEnd() {
+        return elementEnd;
     }
 
     @JsonSetter
     @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
-    public void setOwner(Element owner) {
-        this.owner = owner;
+    public void setElementEnd(Element elementEnd) {
+        this.elementEnd = elementEnd;
     }
 
-
-
-    // @info.archinnov.achilles.annotations.Column("owningMembership")
-    private Membership owningMembership;
+    private ExternalData externalDataEnd;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningMembershipId", table = "ExternalRelationship")
-    public Membership getOwningMembership() {
-        return owningMembership;
+    @ManyToOne(targetEntity = ExternalDataImpl.class, fetch = FetchType.LAZY)
+    @JoinColumn(name = "externalDataEndId", table = "ExternalRelationship")
+    public ExternalData getExternalDataEnd() {
+        return externalDataEnd;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = MembershipImpl.class)
-    public void setOwningMembership(Membership owningMembership) {
-        this.owningMembership = owningMembership;
+    @JsonDeserialize(using = DataDeserializer.class, as = ExternalDataImpl.class)
+    public void setExternalDataEnd(ExternalData externalDataEnd) {
+        this.externalDataEnd = externalDataEnd;
     }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("owningNamespace")
-    private Package owningNamespace;
-
-    @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "PackageMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "ExternalRelationship")
-    public Package getOwningNamespace() {
-        return owningNamespace;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = PackageImpl.class)
-    public void setOwningNamespace(Package owningNamespace) {
-        this.owningNamespace = owningNamespace;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("owningRelatedElement")
-    private Element owningRelatedElement;
-
-    @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelatedElementId", table = "ExternalRelationship")
-    public Element getOwningRelatedElement() {
-        return owningRelatedElement;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
-    public void setOwningRelatedElement(Element owningRelatedElement) {
-        this.owningRelatedElement = owningRelatedElement;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("owningRelationship")
-    private Relationship owningRelationship;
-
-    @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelationshipId", table = "ExternalRelationship")
-    public Relationship getOwningRelationship() {
-        return owningRelationship;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = ExternalRelationshipImpl.class)
-    public void setOwningRelationship(Relationship owningRelationship) {
-        this.owningRelationship = owningRelationship;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("qualifiedName")
-    private String qualifiedName;
-
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    // @javax.persistence.Transient
-    @javax.persistence.Column(name = "qualifiedName", table = "ExternalRelationship")
-    public String getQualifiedName() {
-        return qualifiedName;
-    }
-
-    @JsonSetter
-    public void setQualifiedName(String qualifiedName) {
-        this.qualifiedName = qualifiedName;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("relatedElement")
-    private List<Element> relatedElement;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ExternalRelationship_relatedElement",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Element> getRelatedElement() {
-        if (relatedElement == null) {
-            relatedElement = new ArrayList<>();
-        }
-        return relatedElement;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
-    public void setRelatedElement(List<Element> relatedElement) {
-        this.relatedElement = relatedElement;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("source")
-    private List<Element> source;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ExternalRelationship_source",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Element> getSource() {
-        if (source == null) {
-            source = new ArrayList<>();
-        }
-        return source;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
-    public void setSource(List<Element> source) {
-        this.source = source;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("target")
-    private List<Element> target;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ExternalRelationship_target",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Element> getTarget() {
-        if (target == null) {
-            target = new ArrayList<>();
-        }
-        return target;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
-    public void setTarget(List<Element> target) {
-        this.target = target;
-    }
-
 }

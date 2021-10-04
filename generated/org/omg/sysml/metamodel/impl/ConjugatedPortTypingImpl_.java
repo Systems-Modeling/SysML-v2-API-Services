@@ -15,7 +15,7 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(ConjugatedPortTypingImpl.class)
-public abstract class ConjugatedPortTypingImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
+public abstract class ConjugatedPortTypingImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile SingularAttribute<ConjugatedPortTypingImpl, UUID> identifier;
 	public static volatile ListAttribute<ConjugatedPortTypingImpl, Annotation> ownedAnnotation;

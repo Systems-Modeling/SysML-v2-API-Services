@@ -57,7 +57,7 @@ import org.omg.sysml.metamodel.ViewpointUsage;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(ConnectorAsUsageImpl.class)
-public abstract class ConnectorAsUsageImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
+public abstract class ConnectorAsUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile ListAttribute<ConnectorAsUsageImpl, Usage> directedUsage;
 	public static volatile ListAttribute<ConnectorAsUsageImpl, PartUsage> nestedPart;

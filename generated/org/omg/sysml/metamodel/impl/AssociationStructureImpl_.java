@@ -23,7 +23,7 @@ import org.omg.sysml.metamodel.Type;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(AssociationStructureImpl.class)
-public abstract class AssociationStructureImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
+public abstract class AssociationStructureImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile CollectionAttribute<AssociationStructureImpl, Type> disjointType;
 	public static volatile SingularAttribute<AssociationStructureImpl, Boolean> isConjugated;

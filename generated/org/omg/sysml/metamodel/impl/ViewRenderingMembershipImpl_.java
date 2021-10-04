@@ -16,7 +16,7 @@ import org.omg.sysml.metamodel.VisibilityKind;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(ViewRenderingMembershipImpl.class)
-public abstract class ViewRenderingMembershipImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
+public abstract class ViewRenderingMembershipImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile SingularAttribute<ViewRenderingMembershipImpl, UUID> identifier;
 	public static volatile ListAttribute<ViewRenderingMembershipImpl, Annotation> ownedAnnotation;

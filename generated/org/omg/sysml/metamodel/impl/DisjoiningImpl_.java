@@ -15,7 +15,7 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(DisjoiningImpl.class)
-public abstract class DisjoiningImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
+public abstract class DisjoiningImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile SingularAttribute<DisjoiningImpl, UUID> identifier;
 	public static volatile ListAttribute<DisjoiningImpl, Annotation> ownedAnnotation;

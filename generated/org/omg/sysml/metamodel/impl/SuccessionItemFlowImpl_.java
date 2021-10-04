@@ -36,7 +36,7 @@ import org.omg.sysml.metamodel.TypeFeaturing;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(SuccessionItemFlowImpl.class)
-public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.metamodel.impl.SysMLTypeImpl_ {
+public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, TypeFeaturing> ownedTypeFeaturing;
