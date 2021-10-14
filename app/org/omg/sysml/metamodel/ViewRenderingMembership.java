@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ViewRenderingMembership extends FeatureMembership, MofObject {
+public interface ViewRenderingMembership extends FeatureMembership, SysMLType {
     RenderingUsage getOwnedRendering();
 
     RenderingUsage getReferencedRendering();

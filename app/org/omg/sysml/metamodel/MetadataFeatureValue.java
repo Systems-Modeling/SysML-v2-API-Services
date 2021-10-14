@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface MetadataFeatureValue extends FeatureValue, MofObject {
+public interface MetadataFeatureValue extends FeatureValue, SysMLType {
     Expression getMetadataValue();
 
     MetadataFeature getOwningMetadataFeature();

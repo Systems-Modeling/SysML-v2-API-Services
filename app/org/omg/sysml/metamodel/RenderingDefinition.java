@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface RenderingDefinition extends PartDefinition, MofObject {
+public interface RenderingDefinition extends PartDefinition, SysMLType {
     List<? extends RenderingUsage> getRendering();
 }

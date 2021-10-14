@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -36,11 +37,13 @@ public class Module extends AbstractModule {
         bind(MetamodelProvider.class).to(JPAMetamodelProvider.class).asEagerSingleton();
         bind(JPAManager.class).to(HibernateManager.class).asEagerSingleton();
         bind(ObjectMapperFactory.class).to(HibernateObjectMapperFactory.class).asEagerSingleton();
+        bind(DataDao.class).to(JpaDataDao.class);
         bind(ElementDao.class).to(JpaElementDao.class);
         bind(ProjectDao.class).to(JpaProjectDao.class);
         bind(RelationshipDao.class).to(JpaRelationshipDao.class);
         bind(CommitDao.class).to(JpaCommitDao.class);
         bind(QueryDao.class).to(JpaQueryDao.class);
         bind(BranchDao.class).to(JpaBranchDao.class);
+        bind(TagDao.class).to(JpaTagDao.class);
     }
 }

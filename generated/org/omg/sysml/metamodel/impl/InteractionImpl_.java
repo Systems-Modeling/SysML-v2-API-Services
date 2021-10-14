@@ -24,7 +24,7 @@ import org.omg.sysml.metamodel.Type;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(InteractionImpl.class)
-public abstract class InteractionImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
+public abstract class InteractionImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile CollectionAttribute<InteractionImpl, Type> disjointType;
 	public static volatile SingularAttribute<InteractionImpl, Boolean> isConjugated;

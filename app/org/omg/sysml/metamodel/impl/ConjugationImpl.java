@@ -21,45 +21,23 @@
 
 package org.omg.sysml.metamodel.impl;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import jackson.DataDeserializer;
+import jackson.DataSerializer;
+import org.hibernate.annotations.Any;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.ManyToAny;
 import org.omg.sysml.metamodel.*;
 
-import org.omg.sysml.metamodel.Package;
-import org.omg.sysml.metamodel.Class;
-
-import jackson.MofObjectSerializer;
-import jackson.MofObjectDeserializer;
-
-import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
-import org.hibernate.annotations.Any;
-import org.hibernate.annotations.ManyToAny;
-import org.hibernate.annotations.FetchMode;
-
-// import info.archinnov.achilles.annotations.UDT;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.EnumType;
-import javax.persistence.ElementCollection;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.Lob;
-import javax.persistence.FetchType;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Table;
-import javax.persistence.SecondaryTable;
-import javax.persistence.CollectionTable;
-
-import java.util.Collection;
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
 
 @Entity(name = "ConjugationImpl")
 @SecondaryTable(name = "Conjugation")
@@ -68,7 +46,7 @@ import java.util.HashSet;
 @DiscriminatorValue(value = "Conjugation")
 @JsonTypeName(value = "Conjugation")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class ConjugationImpl extends MofObjectImpl implements Conjugation {
+public class ConjugationImpl extends SysMLTypeImpl implements Conjugation {
     // @info.archinnov.achilles.annotations.Column("aliasId")
     private List<String> aliasId;
 
@@ -96,7 +74,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     private Type conjugatedType;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "conjugatedTypeType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "conjugatedTypeId", table = "Conjugation")
     public Type getConjugatedType() {
@@ -104,7 +82,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
     public void setConjugatedType(Type conjugatedType) {
         this.conjugatedType = conjugatedType;
     }
@@ -116,7 +94,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     private List<Documentation> documentation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Conjugation_documentation",
@@ -130,7 +108,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DocumentationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DocumentationImpl.class)
     public void setDocumentation(List<Documentation> documentation) {
         this.documentation = documentation;
     }
@@ -142,7 +120,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     private List<Comment> documentationComment;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Conjugation_documentationComment",
@@ -156,7 +134,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CommentImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = CommentImpl.class)
     public void setDocumentationComment(List<Comment> documentationComment) {
         this.documentationComment = documentationComment;
     }
@@ -241,7 +219,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     private Type originalType;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "originalTypeType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "originalTypeId", table = "Conjugation")
     public Type getOriginalType() {
@@ -249,7 +227,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
     public void setOriginalType(Type originalType) {
         this.originalType = originalType;
     }
@@ -261,7 +239,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     private List<Annotation> ownedAnnotation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Conjugation_ownedAnnotation",
@@ -275,7 +253,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnnotationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AnnotationImpl.class)
     public void setOwnedAnnotation(List<Annotation> ownedAnnotation) {
         this.ownedAnnotation = ownedAnnotation;
     }
@@ -287,7 +265,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     private List<Element> ownedElement;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Conjugation_ownedElement",
@@ -301,7 +279,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedElement(List<Element> ownedElement) {
         this.ownedElement = ownedElement;
     }
@@ -312,7 +290,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     private List<Element> ownedRelatedElement;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Conjugation_ownedRelatedElement",
             joinColumns = @JoinColumn(name = "classId"),
@@ -325,7 +303,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedRelatedElement(List<Element> ownedRelatedElement) {
         this.ownedRelatedElement = ownedRelatedElement;
     }
@@ -336,7 +314,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     private List<Relationship> ownedRelationship;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Conjugation_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
@@ -349,7 +327,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = RelationshipImpl.class)
     public void setOwnedRelationship(List<Relationship> ownedRelationship) {
         this.ownedRelationship = ownedRelationship;
     }
@@ -361,7 +339,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     private Collection<TextualRepresentation> ownedTextualRepresentation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Conjugation_ownedTextualRepresentation",
@@ -375,7 +353,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TextualRepresentationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TextualRepresentationImpl.class)
     public void setOwnedTextualRepresentation(Collection<TextualRepresentation> ownedTextualRepresentation) {
         this.ownedTextualRepresentation = ownedTextualRepresentation;
     }
@@ -387,7 +365,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     private Element owner;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownerId", table = "Conjugation")
@@ -396,7 +374,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
     public void setOwner(Element owner) {
         this.owner = owner;
     }
@@ -407,7 +385,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     private Membership owningMembership;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningMembershipId", table = "Conjugation")
     public Membership getOwningMembership() {
@@ -415,7 +393,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = MembershipImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = MembershipImpl.class)
     public void setOwningMembership(Membership owningMembership) {
         this.owningMembership = owningMembership;
     }
@@ -427,7 +405,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     private Namespace owningNamespace;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningNamespaceId", table = "Conjugation")
@@ -436,7 +414,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = NamespaceImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = NamespaceImpl.class)
     public void setOwningNamespace(Namespace owningNamespace) {
         this.owningNamespace = owningNamespace;
     }
@@ -447,7 +425,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     private Element owningRelatedElement;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElementType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningRelatedElementId", table = "Conjugation")
     public Element getOwningRelatedElement() {
@@ -455,7 +433,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
     public void setOwningRelatedElement(Element owningRelatedElement) {
         this.owningRelatedElement = owningRelatedElement;
     }
@@ -466,7 +444,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     private Relationship owningRelationship;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningRelationshipId", table = "Conjugation")
     public Relationship getOwningRelationship() {
@@ -474,7 +452,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = RelationshipImpl.class)
     public void setOwningRelationship(Relationship owningRelationship) {
         this.owningRelationship = owningRelationship;
     }
@@ -486,7 +464,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     private Type owningType;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningTypeId", table = "Conjugation")
@@ -495,7 +473,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
     public void setOwningType(Type owningType) {
         this.owningType = owningType;
     }
@@ -527,7 +505,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     private List<Element> relatedElement;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Conjugation_relatedElement",
@@ -541,7 +519,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setRelatedElement(List<Element> relatedElement) {
         this.relatedElement = relatedElement;
     }
@@ -552,7 +530,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     private List<Element> source;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Conjugation_source",
             joinColumns = @JoinColumn(name = "classId"),
@@ -565,7 +543,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setSource(List<Element> source) {
         this.source = source;
     }
@@ -576,7 +554,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     private List<Element> target;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "Conjugation_target",
             joinColumns = @JoinColumn(name = "classId"),
@@ -589,7 +567,7 @@ public class ConjugationImpl extends MofObjectImpl implements Conjugation {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setTarget(List<Element> target) {
         this.target = target;
     }

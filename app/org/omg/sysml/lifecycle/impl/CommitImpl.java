@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -27,7 +28,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jackson.RecordSerialization;
 import org.omg.sysml.lifecycle.Commit;
-import org.omg.sysml.lifecycle.ElementVersion;
+import org.omg.sysml.lifecycle.DataVersion;
 import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.record.impl.RecordImpl;
 
@@ -39,7 +40,7 @@ import java.util.Set;
 @Entity(name = "Commit")
 public class CommitImpl extends RecordImpl implements Commit {
     private Project owningProject;
-    private Set<ElementVersion> change;
+    private Set<DataVersion> change;
     private ZonedDateTime timestamp;
     private Commit previousCommit;
 
@@ -56,17 +57,17 @@ public class CommitImpl extends RecordImpl implements Commit {
         this.owningProject = owningProject;
     }
 
-    @OneToMany(targetEntity = ElementVersionImpl.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(targetEntity = DataVersionImpl.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonView(Views.Complete.class)
-    public Set<ElementVersion> getChange() {
+    public Set<DataVersion> getChange() {
         if (change == null) {
             change = new HashSet<>();
         }
         return change;
     }
 
-    @JsonDeserialize(contentAs = ElementVersionImpl.class)
-    public void setChange(Set<ElementVersion> change) {
+    @JsonDeserialize(contentAs = DataVersionImpl.class)
+    public void setChange(Set<DataVersion> change) {
         this.change = change;
     }
 
@@ -97,7 +98,7 @@ public class CommitImpl extends RecordImpl implements Commit {
     @JsonProperty("@type")
     @JsonView(Views.Compact.class)
     public String getType() {
-        return Commit.class.getSimpleName();
+        return Commit.NAME;
     }
 
     public static class Views {

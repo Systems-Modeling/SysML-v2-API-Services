@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface FlowConnectionUsage extends ConnectionUsage, ItemFlow, MofObject {
+public interface FlowConnectionUsage extends ConnectionUsage, ItemFlow, SysMLType {
 
 }

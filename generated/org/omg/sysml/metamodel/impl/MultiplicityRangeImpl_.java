@@ -29,7 +29,7 @@ import org.omg.sysml.metamodel.TypeFeaturing;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(MultiplicityRangeImpl.class)
-public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
+public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile ListAttribute<MultiplicityRangeImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<MultiplicityRangeImpl, TypeFeaturing> ownedTypeFeaturing;

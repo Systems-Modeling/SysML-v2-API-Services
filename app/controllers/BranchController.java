@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -84,8 +85,13 @@ public class BranchController extends JsonLdController<Branch, ProjectContainmen
         );
     }
 
-    public Result getBranchesByProjectAndId(UUID projectId, UUID branchId, Request request) {
+    public Result getBranchByProjectAndId(UUID projectId, UUID branchId, Request request) {
         Optional<Branch> branch = branchService.getByProjectIdAndId(projectId, branchId);
+        return buildResult(branch.orElse(null), request, new ProjectContainmentParameters(projectId));
+    }
+
+    public Result deleteBranchByProjectAndId(UUID projectId, UUID branchId, Request request) {
+        Optional<Branch> branch = branchService.deleteByProjectIdAndId(projectId, branchId);
         return buildResult(branch.orElse(null), request, new ProjectContainmentParameters(projectId));
     }
 

@@ -21,45 +21,23 @@
 
 package org.omg.sysml.metamodel.impl;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import jackson.DataDeserializer;
+import jackson.DataSerializer;
+import org.hibernate.annotations.Any;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.ManyToAny;
 import org.omg.sysml.metamodel.*;
 
-import org.omg.sysml.metamodel.Package;
-import org.omg.sysml.metamodel.Class;
-
-import jackson.MofObjectSerializer;
-import jackson.MofObjectDeserializer;
-
-import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
-import org.hibernate.annotations.Any;
-import org.hibernate.annotations.ManyToAny;
-import org.hibernate.annotations.FetchMode;
-
-// import info.archinnov.achilles.annotations.UDT;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.EnumType;
-import javax.persistence.ElementCollection;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.Lob;
-import javax.persistence.FetchType;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Table;
-import javax.persistence.SecondaryTable;
-import javax.persistence.CollectionTable;
-
-import java.util.Collection;
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
 
 @Entity(name = "StateDefinitionImpl")
 @SecondaryTable(name = "StateDefinition")
@@ -68,13 +46,13 @@ import java.util.HashSet;
 @DiscriminatorValue(value = "StateDefinition")
 @JsonTypeName(value = "StateDefinition")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class StateDefinitionImpl extends MofObjectImpl implements StateDefinition {
+public class StateDefinitionImpl extends SysMLTypeImpl implements StateDefinition {
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("action")
     private List<ActionUsage> action;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_action",
@@ -88,7 +66,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ActionUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ActionUsageImpl.class)
     public void setAction(List<ActionUsage> action) {
         this.action = action;
     }
@@ -123,7 +101,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Feature> directedFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_directedFeature",
@@ -137,7 +115,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setDirectedFeature(List<Feature> directedFeature) {
         this.directedFeature = directedFeature;
     }
@@ -149,7 +127,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Usage> directedUsage;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_directedUsage",
@@ -163,7 +141,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = UsageImpl.class)
     public void setDirectedUsage(List<Usage> directedUsage) {
         this.directedUsage = directedUsage;
     }
@@ -175,7 +153,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private Collection<Type> disjointType;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_disjointType",
@@ -189,7 +167,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TypeImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeImpl.class)
     public void setDisjointType(Collection<Type> disjointType) {
         this.disjointType = disjointType;
     }
@@ -201,7 +179,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private ActionUsage doAction;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "doActionType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "doActionId", table = "StateDefinition")
@@ -210,7 +188,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ActionUsageImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ActionUsageImpl.class)
     public void setDoAction(ActionUsage doAction) {
         this.doAction = doAction;
     }
@@ -222,7 +200,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Documentation> documentation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_documentation",
@@ -236,7 +214,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DocumentationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DocumentationImpl.class)
     public void setDocumentation(List<Documentation> documentation) {
         this.documentation = documentation;
     }
@@ -248,7 +226,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Comment> documentationComment;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_documentationComment",
@@ -262,7 +240,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CommentImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = CommentImpl.class)
     public void setDocumentationComment(List<Comment> documentationComment) {
         this.documentationComment = documentationComment;
     }
@@ -294,7 +272,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Feature> endFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_endFeature",
@@ -308,7 +286,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setEndFeature(List<Feature> endFeature) {
         this.endFeature = endFeature;
     }
@@ -320,7 +298,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private ActionUsage entryAction;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "entryActionType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "entryActionId", table = "StateDefinition")
@@ -329,7 +307,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ActionUsageImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ActionUsageImpl.class)
     public void setEntryAction(ActionUsage entryAction) {
         this.entryAction = entryAction;
     }
@@ -341,7 +319,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private ActionUsage exitAction;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "exitActionType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "exitActionId", table = "StateDefinition")
@@ -350,7 +328,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ActionUsageImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ActionUsageImpl.class)
     public void setExitAction(ActionUsage exitAction) {
         this.exitAction = exitAction;
     }
@@ -362,7 +340,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Feature> feature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_feature",
@@ -376,7 +354,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setFeature(List<Feature> feature) {
         this.feature = feature;
     }
@@ -388,7 +366,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<FeatureMembership> featureMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_featureMembership",
@@ -402,7 +380,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureMembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureMembershipImpl.class)
     public void setFeatureMembership(List<FeatureMembership> featureMembership) {
         this.featureMembership = featureMembership;
     }
@@ -448,7 +426,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Membership> importedMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_importedMembership",
@@ -462,7 +440,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = MembershipImpl.class)
     public void setImportedMembership(List<Membership> importedMembership) {
         this.importedMembership = importedMembership;
     }
@@ -474,7 +452,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Feature> inheritedFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_inheritedFeature",
@@ -488,7 +466,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setInheritedFeature(List<Feature> inheritedFeature) {
         this.inheritedFeature = inheritedFeature;
     }
@@ -500,7 +478,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Membership> inheritedMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_inheritedMembership",
@@ -514,7 +492,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = MembershipImpl.class)
     public void setInheritedMembership(List<Membership> inheritedMembership) {
         this.inheritedMembership = inheritedMembership;
     }
@@ -526,7 +504,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Feature> input;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_input",
@@ -540,7 +518,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setInput(List<Feature> input) {
         this.input = input;
     }
@@ -650,7 +628,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private LifeClass lifeClass;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "LifeClassMetaDef", metaColumn = @javax.persistence.Column(name = "lifeClassType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "lifeClassId", table = "StateDefinition")
@@ -659,7 +637,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = LifeClassImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = LifeClassImpl.class)
     public void setLifeClass(LifeClass lifeClass) {
         this.lifeClass = lifeClass;
     }
@@ -671,7 +649,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Element> member;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_member",
@@ -685,7 +663,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setMember(List<Element> member) {
         this.member = member;
     }
@@ -697,7 +675,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Membership> membership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_membership",
@@ -711,7 +689,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = MembershipImpl.class)
     public void setMembership(List<Membership> membership) {
         this.membership = membership;
     }
@@ -723,7 +701,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private Multiplicity multiplicity;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "multiplicityId", table = "StateDefinition")
@@ -732,7 +710,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = MultiplicityImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = MultiplicityImpl.class)
     public void setMultiplicity(Multiplicity multiplicity) {
         this.multiplicity = multiplicity;
     }
@@ -764,7 +742,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Feature> output;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_output",
@@ -778,7 +756,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setOutput(List<Feature> output) {
         this.output = output;
     }
@@ -790,7 +768,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<ActionUsage> ownedAction;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedAction",
@@ -804,7 +782,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ActionUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ActionUsageImpl.class)
     public void setOwnedAction(List<ActionUsage> ownedAction) {
         this.ownedAction = ownedAction;
     }
@@ -816,7 +794,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<AllocationUsage> ownedAllocation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AllocationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedAllocation",
@@ -830,7 +808,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AllocationUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AllocationUsageImpl.class)
     public void setOwnedAllocation(List<AllocationUsage> ownedAllocation) {
         this.ownedAllocation = ownedAllocation;
     }
@@ -842,7 +820,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<AnalysisCaseUsage> ownedAnalysisCase;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnalysisCaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedAnalysisCase",
@@ -856,7 +834,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnalysisCaseUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AnalysisCaseUsageImpl.class)
     public void setOwnedAnalysisCase(List<AnalysisCaseUsage> ownedAnalysisCase) {
         this.ownedAnalysisCase = ownedAnalysisCase;
     }
@@ -868,7 +846,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Annotation> ownedAnnotation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedAnnotation",
@@ -882,7 +860,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnnotationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AnnotationImpl.class)
     public void setOwnedAnnotation(List<Annotation> ownedAnnotation) {
         this.ownedAnnotation = ownedAnnotation;
     }
@@ -894,7 +872,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<AttributeUsage> ownedAttribute;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AttributeUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedAttribute",
@@ -908,7 +886,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AttributeUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AttributeUsageImpl.class)
     public void setOwnedAttribute(List<AttributeUsage> ownedAttribute) {
         this.ownedAttribute = ownedAttribute;
     }
@@ -920,7 +898,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<CalculationUsage> ownedCalculation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CalculationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedCalculation",
@@ -934,7 +912,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CalculationUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = CalculationUsageImpl.class)
     public void setOwnedCalculation(List<CalculationUsage> ownedCalculation) {
         this.ownedCalculation = ownedCalculation;
     }
@@ -946,7 +924,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<CaseUsage> ownedCase;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedCase",
@@ -960,7 +938,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CaseUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = CaseUsageImpl.class)
     public void setOwnedCase(List<CaseUsage> ownedCase) {
         this.ownedCase = ownedCase;
     }
@@ -972,7 +950,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private Collection<ConcernUsage> ownedConcern;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ConcernUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedConcern",
@@ -986,7 +964,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConcernUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ConcernUsageImpl.class)
     public void setOwnedConcern(Collection<ConcernUsage> ownedConcern) {
         this.ownedConcern = ownedConcern;
     }
@@ -998,7 +976,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private Conjugation ownedConjugator;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConjugatorType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownedConjugatorId", table = "StateDefinition")
@@ -1007,7 +985,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ConjugationImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ConjugationImpl.class)
     public void setOwnedConjugator(Conjugation ownedConjugator) {
         this.ownedConjugator = ownedConjugator;
     }
@@ -1019,7 +997,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<ConnectorAsUsage> ownedConnection;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ConnectorAsUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedConnection",
@@ -1033,7 +1011,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConnectorAsUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ConnectorAsUsageImpl.class)
     public void setOwnedConnection(List<ConnectorAsUsage> ownedConnection) {
         this.ownedConnection = ownedConnection;
     }
@@ -1045,7 +1023,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<ConstraintUsage> ownedConstraint;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ConstraintUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedConstraint",
@@ -1059,7 +1037,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ConstraintUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ConstraintUsageImpl.class)
     public void setOwnedConstraint(List<ConstraintUsage> ownedConstraint) {
         this.ownedConstraint = ownedConstraint;
     }
@@ -1071,7 +1049,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private Collection<Disjoining> ownedDisjoining;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "DisjoiningMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedDisjoining",
@@ -1085,7 +1063,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DisjoiningImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DisjoiningImpl.class)
     public void setOwnedDisjoining(Collection<Disjoining> ownedDisjoining) {
         this.ownedDisjoining = ownedDisjoining;
     }
@@ -1097,7 +1075,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Element> ownedElement;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedElement",
@@ -1111,7 +1089,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedElement(List<Element> ownedElement) {
         this.ownedElement = ownedElement;
     }
@@ -1123,7 +1101,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Feature> ownedEndFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedEndFeature",
@@ -1137,7 +1115,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setOwnedEndFeature(List<Feature> ownedEndFeature) {
         this.ownedEndFeature = ownedEndFeature;
     }
@@ -1149,7 +1127,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<EnumerationUsage> ownedEnumeration;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "EnumerationUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedEnumeration",
@@ -1163,7 +1141,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = EnumerationUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = EnumerationUsageImpl.class)
     public void setOwnedEnumeration(List<EnumerationUsage> ownedEnumeration) {
         this.ownedEnumeration = ownedEnumeration;
     }
@@ -1175,7 +1153,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Feature> ownedFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedFeature",
@@ -1189,7 +1167,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setOwnedFeature(List<Feature> ownedFeature) {
         this.ownedFeature = ownedFeature;
     }
@@ -1201,7 +1179,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<FeatureMembership> ownedFeatureMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedFeatureMembership",
@@ -1215,7 +1193,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureMembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureMembershipImpl.class)
     public void setOwnedFeatureMembership(List<FeatureMembership> ownedFeatureMembership) {
         this.ownedFeatureMembership = ownedFeatureMembership;
     }
@@ -1227,7 +1205,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private Collection<FlowConnectionUsage> ownedFlow;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FlowConnectionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedFlow",
@@ -1241,7 +1219,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FlowConnectionUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FlowConnectionUsageImpl.class)
     public void setOwnedFlow(Collection<FlowConnectionUsage> ownedFlow) {
         this.ownedFlow = ownedFlow;
     }
@@ -1253,7 +1231,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Import> ownedImport;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedImport",
@@ -1267,7 +1245,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ImportImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ImportImpl.class)
     public void setOwnedImport(List<Import> ownedImport) {
         this.ownedImport = ownedImport;
     }
@@ -1279,7 +1257,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<InterfaceUsage> ownedInterface;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "InterfaceUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedInterface",
@@ -1293,7 +1271,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = InterfaceUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = InterfaceUsageImpl.class)
     public void setOwnedInterface(List<InterfaceUsage> ownedInterface) {
         this.ownedInterface = ownedInterface;
     }
@@ -1305,7 +1283,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<ItemUsage> ownedItem;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ItemUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedItem",
@@ -1319,7 +1297,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ItemUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ItemUsageImpl.class)
     public void setOwnedItem(List<ItemUsage> ownedItem) {
         this.ownedItem = ownedItem;
     }
@@ -1331,7 +1309,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Element> ownedMember;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedMember",
@@ -1345,7 +1323,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedMember(List<Element> ownedMember) {
         this.ownedMember = ownedMember;
     }
@@ -1357,7 +1335,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Membership> ownedMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedMembership",
@@ -1371,7 +1349,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = MembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = MembershipImpl.class)
     public void setOwnedMembership(List<Membership> ownedMembership) {
         this.ownedMembership = ownedMembership;
     }
@@ -1383,7 +1361,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<OccurrenceUsage> ownedOccurrence;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "OccurrenceUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedOccurrence",
@@ -1397,7 +1375,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = OccurrenceUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = OccurrenceUsageImpl.class)
     public void setOwnedOccurrence(List<OccurrenceUsage> ownedOccurrence) {
         this.ownedOccurrence = ownedOccurrence;
     }
@@ -1409,7 +1387,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<PartUsage> ownedPart;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "PartUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedPart",
@@ -1423,7 +1401,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PartUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = PartUsageImpl.class)
     public void setOwnedPart(List<PartUsage> ownedPart) {
         this.ownedPart = ownedPart;
     }
@@ -1435,7 +1413,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<PortUsage> ownedPort;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "PortUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedPort",
@@ -1449,7 +1427,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = PortUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = PortUsageImpl.class)
     public void setOwnedPort(List<PortUsage> ownedPort) {
         this.ownedPort = ownedPort;
     }
@@ -1461,7 +1439,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<ReferenceUsage> ownedReference;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ReferenceUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedReference",
@@ -1475,7 +1453,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ReferenceUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ReferenceUsageImpl.class)
     public void setOwnedReference(List<ReferenceUsage> ownedReference) {
         this.ownedReference = ownedReference;
     }
@@ -1486,7 +1464,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Relationship> ownedRelationship;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
@@ -1499,7 +1477,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = RelationshipImpl.class)
     public void setOwnedRelationship(List<Relationship> ownedRelationship) {
         this.ownedRelationship = ownedRelationship;
     }
@@ -1511,7 +1489,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<RenderingUsage> ownedRendering;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "RenderingUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedRendering",
@@ -1525,7 +1503,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RenderingUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = RenderingUsageImpl.class)
     public void setOwnedRendering(List<RenderingUsage> ownedRendering) {
         this.ownedRendering = ownedRendering;
     }
@@ -1537,7 +1515,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<RequirementUsage> ownedRequirement;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "RequirementUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedRequirement",
@@ -1551,7 +1529,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RequirementUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = RequirementUsageImpl.class)
     public void setOwnedRequirement(List<RequirementUsage> ownedRequirement) {
         this.ownedRequirement = ownedRequirement;
     }
@@ -1563,7 +1541,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Specialization> ownedSpecialization;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "SpecializationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedSpecialization",
@@ -1577,7 +1555,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SpecializationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = SpecializationImpl.class)
     public void setOwnedSpecialization(List<Specialization> ownedSpecialization) {
         this.ownedSpecialization = ownedSpecialization;
     }
@@ -1589,7 +1567,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<StateUsage> ownedState;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "StateUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedState",
@@ -1603,7 +1581,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StateUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = StateUsageImpl.class)
     public void setOwnedState(List<StateUsage> ownedState) {
         this.ownedState = ownedState;
     }
@@ -1615,7 +1593,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private Collection<Subclassification> ownedSubclassification;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "SubclassificationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedSubclassification",
@@ -1629,7 +1607,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = SubclassificationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = SubclassificationImpl.class)
     public void setOwnedSubclassification(Collection<Subclassification> ownedSubclassification) {
         this.ownedSubclassification = ownedSubclassification;
     }
@@ -1641,7 +1619,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private Collection<TextualRepresentation> ownedTextualRepresentation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedTextualRepresentation",
@@ -1655,7 +1633,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TextualRepresentationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TextualRepresentationImpl.class)
     public void setOwnedTextualRepresentation(Collection<TextualRepresentation> ownedTextualRepresentation) {
         this.ownedTextualRepresentation = ownedTextualRepresentation;
     }
@@ -1667,7 +1645,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private Collection<TransitionUsage> ownedTransition;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TransitionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedTransition",
@@ -1681,7 +1659,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TransitionUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TransitionUsageImpl.class)
     public void setOwnedTransition(Collection<TransitionUsage> ownedTransition) {
         this.ownedTransition = ownedTransition;
     }
@@ -1693,7 +1671,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Usage> ownedUsage;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedUsage",
@@ -1707,7 +1685,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = UsageImpl.class)
     public void setOwnedUsage(List<Usage> ownedUsage) {
         this.ownedUsage = ownedUsage;
     }
@@ -1719,7 +1697,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<UseCaseUsage> ownedUseCase;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "UseCaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedUseCase",
@@ -1733,7 +1711,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UseCaseUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = UseCaseUsageImpl.class)
     public void setOwnedUseCase(List<UseCaseUsage> ownedUseCase) {
         this.ownedUseCase = ownedUseCase;
     }
@@ -1745,7 +1723,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<VerificationCaseUsage> ownedVerificationCase;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "VerificationCaseUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedVerificationCase",
@@ -1759,7 +1737,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = VerificationCaseUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = VerificationCaseUsageImpl.class)
     public void setOwnedVerificationCase(List<VerificationCaseUsage> ownedVerificationCase) {
         this.ownedVerificationCase = ownedVerificationCase;
     }
@@ -1771,7 +1749,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<ViewUsage> ownedView;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ViewUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedView",
@@ -1785,7 +1763,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ViewUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ViewUsageImpl.class)
     public void setOwnedView(List<ViewUsage> ownedView) {
         this.ownedView = ownedView;
     }
@@ -1797,7 +1775,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<ViewpointUsage> ownedViewpoint;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ViewpointUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_ownedViewpoint",
@@ -1811,7 +1789,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ViewpointUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ViewpointUsageImpl.class)
     public void setOwnedViewpoint(List<ViewpointUsage> ownedViewpoint) {
         this.ownedViewpoint = ownedViewpoint;
     }
@@ -1823,7 +1801,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private Element owner;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownerId", table = "StateDefinition")
@@ -1832,7 +1810,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
     public void setOwner(Element owner) {
         this.owner = owner;
     }
@@ -1843,7 +1821,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private Membership owningMembership;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningMembershipId", table = "StateDefinition")
     public Membership getOwningMembership() {
@@ -1851,7 +1829,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = MembershipImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = MembershipImpl.class)
     public void setOwningMembership(Membership owningMembership) {
         this.owningMembership = owningMembership;
     }
@@ -1863,7 +1841,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private Namespace owningNamespace;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningNamespaceId", table = "StateDefinition")
@@ -1872,7 +1850,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = NamespaceImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = NamespaceImpl.class)
     public void setOwningNamespace(Namespace owningNamespace) {
         this.owningNamespace = owningNamespace;
     }
@@ -1883,7 +1861,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private Relationship owningRelationship;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningRelationshipId", table = "StateDefinition")
     public Relationship getOwningRelationship() {
@@ -1891,7 +1869,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = RelationshipImpl.class)
     public void setOwningRelationship(Relationship owningRelationship) {
         this.owningRelationship = owningRelationship;
     }
@@ -1903,7 +1881,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Feature> parameter;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_parameter",
@@ -1917,7 +1895,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = FeatureImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setParameter(List<Feature> parameter) {
         this.parameter = parameter;
     }
@@ -1949,7 +1927,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<StateUsage> state;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "StateUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_state",
@@ -1963,7 +1941,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StateUsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = StateUsageImpl.class)
     public void setState(List<StateUsage> state) {
         this.state = state;
     }
@@ -1975,7 +1953,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private Collection<Step> step;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "StepMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_step",
@@ -1989,7 +1967,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = StepImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = StepImpl.class)
     public void setStep(Collection<Step> step) {
         this.step = step;
     }
@@ -2001,7 +1979,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private List<Usage> usage;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_usage",
@@ -2015,7 +1993,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = UsageImpl.class)
     public void setUsage(List<Usage> usage) {
         this.usage = usage;
     }
@@ -2027,7 +2005,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private Collection<Usage> variant;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_variant",
@@ -2041,7 +2019,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = UsageImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = UsageImpl.class)
     public void setVariant(Collection<Usage> variant) {
         this.variant = variant;
     }
@@ -2053,7 +2031,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     private Collection<VariantMembership> variantMembership;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "VariantMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StateDefinition_variantMembership",
@@ -2067,7 +2045,7 @@ public class StateDefinitionImpl extends MofObjectImpl implements StateDefinitio
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = VariantMembershipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = VariantMembershipImpl.class)
     public void setVariantMembership(Collection<VariantMembership> variantMembership) {
         this.variantMembership = variantMembership;
     }

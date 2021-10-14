@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Subclassification extends Specialization, MofObject {
+public interface Subclassification extends Specialization, SysMLType {
     Classifier getSuperclassifier();
 
     Classifier getSubclassifier();

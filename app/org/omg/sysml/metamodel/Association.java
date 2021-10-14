@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Association extends Classifier, Relationship, MofObject {
+public interface Association extends Classifier, Relationship, SysMLType {
     List<? extends Type> getRelatedType();
 
     Type getSourceType();

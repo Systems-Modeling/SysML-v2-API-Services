@@ -6,6 +6,7 @@ info:
 tags:
   - name: Project
   - name: Branch
+  - name: Tag
   - name: Commit
   - name: Element
   - name: Relationship
@@ -89,6 +90,53 @@ paths:
         - Project
       operationId: getProjectById
       summary: Get project by ID
+      produces:
+        - application/json
+        - application/ld+json
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Project'
+        404:
+          $ref: '#/responses/NotFound'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    put:
+      tags:
+        - Project
+      operationId: putProjectById
+      summary: Update project by ID
+      consumes:
+        - application/json
+      produces:
+        - application/json
+        - application/ld+json
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/Project'
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Project'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    delete:
+      tags:
+        - Project
+      operationId: deleteProjectById
+      summary: Delete project by ID
       produces:
         - application/json
         - application/ld+json
@@ -206,6 +254,157 @@ paths:
           description: Ok
           schema:
             $ref: '#/definitions/Branch'
+        404:
+          $ref: '#/responses/NotFound'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    delete:
+      tags:
+        - Branch
+      operationId: deleteBranchByProjectAndId
+      summary: Delete branch by project and ID
+      produces:
+        - application/json
+        - application/ld+json
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Branch'
+        404:
+          $ref: '#/responses/NotFound'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+  /projects/{projectId}/tags:
+    parameters:
+      - name: projectId
+        in: path
+        description: ID of the project
+        type: string
+        format: uuid
+        required: true
+    get:
+      parameters:
+        - name: page[after]
+          in: query
+          description: Page after
+          type: string
+          required: false
+        - name: page[before]
+          in: query
+          description: Page before
+          type: string
+          required: false
+        - name: page[size]
+          in: query
+          description: Page size
+          type: integer
+          required: false
+      tags:
+        - Tag
+      operationId: getTagsByProject
+      summary: Get tags by project
+      produces:
+        - application/json
+        - application/ld+json
+      responses:
+        200:
+          description: Ok
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Tag'
+        404:
+          $ref: '#/responses/NotFound'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    post:
+      tags:
+        - Tag
+      operationId: postTagByProject
+      summary: Create tag by project
+      consumes:
+        - application/json
+      produces:
+        - application/json
+        - application/ld+json
+      parameters:
+        - name: body
+          in: body
+          required: true
+          schema:
+            $ref: '#/definitions/Tag'
+      responses:
+        201:
+          description: Created
+          schema:
+            $ref: '#/definitions/Branch'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+  /projects/{projectId}/tags/{tagId}:
+    parameters:
+      - name: projectId
+        in: path
+        description: ID of the project
+        type: string
+        format: uuid
+        required: true
+      - name: tagId
+        in: path
+        description: ID of the tag
+        type: string
+        format: uuid
+        required: true
+    get:
+      tags:
+        - Tag
+      operationId: getTagByProjectAndId
+      summary: Get tag by project and ID
+      produces:
+        - application/json
+        - application/ld+json
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Tag'
+        404:
+          $ref: '#/responses/NotFound'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
+    delete:
+      tags:
+        - Tag
+      operationId: deleteTagByProjectAndId
+      summary: Delete tag by project and ID
+      produces:
+        - application/json
+        - application/ld+json
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Tag'
         404:
           $ref: '#/responses/NotFound'
         415:
@@ -648,6 +847,26 @@ paths:
           $ref: '#/responses/InternalServerError'
         default:
           $ref: '#/responses/Default'
+    delete:
+      tags:
+        - Query
+      operationId: deleteQueryByProjectAndId
+      summary: Delete query by project and ID
+      produces:
+        - application/json
+      responses:
+        200:
+          description: Ok
+          schema:
+            $ref: '#/definitions/Query'
+        404:
+          $ref: '#/responses/NotFound'
+        415:
+          $ref: '#/responses/BadContentType'
+        500:
+          $ref: '#/responses/InternalServerError'
+        default:
+          $ref: '#/responses/Default'
   /projects/{projectId}/queries/{queryId}/results:
     parameters:
       - name: projectId
@@ -808,6 +1027,8 @@ definitions:
           '@id':
             type: string
             format: uuid
+      name:
+        type: string
       owningProject:
         description: Project
         type: object
@@ -815,8 +1036,53 @@ definitions:
           '@id':
             type: string
             format: uuid
+      referencedCommit:
+        description: Commit
+        type: object
+        properties:
+          '@id':
+            type: string
+            format: uuid
+      timestamp:
+        type: string
+        format: date-time
+  Tag:
+    type: object
+    properties:
+      '@id':
+        type: string
+        format:
+          uuid
+      '@type':
+        type: string
+        enum:
+          - 'Tag'
       name:
         type: string
+      owningProject:
+        description: Project
+        type: object
+        properties:
+          '@id':
+            type: string
+            format: uuid
+      referencedCommit:
+        description: Commit
+        type: object
+        properties:
+          '@id':
+            type: string
+            format: uuid
+      taggedCommit:
+        description: Commit
+        type: object
+        properties:
+          '@id':
+            type: string
+            format: uuid
+      timestamp:
+        type: string
+        format: date-time
   Commit:
     type: object
     properties:
@@ -831,7 +1097,7 @@ definitions:
       change:
         type: array
         items:
-          $ref: '#/definitions/ElementVersion'
+          $ref: '#/definitions/DataVersion'
       owningProject:
         description: Project
         type: object
@@ -846,7 +1112,7 @@ definitions:
           '@id':
             type: string
             format: uuid
-  ElementVersion:
+  DataVersion:
     type: object
     properties:
       '@id':
@@ -856,12 +1122,12 @@ definitions:
       '@type':
         type: string
         enum:
-          - 'ElementVersion'
-      data:
-        $ref: '#/definitions/Element'
+          - 'DataVersion'
+      payload:
+        $ref: '#/definitions/Data'
       identity:
-        $ref: '#/definitions/ElementIdentity'
-  ElementIdentity:
+        $ref: '#/definitions/DataIdentity'
+  DataIdentity:
     type: object
     properties:
       '@id':
@@ -871,7 +1137,20 @@ definitions:
       '@type':
         type: string
         enum:
-          - 'ElementIdentity'
+          - 'DataIdentity'
+  Data:
+    type: object
+    properties:
+      '@id':
+        type: string
+        format: uuid
+      '@type':
+        type: string
+    additionalProperties:
+      type: object
+    discriminator: '@type'
+    required:
+      - '@type'
   Identified:
     type: object
     properties:
@@ -934,12 +1213,10 @@ definitions:
       #   type: array
       #   items:
       #     type: string
-      # recursiveInScope:
-      #   type: boolean
       scope:
         type: array
         items:
-          $ref: '#/definitions/ElementIdentity'
+          $ref: '#/definitions/DataIdentity'
       select:
         type: array
         items:

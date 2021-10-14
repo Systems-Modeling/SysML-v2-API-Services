@@ -15,7 +15,7 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(SubsettingImpl.class)
-public abstract class SubsettingImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
+public abstract class SubsettingImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile SingularAttribute<SubsettingImpl, UUID> identifier;
 	public static volatile ListAttribute<SubsettingImpl, Annotation> ownedAnnotation;

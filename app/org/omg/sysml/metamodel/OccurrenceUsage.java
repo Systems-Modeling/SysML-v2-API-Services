@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface OccurrenceUsage extends Usage, MofObject {
+public interface OccurrenceUsage extends Usage, SysMLType {
     List<? extends Class> getOccurrenceDefinition();
 
     PortioningFeature getPortioningFeature();

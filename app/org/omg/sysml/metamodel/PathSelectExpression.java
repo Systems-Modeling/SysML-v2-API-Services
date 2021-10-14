@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface PathSelectExpression extends OperatorExpression, MofObject {
+public interface PathSelectExpression extends OperatorExpression, SysMLType {
     String getOperator();
 }

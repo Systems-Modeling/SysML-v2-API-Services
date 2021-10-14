@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -53,6 +54,29 @@ public class ProjectController extends JsonLdController<Project, Void> {
 
     public Result getProjectById(UUID id, Request request) {
         Optional<Project> project = projectService.getById(id);
+        return buildResult(project.orElse(null), request, null);
+    }
+
+    public Result putProjectById(UUID id, Request request) {
+        Optional<Project> existingProject = projectService.getById(id);
+        if (existingProject.isEmpty()) {
+            return Results.notFound();
+        }
+        JsonNode requestBodyJson = request.body().asJson();
+        Project requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Project.class));
+        if (requestedObject.getId() != null && !id.equals(requestedObject.getId())) {
+            return Results.badRequest();
+        }
+        requestedObject.setId(id);
+        Optional<Project> project = projectService.update(requestedObject);
+        if (project.isEmpty()) {
+            return Results.internalServerError();
+        }
+        return buildResult(project.get(), request, null);
+    }
+
+    public Result deleteProjectById(UUID id, Request request) {
+        Optional<Project> project = projectService.deleteById(id);
         return buildResult(project.orElse(null), request, null);
     }
 

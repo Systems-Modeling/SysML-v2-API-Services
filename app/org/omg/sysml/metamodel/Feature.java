@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Feature extends Type, MofObject {
+public interface Feature extends Type, SysMLType {
     Type getOwningType();
 
     Boolean getIsUnique();

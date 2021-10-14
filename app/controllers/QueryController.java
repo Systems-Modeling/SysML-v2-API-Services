@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -28,10 +29,10 @@ import config.MetamodelProvider;
 import jackson.JacksonHelper;
 import jackson.filter.AllowedPropertyFilter;
 import jackson.filter.DynamicFilterMixin;
+import jackson.jsonld.DataJsonLdAdorner;
 import jackson.jsonld.JsonLdAdorner;
-import jackson.jsonld.MofObjectJsonLdAdorner;
+import org.omg.sysml.lifecycle.Data;
 import org.omg.sysml.metamodel.Element;
-import org.omg.sysml.metamodel.MofObject;
 import org.omg.sysml.query.Query;
 import play.Environment;
 import play.libs.Json;
@@ -45,27 +46,27 @@ import java.util.*;
 import java.util.function.UnaryOperator;
 import java.util.stream.StreamSupport;
 
-public class QueryController extends JsonLdController<Element, MofObjectJsonLdAdorner.Parameters> {
+public class QueryController extends JsonLdController<Data, DataJsonLdAdorner.Parameters> {
 
     private final QueryService queryService;
     private final MetamodelProvider metamodelProvider;
-    private final JsonLdAdorner<Element, MofObjectJsonLdAdorner.Parameters> adorner;
+    private final JsonLdAdorner<Data, DataJsonLdAdorner.Parameters> adorner;
 
     @Inject
     public QueryController(QueryService queryService, MetamodelProvider metamodelProvider, Environment environment) {
         this.queryService = queryService;
         this.metamodelProvider = metamodelProvider;
-        this.adorner = new MofObjectJsonLdAdorner<>(metamodelProvider, environment, INLINE_JSON_LD_CONTEXT);
+        this.adorner = new DataJsonLdAdorner<>(metamodelProvider, environment, INLINE_JSON_LD_CONTEXT);
     }
 
-    public Result createWithProjectId(UUID projectId, Request request) {
+    public Result postQueryByProject(UUID projectId, Request request) {
         JsonNode requestBodyJson = request.body().asJson();
         Query requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Query.class));
         Optional<Query> response = queryService.create(projectId, requestedObject);
         return response.map(e -> created(Json.toJson(e))).orElseGet(Results::internalServerError);
     }
 
-    public Result byProject(UUID projectId, Request request) {
+    public Result getQueriesByProject(UUID projectId, Request request) {
         PageRequest pageRequest = PageRequest.from(request);
         List<Query> queries = queryService.getByProjectId(projectId, pageRequest.getAfter(), pageRequest.getBefore(), pageRequest.getSize());
         return Optional.of(queries)
@@ -81,8 +82,13 @@ public class QueryController extends JsonLdController<Element, MofObjectJsonLdAd
                 .orElseThrow();
     }
 
-    public Result byProjectAndId(UUID projectId, UUID queryId) {
+    public Result getQueryByProjectAndId(UUID projectId, UUID queryId) {
         Optional<Query> query = queryService.getByProjectIdAndId(projectId, queryId);
+        return query.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
+    }
+
+    public Result deleteQueryByProjectAndId(UUID projectId, UUID queryId) {
+        Optional<Query> query = queryService.deleteByProjectIdAndId(projectId, queryId);
         return query.map(e -> ok(Json.toJson(e))).orElseGet(Results::notFound);
     }
 
@@ -99,17 +105,17 @@ public class QueryController extends JsonLdController<Element, MofObjectJsonLdAd
     }
 
     private Result buildResult(QueryService.QueryResults queryResults, UUID projectId, Request request) {
-        List<Element> elements = queryResults.getElements();
+        List<Data> data = queryResults.getData();
         AllowedPropertyFilter filter = queryResults.getPropertyFilter();
         boolean ld = respondWithJsonLd(request);
         JsonNode json = buildJson(
-                new HashSet<>(elements),
+                new HashSet<>(data),
                 Set.class,
                 metamodelProvider.getImplementationClass(Element.class),
                 request,
-                new MofObjectJsonLdAdorner.Parameters(projectId, queryResults.getCommit().getId()),
+                new DataJsonLdAdorner.Parameters(projectId, queryResults.getCommit().getId()),
                 ld,
-                filter != null ? Json.mapper().copy().addMixIn(MofObject.class, DynamicFilterMixin.class) : Json.mapper(),
+                filter != null ? Json.mapper().copy().addMixIn(Data.class, DynamicFilterMixin.class) : Json.mapper(),
                 filter != null ? writer -> writer.with(new SimpleFilterProvider().addFilter(DynamicFilterMixin.FILTER_NAME, filter)) : UnaryOperator.identity()
         );
         // Workaround for JSON always containing "@type"
@@ -122,7 +128,7 @@ public class QueryController extends JsonLdController<Element, MofObjectJsonLdAd
     }
 
     @Override
-    protected JsonLdAdorner<Element, MofObjectJsonLdAdorner.Parameters> getAdorner() {
+    protected JsonLdAdorner<Data, DataJsonLdAdorner.Parameters> getAdorner() {
         return adorner;
     }
 }

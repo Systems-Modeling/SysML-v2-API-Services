@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -22,7 +23,7 @@
 package jackson.jsonld;
 
 import config.MetamodelProvider;
-import org.omg.sysml.metamodel.MofObject;
+import org.omg.sysml.lifecycle.Data;
 import play.Environment;
 import play.mvc.Http.Request;
 
@@ -30,21 +31,21 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
-public final class MofObjectJsonLdAdorner<M extends MofObject> implements JsonLdAdorner<M, MofObjectJsonLdAdorner.Parameters> {
-    private final Map<String, JsonLdAdorner<M, MofObjectJsonLdAdorner.Parameters>> delegates = new ConcurrentHashMap<>();
+public final class DataJsonLdAdorner<T extends Data> implements JsonLdAdorner<T, DataJsonLdAdorner.Parameters> {
+    private final Map<String, JsonLdAdorner<T, DataJsonLdAdorner.Parameters>> delegates = new ConcurrentHashMap<>();
 
     private final MetamodelProvider metamodelProvider;
     private final Environment environment;
     private final boolean inline;
 
-    public MofObjectJsonLdAdorner(MetamodelProvider metamodelProvider, Environment environment, boolean inline) {
+    public DataJsonLdAdorner(MetamodelProvider metamodelProvider, Environment environment, boolean inline) {
         this.metamodelProvider = metamodelProvider;
         this.environment = environment;
         this.inline = inline;
     }
 
     @Override
-    public JsonLdNode<M> adorn(M entity, Request request, Parameters parameters) {
+    public JsonLdNode<T> adorn(T entity, Request request, Parameters parameters) {
         String type;
         try {
             type = metamodelProvider.getInterface(entity.getClass()).getSimpleName();
@@ -52,6 +53,7 @@ public final class MofObjectJsonLdAdorner<M extends MofObject> implements JsonLd
             throw new IllegalStateException(e);
         }
         return delegates.computeIfAbsent(type, t -> {
+            // FIXME metamodel hard-coding
             String contextPath = String.format("jsonld/metamodel/%s.jsonld", t);
             return new SimpleJsonLdAdorner<>(environment, inline) {
                 @Override
@@ -66,6 +68,7 @@ public final class MofObjectJsonLdAdorner<M extends MofObject> implements JsonLd
 
                 @Override
                 protected String getBasePath(Parameters parameters) {
+                    // FIXME element hard-coding
                     return String.format("/projects/%s/commits/%s/elements/",
                             parameters.getProjectId(),
                             parameters.getCommitId()

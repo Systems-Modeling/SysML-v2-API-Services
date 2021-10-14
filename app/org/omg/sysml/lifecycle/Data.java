@@ -1,7 +1,6 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -19,22 +18,14 @@
  * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
  */
 
-package org.omg.sysml.lifecycle.impl;
+package org.omg.sysml.lifecycle;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonTypeName;
-import org.omg.sysml.lifecycle.ElementIdentity;
-import org.omg.sysml.record.impl.RecordImpl;
 
-import javax.persistence.Entity;
-import javax.persistence.Transient;
+import java.util.UUID;
 
-@Entity(name = "ElementIdentity")
-@JsonTypeName(value = "ElementIdentity")
-public class ElementIdentityImpl extends RecordImpl implements ElementIdentity {
-    @Transient
-    @JsonProperty("@type")
-    public String getType() {
-        return ElementIdentity.class.getSimpleName();
-    }
+public interface Data {
+
+    UUID getId();
+
+    void setId(UUID id);
 }

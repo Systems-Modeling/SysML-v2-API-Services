@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface LiteralString extends LiteralExpression, MofObject {
+public interface LiteralString extends LiteralExpression, SysMLType {
     String getValue();
 }

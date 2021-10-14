@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -21,14 +22,11 @@
 
 package services;
 
-import dao.CommitDao;
-import dao.ElementDao;
-import dao.ProjectDao;
-import dao.QueryDao;
+import dao.*;
 import jackson.filter.AllowedPropertyFilter;
 import org.omg.sysml.lifecycle.Commit;
+import org.omg.sysml.lifecycle.Data;
 import org.omg.sysml.lifecycle.Project;
-import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.query.Query;
 
 import javax.annotation.Nullable;
@@ -45,14 +43,14 @@ public class QueryService extends BaseService<Query, QueryDao> {
 
     private final ProjectDao projectDao;
     private final CommitDao commitDao;
-    private final ElementDao elementDao;
+    private final DataDao dataDao;
 
     @Inject
-    public QueryService(QueryDao queryDao, ProjectDao projectDao, CommitDao commitDao, ElementDao elementDao) {
+    public QueryService(QueryDao queryDao, ProjectDao projectDao, CommitDao commitDao, DataDao dataDao) {
         super(queryDao);
         this.projectDao = projectDao;
         this.commitDao = commitDao;
-        this.elementDao = elementDao;
+        this.dataDao = dataDao;
     }
 
     public Optional<Query> create(Query query) {
@@ -72,6 +70,10 @@ public class QueryService extends BaseService<Query, QueryDao> {
 
     public Optional<Query> getByProjectIdAndId(UUID projectId, UUID queryId) {
         return projectDao.findById(projectId).flatMap(project -> dao.findByProjectAndId(project, queryId));
+    }
+
+    public Optional<Query> deleteByProjectIdAndId(UUID projectId, UUID queryId) {
+        return projectDao.findById(projectId).flatMap(project -> dao.deleteByProjectAndId(project, queryId));
     }
 
     public QueryResults getQueryResultsByProjectIdQueryId(UUID projectId, UUID queryId, @Nullable UUID commitId) {
@@ -101,22 +103,22 @@ public class QueryService extends BaseService<Query, QueryDao> {
 
         Query query = queryFunction.apply(project);
         AllowedPropertyFilter propertyFilter = getPropertyFilter(query);
-        return new QueryResults(elementDao.findByCommitAndQuery(commit, query), commit, propertyFilter);
+        return new QueryResults(dataDao.findByCommitAndQuery(commit, query), commit, propertyFilter);
     }
 
     public static class QueryResults {
-        private final List<Element> elements;
+        private final List<Data> data;
         private final Commit commit;
         private final AllowedPropertyFilter propertyFilter;
 
-        public QueryResults(List<Element> elements, Commit commit, AllowedPropertyFilter propertyFilter) {
-            this.elements = elements;
+        public QueryResults(List<Data> data, Commit commit, AllowedPropertyFilter propertyFilter) {
+            this.data = data;
             this.commit = commit;
             this.propertyFilter = propertyFilter;
         }
 
-        public List<Element> getElements() {
-            return elements;
+        public List<Data> getData() {
+            return data;
         }
 
         public Commit getCommit() {

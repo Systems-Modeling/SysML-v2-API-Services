@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Annotation extends Relationship, MofObject {
+public interface Annotation extends Relationship, SysMLType {
     AnnotatingElement getAnnotatingElement();
 
     Element getAnnotatedElement();

@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface BindingConnectorAsUsage extends ConnectorAsUsage, BindingConnector, MofObject {
+public interface BindingConnectorAsUsage extends ConnectorAsUsage, BindingConnector, SysMLType {
 
 }

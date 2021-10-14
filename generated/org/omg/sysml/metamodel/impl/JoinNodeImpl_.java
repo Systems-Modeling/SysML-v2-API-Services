@@ -59,7 +59,7 @@ import org.omg.sysml.metamodel.ViewpointUsage;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(JoinNodeImpl.class)
-public abstract class JoinNodeImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
+public abstract class JoinNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile ListAttribute<JoinNodeImpl, Usage> directedUsage;
 	public static volatile ListAttribute<JoinNodeImpl, PartUsage> nestedPart;

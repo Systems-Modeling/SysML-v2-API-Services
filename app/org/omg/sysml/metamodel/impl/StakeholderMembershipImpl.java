@@ -21,45 +21,23 @@
 
 package org.omg.sysml.metamodel.impl;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import jackson.DataDeserializer;
+import jackson.DataSerializer;
+import org.hibernate.annotations.Any;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.ManyToAny;
 import org.omg.sysml.metamodel.*;
 
-import org.omg.sysml.metamodel.Package;
-import org.omg.sysml.metamodel.Class;
-
-import jackson.MofObjectSerializer;
-import jackson.MofObjectDeserializer;
-
-import com.fasterxml.jackson.annotation.*;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-
-import org.hibernate.annotations.Any;
-import org.hibernate.annotations.ManyToAny;
-import org.hibernate.annotations.FetchMode;
-
-// import info.archinnov.achilles.annotations.UDT;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.EnumType;
-import javax.persistence.ElementCollection;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.PrimaryKeyJoinColumn;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.Lob;
-import javax.persistence.FetchType;
-import javax.persistence.DiscriminatorValue;
-import javax.persistence.Table;
-import javax.persistence.SecondaryTable;
-import javax.persistence.CollectionTable;
-
-import java.util.Collection;
+import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Set;
-import java.util.HashSet;
 
 @Entity(name = "StakeholderMembershipImpl")
 @SecondaryTable(name = "StakeholderMembership")
@@ -68,7 +46,7 @@ import java.util.HashSet;
 @DiscriminatorValue(value = "StakeholderMembership")
 @JsonTypeName(value = "StakeholderMembership")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class StakeholderMembershipImpl extends MofObjectImpl implements StakeholderMembership {
+public class StakeholderMembershipImpl extends SysMLTypeImpl implements StakeholderMembership {
     // @info.archinnov.achilles.annotations.Column("aliasId")
     private List<String> aliasId;
 
@@ -97,7 +75,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private List<Documentation> documentation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StakeholderMembership_documentation",
@@ -111,7 +89,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = DocumentationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DocumentationImpl.class)
     public void setDocumentation(List<Documentation> documentation) {
         this.documentation = documentation;
     }
@@ -123,7 +101,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private List<Comment> documentationComment;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StakeholderMembership_documentationComment",
@@ -137,7 +115,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = CommentImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = CommentImpl.class)
     public void setDocumentationComment(List<Comment> documentationComment) {
         this.documentationComment = documentationComment;
     }
@@ -188,7 +166,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private Feature featureOfType;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "featureOfTypeType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "featureOfTypeId", table = "StakeholderMembership")
     public Feature getFeatureOfType() {
@@ -196,7 +174,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
     public void setFeatureOfType(Feature featureOfType) {
         this.featureOfType = featureOfType;
     }
@@ -207,7 +185,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private Type featuringType;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "featuringTypeType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "featuringTypeId", table = "StakeholderMembership")
     public Type getFeaturingType() {
@@ -215,7 +193,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
     public void setFeaturingType(Type featuringType) {
         this.featuringType = featuringType;
     }
@@ -260,7 +238,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private Element memberElement;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "memberElementType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "memberElementId", table = "StakeholderMembership")
     public Element getMemberElement() {
@@ -268,7 +246,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
     public void setMemberElement(Element memberElement) {
         this.memberElement = memberElement;
     }
@@ -279,7 +257,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private Feature memberFeature;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "memberFeatureType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "memberFeatureId", table = "StakeholderMembership")
     public Feature getMemberFeature() {
@@ -287,7 +265,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
     public void setMemberFeature(Feature memberFeature) {
         this.memberFeature = memberFeature;
     }
@@ -316,7 +294,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private Feature memberParameter;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "memberParameterType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "memberParameterId", table = "StakeholderMembership")
     public Feature getMemberParameter() {
@@ -324,7 +302,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
     public void setMemberParameter(Feature memberParameter) {
         this.memberParameter = memberParameter;
     }
@@ -336,7 +314,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private Namespace membershipOwningNamespace;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "membershipOwningNamespaceType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "membershipOwningNamespaceId", table = "StakeholderMembership")
@@ -345,7 +323,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = NamespaceImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = NamespaceImpl.class)
     public void setMembershipOwningNamespace(Namespace membershipOwningNamespace) {
         this.membershipOwningNamespace = membershipOwningNamespace;
     }
@@ -377,7 +355,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private List<Annotation> ownedAnnotation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StakeholderMembership_ownedAnnotation",
@@ -391,7 +369,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = AnnotationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AnnotationImpl.class)
     public void setOwnedAnnotation(List<Annotation> ownedAnnotation) {
         this.ownedAnnotation = ownedAnnotation;
     }
@@ -403,7 +381,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private List<Element> ownedElement;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StakeholderMembership_ownedElement",
@@ -417,7 +395,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedElement(List<Element> ownedElement) {
         this.ownedElement = ownedElement;
     }
@@ -428,7 +406,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private Element ownedMemberElement;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberElementType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownedMemberElementId", table = "StakeholderMembership")
     public Element getOwnedMemberElement() {
@@ -436,7 +414,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
     public void setOwnedMemberElement(Element ownedMemberElement) {
         this.ownedMemberElement = ownedMemberElement;
     }
@@ -447,7 +425,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private Feature ownedMemberFeature;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberFeatureType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownedMemberFeatureId", table = "StakeholderMembership")
     public Feature getOwnedMemberFeature() {
@@ -455,7 +433,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
     public void setOwnedMemberFeature(Feature ownedMemberFeature) {
         this.ownedMemberFeature = ownedMemberFeature;
     }
@@ -466,7 +444,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private Feature ownedMemberParameter;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberParameterType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownedMemberParameterId", table = "StakeholderMembership")
     public Feature getOwnedMemberParameter() {
@@ -474,7 +452,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
     public void setOwnedMemberParameter(Feature ownedMemberParameter) {
         this.ownedMemberParameter = ownedMemberParameter;
     }
@@ -485,7 +463,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private List<Element> ownedRelatedElement;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StakeholderMembership_ownedRelatedElement",
             joinColumns = @JoinColumn(name = "classId"),
@@ -498,7 +476,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setOwnedRelatedElement(List<Element> ownedRelatedElement) {
         this.ownedRelatedElement = ownedRelatedElement;
     }
@@ -509,7 +487,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private List<Relationship> ownedRelationship;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StakeholderMembership_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
@@ -522,7 +500,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = RelationshipImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = RelationshipImpl.class)
     public void setOwnedRelationship(List<Relationship> ownedRelationship) {
         this.ownedRelationship = ownedRelationship;
     }
@@ -533,7 +511,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private PartUsage ownedStakeholderParameter;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "PartUsageMetaDef", metaColumn = @javax.persistence.Column(name = "ownedStakeholderParameterType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownedStakeholderParameterId", table = "StakeholderMembership")
     public PartUsage getOwnedStakeholderParameter() {
@@ -541,7 +519,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = PartUsageImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = PartUsageImpl.class)
     public void setOwnedStakeholderParameter(PartUsage ownedStakeholderParameter) {
         this.ownedStakeholderParameter = ownedStakeholderParameter;
     }
@@ -553,7 +531,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private Collection<TextualRepresentation> ownedTextualRepresentation;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StakeholderMembership_ownedTextualRepresentation",
@@ -567,7 +545,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = TextualRepresentationImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TextualRepresentationImpl.class)
     public void setOwnedTextualRepresentation(Collection<TextualRepresentation> ownedTextualRepresentation) {
         this.ownedTextualRepresentation = ownedTextualRepresentation;
     }
@@ -579,7 +557,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private Element owner;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownerId", table = "StakeholderMembership")
@@ -588,7 +566,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
     public void setOwner(Element owner) {
         this.owner = owner;
     }
@@ -600,7 +578,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private Feature owningFeatureOfType;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureOfTypeType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningFeatureOfTypeId", table = "StakeholderMembership")
@@ -609,7 +587,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = FeatureImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
     public void setOwningFeatureOfType(Feature owningFeatureOfType) {
         this.owningFeatureOfType = owningFeatureOfType;
     }
@@ -620,7 +598,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private Membership owningMembership;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningMembershipId", table = "StakeholderMembership")
     public Membership getOwningMembership() {
@@ -628,7 +606,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = MembershipImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = MembershipImpl.class)
     public void setOwningMembership(Membership owningMembership) {
         this.owningMembership = owningMembership;
     }
@@ -640,7 +618,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private Namespace owningNamespace;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningNamespaceId", table = "StakeholderMembership")
@@ -649,7 +627,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = NamespaceImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = NamespaceImpl.class)
     public void setOwningNamespace(Namespace owningNamespace) {
         this.owningNamespace = owningNamespace;
     }
@@ -660,7 +638,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private Element owningRelatedElement;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElementType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningRelatedElementId", table = "StakeholderMembership")
     public Element getOwningRelatedElement() {
@@ -668,7 +646,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = ElementImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
     public void setOwningRelatedElement(Element owningRelatedElement) {
         this.owningRelatedElement = owningRelatedElement;
     }
@@ -679,7 +657,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private Relationship owningRelationship;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningRelationshipId", table = "StakeholderMembership")
     public Relationship getOwningRelationship() {
@@ -687,7 +665,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = RelationshipImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = RelationshipImpl.class)
     public void setOwningRelationship(Relationship owningRelationship) {
         this.owningRelationship = owningRelationship;
     }
@@ -699,7 +677,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private Type owningType;
 
     @JsonGetter
-    @JsonSerialize(using = MofObjectSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningTypeId", table = "StakeholderMembership")
@@ -708,7 +686,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(using = MofObjectDeserializer.class, as = TypeImpl.class)
+    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
     public void setOwningType(Type owningType) {
         this.owningType = owningType;
     }
@@ -740,7 +718,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private List<Element> relatedElement;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StakeholderMembership_relatedElement",
@@ -754,7 +732,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setRelatedElement(List<Element> relatedElement) {
         this.relatedElement = relatedElement;
     }
@@ -765,7 +743,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private List<Element> source;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StakeholderMembership_source",
             joinColumns = @JoinColumn(name = "classId"),
@@ -778,7 +756,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setSource(List<Element> source) {
         this.source = source;
     }
@@ -789,7 +767,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     private List<Element> target;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = MofObjectSerializer.class)
+    @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "StakeholderMembership_target",
             joinColumns = @JoinColumn(name = "classId"),
@@ -802,7 +780,7 @@ public class StakeholderMembershipImpl extends MofObjectImpl implements Stakehol
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = MofObjectDeserializer.class, contentAs = ElementImpl.class)
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
     public void setTarget(List<Element> target) {
         this.target = target;
     }

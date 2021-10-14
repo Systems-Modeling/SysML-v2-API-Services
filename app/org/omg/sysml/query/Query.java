@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -21,7 +22,7 @@
 
 package org.omg.sysml.query;
 
-import org.omg.sysml.lifecycle.ElementIdentity;
+import org.omg.sysml.lifecycle.DataIdentity;
 import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.record.Record;
 
@@ -36,9 +37,9 @@ public interface Query extends Record {
 
     void setSelect(Set<String> select);
 
-    Set<ElementIdentity> getScope();
+    Set<DataIdentity> getScope();
 
-    void setScope(Set<ElementIdentity> scope);
+    void setScope(Set<DataIdentity> scope);
 
 /*
     Boolean getRecursiveInScope();

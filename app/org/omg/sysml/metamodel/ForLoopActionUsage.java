@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ForLoopActionUsage extends LoopActionUsage, MofObject {
+public interface ForLoopActionUsage extends LoopActionUsage, SysMLType {
     Expression getSeqArgument();
 }

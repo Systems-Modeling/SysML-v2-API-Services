@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ConnectionUsage extends ConnectorAsUsage, PartUsage, MofObject {
+public interface ConnectionUsage extends ConnectorAsUsage, PartUsage, SysMLType {
     List<? extends AssociationStructure> getConnectionDefinition();
 }

@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ActorMembership extends ParameterMembership, MofObject {
+public interface ActorMembership extends ParameterMembership, SysMLType {
     PartUsage getOwnedActorParameter();
 }

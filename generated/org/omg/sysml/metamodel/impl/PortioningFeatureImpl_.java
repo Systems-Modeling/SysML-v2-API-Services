@@ -29,7 +29,7 @@ import org.omg.sysml.metamodel.TypeFeaturing;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(PortioningFeatureImpl.class)
-public abstract class PortioningFeatureImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
+public abstract class PortioningFeatureImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile ListAttribute<PortioningFeatureImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<PortioningFeatureImpl, TypeFeaturing> ownedTypeFeaturing;

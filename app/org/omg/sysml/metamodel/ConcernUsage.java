@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ConcernUsage extends RequirementUsage, MofObject {
+public interface ConcernUsage extends RequirementUsage, SysMLType {
     ConcernDefinition getConcernDefinition();
 }

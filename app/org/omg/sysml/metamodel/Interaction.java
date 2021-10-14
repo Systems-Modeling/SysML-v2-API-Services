@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Interaction extends Behavior, Association, MofObject {
+public interface Interaction extends Behavior, Association, SysMLType {
 
 }

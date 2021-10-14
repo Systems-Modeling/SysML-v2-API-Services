@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface FeatureReferenceExpression extends Expression, MofObject {
+public interface FeatureReferenceExpression extends Expression, SysMLType {
     Feature getReferent();
 }

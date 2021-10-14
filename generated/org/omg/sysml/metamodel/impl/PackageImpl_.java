@@ -18,7 +18,7 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(PackageImpl.class)
-public abstract class PackageImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
+public abstract class PackageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile SingularAttribute<PackageImpl, UUID> identifier;
 	public static volatile ListAttribute<PackageImpl, Membership> importedMembership;

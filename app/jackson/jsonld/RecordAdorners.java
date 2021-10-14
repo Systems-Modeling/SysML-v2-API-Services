@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -22,9 +23,7 @@
 package jackson.jsonld;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import org.omg.sysml.lifecycle.Branch;
-import org.omg.sysml.lifecycle.Commit;
-import org.omg.sysml.lifecycle.Project;
+import org.omg.sysml.lifecycle.*;
 import org.omg.sysml.lifecycle.impl.BranchImpl_;
 import org.omg.sysml.lifecycle.impl.CommitImpl_;
 import org.omg.sysml.lifecycle.impl.ProjectImpl_;
@@ -71,7 +70,23 @@ public class RecordAdorners {
         }
     }
 
-    public static class BranchAdorner extends SimpleJsonLdAdorner<Branch, ProjectContainmentParameters> {
+    public static abstract class CommitReferenceAdorner<R extends CommitReference> extends SimpleJsonLdAdorner<R, ProjectContainmentParameters> {
+
+        protected CommitReferenceAdorner(Environment environment, boolean inline) {
+            super(environment, inline);
+        }
+
+        @Override
+        protected UnaryOperator<JsonNode> getPostProcessor(R entity, Request request, ProjectContainmentParameters parameters) {
+            return json -> constructBasePostProcessor(BranchImpl_.HEAD, String.format(CommitAdorner.BASE_PATH, parameters.getProjectId()), request).apply(
+                    constructBasePostProcessor(BranchImpl_.OWNING_PROJECT, ProjectAdorner.BASE_PATH, request).apply(
+                            json
+                    )
+            );
+        }
+    }
+
+    public static class BranchAdorner extends CommitReferenceAdorner<Branch> {
 
         private static final String CONTEXT_PATH = String.format("jsonld/api/%s.jsonld", Branch.NAME);
         private static final String BASE_PATH = ProjectAdorner.BASE_PATH + "%s/branches/";
@@ -94,14 +109,30 @@ public class RecordAdorners {
         protected String getBasePath(ProjectContainmentParameters parameters) {
             return String.format(BASE_PATH, parameters.getProjectId());
         }
+    }
+
+    public static class TagAdorner extends CommitReferenceAdorner<Tag> {
+
+        private static final String CONTEXT_PATH = String.format("jsonld/api/%s.jsonld", Tag.NAME);
+        private static final String BASE_PATH = ProjectAdorner.BASE_PATH + "%s/tags/";
+
+        public TagAdorner(Environment environment, boolean inline) {
+            super(environment, inline);
+        }
 
         @Override
-        protected UnaryOperator<JsonNode> getPostProcessor(Branch entity, Request request, ProjectContainmentParameters parameters) {
-            return json -> constructBasePostProcessor(BranchImpl_.HEAD, String.format(CommitAdorner.BASE_PATH, parameters.getProjectId()), request).apply(
-                    constructBasePostProcessor(BranchImpl_.OWNING_PROJECT, ProjectAdorner.BASE_PATH, request).apply(
-                            json
-                    )
-            );
+        protected String getType(ProjectContainmentParameters parameters) {
+            return Tag.NAME;
+        }
+
+        @Override
+        protected String getContextPath(ProjectContainmentParameters parameters) {
+            return CONTEXT_PATH;
+        }
+
+        @Override
+        protected String getBasePath(ProjectContainmentParameters parameters) {
+            return String.format(BASE_PATH, parameters.getProjectId());
         }
     }
 

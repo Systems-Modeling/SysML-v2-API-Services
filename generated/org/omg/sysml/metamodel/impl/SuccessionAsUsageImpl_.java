@@ -59,7 +59,7 @@ import org.omg.sysml.metamodel.ViewpointUsage;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(SuccessionAsUsageImpl.class)
-public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
+public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile ListAttribute<SuccessionAsUsageImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Usage> usage;

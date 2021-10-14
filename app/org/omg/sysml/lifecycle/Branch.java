@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -21,27 +22,16 @@
 
 package org.omg.sysml.lifecycle;
 
-import org.omg.sysml.record.Record;
-
-import java.time.ZonedDateTime;
-
-public interface Branch extends Record {
+public interface Branch extends CommitReference {
 
     String NAME = "Branch";
-
-    Project getOwningProject();
-
-    void setOwningProject(Project owningProject);
 
     Commit getHead();
 
     void setHead(Commit head);
 
-    String getName();
-
-    void setName(String name);
-
-    ZonedDateTime getTimestamp();
-
-    void setTimestamp(ZonedDateTime timestamp);
+    @Override
+    default Commit getReferencedCommit() {
+        return getHead();
+    }
 }

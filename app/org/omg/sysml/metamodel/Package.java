@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Package extends Namespace, MofObject {
+public interface Package extends Namespace, SysMLType {
     List<? extends Expression> getFilterCondition();
 }

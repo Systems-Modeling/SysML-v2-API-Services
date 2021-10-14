@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -23,8 +24,8 @@
         @AnyMetaDef(name = "RecordMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
                         @MetaValue(value = "Commit", targetEntity = CommitImpl.class),
-                        @MetaValue(value = "ElementIdentity", targetEntity = ElementIdentityImpl.class),
-                        @MetaValue(value = "ElementVersion", targetEntity = ElementVersionImpl.class),
+                        @MetaValue(value = "DataIdentity", targetEntity = DataIdentityImpl.class),
+                        @MetaValue(value = "DataVersion", targetEntity = DataVersionImpl.class),
                         @MetaValue(value = "Project", targetEntity = ProjectImpl.class),
                         @MetaValue(value = "Query", targetEntity = QueryImpl.class),
                         @MetaValue(value = "Record", targetEntity = RecordImpl.class),
@@ -38,7 +39,7 @@ package org.omg.sysml.record.impl;
 
 import org.hibernate.annotations.*;
 import org.omg.sysml.lifecycle.impl.CommitImpl;
-import org.omg.sysml.lifecycle.impl.ElementIdentityImpl;
-import org.omg.sysml.lifecycle.impl.ElementVersionImpl;
+import org.omg.sysml.lifecycle.impl.DataIdentityImpl;
+import org.omg.sysml.lifecycle.impl.DataVersionImpl;
 import org.omg.sysml.lifecycle.impl.ProjectImpl;
 import org.omg.sysml.query.impl.QueryImpl;

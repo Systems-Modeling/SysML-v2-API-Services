@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface TargetEnd extends Feature, MofObject {
+public interface TargetEnd extends Feature, SysMLType {
 
 }

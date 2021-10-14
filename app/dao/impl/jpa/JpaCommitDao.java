@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -22,19 +23,12 @@
 package dao.impl.jpa;
 
 import dao.CommitDao;
+import dao.ElementDao;
 import javabean.JavaBeanHelper;
 import jpa.manager.JPAManager;
-import org.omg.sysml.lifecycle.Branch;
-import org.omg.sysml.lifecycle.Commit;
-import org.omg.sysml.lifecycle.ElementVersion;
-import org.omg.sysml.lifecycle.Project;
-import org.omg.sysml.lifecycle.impl.CommitImpl;
-import org.omg.sysml.lifecycle.impl.CommitImpl_;
-import org.omg.sysml.lifecycle.impl.ElementIdentityImpl;
-import org.omg.sysml.lifecycle.impl.ElementVersionImpl;
+import org.omg.sysml.lifecycle.*;
+import org.omg.sysml.lifecycle.impl.*;
 import org.omg.sysml.metamodel.Element;
-import org.omg.sysml.metamodel.MofObject;
-import org.omg.sysml.metamodel.impl.MofObjectImpl;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -60,20 +54,20 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
     static UnaryOperator<Commit> PROXY_RESOLVER = commit -> {
         commit.getChange().stream()
                 .filter(Objects::nonNull)
-                .map(ElementVersion::getData)
-                .filter(mof -> mof instanceof Element)
-                .map(mof -> (Element) mof)
+                .map(DataVersion::getPayload)
+                .filter(data -> data instanceof Element)
+                .map(data -> (Element) data)
                 .map(JpaElementDao.PROXY_RESOLVER)
                 .forEach(e -> {
                 });
         return commit;
     };
 
-    private final JpaElementDao elementDao;
+    private final ElementDao elementDao;
     private final JpaBranchDao branchDao;
 
     @Inject
-    public JpaCommitDao(JPAManager jpaManager, JpaElementDao elementDao, JpaBranchDao branchDao) {
+    public JpaCommitDao(JPAManager jpaManager, ElementDao elementDao, JpaBranchDao branchDao) {
         super(jpaManager, CommitImpl.class, CommitImpl_.id);
         this.elementDao = elementDao;
         this.branchDao = branchDao;
@@ -86,57 +80,68 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
             commit.setPreviousCommit(branch.getHead());
         }
 
-        MofObject tombstone = new MofObjectImpl() {
-            final UUID identifier = UUID.randomUUID();
+        Data tombstone = new Data() {
+            final UUID id = UUID.randomUUID();
 
             @Override
-            public UUID getIdentifier() {
-                return identifier;
+            public UUID getId() {
+                return id;
             }
 
             @Override
-            public void setIdentifier(UUID identifier) {
-
+            public void setId(UUID id) {
+                throw new UnsupportedOperationException();
             }
         };
 
-        Supplier<Stream<ElementVersionImpl>> changeStream = () -> commit.getChange().stream().filter(change -> change instanceof ElementVersionImpl).map(change -> (ElementVersionImpl) change);
+        Supplier<Stream<DataVersionImpl>> changeStream = () -> commit.getChange().stream()
+                .filter(change -> change instanceof DataVersionImpl)
+                .map(change -> (DataVersionImpl) change);
 
         // Give all Commit#changes an identity, if they don't already have one, and all Commit#changes#identity an id, if they don't already have one.
         changeStream.get()
-                .peek(change -> change.setIdentity(change.getIdentity() != null ? change.getIdentity() : new ElementIdentityImpl()))
-                .map(ElementVersion::getIdentity)
-                .filter(identity -> identity instanceof ElementIdentityImpl)
-                .map(identity -> (ElementIdentityImpl) identity)
+                .peek(change -> change.setIdentity(change.getIdentity() != null ? change.getIdentity() : new DataIdentityImpl()))
+                .map(DataVersion::getIdentity)
+                .filter(identity -> identity instanceof DataIdentityImpl)
+                .map(identity -> (DataIdentityImpl) identity)
                 .forEach(identity -> identity.setId(identity.getId() != null ? identity.getId() : UUID.randomUUID()));
 
-        // Copy all Commit#changes#identity#id to Commit#changes#data#identifier and give all Commit#changes#data a random id.
-        Map<UUID, MofObject> identifierToMofMap = changeStream.get()
-                .peek(change -> Optional.ofNullable(change.getData())
-                        .filter(mof -> mof instanceof MofObjectImpl).map(mof -> (MofObjectImpl) mof).ifPresent(mof -> {
-                            mof.setIdentifier(change.getIdentity().getId());
-                            mof.setKey(UUID.randomUUID());
-                        }))
-                .collect(Collectors.toMap(change -> change.getIdentity().getId(), change -> Optional.ofNullable(change.getData()).orElse(tombstone)));
+        // Copy all Commit#change#identity#id to Commit#change#payload#id and assign Commit#change#payload#key to a random UUID
+        Map<UUID, Data> identifierToDataMap = changeStream.get()
+                .peek(change -> {
+                    Data payload = change.getPayload();
+                    if (payload == null) {
+                        return;
+                    }
+                    payload.setId(change.getIdentity().getId());
+                    if (!(payload instanceof DataImpl)) {
+                        throw new IllegalStateException();
+                    }
+                    ((DataImpl) payload).setKey(UUID.randomUUID());
+                })
+                .collect(Collectors.toMap(
+                        change -> change.getIdentity().getId(),
+                        change -> change.getPayload() != null ? change.getPayload() : tombstone)
+                );
 
-        Function<MofObject, MofObject> reattachMofFunction = mof -> {
-            MofObject reattachedMof = identifierToMofMap.computeIfAbsent(mof.getIdentifier(), identifier -> {
+        Function<Data, Data> reattachDataFunction = data -> {
+            Data reattachedData = identifierToDataMap.computeIfAbsent(data.getId(), identifier -> {
                 if (commit.getPreviousCommit() == null) {
                     return tombstone;
                 }
                 return elementDao.findByCommitAndId(commit.getPreviousCommit(), identifier)
-                        .map(element -> (MofObject) element)
+                        .map(element -> (Data) element)
                         .orElse(tombstone);
             });
-            if (Objects.equals(reattachedMof, tombstone)) {
-                throw new IllegalArgumentException("Element with ID " + mof.getIdentifier() + " not found");
+            if (Objects.equals(reattachedData, tombstone)) {
+                throw new IllegalArgumentException("Element with ID " + data.getId() + " not found");
             }
-            return reattachedMof;
+            return reattachedData;
         };
         changeStream.get()
-                .map(ElementVersion::getData)
+                .map(DataVersion::getPayload)
                 .filter(Objects::nonNull)
-                .forEach(mof -> JavaBeanHelper.getBeanProperties(mof).values().stream()
+                .forEach(data -> JavaBeanHelper.getBeanProperties(data).values().stream()
                         .filter(property -> property.getReadMethod() != null && property.getWriteMethod() != null)
                         .forEach(property -> {
                             Method getter = property.getReadMethod();
@@ -145,34 +150,42 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
 
                             Object originalValue;
                             try {
-                                originalValue = getter.invoke(mof);
+                                originalValue = getter.invoke(data);
                                 final Object newValue;
-                                if (MofObject.class.isAssignableFrom(type)) {
-                                    if (!(originalValue instanceof MofObject)) {
+                                if (Data.class.isAssignableFrom(type)) {
+                                    if (!(originalValue instanceof Data)) {
                                         return;
                                     }
-                                    newValue = reattachMofFunction.apply((MofObject) originalValue);
-                                } else if (Collection.class.isAssignableFrom(type)) {
+                                    newValue = reattachDataFunction.apply((Data) originalValue);
+                                }
+                                else if (Collection.class.isAssignableFrom(type)) {
                                     Collection<?> originalValueCollection = (Collection<?>) originalValue;
-                                    if (originalValueCollection.isEmpty() || originalValueCollection.stream().anyMatch((o -> !(o instanceof MofObject)))) {
+                                    if (originalValueCollection.isEmpty() || originalValueCollection.stream().anyMatch((o -> !(o instanceof Data)))) {
                                         return;
                                     }
                                     final Collection<Object> newValueCollection;
                                     if (List.class.isAssignableFrom(type)) {
                                         newValueCollection = new ArrayList<>();
-                                    } else if (Set.class.isAssignableFrom(type)) {
+                                    }
+                                    else if (Set.class.isAssignableFrom(type)) {
                                         newValueCollection = new HashSet<>();
-                                    } else if (Collection.class.isAssignableFrom(type)) {
+                                    }
+                                    else if (Collection.class.isAssignableFrom(type)) {
                                         newValueCollection = new ArrayList<>();
-                                    } else {
+                                    }
+                                    else {
                                         throw new IllegalStateException("Unknown collection type.");
                                     }
-                                    ((Collection<?>) originalValue).stream().map(o -> (MofObject) o).map(reattachMofFunction).forEachOrdered(newValueCollection::add);
+                                    ((Collection<?>) originalValue).stream()
+                                            .map(o -> (Data) o)
+                                            .map(reattachDataFunction)
+                                            .forEachOrdered(newValueCollection::add);
                                     newValue = newValueCollection;
-                                } else {
+                                }
+                                else {
                                     return;
                                 }
-                                setter.invoke(mof, newValue);
+                                setter.invoke(data, newValue);
                             } catch (ReflectiveOperationException e) {
                                 throw new RuntimeException(e);
                             }
@@ -181,14 +194,19 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
 
         return jpaManager.transact(em -> {
             commit.getChange().stream()
-                    .map(ElementVersion::getData)
-                    .filter(mof -> mof instanceof MofObjectImpl)
-                    .map(mof -> (MofObjectImpl) mof)
-                    .map(mof -> {
+                    .map(DataVersion::getPayload)
+                    .filter(Objects::nonNull)
+                    .map(payload -> {
                         try {
-                            MofObjectImpl firstPassMof = mof.getClass().getConstructor().newInstance();
-                            firstPassMof.setKey(mof.getKey());
-                            return firstPassMof;
+                            Data dataFirstPass = payload.getClass().getConstructor().newInstance();
+                            if (!(dataFirstPass instanceof DataImpl)) {
+                                throw new IllegalStateException();
+                            }
+                            if (!(payload instanceof DataImpl)) {
+                                throw new IllegalStateException();
+                            }
+                            ((DataImpl) dataFirstPass).setKey(((DataImpl) payload).getKey());
+                            return dataFirstPass;
                         } catch (ReflectiveOperationException e) {
                             throw new RuntimeException(e);
                         }

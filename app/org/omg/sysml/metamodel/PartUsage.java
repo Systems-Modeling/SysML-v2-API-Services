@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface PartUsage extends ItemUsage, MofObject {
+public interface PartUsage extends ItemUsage, SysMLType {
     List<? extends PartDefinition> getPartDefinition();
 }

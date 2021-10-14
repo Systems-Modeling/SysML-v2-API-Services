@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -20,7 +21,7 @@
  */
 
 @AnyMetaDefs(value = {
-        @AnyMetaDef(name = "MofObjectMetaDef", metaType = "string", idType = "java.util.UUID",
+        @AnyMetaDef(name = "SysMLTypeMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
                         @MetaValue(value = "AcceptActionUsage", targetEntity = AcceptActionUsageImpl.class),
                         @MetaValue(value = "ActionDefinition", targetEntity = ActionDefinitionImpl.class),
@@ -77,8 +78,6 @@
                         @MetaValue(value = "ExhibitStateUsage", targetEntity = ExhibitStateUsageImpl.class),
                         @MetaValue(value = "Expose", targetEntity = ExposeImpl.class),
                         @MetaValue(value = "Expression", targetEntity = ExpressionImpl.class),
-                        @MetaValue(value = "ExternalElement", targetEntity = ExternalElementImpl.class),
-                        @MetaValue(value = "ExternalRelationship", targetEntity = ExternalRelationshipImpl.class),
                         @MetaValue(value = "Feature", targetEntity = FeatureImpl.class),
                         @MetaValue(value = "FeatureChaining", targetEntity = FeatureChainingImpl.class),
                         @MetaValue(value = "FeatureMembership", targetEntity = FeatureMembershipImpl.class),
@@ -631,8 +630,6 @@
                         @MetaValue(value = "ExhibitStateUsage", targetEntity = ExhibitStateUsageImpl.class),
                         @MetaValue(value = "Expose", targetEntity = ExposeImpl.class),
                         @MetaValue(value = "Expression", targetEntity = ExpressionImpl.class),
-                        @MetaValue(value = "ExternalElement", targetEntity = ExternalElementImpl.class),
-                        @MetaValue(value = "ExternalRelationship", targetEntity = ExternalRelationshipImpl.class),
                         @MetaValue(value = "Feature", targetEntity = FeatureImpl.class),
                         @MetaValue(value = "FeatureChaining", targetEntity = FeatureChainingImpl.class),
                         @MetaValue(value = "FeatureMembership", targetEntity = FeatureMembershipImpl.class),
@@ -1419,7 +1416,6 @@
                         @MetaValue(value = "ElementFilterMembership", targetEntity = ElementFilterMembershipImpl.class),
                         @MetaValue(value = "EndFeatureMembership", targetEntity = EndFeatureMembershipImpl.class),
                         @MetaValue(value = "Expose", targetEntity = ExposeImpl.class),
-                        @MetaValue(value = "ExternalRelationship", targetEntity = ExternalRelationshipImpl.class),
                         @MetaValue(value = "FeatureMembership", targetEntity = FeatureMembershipImpl.class),
                         @MetaValue(value = "FeatureTyping", targetEntity = FeatureTypingImpl.class),
                         @MetaValue(value = "FeatureValue", targetEntity = FeatureValueImpl.class),
@@ -1890,11 +1886,4 @@
 })
 package org.omg.sysml.metamodel.impl;
 
-import org.hibernate.annotations.AnyMetaDef;
-import org.hibernate.annotations.AnyMetaDefs;
-import org.hibernate.annotations.MetaValue;
-
-// TODO Abstract this concept to cli option
-import org.hibernate.annotations.GenericGenerators;
-import org.hibernate.annotations.GenericGenerator;
-import org.omg.sysml.external.impl.*;
+import org.hibernate.annotations.*;

@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface VariantMembership extends Membership, MofObject {
+public interface VariantMembership extends Membership, SysMLType {
     Usage getOwnedVariantUsage();
 }

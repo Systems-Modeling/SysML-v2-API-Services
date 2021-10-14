@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -22,8 +23,8 @@
 package controllers;
 
 import config.MetamodelProvider;
+import jackson.jsonld.DataJsonLdAdorner;
 import jackson.jsonld.JsonLdAdorner;
-import jackson.jsonld.MofObjectJsonLdAdorner;
 import org.omg.sysml.metamodel.Element;
 import play.Environment;
 import play.mvc.Http.Request;
@@ -35,17 +36,17 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public final class ElementController extends JsonLdController<Element, MofObjectJsonLdAdorner.Parameters> {
+public final class ElementController extends JsonLdController<Element, DataJsonLdAdorner.Parameters> {
 
     private final ElementService elementService;
     private final MetamodelProvider metamodelProvider;
-    private final JsonLdAdorner<Element, MofObjectJsonLdAdorner.Parameters> adorner;
+    private final JsonLdAdorner<Element, DataJsonLdAdorner.Parameters> adorner;
 
     @Inject
     public ElementController(ElementService elementService, MetamodelProvider metamodelProvider, Environment environment) {
         this.elementService = elementService;
         this.metamodelProvider = metamodelProvider;
-        this.adorner = new MofObjectJsonLdAdorner<>(metamodelProvider, environment, INLINE_JSON_LD_CONTEXT);
+        this.adorner = new DataJsonLdAdorner<>(metamodelProvider, environment, INLINE_JSON_LD_CONTEXT);
     }
 
     public Result getElementsByProjectIdCommitId(UUID projectId, UUID commitId, Request request) {
@@ -56,7 +57,7 @@ public final class ElementController extends JsonLdController<Element, MofObject
 
     public Result getElementByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId, Request request) {
         Optional<Element> element = elementService.getElementsByProjectIdCommitIdElementId(projectId, commitId, elementId);
-        return buildResult(element.orElse(null), request, new MofObjectJsonLdAdorner.Parameters(projectId, commitId));
+        return buildResult(element.orElse(null), request, new DataJsonLdAdorner.Parameters(projectId, commitId));
     }
 
     public Result getRootsByProjectIdCommitId(UUID projectId, UUID commitId, Request request) {
@@ -67,7 +68,7 @@ public final class ElementController extends JsonLdController<Element, MofObject
 
     private Result buildPaginatedResult(List<Element> elements, UUID projectId, UUID commitId, Request request, PageRequest pageRequest) {
         return paginateResult(
-                buildResult(elements, List.class, metamodelProvider.getImplementationClass(Element.class), request, new MofObjectJsonLdAdorner.Parameters(projectId, commitId)),
+                buildResult(elements, List.class, metamodelProvider.getImplementationClass(Element.class), request, new DataJsonLdAdorner.Parameters(projectId, commitId)),
                 elements.size(),
                 idx -> elements.get(idx).getIdentifier(),
                 request,
@@ -76,7 +77,7 @@ public final class ElementController extends JsonLdController<Element, MofObject
     }
 
     @Override
-    protected JsonLdAdorner<Element, MofObjectJsonLdAdorner.Parameters> getAdorner() {
+    protected JsonLdAdorner<Element, DataJsonLdAdorner.Parameters> getAdorner() {
         return adorner;
     }
 }

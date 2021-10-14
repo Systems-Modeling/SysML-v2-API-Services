@@ -1,7 +1,6 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -21,11 +20,7 @@
 
 package org.omg.sysml.metamodel;
 
+import org.omg.sysml.lifecycle.Data;
 
-import java.util.UUID;
-
-public interface MofObject {
-    UUID getId_();
-
-    java.util.UUID getIdentifier();
+public interface SysMLType extends Data {
 }

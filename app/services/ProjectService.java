@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -37,6 +38,6 @@ public class ProjectService extends BaseService<Project, ProjectDao> {
     }
 
     public Optional<Project> create(Project project) {
-        return project.getId() != null ? dao.update(project) : dao.persist(project);
+        return dao.persist(project);
     }
 }

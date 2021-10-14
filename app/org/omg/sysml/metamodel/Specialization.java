@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Specialization extends Relationship, MofObject {
+public interface Specialization extends Relationship, SysMLType {
     Type getOwningType();
 
     Type getGeneral();

@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface AttributeUsage extends Usage, MofObject {
+public interface AttributeUsage extends Usage, SysMLType {
     List<? extends DataType> getAttributeDefinition();
 
     Boolean getIsReference();

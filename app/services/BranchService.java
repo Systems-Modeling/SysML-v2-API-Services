@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -24,6 +25,7 @@ package services;
 import dao.BranchDao;
 import dao.ProjectDao;
 import org.omg.sysml.lifecycle.Branch;
+import org.omg.sysml.lifecycle.Project;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -62,5 +64,13 @@ public class BranchService extends BaseService<Branch, BranchDao> {
     public Optional<Branch> getByProjectIdAndId(UUID projectId, UUID branchId) {
         return projectDao.findById(projectId)
                 .flatMap(project -> dao.findByProjectAndId(project, branchId));
+    }
+
+    public Optional<Branch> deleteByProjectIdAndId(UUID projectId, UUID branchId) {
+        Optional<Project> project = projectDao.findById(projectId);
+        project.map(Project::getDefaultBranch).map(Branch::getId).filter(branchId::equals).ifPresent(ignored -> {
+            throw new IllegalArgumentException("Cannot delete the default branch of the Project");
+        });
+        return project.flatMap(proj -> dao.deleteByProjectAndId(proj, branchId));
     }
 }

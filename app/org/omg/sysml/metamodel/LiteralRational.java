@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface LiteralRational extends LiteralExpression, MofObject {
+public interface LiteralRational extends LiteralExpression, SysMLType {
     Double getValue();
 }

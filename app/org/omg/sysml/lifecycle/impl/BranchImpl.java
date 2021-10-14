@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -66,6 +67,13 @@ public class BranchImpl extends RecordImpl implements Branch {
         this.head = head;
     }
 
+    @Override
+    @Transient
+    @JsonSerialize(as = CommitImpl.class, using = RecordSerialization.RecordSerializer.class)
+    public Commit getReferencedCommit() {
+        return Branch.super.getReferencedCommit();
+    }
+
     @JsonProperty(required = true)
     @JsonGetter
     @Lob
@@ -94,6 +102,6 @@ public class BranchImpl extends RecordImpl implements Branch {
     @Transient
     @JsonProperty("@type")
     public String getType() {
-        return Branch.class.getSimpleName();
+        return Branch.NAME;
     }
 }

@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ViewDefinition extends PartDefinition, MofObject {
+public interface ViewDefinition extends PartDefinition, SysMLType {
     List<? extends ViewUsage> getView();
 
     List<? extends ViewpointUsage> getSatisfiedViewpoint();

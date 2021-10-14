@@ -59,7 +59,7 @@ import org.omg.sysml.metamodel.ViewpointUsage;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(AnalysisCaseUsageImpl.class)
-public abstract class AnalysisCaseUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
+public abstract class AnalysisCaseUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, Usage> directedUsage;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, PartUsage> nestedPart;

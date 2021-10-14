@@ -16,7 +16,7 @@ import org.omg.sysml.metamodel.VisibilityKind;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(MetadataFeatureValueImpl.class)
-public abstract class MetadataFeatureValueImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
+public abstract class MetadataFeatureValueImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile SingularAttribute<MetadataFeatureValueImpl, UUID> identifier;
 	public static volatile ListAttribute<MetadataFeatureValueImpl, Annotation> ownedAnnotation;

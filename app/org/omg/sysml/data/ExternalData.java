@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -19,10 +20,13 @@
  * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
  */
 
-package org.omg.sysml.utils;
+package org.omg.sysml.data;
 
-public enum RelationshipDirection {
-    IN,
-    OUT,
-    BOTH
+import org.omg.sysml.lifecycle.Data;
+
+import java.net.URI;
+
+public interface ExternalData extends Data {
+
+    URI getResourceIdentifier();
 }

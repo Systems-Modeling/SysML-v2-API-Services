@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ResultExpressionMembership extends FeatureMembership, MofObject {
+public interface ResultExpressionMembership extends FeatureMembership, SysMLType {
     Expression getOwnedResultExpression();
 }

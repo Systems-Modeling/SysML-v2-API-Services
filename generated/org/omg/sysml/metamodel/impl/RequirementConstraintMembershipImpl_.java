@@ -17,7 +17,7 @@ import org.omg.sysml.metamodel.VisibilityKind;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(RequirementConstraintMembershipImpl.class)
-public abstract class RequirementConstraintMembershipImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
+public abstract class RequirementConstraintMembershipImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile SingularAttribute<RequirementConstraintMembershipImpl, UUID> identifier;
 	public static volatile ListAttribute<RequirementConstraintMembershipImpl, Annotation> ownedAnnotation;

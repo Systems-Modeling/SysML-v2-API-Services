@@ -25,7 +25,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface TypeFeaturing extends Relationship, MofObject {
+public interface TypeFeaturing extends Relationship, SysMLType {
     Feature getFeatureOfType();
 
     Type getFeaturingType();

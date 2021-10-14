@@ -59,7 +59,7 @@ import org.omg.sysml.metamodel.ViewpointUsage;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(ViewpointUsageImpl.class)
-public abstract class ViewpointUsageImpl_ extends org.omg.sysml.metamodel.impl.MofObjectImpl_ {
+public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile ListAttribute<ViewpointUsageImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile ListAttribute<ViewpointUsageImpl, ConstraintUsage> requiredConstraint;
