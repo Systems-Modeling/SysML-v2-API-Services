@@ -56,7 +56,6 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile SingularAttribute<MetadataFeatureImpl, String> name;
 	public static volatile ListAttribute<MetadataFeatureImpl, Element> ownedMember;
 	public static volatile ListAttribute<MetadataFeatureImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<MetadataFeatureImpl, Type> disjointType;
 	public static volatile CollectionAttribute<MetadataFeatureImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<MetadataFeatureImpl, Membership> membership;
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isPortion;
@@ -109,7 +108,6 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";

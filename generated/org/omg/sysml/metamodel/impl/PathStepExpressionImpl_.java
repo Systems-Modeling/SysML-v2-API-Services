@@ -60,7 +60,6 @@ public abstract class PathStepExpressionImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile SingularAttribute<PathStepExpressionImpl, String> name;
 	public static volatile ListAttribute<PathStepExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<PathStepExpressionImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<PathStepExpressionImpl, Type> disjointType;
 	public static volatile CollectionAttribute<PathStepExpressionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<PathStepExpressionImpl, Membership> membership;
 	public static volatile SingularAttribute<PathStepExpressionImpl, Boolean> isPortion;
@@ -119,7 +118,6 @@ public abstract class PathStepExpressionImpl_ extends org.omg.sysml.lifecycle.im
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";

@@ -73,7 +73,6 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, ItemFlowEnd> itemFlowEnd;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Element> ownedMember;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Type> disjointType;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Classifier> itemType;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Disjoining> ownedDisjoining;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Association> association;
@@ -146,7 +145,6 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.lifecycle.im
 	public static final String ITEM_FLOW_END = "itemFlowEnd";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String ITEM_TYPE = "itemType";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String ASSOCIATION = "association";

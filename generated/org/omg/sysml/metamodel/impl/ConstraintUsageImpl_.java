@@ -105,7 +105,6 @@ public abstract class ConstraintUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<ConstraintUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<ConstraintUsageImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<ConstraintUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<ConstraintUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<ConstraintUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<ConstraintUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<ConstraintUsageImpl, Disjoining> ownedDisjoining;
@@ -197,7 +196,6 @@ public abstract class ConstraintUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";

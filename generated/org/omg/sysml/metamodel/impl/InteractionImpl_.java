@@ -26,7 +26,6 @@ import org.omg.sysml.metamodel.Type;
 @StaticMetamodel(InteractionImpl.class)
 public abstract class InteractionImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
-	public static volatile CollectionAttribute<InteractionImpl, Type> disjointType;
 	public static volatile SingularAttribute<InteractionImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<InteractionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<InteractionImpl, Membership> membership;
@@ -72,7 +71,6 @@ public abstract class InteractionImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static volatile ListAttribute<InteractionImpl, Element> ownedMember;
 	public static volatile ListAttribute<InteractionImpl, Membership> ownedMembership;
 
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";

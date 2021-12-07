@@ -19,13 +19,11 @@ import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.Specialization;
 import org.omg.sysml.metamodel.Subclassification;
 import org.omg.sysml.metamodel.TextualRepresentation;
-import org.omg.sysml.metamodel.Type;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(DataTypeImpl.class)
 public abstract class DataTypeImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
-	public static volatile CollectionAttribute<DataTypeImpl, Type> disjointType;
 	public static volatile SingularAttribute<DataTypeImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<DataTypeImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<DataTypeImpl, Membership> membership;
@@ -62,7 +60,6 @@ public abstract class DataTypeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile ListAttribute<DataTypeImpl, Element> ownedMember;
 	public static volatile ListAttribute<DataTypeImpl, Membership> ownedMembership;
 
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";

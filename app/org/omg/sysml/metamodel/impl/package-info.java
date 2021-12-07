@@ -1416,6 +1416,7 @@
                         @MetaValue(value = "ElementFilterMembership", targetEntity = ElementFilterMembershipImpl.class),
                         @MetaValue(value = "EndFeatureMembership", targetEntity = EndFeatureMembershipImpl.class),
                         @MetaValue(value = "Expose", targetEntity = ExposeImpl.class),
+                        @MetaValue(value = "FeatureChaining", targetEntity = FeatureChainingImpl.class),
                         @MetaValue(value = "FeatureMembership", targetEntity = FeatureMembershipImpl.class),
                         @MetaValue(value = "FeatureTyping", targetEntity = FeatureTypingImpl.class),
                         @MetaValue(value = "FeatureValue", targetEntity = FeatureValueImpl.class),
@@ -1886,4 +1887,10 @@
 })
 package org.omg.sysml.metamodel.impl;
 
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.AnyMetaDef;
+import org.hibernate.annotations.AnyMetaDefs;
+import org.hibernate.annotations.MetaValue;
+
+// TODO Abstract this concept to cli option
+import org.hibernate.annotations.GenericGenerators;
+import org.hibernate.annotations.GenericGenerator;

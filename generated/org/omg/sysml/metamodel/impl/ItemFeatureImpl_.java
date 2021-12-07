@@ -56,7 +56,6 @@ public abstract class ItemFeatureImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static volatile SingularAttribute<ItemFeatureImpl, String> name;
 	public static volatile ListAttribute<ItemFeatureImpl, Element> ownedMember;
 	public static volatile ListAttribute<ItemFeatureImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<ItemFeatureImpl, Type> disjointType;
 	public static volatile CollectionAttribute<ItemFeatureImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<ItemFeatureImpl, Membership> membership;
 	public static volatile SingularAttribute<ItemFeatureImpl, Boolean> isPortion;
@@ -109,7 +108,6 @@ public abstract class ItemFeatureImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";

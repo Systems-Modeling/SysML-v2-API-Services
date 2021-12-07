@@ -106,7 +106,6 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<BindingConnectorAsUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<BindingConnectorAsUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<BindingConnectorAsUsageImpl, Disjoining> ownedDisjoining;
@@ -201,7 +200,6 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";

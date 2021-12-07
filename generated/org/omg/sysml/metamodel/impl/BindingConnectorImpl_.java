@@ -60,7 +60,6 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile CollectionAttribute<BindingConnectorImpl, Feature> connectorEnd;
 	public static volatile ListAttribute<BindingConnectorImpl, Element> ownedMember;
 	public static volatile ListAttribute<BindingConnectorImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<BindingConnectorImpl, Type> disjointType;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Disjoining> ownedDisjoining;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Association> association;
 	public static volatile ListAttribute<BindingConnectorImpl, Membership> membership;
@@ -122,7 +121,6 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String CONNECTOR_END = "connectorEnd";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String ASSOCIATION = "association";
 	public static final String MEMBERSHIP = "membership";

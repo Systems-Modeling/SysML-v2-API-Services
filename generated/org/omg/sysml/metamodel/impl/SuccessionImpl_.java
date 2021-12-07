@@ -64,7 +64,6 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile CollectionAttribute<SuccessionImpl, Feature> connectorEnd;
 	public static volatile ListAttribute<SuccessionImpl, Element> ownedMember;
 	public static volatile ListAttribute<SuccessionImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<SuccessionImpl, Type> disjointType;
 	public static volatile CollectionAttribute<SuccessionImpl, Disjoining> ownedDisjoining;
 	public static volatile CollectionAttribute<SuccessionImpl, Association> association;
 	public static volatile ListAttribute<SuccessionImpl, Membership> membership;
@@ -129,7 +128,6 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String CONNECTOR_END = "connectorEnd";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String ASSOCIATION = "association";
 	public static final String MEMBERSHIP = "membership";

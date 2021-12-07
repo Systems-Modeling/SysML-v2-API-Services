@@ -56,7 +56,6 @@ public abstract class SourceEndImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile SingularAttribute<SourceEndImpl, String> name;
 	public static volatile ListAttribute<SourceEndImpl, Element> ownedMember;
 	public static volatile ListAttribute<SourceEndImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<SourceEndImpl, Type> disjointType;
 	public static volatile CollectionAttribute<SourceEndImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<SourceEndImpl, Membership> membership;
 	public static volatile SingularAttribute<SourceEndImpl, Boolean> isPortion;
@@ -109,7 +108,6 @@ public abstract class SourceEndImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";

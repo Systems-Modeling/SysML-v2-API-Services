@@ -25,7 +25,6 @@ import org.omg.sysml.metamodel.Type;
 @StaticMetamodel(AssociationStructureImpl.class)
 public abstract class AssociationStructureImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
-	public static volatile CollectionAttribute<AssociationStructureImpl, Type> disjointType;
 	public static volatile SingularAttribute<AssociationStructureImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<AssociationStructureImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<AssociationStructureImpl, Membership> membership;
@@ -69,7 +68,6 @@ public abstract class AssociationStructureImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile ListAttribute<AssociationStructureImpl, Element> ownedMember;
 	public static volatile ListAttribute<AssociationStructureImpl, Membership> ownedMembership;
 
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";

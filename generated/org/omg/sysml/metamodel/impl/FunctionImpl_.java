@@ -21,13 +21,11 @@ import org.omg.sysml.metamodel.Specialization;
 import org.omg.sysml.metamodel.Step;
 import org.omg.sysml.metamodel.Subclassification;
 import org.omg.sysml.metamodel.TextualRepresentation;
-import org.omg.sysml.metamodel.Type;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(FunctionImpl.class)
 public abstract class FunctionImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
-	public static volatile CollectionAttribute<FunctionImpl, Type> disjointType;
 	public static volatile SingularAttribute<FunctionImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<FunctionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<FunctionImpl, Membership> membership;
@@ -68,7 +66,6 @@ public abstract class FunctionImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile ListAttribute<FunctionImpl, Element> ownedMember;
 	public static volatile ListAttribute<FunctionImpl, Membership> ownedMembership;
 
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";

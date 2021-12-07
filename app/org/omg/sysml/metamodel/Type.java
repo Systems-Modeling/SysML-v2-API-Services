@@ -58,8 +58,6 @@ public interface Type extends Namespace, SysMLType {
 
     Multiplicity getMultiplicity();
 
-    Collection<? extends Type> getDisjointType();
-
     List<? extends Feature> getDirectedFeature();
 
     Collection<? extends Disjoining> getOwnedDisjoining();

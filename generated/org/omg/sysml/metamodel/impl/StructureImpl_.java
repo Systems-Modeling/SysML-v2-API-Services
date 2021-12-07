@@ -19,13 +19,11 @@ import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.Specialization;
 import org.omg.sysml.metamodel.Subclassification;
 import org.omg.sysml.metamodel.TextualRepresentation;
-import org.omg.sysml.metamodel.Type;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(StructureImpl.class)
 public abstract class StructureImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
-	public static volatile CollectionAttribute<StructureImpl, Type> disjointType;
 	public static volatile SingularAttribute<StructureImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<StructureImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<StructureImpl, Membership> membership;
@@ -62,7 +60,6 @@ public abstract class StructureImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<StructureImpl, Element> ownedMember;
 	public static volatile ListAttribute<StructureImpl, Membership> ownedMembership;
 
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";

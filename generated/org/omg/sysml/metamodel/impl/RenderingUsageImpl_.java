@@ -106,7 +106,6 @@ public abstract class RenderingUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<RenderingUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<RenderingUsageImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<RenderingUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<RenderingUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<RenderingUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<RenderingUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<RenderingUsageImpl, Disjoining> ownedDisjoining;
@@ -197,7 +196,6 @@ public abstract class RenderingUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";

@@ -57,7 +57,6 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile SingularAttribute<MultiplicityRangeImpl, String> name;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Element> ownedMember;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<MultiplicityRangeImpl, Type> disjointType;
 	public static volatile CollectionAttribute<MultiplicityRangeImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Membership> membership;
 	public static volatile SingularAttribute<MultiplicityRangeImpl, Boolean> isPortion;
@@ -111,7 +110,6 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";

@@ -109,7 +109,6 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<TransitionUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<TransitionUsageImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<TransitionUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<TransitionUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<TransitionUsageImpl, AcceptActionUsage> triggerAction;
 	public static volatile CollectionAttribute<TransitionUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<TransitionUsageImpl, CaseUsage> nestedCase;
@@ -204,7 +203,6 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String TRIGGER_ACTION = "triggerAction";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";

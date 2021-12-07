@@ -136,7 +136,6 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Feature> connectorEnd;
 	public static volatile ListAttribute<ConnectionUsageImpl, AssociationStructure> connectionDefinition;
 	public static volatile ListAttribute<ConnectionUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<ConnectionUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<ConnectionUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Disjoining> ownedDisjoining;
@@ -237,7 +236,6 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String CONNECTOR_END = "connectorEnd";
 	public static final String CONNECTION_DEFINITION = "connectionDefinition";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";

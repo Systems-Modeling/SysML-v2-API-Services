@@ -107,7 +107,6 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile ListAttribute<StateUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<StateUsageImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<StateUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<StateUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<StateUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<StateUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<StateUsageImpl, Disjoining> ownedDisjoining;
@@ -201,7 +200,6 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";

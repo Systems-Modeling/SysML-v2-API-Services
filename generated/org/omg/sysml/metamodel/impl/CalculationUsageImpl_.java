@@ -106,7 +106,6 @@ public abstract class CalculationUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<CalculationUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<CalculationUsageImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<CalculationUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<CalculationUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<CalculationUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<CalculationUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<CalculationUsageImpl, Disjoining> ownedDisjoining;
@@ -199,7 +198,6 @@ public abstract class CalculationUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
