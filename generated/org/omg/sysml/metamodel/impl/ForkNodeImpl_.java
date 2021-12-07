@@ -106,7 +106,6 @@ public abstract class ForkNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile ListAttribute<ForkNodeImpl, Element> ownedMember;
 	public static volatile ListAttribute<ForkNodeImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<ForkNodeImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<ForkNodeImpl, Type> disjointType;
 	public static volatile CollectionAttribute<ForkNodeImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<ForkNodeImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<ForkNodeImpl, Disjoining> ownedDisjoining;
@@ -198,7 +197,6 @@ public abstract class ForkNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";

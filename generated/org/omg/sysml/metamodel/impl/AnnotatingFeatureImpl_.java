@@ -58,7 +58,6 @@ public abstract class AnnotatingFeatureImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile SingularAttribute<AnnotatingFeatureImpl, String> name;
 	public static volatile ListAttribute<AnnotatingFeatureImpl, Element> ownedMember;
 	public static volatile ListAttribute<AnnotatingFeatureImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<AnnotatingFeatureImpl, Type> disjointType;
 	public static volatile CollectionAttribute<AnnotatingFeatureImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<AnnotatingFeatureImpl, Membership> membership;
 	public static volatile SingularAttribute<AnnotatingFeatureImpl, Boolean> isPortion;
@@ -114,7 +113,6 @@ public abstract class AnnotatingFeatureImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";

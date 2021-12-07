@@ -102,7 +102,6 @@ public abstract class ReferenceUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<ReferenceUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<ReferenceUsageImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<ReferenceUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<ReferenceUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<ReferenceUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<ReferenceUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<ReferenceUsageImpl, Disjoining> ownedDisjoining;
@@ -188,7 +187,6 @@ public abstract class ReferenceUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";

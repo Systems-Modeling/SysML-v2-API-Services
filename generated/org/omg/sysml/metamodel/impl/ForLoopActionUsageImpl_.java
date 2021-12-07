@@ -106,7 +106,6 @@ public abstract class ForLoopActionUsageImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile ListAttribute<ForLoopActionUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<ForLoopActionUsageImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<ForLoopActionUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<ForLoopActionUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<ForLoopActionUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<ForLoopActionUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<ForLoopActionUsageImpl, Disjoining> ownedDisjoining;
@@ -198,7 +197,6 @@ public abstract class ForLoopActionUsageImpl_ extends org.omg.sysml.lifecycle.im
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";

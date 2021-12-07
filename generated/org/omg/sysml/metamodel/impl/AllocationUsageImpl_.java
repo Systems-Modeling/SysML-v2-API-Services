@@ -138,7 +138,6 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile CollectionAttribute<AllocationUsageImpl, Feature> connectorEnd;
 	public static volatile ListAttribute<AllocationUsageImpl, AssociationStructure> connectionDefinition;
 	public static volatile ListAttribute<AllocationUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<AllocationUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<AllocationUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<AllocationUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<AllocationUsageImpl, Disjoining> ownedDisjoining;
@@ -240,7 +239,6 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String CONNECTOR_END = "connectorEnd";
 	public static final String CONNECTION_DEFINITION = "connectionDefinition";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";

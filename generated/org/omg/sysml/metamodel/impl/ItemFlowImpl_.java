@@ -69,7 +69,6 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile CollectionAttribute<ItemFlowImpl, ItemFlowEnd> itemFlowEnd;
 	public static volatile ListAttribute<ItemFlowImpl, Element> ownedMember;
 	public static volatile ListAttribute<ItemFlowImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<ItemFlowImpl, Type> disjointType;
 	public static volatile ListAttribute<ItemFlowImpl, Classifier> itemType;
 	public static volatile CollectionAttribute<ItemFlowImpl, Disjoining> ownedDisjoining;
 	public static volatile CollectionAttribute<ItemFlowImpl, Association> association;
@@ -139,7 +138,6 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String ITEM_FLOW_END = "itemFlowEnd";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String ITEM_TYPE = "itemType";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String ASSOCIATION = "association";

@@ -106,7 +106,6 @@ public abstract class AcceptActionUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<AcceptActionUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<AcceptActionUsageImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<AcceptActionUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<AcceptActionUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<AcceptActionUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<AcceptActionUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<AcceptActionUsageImpl, Disjoining> ownedDisjoining;
@@ -198,7 +197,6 @@ public abstract class AcceptActionUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";

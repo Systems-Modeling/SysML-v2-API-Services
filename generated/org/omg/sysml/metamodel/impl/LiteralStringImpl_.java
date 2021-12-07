@@ -57,7 +57,6 @@ public abstract class LiteralStringImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static volatile SingularAttribute<LiteralStringImpl, String> name;
 	public static volatile ListAttribute<LiteralStringImpl, Element> ownedMember;
 	public static volatile ListAttribute<LiteralStringImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<LiteralStringImpl, Type> disjointType;
 	public static volatile CollectionAttribute<LiteralStringImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<LiteralStringImpl, Membership> membership;
 	public static volatile SingularAttribute<LiteralStringImpl, Boolean> isPortion;
@@ -114,7 +113,6 @@ public abstract class LiteralStringImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";

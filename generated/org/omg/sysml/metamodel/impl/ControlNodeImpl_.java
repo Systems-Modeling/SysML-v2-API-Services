@@ -106,7 +106,6 @@ public abstract class ControlNodeImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static volatile ListAttribute<ControlNodeImpl, Element> ownedMember;
 	public static volatile ListAttribute<ControlNodeImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<ControlNodeImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<ControlNodeImpl, Type> disjointType;
 	public static volatile CollectionAttribute<ControlNodeImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<ControlNodeImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<ControlNodeImpl, Disjoining> ownedDisjoining;
@@ -198,7 +197,6 @@ public abstract class ControlNodeImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";

@@ -57,7 +57,6 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile SingularAttribute<LiteralBooleanImpl, String> name;
 	public static volatile ListAttribute<LiteralBooleanImpl, Element> ownedMember;
 	public static volatile ListAttribute<LiteralBooleanImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<LiteralBooleanImpl, Type> disjointType;
 	public static volatile CollectionAttribute<LiteralBooleanImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<LiteralBooleanImpl, Membership> membership;
 	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isPortion;
@@ -114,7 +113,6 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";

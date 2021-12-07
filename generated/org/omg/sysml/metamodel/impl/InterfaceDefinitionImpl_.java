@@ -90,7 +90,6 @@ public abstract class InterfaceDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile ListAttribute<InterfaceDefinitionImpl, Usage> ownedUsage;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, Element> ownedMember;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<InterfaceDefinitionImpl, Type> disjointType;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, UseCaseUsage> ownedUseCase;
 	public static volatile CollectionAttribute<InterfaceDefinitionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, StateUsage> ownedState;
@@ -168,7 +167,6 @@ public abstract class InterfaceDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String OWNED_USAGE = "ownedUsage";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String OWNED_STATE = "ownedState";

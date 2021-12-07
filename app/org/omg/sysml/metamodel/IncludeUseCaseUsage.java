@@ -25,6 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface IncludeUseCaseUsage extends PerformActionUsage, UseCaseUsage, SysMLType {
+public interface IncludeUseCaseUsage extends UseCaseUsage, PerformActionUsage, SysMLType {
     UseCaseUsage getUseCaseIncluded();
 }
