@@ -57,7 +57,6 @@ public abstract class LiteralRationalImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile SingularAttribute<LiteralRationalImpl, String> name;
 	public static volatile ListAttribute<LiteralRationalImpl, Element> ownedMember;
 	public static volatile ListAttribute<LiteralRationalImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<LiteralRationalImpl, Type> disjointType;
 	public static volatile CollectionAttribute<LiteralRationalImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<LiteralRationalImpl, Membership> membership;
 	public static volatile SingularAttribute<LiteralRationalImpl, Boolean> isPortion;
@@ -114,7 +113,6 @@ public abstract class LiteralRationalImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";

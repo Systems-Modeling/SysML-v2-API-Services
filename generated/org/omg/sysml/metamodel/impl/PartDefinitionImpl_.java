@@ -40,7 +40,6 @@ import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Subclassification;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.TransitionUsage;
-import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.Usage;
 import org.omg.sysml.metamodel.UseCaseUsage;
 import org.omg.sysml.metamodel.VariantMembership;
@@ -88,7 +87,6 @@ public abstract class PartDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<PartDefinitionImpl, Usage> ownedUsage;
 	public static volatile ListAttribute<PartDefinitionImpl, Element> ownedMember;
 	public static volatile ListAttribute<PartDefinitionImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<PartDefinitionImpl, Type> disjointType;
 	public static volatile ListAttribute<PartDefinitionImpl, UseCaseUsage> ownedUseCase;
 	public static volatile CollectionAttribute<PartDefinitionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<PartDefinitionImpl, StateUsage> ownedState;
@@ -157,7 +155,6 @@ public abstract class PartDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_USAGE = "ownedUsage";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String OWNED_STATE = "ownedState";

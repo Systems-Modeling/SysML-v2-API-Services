@@ -59,7 +59,6 @@ public abstract class InvocationExpressionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile SingularAttribute<InvocationExpressionImpl, String> name;
 	public static volatile ListAttribute<InvocationExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<InvocationExpressionImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<InvocationExpressionImpl, Type> disjointType;
 	public static volatile CollectionAttribute<InvocationExpressionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<InvocationExpressionImpl, Membership> membership;
 	public static volatile SingularAttribute<InvocationExpressionImpl, Boolean> isPortion;
@@ -116,7 +115,6 @@ public abstract class InvocationExpressionImpl_ extends org.omg.sysml.lifecycle.
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";

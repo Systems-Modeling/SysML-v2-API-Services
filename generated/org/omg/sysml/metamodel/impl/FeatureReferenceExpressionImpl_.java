@@ -57,7 +57,6 @@ public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.life
 	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, String> name;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, Type> disjointType;
 	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Membership> membership;
 	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isPortion;
@@ -113,7 +112,6 @@ public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.life
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";

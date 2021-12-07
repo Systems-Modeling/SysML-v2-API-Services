@@ -146,7 +146,6 @@ public abstract class FlowConnectionUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile ListAttribute<FlowConnectionUsageImpl, AssociationStructure> connectionDefinition;
 	public static volatile CollectionAttribute<FlowConnectionUsageImpl, ItemFlowEnd> itemFlowEnd;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<FlowConnectionUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<FlowConnectionUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Classifier> itemType;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, CaseUsage> nestedCase;
@@ -255,7 +254,6 @@ public abstract class FlowConnectionUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String CONNECTION_DEFINITION = "connectionDefinition";
 	public static final String ITEM_FLOW_END = "itemFlowEnd";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String ITEM_TYPE = "itemType";
 	public static final String NESTED_CASE = "nestedCase";

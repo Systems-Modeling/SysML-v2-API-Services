@@ -57,7 +57,6 @@ public abstract class StepImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 	public static volatile SingularAttribute<StepImpl, String> name;
 	public static volatile ListAttribute<StepImpl, Element> ownedMember;
 	public static volatile ListAttribute<StepImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<StepImpl, Type> disjointType;
 	public static volatile CollectionAttribute<StepImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<StepImpl, Membership> membership;
 	public static volatile SingularAttribute<StepImpl, Boolean> isPortion;
@@ -112,7 +111,6 @@ public abstract class StepImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";

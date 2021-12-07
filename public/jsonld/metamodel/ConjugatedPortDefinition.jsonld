@@ -9,7 +9,6 @@
         "conjugatedPortDefinition": {"@type": "@id"},
         "directedFeature": {"@type": "@id"},
         "directedUsage": {"@type": "@id"},
-        "disjointType": {"@type": "@id"},
         "documentation": {"@type": "@id"},
         "documentationComment": {"@type": "@id"},
         "effectiveName": {"@type": "xsd:string"},

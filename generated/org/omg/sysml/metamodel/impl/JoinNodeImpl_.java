@@ -106,7 +106,6 @@ public abstract class JoinNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile ListAttribute<JoinNodeImpl, Element> ownedMember;
 	public static volatile ListAttribute<JoinNodeImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<JoinNodeImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<JoinNodeImpl, Type> disjointType;
 	public static volatile CollectionAttribute<JoinNodeImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<JoinNodeImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<JoinNodeImpl, Disjoining> ownedDisjoining;
@@ -198,7 +197,6 @@ public abstract class JoinNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";

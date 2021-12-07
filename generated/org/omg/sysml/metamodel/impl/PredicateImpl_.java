@@ -21,13 +21,11 @@ import org.omg.sysml.metamodel.Specialization;
 import org.omg.sysml.metamodel.Step;
 import org.omg.sysml.metamodel.Subclassification;
 import org.omg.sysml.metamodel.TextualRepresentation;
-import org.omg.sysml.metamodel.Type;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(PredicateImpl.class)
 public abstract class PredicateImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
-	public static volatile CollectionAttribute<PredicateImpl, Type> disjointType;
 	public static volatile SingularAttribute<PredicateImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<PredicateImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<PredicateImpl, Membership> membership;
@@ -68,7 +66,6 @@ public abstract class PredicateImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<PredicateImpl, Element> ownedMember;
 	public static volatile ListAttribute<PredicateImpl, Membership> ownedMembership;
 
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";

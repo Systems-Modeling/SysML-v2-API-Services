@@ -57,7 +57,6 @@ public abstract class PortioningFeatureImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile SingularAttribute<PortioningFeatureImpl, String> name;
 	public static volatile ListAttribute<PortioningFeatureImpl, Element> ownedMember;
 	public static volatile ListAttribute<PortioningFeatureImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<PortioningFeatureImpl, Type> disjointType;
 	public static volatile CollectionAttribute<PortioningFeatureImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<PortioningFeatureImpl, Membership> membership;
 	public static volatile SingularAttribute<PortioningFeatureImpl, Boolean> isPortion;
@@ -111,7 +110,6 @@ public abstract class PortioningFeatureImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";

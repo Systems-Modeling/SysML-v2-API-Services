@@ -13,7 +13,6 @@
         "directedFeature": {"@type": "@id"},
         "directedUsage": {"@type": "@id"},
         "direction": {"@type": "@vocab"},
-        "disjointType": {"@type": "@id"},
         "doAction": {"@type": "@id"},
         "documentation": {"@type": "@id"},
         "documentationComment": {"@type": "@id"},

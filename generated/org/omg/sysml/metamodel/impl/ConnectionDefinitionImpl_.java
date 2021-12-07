@@ -90,7 +90,6 @@ public abstract class ConnectionDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile ListAttribute<ConnectionDefinitionImpl, Usage> ownedUsage;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, Element> ownedMember;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<ConnectionDefinitionImpl, Type> disjointType;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, UseCaseUsage> ownedUseCase;
 	public static volatile CollectionAttribute<ConnectionDefinitionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, StateUsage> ownedState;
@@ -167,7 +166,6 @@ public abstract class ConnectionDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static final String OWNED_USAGE = "ownedUsage";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String OWNED_STATE = "ownedState";

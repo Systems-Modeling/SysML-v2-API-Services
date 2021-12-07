@@ -150,7 +150,6 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, AssociationStructure> connectionDefinition;
 	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, ItemFlowEnd> itemFlowEnd;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Classifier> itemType;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, CaseUsage> nestedCase;
@@ -262,7 +261,6 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static final String CONNECTION_DEFINITION = "connectionDefinition";
 	public static final String ITEM_FLOW_END = "itemFlowEnd";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String ITEM_TYPE = "itemType";
 	public static final String NESTED_CASE = "nestedCase";

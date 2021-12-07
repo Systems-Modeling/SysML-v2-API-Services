@@ -138,7 +138,6 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Feature> connectorEnd;
 	public static volatile ListAttribute<InterfaceUsageImpl, AssociationStructure> connectionDefinition;
 	public static volatile ListAttribute<InterfaceUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<InterfaceUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<InterfaceUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Disjoining> ownedDisjoining;
@@ -240,7 +239,6 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String CONNECTOR_END = "connectorEnd";
 	public static final String CONNECTION_DEFINITION = "connectionDefinition";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";

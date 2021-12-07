@@ -136,7 +136,6 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<ViewpointUsageImpl, ConstraintUsage> assumedConstraint;
 	public static volatile SingularAttribute<ViewpointUsageImpl, String> name;
 	public static volatile ListAttribute<ViewpointUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<ViewpointUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<ViewpointUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<ViewpointUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<ViewpointUsageImpl, Disjoining> ownedDisjoining;
@@ -236,7 +235,6 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String ASSUMED_CONSTRAINT = "assumedConstraint";
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";

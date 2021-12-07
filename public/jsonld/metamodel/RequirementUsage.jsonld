@@ -15,7 +15,6 @@
         "directedFeature": {"@type": "@id"},
         "directedUsage": {"@type": "@id"},
         "direction": {"@type": "@vocab"},
-        "disjointType": {"@type": "@id"},
         "documentation": {"@type": "@id"},
         "documentationComment": {"@type": "@id"},
         "effectiveName": {"@type": "xsd:string"},

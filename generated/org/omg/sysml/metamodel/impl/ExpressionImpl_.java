@@ -57,7 +57,6 @@ public abstract class ExpressionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile SingularAttribute<ExpressionImpl, String> name;
 	public static volatile ListAttribute<ExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<ExpressionImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<ExpressionImpl, Type> disjointType;
 	public static volatile CollectionAttribute<ExpressionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<ExpressionImpl, Membership> membership;
 	public static volatile SingularAttribute<ExpressionImpl, Boolean> isPortion;
@@ -113,7 +112,6 @@ public abstract class ExpressionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";

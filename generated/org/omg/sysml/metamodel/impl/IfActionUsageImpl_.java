@@ -106,7 +106,6 @@ public abstract class IfActionUsageImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static volatile ListAttribute<IfActionUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<IfActionUsageImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<IfActionUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<IfActionUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<IfActionUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<IfActionUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<IfActionUsageImpl, Disjoining> ownedDisjoining;
@@ -198,7 +197,6 @@ public abstract class IfActionUsageImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";

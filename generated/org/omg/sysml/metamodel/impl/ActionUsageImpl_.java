@@ -106,7 +106,6 @@ public abstract class ActionUsageImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static volatile ListAttribute<ActionUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<ActionUsageImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<ActionUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<ActionUsageImpl, Type> disjointType;
 	public static volatile CollectionAttribute<ActionUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<ActionUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<ActionUsageImpl, Disjoining> ownedDisjoining;
@@ -198,7 +197,6 @@ public abstract class ActionUsageImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";

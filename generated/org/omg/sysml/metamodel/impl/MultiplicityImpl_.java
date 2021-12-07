@@ -56,7 +56,6 @@ public abstract class MultiplicityImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static volatile SingularAttribute<MultiplicityImpl, String> name;
 	public static volatile ListAttribute<MultiplicityImpl, Element> ownedMember;
 	public static volatile ListAttribute<MultiplicityImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<MultiplicityImpl, Type> disjointType;
 	public static volatile CollectionAttribute<MultiplicityImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<MultiplicityImpl, Membership> membership;
 	public static volatile SingularAttribute<MultiplicityImpl, Boolean> isPortion;
@@ -109,7 +108,6 @@ public abstract class MultiplicityImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String DISJOINT_TYPE = "disjointType";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";
