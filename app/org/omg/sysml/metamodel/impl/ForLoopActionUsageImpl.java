@@ -874,6 +874,27 @@ public class ForLoopActionUsageImpl extends SysMLTypeImpl implements ForLoopActi
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("loopVariable")
+    private ReferenceUsage loopVariable;
+
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "ReferenceUsageMetaDef", metaColumn = @javax.persistence.Column(name = "loopVariableType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "loopVariableId", table = "ForLoopActionUsage")
+    public ReferenceUsage getLoopVariable() {
+        return loopVariable;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = ReferenceUsageImpl.class)
+    public void setLoopVariable(ReferenceUsage loopVariable) {
+        this.loopVariable = loopVariable;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("member")
     private List<Element> member;
 

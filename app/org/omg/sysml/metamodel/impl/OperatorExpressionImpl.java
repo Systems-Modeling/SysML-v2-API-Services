@@ -861,11 +861,13 @@ public class OperatorExpressionImpl extends SysMLTypeImpl implements OperatorExp
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("operand")
     private List<Expression> operand;
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
     @ManyToAny(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
     @JoinTable(name = "OperatorExpression_operand",
             joinColumns = @JoinColumn(name = "classId"),
