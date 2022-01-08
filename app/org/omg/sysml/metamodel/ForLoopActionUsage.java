@@ -26,5 +26,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface ForLoopActionUsage extends LoopActionUsage, SysMLType {
+    ReferenceUsage getLoopVariable();
+
     Expression getSeqArgument();
 }

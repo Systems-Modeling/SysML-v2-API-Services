@@ -2475,11 +2475,13 @@ public class AssignmentActionUsageImpl extends SysMLTypeImpl implements Assignme
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("valueExpression")
     private Expression valueExpression;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "valueExpressionType"), fetch = FetchType.LAZY)
     @JoinColumn(name = "valueExpressionId", table = "AssignmentActionUsage")
     public Expression getValueExpression() {
