@@ -43,6 +43,7 @@
         "isSufficient": {"@type": "xsd:boolean"},
         "isUnique": {"@type": "xsd:boolean"},
         "isVariation": {"@type": "xsd:boolean"},
+        "loopVariable": {"@type": "@id"},
         "member": {"@type": "@id"},
         "membership": {"@type": "@id"},
         "multiplicity": {"@type": "@id"},
