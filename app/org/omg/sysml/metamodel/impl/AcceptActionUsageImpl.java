@@ -2322,6 +2322,48 @@ public class AcceptActionUsageImpl extends SysMLTypeImpl implements AcceptAction
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("payloadArgument")
+    private Expression payloadArgument;
+
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "payloadArgumentType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "payloadArgumentId", table = "AcceptActionUsage")
+    public Expression getPayloadArgument() {
+        return payloadArgument;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = ExpressionImpl.class)
+    public void setPayloadArgument(Expression payloadArgument) {
+        this.payloadArgument = payloadArgument;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("payloadParameter")
+    private ReferenceUsage payloadParameter;
+
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "ReferenceUsageMetaDef", metaColumn = @javax.persistence.Column(name = "payloadParameterType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "payloadParameterId", table = "AcceptActionUsage")
+    public ReferenceUsage getPayloadParameter() {
+        return payloadParameter;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = ReferenceUsageImpl.class)
+    public void setPayloadParameter(ReferenceUsage payloadParameter) {
+        this.payloadParameter = payloadParameter;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("portionKind")
     // @info.archinnov.achilles.annotations.Enumerated(info.archinnov.achilles.annotations.Enumerated.Encoding.NAME)
     private PortionKind portionKind;
@@ -2398,6 +2440,24 @@ public class AcceptActionUsageImpl extends SysMLTypeImpl implements AcceptAction
     @JsonDeserialize(using = DataDeserializer.class, as = ExpressionImpl.class)
     public void setReceiverArgument(Expression receiverArgument) {
         this.receiverArgument = receiverArgument;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("triggerKind")
+    // @info.archinnov.achilles.annotations.Enumerated(info.archinnov.achilles.annotations.Enumerated.Encoding.NAME)
+    private TriggerKind triggerKind;
+
+    @JsonGetter
+    @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "triggerKind", table = "AcceptActionUsage")
+    public TriggerKind getTriggerKind() {
+        return triggerKind;
+    }
+
+    @JsonSetter
+    public void setTriggerKind(TriggerKind triggerKind) {
+        this.triggerKind = triggerKind;
     }
 
 
