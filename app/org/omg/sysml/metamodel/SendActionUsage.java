@@ -28,5 +28,5 @@ import java.util.Set;
 public interface SendActionUsage extends ActionUsage, SysMLType {
     Expression getReceiverArgument();
 
-    Expression getItemsArgument();
+    Expression getPayloadArgument();
 }

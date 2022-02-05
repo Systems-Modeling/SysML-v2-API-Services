@@ -48,6 +48,7 @@ import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.TransitionUsage;
+import org.omg.sysml.metamodel.TriggerKind;
 import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.TypeFeaturing;
 import org.omg.sysml.metamodel.Usage;
@@ -70,6 +71,7 @@ public abstract class AcceptActionUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile SingularAttribute<AcceptActionUsageImpl, Boolean> isUnique;
 	public static volatile ListAttribute<AcceptActionUsageImpl, Usage> nestedUsage;
 	public static volatile CollectionAttribute<AcceptActionUsageImpl, Subsetting> ownedSubsetting;
+	public static volatile SingularAttribute<AcceptActionUsageImpl, TriggerKind> triggerKind;
 	public static volatile ListAttribute<AcceptActionUsageImpl, Type> type;
 	public static volatile ListAttribute<AcceptActionUsageImpl, RequirementUsage> nestedRequirement;
 	public static volatile ListAttribute<AcceptActionUsageImpl, Feature> output;
@@ -161,6 +163,7 @@ public abstract class AcceptActionUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String NESTED_USAGE = "nestedUsage";
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
+	public static final String TRIGGER_KIND = "triggerKind";
 	public static final String TYPE = "type";
 	public static final String NESTED_REQUIREMENT = "nestedRequirement";
 	public static final String OUTPUT = "output";

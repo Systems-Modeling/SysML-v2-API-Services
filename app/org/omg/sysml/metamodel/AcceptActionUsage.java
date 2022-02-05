@@ -27,4 +27,10 @@ import java.util.Set;
 
 public interface AcceptActionUsage extends ActionUsage, SysMLType {
     Expression getReceiverArgument();
+
+    ReferenceUsage getPayloadParameter();
+
+    Expression getPayloadArgument();
+
+    TriggerKind getTriggerKind();
 }
