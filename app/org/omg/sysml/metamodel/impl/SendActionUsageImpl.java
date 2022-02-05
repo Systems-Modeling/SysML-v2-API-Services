@@ -853,27 +853,6 @@ public class SendActionUsageImpl extends SysMLTypeImpl implements SendActionUsag
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("itemsArgument")
-    private Expression itemsArgument;
-
-    @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "itemsArgumentType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "itemsArgumentId", table = "SendActionUsage")
-    public Expression getItemsArgument() {
-        return itemsArgument;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = ExpressionImpl.class)
-    public void setItemsArgument(Expression itemsArgument) {
-        this.itemsArgument = itemsArgument;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("member")
     private List<Element> member;
 
@@ -2339,6 +2318,27 @@ public class SendActionUsageImpl extends SysMLTypeImpl implements SendActionUsag
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setParameter(List<Feature> parameter) {
         this.parameter = parameter;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("payloadArgument")
+    private Expression payloadArgument;
+
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "payloadArgumentType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "payloadArgumentId", table = "SendActionUsage")
+    public Expression getPayloadArgument() {
+        return payloadArgument;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = ExpressionImpl.class)
+    public void setPayloadArgument(Expression payloadArgument) {
+        this.payloadArgument = payloadArgument;
     }
 
 

@@ -21,12 +21,9 @@
 
 package org.omg.sysml.metamodel;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Set;
-
-public interface ForLoopActionUsage extends LoopActionUsage, SysMLType {
-    Expression getSeqArgument();
-
-    ReferenceUsage getLoopVariable();
+public enum TriggerKind {
+    ACCEPT,
+    WHEN,
+    AT,
+    AFTER
 }
