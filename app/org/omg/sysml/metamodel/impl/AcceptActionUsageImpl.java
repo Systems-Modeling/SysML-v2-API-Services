@@ -2444,24 +2444,6 @@ public class AcceptActionUsageImpl extends SysMLTypeImpl implements AcceptAction
 
 
 
-    // @info.archinnov.achilles.annotations.Column("triggerKind")
-    // @info.archinnov.achilles.annotations.Enumerated(info.archinnov.achilles.annotations.Enumerated.Encoding.NAME)
-    private TriggerKind triggerKind;
-
-    @JsonGetter
-    @javax.persistence.Enumerated(EnumType.STRING)
-    @javax.persistence.Column(name = "triggerKind", table = "AcceptActionUsage")
-    public TriggerKind getTriggerKind() {
-        return triggerKind;
-    }
-
-    @JsonSetter
-    public void setTriggerKind(TriggerKind triggerKind) {
-        this.triggerKind = triggerKind;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("type")
     private List<Type> type;

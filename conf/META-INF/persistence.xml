@@ -169,6 +169,7 @@
         <class>org.omg.sysml.metamodel.impl.TextualRepresentationImpl</class>
         <class>org.omg.sysml.metamodel.impl.TransitionFeatureMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.TransitionUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.TriggerInvocationExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.TypeFeaturingImpl</class>
         <class>org.omg.sysml.metamodel.impl.TypeImpl</class>
         <class>org.omg.sysml.metamodel.impl.UsageImpl</class>
