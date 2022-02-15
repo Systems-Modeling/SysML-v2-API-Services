@@ -21,8 +21,10 @@
 
 package org.omg.sysml.metamodel;
 
-public enum TriggerKind {
-    WHEN,
-    AT,
-    AFTER
+import java.util.Collection;
+import java.util.List;
+import java.util.Set;
+
+public interface TriggerInvocationExpression extends InvocationExpression, SysMLType {
+    TriggerKind getKind();
 }
