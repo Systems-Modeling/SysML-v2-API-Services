@@ -172,6 +172,7 @@
                         @MetaValue(value = "TextualRepresentation", targetEntity = TextualRepresentationImpl.class),
                         @MetaValue(value = "TransitionFeatureMembership", targetEntity = TransitionFeatureMembershipImpl.class),
                         @MetaValue(value = "TransitionUsage", targetEntity = TransitionUsageImpl.class),
+                        @MetaValue(value = "TriggerInvocationExpression", targetEntity = TriggerInvocationExpressionImpl.class),
                         @MetaValue(value = "Type", targetEntity = TypeImpl.class),
                         @MetaValue(value = "TypeFeaturing", targetEntity = TypeFeaturingImpl.class),
                         @MetaValue(value = "Usage", targetEntity = UsageImpl.class),

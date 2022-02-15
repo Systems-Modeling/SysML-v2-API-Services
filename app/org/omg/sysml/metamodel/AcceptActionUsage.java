@@ -31,6 +31,4 @@ public interface AcceptActionUsage extends ActionUsage, SysMLType {
     ReferenceUsage getPayloadParameter();
 
     Expression getPayloadArgument();
-
-    TriggerKind getTriggerKind();
 }
