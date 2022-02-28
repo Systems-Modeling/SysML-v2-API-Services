@@ -34,6 +34,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.BiFunction;
 
 @Singleton
 public class CommitService extends BaseService<Commit, CommitDao> {
@@ -49,6 +50,14 @@ public class CommitService extends BaseService<Commit, CommitDao> {
     }
 
     public Optional<Commit> create(UUID projectId, UUID branchId, Commit commit) {
+        return create(projectId, branchId, commit, dao::persist);
+    }
+
+    public Optional<Commit> createNameResolved(UUID projectId, UUID branchId, Commit commit) {
+        return create(projectId, branchId, commit, dao::persistNameResolved);
+    }
+
+    private Optional<Commit> create(UUID projectId, UUID branchId, Commit commit, BiFunction<Commit, Branch, Optional<Commit>> persister) {
         Project project = projectDao.findById(projectId)
                 .orElseThrow(() -> new IllegalArgumentException("Project " + projectId + " not found"));
         commit.setOwningProject(project);
@@ -57,7 +66,7 @@ public class CommitService extends BaseService<Commit, CommitDao> {
                         .orElseThrow(() -> new IllegalArgumentException("Branch " + branchId + " not found")) :
                 Optional.ofNullable(project.getDefaultBranch())
                         .orElseThrow(() -> new IllegalStateException("Branch not specified and project does not have default branch"));
-        return dao.persist(commit, branch);
+        return persister.apply(commit, branch);
     }
 
     public List<Commit> getByProjectId(UUID projectId, UUID after, UUID before, int maxResults) {

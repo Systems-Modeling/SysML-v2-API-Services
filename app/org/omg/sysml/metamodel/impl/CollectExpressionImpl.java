@@ -61,14 +61,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
-@Entity(name = "PathSelectExpressionImpl")
-@SecondaryTable(name = "PathSelectExpression")
-@org.hibernate.annotations.Table(appliesTo = "PathSelectExpression", fetch = FetchMode.SELECT, optional = false)
-// @info.archinnov.achilles.annotations.Table(table = "PathSelectExpression")
-@DiscriminatorValue(value = "PathSelectExpression")
-@JsonTypeName(value = "PathSelectExpression")
+@Entity(name = "CollectExpressionImpl")
+@SecondaryTable(name = "CollectExpression")
+@org.hibernate.annotations.Table(appliesTo = "CollectExpression", fetch = FetchMode.SELECT, optional = false)
+// @info.archinnov.achilles.annotations.Table(table = "CollectExpression")
+@DiscriminatorValue(value = "CollectExpression")
+@JsonTypeName(value = "CollectExpression")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelectExpression {
+public class CollectExpressionImpl extends SysMLTypeImpl implements CollectExpression {
     // @info.archinnov.achilles.annotations.Column("aliasId")
     private List<String> aliasId;
 
@@ -76,8 +76,8 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "PathSelectExpression_aliasId",
-            joinColumns = @JoinColumn(name = "PathSelectExpressionId"))
+    @CollectionTable(name = "CollectExpression_aliasId",
+            joinColumns = @JoinColumn(name = "CollectExpressionId"))
     public List<String> getAliasId() {
         if (aliasId == null) {
             aliasId = new ArrayList<>();
@@ -100,7 +100,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_argument",
+    @JoinTable(name = "CollectExpression_argument",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Expression> getArgument() {
@@ -126,7 +126,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "BehaviorMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_behavior",
+    @JoinTable(name = "CollectExpression_behavior",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Behavior> getBehavior() {
@@ -152,7 +152,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_chainingFeature",
+    @JoinTable(name = "CollectExpression_chainingFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getChainingFeature() {
@@ -178,7 +178,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_directedFeature",
+    @JoinTable(name = "CollectExpression_directedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getDirectedFeature() {
@@ -202,7 +202,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
 
     @JsonGetter
     @javax.persistence.Enumerated(EnumType.STRING)
-    @javax.persistence.Column(name = "direction", table = "PathSelectExpression")
+    @javax.persistence.Column(name = "direction", table = "CollectExpression")
     public FeatureDirectionKind getDirection() {
         return direction;
     }
@@ -222,7 +222,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_documentation",
+    @JoinTable(name = "CollectExpression_documentation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Documentation> getDocumentation() {
@@ -248,7 +248,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_documentationComment",
+    @JoinTable(name = "CollectExpression_documentationComment",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Comment> getDocumentationComment() {
@@ -274,7 +274,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "effectiveName", table = "PathSelectExpression")
+    @javax.persistence.Column(name = "effectiveName", table = "CollectExpression")
     public String getEffectiveName() {
         return effectiveName;
     }
@@ -294,7 +294,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_endFeature",
+    @JoinTable(name = "CollectExpression_endFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getEndFeature() {
@@ -320,7 +320,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "endOwningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "endOwningTypeId", table = "PathSelectExpression")
+    @JoinColumn(name = "endOwningTypeId", table = "CollectExpression")
     public Type getEndOwningType() {
         return endOwningType;
     }
@@ -341,7 +341,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_feature",
+    @JoinTable(name = "CollectExpression_feature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getFeature() {
@@ -367,7 +367,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_featureMembership",
+    @JoinTable(name = "CollectExpression_featureMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureMembership> getFeatureMembership() {
@@ -393,7 +393,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_featuringType",
+    @JoinTable(name = "CollectExpression_featuringType",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Type> getFeaturingType() {
@@ -419,7 +419,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "FunctionMetaDef", metaColumn = @javax.persistence.Column(name = "functionType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "functionId", table = "PathSelectExpression")
+    @JoinColumn(name = "functionId", table = "CollectExpression")
     public Function getFunction() {
         return function;
     }
@@ -438,7 +438,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "humanId", table = "PathSelectExpression")
+    @javax.persistence.Column(name = "humanId", table = "CollectExpression")
     public String getHumanId() {
         return humanId;
     }
@@ -454,7 +454,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     private java.util.UUID identifier;
 
     @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "PathSelectExpression")
+    @javax.persistence.Column(name = "identifier", table = "CollectExpression")
     public java.util.UUID getIdentifier() {
         return identifier;
     }
@@ -474,7 +474,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_importedMembership",
+    @JoinTable(name = "CollectExpression_importedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getImportedMembership() {
@@ -500,7 +500,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_inheritedFeature",
+    @JoinTable(name = "CollectExpression_inheritedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getInheritedFeature() {
@@ -526,7 +526,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_inheritedMembership",
+    @JoinTable(name = "CollectExpression_inheritedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getInheritedMembership() {
@@ -552,7 +552,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_input",
+    @JoinTable(name = "CollectExpression_input",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getInput() {
@@ -574,7 +574,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     private Boolean isAbstract;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isAbstract", table = "PathSelectExpression")
+    @javax.persistence.Column(name = "isAbstract", table = "CollectExpression")
     public Boolean getIsAbstract() {
         return isAbstract;
     }
@@ -590,7 +590,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     private Boolean isComposite;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isComposite", table = "PathSelectExpression")
+    @javax.persistence.Column(name = "isComposite", table = "CollectExpression")
     public Boolean getIsComposite() {
         return isComposite;
     }
@@ -608,7 +608,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isConjugated", table = "PathSelectExpression")
+    @javax.persistence.Column(name = "isConjugated", table = "CollectExpression")
     public Boolean getIsConjugated() {
         return isConjugated;
     }
@@ -624,7 +624,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     private Boolean isDerived;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isDerived", table = "PathSelectExpression")
+    @javax.persistence.Column(name = "isDerived", table = "CollectExpression")
     public Boolean getIsDerived() {
         return isDerived;
     }
@@ -640,7 +640,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     private Boolean isEnd;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isEnd", table = "PathSelectExpression")
+    @javax.persistence.Column(name = "isEnd", table = "CollectExpression")
     public Boolean getIsEnd() {
         return isEnd;
     }
@@ -658,7 +658,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isModelLevelEvaluable", table = "PathSelectExpression")
+    @javax.persistence.Column(name = "isModelLevelEvaluable", table = "CollectExpression")
     public Boolean getIsModelLevelEvaluable() {
         return isModelLevelEvaluable;
     }
@@ -676,7 +676,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
 
     @JsonGetter
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isNonunique", table = "PathSelectExpression")
+    @javax.persistence.Column(name = "isNonunique", table = "CollectExpression")
     public Boolean getIsNonunique() {
         return isNonunique;
     }
@@ -692,7 +692,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     private Boolean isOrdered;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isOrdered", table = "PathSelectExpression")
+    @javax.persistence.Column(name = "isOrdered", table = "CollectExpression")
     public Boolean getIsOrdered() {
         return isOrdered;
     }
@@ -708,7 +708,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     private Boolean isPortion;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isPortion", table = "PathSelectExpression")
+    @javax.persistence.Column(name = "isPortion", table = "CollectExpression")
     public Boolean getIsPortion() {
         return isPortion;
     }
@@ -724,7 +724,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     private Boolean isReadOnly;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isReadOnly", table = "PathSelectExpression")
+    @javax.persistence.Column(name = "isReadOnly", table = "CollectExpression")
     public Boolean getIsReadOnly() {
         return isReadOnly;
     }
@@ -740,7 +740,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     private Boolean isSufficient;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isSufficient", table = "PathSelectExpression")
+    @javax.persistence.Column(name = "isSufficient", table = "CollectExpression")
     public Boolean getIsSufficient() {
         return isSufficient;
     }
@@ -756,7 +756,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     private Boolean isUnique;
 
     @JsonGetter
-    @javax.persistence.Column(name = "isUnique", table = "PathSelectExpression")
+    @javax.persistence.Column(name = "isUnique", table = "CollectExpression")
     public Boolean getIsUnique() {
         return isUnique;
     }
@@ -776,7 +776,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_member",
+    @JoinTable(name = "CollectExpression_member",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getMember() {
@@ -802,7 +802,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_membership",
+    @JoinTable(name = "CollectExpression_membership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getMembership() {
@@ -828,7 +828,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "multiplicityId", table = "PathSelectExpression")
+    @JoinColumn(name = "multiplicityId", table = "CollectExpression")
     public Multiplicity getMultiplicity() {
         return multiplicity;
     }
@@ -849,7 +849,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "name", table = "PathSelectExpression")
+    @javax.persistence.Column(name = "name", table = "CollectExpression")
     public String getName() {
         return name;
     }
@@ -869,7 +869,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_operand",
+    @JoinTable(name = "CollectExpression_operand",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Expression> getOperand() {
@@ -893,7 +893,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "operator", table = "PathSelectExpression")
+    @javax.persistence.Column(name = "operator", table = "CollectExpression")
     public String getOperator() {
         return operator;
     }
@@ -913,7 +913,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_output",
+    @JoinTable(name = "CollectExpression_output",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getOutput() {
@@ -939,7 +939,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_ownedAnnotation",
+    @JoinTable(name = "CollectExpression_ownedAnnotation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Annotation> getOwnedAnnotation() {
@@ -965,7 +965,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConjugatorType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedConjugatorId", table = "PathSelectExpression")
+    @JoinColumn(name = "ownedConjugatorId", table = "CollectExpression")
     public Conjugation getOwnedConjugator() {
         return ownedConjugator;
     }
@@ -986,7 +986,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "DisjoiningMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_ownedDisjoining",
+    @JoinTable(name = "CollectExpression_ownedDisjoining",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Disjoining> getOwnedDisjoining() {
@@ -1012,7 +1012,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_ownedElement",
+    @JoinTable(name = "CollectExpression_ownedElement",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getOwnedElement() {
@@ -1038,7 +1038,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_ownedEndFeature",
+    @JoinTable(name = "CollectExpression_ownedEndFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getOwnedEndFeature() {
@@ -1064,7 +1064,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_ownedFeature",
+    @JoinTable(name = "CollectExpression_ownedFeature",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getOwnedFeature() {
@@ -1090,7 +1090,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureChainingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_ownedFeatureChaining",
+    @JoinTable(name = "CollectExpression_ownedFeatureChaining",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureChaining> getOwnedFeatureChaining() {
@@ -1116,7 +1116,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_ownedFeatureMembership",
+    @JoinTable(name = "CollectExpression_ownedFeatureMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureMembership> getOwnedFeatureMembership() {
@@ -1142,7 +1142,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_ownedImport",
+    @JoinTable(name = "CollectExpression_ownedImport",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Import> getOwnedImport() {
@@ -1168,7 +1168,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_ownedMember",
+    @JoinTable(name = "CollectExpression_ownedMember",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Element> getOwnedMember() {
@@ -1194,7 +1194,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_ownedMembership",
+    @JoinTable(name = "CollectExpression_ownedMembership",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Membership> getOwnedMembership() {
@@ -1220,7 +1220,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "RedefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_ownedRedefinition",
+    @JoinTable(name = "CollectExpression_ownedRedefinition",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Redefinition> getOwnedRedefinition() {
@@ -1244,7 +1244,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_ownedRelationship",
+    @JoinTable(name = "CollectExpression_ownedRelationship",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Relationship> getOwnedRelationship() {
@@ -1270,7 +1270,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "SpecializationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_ownedSpecialization",
+    @JoinTable(name = "CollectExpression_ownedSpecialization",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Specialization> getOwnedSpecialization() {
@@ -1296,7 +1296,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "SubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_ownedSubsetting",
+    @JoinTable(name = "CollectExpression_ownedSubsetting",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<Subsetting> getOwnedSubsetting() {
@@ -1322,7 +1322,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_ownedTextualRepresentation",
+    @JoinTable(name = "CollectExpression_ownedTextualRepresentation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public Collection<TextualRepresentation> getOwnedTextualRepresentation() {
@@ -1348,7 +1348,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeFeaturingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_ownedTypeFeaturing",
+    @JoinTable(name = "CollectExpression_ownedTypeFeaturing",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<TypeFeaturing> getOwnedTypeFeaturing() {
@@ -1374,7 +1374,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_ownedTyping",
+    @JoinTable(name = "CollectExpression_ownedTyping",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<FeatureTyping> getOwnedTyping() {
@@ -1400,7 +1400,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownerId", table = "PathSelectExpression")
+    @JoinColumn(name = "ownerId", table = "CollectExpression")
     public Element getOwner() {
         return owner;
     }
@@ -1419,7 +1419,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningFeatureMembershipId", table = "PathSelectExpression")
+    @JoinColumn(name = "owningFeatureMembershipId", table = "CollectExpression")
     public FeatureMembership getOwningFeatureMembership() {
         return owningFeatureMembership;
     }
@@ -1438,7 +1438,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningMembershipId", table = "PathSelectExpression")
+    @JoinColumn(name = "owningMembershipId", table = "CollectExpression")
     public Membership getOwningMembership() {
         return owningMembership;
     }
@@ -1459,7 +1459,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "PathSelectExpression")
+    @JoinColumn(name = "owningNamespaceId", table = "CollectExpression")
     public Namespace getOwningNamespace() {
         return owningNamespace;
     }
@@ -1478,7 +1478,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelationshipId", table = "PathSelectExpression")
+    @JoinColumn(name = "owningRelationshipId", table = "CollectExpression")
     public Relationship getOwningRelationship() {
         return owningRelationship;
     }
@@ -1499,7 +1499,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningTypeId", table = "PathSelectExpression")
+    @JoinColumn(name = "owningTypeId", table = "CollectExpression")
     public Type getOwningType() {
         return owningType;
     }
@@ -1520,7 +1520,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_parameter",
+    @JoinTable(name = "CollectExpression_parameter",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Feature> getParameter() {
@@ -1546,7 +1546,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "qualifiedName", table = "PathSelectExpression")
+    @javax.persistence.Column(name = "qualifiedName", table = "CollectExpression")
     public String getQualifiedName() {
         return qualifiedName;
     }
@@ -1566,7 +1566,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "resultType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "resultId", table = "PathSelectExpression")
+    @JoinColumn(name = "resultId", table = "CollectExpression")
     public Feature getResult() {
         return result;
     }
@@ -1587,7 +1587,7 @@ public class PathSelectExpressionImpl extends SysMLTypeImpl implements PathSelec
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PathSelectExpression_type",
+    @JoinTable(name = "CollectExpression_type",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
     public List<Type> getType() {

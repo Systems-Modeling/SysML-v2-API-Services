@@ -20,15 +20,17 @@
 
 package dao.impl.jpa;
 
+import com.google.common.collect.Streams;
 import config.MetamodelProvider;
 import dao.DataDao;
 import javabean.JavaBeanHelper;
 import jpa.manager.JPAManager;
 import org.hibernate.Hibernate;
 import org.hibernate.proxy.HibernateProxy;
-import org.omg.sysml.internal.CommitIndex;
-import org.omg.sysml.internal.impl.CommitIndexImpl;
-import org.omg.sysml.internal.impl.CommitIndexImpl_;
+import org.omg.sysml.data.ProjectUsage;
+import org.omg.sysml.internal.CommitDataVersionIndex;
+import org.omg.sysml.internal.impl.CommitDataVersionIndexImpl;
+import org.omg.sysml.internal.impl.CommitDataVersionIndexImpl_;
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.Data;
 import org.omg.sysml.lifecycle.DataIdentity;
@@ -37,7 +39,6 @@ import org.omg.sysml.lifecycle.impl.CommitImpl;
 import org.omg.sysml.query.*;
 import org.omg.sysml.query.impl.QueryImpl;
 
-import javax.annotation.Nullable;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -50,21 +51,23 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
 import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class JpaDataDao extends JpaDao<Data> implements DataDao {
+public class JpaDataDao implements DataDao {
 
     // TODO Explore alternative to serializing lazy entity attributes that doesn't involve resolving all proxies one level.
-    protected static UnaryOperator<Data> PROXY_RESOLVER = data -> {
-        data = Hibernate.unproxy(data, Data.class);
-        JavaBeanHelper.getBeanPropertyValues(data).values().stream()
+    protected static <D extends Data> D resolve(D data, Class<D> clazz) {
+        if (data == null) {
+            return null;
+        }
+        D resolved = Hibernate.unproxy(data, clazz);
+        JavaBeanHelper.getBeanPropertyValues(resolved).values().stream()
                 .flatMap(o -> o instanceof Collection ? ((Collection<?>) o).stream() :
                         Stream.of(o)).filter(o -> o instanceof Data)
                 .map(o -> (Data) o).forEach(Hibernate::unproxy);
-        return data;
-    };
+        return resolved;
+    }
 
     protected static List<Class<?>> SUPPORTED_PRIMITIVE_CONSTRAINT_CLASSES = Arrays.asList(
             Number.class,
@@ -75,32 +78,13 @@ public class JpaDataDao extends JpaDao<Data> implements DataDao {
     @SuppressWarnings({"unchecked", "rawtypes"})
     protected static Comparator<Object> UNSAFE_COMPARABLE_COMPARATOR = (o1, o2) -> ((Comparable) o1).compareTo(o2);
 
+    private final JPAManager jpaManager;
     private final MetamodelProvider metamodelProvider;
 
     @Inject
     public JpaDataDao(JPAManager jpaManager, MetamodelProvider metamodelProvider) {
-        super(jpaManager);
+        this.jpaManager = jpaManager;
         this.metamodelProvider = metamodelProvider;
-    }
-
-    @Override
-    public Optional<Data> findById(UUID id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public List<Data> findAll() {
-        return null;
-    }
-
-    @Override
-    public List<Data> findAll(@Nullable UUID after, @Nullable UUID before, int maxResults) {
-        return null;
-    }
-
-    @Override
-    public void deleteAll() {
-
     }
 
     @Override
@@ -109,54 +93,71 @@ public class JpaDataDao extends JpaDao<Data> implements DataDao {
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
             Commit c = em.contains(commit) ? commit : em.find(CommitImpl.class, commit.getId());
             Query q = query.getId() == null || em.contains(query) ? query : em.find(QueryImpl.class, query.getId());
-            return getCommitIndex(c, em).getWorkingDataVersions().stream()
+            return getCommitIndex(c, em).getWorkingDataVersion().stream()
                     .filter(scope(q))
                     .map(DataVersion::getPayload)
                     .filter(constrain(q.getWhere()))
-                    .map(PROXY_RESOLVER)
+                    .map(data -> JpaDataDao.resolve(data, Data.class))
                     .collect(Collectors.toList());
         });
     }
 
-    protected CommitIndex getCommitIndex(Commit commit, EntityManager em) {
+    protected CommitDataVersionIndex getCommitIndex(Commit commit, EntityManager em) {
         CriteriaBuilder builder = em.getCriteriaBuilder();
-        CriteriaQuery<CommitIndexImpl> query = builder.createQuery(CommitIndexImpl.class);
-        Root<CommitIndexImpl> root = query.from(CommitIndexImpl.class);
-        query.select(root).where(builder.equal(root.get(CommitIndexImpl_.id), commit.getId()));
-        CommitIndex commitIndex = null;
+        CriteriaQuery<CommitDataVersionIndexImpl> query = builder.createQuery(CommitDataVersionIndexImpl.class);
+        Root<CommitDataVersionIndexImpl> root = query.from(CommitDataVersionIndexImpl.class);
+        query.select(root).where(builder.equal(root.get(CommitDataVersionIndexImpl_.id), commit.getId()));
         try {
-            commitIndex = em.createQuery(query).getSingleResult();
+            return em.createQuery(query).getSingleResult();
         } catch (NoResultException ignored) {
         }
-        if (commitIndex != null) {
-            return commitIndex;
-        }
 
-        commitIndex = new CommitIndexImpl();
-        commitIndex.setCommit(commit);
-        commitIndex.setWorkingDataVersions(streamWorkingDataVersions(commit).collect(Collectors.toSet()));
+        CommitDataVersionIndex index = new CommitDataVersionIndexImpl();
+        index.setCommit(commit);
+        index.setWorkingDataVersion(streamWorkingDataVersions(commit, em).collect(Collectors.toSet()));
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        em.persist(commitIndex);
+        em.persist(index);
         transaction.commit();
-        return commitIndex;
+        return index;
     }
 
-    protected Stream<DataVersion> streamWorkingDataVersions(Commit commit) {
+    protected Stream<DataVersion> streamWorkingDataVersions(Commit commit, EntityManager em) {
         Set<UUID> visitedIds = ConcurrentHashMap.newKeySet();
-        Map<Commit, Stream<DataVersion>> results = queryCommitTree(commit,
+        Set<ProjectUsage> projectUsages = ConcurrentHashMap.newKeySet();
+        Map<Commit, Set<DataVersion>> results = queryCommitTree(commit,
                 c -> c.getChange().stream()
-                        .filter(record -> record.getIdentity() != null && record.getIdentity().getId() != null && record.getPayload() != null)
+                        .filter(record -> record.getIdentity() != null && record.getIdentity().getId() != null)
                         .filter(record -> !visitedIds.contains(record.getIdentity().getId()))
-                        .peek(record -> visitedIds.add(record.getIdentity().getId())));
-        return results.values().stream().flatMap(Function.identity());
+                        .peek(record -> visitedIds.add(record.getIdentity().getId()))
+                        .filter(record -> record.getPayload() != null)
+                        .peek(record -> {
+                            if (record.getPayload() instanceof ProjectUsage) {
+                                projectUsages.add(((ProjectUsage) record.getPayload()));
+                            }
+                        })
+                        .collect(Collectors.toSet())
+        );
+        Stream<DataVersion> ownedDataVersions = results.values().stream()
+                .flatMap(Set::stream);
+        Stream<DataVersion> usedDataVersions = projectUsages.stream()
+                    .map(ProjectUsage::getUsedProjectCommit)
+                    .filter(Objects::nonNull)
+                    .map(fnCommit -> getCommitIndex(fnCommit, em))
+                    .map(CommitDataVersionIndex::getWorkingDataVersion)
+                    .flatMap(Set::stream)
+                    .filter(record -> !visitedIds.contains(record.getIdentity().getId()))
+                    .peek(record -> visitedIds.add(record.getIdentity().getId()))
+                    .collect(Collectors.toSet())
+                    .stream();
+        return Streams.concat(ownedDataVersions, usedDataVersions);
     }
 
     protected <T> Map<Commit, T> queryCommitTree(Commit commit, Function<Commit, T> query) {
         return queryCommitTree(commit, query, t -> false);
     }
 
-    protected <T> Map<Commit, T> queryCommitTree(Commit commit, Function<Commit, T> query, java.util.function.Predicate<T> terminationCondition) {
+    protected <T> Map<Commit, T> queryCommitTree(Commit commit, Function<Commit, T> query, Predicate<T> terminationCondition) {
         Map<Commit, T> results = new LinkedHashMap<>();
         Commit currentCommit = commit;
         Set<Commit> visitedCommits = new HashSet<>();

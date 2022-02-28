@@ -34,6 +34,7 @@ import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
 import com.fasterxml.jackson.databind.jsontype.TypeDeserializer;
 import javassist.util.proxy.ProxyFactory;
 import org.omg.sysml.lifecycle.Data;
+import org.omg.sysml.metamodel.Element;
 
 import javax.persistence.EntityManager;
 import java.io.IOException;
@@ -41,10 +42,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+import static jackson.RecordSerialization.IDENTITY_FIELD;
+import static org.omg.sysml.metamodel.impl.ElementImpl_.QUALIFIED_NAME;
+
 public class DataDeserializer extends StdDeserializer<Data> implements ContextualDeserializer {
-    private static Map<Class<?>, Class<?>> PROXY_MAP = new HashMap<>();
-    private EntityManager entityManager;
-    private JavaType type;
+    private static final Map<Class<?>, Class<?>> PROXY_MAP = new HashMap<>();
+    private final EntityManager entityManager;
+    private final JavaType type;
 
     public DataDeserializer(EntityManager entityManager) {
         this(entityManager, null);
@@ -81,9 +85,19 @@ public class DataDeserializer extends StdDeserializer<Data> implements Contextua
 
         JsonToken token;
         while ((token = p.nextToken()) != null && token != JsonToken.END_OBJECT) {
-            if (token == JsonToken.FIELD_NAME && "@id".equals(p.getCurrentName())) {
+            if (token == JsonToken.FIELD_NAME) {
+                String name = p.getCurrentName();
                 p.nextToken();
-                data.setId(UUID.fromString(p.getText()));
+                switch (name) {
+                    case IDENTITY_FIELD:
+                        data.setId(UUID.fromString(p.getText()));
+                        break;
+                    case QUALIFIED_NAME:
+                        if (data instanceof Element) {
+                            ((Element) data).setQualifiedName(p.getText());
+                        }
+                        break;
+                }
             }
         }
         return data;

@@ -37,6 +37,8 @@ import javax.persistence.SecondaryTable;
 import java.net.URI;
 import java.util.UUID;
 
+import static jackson.RecordSerialization.IDENTITY_FIELD;
+
 @Entity(name = "ExternalDataImpl")
 @SecondaryTable(name = "ExternalData")
 @org.hibernate.annotations.Table(appliesTo = "ExternalData", fetch = FetchMode.SELECT, optional = false)
@@ -48,12 +50,12 @@ public class ExternalDataImpl extends DataImpl implements ExternalData {
     private UUID id;
 
     @Column(name = "id", table = "ExternalData")
-    @JsonGetter(value = "@id")
+    @JsonGetter(value = IDENTITY_FIELD)
     public UUID getId() {
         return id;
     }
 
-    @JsonSetter(value = "@id")
+    @JsonSetter(value = IDENTITY_FIELD)
     public void setId(UUID id) {
         this.id = id;
     }

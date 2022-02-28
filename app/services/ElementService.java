@@ -24,7 +24,6 @@ package services;
 import dao.CommitDao;
 import dao.ElementDao;
 import dao.ProjectDao;
-import dao.QueryDao;
 import org.omg.sysml.metamodel.Element;
 
 import javax.annotation.Nullable;
@@ -52,7 +51,7 @@ public class ElementService extends BaseService<Element, ElementDao> {
         return element.getIdentifier() != null ? dao.update(element) : dao.persist(element);
     }
 
-    public Optional<Element> getByCommitIdAndId(UUID commitId, UUID elementId) {
+    public Optional<Element> getElementByCommitIdElementId(UUID commitId, UUID elementId) {
         return commitDao.findById(commitId)
                 .flatMap(m -> dao.findByCommitAndId(m, elementId));
     }
@@ -64,7 +63,7 @@ public class ElementService extends BaseService<Element, ElementDao> {
                 .orElse(Collections.emptyList());
     }
 
-    public Optional<Element> getElementsByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId) {
+    public Optional<Element> getElementByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId) {
         return projectDao.findById(projectId)
                 .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
                 .flatMap(commit -> dao.findByCommitAndId(commit, elementId));
@@ -75,5 +74,11 @@ public class ElementService extends BaseService<Element, ElementDao> {
                 .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
                 .map(commit -> dao.findRootsByCommit(commit, after, before, maxResults))
                 .orElse(Collections.emptyList());
+    }
+
+    public Optional<Element> getElementByProjectIdCommitIdQualifiedName(UUID projectId, UUID commitId, String qualifiedName) {
+        return projectDao.findById(projectId)
+                .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
+                .flatMap(commit -> dao.findByCommitAndQualifiedName(commit, qualifiedName));
     }
 }

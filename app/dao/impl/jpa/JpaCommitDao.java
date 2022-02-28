@@ -27,8 +27,12 @@ import dao.ElementDao;
 import javabean.JavaBeanHelper;
 import jpa.manager.JPAManager;
 import org.omg.sysml.lifecycle.*;
-import org.omg.sysml.lifecycle.impl.*;
+import org.omg.sysml.lifecycle.impl.CommitImpl;
+import org.omg.sysml.lifecycle.impl.CommitImpl_;
+import org.omg.sysml.lifecycle.impl.DataIdentityImpl;
+import org.omg.sysml.lifecycle.impl.DataImpl;
 import org.omg.sysml.metamodel.Element;
+import org.omg.sysml.metamodel.impl.ElementImpl_;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -41,27 +45,16 @@ import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Root;
 import java.lang.reflect.Method;
 import java.util.*;
+import java.util.function.BiFunction;
+import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
+
+import static jackson.RecordSerialization.IDENTITY_FIELD;
+import static org.omg.sysml.metamodel.impl.ElementImpl_.QUALIFIED_NAME;
 
 @Singleton
 public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements CommitDao {
-
-    // TODO Explore alternative to serializing lazy entity attributes that doesn't involve resolving all proxies one level.
-    static UnaryOperator<Commit> PROXY_RESOLVER = commit -> {
-        commit.getChange().stream()
-                .filter(Objects::nonNull)
-                .map(DataVersion::getPayload)
-                .filter(data -> data instanceof Element)
-                .map(data -> (Element) data)
-                .map(JpaElementDao.PROXY_RESOLVER)
-                .forEach(e -> {
-                });
-        return commit;
-    };
 
     private final ElementDao elementDao;
     private final JpaBranchDao branchDao;
@@ -73,8 +66,82 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
         this.branchDao = branchDao;
     }
 
+    // TODO Explore alternative to serializing lazy entity attributes that doesn't involve resolving all proxies one level.
+    protected static Commit resolve(Commit commit) {
+        commit.getChange().stream()
+                .filter(Objects::nonNull)
+                .map(DataVersion::getPayload)
+                .map(data -> JpaDataDao.resolve(data, Data.class))
+                .forEach(e -> {
+                });
+        return commit;
+    }
+
     @Override
     public Optional<Commit> persist(Commit commit, Branch branch) {
+        return persist(commit, branch,
+                fnData -> {
+                    if (fnData.getId() == null) {
+                        throw new IllegalArgumentException(String.format("Element must be referenced by %s", IDENTITY_FIELD));
+                    }
+                },
+                (fnData, fnCache) -> Optional.ofNullable(fnCache.get(fnData.getId())),
+                (fnData, fnCommit) -> {
+                    UUID id = fnData.getId();
+                    // TODO change to dataDao
+                    return elementDao.findByCommitAndId(fnCommit, id)
+                            .orElseThrow(() -> new NoSuchElementException(
+                                    String.format("Element with %s %s not found", IDENTITY_FIELD, id)
+                            ));
+                }
+        );
+    }
+
+    @Override
+    public Optional<Commit> persistNameResolved(Commit commit, Branch branch) {
+        return persist(commit, branch,
+                fnData -> {
+                    if (fnData.getId() == null && (!(fnData instanceof Element) || ((Element) fnData).getQualifiedName() == null)) {
+                        throw new IllegalArgumentException(String.format("Element must be referenced by %s or %s", IDENTITY_FIELD, QUALIFIED_NAME));
+                    }
+                },
+                (fnData, fnCache) -> {
+                    if (fnData.getId() != null) {
+                        return Optional.ofNullable(fnCache.get(fnData.getId()));
+                    }
+                    else {
+                        return fnCache.values().stream()
+                                .filter(cached -> cached instanceof Element)
+                                .map(cached -> (Element) cached)
+                                .filter(cached -> ((Element) fnData).getQualifiedName().equals(cached.getQualifiedName()))
+                                .map(cached -> (Data) cached)
+                                .findFirst();
+                    }
+                },
+                (fnData, fnCommit) -> {
+                    if (fnData.getId() != null) {
+                        UUID id = fnData.getId();
+                        // TODO change to dataDao
+                        return elementDao.findByCommitAndId(fnCommit, id)
+                                .orElseThrow(() -> new NoSuchElementException(
+                                        String.format("Element with %s %s not found", IDENTITY_FIELD, id)
+                                ));
+                    }
+                    else {
+                        String qualifiedName = ((Element) fnData).getQualifiedName();
+                        return elementDao.findByCommitAndQualifiedName(fnCommit, qualifiedName)
+                                .orElseThrow(() -> new NoSuchElementException(
+                                        String.format("Element with %s %s not found", QUALIFIED_NAME, qualifiedName)
+                                ));
+                    }
+                });
+    }
+
+    private Optional<Commit> persist(
+            Commit commit, Branch branch,
+            Consumer<Data> validator,
+            BiFunction<Data, Map<UUID, Data>, Optional<Data>> cacheResolver,
+            BiFunction<Data, Commit, Data> commitResolver) {
         commit.setPreviousCommit(null);
         if (branch.getHead() != null) {
             commit.setPreviousCommit(branch.getHead());
@@ -94,12 +161,8 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
             }
         };
 
-        Supplier<Stream<DataVersionImpl>> changeStream = () -> commit.getChange().stream()
-                .filter(change -> change instanceof DataVersionImpl)
-                .map(change -> (DataVersionImpl) change);
-
         // Give all Commit#changes an identity, if they don't already have one, and all Commit#changes#identity an id, if they don't already have one.
-        changeStream.get()
+        commit.getChange().stream()
                 .peek(change -> change.setIdentity(change.getIdentity() != null ? change.getIdentity() : new DataIdentityImpl()))
                 .map(DataVersion::getIdentity)
                 .filter(identity -> identity instanceof DataIdentityImpl)
@@ -107,7 +170,7 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
                 .forEach(identity -> identity.setId(identity.getId() != null ? identity.getId() : UUID.randomUUID()));
 
         // Copy all Commit#change#identity#id to Commit#change#payload#id and assign Commit#change#payload#key to a random UUID
-        Map<UUID, Data> identifierToDataMap = changeStream.get()
+        Map<UUID, Data> identifierToDataMap = commit.getChange().stream()
                 .peek(change -> {
                     Data payload = change.getPayload();
                     if (payload == null) {
@@ -125,20 +188,16 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
                 );
 
         Function<Data, Data> reattachDataFunction = data -> {
-            Data reattachedData = identifierToDataMap.computeIfAbsent(data.getId(), identifier -> {
-                if (commit.getPreviousCommit() == null) {
-                    return tombstone;
-                }
-                return elementDao.findByCommitAndId(commit.getPreviousCommit(), identifier)
-                        .map(element -> (Data) element)
-                        .orElse(tombstone);
-            });
-            if (Objects.equals(reattachedData, tombstone)) {
-                throw new IllegalArgumentException("Element with ID " + data.getId() + " not found");
-            }
-            return reattachedData;
+            validator.accept(data);
+            return cacheResolver.apply(data, identifierToDataMap)
+                    .map(fnData -> fnData != tombstone ? fnData : null)
+                    .orElseGet(() -> {
+                        Data resolved = commitResolver.apply(data, commit.getPreviousCommit());
+                        identifierToDataMap.put(resolved.getId(), resolved);
+                        return resolved;
+                    });
         };
-        changeStream.get()
+        commit.getChange().stream()
                 .map(DataVersion::getPayload)
                 .filter(Objects::nonNull)
                 .forEach(data -> JavaBeanHelper.getBeanProperties(data).values().stream()
@@ -222,7 +281,7 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
                 branch.setHead(c);
                 branchDao.update(branch, em);
             });
-            return persistedCommit.map(PROXY_RESOLVER);
+            return persistedCommit.map(JpaCommitDao::resolve);
         });
     }
 
@@ -273,7 +332,7 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
     @Override
     public Optional<Commit> findByProjectAndIdResolved(Project project, UUID id) {
         return jpaManager.transact(em -> {
-            return findByProjectAndId(project, id, em).map(PROXY_RESOLVER);
+            return findByProjectAndId(project, id, em).map(JpaCommitDao::resolve);
         });
     }
 }

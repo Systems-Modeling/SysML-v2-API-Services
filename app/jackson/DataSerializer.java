@@ -30,6 +30,8 @@ import org.omg.sysml.lifecycle.Data;
 import javax.persistence.PersistenceException;
 import java.io.IOException;
 
+import static jackson.RecordSerialization.IDENTITY_FIELD;
+
 // TODO inherit from JpaIdentitySerializer
 public class DataSerializer extends StdSerializer<Data> {
     public DataSerializer() {
@@ -52,7 +54,7 @@ public class DataSerializer extends StdSerializer<Data> {
             return;
         }
         gen.writeStartObject();
-        gen.writeObjectField("@id", value.getId());
+        gen.writeObjectField(IDENTITY_FIELD, value.getId());
         gen.writeEndObject();
     }
 }

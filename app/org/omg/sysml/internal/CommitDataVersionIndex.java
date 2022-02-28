@@ -20,35 +20,22 @@
  * @license LGPL-3.0-or-later <http://spdx.org/licenses/LGPL-3.0-or-later>
  */
 
-package org.omg.sysml.record.impl;
+package org.omg.sysml.internal;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import org.omg.sysml.record.Record;
+import org.omg.sysml.lifecycle.Commit;
+import org.omg.sysml.lifecycle.DataVersion;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import java.util.Set;
 import java.util.UUID;
 
-import static jackson.RecordSerialization.IDENTITY_FIELD;
+public interface CommitDataVersionIndex {
+    UUID getId();
 
-@MappedSuperclass
-public abstract class RecordImpl implements Record {
-    private UUID id;
+    Commit getCommit();
 
-    @Override
-    @Id
-    @GeneratedValue(generator = "UseExistingOrGenerateUUIDGenerator")
-    @Column(name = "id")
-    @JsonGetter(value = IDENTITY_FIELD)
-    public UUID getId() {
-        return id;
-    }
+    void setCommit(Commit commit);
 
-    @JsonSetter(value = IDENTITY_FIELD)
-    public void setId(UUID id) {
-        this.id = id;
-    }
+    Set<DataVersion> getWorkingDataVersion();
+
+    void setWorkingDataVersion(Set<DataVersion> workingDataVersion);
 }
