@@ -38,6 +38,8 @@ public interface CommitDao extends Dao<Commit> {
 
     Optional<Commit> persist(Commit commit, Branch branch);
 
+    Optional<Commit> persistNameResolved(Commit commit, Branch branch);
+
     @Override
     default Optional<Commit> update(Commit commit) {
         throw new UnsupportedOperationException();

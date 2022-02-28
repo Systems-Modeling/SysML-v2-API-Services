@@ -40,6 +40,8 @@ import org.omg.sysml.lifecycle.impl.ProjectImpl;
 import javax.persistence.*;
 import java.util.UUID;
 
+import static jackson.RecordSerialization.IDENTITY_FIELD;
+
 @Entity(name = "ProjectUsageImpl")
 @SecondaryTable(name = "ProjectUsage")
 @org.hibernate.annotations.Table(appliesTo = "ProjectUsage", fetch = FetchMode.SELECT, optional = false)
@@ -51,12 +53,12 @@ public class ProjectUsageImpl extends DataImpl implements ProjectUsage {
     private UUID id;
 
     @Column(name = "id", table = "ProjectUsage")
-    @JsonGetter(value = "@id")
+    @JsonGetter(value = IDENTITY_FIELD)
     public UUID getId() {
         return id;
     }
 
-    @JsonSetter(value = "@id")
+    @JsonSetter(value = IDENTITY_FIELD)
     public void setId(UUID id) {
         this.id = id;
     }

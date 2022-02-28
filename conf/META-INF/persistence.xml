@@ -11,7 +11,8 @@
         <class>org.omg.sysml.data.impl.ProjectUsageImpl</class>
 
         <class>org.omg.sysml.internal.impl</class>
-        <class>org.omg.sysml.internal.impl.CommitIndexImpl</class>
+        <class>org.omg.sysml.internal.impl.CommitDataVersionIndexImpl</class>
+        <class>org.omg.sysml.internal.impl.CommitNamedElementIndexImpl</class>
 
         <class>org.omg.sysml.lifecycle.impl</class>
         <class>org.omg.sysml.lifecycle.impl.BranchImpl</class>
@@ -201,7 +202,7 @@
             <property name="javax.persistence.jdbc.password" value="mysecretpassword"/>
 
             <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.hbm2ddl.auto" value="none"/>
 
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>

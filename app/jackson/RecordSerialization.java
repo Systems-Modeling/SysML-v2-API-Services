@@ -34,7 +34,7 @@ import java.util.UUID;
 
 public class RecordSerialization {
 
-    private static final String IDENTITY_FIELD = "@id";
+    public static final String IDENTITY_FIELD = "@id";
 
     public static class RecordSerializer extends JpaIdentitySerializer<Record> {
 

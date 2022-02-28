@@ -26,7 +26,7 @@ import org.omg.sysml.query.Query;
 
 import java.util.List;
 
-public interface DataDao extends Dao<Data> {
+public interface DataDao {
 
     List<Data> findByCommitAndQuery(Commit commit, Query query);
 }

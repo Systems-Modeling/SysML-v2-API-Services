@@ -55,13 +55,21 @@ public class CommitController extends JsonLdController<Commit, ProjectContainmen
     }
 
     public Result postCommitByProject(UUID projectId, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<UUID> branchId, Request request) {
+        return postCommitByProject(projectId, branchId, request, commitService::create);
+    }
+
+    public Result postCommitByProjectNameResolved(UUID projectId, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<UUID> branchId, Request request) {
+        return postCommitByProject(projectId, branchId, request, commitService::createNameResolved);
+    }
+
+    private Result postCommitByProject(UUID projectId, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<UUID> branchId, Request request, CommitCreator creator) {
         JsonNode requestBodyJson = request.body().asJson();
         Commit requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Commit.class));
         if (requestedObject.getId() != null || requestedObject.getTimestamp() != null) {
             return Results.badRequest();
         }
         requestedObject.setTimestamp(ZonedDateTime.now());
-        Optional<Commit> commit = commitService.create(projectId, branchId.orElse(null), requestedObject);
+        Optional<Commit> commit = creator.create(projectId, branchId.orElse(null), requestedObject);
         if (commit.isEmpty()) {
             return Results.internalServerError();
         }
@@ -118,5 +126,10 @@ public class CommitController extends JsonLdController<Commit, ProjectContainmen
     @Override
     protected JsonLdAdorner<Commit, ProjectContainmentParameters> getAdorner() {
         return adorner;
+    }
+
+    @FunctionalInterface
+    private interface CommitCreator {
+        Optional<Commit> create(UUID projectId, UUID branchId, Commit commit);
     }
 }

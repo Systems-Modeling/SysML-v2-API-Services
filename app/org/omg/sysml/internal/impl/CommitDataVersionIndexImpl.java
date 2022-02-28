@@ -22,7 +22,7 @@
 
 package org.omg.sysml.internal.impl;
 
-import org.omg.sysml.internal.CommitIndex;
+import org.omg.sysml.internal.CommitDataVersionIndex;
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.DataVersion;
 import org.omg.sysml.lifecycle.impl.CommitImpl;
@@ -33,10 +33,10 @@ import java.util.Set;
 import java.util.UUID;
 
 @Entity(name = "CommitIndex")
-public class CommitIndexImpl implements CommitIndex {
+public class CommitDataVersionIndexImpl implements CommitDataVersionIndex {
     private UUID id;
     private Commit commit;
-    private Set<DataVersion> workingDataVersions;
+    private Set<DataVersion> workingDataVersion;
 
     @Id
     public UUID getId() {
@@ -62,12 +62,12 @@ public class CommitIndexImpl implements CommitIndex {
 
     @Override
     @ManyToMany(targetEntity = DataVersionImpl.class, fetch = FetchType.LAZY)
-    public Set<DataVersion> getWorkingDataVersions() {
-        return workingDataVersions;
+    public Set<DataVersion> getWorkingDataVersion() {
+        return workingDataVersion;
     }
 
     @Override
-    public void setWorkingDataVersions(Set<DataVersion> workingDataVersions) {
-        this.workingDataVersions = workingDataVersions;
+    public void setWorkingDataVersion(Set<DataVersion> workingDataVersion) {
+        this.workingDataVersion = workingDataVersion;
     }
 }

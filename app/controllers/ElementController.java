@@ -56,7 +56,7 @@ public final class ElementController extends JsonLdController<Element, DataJsonL
     }
 
     public Result getElementByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId, Request request) {
-        Optional<Element> element = elementService.getElementsByProjectIdCommitIdElementId(projectId, commitId, elementId);
+        Optional<Element> element = elementService.getElementByProjectIdCommitIdElementId(projectId, commitId, elementId);
         return buildResult(element.orElse(null), request, new DataJsonLdAdorner.Parameters(projectId, commitId));
     }
 
@@ -64,6 +64,11 @@ public final class ElementController extends JsonLdController<Element, DataJsonL
         PageRequest pageRequest = PageRequest.from(request);
         List<Element> roots = elementService.getRootsByProjectIdCommitId(projectId, commitId, pageRequest.getAfter(), pageRequest.getBefore(), pageRequest.getSize());
         return buildPaginatedResult(roots, projectId, commitId, request, pageRequest);
+    }
+
+    public Result getElementByProjectIdCommitIdQualifiedName(UUID projectId, UUID commitId, String qualifiedName, Request request) {
+        Optional<Element> element = elementService.getElementByProjectIdCommitIdQualifiedName(projectId, commitId, qualifiedName);
+        return buildResult(element.orElse(null), request, new DataJsonLdAdorner.Parameters(projectId, commitId));
     }
 
     private Result buildPaginatedResult(List<Element> elements, UUID projectId, UUID commitId, Request request, PageRequest pageRequest) {

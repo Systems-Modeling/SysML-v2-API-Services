@@ -28,14 +28,14 @@ import org.omg.sysml.lifecycle.DataVersion;
 import java.util.Set;
 import java.util.UUID;
 
-public interface CommitIndex {
+public interface CommitDataVersionIndex {
     UUID getId();
 
     Commit getCommit();
 
     void setCommit(Commit commit);
 
-    Set<DataVersion> getWorkingDataVersions();
+    Set<DataVersion> getWorkingDataVersion();
 
-    void setWorkingDataVersions(Set<DataVersion> elements);
+    void setWorkingDataVersion(Set<DataVersion> workingDataVersion);
 }

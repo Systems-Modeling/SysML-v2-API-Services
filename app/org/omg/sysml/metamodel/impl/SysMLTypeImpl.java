@@ -29,6 +29,8 @@ import org.omg.sysml.lifecycle.impl.DataImpl;
 
 import javax.persistence.Transient;
 
+import static jackson.RecordSerialization.IDENTITY_FIELD;
+
 public abstract class SysMLTypeImpl extends DataImpl implements Data {
 
     public abstract java.util.UUID getIdentifier();
@@ -36,12 +38,12 @@ public abstract class SysMLTypeImpl extends DataImpl implements Data {
     public abstract void setIdentifier(java.util.UUID identifier);
 
     @Transient
-    @JsonGetter(value = "@id")
+    @JsonGetter(value = IDENTITY_FIELD)
     public java.util.UUID getId() {
         return getIdentifier();
     }
 
-    @JsonSetter(value = "@id")
+    @JsonSetter(value = IDENTITY_FIELD)
     public void setId(java.util.UUID id) {
         setIdentifier(id);
     }
