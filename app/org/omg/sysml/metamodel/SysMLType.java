@@ -23,4 +23,6 @@ package org.omg.sysml.metamodel;
 import org.omg.sysml.lifecycle.Data;
 
 public interface SysMLType extends Data {
+
+    void setQualifiedName(String qualifiedName);
 }

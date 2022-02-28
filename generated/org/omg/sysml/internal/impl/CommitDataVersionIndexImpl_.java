@@ -9,16 +9,16 @@ import org.omg.sysml.lifecycle.impl.CommitImpl;
 import org.omg.sysml.lifecycle.impl.DataVersionImpl;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
-@StaticMetamodel(CommitIndexImpl.class)
-public abstract class CommitIndexImpl_ {
+@StaticMetamodel(CommitDataVersionIndexImpl.class)
+public abstract class CommitDataVersionIndexImpl_ {
 
-	public static volatile SingularAttribute<CommitIndexImpl, CommitImpl> commit;
-	public static volatile SingularAttribute<CommitIndexImpl, UUID> id;
-	public static volatile SetAttribute<CommitIndexImpl, DataVersionImpl> workingDataVersions;
+	public static volatile SingularAttribute<CommitDataVersionIndexImpl, CommitImpl> commit;
+	public static volatile SetAttribute<CommitDataVersionIndexImpl, DataVersionImpl> workingDataVersion;
+	public static volatile SingularAttribute<CommitDataVersionIndexImpl, UUID> id;
 
 	public static final String COMMIT = "commit";
+	public static final String WORKING_DATA_VERSION = "workingDataVersion";
 	public static final String ID = "id";
-	public static final String WORKING_DATA_VERSIONS = "workingDataVersions";
 
 }
 

@@ -32,6 +32,8 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.util.UUID;
 
+import static jackson.RecordSerialization.IDENTITY_FIELD;
+
 @MappedSuperclass
 public abstract class RecordImpl implements Record {
     private UUID id;
@@ -40,12 +42,12 @@ public abstract class RecordImpl implements Record {
     @Id
     @GeneratedValue(generator = "UseExistingOrGenerateUUIDGenerator")
     @Column(name = "id")
-    @JsonGetter(value = "@id")
+    @JsonGetter(value = IDENTITY_FIELD)
     public UUID getId() {
         return id;
     }
 
-    @JsonSetter(value = "@id")
+    @JsonSetter(value = IDENTITY_FIELD)
     public void setId(UUID id) {
         this.id = id;
     }

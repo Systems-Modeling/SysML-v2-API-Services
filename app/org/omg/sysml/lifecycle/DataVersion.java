@@ -30,5 +30,9 @@ public interface DataVersion extends Record {
 
     Data getPayload();
 
+    void setPayload(Data payload);
+
     DataIdentity getIdentity();
+
+    void setIdentity(DataIdentity identity);
 }

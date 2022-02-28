@@ -41,6 +41,8 @@ import org.omg.sysml.metamodel.impl.ElementImpl;
 import javax.persistence.*;
 import java.util.UUID;
 
+import static jackson.RecordSerialization.IDENTITY_FIELD;
+
 @Entity(name = "ExternalRelationshipImpl")
 @SecondaryTable(name = "ExternalRelationship")
 @org.hibernate.annotations.Table(appliesTo = "ExternalRelationship", fetch = FetchMode.SELECT, optional = false)
@@ -52,12 +54,12 @@ public class ExternalRelationshipImpl extends DataImpl implements ExternalRelati
     private UUID id;
 
     @Column(name = "id", table = "ExternalRelationship")
-    @JsonGetter(value = "@id")
+    @JsonGetter(value = IDENTITY_FIELD)
     public UUID getId() {
         return id;
     }
 
-    @JsonSetter(value = "@id")
+    @JsonSetter(value = IDENTITY_FIELD)
     public void setId(UUID id) {
         this.id = id;
     }

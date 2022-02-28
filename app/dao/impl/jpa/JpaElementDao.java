@@ -24,12 +24,13 @@ package dao.impl.jpa;
 
 import config.MetamodelProvider;
 import dao.ElementDao;
-import javabean.JavaBeanHelper;
 import jpa.manager.JPAManager;
-import org.hibernate.Hibernate;
-import org.omg.sysml.internal.CommitIndex;
-import org.omg.sysml.internal.impl.CommitIndexImpl;
-import org.omg.sysml.internal.impl.CommitIndexImpl_;
+import org.omg.sysml.internal.CommitDataVersionIndex;
+import org.omg.sysml.internal.CommitNamedElementIndex;
+import org.omg.sysml.internal.impl.CommitDataVersionIndexImpl;
+import org.omg.sysml.internal.impl.CommitDataVersionIndexImpl_;
+import org.omg.sysml.internal.impl.CommitNamedElementIndexImpl;
+import org.omg.sysml.internal.impl.CommitNamedElementIndexImpl_;
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.DataVersion;
 import org.omg.sysml.lifecycle.impl.*;
@@ -41,24 +42,18 @@ import org.omg.sysml.metamodel.impl.ElementImpl_;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 import java.util.*;
-import java.util.function.UnaryOperator;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @Singleton
 public class JpaElementDao extends JpaDao<Element> implements ElementDao {
-    // TODO Explore alternative to serializing lazy entity attributes that doesn't involve resolving all proxies one level.
-    static UnaryOperator<Element> PROXY_RESOLVER = element -> {
-        element = Hibernate.unproxy(element, Element.class);
-        JavaBeanHelper.getBeanPropertyValues(element).values().stream()
-                .flatMap(o -> o instanceof Collection ? ((Collection<?>) o).stream() : Stream.of(o)).filter(o -> o instanceof Element)
-                .map(o -> (Element) o).forEach(Hibernate::unproxy);
-        return element;
-    };
 
     private final Set<Class<?>> implementationClasses;
     private final JpaDataDao dataDao;
@@ -140,15 +135,15 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
         return jpaManager.transact(em -> {
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
             Commit c = em.contains(commit) ? commit : em.find(CommitImpl.class, commit.getId());
-            CommitIndex commitIndex = dataDao.getCommitIndex(c, em);
+            CommitDataVersionIndex commitIndex = dataDao.getCommitIndex(c, em);
 
             CriteriaBuilder builder = em.getCriteriaBuilder();
             CriteriaQuery<DataVersionImpl> query = builder.createQuery(DataVersionImpl.class);
-            Root<CommitIndexImpl> commitIndexRoot = query.from(CommitIndexImpl.class);
-            SetJoin<CommitIndexImpl, DataVersionImpl> workingDataVersionsJoin = commitIndexRoot.join(CommitIndexImpl_.workingDataVersions);
+            Root<CommitDataVersionIndexImpl> commitIndexRoot = query.from(CommitDataVersionIndexImpl.class);
+            SetJoin<CommitDataVersionIndexImpl, DataVersionImpl> workingDataVersionsJoin = commitIndexRoot.join(CommitDataVersionIndexImpl_.workingDataVersion);
             Join<DataVersionImpl, DataIdentityImpl> dataIdentityJoin = workingDataVersionsJoin.join(DataVersionImpl_.identity);
             Path<UUID> idPath = dataIdentityJoin.get(DataIdentityImpl_.id);
-            Expression<Boolean> where = builder.equal(commitIndexRoot.get(CommitIndexImpl_.id), commitIndex.getId());
+            Expression<Boolean> where = builder.equal(commitIndexRoot.get(CommitDataVersionIndexImpl_.id), commitIndex.getId());
             query.select(workingDataVersionsJoin);
             Paginated<TypedQuery<DataVersionImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, idPath, where);
             List<Element> result = paginated.get()
@@ -156,7 +151,7 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
                     .map(DataVersion::getPayload)
                     .filter(data -> data instanceof Element)
                     .map(data -> (Element) data)
-                    .map(PROXY_RESOLVER)
+                    .map(element -> JpaDataDao.resolve(element, Element.class))
                     .collect(Collectors.toList());
             if (paginated.isReversed()) {
                 Collections.reverse(result);
@@ -170,23 +165,23 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
         return jpaManager.transact(em -> {
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
             Commit c = em.contains(commit) ? commit : em.find(CommitImpl.class, commit.getId());
-            CommitIndex commitIndex = dataDao.getCommitIndex(c, em);
+            CommitDataVersionIndex commitIndex = dataDao.getCommitIndex(c, em);
 
             CriteriaBuilder builder = em.getCriteriaBuilder();
             CriteriaQuery<DataVersionImpl> query = builder.createQuery(DataVersionImpl.class);
-            Root<CommitIndexImpl> commitIndexRoot = query.from(CommitIndexImpl.class);
-            SetJoin<CommitIndexImpl, DataVersionImpl> workingDataVersionsJoin = commitIndexRoot.join(CommitIndexImpl_.workingDataVersions);
-            Join<DataVersionImpl, DataIdentityImpl> dataIdentityJoin = workingDataVersionsJoin.join(DataVersionImpl_.identity);
+            Root<CommitDataVersionIndexImpl> commitIndexRoot = query.from(CommitDataVersionIndexImpl.class);
+            SetJoin<CommitDataVersionIndexImpl, DataVersionImpl> workingDataVersionsJoin = commitIndexRoot.join(CommitDataVersionIndexImpl_.workingDataVersion);
+            Join<DataVersionImpl, DataIdentityImpl> identityJoin = workingDataVersionsJoin.join(DataVersionImpl_.identity);
             query.select(workingDataVersionsJoin).where(
-                    builder.equal(commitIndexRoot.get(CommitIndexImpl_.id), commitIndex.getId()),
-                    builder.equal(dataIdentityJoin.get(DataIdentityImpl_.id), id)
+                    builder.equal(commitIndexRoot.get(CommitDataVersionIndexImpl_.id), commitIndex.getId()),
+                    builder.equal(identityJoin.get(DataIdentityImpl_.id), id)
             );
             try {
                 return Optional.of(em.createQuery(query).getSingleResult())
                         .map(DataVersion::getPayload)
                         .filter(data -> data instanceof Element)
                         .map(data -> (Element) data)
-                        .map(PROXY_RESOLVER);
+                        .map(element -> JpaDataDao.resolve(element, Element.class));
             } catch (NoResultException e) {
                 return Optional.empty();
             }
@@ -198,20 +193,60 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
         return jpaManager.transact(em -> {
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
             Commit c = em.contains(commit) ? commit : em.find(CommitImpl.class, commit.getId());
-            Stream<Element> stream = dataDao.getCommitIndex(c, em).getWorkingDataVersions().stream()
+            Stream<Element> stream = dataDao.getCommitIndex(c, em).getWorkingDataVersion().stream()
                     .map(DataVersion::getPayload)
                     .filter(data -> (data instanceof Element) && !(data instanceof Relationship))
                     .map(data -> (Element) data)
                     .filter(element -> element.getOwner() == null);
             Paginated<Stream<Element>> paginatedStream = paginateStream(after, before, maxResults, stream, Element::getIdentifier);
             List<Element> result = paginatedStream.get()
-                    .map(PROXY_RESOLVER)
+                    .map(element -> JpaDataDao.resolve(element, Element.class))
                     .collect(Collectors.toList());
             if (paginatedStream.isReversed()) {
                 Collections.reverse(result);
             }
             return result;
         });
+    }
+
+    public Optional<Element> findByCommitAndQualifiedName(Commit commit, String qualifiedName) {
+        return jpaManager.transact(em -> {
+            // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
+            Commit c = em.contains(commit) ? commit : em.find(CommitImpl.class, commit.getId());
+            return Optional.ofNullable(getCommitNamedElementIndex(c, em).getWorkingNamedElement().get(qualifiedName));
+        });
+    }
+
+    protected CommitNamedElementIndex getCommitNamedElementIndex(Commit commit, EntityManager em) {
+        CriteriaBuilder builder = em.getCriteriaBuilder();
+        CriteriaQuery<CommitNamedElementIndexImpl> query = builder.createQuery(CommitNamedElementIndexImpl.class);
+        Root<CommitNamedElementIndexImpl> root = query.from(CommitNamedElementIndexImpl.class);
+        query.select(root).where(builder.equal(root.get(CommitNamedElementIndexImpl_.id), commit.getId()));
+        try {
+            return em.createQuery(query).getSingleResult();
+        } catch (NoResultException ignored) {
+        }
+
+        CommitNamedElementIndexImpl index = new CommitNamedElementIndexImpl();
+        index.setCommit(commit);
+        index.setWorkingNamedElement(
+                streamWorkingElements(commit, em)
+                        .filter(element -> Objects.nonNull(element.getQualifiedName()))
+                        .collect(Collectors.toUnmodifiableMap(Element::getQualifiedName,
+                                Function.identity(), (e1, e2) -> e1))
+        );
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        em.persist(index);
+        transaction.commit();
+        return index;
+    }
+
+    protected Stream<Element> streamWorkingElements(Commit commit, EntityManager em) {
+        return dataDao.getCommitIndex(commit, em).getWorkingDataVersion().stream()
+                .map(DataVersion::getPayload)
+                .filter(data -> data instanceof Element)
+                .map(data -> (Element) data);
     }
 
     private Expression<Boolean> getTypeExpression(CriteriaBuilder builder, Root<?> root) {
