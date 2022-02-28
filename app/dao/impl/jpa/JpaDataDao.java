@@ -31,7 +31,6 @@ import org.omg.sysml.data.ProjectUsage;
 import org.omg.sysml.internal.CommitDataVersionIndex;
 import org.omg.sysml.internal.impl.CommitDataVersionIndexImpl;
 import org.omg.sysml.internal.impl.CommitDataVersionIndexImpl_;
-import org.omg.sysml.internal.impl.CommitIndexImpl_;
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.Data;
 import org.omg.sysml.lifecycle.DataIdentity;
