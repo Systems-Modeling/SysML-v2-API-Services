@@ -44,11 +44,9 @@ public interface Element extends SysMLType {
 
     List<? extends Documentation> getDocumentation();
 
-    List<? extends Comment> getDocumentationComment();
-
     List<? extends Annotation> getOwnedAnnotation();
 
-    Collection<? extends TextualRepresentation> getOwnedTextualRepresentation();
+    List<? extends TextualRepresentation> getTextualRepresentation();
 
     String getQualifiedName();
 

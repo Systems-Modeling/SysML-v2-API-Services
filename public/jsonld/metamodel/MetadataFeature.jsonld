@@ -6,11 +6,12 @@
         "xsd": "http://www.w3.org/2001/XMLSchema#",
 
         "aliasId": {"@type": "xsd:string"},
+        "annotatedElement": {"@type": "@id"},
+        "annotation": {"@type": "@id"},
         "chainingFeature": {"@type": "@id"},
         "directedFeature": {"@type": "@id"},
         "direction": {"@type": "@vocab"},
         "documentation": {"@type": "@id"},
-        "documentationComment": {"@type": "@id"},
         "effectiveName": {"@type": "xsd:string"},
         "endFeature": {"@type": "@id"},
         "endOwningType": {"@type": "@id"},
@@ -36,7 +37,7 @@
         "isUnique": {"@type": "xsd:boolean"},
         "member": {"@type": "@id"},
         "membership": {"@type": "@id"},
-        "metadataFeatureValue": {"@type": "@id"},
+        "metaclass": {"@type": "@id"},
         "multiplicity": {"@type": "@id"},
         "name": {"@type": "xsd:string"},
         "output": {"@type": "@id"},
@@ -55,7 +56,6 @@
         "ownedRelationship": {"@type": "@id"},
         "ownedSpecialization": {"@type": "@id"},
         "ownedSubsetting": {"@type": "@id"},
-        "ownedTextualRepresentation": {"@type": "@id"},
         "ownedTypeFeaturing": {"@type": "@id"},
         "ownedTyping": {"@type": "@id"},
         "owner": {"@type": "@id"},
@@ -65,6 +65,7 @@
         "owningRelationship": {"@type": "@id"},
         "owningType": {"@type": "@id"},
         "qualifiedName": {"@type": "xsd:string"},
+        "textualRepresentation": {"@type": "@id"},
         "type": {"@type": "@id"}
 
     }

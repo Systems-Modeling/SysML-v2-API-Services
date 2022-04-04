@@ -7,7 +7,6 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Annotation;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -36,8 +35,8 @@ public abstract class ClassifierImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile CollectionAttribute<ClassifierImpl, Subclassification> ownedSubclassification;
 	public static volatile ListAttribute<ClassifierImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<ClassifierImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<ClassifierImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<ClassifierImpl, String> effectiveName;
+	public static volatile ListAttribute<ClassifierImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<ClassifierImpl, UUID> identifier;
 	public static volatile ListAttribute<ClassifierImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ClassifierImpl, Annotation> ownedAnnotation;
@@ -52,7 +51,6 @@ public abstract class ClassifierImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile ListAttribute<ClassifierImpl, Import> ownedImport;
 	public static volatile SingularAttribute<ClassifierImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<ClassifierImpl, Feature> input;
-	public static volatile CollectionAttribute<ClassifierImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<ClassifierImpl, String> humanId;
 	public static volatile ListAttribute<ClassifierImpl, String> aliasId;
 	public static volatile SingularAttribute<ClassifierImpl, String> name;
@@ -72,8 +70,8 @@ public abstract class ClassifierImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String OWNED_SUBCLASSIFICATION = "ownedSubclassification";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String EFFECTIVE_NAME = "effectiveName";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -88,7 +86,6 @@ public abstract class ClassifierImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String INPUT = "input";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
 	public static final String NAME = "name";

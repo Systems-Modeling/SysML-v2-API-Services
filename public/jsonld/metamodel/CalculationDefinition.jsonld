@@ -11,7 +11,6 @@
         "directedFeature": {"@type": "@id"},
         "directedUsage": {"@type": "@id"},
         "documentation": {"@type": "@id"},
-        "documentationComment": {"@type": "@id"},
         "effectiveName": {"@type": "xsd:string"},
         "endFeature": {"@type": "@id"},
         "expression": {"@type": "@id"},
@@ -68,7 +67,6 @@
         "ownedSpecialization": {"@type": "@id"},
         "ownedState": {"@type": "@id"},
         "ownedSubclassification": {"@type": "@id"},
-        "ownedTextualRepresentation": {"@type": "@id"},
         "ownedTransition": {"@type": "@id"},
         "ownedUsage": {"@type": "@id"},
         "ownedUseCase": {"@type": "@id"},
@@ -83,6 +81,7 @@
         "qualifiedName": {"@type": "xsd:string"},
         "result": {"@type": "@id"},
         "step": {"@type": "@id"},
+        "textualRepresentation": {"@type": "@id"},
         "usage": {"@type": "@id"},
         "variant": {"@type": "@id"},
         "variantMembership": {"@type": "@id"}

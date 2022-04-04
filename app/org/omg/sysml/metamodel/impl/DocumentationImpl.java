@@ -92,40 +92,70 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("annotatedElement")
-    private Element annotatedElement;
+    private List<Element> annotatedElement;
 
     @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "annotatedElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "annotatedElementId", table = "Documentation")
-    public Element getAnnotatedElement() {
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Documentation_annotatedElement",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Element> getAnnotatedElement() {
+        if (annotatedElement == null) {
+            annotatedElement = new ArrayList<>();
+        }
         return annotatedElement;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
-    public void setAnnotatedElement(Element annotatedElement) {
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
+    public void setAnnotatedElement(List<Element> annotatedElement) {
         this.annotatedElement = annotatedElement;
     }
 
 
 
-    // @info.archinnov.achilles.annotations.Column("annotatingElement")
-    private AnnotatingElement annotatingElement;
+    // @info.archinnov.achilles.annotations.Column("annotation")
+    private List<Annotation> annotation;
 
     @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "AnnotatingElementMetaDef", metaColumn = @javax.persistence.Column(name = "annotatingElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "annotatingElementId", table = "Documentation")
-    public AnnotatingElement getAnnotatingElement() {
-        return annotatingElement;
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Documentation_annotation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<Annotation> getAnnotation() {
+        if (annotation == null) {
+            annotation = new ArrayList<>();
+        }
+        return annotation;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = AnnotatingElementImpl.class)
-    public void setAnnotatingElement(AnnotatingElement annotatingElement) {
-        this.annotatingElement = annotatingElement;
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AnnotationImpl.class)
+    public void setAnnotation(List<Annotation> annotation) {
+        this.annotation = annotation;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("body")
+    private String body;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "body", table = "Documentation")
+    public String getBody() {
+        return body;
+    }
+
+    @JsonSetter
+    public void setBody(String body) {
+        this.body = body;
     }
 
 
@@ -157,46 +187,22 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("documentationComment")
-    private List<Comment> documentationComment;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Documentation_documentationComment",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Comment> getDocumentationComment() {
-        if (documentationComment == null) {
-            documentationComment = new ArrayList<>();
-        }
-        return documentationComment;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = CommentImpl.class)
-    public void setDocumentationComment(List<Comment> documentationComment) {
-        this.documentationComment = documentationComment;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("documentingComment")
-    private Comment documentingComment;
+    // @info.archinnov.achilles.annotations.Column("documentedElement")
+    private Element documentedElement;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "documentingCommentType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "documentingCommentId", table = "Documentation")
-    public Comment getDocumentingComment() {
-        return documentingComment;
+    // @javax.persistence.Transient
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "documentedElementType"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "documentedElementId", table = "Documentation")
+    public Element getDocumentedElement() {
+        return documentedElement;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = CommentImpl.class)
-    public void setDocumentingComment(Comment documentingComment) {
-        this.documentingComment = documentingComment;
+    @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
+    public void setDocumentedElement(Element documentedElement) {
+        this.documentedElement = documentedElement;
     }
 
 
@@ -251,6 +257,24 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
     @JsonSetter
     public void setIdentifier(java.util.UUID identifier) {
         this.identifier = identifier;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("locale")
+    private String locale;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "locale", table = "Documentation")
+    public String getLocale() {
+        return locale;
+    }
+
+    @JsonSetter
+    public void setLocale(String locale) {
+        this.locale = locale;
     }
 
 
@@ -327,30 +351,6 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
 
 
 
-    // @info.archinnov.achilles.annotations.Column("ownedRelatedElement")
-    private List<Element> ownedRelatedElement;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Documentation_ownedRelatedElement",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Element> getOwnedRelatedElement() {
-        if (ownedRelatedElement == null) {
-            ownedRelatedElement = new ArrayList<>();
-        }
-        return ownedRelatedElement;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
-    public void setOwnedRelatedElement(List<Element> ownedRelatedElement) {
-        this.ownedRelatedElement = ownedRelatedElement;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("ownedRelationship")
     private List<Relationship> ownedRelationship;
 
@@ -376,32 +376,6 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedTextualRepresentation")
-    private Collection<TextualRepresentation> ownedTextualRepresentation;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Documentation_ownedTextualRepresentation",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<TextualRepresentation> getOwnedTextualRepresentation() {
-        if (ownedTextualRepresentation == null) {
-            ownedTextualRepresentation = new ArrayList<>();
-        }
-        return ownedTextualRepresentation;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TextualRepresentationImpl.class)
-    public void setOwnedTextualRepresentation(Collection<TextualRepresentation> ownedTextualRepresentation) {
-        this.ownedTextualRepresentation = ownedTextualRepresentation;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owner")
     private Element owner;
 
@@ -418,44 +392,6 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
     @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
     public void setOwner(Element owner) {
         this.owner = owner;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("owningAnnotatedElement")
-    private Element owningAnnotatedElement;
-
-    @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningAnnotatedElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningAnnotatedElementId", table = "Documentation")
-    public Element getOwningAnnotatedElement() {
-        return owningAnnotatedElement;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
-    public void setOwningAnnotatedElement(Element owningAnnotatedElement) {
-        this.owningAnnotatedElement = owningAnnotatedElement;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("owningDocumentedElement")
-    private Element owningDocumentedElement;
-
-    @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningDocumentedElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningDocumentedElementId", table = "Documentation")
-    public Element getOwningDocumentedElement() {
-        return owningDocumentedElement;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
-    public void setOwningDocumentedElement(Element owningDocumentedElement) {
-        this.owningDocumentedElement = owningDocumentedElement;
     }
 
 
@@ -500,25 +436,6 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
 
 
 
-    // @info.archinnov.achilles.annotations.Column("owningRelatedElement")
-    private Element owningRelatedElement;
-
-    @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelatedElementId", table = "Documentation")
-    public Element getOwningRelatedElement() {
-        return owningRelatedElement;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
-    public void setOwningRelatedElement(Element owningRelatedElement) {
-        this.owningRelatedElement = owningRelatedElement;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("owningRelationship")
     private Relationship owningRelationship;
 
@@ -559,75 +476,27 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("relatedElement")
-    private List<Element> relatedElement;
+    // @info.archinnov.achilles.annotations.Column("textualRepresentation")
+    private List<TextualRepresentation> textualRepresentation;
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Documentation_relatedElement",
+    @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Documentation_textualRepresentation",
             joinColumns = @JoinColumn(name = "classId"),
             inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Element> getRelatedElement() {
-        if (relatedElement == null) {
-            relatedElement = new ArrayList<>();
+    public List<TextualRepresentation> getTextualRepresentation() {
+        if (textualRepresentation == null) {
+            textualRepresentation = new ArrayList<>();
         }
-        return relatedElement;
+        return textualRepresentation;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
-    public void setRelatedElement(List<Element> relatedElement) {
-        this.relatedElement = relatedElement;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("source")
-    private List<Element> source;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Documentation_source",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Element> getSource() {
-        if (source == null) {
-            source = new ArrayList<>();
-        }
-        return source;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
-    public void setSource(List<Element> source) {
-        this.source = source;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("target")
-    private List<Element> target;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Documentation_target",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Element> getTarget() {
-        if (target == null) {
-            target = new ArrayList<>();
-        }
-        return target;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
-    public void setTarget(List<Element> target) {
-        this.target = target;
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TextualRepresentationImpl.class)
+    public void setTextualRepresentation(List<TextualRepresentation> textualRepresentation) {
+        this.textualRepresentation = textualRepresentation;
     }
 
 

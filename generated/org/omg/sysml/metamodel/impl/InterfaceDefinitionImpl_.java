@@ -13,7 +13,6 @@ import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.AttributeUsage;
 import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
@@ -67,7 +66,7 @@ public abstract class InterfaceDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile CollectionAttribute<InterfaceDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<InterfaceDefinitionImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<InterfaceDefinitionImpl, Comment> documentationComment;
+	public static volatile ListAttribute<InterfaceDefinitionImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<InterfaceDefinitionImpl, UUID> identifier;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, ViewUsage> ownedView;
@@ -119,7 +118,6 @@ public abstract class InterfaceDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile CollectionAttribute<InterfaceDefinitionImpl, Feature> associationEnd;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, Element> target;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, PortUsage> interfaceEnd;
-	public static volatile CollectionAttribute<InterfaceDefinitionImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<InterfaceDefinitionImpl, VariantMembership> variantMembership;
 	public static volatile SingularAttribute<InterfaceDefinitionImpl, String> humanId;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, Usage> connectionEnd;
@@ -144,7 +142,7 @@ public abstract class InterfaceDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String VARIANT = "variant";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
@@ -196,7 +194,6 @@ public abstract class InterfaceDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String ASSOCIATION_END = "associationEnd";
 	public static final String TARGET = "target";
 	public static final String INTERFACE_END = "interfaceEnd";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String HUMAN_ID = "humanId";
 	public static final String CONNECTION_END = "connectionEnd";

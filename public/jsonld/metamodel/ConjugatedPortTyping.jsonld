@@ -8,7 +8,6 @@
         "aliasId": {"@type": "xsd:string"},
         "conjugatedPortDefinition": {"@type": "@id"},
         "documentation": {"@type": "@id"},
-        "documentationComment": {"@type": "@id"},
         "effectiveName": {"@type": "xsd:string"},
         "general": {"@type": "@id"},
         "humanId": {"@type": "xsd:string"},
@@ -18,7 +17,6 @@
         "ownedElement": {"@type": "@id"},
         "ownedRelatedElement": {"@type": "@id"},
         "ownedRelationship": {"@type": "@id"},
-        "ownedTextualRepresentation": {"@type": "@id"},
         "owner": {"@type": "@id"},
         "owningFeature": {"@type": "@id"},
         "owningMembership": {"@type": "@id"},
@@ -32,6 +30,7 @@
         "source": {"@type": "@id"},
         "specific": {"@type": "@id"},
         "target": {"@type": "@id"},
+        "textualRepresentation": {"@type": "@id"},
         "type": {"@type": "@id"},
         "typedFeature": {"@type": "@id"}
 

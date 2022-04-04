@@ -18,7 +18,6 @@ import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
 import org.omg.sysml.metamodel.Class;
 import org.omg.sysml.metamodel.Classifier;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
@@ -82,6 +81,7 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, ConstraintUsage> nestedConstraint;
 	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, Redefinition> ownedRedefinition;
+	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, UUID> identifier;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, EnumerationUsage> nestedEnumeration;
@@ -132,7 +132,6 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, Expression> guardExpression;
 	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, Usage> variant;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, StateUsage> nestedState;
-	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, Boolean> isOrdered;
 	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Annotation> ownedAnnotation;
@@ -176,7 +175,6 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Import> ownedImport;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Structure> itemDefinition;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Element> target;
-	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, VariantMembership> variantMembership;
 	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, Boolean> isDirected;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, String> aliasId;
@@ -193,6 +191,7 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
@@ -243,7 +242,6 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static final String GUARD_EXPRESSION = "guardExpression";
 	public static final String VARIANT = "variant";
 	public static final String NESTED_STATE = "nestedState";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -287,7 +285,6 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String ITEM_DEFINITION = "itemDefinition";
 	public static final String TARGET = "target";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String IS_DIRECTED = "isDirected";
 	public static final String ALIAS_ID = "aliasId";

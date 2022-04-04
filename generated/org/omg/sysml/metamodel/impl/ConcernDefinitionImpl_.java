@@ -13,7 +13,6 @@ import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.AttributeUsage;
 import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
@@ -70,7 +69,7 @@ public abstract class ConcernDefinitionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<ConcernDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile CollectionAttribute<ConcernDefinitionImpl, String> text;
 	public static volatile SingularAttribute<ConcernDefinitionImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<ConcernDefinitionImpl, Comment> documentationComment;
+	public static volatile ListAttribute<ConcernDefinitionImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<ConcernDefinitionImpl, UUID> identifier;
 	public static volatile ListAttribute<ConcernDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ConcernDefinitionImpl, ViewUsage> ownedView;
@@ -122,7 +121,6 @@ public abstract class ConcernDefinitionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<ConcernDefinitionImpl, Import> ownedImport;
 	public static volatile ListAttribute<ConcernDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<ConcernDefinitionImpl, Boolean> isAbstract;
-	public static volatile CollectionAttribute<ConcernDefinitionImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<ConcernDefinitionImpl, VariantMembership> variantMembership;
 	public static volatile SingularAttribute<ConcernDefinitionImpl, String> humanId;
 	public static volatile ListAttribute<ConcernDefinitionImpl, String> aliasId;
@@ -149,7 +147,7 @@ public abstract class ConcernDefinitionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String TEXT = "text";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
@@ -201,7 +199,6 @@ public abstract class ConcernDefinitionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";

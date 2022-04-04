@@ -16,7 +16,6 @@ import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
 import org.omg.sysml.metamodel.Class;
 import org.omg.sysml.metamodel.Classifier;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
@@ -75,6 +74,7 @@ public abstract class SatisfyRequirementUsageImpl_ extends org.omg.sysml.lifecyc
 	public static volatile CollectionAttribute<SatisfyRequirementUsageImpl, String> text;
 	public static volatile SingularAttribute<SatisfyRequirementUsageImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<SatisfyRequirementUsageImpl, Redefinition> ownedRedefinition;
+	public static volatile ListAttribute<SatisfyRequirementUsageImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<SatisfyRequirementUsageImpl, UUID> identifier;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, EnumerationUsage> nestedEnumeration;
@@ -122,7 +122,6 @@ public abstract class SatisfyRequirementUsageImpl_ extends org.omg.sysml.lifecyc
 	public static volatile SingularAttribute<SatisfyRequirementUsageImpl, Boolean> isNegated;
 	public static volatile CollectionAttribute<SatisfyRequirementUsageImpl, Usage> variant;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, StateUsage> nestedState;
-	public static volatile ListAttribute<SatisfyRequirementUsageImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<SatisfyRequirementUsageImpl, Boolean> isOrdered;
 	public static volatile SingularAttribute<SatisfyRequirementUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, Annotation> ownedAnnotation;
@@ -156,7 +155,6 @@ public abstract class SatisfyRequirementUsageImpl_ extends org.omg.sysml.lifecyc
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, Relationship> ownedRelationship;
 	public static volatile CollectionAttribute<SatisfyRequirementUsageImpl, ConcernUsage> nestedConcern;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, Import> ownedImport;
-	public static volatile CollectionAttribute<SatisfyRequirementUsageImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<SatisfyRequirementUsageImpl, VariantMembership> variantMembership;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, String> aliasId;
 
@@ -174,6 +172,7 @@ public abstract class SatisfyRequirementUsageImpl_ extends org.omg.sysml.lifecyc
 	public static final String TEXT = "text";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
@@ -221,7 +220,6 @@ public abstract class SatisfyRequirementUsageImpl_ extends org.omg.sysml.lifecyc
 	public static final String IS_NEGATED = "isNegated";
 	public static final String VARIANT = "variant";
 	public static final String NESTED_STATE = "nestedState";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -255,7 +253,6 @@ public abstract class SatisfyRequirementUsageImpl_ extends org.omg.sysml.lifecyc
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String NESTED_CONCERN = "nestedConcern";
 	public static final String OWNED_IMPORT = "ownedImport";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String ALIAS_ID = "aliasId";
 

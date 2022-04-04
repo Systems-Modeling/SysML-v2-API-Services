@@ -13,7 +13,6 @@ import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.AttributeUsage;
 import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
@@ -65,7 +64,7 @@ public abstract class OccurrenceDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile CollectionAttribute<OccurrenceDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<OccurrenceDefinitionImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<OccurrenceDefinitionImpl, Comment> documentationComment;
+	public static volatile ListAttribute<OccurrenceDefinitionImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<OccurrenceDefinitionImpl, UUID> identifier;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, ViewUsage> ownedView;
@@ -110,7 +109,6 @@ public abstract class OccurrenceDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, Import> ownedImport;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<OccurrenceDefinitionImpl, Boolean> isAbstract;
-	public static volatile CollectionAttribute<OccurrenceDefinitionImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<OccurrenceDefinitionImpl, VariantMembership> variantMembership;
 	public static volatile SingularAttribute<OccurrenceDefinitionImpl, String> humanId;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, String> aliasId;
@@ -133,7 +131,7 @@ public abstract class OccurrenceDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static final String VARIANT = "variant";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
@@ -178,7 +176,6 @@ public abstract class OccurrenceDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";

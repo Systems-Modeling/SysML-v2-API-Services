@@ -13,7 +13,6 @@ import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.AttributeUsage;
 import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
@@ -65,7 +64,7 @@ public abstract class AttributeDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile CollectionAttribute<AttributeDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<AttributeDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<AttributeDefinitionImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<AttributeDefinitionImpl, Comment> documentationComment;
+	public static volatile ListAttribute<AttributeDefinitionImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<AttributeDefinitionImpl, UUID> identifier;
 	public static volatile ListAttribute<AttributeDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<AttributeDefinitionImpl, ViewUsage> ownedView;
@@ -109,7 +108,6 @@ public abstract class AttributeDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile ListAttribute<AttributeDefinitionImpl, Import> ownedImport;
 	public static volatile ListAttribute<AttributeDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<AttributeDefinitionImpl, Boolean> isAbstract;
-	public static volatile CollectionAttribute<AttributeDefinitionImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<AttributeDefinitionImpl, VariantMembership> variantMembership;
 	public static volatile SingularAttribute<AttributeDefinitionImpl, String> humanId;
 	public static volatile ListAttribute<AttributeDefinitionImpl, String> aliasId;
@@ -132,7 +130,7 @@ public abstract class AttributeDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String VARIANT = "variant";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
@@ -176,7 +174,6 @@ public abstract class AttributeDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";

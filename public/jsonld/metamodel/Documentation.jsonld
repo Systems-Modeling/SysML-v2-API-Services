@@ -7,30 +7,24 @@
 
         "aliasId": {"@type": "xsd:string"},
         "annotatedElement": {"@type": "@id"},
-        "annotatingElement": {"@type": "@id"},
+        "annotation": {"@type": "@id"},
+        "body": {"@type": "xsd:string"},
         "documentation": {"@type": "@id"},
-        "documentationComment": {"@type": "@id"},
-        "documentingComment": {"@type": "@id"},
+        "documentedElement": {"@type": "@id"},
         "effectiveName": {"@type": "xsd:string"},
         "humanId": {"@type": "xsd:string"},
         "identifier": {"@type": "dcterms:identifier"},
+        "locale": {"@type": "xsd:string"},
         "name": {"@type": "xsd:string"},
         "ownedAnnotation": {"@type": "@id"},
         "ownedElement": {"@type": "@id"},
-        "ownedRelatedElement": {"@type": "@id"},
         "ownedRelationship": {"@type": "@id"},
-        "ownedTextualRepresentation": {"@type": "@id"},
         "owner": {"@type": "@id"},
-        "owningAnnotatedElement": {"@type": "@id"},
-        "owningDocumentedElement": {"@type": "@id"},
         "owningMembership": {"@type": "@id"},
         "owningNamespace": {"@type": "@id"},
-        "owningRelatedElement": {"@type": "@id"},
         "owningRelationship": {"@type": "@id"},
         "qualifiedName": {"@type": "xsd:string"},
-        "relatedElement": {"@type": "@id"},
-        "source": {"@type": "@id"},
-        "target": {"@type": "@id"}
+        "textualRepresentation": {"@type": "@id"}
 
     }
 }

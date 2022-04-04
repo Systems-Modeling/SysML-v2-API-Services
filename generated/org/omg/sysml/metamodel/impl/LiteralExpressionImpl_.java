@@ -8,7 +8,6 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.Behavior;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -39,9 +38,9 @@ public abstract class LiteralExpressionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<LiteralExpressionImpl, Type> type;
 	public static volatile ListAttribute<LiteralExpressionImpl, Feature> output;
 	public static volatile SingularAttribute<LiteralExpressionImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<LiteralExpressionImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<LiteralExpressionImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<LiteralExpressionImpl, Redefinition> ownedRedefinition;
+	public static volatile ListAttribute<LiteralExpressionImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<LiteralExpressionImpl, UUID> identifier;
 	public static volatile SingularAttribute<LiteralExpressionImpl, Boolean> isDerived;
 	public static volatile ListAttribute<LiteralExpressionImpl, Annotation> ownedAnnotation;
@@ -81,7 +80,6 @@ public abstract class LiteralExpressionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<LiteralExpressionImpl, FeatureMembership> featureMembership;
 	public static volatile ListAttribute<LiteralExpressionImpl, Import> ownedImport;
 	public static volatile SingularAttribute<LiteralExpressionImpl, Boolean> isAbstract;
-	public static volatile CollectionAttribute<LiteralExpressionImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<LiteralExpressionImpl, String> humanId;
 	public static volatile ListAttribute<LiteralExpressionImpl, String> aliasId;
 	public static volatile ListAttribute<LiteralExpressionImpl, Specialization> ownedSpecialization;
@@ -94,9 +92,9 @@ public abstract class LiteralExpressionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String TYPE = "type";
 	public static final String OUTPUT = "output";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -136,7 +134,6 @@ public abstract class LiteralExpressionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";

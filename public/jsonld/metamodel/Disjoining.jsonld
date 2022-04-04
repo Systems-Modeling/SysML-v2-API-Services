@@ -8,7 +8,6 @@
         "aliasId": {"@type": "xsd:string"},
         "disjoiningType": {"@type": "@id"},
         "documentation": {"@type": "@id"},
-        "documentationComment": {"@type": "@id"},
         "effectiveName": {"@type": "xsd:string"},
         "humanId": {"@type": "xsd:string"},
         "identifier": {"@type": "dcterms:identifier"},
@@ -17,7 +16,6 @@
         "ownedElement": {"@type": "@id"},
         "ownedRelatedElement": {"@type": "@id"},
         "ownedRelationship": {"@type": "@id"},
-        "ownedTextualRepresentation": {"@type": "@id"},
         "owner": {"@type": "@id"},
         "owningMembership": {"@type": "@id"},
         "owningNamespace": {"@type": "@id"},
@@ -28,6 +26,7 @@
         "relatedElement": {"@type": "@id"},
         "source": {"@type": "@id"},
         "target": {"@type": "@id"},
+        "textualRepresentation": {"@type": "@id"},
         "typeDisjoined": {"@type": "@id"}
 
     }

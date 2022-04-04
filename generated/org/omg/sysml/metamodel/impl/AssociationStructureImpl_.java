@@ -7,7 +7,6 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Annotation;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -40,8 +39,8 @@ public abstract class AssociationStructureImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile CollectionAttribute<AssociationStructureImpl, Subclassification> ownedSubclassification;
 	public static volatile ListAttribute<AssociationStructureImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<AssociationStructureImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<AssociationStructureImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<AssociationStructureImpl, String> effectiveName;
+	public static volatile ListAttribute<AssociationStructureImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<AssociationStructureImpl, UUID> identifier;
 	public static volatile ListAttribute<AssociationStructureImpl, Membership> importedMembership;
 	public static volatile ListAttribute<AssociationStructureImpl, Annotation> ownedAnnotation;
@@ -59,7 +58,6 @@ public abstract class AssociationStructureImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile CollectionAttribute<AssociationStructureImpl, Feature> associationEnd;
 	public static volatile ListAttribute<AssociationStructureImpl, Element> target;
 	public static volatile ListAttribute<AssociationStructureImpl, Feature> input;
-	public static volatile CollectionAttribute<AssociationStructureImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<AssociationStructureImpl, String> humanId;
 	public static volatile ListAttribute<AssociationStructureImpl, String> aliasId;
 	public static volatile ListAttribute<AssociationStructureImpl, Element> relatedElement;
@@ -83,8 +81,8 @@ public abstract class AssociationStructureImpl_ extends org.omg.sysml.lifecycle.
 	public static final String OWNED_SUBCLASSIFICATION = "ownedSubclassification";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String EFFECTIVE_NAME = "effectiveName";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -102,7 +100,6 @@ public abstract class AssociationStructureImpl_ extends org.omg.sysml.lifecycle.
 	public static final String ASSOCIATION_END = "associationEnd";
 	public static final String TARGET = "target";
 	public static final String INPUT = "input";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
 	public static final String RELATED_ELEMENT = "relatedElement";

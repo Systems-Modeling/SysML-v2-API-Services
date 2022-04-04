@@ -16,7 +16,6 @@ import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
 import org.omg.sysml.metamodel.Class;
 import org.omg.sysml.metamodel.Classifier;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
@@ -80,9 +79,9 @@ public abstract class UseCaseUsageImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static volatile CollectionAttribute<UseCaseUsageImpl, Usage> variant;
 	public static volatile SingularAttribute<UseCaseUsageImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<UseCaseUsageImpl, StateUsage> nestedState;
-	public static volatile ListAttribute<UseCaseUsageImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<UseCaseUsageImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<UseCaseUsageImpl, Redefinition> ownedRedefinition;
+	public static volatile ListAttribute<UseCaseUsageImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<UseCaseUsageImpl, UUID> identifier;
 	public static volatile SingularAttribute<UseCaseUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<UseCaseUsageImpl, AttributeUsage> nestedAttribute;
@@ -145,7 +144,6 @@ public abstract class UseCaseUsageImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static volatile CollectionAttribute<UseCaseUsageImpl, ConcernUsage> nestedConcern;
 	public static volatile ListAttribute<UseCaseUsageImpl, Import> ownedImport;
 	public static volatile SingularAttribute<UseCaseUsageImpl, Boolean> isAbstract;
-	public static volatile CollectionAttribute<UseCaseUsageImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<UseCaseUsageImpl, VariantMembership> variantMembership;
 	public static volatile ListAttribute<UseCaseUsageImpl, RenderingUsage> nestedRendering;
 	public static volatile SingularAttribute<UseCaseUsageImpl, String> humanId;
@@ -174,9 +172,9 @@ public abstract class UseCaseUsageImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static final String VARIANT = "variant";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String NESTED_STATE = "nestedState";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
@@ -239,7 +237,6 @@ public abstract class UseCaseUsageImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static final String NESTED_CONCERN = "nestedConcern";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String NESTED_RENDERING = "nestedRendering";
 	public static final String HUMAN_ID = "humanId";

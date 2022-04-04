@@ -28,7 +28,7 @@ import java.util.Set;
 public interface TextualRepresentation extends AnnotatingElement, SysMLType {
     String getLanguage();
 
-    String getBody();
-
     Element getRepresentedElement();
+
+    String getBody();
 }

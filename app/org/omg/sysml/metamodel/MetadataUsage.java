@@ -25,8 +25,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface AnnotatingFeature extends AnnotatingElement, Feature, SysMLType {
-    DataType getMetadataType();
-
-    List<? extends MetadataFeature> getOwnedMetadata();
+public interface MetadataUsage extends ItemUsage, MetadataFeature, Usage, SysMLType {
+    Metaclass getMetadataDefinition();
 }

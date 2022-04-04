@@ -7,7 +7,6 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Annotation;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -39,9 +38,9 @@ public abstract class PortioningFeatureImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<PortioningFeatureImpl, Type> type;
 	public static volatile ListAttribute<PortioningFeatureImpl, Feature> output;
 	public static volatile SingularAttribute<PortioningFeatureImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<PortioningFeatureImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<PortioningFeatureImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<PortioningFeatureImpl, Redefinition> ownedRedefinition;
+	public static volatile ListAttribute<PortioningFeatureImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<PortioningFeatureImpl, UUID> identifier;
 	public static volatile SingularAttribute<PortioningFeatureImpl, Boolean> isDerived;
 	public static volatile ListAttribute<PortioningFeatureImpl, Annotation> ownedAnnotation;
@@ -79,7 +78,6 @@ public abstract class PortioningFeatureImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile SingularAttribute<PortioningFeatureImpl, PortionKind> portionKind;
 	public static volatile ListAttribute<PortioningFeatureImpl, Import> ownedImport;
 	public static volatile SingularAttribute<PortioningFeatureImpl, Boolean> isAbstract;
-	public static volatile CollectionAttribute<PortioningFeatureImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<PortioningFeatureImpl, String> humanId;
 	public static volatile ListAttribute<PortioningFeatureImpl, String> aliasId;
 	public static volatile ListAttribute<PortioningFeatureImpl, Specialization> ownedSpecialization;
@@ -92,9 +90,9 @@ public abstract class PortioningFeatureImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String TYPE = "type";
 	public static final String OUTPUT = "output";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -132,7 +130,6 @@ public abstract class PortioningFeatureImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String PORTION_KIND = "portionKind";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
