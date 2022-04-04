@@ -13,7 +13,6 @@ import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.AttributeUsage;
 import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
@@ -70,7 +69,7 @@ public abstract class RequirementDefinitionImpl_ extends org.omg.sysml.lifecycle
 	public static volatile ListAttribute<RequirementDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile CollectionAttribute<RequirementDefinitionImpl, String> text;
 	public static volatile SingularAttribute<RequirementDefinitionImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<RequirementDefinitionImpl, Comment> documentationComment;
+	public static volatile ListAttribute<RequirementDefinitionImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<RequirementDefinitionImpl, UUID> identifier;
 	public static volatile ListAttribute<RequirementDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<RequirementDefinitionImpl, ViewUsage> ownedView;
@@ -122,7 +121,6 @@ public abstract class RequirementDefinitionImpl_ extends org.omg.sysml.lifecycle
 	public static volatile ListAttribute<RequirementDefinitionImpl, Import> ownedImport;
 	public static volatile ListAttribute<RequirementDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<RequirementDefinitionImpl, Boolean> isAbstract;
-	public static volatile CollectionAttribute<RequirementDefinitionImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<RequirementDefinitionImpl, VariantMembership> variantMembership;
 	public static volatile SingularAttribute<RequirementDefinitionImpl, String> humanId;
 	public static volatile ListAttribute<RequirementDefinitionImpl, String> aliasId;
@@ -149,7 +147,7 @@ public abstract class RequirementDefinitionImpl_ extends org.omg.sysml.lifecycle
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String TEXT = "text";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
@@ -201,7 +199,6 @@ public abstract class RequirementDefinitionImpl_ extends org.omg.sysml.lifecycle
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";

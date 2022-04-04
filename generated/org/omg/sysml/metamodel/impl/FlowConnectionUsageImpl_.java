@@ -18,7 +18,6 @@ import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
 import org.omg.sysml.metamodel.Class;
 import org.omg.sysml.metamodel.Classifier;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
@@ -80,6 +79,7 @@ public abstract class FlowConnectionUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile ListAttribute<FlowConnectionUsageImpl, ConstraintUsage> nestedConstraint;
 	public static volatile SingularAttribute<FlowConnectionUsageImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<FlowConnectionUsageImpl, Redefinition> ownedRedefinition;
+	public static volatile ListAttribute<FlowConnectionUsageImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<FlowConnectionUsageImpl, UUID> identifier;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, EnumerationUsage> nestedEnumeration;
@@ -129,7 +129,6 @@ public abstract class FlowConnectionUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Element> source;
 	public static volatile CollectionAttribute<FlowConnectionUsageImpl, Usage> variant;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, StateUsage> nestedState;
-	public static volatile ListAttribute<FlowConnectionUsageImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<FlowConnectionUsageImpl, Boolean> isOrdered;
 	public static volatile SingularAttribute<FlowConnectionUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Annotation> ownedAnnotation;
@@ -171,7 +170,6 @@ public abstract class FlowConnectionUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Import> ownedImport;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Structure> itemDefinition;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Element> target;
-	public static volatile CollectionAttribute<FlowConnectionUsageImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<FlowConnectionUsageImpl, VariantMembership> variantMembership;
 	public static volatile SingularAttribute<FlowConnectionUsageImpl, Boolean> isDirected;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, String> aliasId;
@@ -188,6 +186,7 @@ public abstract class FlowConnectionUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
@@ -237,7 +236,6 @@ public abstract class FlowConnectionUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String SOURCE = "source";
 	public static final String VARIANT = "variant";
 	public static final String NESTED_STATE = "nestedState";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -279,7 +277,6 @@ public abstract class FlowConnectionUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String ITEM_DEFINITION = "itemDefinition";
 	public static final String TARGET = "target";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String IS_DIRECTED = "isDirected";
 	public static final String ALIAS_ID = "aliasId";

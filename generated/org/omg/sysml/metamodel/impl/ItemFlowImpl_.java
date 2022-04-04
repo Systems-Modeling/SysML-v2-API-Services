@@ -10,7 +10,6 @@ import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.Association;
 import org.omg.sysml.metamodel.Behavior;
 import org.omg.sysml.metamodel.Classifier;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -46,9 +45,9 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile ListAttribute<ItemFlowImpl, Feature> output;
 	public static volatile ListAttribute<ItemFlowImpl, Feature> sourceOutputFeature;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<ItemFlowImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<ItemFlowImpl, Redefinition> ownedRedefinition;
+	public static volatile ListAttribute<ItemFlowImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<ItemFlowImpl, UUID> identifier;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isDerived;
 	public static volatile ListAttribute<ItemFlowImpl, Annotation> ownedAnnotation;
@@ -99,7 +98,6 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<ItemFlowImpl, Feature> relatedFeature;
 	public static volatile ListAttribute<ItemFlowImpl, Element> target;
-	public static volatile CollectionAttribute<ItemFlowImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isDirected;
 	public static volatile SingularAttribute<ItemFlowImpl, String> humanId;
 	public static volatile ListAttribute<ItemFlowImpl, String> aliasId;
@@ -115,9 +113,9 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String OUTPUT = "output";
 	public static final String SOURCE_OUTPUT_FEATURE = "sourceOutputFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -168,7 +166,6 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String TARGET = "target";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String IS_DIRECTED = "isDirected";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";

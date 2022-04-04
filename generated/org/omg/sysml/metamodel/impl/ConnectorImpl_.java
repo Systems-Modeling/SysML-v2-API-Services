@@ -8,7 +8,6 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.Association;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -40,9 +39,9 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<ConnectorImpl, Type> type;
 	public static volatile ListAttribute<ConnectorImpl, Feature> output;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<ConnectorImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<ConnectorImpl, Redefinition> ownedRedefinition;
+	public static volatile ListAttribute<ConnectorImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<ConnectorImpl, UUID> identifier;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isDerived;
 	public static volatile ListAttribute<ConnectorImpl, Annotation> ownedAnnotation;
@@ -86,7 +85,6 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<ConnectorImpl, Feature> relatedFeature;
 	public static volatile ListAttribute<ConnectorImpl, Element> target;
-	public static volatile CollectionAttribute<ConnectorImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isDirected;
 	public static volatile SingularAttribute<ConnectorImpl, String> humanId;
 	public static volatile ListAttribute<ConnectorImpl, String> aliasId;
@@ -101,9 +99,9 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String TYPE = "type";
 	public static final String OUTPUT = "output";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -147,7 +145,6 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String TARGET = "target";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String IS_DIRECTED = "isDirected";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";

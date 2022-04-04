@@ -15,7 +15,6 @@ import org.omg.sysml.metamodel.AttributeUsage;
 import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
 import org.omg.sysml.metamodel.Classifier;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
@@ -78,9 +77,9 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static volatile CollectionAttribute<BindingConnectorAsUsageImpl, Usage> variant;
 	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, StateUsage> nestedState;
-	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<BindingConnectorAsUsageImpl, Redefinition> ownedRedefinition;
+	public static volatile ListAttribute<BindingConnectorAsUsageImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, UUID> identifier;
 	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, AttributeUsage> nestedAttribute;
@@ -142,7 +141,6 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Feature> relatedFeature;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Element> target;
-	public static volatile CollectionAttribute<BindingConnectorAsUsageImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<BindingConnectorAsUsageImpl, VariantMembership> variantMembership;
 	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, Boolean> isDirected;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, RenderingUsage> nestedRendering;
@@ -172,9 +170,9 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static final String VARIANT = "variant";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String NESTED_STATE = "nestedState";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
@@ -236,7 +234,6 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String TARGET = "target";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String IS_DIRECTED = "isDirected";
 	public static final String NESTED_RENDERING = "nestedRendering";

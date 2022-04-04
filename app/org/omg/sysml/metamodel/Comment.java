@@ -26,5 +26,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface Comment extends AnnotatingElement, SysMLType {
+    String getLocale();
+
     String getBody();
 }

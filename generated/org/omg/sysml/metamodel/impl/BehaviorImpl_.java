@@ -7,7 +7,6 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Annotation;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -38,8 +37,8 @@ public abstract class BehaviorImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile CollectionAttribute<BehaviorImpl, Subclassification> ownedSubclassification;
 	public static volatile ListAttribute<BehaviorImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<BehaviorImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<BehaviorImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<BehaviorImpl, String> effectiveName;
+	public static volatile ListAttribute<BehaviorImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<BehaviorImpl, UUID> identifier;
 	public static volatile ListAttribute<BehaviorImpl, Membership> importedMembership;
 	public static volatile ListAttribute<BehaviorImpl, Annotation> ownedAnnotation;
@@ -54,7 +53,6 @@ public abstract class BehaviorImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile ListAttribute<BehaviorImpl, Import> ownedImport;
 	public static volatile SingularAttribute<BehaviorImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<BehaviorImpl, Feature> input;
-	public static volatile CollectionAttribute<BehaviorImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<BehaviorImpl, String> humanId;
 	public static volatile ListAttribute<BehaviorImpl, String> aliasId;
 	public static volatile SingularAttribute<BehaviorImpl, String> name;
@@ -76,8 +74,8 @@ public abstract class BehaviorImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String OWNED_SUBCLASSIFICATION = "ownedSubclassification";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String EFFECTIVE_NAME = "effectiveName";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -92,7 +90,6 @@ public abstract class BehaviorImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String INPUT = "input";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
 	public static final String NAME = "name";

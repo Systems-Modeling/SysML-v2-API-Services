@@ -7,7 +7,6 @@
 
         "aliasId": {"@type": "xsd:string"},
         "documentation": {"@type": "@id"},
-        "documentationComment": {"@type": "@id"},
         "effectiveMemberName": {"@type": "xsd:string"},
         "effectiveName": {"@type": "xsd:string"},
         "featureWithValue": {"@type": "@id"},
@@ -24,7 +23,6 @@
         "ownedMemberElement": {"@type": "@id"},
         "ownedRelatedElement": {"@type": "@id"},
         "ownedRelationship": {"@type": "@id"},
-        "ownedTextualRepresentation": {"@type": "@id"},
         "owner": {"@type": "@id"},
         "owningMembership": {"@type": "@id"},
         "owningNamespace": {"@type": "@id"},
@@ -34,6 +32,7 @@
         "relatedElement": {"@type": "@id"},
         "source": {"@type": "@id"},
         "target": {"@type": "@id"},
+        "textualRepresentation": {"@type": "@id"},
         "value": {"@type": "@id"},
         "visibility": {"@type": "@vocab"}
 

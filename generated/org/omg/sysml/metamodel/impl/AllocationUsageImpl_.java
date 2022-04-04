@@ -18,7 +18,6 @@ import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
 import org.omg.sysml.metamodel.Class;
 import org.omg.sysml.metamodel.Classifier;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
@@ -76,6 +75,7 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<AllocationUsageImpl, ConstraintUsage> nestedConstraint;
 	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<AllocationUsageImpl, Redefinition> ownedRedefinition;
+	public static volatile ListAttribute<AllocationUsageImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<AllocationUsageImpl, UUID> identifier;
 	public static volatile ListAttribute<AllocationUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<AllocationUsageImpl, EnumerationUsage> nestedEnumeration;
@@ -123,7 +123,6 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<AllocationUsageImpl, Element> source;
 	public static volatile CollectionAttribute<AllocationUsageImpl, Usage> variant;
 	public static volatile ListAttribute<AllocationUsageImpl, StateUsage> nestedState;
-	public static volatile ListAttribute<AllocationUsageImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isOrdered;
 	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<AllocationUsageImpl, Annotation> ownedAnnotation;
@@ -161,7 +160,6 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<AllocationUsageImpl, Import> ownedImport;
 	public static volatile ListAttribute<AllocationUsageImpl, Structure> itemDefinition;
 	public static volatile ListAttribute<AllocationUsageImpl, Element> target;
-	public static volatile CollectionAttribute<AllocationUsageImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<AllocationUsageImpl, VariantMembership> variantMembership;
 	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isDirected;
 	public static volatile ListAttribute<AllocationUsageImpl, String> aliasId;
@@ -177,6 +175,7 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
@@ -224,7 +223,6 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String SOURCE = "source";
 	public static final String VARIANT = "variant";
 	public static final String NESTED_STATE = "nestedState";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -262,7 +260,6 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String ITEM_DEFINITION = "itemDefinition";
 	public static final String TARGET = "target";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String IS_DIRECTED = "isDirected";
 	public static final String ALIAS_ID = "aliasId";

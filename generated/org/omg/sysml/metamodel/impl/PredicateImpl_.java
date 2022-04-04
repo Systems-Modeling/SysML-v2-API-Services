@@ -7,7 +7,6 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Annotation;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -39,8 +38,8 @@ public abstract class PredicateImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile CollectionAttribute<PredicateImpl, Subclassification> ownedSubclassification;
 	public static volatile ListAttribute<PredicateImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<PredicateImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<PredicateImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<PredicateImpl, String> effectiveName;
+	public static volatile ListAttribute<PredicateImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<PredicateImpl, UUID> identifier;
 	public static volatile ListAttribute<PredicateImpl, Membership> importedMembership;
 	public static volatile ListAttribute<PredicateImpl, Annotation> ownedAnnotation;
@@ -57,7 +56,6 @@ public abstract class PredicateImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<PredicateImpl, Import> ownedImport;
 	public static volatile SingularAttribute<PredicateImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<PredicateImpl, Feature> input;
-	public static volatile CollectionAttribute<PredicateImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<PredicateImpl, String> humanId;
 	public static volatile ListAttribute<PredicateImpl, String> aliasId;
 	public static volatile SingularAttribute<PredicateImpl, String> name;
@@ -79,8 +77,8 @@ public abstract class PredicateImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String OWNED_SUBCLASSIFICATION = "ownedSubclassification";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String EFFECTIVE_NAME = "effectiveName";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -97,7 +95,6 @@ public abstract class PredicateImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String INPUT = "input";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
 	public static final String NAME = "name";

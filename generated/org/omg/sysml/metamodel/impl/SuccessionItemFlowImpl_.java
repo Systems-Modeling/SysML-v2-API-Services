@@ -10,7 +10,6 @@ import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.Association;
 import org.omg.sysml.metamodel.Behavior;
 import org.omg.sysml.metamodel.Classifier;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -49,9 +48,9 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Feature> sourceOutputFeature;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Expression> guardExpression;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<SuccessionItemFlowImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Redefinition> ownedRedefinition;
+	public static volatile ListAttribute<SuccessionItemFlowImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, UUID> identifier;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, Boolean> isDerived;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Annotation> ownedAnnotation;
@@ -104,7 +103,6 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Feature> relatedFeature;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Element> target;
-	public static volatile CollectionAttribute<SuccessionItemFlowImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, Boolean> isDirected;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, String> humanId;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, String> aliasId;
@@ -121,9 +119,9 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.lifecycle.im
 	public static final String SOURCE_OUTPUT_FEATURE = "sourceOutputFeature";
 	public static final String GUARD_EXPRESSION = "guardExpression";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -176,7 +174,6 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.lifecycle.im
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String TARGET = "target";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String IS_DIRECTED = "isDirected";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";

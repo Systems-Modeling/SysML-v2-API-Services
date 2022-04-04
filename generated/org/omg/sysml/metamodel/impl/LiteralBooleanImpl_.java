@@ -8,7 +8,6 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.Behavior;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -39,9 +38,9 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<LiteralBooleanImpl, Type> type;
 	public static volatile ListAttribute<LiteralBooleanImpl, Feature> output;
 	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<LiteralBooleanImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<LiteralBooleanImpl, Redefinition> ownedRedefinition;
+	public static volatile ListAttribute<LiteralBooleanImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<LiteralBooleanImpl, UUID> identifier;
 	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isDerived;
 	public static volatile ListAttribute<LiteralBooleanImpl, Annotation> ownedAnnotation;
@@ -82,7 +81,6 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<LiteralBooleanImpl, FeatureMembership> featureMembership;
 	public static volatile ListAttribute<LiteralBooleanImpl, Import> ownedImport;
 	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isAbstract;
-	public static volatile CollectionAttribute<LiteralBooleanImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<LiteralBooleanImpl, String> humanId;
 	public static volatile ListAttribute<LiteralBooleanImpl, String> aliasId;
 	public static volatile ListAttribute<LiteralBooleanImpl, Specialization> ownedSpecialization;
@@ -95,9 +93,9 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String TYPE = "type";
 	public static final String OUTPUT = "output";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -138,7 +136,6 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";

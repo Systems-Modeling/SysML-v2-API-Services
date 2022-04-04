@@ -9,7 +9,6 @@
         "associationEnd": {"@type": "@id"},
         "directedFeature": {"@type": "@id"},
         "documentation": {"@type": "@id"},
-        "documentationComment": {"@type": "@id"},
         "effectiveName": {"@type": "xsd:string"},
         "endFeature": {"@type": "@id"},
         "feature": {"@type": "@id"},
@@ -42,7 +41,6 @@
         "ownedRelationship": {"@type": "@id"},
         "ownedSpecialization": {"@type": "@id"},
         "ownedSubclassification": {"@type": "@id"},
-        "ownedTextualRepresentation": {"@type": "@id"},
         "owner": {"@type": "@id"},
         "owningMembership": {"@type": "@id"},
         "owningNamespace": {"@type": "@id"},
@@ -54,7 +52,8 @@
         "source": {"@type": "@id"},
         "sourceType": {"@type": "@id"},
         "target": {"@type": "@id"},
-        "targetType": {"@type": "@id"}
+        "targetType": {"@type": "@id"},
+        "textualRepresentation": {"@type": "@id"}
 
     }
 }

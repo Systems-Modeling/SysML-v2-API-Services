@@ -10,7 +10,6 @@
         "directedFeature": {"@type": "@id"},
         "directedUsage": {"@type": "@id"},
         "documentation": {"@type": "@id"},
-        "documentationComment": {"@type": "@id"},
         "effectiveName": {"@type": "xsd:string"},
         "endFeature": {"@type": "@id"},
         "feature": {"@type": "@id"},
@@ -65,7 +64,6 @@
         "ownedSpecialization": {"@type": "@id"},
         "ownedState": {"@type": "@id"},
         "ownedSubclassification": {"@type": "@id"},
-        "ownedTextualRepresentation": {"@type": "@id"},
         "ownedTransition": {"@type": "@id"},
         "ownedUsage": {"@type": "@id"},
         "ownedUseCase": {"@type": "@id"},
@@ -77,6 +75,7 @@
         "owningNamespace": {"@type": "@id"},
         "owningRelationship": {"@type": "@id"},
         "qualifiedName": {"@type": "xsd:string"},
+        "textualRepresentation": {"@type": "@id"},
         "usage": {"@type": "@id"},
         "variant": {"@type": "@id"},
         "variantMembership": {"@type": "@id"}
