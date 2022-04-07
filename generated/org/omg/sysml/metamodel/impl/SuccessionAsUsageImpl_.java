@@ -15,7 +15,6 @@ import org.omg.sysml.metamodel.AttributeUsage;
 import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
 import org.omg.sysml.metamodel.Classifier;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
@@ -81,9 +80,9 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile CollectionAttribute<SuccessionAsUsageImpl, Usage> variant;
 	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, StateUsage> nestedState;
-	public static volatile ListAttribute<SuccessionAsUsageImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<SuccessionAsUsageImpl, Redefinition> ownedRedefinition;
+	public static volatile ListAttribute<SuccessionAsUsageImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<SuccessionAsUsageImpl, UUID> identifier;
 	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, AttributeUsage> nestedAttribute;
@@ -147,7 +146,6 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Feature> relatedFeature;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Element> target;
-	public static volatile CollectionAttribute<SuccessionAsUsageImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<SuccessionAsUsageImpl, VariantMembership> variantMembership;
 	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isDirected;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, RenderingUsage> nestedRendering;
@@ -178,9 +176,9 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String VARIANT = "variant";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String NESTED_STATE = "nestedState";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
@@ -244,7 +242,6 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String TARGET = "target";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String IS_DIRECTED = "isDirected";
 	public static final String NESTED_RENDERING = "nestedRendering";

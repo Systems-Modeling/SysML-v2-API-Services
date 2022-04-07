@@ -7,7 +7,6 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Annotation;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -39,8 +38,8 @@ public abstract class FunctionImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile CollectionAttribute<FunctionImpl, Subclassification> ownedSubclassification;
 	public static volatile ListAttribute<FunctionImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<FunctionImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<FunctionImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<FunctionImpl, String> effectiveName;
+	public static volatile ListAttribute<FunctionImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<FunctionImpl, UUID> identifier;
 	public static volatile ListAttribute<FunctionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<FunctionImpl, Annotation> ownedAnnotation;
@@ -57,7 +56,6 @@ public abstract class FunctionImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile ListAttribute<FunctionImpl, Import> ownedImport;
 	public static volatile SingularAttribute<FunctionImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<FunctionImpl, Feature> input;
-	public static volatile CollectionAttribute<FunctionImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<FunctionImpl, String> humanId;
 	public static volatile ListAttribute<FunctionImpl, String> aliasId;
 	public static volatile SingularAttribute<FunctionImpl, String> name;
@@ -79,8 +77,8 @@ public abstract class FunctionImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String OWNED_SUBCLASSIFICATION = "ownedSubclassification";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String EFFECTIVE_NAME = "effectiveName";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -97,7 +95,6 @@ public abstract class FunctionImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String INPUT = "input";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
 	public static final String NAME = "name";

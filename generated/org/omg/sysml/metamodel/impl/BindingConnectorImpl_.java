@@ -8,7 +8,6 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.Association;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -40,9 +39,9 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<BindingConnectorImpl, Type> type;
 	public static volatile ListAttribute<BindingConnectorImpl, Feature> output;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<BindingConnectorImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Redefinition> ownedRedefinition;
+	public static volatile ListAttribute<BindingConnectorImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<BindingConnectorImpl, UUID> identifier;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isDerived;
 	public static volatile ListAttribute<BindingConnectorImpl, Annotation> ownedAnnotation;
@@ -86,7 +85,6 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<BindingConnectorImpl, Feature> relatedFeature;
 	public static volatile ListAttribute<BindingConnectorImpl, Element> target;
-	public static volatile CollectionAttribute<BindingConnectorImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isDirected;
 	public static volatile SingularAttribute<BindingConnectorImpl, String> humanId;
 	public static volatile ListAttribute<BindingConnectorImpl, String> aliasId;
@@ -101,9 +99,9 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String TYPE = "type";
 	public static final String OUTPUT = "output";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -147,7 +145,6 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String TARGET = "target";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String IS_DIRECTED = "isDirected";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";

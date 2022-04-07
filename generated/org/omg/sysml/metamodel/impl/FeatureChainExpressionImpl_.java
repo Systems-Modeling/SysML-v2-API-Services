@@ -8,7 +8,6 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.Behavior;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -42,9 +41,9 @@ public abstract class FeatureChainExpressionImpl_ extends org.omg.sysml.lifecycl
 	public static volatile SingularAttribute<FeatureChainExpressionImpl, String> operator;
 	public static volatile ListAttribute<FeatureChainExpressionImpl, Feature> output;
 	public static volatile SingularAttribute<FeatureChainExpressionImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<FeatureChainExpressionImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<FeatureChainExpressionImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<FeatureChainExpressionImpl, Redefinition> ownedRedefinition;
+	public static volatile ListAttribute<FeatureChainExpressionImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<FeatureChainExpressionImpl, UUID> identifier;
 	public static volatile SingularAttribute<FeatureChainExpressionImpl, Boolean> isDerived;
 	public static volatile ListAttribute<FeatureChainExpressionImpl, Annotation> ownedAnnotation;
@@ -84,7 +83,6 @@ public abstract class FeatureChainExpressionImpl_ extends org.omg.sysml.lifecycl
 	public static volatile ListAttribute<FeatureChainExpressionImpl, FeatureMembership> featureMembership;
 	public static volatile ListAttribute<FeatureChainExpressionImpl, Import> ownedImport;
 	public static volatile SingularAttribute<FeatureChainExpressionImpl, Boolean> isAbstract;
-	public static volatile CollectionAttribute<FeatureChainExpressionImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<FeatureChainExpressionImpl, String> humanId;
 	public static volatile ListAttribute<FeatureChainExpressionImpl, String> aliasId;
 	public static volatile ListAttribute<FeatureChainExpressionImpl, Specialization> ownedSpecialization;
@@ -100,9 +98,9 @@ public abstract class FeatureChainExpressionImpl_ extends org.omg.sysml.lifecycl
 	public static final String OPERATOR = "operator";
 	public static final String OUTPUT = "output";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -142,7 +140,6 @@ public abstract class FeatureChainExpressionImpl_ extends org.omg.sysml.lifecycl
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";

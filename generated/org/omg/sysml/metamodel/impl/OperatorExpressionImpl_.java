@@ -8,7 +8,6 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.Behavior;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -42,9 +41,9 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile SingularAttribute<OperatorExpressionImpl, String> operator;
 	public static volatile ListAttribute<OperatorExpressionImpl, Feature> output;
 	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<OperatorExpressionImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<OperatorExpressionImpl, Redefinition> ownedRedefinition;
+	public static volatile ListAttribute<OperatorExpressionImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<OperatorExpressionImpl, UUID> identifier;
 	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isDerived;
 	public static volatile ListAttribute<OperatorExpressionImpl, Annotation> ownedAnnotation;
@@ -84,7 +83,6 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile ListAttribute<OperatorExpressionImpl, FeatureMembership> featureMembership;
 	public static volatile ListAttribute<OperatorExpressionImpl, Import> ownedImport;
 	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isAbstract;
-	public static volatile CollectionAttribute<OperatorExpressionImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<OperatorExpressionImpl, String> humanId;
 	public static volatile ListAttribute<OperatorExpressionImpl, String> aliasId;
 	public static volatile ListAttribute<OperatorExpressionImpl, Specialization> ownedSpecialization;
@@ -100,9 +98,9 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.lifecycle.im
 	public static final String OPERATOR = "operator";
 	public static final String OUTPUT = "output";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -142,7 +140,6 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.lifecycle.im
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";

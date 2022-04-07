@@ -13,7 +13,6 @@ import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.AttributeUsage;
 import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
@@ -65,7 +64,7 @@ public abstract class ItemDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile CollectionAttribute<ItemDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<ItemDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<ItemDefinitionImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<ItemDefinitionImpl, Comment> documentationComment;
+	public static volatile ListAttribute<ItemDefinitionImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<ItemDefinitionImpl, UUID> identifier;
 	public static volatile ListAttribute<ItemDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ItemDefinitionImpl, ViewUsage> ownedView;
@@ -110,7 +109,6 @@ public abstract class ItemDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<ItemDefinitionImpl, Import> ownedImport;
 	public static volatile ListAttribute<ItemDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<ItemDefinitionImpl, Boolean> isAbstract;
-	public static volatile CollectionAttribute<ItemDefinitionImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<ItemDefinitionImpl, VariantMembership> variantMembership;
 	public static volatile SingularAttribute<ItemDefinitionImpl, String> humanId;
 	public static volatile ListAttribute<ItemDefinitionImpl, String> aliasId;
@@ -133,7 +131,7 @@ public abstract class ItemDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String VARIANT = "variant";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
@@ -178,7 +176,6 @@ public abstract class ItemDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";

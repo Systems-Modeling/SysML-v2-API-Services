@@ -8,7 +8,6 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.Behavior;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -41,9 +40,9 @@ public abstract class InvocationExpressionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile ListAttribute<InvocationExpressionImpl, Type> type;
 	public static volatile ListAttribute<InvocationExpressionImpl, Feature> output;
 	public static volatile SingularAttribute<InvocationExpressionImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<InvocationExpressionImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<InvocationExpressionImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<InvocationExpressionImpl, Redefinition> ownedRedefinition;
+	public static volatile ListAttribute<InvocationExpressionImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<InvocationExpressionImpl, UUID> identifier;
 	public static volatile SingularAttribute<InvocationExpressionImpl, Boolean> isDerived;
 	public static volatile ListAttribute<InvocationExpressionImpl, Annotation> ownedAnnotation;
@@ -83,7 +82,6 @@ public abstract class InvocationExpressionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile ListAttribute<InvocationExpressionImpl, FeatureMembership> featureMembership;
 	public static volatile ListAttribute<InvocationExpressionImpl, Import> ownedImport;
 	public static volatile SingularAttribute<InvocationExpressionImpl, Boolean> isAbstract;
-	public static volatile CollectionAttribute<InvocationExpressionImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile SingularAttribute<InvocationExpressionImpl, String> humanId;
 	public static volatile ListAttribute<InvocationExpressionImpl, String> aliasId;
 	public static volatile ListAttribute<InvocationExpressionImpl, Specialization> ownedSpecialization;
@@ -97,9 +95,9 @@ public abstract class InvocationExpressionImpl_ extends org.omg.sysml.lifecycle.
 	public static final String TYPE = "type";
 	public static final String OUTPUT = "output";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -139,7 +137,6 @@ public abstract class InvocationExpressionImpl_ extends org.omg.sysml.lifecycle.
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";

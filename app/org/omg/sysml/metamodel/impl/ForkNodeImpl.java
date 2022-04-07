@@ -293,32 +293,6 @@ public class ForkNodeImpl extends SysMLTypeImpl implements ForkNode {
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("documentationComment")
-    private List<Comment> documentationComment;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "CommentMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ForkNode_documentationComment",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public List<Comment> getDocumentationComment() {
-        if (documentationComment == null) {
-            documentationComment = new ArrayList<>();
-        }
-        return documentationComment;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = CommentImpl.class)
-    public void setDocumentationComment(List<Comment> documentationComment) {
-        this.documentationComment = documentationComment;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("effectiveName")
     private String effectiveName;
 
@@ -2057,32 +2031,6 @@ public class ForkNodeImpl extends SysMLTypeImpl implements ForkNode {
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("ownedTextualRepresentation")
-    private Collection<TextualRepresentation> ownedTextualRepresentation;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ForkNode_ownedTextualRepresentation",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
-    public Collection<TextualRepresentation> getOwnedTextualRepresentation() {
-        if (ownedTextualRepresentation == null) {
-            ownedTextualRepresentation = new ArrayList<>();
-        }
-        return ownedTextualRepresentation;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TextualRepresentationImpl.class)
-    public void setOwnedTextualRepresentation(Collection<TextualRepresentation> ownedTextualRepresentation) {
-        this.ownedTextualRepresentation = ownedTextualRepresentation;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedTypeFeaturing")
     private List<TypeFeaturing> ownedTypeFeaturing;
 
@@ -2377,6 +2325,32 @@ public class ForkNodeImpl extends SysMLTypeImpl implements ForkNode {
     @JsonSetter
     public void setQualifiedName(String qualifiedName) {
         this.qualifiedName = qualifiedName;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("textualRepresentation")
+    private List<TextualRepresentation> textualRepresentation;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ForkNode_textualRepresentation",
+            joinColumns = @JoinColumn(name = "classId"),
+            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+    public List<TextualRepresentation> getTextualRepresentation() {
+        if (textualRepresentation == null) {
+            textualRepresentation = new ArrayList<>();
+        }
+        return textualRepresentation;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TextualRepresentationImpl.class)
+    public void setTextualRepresentation(List<TextualRepresentation> textualRepresentation) {
+        this.textualRepresentation = textualRepresentation;
     }
 
 

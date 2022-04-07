@@ -16,7 +16,6 @@ import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
 import org.omg.sysml.metamodel.Class;
 import org.omg.sysml.metamodel.Classifier;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
@@ -79,9 +78,9 @@ public abstract class ConstraintUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile CollectionAttribute<ConstraintUsageImpl, Usage> variant;
 	public static volatile SingularAttribute<ConstraintUsageImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<ConstraintUsageImpl, StateUsage> nestedState;
-	public static volatile ListAttribute<ConstraintUsageImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<ConstraintUsageImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<ConstraintUsageImpl, Redefinition> ownedRedefinition;
+	public static volatile ListAttribute<ConstraintUsageImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<ConstraintUsageImpl, UUID> identifier;
 	public static volatile SingularAttribute<ConstraintUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<ConstraintUsageImpl, AttributeUsage> nestedAttribute;
@@ -142,7 +141,6 @@ public abstract class ConstraintUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile CollectionAttribute<ConstraintUsageImpl, ConcernUsage> nestedConcern;
 	public static volatile ListAttribute<ConstraintUsageImpl, Import> ownedImport;
 	public static volatile SingularAttribute<ConstraintUsageImpl, Boolean> isAbstract;
-	public static volatile CollectionAttribute<ConstraintUsageImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<ConstraintUsageImpl, VariantMembership> variantMembership;
 	public static volatile ListAttribute<ConstraintUsageImpl, RenderingUsage> nestedRendering;
 	public static volatile SingularAttribute<ConstraintUsageImpl, String> humanId;
@@ -170,9 +168,9 @@ public abstract class ConstraintUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String VARIANT = "variant";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String NESTED_STATE = "nestedState";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
@@ -233,7 +231,6 @@ public abstract class ConstraintUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String NESTED_CONCERN = "nestedConcern";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String NESTED_RENDERING = "nestedRendering";
 	public static final String HUMAN_ID = "humanId";

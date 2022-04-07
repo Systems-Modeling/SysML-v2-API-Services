@@ -7,7 +7,6 @@
 
         "aliasId": {"@type": "xsd:string"},
         "documentation": {"@type": "@id"},
-        "documentationComment": {"@type": "@id"},
         "effectiveName": {"@type": "xsd:string"},
         "filterCondition": {"@type": "@id"},
         "humanId": {"@type": "xsd:string"},
@@ -22,12 +21,12 @@
         "ownedMember": {"@type": "@id"},
         "ownedMembership": {"@type": "@id"},
         "ownedRelationship": {"@type": "@id"},
-        "ownedTextualRepresentation": {"@type": "@id"},
         "owner": {"@type": "@id"},
         "owningMembership": {"@type": "@id"},
         "owningNamespace": {"@type": "@id"},
         "owningRelationship": {"@type": "@id"},
-        "qualifiedName": {"@type": "xsd:string"}
+        "qualifiedName": {"@type": "xsd:string"},
+        "textualRepresentation": {"@type": "@id"}
 
     }
 }

@@ -13,7 +13,6 @@ import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.AttributeUsage;
 import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
@@ -69,7 +68,7 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.lifecycl
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, ActionUsage> action;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Comment> documentationComment;
+	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, UUID> identifier;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, ViewUsage> ownedView;
@@ -119,7 +118,6 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.lifecycl
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Import> ownedImport;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, Boolean> isAbstract;
-	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, VariantMembership> variantMembership;
 	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, String> humanId;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, String> aliasId;
@@ -145,7 +143,7 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.lifecycl
 	public static final String ACTION = "action";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
@@ -195,7 +193,6 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.lifecycl
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";

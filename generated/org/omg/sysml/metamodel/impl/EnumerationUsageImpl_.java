@@ -14,7 +14,6 @@ import org.omg.sysml.metamodel.AttributeUsage;
 import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
 import org.omg.sysml.metamodel.Classifier;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
@@ -77,9 +76,9 @@ public abstract class EnumerationUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile CollectionAttribute<EnumerationUsageImpl, Usage> variant;
 	public static volatile SingularAttribute<EnumerationUsageImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<EnumerationUsageImpl, StateUsage> nestedState;
-	public static volatile ListAttribute<EnumerationUsageImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<EnumerationUsageImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<EnumerationUsageImpl, Redefinition> ownedRedefinition;
+	public static volatile ListAttribute<EnumerationUsageImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<EnumerationUsageImpl, UUID> identifier;
 	public static volatile SingularAttribute<EnumerationUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<EnumerationUsageImpl, AttributeUsage> nestedAttribute;
@@ -134,7 +133,6 @@ public abstract class EnumerationUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile CollectionAttribute<EnumerationUsageImpl, ConcernUsage> nestedConcern;
 	public static volatile ListAttribute<EnumerationUsageImpl, Import> ownedImport;
 	public static volatile SingularAttribute<EnumerationUsageImpl, Boolean> isAbstract;
-	public static volatile CollectionAttribute<EnumerationUsageImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<EnumerationUsageImpl, VariantMembership> variantMembership;
 	public static volatile ListAttribute<EnumerationUsageImpl, RenderingUsage> nestedRendering;
 	public static volatile SingularAttribute<EnumerationUsageImpl, String> humanId;
@@ -163,9 +161,9 @@ public abstract class EnumerationUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String VARIANT = "variant";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String NESTED_STATE = "nestedState";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
@@ -220,7 +218,6 @@ public abstract class EnumerationUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String NESTED_CONCERN = "nestedConcern";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String NESTED_RENDERING = "nestedRendering";
 	public static final String HUMAN_ID = "humanId";

@@ -13,7 +13,6 @@
         "directedFeature": {"@type": "@id"},
         "direction": {"@type": "@vocab"},
         "documentation": {"@type": "@id"},
-        "documentationComment": {"@type": "@id"},
         "effectStep": {"@type": "@id"},
         "effectiveName": {"@type": "xsd:string"},
         "endFeature": {"@type": "@id"},
@@ -65,7 +64,6 @@
         "ownedRelationship": {"@type": "@id"},
         "ownedSpecialization": {"@type": "@id"},
         "ownedSubsetting": {"@type": "@id"},
-        "ownedTextualRepresentation": {"@type": "@id"},
         "ownedTypeFeaturing": {"@type": "@id"},
         "ownedTyping": {"@type": "@id"},
         "owner": {"@type": "@id"},
@@ -85,6 +83,7 @@
         "target": {"@type": "@id"},
         "targetFeature": {"@type": "@id"},
         "targetInputFeature": {"@type": "@id"},
+        "textualRepresentation": {"@type": "@id"},
         "transitionStep": {"@type": "@id"},
         "triggerStep": {"@type": "@id"},
         "type": {"@type": "@id"}

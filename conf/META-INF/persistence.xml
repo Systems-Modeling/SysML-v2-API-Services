@@ -33,7 +33,6 @@
         <class>org.omg.sysml.metamodel.impl.AnalysisCaseDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.AnalysisCaseUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.AnnotatingElementImpl</class>
-        <class>org.omg.sysml.metamodel.impl.AnnotatingFeatureImpl</class>
         <class>org.omg.sysml.metamodel.impl.AnnotationImpl</class>
         <class>org.omg.sysml.metamodel.impl.AssertConstraintUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.AssignmentActionUsageImpl</class>
@@ -117,8 +116,10 @@
         <class>org.omg.sysml.metamodel.impl.LoopActionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.MembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.MergeNodeImpl</class>
+        <class>org.omg.sysml.metamodel.impl.MetaclassImpl</class>
+        <class>org.omg.sysml.metamodel.impl.MetadataDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.MetadataFeatureImpl</class>
-        <class>org.omg.sysml.metamodel.impl.MetadataFeatureValueImpl</class>
+        <class>org.omg.sysml.metamodel.impl.MetadataUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.MultiplicityImpl</class>
         <class>org.omg.sysml.metamodel.impl.MultiplicityRangeImpl</class>
         <class>org.omg.sysml.metamodel.impl.NamespaceImpl</class>

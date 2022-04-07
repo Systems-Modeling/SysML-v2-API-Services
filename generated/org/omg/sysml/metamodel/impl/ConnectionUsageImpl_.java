@@ -17,7 +17,6 @@ import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
 import org.omg.sysml.metamodel.Class;
 import org.omg.sysml.metamodel.Classifier;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
@@ -75,6 +74,7 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<ConnectionUsageImpl, ConstraintUsage> nestedConstraint;
 	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Redefinition> ownedRedefinition;
+	public static volatile ListAttribute<ConnectionUsageImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<ConnectionUsageImpl, UUID> identifier;
 	public static volatile ListAttribute<ConnectionUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<ConnectionUsageImpl, EnumerationUsage> nestedEnumeration;
@@ -121,7 +121,6 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<ConnectionUsageImpl, Element> source;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, Usage> variant;
 	public static volatile ListAttribute<ConnectionUsageImpl, StateUsage> nestedState;
-	public static volatile ListAttribute<ConnectionUsageImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isOrdered;
 	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<ConnectionUsageImpl, Annotation> ownedAnnotation;
@@ -159,7 +158,6 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<ConnectionUsageImpl, Import> ownedImport;
 	public static volatile ListAttribute<ConnectionUsageImpl, Structure> itemDefinition;
 	public static volatile ListAttribute<ConnectionUsageImpl, Element> target;
-	public static volatile CollectionAttribute<ConnectionUsageImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, VariantMembership> variantMembership;
 	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isDirected;
 	public static volatile ListAttribute<ConnectionUsageImpl, String> aliasId;
@@ -175,6 +173,7 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
@@ -221,7 +220,6 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String SOURCE = "source";
 	public static final String VARIANT = "variant";
 	public static final String NESTED_STATE = "nestedState";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -259,7 +257,6 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String ITEM_DEFINITION = "itemDefinition";
 	public static final String TARGET = "target";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String IS_DIRECTED = "isDirected";
 	public static final String ALIAS_ID = "aliasId";

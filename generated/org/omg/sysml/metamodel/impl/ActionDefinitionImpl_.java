@@ -13,7 +13,6 @@ import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.AttributeUsage;
 import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
@@ -67,7 +66,7 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<ActionDefinitionImpl, ActionUsage> action;
 	public static volatile ListAttribute<ActionDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<ActionDefinitionImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<ActionDefinitionImpl, Comment> documentationComment;
+	public static volatile ListAttribute<ActionDefinitionImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<ActionDefinitionImpl, UUID> identifier;
 	public static volatile ListAttribute<ActionDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ActionDefinitionImpl, ViewUsage> ownedView;
@@ -113,7 +112,6 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<ActionDefinitionImpl, Import> ownedImport;
 	public static volatile ListAttribute<ActionDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<ActionDefinitionImpl, Boolean> isAbstract;
-	public static volatile CollectionAttribute<ActionDefinitionImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<ActionDefinitionImpl, VariantMembership> variantMembership;
 	public static volatile SingularAttribute<ActionDefinitionImpl, String> humanId;
 	public static volatile ListAttribute<ActionDefinitionImpl, String> aliasId;
@@ -138,7 +136,7 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String ACTION = "action";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
@@ -184,7 +182,6 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String HUMAN_ID = "humanId";
 	public static final String ALIAS_ID = "aliasId";

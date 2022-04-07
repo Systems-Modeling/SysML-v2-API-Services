@@ -16,7 +16,6 @@ import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
 import org.omg.sysml.metamodel.Class;
 import org.omg.sysml.metamodel.Classifier;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
@@ -79,9 +78,9 @@ public abstract class CaseUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile CollectionAttribute<CaseUsageImpl, Usage> variant;
 	public static volatile SingularAttribute<CaseUsageImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<CaseUsageImpl, StateUsage> nestedState;
-	public static volatile ListAttribute<CaseUsageImpl, Comment> documentationComment;
 	public static volatile SingularAttribute<CaseUsageImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<CaseUsageImpl, Redefinition> ownedRedefinition;
+	public static volatile ListAttribute<CaseUsageImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<CaseUsageImpl, UUID> identifier;
 	public static volatile SingularAttribute<CaseUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<CaseUsageImpl, AttributeUsage> nestedAttribute;
@@ -144,7 +143,6 @@ public abstract class CaseUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile CollectionAttribute<CaseUsageImpl, ConcernUsage> nestedConcern;
 	public static volatile ListAttribute<CaseUsageImpl, Import> ownedImport;
 	public static volatile SingularAttribute<CaseUsageImpl, Boolean> isAbstract;
-	public static volatile CollectionAttribute<CaseUsageImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<CaseUsageImpl, VariantMembership> variantMembership;
 	public static volatile ListAttribute<CaseUsageImpl, RenderingUsage> nestedRendering;
 	public static volatile SingularAttribute<CaseUsageImpl, String> humanId;
@@ -172,9 +170,9 @@ public abstract class CaseUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String VARIANT = "variant";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String NESTED_STATE = "nestedState";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
@@ -237,7 +235,6 @@ public abstract class CaseUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String NESTED_CONCERN = "nestedConcern";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String NESTED_RENDERING = "nestedRendering";
 	public static final String HUMAN_ID = "humanId";

@@ -13,7 +13,6 @@ import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.AttributeUsage;
 import org.omg.sysml.metamodel.CalculationUsage;
 import org.omg.sysml.metamodel.CaseUsage;
-import org.omg.sysml.metamodel.Comment;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
@@ -67,7 +66,7 @@ public abstract class ConnectionDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile CollectionAttribute<ConnectionDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<ConnectionDefinitionImpl, Boolean> isSufficient;
-	public static volatile ListAttribute<ConnectionDefinitionImpl, Comment> documentationComment;
+	public static volatile ListAttribute<ConnectionDefinitionImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<ConnectionDefinitionImpl, UUID> identifier;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, ViewUsage> ownedView;
@@ -118,7 +117,6 @@ public abstract class ConnectionDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile SingularAttribute<ConnectionDefinitionImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<ConnectionDefinitionImpl, Feature> associationEnd;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, Element> target;
-	public static volatile CollectionAttribute<ConnectionDefinitionImpl, TextualRepresentation> ownedTextualRepresentation;
 	public static volatile CollectionAttribute<ConnectionDefinitionImpl, VariantMembership> variantMembership;
 	public static volatile SingularAttribute<ConnectionDefinitionImpl, String> humanId;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, Usage> connectionEnd;
@@ -143,7 +141,7 @@ public abstract class ConnectionDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static final String VARIANT = "variant";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
-	public static final String DOCUMENTATION_COMMENT = "documentationComment";
+	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
@@ -194,7 +192,6 @@ public abstract class ConnectionDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String ASSOCIATION_END = "associationEnd";
 	public static final String TARGET = "target";
-	public static final String OWNED_TEXTUAL_REPRESENTATION = "ownedTextualRepresentation";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String HUMAN_ID = "humanId";
 	public static final String CONNECTION_END = "connectionEnd";
