@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021-2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -69,25 +70,25 @@ import java.util.HashSet;
 @JsonTypeName(value = "Connector")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public class ConnectorImpl extends SysMLTypeImpl implements Connector {
-    // @info.archinnov.achilles.annotations.Column("aliasId")
-    private List<String> aliasId;
+    // @info.archinnov.achilles.annotations.Column("aliasIds")
+    private List<String> aliasIds;
 
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "Connector_aliasId",
-            joinColumns = @JoinColumn(name = "ConnectorId"))
-    public List<String> getAliasId() {
-        if (aliasId == null) {
-            aliasId = new ArrayList<>();
+    @CollectionTable(name = "Connector_aliasIds",
+            joinColumns = @JoinColumn(name = "Connector_id"))
+    public List<String> getAliasIds() {
+        if (aliasIds == null) {
+            aliasIds = new ArrayList<>();
         }
-        return aliasId;
+        return aliasIds;
     }
 
     @JsonSetter
-    public void setAliasId(List<String> aliasId) {
-        this.aliasId = aliasId;
+    public void setAliasIds(List<String> aliasIds) {
+        this.aliasIds = aliasIds;
     }
 
 
@@ -99,10 +100,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "AssociationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "AssociationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_association",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public Collection<Association> getAssociation() {
         if (association == null) {
             association = new ArrayList<>();
@@ -125,10 +126,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_chainingFeature",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Feature> getChainingFeature() {
         if (chainingFeature == null) {
             chainingFeature = new ArrayList<>();
@@ -151,10 +152,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_connectorEnd",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public Collection<Feature> getConnectorEnd() {
         if (connectorEnd == null) {
             connectorEnd = new ArrayList<>();
@@ -177,10 +178,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_directedFeature",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Feature> getDirectedFeature() {
         if (directedFeature == null) {
             directedFeature = new ArrayList<>();
@@ -221,10 +222,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_documentation",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Documentation> getDocumentation() {
         if (documentation == null) {
             documentation = new ArrayList<>();
@@ -260,6 +261,22 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
 
 
 
+    // @info.archinnov.achilles.annotations.Column("elementId")
+    private java.util.UUID elementId;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "elementId", table = "Connector")
+    public java.util.UUID getElementId() {
+        return elementId;
+    }
+
+    @JsonSetter
+    public void setElementId(java.util.UUID elementId) {
+        this.elementId = elementId;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("endFeature")
     private List<Feature> endFeature;
@@ -267,10 +284,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_endFeature",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Feature> getEndFeature() {
         if (endFeature == null) {
             endFeature = new ArrayList<>();
@@ -293,8 +310,8 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "endOwningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "endOwningTypeId", table = "Connector")
+    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "endOwningType_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "endOwningType_id", table = "Connector")
     public Type getEndOwningType() {
         return endOwningType;
     }
@@ -314,10 +331,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_feature",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Feature> getFeature() {
         if (feature == null) {
             feature = new ArrayList<>();
@@ -340,10 +357,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_featureMembership",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<FeatureMembership> getFeatureMembership() {
         if (featureMembership == null) {
             featureMembership = new ArrayList<>();
@@ -366,10 +383,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_featuringType",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Type> getFeaturingType() {
         if (featuringType == null) {
             featuringType = new ArrayList<>();
@@ -385,40 +402,6 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
 
 
 
-    // @info.archinnov.achilles.annotations.Column("humanId")
-    private String humanId;
-
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "humanId", table = "Connector")
-    public String getHumanId() {
-        return humanId;
-    }
-
-    @JsonSetter
-    public void setHumanId(String humanId) {
-        this.humanId = humanId;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("identifier")
-    private java.util.UUID identifier;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "Connector")
-    public java.util.UUID getIdentifier() {
-        return identifier;
-    }
-
-    @JsonSetter
-    public void setIdentifier(java.util.UUID identifier) {
-        this.identifier = identifier;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("importedMembership")
     private List<Membership> importedMembership;
@@ -426,10 +409,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_importedMembership",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Membership> getImportedMembership() {
         if (importedMembership == null) {
             importedMembership = new ArrayList<>();
@@ -452,10 +435,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_inheritedFeature",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Feature> getInheritedFeature() {
         if (inheritedFeature == null) {
             inheritedFeature = new ArrayList<>();
@@ -478,10 +461,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_inheritedMembership",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Membership> getInheritedMembership() {
         if (inheritedMembership == null) {
             inheritedMembership = new ArrayList<>();
@@ -504,10 +487,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_input",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Feature> getInput() {
         if (input == null) {
             input = new ArrayList<>();
@@ -726,10 +709,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_member",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getMember() {
         if (member == null) {
             member = new ArrayList<>();
@@ -752,10 +735,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_membership",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Membership> getMembership() {
         if (membership == null) {
             membership = new ArrayList<>();
@@ -778,8 +761,8 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicityType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "multiplicityId", table = "Connector")
+    @Any(metaDef = "MultiplicityMetaDef", metaColumn = @javax.persistence.Column(name = "multiplicity_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "multiplicity_id", table = "Connector")
     public Multiplicity getMultiplicity() {
         return multiplicity;
     }
@@ -792,14 +775,12 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("name")
     private String name;
 
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    // @javax.persistence.Transient
     @javax.persistence.Column(name = "name", table = "Connector")
     public String getName() {
         return name;
@@ -819,10 +800,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_output",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Feature> getOutput() {
         if (output == null) {
             output = new ArrayList<>();
@@ -845,10 +826,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_ownedAnnotation",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Annotation> getOwnedAnnotation() {
         if (ownedAnnotation == null) {
             ownedAnnotation = new ArrayList<>();
@@ -871,8 +852,8 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConjugatorType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedConjugatorId", table = "Connector")
+    @Any(metaDef = "ConjugationMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConjugator_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedConjugator_id", table = "Connector")
     public Conjugation getOwnedConjugator() {
         return ownedConjugator;
     }
@@ -892,10 +873,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "DisjoiningMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "DisjoiningMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_ownedDisjoining",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public Collection<Disjoining> getOwnedDisjoining() {
         if (ownedDisjoining == null) {
             ownedDisjoining = new ArrayList<>();
@@ -918,10 +899,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_ownedElement",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
@@ -944,10 +925,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_ownedEndFeature",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Feature> getOwnedEndFeature() {
         if (ownedEndFeature == null) {
             ownedEndFeature = new ArrayList<>();
@@ -970,10 +951,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_ownedFeature",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Feature> getOwnedFeature() {
         if (ownedFeature == null) {
             ownedFeature = new ArrayList<>();
@@ -996,10 +977,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureChainingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureChainingMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_ownedFeatureChaining",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<FeatureChaining> getOwnedFeatureChaining() {
         if (ownedFeatureChaining == null) {
             ownedFeatureChaining = new ArrayList<>();
@@ -1022,10 +1003,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_ownedFeatureMembership",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<FeatureMembership> getOwnedFeatureMembership() {
         if (ownedFeatureMembership == null) {
             ownedFeatureMembership = new ArrayList<>();
@@ -1048,10 +1029,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ImportMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_ownedImport",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Import> getOwnedImport() {
         if (ownedImport == null) {
             ownedImport = new ArrayList<>();
@@ -1074,10 +1055,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_ownedMember",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getOwnedMember() {
         if (ownedMember == null) {
             ownedMember = new ArrayList<>();
@@ -1100,10 +1081,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_ownedMembership",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Membership> getOwnedMembership() {
         if (ownedMembership == null) {
             ownedMembership = new ArrayList<>();
@@ -1126,10 +1107,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "RedefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "RedefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_ownedRedefinition",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public Collection<Redefinition> getOwnedRedefinition() {
         if (ownedRedefinition == null) {
             ownedRedefinition = new ArrayList<>();
@@ -1150,10 +1131,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_ownedRelatedElement",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getOwnedRelatedElement() {
         if (ownedRelatedElement == null) {
             ownedRelatedElement = new ArrayList<>();
@@ -1174,10 +1155,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_ownedRelationship",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Relationship> getOwnedRelationship() {
         if (ownedRelationship == null) {
             ownedRelationship = new ArrayList<>();
@@ -1200,10 +1181,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "SpecializationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "SpecializationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_ownedSpecialization",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Specialization> getOwnedSpecialization() {
         if (ownedSpecialization == null) {
             ownedSpecialization = new ArrayList<>();
@@ -1226,10 +1207,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "SubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "SubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_ownedSubsetting",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public Collection<Subsetting> getOwnedSubsetting() {
         if (ownedSubsetting == null) {
             ownedSubsetting = new ArrayList<>();
@@ -1252,10 +1233,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TypeFeaturingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "TypeFeaturingMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_ownedTypeFeaturing",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<TypeFeaturing> getOwnedTypeFeaturing() {
         if (ownedTypeFeaturing == null) {
             ownedTypeFeaturing = new ArrayList<>();
@@ -1278,10 +1259,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureTypingMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_ownedTyping",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<FeatureTyping> getOwnedTyping() {
         if (ownedTyping == null) {
             ownedTyping = new ArrayList<>();
@@ -1304,8 +1285,8 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownerId", table = "Connector")
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owner_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owner_id", table = "Connector")
     public Element getOwner() {
         return owner;
     }
@@ -1323,8 +1304,8 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningFeatureMembershipId", table = "Connector")
+    @Any(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureMembership_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningFeatureMembership_id", table = "Connector")
     public FeatureMembership getOwningFeatureMembership() {
         return owningFeatureMembership;
     }
@@ -1338,19 +1319,19 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
 
 
     // @info.archinnov.achilles.annotations.Column("owningMembership")
-    private Membership owningMembership;
+    private OwningMembership owningMembership;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningMembershipId", table = "Connector")
-    public Membership getOwningMembership() {
+    @Any(metaDef = "OwningMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembership_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningMembership_id", table = "Connector")
+    public OwningMembership getOwningMembership() {
         return owningMembership;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = MembershipImpl.class)
-    public void setOwningMembership(Membership owningMembership) {
+    @JsonDeserialize(using = DataDeserializer.class, as = OwningMembershipImpl.class)
+    public void setOwningMembership(OwningMembership owningMembership) {
         this.owningMembership = owningMembership;
     }
 
@@ -1363,8 +1344,8 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "Connector")
+    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespace_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningNamespace_id", table = "Connector")
     public Namespace getOwningNamespace() {
         return owningNamespace;
     }
@@ -1382,8 +1363,8 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelatedElementId", table = "Connector")
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElement_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningRelatedElement_id", table = "Connector")
     public Element getOwningRelatedElement() {
         return owningRelatedElement;
     }
@@ -1401,8 +1382,8 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelationshipId", table = "Connector")
+    @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationship_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningRelationship_id", table = "Connector")
     public Relationship getOwningRelationship() {
         return owningRelationship;
     }
@@ -1422,8 +1403,8 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningTypeId", table = "Connector")
+    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningType_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningType_id", table = "Connector")
     public Type getOwningType() {
         return owningType;
     }
@@ -1463,10 +1444,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_relatedElement",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getRelatedElement() {
         if (relatedElement == null) {
             relatedElement = new ArrayList<>();
@@ -1489,10 +1470,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_relatedFeature",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Feature> getRelatedFeature() {
         if (relatedFeature == null) {
             relatedFeature = new ArrayList<>();
@@ -1508,15 +1489,33 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
 
 
 
+    // @info.archinnov.achilles.annotations.Column("shortName")
+    private String shortName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "shortName", table = "Connector")
+    public String getShortName() {
+        return shortName;
+    }
+
+    @JsonSetter
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("source")
     private List<Element> source;
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_source",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getSource() {
         if (source == null) {
             source = new ArrayList<>();
@@ -1539,8 +1538,8 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "sourceFeatureType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "sourceFeatureId", table = "Connector")
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "sourceFeature_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "sourceFeature_id", table = "Connector")
     public Feature getSourceFeature() {
         return sourceFeature;
     }
@@ -1558,10 +1557,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_target",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getTarget() {
         if (target == null) {
             target = new ArrayList<>();
@@ -1584,10 +1583,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_targetFeature",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public Collection<Feature> getTargetFeature() {
         if (targetFeature == null) {
             targetFeature = new ArrayList<>();
@@ -1610,10 +1609,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_textualRepresentation",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<TextualRepresentation> getTextualRepresentation() {
         if (textualRepresentation == null) {
             textualRepresentation = new ArrayList<>();
@@ -1636,10 +1635,10 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Connector_type",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Type> getType() {
         if (type == null) {
             type = new ArrayList<>();

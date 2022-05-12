@@ -66,8 +66,8 @@ public abstract class ConstraintDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile CollectionAttribute<ConstraintDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<ConstraintDefinitionImpl, Boolean> isSufficient;
+	public static volatile SingularAttribute<ConstraintDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<ConstraintDefinitionImpl, UUID> identifier;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, ViewUsage> ownedView;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, Feature> ownedFeature;
@@ -86,6 +86,7 @@ public abstract class ConstraintDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile SingularAttribute<ConstraintDefinitionImpl, String> name;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, ReferenceUsage> ownedReference;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, Usage> ownedUsage;
+	public static volatile SingularAttribute<ConstraintDefinitionImpl, String> shortName;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, Element> ownedMember;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, Membership> ownedMembership;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, UseCaseUsage> ownedUseCase;
@@ -108,6 +109,7 @@ public abstract class ConstraintDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile ListAttribute<ConstraintDefinitionImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<ConstraintDefinitionImpl, Expression> expression;
 	public static volatile SingularAttribute<ConstraintDefinitionImpl, Boolean> isModelLevelEvaluable;
+	public static volatile ListAttribute<ConstraintDefinitionImpl, String> aliasIds;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, ConnectorAsUsage> ownedConnection;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, FeatureMembership> featureMembership;
@@ -115,8 +117,6 @@ public abstract class ConstraintDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile ListAttribute<ConstraintDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<ConstraintDefinitionImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<ConstraintDefinitionImpl, VariantMembership> variantMembership;
-	public static volatile SingularAttribute<ConstraintDefinitionImpl, String> humanId;
-	public static volatile ListAttribute<ConstraintDefinitionImpl, String> aliasId;
 	public static volatile ListAttribute<ConstraintDefinitionImpl, Specialization> ownedSpecialization;
 	public static volatile CollectionAttribute<ConstraintDefinitionImpl, ConcernUsage> ownedConcern;
 	public static volatile CollectionAttribute<ConstraintDefinitionImpl, Step> step;
@@ -137,8 +137,8 @@ public abstract class ConstraintDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static final String VARIANT = "variant";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";
@@ -157,6 +157,7 @@ public abstract class ConstraintDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static final String NAME = "name";
 	public static final String OWNED_REFERENCE = "ownedReference";
 	public static final String OWNED_USAGE = "ownedUsage";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
@@ -179,6 +180,7 @@ public abstract class ConstraintDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String EXPRESSION = "expression";
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String OWNED_CONNECTION = "ownedConnection";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
@@ -186,8 +188,6 @@ public abstract class ConstraintDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String OWNED_CONCERN = "ownedConcern";
 	public static final String STEP = "step";

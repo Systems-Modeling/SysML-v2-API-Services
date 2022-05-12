@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021-2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -69,25 +70,25 @@ import java.util.HashSet;
 @JsonTypeName(value = "Documentation")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
-    // @info.archinnov.achilles.annotations.Column("aliasId")
-    private List<String> aliasId;
+    // @info.archinnov.achilles.annotations.Column("aliasIds")
+    private List<String> aliasIds;
 
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "Documentation_aliasId",
-            joinColumns = @JoinColumn(name = "DocumentationId"))
-    public List<String> getAliasId() {
-        if (aliasId == null) {
-            aliasId = new ArrayList<>();
+    @CollectionTable(name = "Documentation_aliasIds",
+            joinColumns = @JoinColumn(name = "Documentation_id"))
+    public List<String> getAliasIds() {
+        if (aliasIds == null) {
+            aliasIds = new ArrayList<>();
         }
-        return aliasId;
+        return aliasIds;
     }
 
     @JsonSetter
-    public void setAliasId(List<String> aliasId) {
-        this.aliasId = aliasId;
+    public void setAliasIds(List<String> aliasIds) {
+        this.aliasIds = aliasIds;
     }
 
 
@@ -99,10 +100,10 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Documentation_annotatedElement",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getAnnotatedElement() {
         if (annotatedElement == null) {
             annotatedElement = new ArrayList<>();
@@ -123,10 +124,10 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Documentation_annotation",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Annotation> getAnnotation() {
         if (annotation == null) {
             annotation = new ArrayList<>();
@@ -167,10 +168,10 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Documentation_documentation",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Documentation> getDocumentation() {
         if (documentation == null) {
             documentation = new ArrayList<>();
@@ -193,8 +194,8 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "documentedElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "documentedElementId", table = "Documentation")
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "documentedElement_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "documentedElement_id", table = "Documentation")
     public Element getDocumentedElement() {
         return documentedElement;
     }
@@ -227,36 +228,18 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
 
 
 
-    // @info.archinnov.achilles.annotations.Column("humanId")
-    private String humanId;
+    // @info.archinnov.achilles.annotations.Column("elementId")
+    private java.util.UUID elementId;
 
     @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "humanId", table = "Documentation")
-    public String getHumanId() {
-        return humanId;
+    @javax.persistence.Column(name = "elementId", table = "Documentation")
+    public java.util.UUID getElementId() {
+        return elementId;
     }
 
     @JsonSetter
-    public void setHumanId(String humanId) {
-        this.humanId = humanId;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("identifier")
-    private java.util.UUID identifier;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "Documentation")
-    public java.util.UUID getIdentifier() {
-        return identifier;
-    }
-
-    @JsonSetter
-    public void setIdentifier(java.util.UUID identifier) {
-        this.identifier = identifier;
+    public void setElementId(java.util.UUID elementId) {
+        this.elementId = elementId;
     }
 
 
@@ -279,14 +262,12 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("name")
     private String name;
 
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    // @javax.persistence.Transient
     @javax.persistence.Column(name = "name", table = "Documentation")
     public String getName() {
         return name;
@@ -306,10 +287,10 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Documentation_ownedAnnotation",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Annotation> getOwnedAnnotation() {
         if (ownedAnnotation == null) {
             ownedAnnotation = new ArrayList<>();
@@ -332,10 +313,10 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Documentation_ownedElement",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
@@ -356,10 +337,10 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Documentation_ownedRelationship",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Relationship> getOwnedRelationship() {
         if (ownedRelationship == null) {
             ownedRelationship = new ArrayList<>();
@@ -382,8 +363,8 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownerId", table = "Documentation")
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owner_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owner_id", table = "Documentation")
     public Element getOwner() {
         return owner;
     }
@@ -397,19 +378,19 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
 
 
     // @info.archinnov.achilles.annotations.Column("owningMembership")
-    private Membership owningMembership;
+    private OwningMembership owningMembership;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningMembershipId", table = "Documentation")
-    public Membership getOwningMembership() {
+    @Any(metaDef = "OwningMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembership_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningMembership_id", table = "Documentation")
+    public OwningMembership getOwningMembership() {
         return owningMembership;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = MembershipImpl.class)
-    public void setOwningMembership(Membership owningMembership) {
+    @JsonDeserialize(using = DataDeserializer.class, as = OwningMembershipImpl.class)
+    public void setOwningMembership(OwningMembership owningMembership) {
         this.owningMembership = owningMembership;
     }
 
@@ -422,8 +403,8 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "Documentation")
+    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespace_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningNamespace_id", table = "Documentation")
     public Namespace getOwningNamespace() {
         return owningNamespace;
     }
@@ -441,8 +422,8 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelationshipId", table = "Documentation")
+    @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationship_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningRelationship_id", table = "Documentation")
     public Relationship getOwningRelationship() {
         return owningRelationship;
     }
@@ -475,6 +456,24 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
 
 
 
+    // @info.archinnov.achilles.annotations.Column("shortName")
+    private String shortName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "shortName", table = "Documentation")
+    public String getShortName() {
+        return shortName;
+    }
+
+    @JsonSetter
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("textualRepresentation")
     private List<TextualRepresentation> textualRepresentation;
@@ -482,10 +481,10 @@ public class DocumentationImpl extends SysMLTypeImpl implements Documentation {
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Documentation_textualRepresentation",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<TextualRepresentation> getTextualRepresentation() {
         if (textualRepresentation == null) {
             textualRepresentation = new ArrayList<>();

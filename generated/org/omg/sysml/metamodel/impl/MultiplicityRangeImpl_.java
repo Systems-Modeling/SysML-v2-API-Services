@@ -40,8 +40,8 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile SingularAttribute<MultiplicityRangeImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<MultiplicityRangeImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<MultiplicityRangeImpl, Redefinition> ownedRedefinition;
+	public static volatile SingularAttribute<MultiplicityRangeImpl, UUID> elementId;
 	public static volatile ListAttribute<MultiplicityRangeImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<MultiplicityRangeImpl, UUID> identifier;
 	public static volatile SingularAttribute<MultiplicityRangeImpl, Boolean> isDerived;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Feature> ownedFeature;
@@ -54,6 +54,7 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<MultiplicityRangeImpl, Feature> input;
 	public static volatile SingularAttribute<MultiplicityRangeImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<MultiplicityRangeImpl, String> name;
+	public static volatile SingularAttribute<MultiplicityRangeImpl, String> shortName;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Element> ownedMember;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<MultiplicityRangeImpl, Disjoining> ownedDisjoining;
@@ -73,13 +74,12 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile SingularAttribute<MultiplicityRangeImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Membership> importedMembership;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Element> ownedElement;
+	public static volatile ListAttribute<MultiplicityRangeImpl, String> aliasIds;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Expression> bound;
 	public static volatile ListAttribute<MultiplicityRangeImpl, FeatureMembership> featureMembership;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Import> ownedImport;
 	public static volatile SingularAttribute<MultiplicityRangeImpl, Boolean> isAbstract;
-	public static volatile SingularAttribute<MultiplicityRangeImpl, String> humanId;
-	public static volatile ListAttribute<MultiplicityRangeImpl, String> aliasId;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Specialization> ownedSpecialization;
 
 	public static final String CHAINING_FEATURE = "chainingFeature";
@@ -92,8 +92,8 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";
@@ -106,6 +106,7 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String INPUT = "input";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NAME = "name";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
@@ -125,13 +126,12 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String BOUND = "bound";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 
 }

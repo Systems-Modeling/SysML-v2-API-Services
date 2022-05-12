@@ -64,8 +64,8 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.lifecycle
 	public static volatile CollectionAttribute<EnumerationDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<EnumerationDefinitionImpl, Boolean> isSufficient;
+	public static volatile SingularAttribute<EnumerationDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<EnumerationDefinitionImpl, UUID> identifier;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, ViewUsage> ownedView;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Feature> ownedFeature;
@@ -84,6 +84,7 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.lifecycle
 	public static volatile SingularAttribute<EnumerationDefinitionImpl, String> name;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, ReferenceUsage> ownedReference;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Usage> ownedUsage;
+	public static volatile SingularAttribute<EnumerationDefinitionImpl, String> shortName;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Element> ownedMember;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Membership> ownedMembership;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, UseCaseUsage> ownedUseCase;
@@ -102,6 +103,7 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.lifecycle
 	public static volatile SingularAttribute<EnumerationDefinitionImpl, String> effectiveName;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Element> ownedElement;
+	public static volatile ListAttribute<EnumerationDefinitionImpl, String> aliasIds;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, ConnectorAsUsage> ownedConnection;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, FeatureMembership> featureMembership;
@@ -109,8 +111,6 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.lifecycle
 	public static volatile ListAttribute<EnumerationDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<EnumerationDefinitionImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<EnumerationDefinitionImpl, VariantMembership> variantMembership;
-	public static volatile SingularAttribute<EnumerationDefinitionImpl, String> humanId;
-	public static volatile ListAttribute<EnumerationDefinitionImpl, String> aliasId;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Specialization> ownedSpecialization;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, EnumerationUsage> enumeratedValue;
 	public static volatile CollectionAttribute<EnumerationDefinitionImpl, ConcernUsage> ownedConcern;
@@ -131,8 +131,8 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.lifecycle
 	public static final String VARIANT = "variant";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";
@@ -151,6 +151,7 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.lifecycle
 	public static final String NAME = "name";
 	public static final String OWNED_REFERENCE = "ownedReference";
 	public static final String OWNED_USAGE = "ownedUsage";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
@@ -169,6 +170,7 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.lifecycle
 	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String OWNED_CONNECTION = "ownedConnection";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
@@ -176,8 +178,6 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.lifecycle
 	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String ENUMERATED_VALUE = "enumeratedValue";
 	public static final String OWNED_CONCERN = "ownedConcern";

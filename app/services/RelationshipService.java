@@ -54,7 +54,7 @@ public class RelationshipService extends BaseService<Relationship, RelationshipD
     }
 
     public Optional<Relationship> create(Relationship relationship) {
-        return relationship.getIdentifier() != null ? dao.update(relationship) : dao.persist(relationship);
+        return relationship.getElementId() != null ? dao.update(relationship) : dao.persist(relationship);
     }
 
     public List<Relationship> getRelationshipsByProjectCommitRelatedElement(UUID projectId, UUID commitId, UUID relatedElementId, RelationshipDirection direction, @Nullable UUID after, @Nullable UUID before, int maxResults) {

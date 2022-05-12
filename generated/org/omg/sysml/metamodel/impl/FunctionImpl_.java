@@ -39,13 +39,14 @@ public abstract class FunctionImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile ListAttribute<FunctionImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<FunctionImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<FunctionImpl, String> effectiveName;
+	public static volatile SingularAttribute<FunctionImpl, UUID> elementId;
 	public static volatile ListAttribute<FunctionImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<FunctionImpl, UUID> identifier;
 	public static volatile ListAttribute<FunctionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<FunctionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<FunctionImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<FunctionImpl, Expression> expression;
 	public static volatile SingularAttribute<FunctionImpl, Boolean> isModelLevelEvaluable;
+	public static volatile ListAttribute<FunctionImpl, String> aliasIds;
 	public static volatile ListAttribute<FunctionImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<FunctionImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<FunctionImpl, String> qualifiedName;
@@ -56,11 +57,10 @@ public abstract class FunctionImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile ListAttribute<FunctionImpl, Import> ownedImport;
 	public static volatile SingularAttribute<FunctionImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<FunctionImpl, Feature> input;
-	public static volatile SingularAttribute<FunctionImpl, String> humanId;
-	public static volatile ListAttribute<FunctionImpl, String> aliasId;
 	public static volatile SingularAttribute<FunctionImpl, String> name;
 	public static volatile ListAttribute<FunctionImpl, Specialization> ownedSpecialization;
 	public static volatile CollectionAttribute<FunctionImpl, Step> step;
+	public static volatile SingularAttribute<FunctionImpl, String> shortName;
 	public static volatile ListAttribute<FunctionImpl, Element> ownedMember;
 	public static volatile ListAttribute<FunctionImpl, Membership> ownedMembership;
 
@@ -78,13 +78,14 @@ public abstract class FunctionImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String EFFECTIVE_NAME = "effectiveName";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String EXPRESSION = "expression";
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String QUALIFIED_NAME = "qualifiedName";
@@ -95,11 +96,10 @@ public abstract class FunctionImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String INPUT = "input";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String NAME = "name";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String STEP = "step";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 

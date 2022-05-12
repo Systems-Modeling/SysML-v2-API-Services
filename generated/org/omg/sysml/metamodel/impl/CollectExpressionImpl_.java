@@ -43,8 +43,8 @@ public abstract class CollectExpressionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile SingularAttribute<CollectExpressionImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<CollectExpressionImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<CollectExpressionImpl, Redefinition> ownedRedefinition;
+	public static volatile SingularAttribute<CollectExpressionImpl, UUID> elementId;
 	public static volatile ListAttribute<CollectExpressionImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<CollectExpressionImpl, UUID> identifier;
 	public static volatile SingularAttribute<CollectExpressionImpl, Boolean> isDerived;
 	public static volatile ListAttribute<CollectExpressionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<CollectExpressionImpl, Feature> ownedFeature;
@@ -57,6 +57,7 @@ public abstract class CollectExpressionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<CollectExpressionImpl, Feature> input;
 	public static volatile SingularAttribute<CollectExpressionImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<CollectExpressionImpl, String> name;
+	public static volatile SingularAttribute<CollectExpressionImpl, String> shortName;
 	public static volatile ListAttribute<CollectExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<CollectExpressionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<CollectExpressionImpl, Disjoining> ownedDisjoining;
@@ -79,12 +80,11 @@ public abstract class CollectExpressionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<CollectExpressionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<CollectExpressionImpl, Element> ownedElement;
 	public static volatile SingularAttribute<CollectExpressionImpl, Boolean> isModelLevelEvaluable;
+	public static volatile ListAttribute<CollectExpressionImpl, String> aliasIds;
 	public static volatile ListAttribute<CollectExpressionImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<CollectExpressionImpl, FeatureMembership> featureMembership;
 	public static volatile ListAttribute<CollectExpressionImpl, Import> ownedImport;
 	public static volatile SingularAttribute<CollectExpressionImpl, Boolean> isAbstract;
-	public static volatile SingularAttribute<CollectExpressionImpl, String> humanId;
-	public static volatile ListAttribute<CollectExpressionImpl, String> aliasId;
 	public static volatile ListAttribute<CollectExpressionImpl, Specialization> ownedSpecialization;
 	public static volatile ListAttribute<CollectExpressionImpl, Expression> operand;
 
@@ -100,8 +100,8 @@ public abstract class CollectExpressionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";
@@ -114,6 +114,7 @@ public abstract class CollectExpressionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String INPUT = "input";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NAME = "name";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
@@ -136,12 +137,11 @@ public abstract class CollectExpressionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String OPERAND = "operand";
 

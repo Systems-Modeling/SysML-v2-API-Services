@@ -64,8 +64,8 @@ public abstract class RenderingDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile CollectionAttribute<RenderingDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<RenderingDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<RenderingDefinitionImpl, Boolean> isSufficient;
+	public static volatile SingularAttribute<RenderingDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<RenderingDefinitionImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<RenderingDefinitionImpl, UUID> identifier;
 	public static volatile ListAttribute<RenderingDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<RenderingDefinitionImpl, ViewUsage> ownedView;
 	public static volatile ListAttribute<RenderingDefinitionImpl, Feature> ownedFeature;
@@ -85,6 +85,7 @@ public abstract class RenderingDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile SingularAttribute<RenderingDefinitionImpl, String> name;
 	public static volatile ListAttribute<RenderingDefinitionImpl, ReferenceUsage> ownedReference;
 	public static volatile ListAttribute<RenderingDefinitionImpl, Usage> ownedUsage;
+	public static volatile SingularAttribute<RenderingDefinitionImpl, String> shortName;
 	public static volatile ListAttribute<RenderingDefinitionImpl, Element> ownedMember;
 	public static volatile ListAttribute<RenderingDefinitionImpl, Membership> ownedMembership;
 	public static volatile ListAttribute<RenderingDefinitionImpl, UseCaseUsage> ownedUseCase;
@@ -104,6 +105,7 @@ public abstract class RenderingDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile SingularAttribute<RenderingDefinitionImpl, String> effectiveName;
 	public static volatile ListAttribute<RenderingDefinitionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<RenderingDefinitionImpl, Element> ownedElement;
+	public static volatile ListAttribute<RenderingDefinitionImpl, String> aliasIds;
 	public static volatile ListAttribute<RenderingDefinitionImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<RenderingDefinitionImpl, ConnectorAsUsage> ownedConnection;
 	public static volatile ListAttribute<RenderingDefinitionImpl, FeatureMembership> featureMembership;
@@ -111,8 +113,6 @@ public abstract class RenderingDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile ListAttribute<RenderingDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<RenderingDefinitionImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<RenderingDefinitionImpl, VariantMembership> variantMembership;
-	public static volatile SingularAttribute<RenderingDefinitionImpl, String> humanId;
-	public static volatile ListAttribute<RenderingDefinitionImpl, String> aliasId;
 	public static volatile ListAttribute<RenderingDefinitionImpl, Specialization> ownedSpecialization;
 	public static volatile CollectionAttribute<RenderingDefinitionImpl, ConcernUsage> ownedConcern;
 	public static volatile ListAttribute<RenderingDefinitionImpl, AttributeUsage> ownedAttribute;
@@ -132,8 +132,8 @@ public abstract class RenderingDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String VARIANT = "variant";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";
@@ -153,6 +153,7 @@ public abstract class RenderingDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String NAME = "name";
 	public static final String OWNED_REFERENCE = "ownedReference";
 	public static final String OWNED_USAGE = "ownedUsage";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
@@ -172,6 +173,7 @@ public abstract class RenderingDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String OWNED_CONNECTION = "ownedConnection";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
@@ -179,8 +181,6 @@ public abstract class RenderingDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String OWNED_CONCERN = "ownedConcern";
 	public static final String OWNED_ATTRIBUTE = "ownedAttribute";

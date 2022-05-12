@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021-2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -26,15 +27,13 @@ import java.util.List;
 import java.util.Set;
 
 public interface Element extends SysMLType {
-    Membership getOwningMembership();
+    OwningMembership getOwningMembership();
 
     Relationship getOwningRelationship();
 
-    java.util.UUID getIdentifier();
-
     Namespace getOwningNamespace();
 
-    String getName();
+    java.util.UUID getElementId();
 
     List<? extends Relationship> getOwnedRelationship();
 
@@ -48,11 +47,13 @@ public interface Element extends SysMLType {
 
     List<? extends TextualRepresentation> getTextualRepresentation();
 
-    String getQualifiedName();
+    List<? extends String> getAliasIds();
+
+    String getShortName();
 
     String getEffectiveName();
 
-    List<? extends String> getAliasId();
+    String getName();
 
-    String getHumanId();
+    String getQualifiedName();
 }

@@ -16,11 +16,12 @@ import org.omg.sysml.metamodel.VisibilityKind;
 @StaticMetamodel(ImportImpl.class)
 public abstract class ImportImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<ImportImpl, UUID> elementId;
 	public static volatile ListAttribute<ImportImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<ImportImpl, UUID> identifier;
 	public static volatile ListAttribute<ImportImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ImportImpl, Element> ownedElement;
 	public static volatile SingularAttribute<ImportImpl, String> importedMemberName;
+	public static volatile ListAttribute<ImportImpl, String> aliasIds;
 	public static volatile SingularAttribute<ImportImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<ImportImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<ImportImpl, String> qualifiedName;
@@ -29,18 +30,18 @@ public abstract class ImportImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_
 	public static volatile ListAttribute<ImportImpl, Element> source;
 	public static volatile ListAttribute<ImportImpl, Element> target;
 	public static volatile SingularAttribute<ImportImpl, Boolean> isRecursive;
-	public static volatile SingularAttribute<ImportImpl, String> humanId;
-	public static volatile ListAttribute<ImportImpl, String> aliasId;
 	public static volatile ListAttribute<ImportImpl, Element> relatedElement;
 	public static volatile SingularAttribute<ImportImpl, String> name;
 	public static volatile SingularAttribute<ImportImpl, Boolean> isImportAll;
+	public static volatile SingularAttribute<ImportImpl, String> shortName;
 	public static volatile SingularAttribute<ImportImpl, String> effectiveName;
 
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String IMPORTED_MEMBER_NAME = "importedMemberName";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String VISIBILITY = "visibility";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String QUALIFIED_NAME = "qualifiedName";
@@ -49,11 +50,10 @@ public abstract class ImportImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_
 	public static final String SOURCE = "source";
 	public static final String TARGET = "target";
 	public static final String IS_RECURSIVE = "isRecursive";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NAME = "name";
 	public static final String IS_IMPORT_ALL = "isImportAll";
+	public static final String SHORT_NAME = "shortName";
 	public static final String EFFECTIVE_NAME = "effectiveName";
 
 }

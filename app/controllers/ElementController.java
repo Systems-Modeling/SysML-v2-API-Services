@@ -75,7 +75,7 @@ public final class ElementController extends JsonLdController<Element, DataJsonL
         return paginateResult(
                 buildResult(elements, List.class, metamodelProvider.getImplementationClass(Element.class), request, new DataJsonLdAdorner.Parameters(projectId, commitId)),
                 elements.size(),
-                idx -> elements.get(idx).getIdentifier(),
+                idx -> elements.get(idx).getElementId(),
                 request,
                 pageRequest
         );

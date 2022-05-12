@@ -75,7 +75,7 @@ public final class RelationshipController extends JsonLdController<Relationship,
         return paginateResult(
                 buildResult(relationships, List.class, metamodelProvider.getImplementationClass(Relationship.class), request, new DataJsonLdAdorner.Parameters(projectId, commitId)),
                 relationships.size(),
-                idx -> relationships.get(idx).getIdentifier(),
+                idx -> relationships.get(idx).getElementId(),
                 request,
                 pageRequest
         );

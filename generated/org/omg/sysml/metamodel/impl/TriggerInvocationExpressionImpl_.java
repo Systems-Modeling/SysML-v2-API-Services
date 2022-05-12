@@ -43,8 +43,8 @@ public abstract class TriggerInvocationExpressionImpl_ extends org.omg.sysml.lif
 	public static volatile SingularAttribute<TriggerInvocationExpressionImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<TriggerInvocationExpressionImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<TriggerInvocationExpressionImpl, Redefinition> ownedRedefinition;
+	public static volatile SingularAttribute<TriggerInvocationExpressionImpl, UUID> elementId;
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<TriggerInvocationExpressionImpl, UUID> identifier;
 	public static volatile SingularAttribute<TriggerInvocationExpressionImpl, Boolean> isDerived;
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Feature> ownedFeature;
@@ -58,6 +58,7 @@ public abstract class TriggerInvocationExpressionImpl_ extends org.omg.sysml.lif
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Feature> input;
 	public static volatile SingularAttribute<TriggerInvocationExpressionImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<TriggerInvocationExpressionImpl, String> name;
+	public static volatile SingularAttribute<TriggerInvocationExpressionImpl, String> shortName;
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Element> ownedMember;
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<TriggerInvocationExpressionImpl, Disjoining> ownedDisjoining;
@@ -80,12 +81,11 @@ public abstract class TriggerInvocationExpressionImpl_ extends org.omg.sysml.lif
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Element> ownedElement;
 	public static volatile SingularAttribute<TriggerInvocationExpressionImpl, Boolean> isModelLevelEvaluable;
+	public static volatile ListAttribute<TriggerInvocationExpressionImpl, String> aliasIds;
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, FeatureMembership> featureMembership;
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Import> ownedImport;
 	public static volatile SingularAttribute<TriggerInvocationExpressionImpl, Boolean> isAbstract;
-	public static volatile SingularAttribute<TriggerInvocationExpressionImpl, String> humanId;
-	public static volatile ListAttribute<TriggerInvocationExpressionImpl, String> aliasId;
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Specialization> ownedSpecialization;
 
 	public static final String ARGUMENT = "argument";
@@ -99,8 +99,8 @@ public abstract class TriggerInvocationExpressionImpl_ extends org.omg.sysml.lif
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";
@@ -114,6 +114,7 @@ public abstract class TriggerInvocationExpressionImpl_ extends org.omg.sysml.lif
 	public static final String INPUT = "input";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NAME = "name";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
@@ -136,12 +137,11 @@ public abstract class TriggerInvocationExpressionImpl_ extends org.omg.sysml.lif
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 
 }

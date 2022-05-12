@@ -131,6 +131,7 @@
                         @MetaValue(value = "OccurrenceDefinition", targetEntity = OccurrenceDefinitionImpl.class),
                         @MetaValue(value = "OccurrenceUsage", targetEntity = OccurrenceUsageImpl.class),
                         @MetaValue(value = "OperatorExpression", targetEntity = OperatorExpressionImpl.class),
+                        @MetaValue(value = "OwningMembership", targetEntity = OwningMembershipImpl.class),
                         @MetaValue(value = "Package", targetEntity = PackageImpl.class),
                         @MetaValue(value = "ParameterMembership", targetEntity = ParameterMembershipImpl.class),
                         @MetaValue(value = "PartDefinition", targetEntity = PartDefinitionImpl.class),
