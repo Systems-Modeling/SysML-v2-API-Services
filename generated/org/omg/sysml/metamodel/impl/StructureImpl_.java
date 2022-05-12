@@ -36,11 +36,12 @@ public abstract class StructureImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<StructureImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<StructureImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<StructureImpl, String> effectiveName;
+	public static volatile SingularAttribute<StructureImpl, UUID> elementId;
 	public static volatile ListAttribute<StructureImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<StructureImpl, UUID> identifier;
 	public static volatile ListAttribute<StructureImpl, Membership> importedMembership;
 	public static volatile ListAttribute<StructureImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<StructureImpl, Element> ownedElement;
+	public static volatile ListAttribute<StructureImpl, String> aliasIds;
 	public static volatile ListAttribute<StructureImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<StructureImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<StructureImpl, String> qualifiedName;
@@ -51,10 +52,9 @@ public abstract class StructureImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<StructureImpl, Import> ownedImport;
 	public static volatile SingularAttribute<StructureImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<StructureImpl, Feature> input;
-	public static volatile SingularAttribute<StructureImpl, String> humanId;
-	public static volatile ListAttribute<StructureImpl, String> aliasId;
 	public static volatile SingularAttribute<StructureImpl, String> name;
 	public static volatile ListAttribute<StructureImpl, Specialization> ownedSpecialization;
+	public static volatile SingularAttribute<StructureImpl, String> shortName;
 	public static volatile ListAttribute<StructureImpl, Element> ownedMember;
 	public static volatile ListAttribute<StructureImpl, Membership> ownedMembership;
 
@@ -71,11 +71,12 @@ public abstract class StructureImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String EFFECTIVE_NAME = "effectiveName";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String QUALIFIED_NAME = "qualifiedName";
@@ -86,10 +87,9 @@ public abstract class StructureImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String INPUT = "input";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String NAME = "name";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 

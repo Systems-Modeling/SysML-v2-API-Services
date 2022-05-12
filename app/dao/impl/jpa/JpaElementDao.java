@@ -74,7 +74,7 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
             CriteriaQuery<ElementImpl> query = builder.createQuery(ElementImpl.class);
             Root<ElementImpl> root = query.from(ElementImpl.class);
             query.select(root).where(builder.and(
-                    builder.equal(root.get(ElementImpl_.identifier), id),
+                    builder.equal(root.get(ElementImpl_.elementId), id),
                     getTypeExpression(builder, root)
             ));
             try {
@@ -106,7 +106,7 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
             Root<ElementImpl> root = query.from(ElementImpl.class);
             query.select(root);
             Expression<Boolean> where = getTypeExpression(builder, root);
-            Paginated<TypedQuery<ElementImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, root.get(ElementImpl_.identifier), where);
+            Paginated<TypedQuery<ElementImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, root.get(ElementImpl_.elementId), where);
             List<Element> result = paginated.get()
                     .getResultStream()
                     .map(o -> (Element) o)
@@ -198,7 +198,7 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
                     .filter(data -> (data instanceof Element) && !(data instanceof Relationship))
                     .map(data -> (Element) data)
                     .filter(element -> element.getOwner() == null);
-            Paginated<Stream<Element>> paginatedStream = paginateStream(after, before, maxResults, stream, Element::getIdentifier);
+            Paginated<Stream<Element>> paginatedStream = paginateStream(after, before, maxResults, stream, Element::getElementId);
             List<Element> result = paginatedStream.get()
                     .map(element -> JpaDataDao.resolve(element, Element.class))
                     .collect(Collectors.toList());

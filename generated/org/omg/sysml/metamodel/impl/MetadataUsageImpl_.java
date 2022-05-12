@@ -80,8 +80,8 @@ public abstract class MetadataUsageImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static volatile ListAttribute<MetadataUsageImpl, StateUsage> nestedState;
 	public static volatile SingularAttribute<MetadataUsageImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<MetadataUsageImpl, Redefinition> ownedRedefinition;
+	public static volatile SingularAttribute<MetadataUsageImpl, UUID> elementId;
 	public static volatile ListAttribute<MetadataUsageImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<MetadataUsageImpl, UUID> identifier;
 	public static volatile SingularAttribute<MetadataUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<MetadataUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<MetadataUsageImpl, Annotation> ownedAnnotation;
@@ -101,6 +101,7 @@ public abstract class MetadataUsageImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static volatile SingularAttribute<MetadataUsageImpl, Boolean> isComposite;
 	public static volatile ListAttribute<MetadataUsageImpl, ViewUsage> nestedView;
 	public static volatile SingularAttribute<MetadataUsageImpl, String> name;
+	public static volatile SingularAttribute<MetadataUsageImpl, String> shortName;
 	public static volatile ListAttribute<MetadataUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<MetadataUsageImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<MetadataUsageImpl, Membership> ownedMembership;
@@ -132,6 +133,7 @@ public abstract class MetadataUsageImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static volatile ListAttribute<MetadataUsageImpl, Annotation> annotation;
 	public static volatile ListAttribute<MetadataUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<MetadataUsageImpl, Element> ownedElement;
+	public static volatile ListAttribute<MetadataUsageImpl, String> aliasIds;
 	public static volatile ListAttribute<MetadataUsageImpl, ActionUsage> nestedAction;
 	public static volatile ListAttribute<MetadataUsageImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<MetadataUsageImpl, FeatureMembership> featureMembership;
@@ -143,9 +145,7 @@ public abstract class MetadataUsageImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static volatile ListAttribute<MetadataUsageImpl, Structure> itemDefinition;
 	public static volatile CollectionAttribute<MetadataUsageImpl, VariantMembership> variantMembership;
 	public static volatile ListAttribute<MetadataUsageImpl, RenderingUsage> nestedRendering;
-	public static volatile SingularAttribute<MetadataUsageImpl, String> humanId;
 	public static volatile ListAttribute<MetadataUsageImpl, ConnectorAsUsage> nestedConnection;
-	public static volatile ListAttribute<MetadataUsageImpl, String> aliasId;
 	public static volatile ListAttribute<MetadataUsageImpl, InterfaceUsage> nestedInterface;
 	public static volatile ListAttribute<MetadataUsageImpl, Specialization> ownedSpecialization;
 	public static volatile ListAttribute<MetadataUsageImpl, ViewpointUsage> nestedViewpoint;
@@ -170,8 +170,8 @@ public abstract class MetadataUsageImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static final String NESTED_STATE = "nestedState";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -191,6 +191,7 @@ public abstract class MetadataUsageImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NESTED_VIEW = "nestedView";
 	public static final String NAME = "name";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
@@ -222,6 +223,7 @@ public abstract class MetadataUsageImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static final String ANNOTATION = "annotation";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String NESTED_ACTION = "nestedAction";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
@@ -233,9 +235,7 @@ public abstract class MetadataUsageImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static final String ITEM_DEFINITION = "itemDefinition";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String NESTED_RENDERING = "nestedRendering";
-	public static final String HUMAN_ID = "humanId";
 	public static final String NESTED_CONNECTION = "nestedConnection";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String NESTED_INTERFACE = "nestedInterface";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";

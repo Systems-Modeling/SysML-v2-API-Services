@@ -36,11 +36,12 @@ public abstract class ClassImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ 
 	public static volatile ListAttribute<ClassImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<ClassImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<ClassImpl, String> effectiveName;
+	public static volatile SingularAttribute<ClassImpl, UUID> elementId;
 	public static volatile ListAttribute<ClassImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<ClassImpl, UUID> identifier;
 	public static volatile ListAttribute<ClassImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ClassImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ClassImpl, Element> ownedElement;
+	public static volatile ListAttribute<ClassImpl, String> aliasIds;
 	public static volatile ListAttribute<ClassImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<ClassImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<ClassImpl, String> qualifiedName;
@@ -51,10 +52,9 @@ public abstract class ClassImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ 
 	public static volatile ListAttribute<ClassImpl, Import> ownedImport;
 	public static volatile SingularAttribute<ClassImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<ClassImpl, Feature> input;
-	public static volatile SingularAttribute<ClassImpl, String> humanId;
-	public static volatile ListAttribute<ClassImpl, String> aliasId;
 	public static volatile SingularAttribute<ClassImpl, String> name;
 	public static volatile ListAttribute<ClassImpl, Specialization> ownedSpecialization;
+	public static volatile SingularAttribute<ClassImpl, String> shortName;
 	public static volatile ListAttribute<ClassImpl, Element> ownedMember;
 	public static volatile ListAttribute<ClassImpl, Membership> ownedMembership;
 
@@ -71,11 +71,12 @@ public abstract class ClassImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ 
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String EFFECTIVE_NAME = "effectiveName";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String QUALIFIED_NAME = "qualifiedName";
@@ -86,10 +87,9 @@ public abstract class ClassImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ 
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String INPUT = "input";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String NAME = "name";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 

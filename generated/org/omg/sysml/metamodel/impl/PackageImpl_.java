@@ -18,40 +18,40 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 @StaticMetamodel(PackageImpl.class)
 public abstract class PackageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<PackageImpl, UUID> elementId;
 	public static volatile ListAttribute<PackageImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<PackageImpl, UUID> identifier;
 	public static volatile ListAttribute<PackageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<PackageImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<PackageImpl, Element> ownedElement;
+	public static volatile ListAttribute<PackageImpl, String> aliasIds;
 	public static volatile ListAttribute<PackageImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<PackageImpl, String> qualifiedName;
 	public static volatile ListAttribute<PackageImpl, Documentation> documentation;
 	public static volatile ListAttribute<PackageImpl, Membership> membership;
 	public static volatile ListAttribute<PackageImpl, Import> ownedImport;
-	public static volatile SingularAttribute<PackageImpl, String> humanId;
-	public static volatile ListAttribute<PackageImpl, String> aliasId;
 	public static volatile ListAttribute<PackageImpl, Expression> filterCondition;
 	public static volatile ListAttribute<PackageImpl, Element> member;
 	public static volatile SingularAttribute<PackageImpl, String> name;
+	public static volatile SingularAttribute<PackageImpl, String> shortName;
 	public static volatile SingularAttribute<PackageImpl, String> effectiveName;
 	public static volatile ListAttribute<PackageImpl, Element> ownedMember;
 	public static volatile ListAttribute<PackageImpl, Membership> ownedMembership;
 
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_IMPORT = "ownedImport";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String FILTER_CONDITION = "filterCondition";
 	public static final String MEMBER = "member";
 	public static final String NAME = "name";
+	public static final String SHORT_NAME = "shortName";
 	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";

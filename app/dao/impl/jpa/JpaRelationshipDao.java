@@ -68,7 +68,7 @@ public class JpaRelationshipDao extends JpaDao<Relationship> implements Relation
             CriteriaQuery<RelationshipImpl> query = builder.createQuery(RelationshipImpl.class);
             Root<RelationshipImpl> root = query.from(RelationshipImpl.class);
             query.select(root).where(builder.and(
-                    builder.equal(root.get(RelationshipImpl_.identifier), id),
+                    builder.equal(root.get(RelationshipImpl_.elementId), id),
                     getTypeExpression(builder, root)
             ));
             try {
@@ -98,7 +98,7 @@ public class JpaRelationshipDao extends JpaDao<Relationship> implements Relation
             Root<RelationshipImpl> root = query.from(RelationshipImpl.class);
             query.select(root);
             Expression<Boolean> where = getTypeExpression(builder, root);
-            Paginated<TypedQuery<RelationshipImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, root.get(RelationshipImpl_.identifier), where);
+            Paginated<TypedQuery<RelationshipImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, root.get(RelationshipImpl_.elementId), where);
             List<Relationship> result = paginated.get()
                     .getResultStream()
                     .map(o -> (Relationship) o)
@@ -146,11 +146,11 @@ public class JpaRelationshipDao extends JpaDao<Relationship> implements Relation
                                         throw new IllegalArgumentException("Unknown RelationshipDirection provided: " + direction.name());
                                 }
                                 return related
-                                        .map(Element::getIdentifier)
-                                        .anyMatch(id -> id.equals(relatedElement.getIdentifier()));
+                                        .map(Element::getElementId)
+                                        .anyMatch(id -> id.equals(relatedElement.getElementId()));
                             }
                     );
-            Paginated<Stream<Relationship>> paginatedStream = paginateStream(after, before, maxResults, stream, Relationship::getIdentifier);
+            Paginated<Stream<Relationship>> paginatedStream = paginateStream(after, before, maxResults, stream, Relationship::getElementId);
             List<Relationship> result = paginatedStream.get()
                     .map(relationship -> JpaDataDao.resolve(relationship, Relationship.class))
                     .collect(Collectors.toList());

@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021-2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -69,25 +70,25 @@ import java.util.HashSet;
 @JsonTypeName(value = "FramedConcernMembership")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public class FramedConcernMembershipImpl extends SysMLTypeImpl implements FramedConcernMembership {
-    // @info.archinnov.achilles.annotations.Column("aliasId")
-    private List<String> aliasId;
+    // @info.archinnov.achilles.annotations.Column("aliasIds")
+    private List<String> aliasIds;
 
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "FramedConcernMembership_aliasId",
-            joinColumns = @JoinColumn(name = "FramedConcernMembershipId"))
-    public List<String> getAliasId() {
-        if (aliasId == null) {
-            aliasId = new ArrayList<>();
+    @CollectionTable(name = "FramedConcernMembership_aliasIds",
+            joinColumns = @JoinColumn(name = "FramedConcernMembership_id"))
+    public List<String> getAliasIds() {
+        if (aliasIds == null) {
+            aliasIds = new ArrayList<>();
         }
-        return aliasId;
+        return aliasIds;
     }
 
     @JsonSetter
-    public void setAliasId(List<String> aliasId) {
-        this.aliasId = aliasId;
+    public void setAliasIds(List<String> aliasIds) {
+        this.aliasIds = aliasIds;
     }
 
 
@@ -99,10 +100,10 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "FramedConcernMembership_documentation",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Documentation> getDocumentation() {
         if (documentation == null) {
             documentation = new ArrayList<>();
@@ -114,26 +115,6 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DocumentationImpl.class)
     public void setDocumentation(List<Documentation> documentation) {
         this.documentation = documentation;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("effectiveMemberName")
-    private String effectiveMemberName;
-
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    // @javax.persistence.Transient
-    @javax.persistence.Column(name = "effectiveMemberName", table = "FramedConcernMembership")
-    public String getEffectiveMemberName() {
-        return effectiveMemberName;
-    }
-
-    @JsonSetter
-    public void setEffectiveMemberName(String effectiveMemberName) {
-        this.effectiveMemberName = effectiveMemberName;
     }
 
 
@@ -158,13 +139,29 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
 
 
+    // @info.archinnov.achilles.annotations.Column("elementId")
+    private java.util.UUID elementId;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "elementId", table = "FramedConcernMembership")
+    public java.util.UUID getElementId() {
+        return elementId;
+    }
+
+    @JsonSetter
+    public void setElementId(java.util.UUID elementId) {
+        this.elementId = elementId;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("featureOfType")
     private Feature featureOfType;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "featureOfTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "featureOfTypeId", table = "FramedConcernMembership")
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "featureOfType_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "featureOfType_id", table = "FramedConcernMembership")
     public Feature getFeatureOfType() {
         return featureOfType;
     }
@@ -182,8 +179,8 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "featuringTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "featuringTypeId", table = "FramedConcernMembership")
+    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "featuringType_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "featuringType_id", table = "FramedConcernMembership")
     public Type getFeaturingType() {
         return featuringType;
     }
@@ -192,40 +189,6 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
     @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
     public void setFeaturingType(Type featuringType) {
         this.featuringType = featuringType;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("humanId")
-    private String humanId;
-
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "humanId", table = "FramedConcernMembership")
-    public String getHumanId() {
-        return humanId;
-    }
-
-    @JsonSetter
-    public void setHumanId(String humanId) {
-        this.humanId = humanId;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("identifier")
-    private java.util.UUID identifier;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "FramedConcernMembership")
-    public java.util.UUID getIdentifier() {
-        return identifier;
-    }
-
-    @JsonSetter
-    public void setIdentifier(java.util.UUID identifier) {
-        this.identifier = identifier;
     }
 
 
@@ -253,8 +216,8 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "memberElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "memberElementId", table = "FramedConcernMembership")
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "memberElement_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "memberElement_id", table = "FramedConcernMembership")
     public Element getMemberElement() {
         return memberElement;
     }
@@ -267,21 +230,22 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
 
 
-    // @info.archinnov.achilles.annotations.Column("memberFeature")
-    private Feature memberFeature;
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("memberElementId")
+    private String memberElementId;
 
     @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "memberFeatureType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "memberFeatureId", table = "FramedConcernMembership")
-    public Feature getMemberFeature() {
-        return memberFeature;
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "memberElementId", table = "FramedConcernMembership")
+    public String getMemberElementId() {
+        return memberElementId;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
-    public void setMemberFeature(Feature memberFeature) {
-        this.memberFeature = memberFeature;
+    public void setMemberElementId(String memberElementId) {
+        this.memberElementId = memberElementId;
     }
 
 
@@ -304,6 +268,24 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
 
 
+    // @info.archinnov.achilles.annotations.Column("memberShortName")
+    private String memberShortName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "memberShortName", table = "FramedConcernMembership")
+    public String getMemberShortName() {
+        return memberShortName;
+    }
+
+    @JsonSetter
+    public void setMemberShortName(String memberShortName) {
+        this.memberShortName = memberShortName;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("membershipOwningNamespace")
     private Namespace membershipOwningNamespace;
@@ -311,8 +293,8 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "membershipOwningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "membershipOwningNamespaceId", table = "FramedConcernMembership")
+    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "membershipOwningNamespace_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "membershipOwningNamespace_id", table = "FramedConcernMembership")
     public Namespace getMembershipOwningNamespace() {
         return membershipOwningNamespace;
     }
@@ -325,14 +307,12 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("name")
     private String name;
 
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    // @javax.persistence.Transient
     @javax.persistence.Column(name = "name", table = "FramedConcernMembership")
     public String getName() {
         return name;
@@ -352,10 +332,10 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "FramedConcernMembership_ownedAnnotation",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Annotation> getOwnedAnnotation() {
         if (ownedAnnotation == null) {
             ownedAnnotation = new ArrayList<>();
@@ -376,8 +356,8 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "ConcernUsageMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConcernType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedConcernId", table = "FramedConcernMembership")
+    @Any(metaDef = "ConcernUsageMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConcern_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedConcern_id", table = "FramedConcernMembership")
     public ConcernUsage getOwnedConcern() {
         return ownedConcern;
     }
@@ -395,8 +375,8 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "ConstraintUsageMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConstraintType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedConstraintId", table = "FramedConcernMembership")
+    @Any(metaDef = "ConstraintUsageMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConstraint_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedConstraint_id", table = "FramedConcernMembership")
     public ConstraintUsage getOwnedConstraint() {
         return ownedConstraint;
     }
@@ -416,10 +396,10 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "FramedConcernMembership_ownedElement",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
@@ -440,8 +420,8 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedMemberElementId", table = "FramedConcernMembership")
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberElement_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedMemberElement_id", table = "FramedConcernMembership")
     public Element getOwnedMemberElement() {
         return ownedMemberElement;
     }
@@ -454,13 +434,33 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedMemberElementId")
+    private String ownedMemberElementId;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "ownedMemberElementId", table = "FramedConcernMembership")
+    public String getOwnedMemberElementId() {
+        return ownedMemberElementId;
+    }
+
+    @JsonSetter
+    public void setOwnedMemberElementId(String ownedMemberElementId) {
+        this.ownedMemberElementId = ownedMemberElementId;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("ownedMemberFeature")
     private Feature ownedMemberFeature;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberFeatureType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedMemberFeatureId", table = "FramedConcernMembership")
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberFeature_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedMemberFeature_id", table = "FramedConcernMembership")
     public Feature getOwnedMemberFeature() {
         return ownedMemberFeature;
     }
@@ -473,15 +473,55 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedMemberName")
+    private String ownedMemberName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "ownedMemberName", table = "FramedConcernMembership")
+    public String getOwnedMemberName() {
+        return ownedMemberName;
+    }
+
+    @JsonSetter
+    public void setOwnedMemberName(String ownedMemberName) {
+        this.ownedMemberName = ownedMemberName;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedMemberShortName")
+    private String ownedMemberShortName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "ownedMemberShortName", table = "FramedConcernMembership")
+    public String getOwnedMemberShortName() {
+        return ownedMemberShortName;
+    }
+
+    @JsonSetter
+    public void setOwnedMemberShortName(String ownedMemberShortName) {
+        this.ownedMemberShortName = ownedMemberShortName;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("ownedRelatedElement")
     private List<Element> ownedRelatedElement;
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "FramedConcernMembership_ownedRelatedElement",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getOwnedRelatedElement() {
         if (ownedRelatedElement == null) {
             ownedRelatedElement = new ArrayList<>();
@@ -502,10 +542,10 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "FramedConcernMembership_ownedRelationship",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Relationship> getOwnedRelationship() {
         if (ownedRelationship == null) {
             ownedRelationship = new ArrayList<>();
@@ -528,8 +568,8 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownerId", table = "FramedConcernMembership")
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owner_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owner_id", table = "FramedConcernMembership")
     public Element getOwner() {
         return owner;
     }
@@ -549,8 +589,8 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureOfTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningFeatureOfTypeId", table = "FramedConcernMembership")
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureOfType_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningFeatureOfType_id", table = "FramedConcernMembership")
     public Feature getOwningFeatureOfType() {
         return owningFeatureOfType;
     }
@@ -564,19 +604,19 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
 
     // @info.archinnov.achilles.annotations.Column("owningMembership")
-    private Membership owningMembership;
+    private OwningMembership owningMembership;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningMembershipId", table = "FramedConcernMembership")
-    public Membership getOwningMembership() {
+    @Any(metaDef = "OwningMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembership_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningMembership_id", table = "FramedConcernMembership")
+    public OwningMembership getOwningMembership() {
         return owningMembership;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = MembershipImpl.class)
-    public void setOwningMembership(Membership owningMembership) {
+    @JsonDeserialize(using = DataDeserializer.class, as = OwningMembershipImpl.class)
+    public void setOwningMembership(OwningMembership owningMembership) {
         this.owningMembership = owningMembership;
     }
 
@@ -589,8 +629,8 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "FramedConcernMembership")
+    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespace_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningNamespace_id", table = "FramedConcernMembership")
     public Namespace getOwningNamespace() {
         return owningNamespace;
     }
@@ -608,8 +648,8 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelatedElementId", table = "FramedConcernMembership")
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElement_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningRelatedElement_id", table = "FramedConcernMembership")
     public Element getOwningRelatedElement() {
         return owningRelatedElement;
     }
@@ -627,8 +667,8 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelationshipId", table = "FramedConcernMembership")
+    @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationship_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningRelationship_id", table = "FramedConcernMembership")
     public Relationship getOwningRelationship() {
         return owningRelationship;
     }
@@ -648,8 +688,8 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningTypeId", table = "FramedConcernMembership")
+    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningType_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningType_id", table = "FramedConcernMembership")
     public Type getOwningType() {
         return owningType;
     }
@@ -689,8 +729,8 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "ConcernUsageMetaDef", metaColumn = @javax.persistence.Column(name = "referencedConcernType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "referencedConcernId", table = "FramedConcernMembership")
+    @Any(metaDef = "ConcernUsageMetaDef", metaColumn = @javax.persistence.Column(name = "referencedConcern_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "referencedConcern_id", table = "FramedConcernMembership")
     public ConcernUsage getReferencedConcern() {
         return referencedConcern;
     }
@@ -710,8 +750,8 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "ConstraintUsageMetaDef", metaColumn = @javax.persistence.Column(name = "referencedConstraintType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "referencedConstraintId", table = "FramedConcernMembership")
+    @Any(metaDef = "ConstraintUsageMetaDef", metaColumn = @javax.persistence.Column(name = "referencedConstraint_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "referencedConstraint_id", table = "FramedConcernMembership")
     public ConstraintUsage getReferencedConstraint() {
         return referencedConstraint;
     }
@@ -731,10 +771,10 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "FramedConcernMembership_relatedElement",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getRelatedElement() {
         if (relatedElement == null) {
             relatedElement = new ArrayList<>();
@@ -750,15 +790,33 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
 
 
+    // @info.archinnov.achilles.annotations.Column("shortName")
+    private String shortName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "shortName", table = "FramedConcernMembership")
+    public String getShortName() {
+        return shortName;
+    }
+
+    @JsonSetter
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("source")
     private List<Element> source;
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "FramedConcernMembership_source",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getSource() {
         if (source == null) {
             source = new ArrayList<>();
@@ -779,10 +837,10 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "FramedConcernMembership_target",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getTarget() {
         if (target == null) {
             target = new ArrayList<>();
@@ -805,10 +863,10 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "FramedConcernMembership_textualRepresentation",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<TextualRepresentation> getTextualRepresentation() {
         if (textualRepresentation == null) {
             textualRepresentation = new ArrayList<>();

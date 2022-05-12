@@ -48,7 +48,7 @@ public class ElementService extends BaseService<Element, ElementDao> {
     }
 
     public Optional<Element> create(Element element) {
-        return element.getIdentifier() != null ? dao.update(element) : dao.persist(element);
+        return element.getElementId() != null ? dao.update(element) : dao.persist(element);
     }
 
     public Optional<Element> getElementByCommitIdElementId(UUID commitId, UUID elementId) {

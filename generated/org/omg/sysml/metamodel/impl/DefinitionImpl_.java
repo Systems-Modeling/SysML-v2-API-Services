@@ -64,8 +64,8 @@ public abstract class DefinitionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile CollectionAttribute<DefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<DefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<DefinitionImpl, Boolean> isSufficient;
+	public static volatile SingularAttribute<DefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<DefinitionImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<DefinitionImpl, UUID> identifier;
 	public static volatile ListAttribute<DefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<DefinitionImpl, ViewUsage> ownedView;
 	public static volatile ListAttribute<DefinitionImpl, Feature> ownedFeature;
@@ -84,6 +84,7 @@ public abstract class DefinitionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile SingularAttribute<DefinitionImpl, String> name;
 	public static volatile ListAttribute<DefinitionImpl, ReferenceUsage> ownedReference;
 	public static volatile ListAttribute<DefinitionImpl, Usage> ownedUsage;
+	public static volatile SingularAttribute<DefinitionImpl, String> shortName;
 	public static volatile ListAttribute<DefinitionImpl, Element> ownedMember;
 	public static volatile ListAttribute<DefinitionImpl, Membership> ownedMembership;
 	public static volatile ListAttribute<DefinitionImpl, UseCaseUsage> ownedUseCase;
@@ -102,6 +103,7 @@ public abstract class DefinitionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile SingularAttribute<DefinitionImpl, String> effectiveName;
 	public static volatile ListAttribute<DefinitionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<DefinitionImpl, Element> ownedElement;
+	public static volatile ListAttribute<DefinitionImpl, String> aliasIds;
 	public static volatile ListAttribute<DefinitionImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<DefinitionImpl, ConnectorAsUsage> ownedConnection;
 	public static volatile ListAttribute<DefinitionImpl, FeatureMembership> featureMembership;
@@ -109,8 +111,6 @@ public abstract class DefinitionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile ListAttribute<DefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<DefinitionImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<DefinitionImpl, VariantMembership> variantMembership;
-	public static volatile SingularAttribute<DefinitionImpl, String> humanId;
-	public static volatile ListAttribute<DefinitionImpl, String> aliasId;
 	public static volatile ListAttribute<DefinitionImpl, Specialization> ownedSpecialization;
 	public static volatile CollectionAttribute<DefinitionImpl, ConcernUsage> ownedConcern;
 	public static volatile ListAttribute<DefinitionImpl, AttributeUsage> ownedAttribute;
@@ -130,8 +130,8 @@ public abstract class DefinitionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String VARIANT = "variant";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";
@@ -150,6 +150,7 @@ public abstract class DefinitionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String NAME = "name";
 	public static final String OWNED_REFERENCE = "ownedReference";
 	public static final String OWNED_USAGE = "ownedUsage";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
@@ -168,6 +169,7 @@ public abstract class DefinitionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String OWNED_CONNECTION = "ownedConnection";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
@@ -175,8 +177,6 @@ public abstract class DefinitionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String OWNED_CONCERN = "ownedConcern";
 	public static final String OWNED_ATTRIBUTE = "ownedAttribute";

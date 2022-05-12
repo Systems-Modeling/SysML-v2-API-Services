@@ -39,8 +39,8 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<MetadataFeatureImpl, Redefinition> ownedRedefinition;
+	public static volatile SingularAttribute<MetadataFeatureImpl, UUID> elementId;
 	public static volatile ListAttribute<MetadataFeatureImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<MetadataFeatureImpl, UUID> identifier;
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isDerived;
 	public static volatile ListAttribute<MetadataFeatureImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<MetadataFeatureImpl, Feature> ownedFeature;
@@ -53,6 +53,7 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<MetadataFeatureImpl, Feature> input;
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<MetadataFeatureImpl, String> name;
+	public static volatile SingularAttribute<MetadataFeatureImpl, String> shortName;
 	public static volatile ListAttribute<MetadataFeatureImpl, Element> ownedMember;
 	public static volatile ListAttribute<MetadataFeatureImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<MetadataFeatureImpl, Disjoining> ownedDisjoining;
@@ -73,13 +74,12 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<MetadataFeatureImpl, Annotation> annotation;
 	public static volatile ListAttribute<MetadataFeatureImpl, Membership> importedMembership;
 	public static volatile ListAttribute<MetadataFeatureImpl, Element> ownedElement;
+	public static volatile ListAttribute<MetadataFeatureImpl, String> aliasIds;
 	public static volatile ListAttribute<MetadataFeatureImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<MetadataFeatureImpl, FeatureMembership> featureMembership;
 	public static volatile ListAttribute<MetadataFeatureImpl, Import> ownedImport;
 	public static volatile ListAttribute<MetadataFeatureImpl, Element> annotatedElement;
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isAbstract;
-	public static volatile SingularAttribute<MetadataFeatureImpl, String> humanId;
-	public static volatile ListAttribute<MetadataFeatureImpl, String> aliasId;
 	public static volatile ListAttribute<MetadataFeatureImpl, Specialization> ownedSpecialization;
 
 	public static final String CHAINING_FEATURE = "chainingFeature";
@@ -92,8 +92,8 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";
@@ -106,6 +106,7 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String INPUT = "input";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NAME = "name";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
@@ -126,13 +127,12 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String ANNOTATION = "annotation";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String ANNOTATED_ELEMENT = "annotatedElement";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 
 }

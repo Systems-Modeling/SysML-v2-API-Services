@@ -69,8 +69,8 @@ public abstract class ConcernDefinitionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<ConcernDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile CollectionAttribute<ConcernDefinitionImpl, String> text;
 	public static volatile SingularAttribute<ConcernDefinitionImpl, Boolean> isSufficient;
+	public static volatile SingularAttribute<ConcernDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<ConcernDefinitionImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<ConcernDefinitionImpl, UUID> identifier;
 	public static volatile ListAttribute<ConcernDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ConcernDefinitionImpl, ViewUsage> ownedView;
 	public static volatile ListAttribute<ConcernDefinitionImpl, Feature> ownedFeature;
@@ -93,6 +93,7 @@ public abstract class ConcernDefinitionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile SingularAttribute<ConcernDefinitionImpl, String> name;
 	public static volatile ListAttribute<ConcernDefinitionImpl, ReferenceUsage> ownedReference;
 	public static volatile ListAttribute<ConcernDefinitionImpl, Usage> ownedUsage;
+	public static volatile SingularAttribute<ConcernDefinitionImpl, String> shortName;
 	public static volatile ListAttribute<ConcernDefinitionImpl, Element> ownedMember;
 	public static volatile ListAttribute<ConcernDefinitionImpl, Membership> ownedMembership;
 	public static volatile ListAttribute<ConcernDefinitionImpl, UseCaseUsage> ownedUseCase;
@@ -115,6 +116,7 @@ public abstract class ConcernDefinitionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<ConcernDefinitionImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<ConcernDefinitionImpl, Expression> expression;
 	public static volatile SingularAttribute<ConcernDefinitionImpl, Boolean> isModelLevelEvaluable;
+	public static volatile ListAttribute<ConcernDefinitionImpl, String> aliasIds;
 	public static volatile ListAttribute<ConcernDefinitionImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<ConcernDefinitionImpl, ConnectorAsUsage> ownedConnection;
 	public static volatile ListAttribute<ConcernDefinitionImpl, FeatureMembership> featureMembership;
@@ -122,8 +124,6 @@ public abstract class ConcernDefinitionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<ConcernDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<ConcernDefinitionImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<ConcernDefinitionImpl, VariantMembership> variantMembership;
-	public static volatile SingularAttribute<ConcernDefinitionImpl, String> humanId;
-	public static volatile ListAttribute<ConcernDefinitionImpl, String> aliasId;
 	public static volatile ListAttribute<ConcernDefinitionImpl, Specialization> ownedSpecialization;
 	public static volatile CollectionAttribute<ConcernDefinitionImpl, ConcernUsage> ownedConcern;
 	public static volatile CollectionAttribute<ConcernDefinitionImpl, Step> step;
@@ -147,8 +147,8 @@ public abstract class ConcernDefinitionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String TEXT = "text";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";
@@ -171,6 +171,7 @@ public abstract class ConcernDefinitionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String NAME = "name";
 	public static final String OWNED_REFERENCE = "ownedReference";
 	public static final String OWNED_USAGE = "ownedUsage";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
@@ -193,6 +194,7 @@ public abstract class ConcernDefinitionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String EXPRESSION = "expression";
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String OWNED_CONNECTION = "ownedConnection";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
@@ -200,8 +202,6 @@ public abstract class ConcernDefinitionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String OWNED_CONCERN = "ownedConcern";
 	public static final String STEP = "step";

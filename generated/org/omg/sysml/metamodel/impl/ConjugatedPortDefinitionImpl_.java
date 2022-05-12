@@ -64,8 +64,8 @@ public abstract class ConjugatedPortDefinitionImpl_ extends org.omg.sysml.lifecy
 	public static volatile CollectionAttribute<ConjugatedPortDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<ConjugatedPortDefinitionImpl, Boolean> isSufficient;
+	public static volatile SingularAttribute<ConjugatedPortDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<ConjugatedPortDefinitionImpl, UUID> identifier;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, ViewUsage> ownedView;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, Feature> ownedFeature;
@@ -84,6 +84,7 @@ public abstract class ConjugatedPortDefinitionImpl_ extends org.omg.sysml.lifecy
 	public static volatile SingularAttribute<ConjugatedPortDefinitionImpl, String> name;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, ReferenceUsage> ownedReference;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, Usage> ownedUsage;
+	public static volatile SingularAttribute<ConjugatedPortDefinitionImpl, String> shortName;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, Element> ownedMember;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, Membership> ownedMembership;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, UseCaseUsage> ownedUseCase;
@@ -103,6 +104,7 @@ public abstract class ConjugatedPortDefinitionImpl_ extends org.omg.sysml.lifecy
 	public static volatile SingularAttribute<ConjugatedPortDefinitionImpl, String> effectiveName;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, Element> ownedElement;
+	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, String> aliasIds;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, ConnectorAsUsage> ownedConnection;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, FeatureMembership> featureMembership;
@@ -110,8 +112,6 @@ public abstract class ConjugatedPortDefinitionImpl_ extends org.omg.sysml.lifecy
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<ConjugatedPortDefinitionImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<ConjugatedPortDefinitionImpl, VariantMembership> variantMembership;
-	public static volatile SingularAttribute<ConjugatedPortDefinitionImpl, String> humanId;
-	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, String> aliasId;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, Specialization> ownedSpecialization;
 	public static volatile CollectionAttribute<ConjugatedPortDefinitionImpl, ConcernUsage> ownedConcern;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, AttributeUsage> ownedAttribute;
@@ -131,8 +131,8 @@ public abstract class ConjugatedPortDefinitionImpl_ extends org.omg.sysml.lifecy
 	public static final String VARIANT = "variant";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";
@@ -151,6 +151,7 @@ public abstract class ConjugatedPortDefinitionImpl_ extends org.omg.sysml.lifecy
 	public static final String NAME = "name";
 	public static final String OWNED_REFERENCE = "ownedReference";
 	public static final String OWNED_USAGE = "ownedUsage";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
@@ -170,6 +171,7 @@ public abstract class ConjugatedPortDefinitionImpl_ extends org.omg.sysml.lifecy
 	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String OWNED_CONNECTION = "ownedConnection";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
@@ -177,8 +179,6 @@ public abstract class ConjugatedPortDefinitionImpl_ extends org.omg.sysml.lifecy
 	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String OWNED_CONCERN = "ownedConcern";
 	public static final String OWNED_ATTRIBUTE = "ownedAttribute";

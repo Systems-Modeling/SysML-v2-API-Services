@@ -76,7 +76,6 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<AllocationUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<AllocationUsageImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<AllocationUsageImpl, UUID> identifier;
 	public static volatile ListAttribute<AllocationUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<AllocationUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile ListAttribute<AllocationUsageImpl, Feature> ownedFeature;
@@ -87,6 +86,7 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<AllocationUsageImpl, CalculationUsage> nestedCalculation;
 	public static volatile ListAttribute<AllocationUsageImpl, Element> relatedElement;
 	public static volatile ListAttribute<AllocationUsageImpl, ViewUsage> nestedView;
+	public static volatile SingularAttribute<AllocationUsageImpl, String> shortName;
 	public static volatile ListAttribute<AllocationUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<AllocationUsageImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<AllocationUsageImpl, AllocationUsage> nestedAllocation;
@@ -103,12 +103,12 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<AllocationUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<AllocationUsageImpl, Element> ownedElement;
 	public static volatile ListAttribute<AllocationUsageImpl, PartDefinition> partDefinition;
+	public static volatile ListAttribute<AllocationUsageImpl, String> aliasIds;
 	public static volatile ListAttribute<AllocationUsageImpl, FeatureMembership> featureMembership;
 	public static volatile SingularAttribute<AllocationUsageImpl, PortionKind> portionKind;
 	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<AllocationUsageImpl, Feature> relatedFeature;
 	public static volatile ListAttribute<AllocationUsageImpl, RenderingUsage> nestedRendering;
-	public static volatile SingularAttribute<AllocationUsageImpl, String> humanId;
 	public static volatile ListAttribute<AllocationUsageImpl, ConnectorAsUsage> nestedConnection;
 	public static volatile ListAttribute<AllocationUsageImpl, InterfaceUsage> nestedInterface;
 	public static volatile ListAttribute<AllocationUsageImpl, Specialization> ownedSpecialization;
@@ -124,6 +124,7 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile CollectionAttribute<AllocationUsageImpl, Usage> variant;
 	public static volatile ListAttribute<AllocationUsageImpl, StateUsage> nestedState;
 	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isOrdered;
+	public static volatile SingularAttribute<AllocationUsageImpl, UUID> elementId;
 	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<AllocationUsageImpl, Annotation> ownedAnnotation;
 	public static volatile SingularAttribute<AllocationUsageImpl, String> qualifiedName;
@@ -162,7 +163,6 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<AllocationUsageImpl, Element> target;
 	public static volatile CollectionAttribute<AllocationUsageImpl, VariantMembership> variantMembership;
 	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isDirected;
-	public static volatile ListAttribute<AllocationUsageImpl, String> aliasId;
 
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String USAGE = "usage";
@@ -176,7 +176,6 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";
@@ -187,6 +186,7 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NESTED_VIEW = "nestedView";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String NESTED_ALLOCATION = "nestedAllocation";
@@ -203,12 +203,12 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String PART_DEFINITION = "partDefinition";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String PORTION_KIND = "portionKind";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String NESTED_RENDERING = "nestedRendering";
-	public static final String HUMAN_ID = "humanId";
 	public static final String NESTED_CONNECTION = "nestedConnection";
 	public static final String NESTED_INTERFACE = "nestedInterface";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
@@ -224,6 +224,7 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String VARIANT = "variant";
 	public static final String NESTED_STATE = "nestedState";
 	public static final String IS_ORDERED = "isOrdered";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String QUALIFIED_NAME = "qualifiedName";
@@ -262,7 +263,6 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String TARGET = "target";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String IS_DIRECTED = "isDirected";
-	public static final String ALIAS_ID = "aliasId";
 
 }
 

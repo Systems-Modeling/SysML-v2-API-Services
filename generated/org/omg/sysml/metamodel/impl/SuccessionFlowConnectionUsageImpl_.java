@@ -82,7 +82,6 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, Boolean> isSufficient;
 	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, UUID> identifier;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Feature> ownedFeature;
@@ -94,6 +93,7 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Feature> targetInputFeature;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Element> relatedElement;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, ViewUsage> nestedView;
+	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, String> shortName;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, AllocationUsage> nestedAllocation;
@@ -112,12 +112,12 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Element> ownedElement;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, PartDefinition> partDefinition;
+	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, String> aliasIds;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, FeatureMembership> featureMembership;
 	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, PortionKind> portionKind;
 	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Feature> relatedFeature;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, RenderingUsage> nestedRendering;
-	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, String> humanId;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, ConnectorAsUsage> nestedConnection;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, InterfaceUsage> nestedInterface;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Specialization> ownedSpecialization;
@@ -133,6 +133,7 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, Usage> variant;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, StateUsage> nestedState;
 	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, Boolean> isOrdered;
+	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, UUID> elementId;
 	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Annotation> ownedAnnotation;
 	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, String> qualifiedName;
@@ -177,7 +178,6 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Element> target;
 	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, VariantMembership> variantMembership;
 	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, Boolean> isDirected;
-	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, String> aliasId;
 
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String USAGE = "usage";
@@ -192,7 +192,6 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";
@@ -204,6 +203,7 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static final String TARGET_INPUT_FEATURE = "targetInputFeature";
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NESTED_VIEW = "nestedView";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String NESTED_ALLOCATION = "nestedAllocation";
@@ -222,12 +222,12 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String PART_DEFINITION = "partDefinition";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String PORTION_KIND = "portionKind";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String NESTED_RENDERING = "nestedRendering";
-	public static final String HUMAN_ID = "humanId";
 	public static final String NESTED_CONNECTION = "nestedConnection";
 	public static final String NESTED_INTERFACE = "nestedInterface";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
@@ -243,6 +243,7 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static final String VARIANT = "variant";
 	public static final String NESTED_STATE = "nestedState";
 	public static final String IS_ORDERED = "isOrdered";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String QUALIFIED_NAME = "qualifiedName";
@@ -287,7 +288,6 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static final String TARGET = "target";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String IS_DIRECTED = "isDirected";
-	public static final String ALIAS_ID = "aliasId";
 
 }
 

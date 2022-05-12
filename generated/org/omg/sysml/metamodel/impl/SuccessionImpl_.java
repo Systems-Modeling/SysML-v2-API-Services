@@ -44,8 +44,8 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<SuccessionImpl, Redefinition> ownedRedefinition;
+	public static volatile SingularAttribute<SuccessionImpl, UUID> elementId;
 	public static volatile ListAttribute<SuccessionImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<SuccessionImpl, UUID> identifier;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isDerived;
 	public static volatile ListAttribute<SuccessionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<SuccessionImpl, Feature> ownedFeature;
@@ -61,6 +61,7 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile CollectionAttribute<SuccessionImpl, Step> effectStep;
 	public static volatile SingularAttribute<SuccessionImpl, String> name;
 	public static volatile CollectionAttribute<SuccessionImpl, Feature> connectorEnd;
+	public static volatile SingularAttribute<SuccessionImpl, String> shortName;
 	public static volatile ListAttribute<SuccessionImpl, Element> ownedMember;
 	public static volatile ListAttribute<SuccessionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<SuccessionImpl, Disjoining> ownedDisjoining;
@@ -84,6 +85,7 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile SingularAttribute<SuccessionImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<SuccessionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<SuccessionImpl, Element> ownedElement;
+	public static volatile ListAttribute<SuccessionImpl, String> aliasIds;
 	public static volatile ListAttribute<SuccessionImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<SuccessionImpl, FeatureMembership> featureMembership;
 	public static volatile ListAttribute<SuccessionImpl, Import> ownedImport;
@@ -91,8 +93,6 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile ListAttribute<SuccessionImpl, Feature> relatedFeature;
 	public static volatile ListAttribute<SuccessionImpl, Element> target;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isDirected;
-	public static volatile SingularAttribute<SuccessionImpl, String> humanId;
-	public static volatile ListAttribute<SuccessionImpl, String> aliasId;
 	public static volatile ListAttribute<SuccessionImpl, Specialization> ownedSpecialization;
 
 	public static final String CHAINING_FEATURE = "chainingFeature";
@@ -107,8 +107,8 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";
@@ -124,6 +124,7 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String EFFECT_STEP = "effectStep";
 	public static final String NAME = "name";
 	public static final String CONNECTOR_END = "connectorEnd";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
@@ -147,6 +148,7 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String OWNED_IMPORT = "ownedImport";
@@ -154,8 +156,6 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String TARGET = "target";
 	public static final String IS_DIRECTED = "isDirected";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 
 }

@@ -80,8 +80,8 @@ public abstract class JoinNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile ListAttribute<JoinNodeImpl, StateUsage> nestedState;
 	public static volatile SingularAttribute<JoinNodeImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<JoinNodeImpl, Redefinition> ownedRedefinition;
+	public static volatile SingularAttribute<JoinNodeImpl, UUID> elementId;
 	public static volatile ListAttribute<JoinNodeImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<JoinNodeImpl, UUID> identifier;
 	public static volatile SingularAttribute<JoinNodeImpl, Boolean> isDerived;
 	public static volatile ListAttribute<JoinNodeImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<JoinNodeImpl, Annotation> ownedAnnotation;
@@ -102,6 +102,7 @@ public abstract class JoinNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile SingularAttribute<JoinNodeImpl, Boolean> isComposite;
 	public static volatile ListAttribute<JoinNodeImpl, ViewUsage> nestedView;
 	public static volatile SingularAttribute<JoinNodeImpl, String> name;
+	public static volatile SingularAttribute<JoinNodeImpl, String> shortName;
 	public static volatile ListAttribute<JoinNodeImpl, Element> ownedMember;
 	public static volatile ListAttribute<JoinNodeImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<JoinNodeImpl, Membership> ownedMembership;
@@ -134,6 +135,7 @@ public abstract class JoinNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile SingularAttribute<JoinNodeImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<JoinNodeImpl, Membership> importedMembership;
 	public static volatile ListAttribute<JoinNodeImpl, Element> ownedElement;
+	public static volatile ListAttribute<JoinNodeImpl, String> aliasIds;
 	public static volatile ListAttribute<JoinNodeImpl, ActionUsage> nestedAction;
 	public static volatile ListAttribute<JoinNodeImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<JoinNodeImpl, FeatureMembership> featureMembership;
@@ -143,9 +145,7 @@ public abstract class JoinNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile SingularAttribute<JoinNodeImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<JoinNodeImpl, VariantMembership> variantMembership;
 	public static volatile ListAttribute<JoinNodeImpl, RenderingUsage> nestedRendering;
-	public static volatile SingularAttribute<JoinNodeImpl, String> humanId;
 	public static volatile ListAttribute<JoinNodeImpl, ConnectorAsUsage> nestedConnection;
-	public static volatile ListAttribute<JoinNodeImpl, String> aliasId;
 	public static volatile ListAttribute<JoinNodeImpl, InterfaceUsage> nestedInterface;
 	public static volatile ListAttribute<JoinNodeImpl, Specialization> ownedSpecialization;
 	public static volatile ListAttribute<JoinNodeImpl, ViewpointUsage> nestedViewpoint;
@@ -170,8 +170,8 @@ public abstract class JoinNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String NESTED_STATE = "nestedState";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -192,6 +192,7 @@ public abstract class JoinNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NESTED_VIEW = "nestedView";
 	public static final String NAME = "name";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
@@ -224,6 +225,7 @@ public abstract class JoinNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String NESTED_ACTION = "nestedAction";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
@@ -233,9 +235,7 @@ public abstract class JoinNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String NESTED_RENDERING = "nestedRendering";
-	public static final String HUMAN_ID = "humanId";
 	public static final String NESTED_CONNECTION = "nestedConnection";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String NESTED_INTERFACE = "nestedInterface";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";

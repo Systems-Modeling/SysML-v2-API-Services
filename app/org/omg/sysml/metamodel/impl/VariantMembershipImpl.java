@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021-2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -69,25 +70,25 @@ import java.util.HashSet;
 @JsonTypeName(value = "VariantMembership")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembership {
-    // @info.archinnov.achilles.annotations.Column("aliasId")
-    private List<String> aliasId;
+    // @info.archinnov.achilles.annotations.Column("aliasIds")
+    private List<String> aliasIds;
 
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "VariantMembership_aliasId",
-            joinColumns = @JoinColumn(name = "VariantMembershipId"))
-    public List<String> getAliasId() {
-        if (aliasId == null) {
-            aliasId = new ArrayList<>();
+    @CollectionTable(name = "VariantMembership_aliasIds",
+            joinColumns = @JoinColumn(name = "VariantMembership_id"))
+    public List<String> getAliasIds() {
+        if (aliasIds == null) {
+            aliasIds = new ArrayList<>();
         }
-        return aliasId;
+        return aliasIds;
     }
 
     @JsonSetter
-    public void setAliasId(List<String> aliasId) {
-        this.aliasId = aliasId;
+    public void setAliasIds(List<String> aliasIds) {
+        this.aliasIds = aliasIds;
     }
 
 
@@ -99,10 +100,10 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "VariantMembership_documentation",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Documentation> getDocumentation() {
         if (documentation == null) {
             documentation = new ArrayList<>();
@@ -114,26 +115,6 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DocumentationImpl.class)
     public void setDocumentation(List<Documentation> documentation) {
         this.documentation = documentation;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("effectiveMemberName")
-    private String effectiveMemberName;
-
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    // @javax.persistence.Transient
-    @javax.persistence.Column(name = "effectiveMemberName", table = "VariantMembership")
-    public String getEffectiveMemberName() {
-        return effectiveMemberName;
-    }
-
-    @JsonSetter
-    public void setEffectiveMemberName(String effectiveMemberName) {
-        this.effectiveMemberName = effectiveMemberName;
     }
 
 
@@ -158,36 +139,18 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
 
 
 
-    // @info.archinnov.achilles.annotations.Column("humanId")
-    private String humanId;
+    // @info.archinnov.achilles.annotations.Column("elementId")
+    private java.util.UUID elementId;
 
     @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "humanId", table = "VariantMembership")
-    public String getHumanId() {
-        return humanId;
+    @javax.persistence.Column(name = "elementId", table = "VariantMembership")
+    public java.util.UUID getElementId() {
+        return elementId;
     }
 
     @JsonSetter
-    public void setHumanId(String humanId) {
-        this.humanId = humanId;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("identifier")
-    private java.util.UUID identifier;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "VariantMembership")
-    public java.util.UUID getIdentifier() {
-        return identifier;
-    }
-
-    @JsonSetter
-    public void setIdentifier(java.util.UUID identifier) {
-        this.identifier = identifier;
+    public void setElementId(java.util.UUID elementId) {
+        this.elementId = elementId;
     }
 
 
@@ -197,8 +160,8 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "memberElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "memberElementId", table = "VariantMembership")
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "memberElement_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "memberElement_id", table = "VariantMembership")
     public Element getMemberElement() {
         return memberElement;
     }
@@ -207,6 +170,26 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
     @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
     public void setMemberElement(Element memberElement) {
         this.memberElement = memberElement;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("memberElementId")
+    private String memberElementId;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "memberElementId", table = "VariantMembership")
+    public String getMemberElementId() {
+        return memberElementId;
+    }
+
+    @JsonSetter
+    public void setMemberElementId(String memberElementId) {
+        this.memberElementId = memberElementId;
     }
 
 
@@ -229,6 +212,24 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
 
 
 
+    // @info.archinnov.achilles.annotations.Column("memberShortName")
+    private String memberShortName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "memberShortName", table = "VariantMembership")
+    public String getMemberShortName() {
+        return memberShortName;
+    }
+
+    @JsonSetter
+    public void setMemberShortName(String memberShortName) {
+        this.memberShortName = memberShortName;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("membershipOwningNamespace")
     private Namespace membershipOwningNamespace;
@@ -236,8 +237,8 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "membershipOwningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "membershipOwningNamespaceId", table = "VariantMembership")
+    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "membershipOwningNamespace_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "membershipOwningNamespace_id", table = "VariantMembership")
     public Namespace getMembershipOwningNamespace() {
         return membershipOwningNamespace;
     }
@@ -250,14 +251,12 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("name")
     private String name;
 
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    // @javax.persistence.Transient
     @javax.persistence.Column(name = "name", table = "VariantMembership")
     public String getName() {
         return name;
@@ -277,10 +276,10 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "VariantMembership_ownedAnnotation",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Annotation> getOwnedAnnotation() {
         if (ownedAnnotation == null) {
             ownedAnnotation = new ArrayList<>();
@@ -303,10 +302,10 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "VariantMembership_ownedElement",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
@@ -327,8 +326,8 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedMemberElementId", table = "VariantMembership")
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberElement_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedMemberElement_id", table = "VariantMembership")
     public Element getOwnedMemberElement() {
         return ownedMemberElement;
     }
@@ -341,15 +340,75 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedMemberElementId")
+    private String ownedMemberElementId;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "ownedMemberElementId", table = "VariantMembership")
+    public String getOwnedMemberElementId() {
+        return ownedMemberElementId;
+    }
+
+    @JsonSetter
+    public void setOwnedMemberElementId(String ownedMemberElementId) {
+        this.ownedMemberElementId = ownedMemberElementId;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedMemberName")
+    private String ownedMemberName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "ownedMemberName", table = "VariantMembership")
+    public String getOwnedMemberName() {
+        return ownedMemberName;
+    }
+
+    @JsonSetter
+    public void setOwnedMemberName(String ownedMemberName) {
+        this.ownedMemberName = ownedMemberName;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedMemberShortName")
+    private String ownedMemberShortName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "ownedMemberShortName", table = "VariantMembership")
+    public String getOwnedMemberShortName() {
+        return ownedMemberShortName;
+    }
+
+    @JsonSetter
+    public void setOwnedMemberShortName(String ownedMemberShortName) {
+        this.ownedMemberShortName = ownedMemberShortName;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("ownedRelatedElement")
     private List<Element> ownedRelatedElement;
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "VariantMembership_ownedRelatedElement",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getOwnedRelatedElement() {
         if (ownedRelatedElement == null) {
             ownedRelatedElement = new ArrayList<>();
@@ -370,10 +429,10 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "VariantMembership_ownedRelationship",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Relationship> getOwnedRelationship() {
         if (ownedRelationship == null) {
             ownedRelationship = new ArrayList<>();
@@ -394,8 +453,8 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "ownedVariantUsageType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedVariantUsageId", table = "VariantMembership")
+    @Any(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "ownedVariantUsage_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedVariantUsage_id", table = "VariantMembership")
     public Usage getOwnedVariantUsage() {
         return ownedVariantUsage;
     }
@@ -415,8 +474,8 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownerId", table = "VariantMembership")
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owner_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owner_id", table = "VariantMembership")
     public Element getOwner() {
         return owner;
     }
@@ -430,19 +489,19 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
 
 
     // @info.archinnov.achilles.annotations.Column("owningMembership")
-    private Membership owningMembership;
+    private OwningMembership owningMembership;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningMembershipId", table = "VariantMembership")
-    public Membership getOwningMembership() {
+    @Any(metaDef = "OwningMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembership_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningMembership_id", table = "VariantMembership")
+    public OwningMembership getOwningMembership() {
         return owningMembership;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = MembershipImpl.class)
-    public void setOwningMembership(Membership owningMembership) {
+    @JsonDeserialize(using = DataDeserializer.class, as = OwningMembershipImpl.class)
+    public void setOwningMembership(OwningMembership owningMembership) {
         this.owningMembership = owningMembership;
     }
 
@@ -455,8 +514,8 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "VariantMembership")
+    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespace_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningNamespace_id", table = "VariantMembership")
     public Namespace getOwningNamespace() {
         return owningNamespace;
     }
@@ -474,8 +533,8 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelatedElementId", table = "VariantMembership")
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElement_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningRelatedElement_id", table = "VariantMembership")
     public Element getOwningRelatedElement() {
         return owningRelatedElement;
     }
@@ -493,8 +552,8 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelationshipId", table = "VariantMembership")
+    @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationship_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningRelationship_id", table = "VariantMembership")
     public Relationship getOwningRelationship() {
         return owningRelationship;
     }
@@ -534,10 +593,10 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "VariantMembership_relatedElement",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getRelatedElement() {
         if (relatedElement == null) {
             relatedElement = new ArrayList<>();
@@ -553,15 +612,33 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
 
 
 
+    // @info.archinnov.achilles.annotations.Column("shortName")
+    private String shortName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "shortName", table = "VariantMembership")
+    public String getShortName() {
+        return shortName;
+    }
+
+    @JsonSetter
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("source")
     private List<Element> source;
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "VariantMembership_source",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getSource() {
         if (source == null) {
             source = new ArrayList<>();
@@ -582,10 +659,10 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "VariantMembership_target",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getTarget() {
         if (target == null) {
             target = new ArrayList<>();
@@ -608,10 +685,10 @@ public class VariantMembershipImpl extends SysMLTypeImpl implements VariantMembe
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "VariantMembership_textualRepresentation",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<TextualRepresentation> getTextualRepresentation() {
         if (textualRepresentation == null) {
             textualRepresentation = new ArrayList<>();

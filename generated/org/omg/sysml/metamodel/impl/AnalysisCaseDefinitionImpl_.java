@@ -68,8 +68,8 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.lifecycl
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, ActionUsage> action;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, Boolean> isSufficient;
+	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, UUID> identifier;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, ViewUsage> ownedView;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Feature> ownedFeature;
@@ -89,6 +89,7 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.lifecycl
 	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, String> name;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, ReferenceUsage> ownedReference;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Usage> ownedUsage;
+	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, String> shortName;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Element> ownedMember;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Membership> ownedMembership;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, ActionUsage> analysisAction;
@@ -112,6 +113,7 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.lifecycl
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, Expression> expression;
 	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, Boolean> isModelLevelEvaluable;
+	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, String> aliasIds;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, ConnectorAsUsage> ownedConnection;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, FeatureMembership> featureMembership;
@@ -119,8 +121,6 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.lifecycl
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, VariantMembership> variantMembership;
-	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, String> humanId;
-	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, String> aliasId;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Specialization> ownedSpecialization;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, ConcernUsage> ownedConcern;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, Step> step;
@@ -143,8 +143,8 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.lifecycl
 	public static final String ACTION = "action";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";
@@ -164,6 +164,7 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.lifecycl
 	public static final String NAME = "name";
 	public static final String OWNED_REFERENCE = "ownedReference";
 	public static final String OWNED_USAGE = "ownedUsage";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String ANALYSIS_ACTION = "analysisAction";
@@ -187,6 +188,7 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.lifecycl
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String EXPRESSION = "expression";
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String OWNED_CONNECTION = "ownedConnection";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
@@ -194,8 +196,6 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.lifecycl
 	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String OWNED_CONCERN = "ownedConcern";
 	public static final String STEP = "step";

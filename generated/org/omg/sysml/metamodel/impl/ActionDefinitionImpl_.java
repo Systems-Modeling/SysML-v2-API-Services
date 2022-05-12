@@ -66,8 +66,8 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<ActionDefinitionImpl, ActionUsage> action;
 	public static volatile ListAttribute<ActionDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<ActionDefinitionImpl, Boolean> isSufficient;
+	public static volatile SingularAttribute<ActionDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<ActionDefinitionImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<ActionDefinitionImpl, UUID> identifier;
 	public static volatile ListAttribute<ActionDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ActionDefinitionImpl, ViewUsage> ownedView;
 	public static volatile ListAttribute<ActionDefinitionImpl, Feature> ownedFeature;
@@ -86,6 +86,7 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile SingularAttribute<ActionDefinitionImpl, String> name;
 	public static volatile ListAttribute<ActionDefinitionImpl, ReferenceUsage> ownedReference;
 	public static volatile ListAttribute<ActionDefinitionImpl, Usage> ownedUsage;
+	public static volatile SingularAttribute<ActionDefinitionImpl, String> shortName;
 	public static volatile ListAttribute<ActionDefinitionImpl, Element> ownedMember;
 	public static volatile ListAttribute<ActionDefinitionImpl, Membership> ownedMembership;
 	public static volatile ListAttribute<ActionDefinitionImpl, UseCaseUsage> ownedUseCase;
@@ -106,6 +107,7 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile SingularAttribute<ActionDefinitionImpl, String> effectiveName;
 	public static volatile ListAttribute<ActionDefinitionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ActionDefinitionImpl, Element> ownedElement;
+	public static volatile ListAttribute<ActionDefinitionImpl, String> aliasIds;
 	public static volatile ListAttribute<ActionDefinitionImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<ActionDefinitionImpl, ConnectorAsUsage> ownedConnection;
 	public static volatile ListAttribute<ActionDefinitionImpl, FeatureMembership> featureMembership;
@@ -113,8 +115,6 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<ActionDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<ActionDefinitionImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<ActionDefinitionImpl, VariantMembership> variantMembership;
-	public static volatile SingularAttribute<ActionDefinitionImpl, String> humanId;
-	public static volatile ListAttribute<ActionDefinitionImpl, String> aliasId;
 	public static volatile ListAttribute<ActionDefinitionImpl, Specialization> ownedSpecialization;
 	public static volatile CollectionAttribute<ActionDefinitionImpl, ConcernUsage> ownedConcern;
 	public static volatile CollectionAttribute<ActionDefinitionImpl, Step> step;
@@ -136,8 +136,8 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String ACTION = "action";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";
@@ -156,6 +156,7 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String NAME = "name";
 	public static final String OWNED_REFERENCE = "ownedReference";
 	public static final String OWNED_USAGE = "ownedUsage";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
@@ -176,6 +177,7 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String OWNED_CONNECTION = "ownedConnection";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
@@ -183,8 +185,6 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String OWNED_CONCERN = "ownedConcern";
 	public static final String STEP = "step";

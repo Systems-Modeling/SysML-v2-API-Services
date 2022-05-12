@@ -40,11 +40,12 @@ public abstract class AssociationImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static volatile ListAttribute<AssociationImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<AssociationImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<AssociationImpl, String> effectiveName;
+	public static volatile SingularAttribute<AssociationImpl, UUID> elementId;
 	public static volatile ListAttribute<AssociationImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<AssociationImpl, UUID> identifier;
 	public static volatile ListAttribute<AssociationImpl, Membership> importedMembership;
 	public static volatile ListAttribute<AssociationImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<AssociationImpl, Element> ownedElement;
+	public static volatile ListAttribute<AssociationImpl, String> aliasIds;
 	public static volatile ListAttribute<AssociationImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<AssociationImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<AssociationImpl, String> qualifiedName;
@@ -58,11 +59,10 @@ public abstract class AssociationImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static volatile CollectionAttribute<AssociationImpl, Feature> associationEnd;
 	public static volatile ListAttribute<AssociationImpl, Element> target;
 	public static volatile ListAttribute<AssociationImpl, Feature> input;
-	public static volatile SingularAttribute<AssociationImpl, String> humanId;
-	public static volatile ListAttribute<AssociationImpl, String> aliasId;
 	public static volatile ListAttribute<AssociationImpl, Element> relatedElement;
 	public static volatile SingularAttribute<AssociationImpl, String> name;
 	public static volatile ListAttribute<AssociationImpl, Specialization> ownedSpecialization;
+	public static volatile SingularAttribute<AssociationImpl, String> shortName;
 	public static volatile ListAttribute<AssociationImpl, Element> ownedMember;
 	public static volatile ListAttribute<AssociationImpl, Membership> ownedMembership;
 
@@ -82,11 +82,12 @@ public abstract class AssociationImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String EFFECTIVE_NAME = "effectiveName";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String QUALIFIED_NAME = "qualifiedName";
@@ -100,11 +101,10 @@ public abstract class AssociationImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static final String ASSOCIATION_END = "associationEnd";
 	public static final String TARGET = "target";
 	public static final String INPUT = "input";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NAME = "name";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 
