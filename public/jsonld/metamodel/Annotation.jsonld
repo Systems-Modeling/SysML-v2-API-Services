@@ -5,13 +5,12 @@
         "dcterms": "http://purl.org/dc/terms/",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
 
-        "aliasId": {"@type": "xsd:string"},
+        "aliasIds": {"@type": "xsd:string"},
         "annotatedElement": {"@type": "@id"},
         "annotatingElement": {"@type": "@id"},
         "documentation": {"@type": "@id"},
         "effectiveName": {"@type": "xsd:string"},
-        "humanId": {"@type": "xsd:string"},
-        "identifier": {"@type": "dcterms:identifier"},
+        "elementId": {"@type": "dcterms:identifier"},
         "name": {"@type": "xsd:string"},
         "ownedAnnotation": {"@type": "@id"},
         "ownedElement": {"@type": "@id"},
@@ -25,6 +24,7 @@
         "owningRelationship": {"@type": "@id"},
         "qualifiedName": {"@type": "xsd:string"},
         "relatedElement": {"@type": "@id"},
+        "shortName": {"@type": "xsd:string"},
         "source": {"@type": "@id"},
         "target": {"@type": "@id"},
         "textualRepresentation": {"@type": "@id"}

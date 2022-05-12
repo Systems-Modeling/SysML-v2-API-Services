@@ -81,8 +81,8 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile ListAttribute<StateUsageImpl, StateUsage> nestedState;
 	public static volatile SingularAttribute<StateUsageImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<StateUsageImpl, Redefinition> ownedRedefinition;
+	public static volatile SingularAttribute<StateUsageImpl, UUID> elementId;
 	public static volatile ListAttribute<StateUsageImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<StateUsageImpl, UUID> identifier;
 	public static volatile SingularAttribute<StateUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<StateUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<StateUsageImpl, Annotation> ownedAnnotation;
@@ -103,6 +103,7 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile SingularAttribute<StateUsageImpl, Boolean> isComposite;
 	public static volatile ListAttribute<StateUsageImpl, ViewUsage> nestedView;
 	public static volatile SingularAttribute<StateUsageImpl, String> name;
+	public static volatile SingularAttribute<StateUsageImpl, String> shortName;
 	public static volatile ListAttribute<StateUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<StateUsageImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<StateUsageImpl, Membership> ownedMembership;
@@ -136,6 +137,7 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile SingularAttribute<StateUsageImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<StateUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<StateUsageImpl, Element> ownedElement;
+	public static volatile ListAttribute<StateUsageImpl, String> aliasIds;
 	public static volatile ListAttribute<StateUsageImpl, ActionUsage> nestedAction;
 	public static volatile ListAttribute<StateUsageImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<StateUsageImpl, FeatureMembership> featureMembership;
@@ -145,9 +147,7 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile SingularAttribute<StateUsageImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<StateUsageImpl, VariantMembership> variantMembership;
 	public static volatile ListAttribute<StateUsageImpl, RenderingUsage> nestedRendering;
-	public static volatile SingularAttribute<StateUsageImpl, String> humanId;
 	public static volatile ListAttribute<StateUsageImpl, ConnectorAsUsage> nestedConnection;
-	public static volatile ListAttribute<StateUsageImpl, String> aliasId;
 	public static volatile ListAttribute<StateUsageImpl, InterfaceUsage> nestedInterface;
 	public static volatile ListAttribute<StateUsageImpl, Specialization> ownedSpecialization;
 	public static volatile ListAttribute<StateUsageImpl, ViewpointUsage> nestedViewpoint;
@@ -173,8 +173,8 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String NESTED_STATE = "nestedState";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -195,6 +195,7 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NESTED_VIEW = "nestedView";
 	public static final String NAME = "name";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
@@ -228,6 +229,7 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String NESTED_ACTION = "nestedAction";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
@@ -237,9 +239,7 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String NESTED_RENDERING = "nestedRendering";
-	public static final String HUMAN_ID = "humanId";
 	public static final String NESTED_CONNECTION = "nestedConnection";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String NESTED_INTERFACE = "nestedInterface";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";

@@ -192,7 +192,11 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
             return cacheResolver.apply(data, identifierToDataMap)
                     .map(fnData -> fnData != tombstone ? fnData : null)
                     .orElseGet(() -> {
-                        Data resolved = commitResolver.apply(data, commit.getPreviousCommit());
+                        Commit previousCommit = commit.getPreviousCommit();
+                        if (previousCommit == null) {
+                            return null;
+                        }
+                        Data resolved = commitResolver.apply(data, previousCommit);
                         identifierToDataMap.put(resolved.getId(), resolved);
                         return resolved;
                     });

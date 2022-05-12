@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021-2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -52,8 +53,6 @@ public interface Type extends Namespace, SysMLType {
 
     Boolean getIsConjugated();
 
-    List<? extends FeatureMembership> getFeatureMembership();
-
     List<? extends Feature> getInheritedFeature();
 
     Multiplicity getMultiplicity();
@@ -61,4 +60,6 @@ public interface Type extends Namespace, SysMLType {
     List<? extends Feature> getDirectedFeature();
 
     Collection<? extends Disjoining> getOwnedDisjoining();
+
+    List<? extends FeatureMembership> getFeatureMembership();
 }

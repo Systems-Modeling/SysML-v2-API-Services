@@ -66,8 +66,8 @@ public abstract class InterfaceDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile CollectionAttribute<InterfaceDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<InterfaceDefinitionImpl, Boolean> isSufficient;
+	public static volatile SingularAttribute<InterfaceDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<InterfaceDefinitionImpl, UUID> identifier;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, ViewUsage> ownedView;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, Feature> ownedFeature;
@@ -87,6 +87,7 @@ public abstract class InterfaceDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile SingularAttribute<InterfaceDefinitionImpl, String> name;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, ReferenceUsage> ownedReference;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, Usage> ownedUsage;
+	public static volatile SingularAttribute<InterfaceDefinitionImpl, String> shortName;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, Element> ownedMember;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, Membership> ownedMembership;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, UseCaseUsage> ownedUseCase;
@@ -108,6 +109,7 @@ public abstract class InterfaceDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile SingularAttribute<InterfaceDefinitionImpl, String> effectiveName;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, Element> ownedElement;
+	public static volatile ListAttribute<InterfaceDefinitionImpl, String> aliasIds;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, ConnectorAsUsage> ownedConnection;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, FeatureMembership> featureMembership;
@@ -119,9 +121,7 @@ public abstract class InterfaceDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile ListAttribute<InterfaceDefinitionImpl, Element> target;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, PortUsage> interfaceEnd;
 	public static volatile CollectionAttribute<InterfaceDefinitionImpl, VariantMembership> variantMembership;
-	public static volatile SingularAttribute<InterfaceDefinitionImpl, String> humanId;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, Usage> connectionEnd;
-	public static volatile ListAttribute<InterfaceDefinitionImpl, String> aliasId;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, Specialization> ownedSpecialization;
 	public static volatile CollectionAttribute<InterfaceDefinitionImpl, ConcernUsage> ownedConcern;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, AttributeUsage> ownedAttribute;
@@ -142,8 +142,8 @@ public abstract class InterfaceDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String VARIANT = "variant";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";
@@ -163,6 +163,7 @@ public abstract class InterfaceDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String NAME = "name";
 	public static final String OWNED_REFERENCE = "ownedReference";
 	public static final String OWNED_USAGE = "ownedUsage";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
@@ -184,6 +185,7 @@ public abstract class InterfaceDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String OWNED_CONNECTION = "ownedConnection";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
@@ -195,9 +197,7 @@ public abstract class InterfaceDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String TARGET = "target";
 	public static final String INTERFACE_END = "interfaceEnd";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
-	public static final String HUMAN_ID = "humanId";
 	public static final String CONNECTION_END = "connectionEnd";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String OWNED_CONCERN = "ownedConcern";
 	public static final String OWNED_ATTRIBUTE = "ownedAttribute";

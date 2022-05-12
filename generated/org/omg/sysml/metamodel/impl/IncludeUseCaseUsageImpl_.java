@@ -81,8 +81,8 @@ public abstract class IncludeUseCaseUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, StateUsage> nestedState;
 	public static volatile SingularAttribute<IncludeUseCaseUsageImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<IncludeUseCaseUsageImpl, Redefinition> ownedRedefinition;
+	public static volatile SingularAttribute<IncludeUseCaseUsageImpl, UUID> elementId;
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<IncludeUseCaseUsageImpl, UUID> identifier;
 	public static volatile SingularAttribute<IncludeUseCaseUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, Annotation> ownedAnnotation;
@@ -104,6 +104,7 @@ public abstract class IncludeUseCaseUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, PartUsage> actorParameter;
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, ViewUsage> nestedView;
 	public static volatile SingularAttribute<IncludeUseCaseUsageImpl, String> name;
+	public static volatile SingularAttribute<IncludeUseCaseUsageImpl, String> shortName;
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, Membership> ownedMembership;
@@ -137,6 +138,7 @@ public abstract class IncludeUseCaseUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, Element> ownedElement;
 	public static volatile SingularAttribute<IncludeUseCaseUsageImpl, Boolean> isModelLevelEvaluable;
+	public static volatile ListAttribute<IncludeUseCaseUsageImpl, String> aliasIds;
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, ActionUsage> nestedAction;
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, FeatureMembership> featureMembership;
@@ -146,9 +148,7 @@ public abstract class IncludeUseCaseUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile SingularAttribute<IncludeUseCaseUsageImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<IncludeUseCaseUsageImpl, VariantMembership> variantMembership;
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, RenderingUsage> nestedRendering;
-	public static volatile SingularAttribute<IncludeUseCaseUsageImpl, String> humanId;
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, ConnectorAsUsage> nestedConnection;
-	public static volatile ListAttribute<IncludeUseCaseUsageImpl, String> aliasId;
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, InterfaceUsage> nestedInterface;
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, Specialization> ownedSpecialization;
 	public static volatile ListAttribute<IncludeUseCaseUsageImpl, ViewpointUsage> nestedViewpoint;
@@ -174,8 +174,8 @@ public abstract class IncludeUseCaseUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String NESTED_STATE = "nestedState";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -197,6 +197,7 @@ public abstract class IncludeUseCaseUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String ACTOR_PARAMETER = "actorParameter";
 	public static final String NESTED_VIEW = "nestedView";
 	public static final String NAME = "name";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
@@ -230,6 +231,7 @@ public abstract class IncludeUseCaseUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String NESTED_ACTION = "nestedAction";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
@@ -239,9 +241,7 @@ public abstract class IncludeUseCaseUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String NESTED_RENDERING = "nestedRendering";
-	public static final String HUMAN_ID = "humanId";
 	public static final String NESTED_CONNECTION = "nestedConnection";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String NESTED_INTERFACE = "nestedInterface";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";

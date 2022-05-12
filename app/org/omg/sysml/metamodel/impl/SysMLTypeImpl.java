@@ -33,18 +33,18 @@ import static jackson.RecordSerialization.IDENTITY_FIELD;
 
 public abstract class SysMLTypeImpl extends DataImpl implements Data {
 
-    public abstract java.util.UUID getIdentifier();
+    public abstract java.util.UUID getElementId();
 
-    public abstract void setIdentifier(java.util.UUID identifier);
+    public abstract void setElementId(java.util.UUID identifier);
 
     @Transient
     @JsonGetter(value = IDENTITY_FIELD)
     public java.util.UUID getId() {
-        return getIdentifier();
+        return getElementId();
     }
 
     @JsonSetter(value = IDENTITY_FIELD)
     public void setId(java.util.UUID id) {
-        setIdentifier(id);
+        setElementId(id);
     }
 }

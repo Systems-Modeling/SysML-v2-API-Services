@@ -79,8 +79,8 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, StateUsage> nestedState;
 	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<BindingConnectorAsUsageImpl, Redefinition> ownedRedefinition;
+	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, UUID> elementId;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, UUID> identifier;
 	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Annotation> ownedAnnotation;
@@ -102,6 +102,7 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, ViewUsage> nestedView;
 	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, String> name;
 	public static volatile CollectionAttribute<BindingConnectorAsUsageImpl, Feature> connectorEnd;
+	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, String> shortName;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Membership> ownedMembership;
@@ -133,6 +134,7 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Element> ownedElement;
+	public static volatile ListAttribute<BindingConnectorAsUsageImpl, String> aliasIds;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, ActionUsage> nestedAction;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, FeatureMembership> featureMembership;
@@ -144,9 +146,7 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static volatile CollectionAttribute<BindingConnectorAsUsageImpl, VariantMembership> variantMembership;
 	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, Boolean> isDirected;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, RenderingUsage> nestedRendering;
-	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, String> humanId;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, ConnectorAsUsage> nestedConnection;
-	public static volatile ListAttribute<BindingConnectorAsUsageImpl, String> aliasId;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, InterfaceUsage> nestedInterface;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Specialization> ownedSpecialization;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, ViewpointUsage> nestedViewpoint;
@@ -172,8 +172,8 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static final String NESTED_STATE = "nestedState";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -195,6 +195,7 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static final String NESTED_VIEW = "nestedView";
 	public static final String NAME = "name";
 	public static final String CONNECTOR_END = "connectorEnd";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
@@ -226,6 +227,7 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String NESTED_ACTION = "nestedAction";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
@@ -237,9 +239,7 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String IS_DIRECTED = "isDirected";
 	public static final String NESTED_RENDERING = "nestedRendering";
-	public static final String HUMAN_ID = "humanId";
 	public static final String NESTED_CONNECTION = "nestedConnection";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String NESTED_INTERFACE = "nestedInterface";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";

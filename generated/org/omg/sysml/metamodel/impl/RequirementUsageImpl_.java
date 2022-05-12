@@ -83,8 +83,8 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<RequirementUsageImpl, StateUsage> nestedState;
 	public static volatile SingularAttribute<RequirementUsageImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<RequirementUsageImpl, Redefinition> ownedRedefinition;
+	public static volatile SingularAttribute<RequirementUsageImpl, UUID> elementId;
 	public static volatile ListAttribute<RequirementUsageImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<RequirementUsageImpl, UUID> identifier;
 	public static volatile SingularAttribute<RequirementUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<RequirementUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<RequirementUsageImpl, Annotation> ownedAnnotation;
@@ -108,6 +108,7 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<RequirementUsageImpl, PartUsage> actorParameter;
 	public static volatile ListAttribute<RequirementUsageImpl, ViewUsage> nestedView;
 	public static volatile SingularAttribute<RequirementUsageImpl, String> name;
+	public static volatile SingularAttribute<RequirementUsageImpl, String> shortName;
 	public static volatile ListAttribute<RequirementUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<RequirementUsageImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<RequirementUsageImpl, Membership> ownedMembership;
@@ -141,6 +142,7 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<RequirementUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<RequirementUsageImpl, Element> ownedElement;
 	public static volatile SingularAttribute<RequirementUsageImpl, Boolean> isModelLevelEvaluable;
+	public static volatile ListAttribute<RequirementUsageImpl, String> aliasIds;
 	public static volatile ListAttribute<RequirementUsageImpl, ActionUsage> nestedAction;
 	public static volatile ListAttribute<RequirementUsageImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<RequirementUsageImpl, FeatureMembership> featureMembership;
@@ -150,9 +152,7 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile SingularAttribute<RequirementUsageImpl, Boolean> isAbstract;
 	public static volatile CollectionAttribute<RequirementUsageImpl, VariantMembership> variantMembership;
 	public static volatile ListAttribute<RequirementUsageImpl, RenderingUsage> nestedRendering;
-	public static volatile SingularAttribute<RequirementUsageImpl, String> humanId;
 	public static volatile ListAttribute<RequirementUsageImpl, ConnectorAsUsage> nestedConnection;
-	public static volatile ListAttribute<RequirementUsageImpl, String> aliasId;
 	public static volatile ListAttribute<RequirementUsageImpl, InterfaceUsage> nestedInterface;
 	public static volatile ListAttribute<RequirementUsageImpl, Specialization> ownedSpecialization;
 	public static volatile ListAttribute<RequirementUsageImpl, ViewpointUsage> nestedViewpoint;
@@ -180,8 +180,8 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String NESTED_STATE = "nestedState";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -205,6 +205,7 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String ACTOR_PARAMETER = "actorParameter";
 	public static final String NESTED_VIEW = "nestedView";
 	public static final String NAME = "name";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String NESTED_OCCURRENCE = "nestedOccurrence";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
@@ -238,6 +239,7 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String NESTED_ACTION = "nestedAction";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
@@ -247,9 +249,7 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String NESTED_RENDERING = "nestedRendering";
-	public static final String HUMAN_ID = "humanId";
 	public static final String NESTED_CONNECTION = "nestedConnection";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String NESTED_INTERFACE = "nestedInterface";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";

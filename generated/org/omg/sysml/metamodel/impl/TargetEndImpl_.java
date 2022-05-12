@@ -39,8 +39,8 @@ public abstract class TargetEndImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile SingularAttribute<TargetEndImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<TargetEndImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<TargetEndImpl, Redefinition> ownedRedefinition;
+	public static volatile SingularAttribute<TargetEndImpl, UUID> elementId;
 	public static volatile ListAttribute<TargetEndImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<TargetEndImpl, UUID> identifier;
 	public static volatile SingularAttribute<TargetEndImpl, Boolean> isDerived;
 	public static volatile ListAttribute<TargetEndImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<TargetEndImpl, Feature> ownedFeature;
@@ -53,6 +53,7 @@ public abstract class TargetEndImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<TargetEndImpl, Feature> input;
 	public static volatile SingularAttribute<TargetEndImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<TargetEndImpl, String> name;
+	public static volatile SingularAttribute<TargetEndImpl, String> shortName;
 	public static volatile ListAttribute<TargetEndImpl, Element> ownedMember;
 	public static volatile ListAttribute<TargetEndImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<TargetEndImpl, Disjoining> ownedDisjoining;
@@ -72,12 +73,11 @@ public abstract class TargetEndImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile SingularAttribute<TargetEndImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<TargetEndImpl, Membership> importedMembership;
 	public static volatile ListAttribute<TargetEndImpl, Element> ownedElement;
+	public static volatile ListAttribute<TargetEndImpl, String> aliasIds;
 	public static volatile ListAttribute<TargetEndImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<TargetEndImpl, FeatureMembership> featureMembership;
 	public static volatile ListAttribute<TargetEndImpl, Import> ownedImport;
 	public static volatile SingularAttribute<TargetEndImpl, Boolean> isAbstract;
-	public static volatile SingularAttribute<TargetEndImpl, String> humanId;
-	public static volatile ListAttribute<TargetEndImpl, String> aliasId;
 	public static volatile ListAttribute<TargetEndImpl, Specialization> ownedSpecialization;
 
 	public static final String CHAINING_FEATURE = "chainingFeature";
@@ -90,8 +90,8 @@ public abstract class TargetEndImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";
@@ -104,6 +104,7 @@ public abstract class TargetEndImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String INPUT = "input";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NAME = "name";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
@@ -123,12 +124,11 @@ public abstract class TargetEndImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 
 }

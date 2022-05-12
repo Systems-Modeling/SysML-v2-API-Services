@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021-2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -26,15 +27,15 @@ import java.util.List;
 import java.util.Set;
 
 public interface Membership extends Relationship, SysMLType {
-    String getMemberName();
+    String getMemberElementId();
 
-    String getEffectiveMemberName();
+    Namespace getMembershipOwningNamespace();
+
+    String getMemberShortName();
 
     Element getMemberElement();
 
-    Element getOwnedMemberElement();
-
-    Namespace getMembershipOwningNamespace();
+    String getMemberName();
 
     VisibilityKind getVisibility();
 }

@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2021-2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -69,25 +70,25 @@ import java.util.HashSet;
 @JsonTypeName(value = "SubjectMembership")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembership {
-    // @info.archinnov.achilles.annotations.Column("aliasId")
-    private List<String> aliasId;
+    // @info.archinnov.achilles.annotations.Column("aliasIds")
+    private List<String> aliasIds;
 
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "SubjectMembership_aliasId",
-            joinColumns = @JoinColumn(name = "SubjectMembershipId"))
-    public List<String> getAliasId() {
-        if (aliasId == null) {
-            aliasId = new ArrayList<>();
+    @CollectionTable(name = "SubjectMembership_aliasIds",
+            joinColumns = @JoinColumn(name = "SubjectMembership_id"))
+    public List<String> getAliasIds() {
+        if (aliasIds == null) {
+            aliasIds = new ArrayList<>();
         }
-        return aliasId;
+        return aliasIds;
     }
 
     @JsonSetter
-    public void setAliasId(List<String> aliasId) {
-        this.aliasId = aliasId;
+    public void setAliasIds(List<String> aliasIds) {
+        this.aliasIds = aliasIds;
     }
 
 
@@ -99,10 +100,10 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "SubjectMembership_documentation",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Documentation> getDocumentation() {
         if (documentation == null) {
             documentation = new ArrayList<>();
@@ -114,26 +115,6 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DocumentationImpl.class)
     public void setDocumentation(List<Documentation> documentation) {
         this.documentation = documentation;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("effectiveMemberName")
-    private String effectiveMemberName;
-
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    // @javax.persistence.Transient
-    @javax.persistence.Column(name = "effectiveMemberName", table = "SubjectMembership")
-    public String getEffectiveMemberName() {
-        return effectiveMemberName;
-    }
-
-    @JsonSetter
-    public void setEffectiveMemberName(String effectiveMemberName) {
-        this.effectiveMemberName = effectiveMemberName;
     }
 
 
@@ -158,13 +139,29 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
 
 
 
+    // @info.archinnov.achilles.annotations.Column("elementId")
+    private java.util.UUID elementId;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "elementId", table = "SubjectMembership")
+    public java.util.UUID getElementId() {
+        return elementId;
+    }
+
+    @JsonSetter
+    public void setElementId(java.util.UUID elementId) {
+        this.elementId = elementId;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("featureOfType")
     private Feature featureOfType;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "featureOfTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "featureOfTypeId", table = "SubjectMembership")
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "featureOfType_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "featureOfType_id", table = "SubjectMembership")
     public Feature getFeatureOfType() {
         return featureOfType;
     }
@@ -182,8 +179,8 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "featuringTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "featuringTypeId", table = "SubjectMembership")
+    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "featuringType_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "featuringType_id", table = "SubjectMembership")
     public Type getFeaturingType() {
         return featuringType;
     }
@@ -196,47 +193,13 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
 
 
 
-    // @info.archinnov.achilles.annotations.Column("humanId")
-    private String humanId;
-
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "humanId", table = "SubjectMembership")
-    public String getHumanId() {
-        return humanId;
-    }
-
-    @JsonSetter
-    public void setHumanId(String humanId) {
-        this.humanId = humanId;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("identifier")
-    private java.util.UUID identifier;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "identifier", table = "SubjectMembership")
-    public java.util.UUID getIdentifier() {
-        return identifier;
-    }
-
-    @JsonSetter
-    public void setIdentifier(java.util.UUID identifier) {
-        this.identifier = identifier;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("memberElement")
     private Element memberElement;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "memberElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "memberElementId", table = "SubjectMembership")
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "memberElement_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "memberElement_id", table = "SubjectMembership")
     public Element getMemberElement() {
         return memberElement;
     }
@@ -249,21 +212,22 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
 
 
 
-    // @info.archinnov.achilles.annotations.Column("memberFeature")
-    private Feature memberFeature;
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("memberElementId")
+    private String memberElementId;
 
     @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "memberFeatureType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "memberFeatureId", table = "SubjectMembership")
-    public Feature getMemberFeature() {
-        return memberFeature;
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "memberElementId", table = "SubjectMembership")
+    public String getMemberElementId() {
+        return memberElementId;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
-    public void setMemberFeature(Feature memberFeature) {
-        this.memberFeature = memberFeature;
+    public void setMemberElementId(String memberElementId) {
+        this.memberElementId = memberElementId;
     }
 
 
@@ -286,21 +250,20 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
 
 
 
-    // @info.archinnov.achilles.annotations.Column("memberParameter")
-    private Feature memberParameter;
+    // @info.archinnov.achilles.annotations.Column("memberShortName")
+    private String memberShortName;
 
     @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "memberParameterType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "memberParameterId", table = "SubjectMembership")
-    public Feature getMemberParameter() {
-        return memberParameter;
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "memberShortName", table = "SubjectMembership")
+    public String getMemberShortName() {
+        return memberShortName;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
-    public void setMemberParameter(Feature memberParameter) {
-        this.memberParameter = memberParameter;
+    public void setMemberShortName(String memberShortName) {
+        this.memberShortName = memberShortName;
     }
 
 
@@ -312,8 +275,8 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "membershipOwningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "membershipOwningNamespaceId", table = "SubjectMembership")
+    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "membershipOwningNamespace_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "membershipOwningNamespace_id", table = "SubjectMembership")
     public Namespace getMembershipOwningNamespace() {
         return membershipOwningNamespace;
     }
@@ -326,14 +289,12 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("name")
     private String name;
 
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    // @javax.persistence.Transient
     @javax.persistence.Column(name = "name", table = "SubjectMembership")
     public String getName() {
         return name;
@@ -353,10 +314,10 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "SubjectMembership_ownedAnnotation",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Annotation> getOwnedAnnotation() {
         if (ownedAnnotation == null) {
             ownedAnnotation = new ArrayList<>();
@@ -379,10 +340,10 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "SubjectMembership_ownedElement",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getOwnedElement() {
         if (ownedElement == null) {
             ownedElement = new ArrayList<>();
@@ -403,8 +364,8 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedMemberElementId", table = "SubjectMembership")
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberElement_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedMemberElement_id", table = "SubjectMembership")
     public Element getOwnedMemberElement() {
         return ownedMemberElement;
     }
@@ -417,13 +378,33 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedMemberElementId")
+    private String ownedMemberElementId;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "ownedMemberElementId", table = "SubjectMembership")
+    public String getOwnedMemberElementId() {
+        return ownedMemberElementId;
+    }
+
+    @JsonSetter
+    public void setOwnedMemberElementId(String ownedMemberElementId) {
+        this.ownedMemberElementId = ownedMemberElementId;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("ownedMemberFeature")
     private Feature ownedMemberFeature;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberFeatureType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedMemberFeatureId", table = "SubjectMembership")
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberFeature_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedMemberFeature_id", table = "SubjectMembership")
     public Feature getOwnedMemberFeature() {
         return ownedMemberFeature;
     }
@@ -436,13 +417,33 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedMemberName")
+    private String ownedMemberName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "ownedMemberName", table = "SubjectMembership")
+    public String getOwnedMemberName() {
+        return ownedMemberName;
+    }
+
+    @JsonSetter
+    public void setOwnedMemberName(String ownedMemberName) {
+        this.ownedMemberName = ownedMemberName;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("ownedMemberParameter")
     private Feature ownedMemberParameter;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberParameterType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedMemberParameterId", table = "SubjectMembership")
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberParameter_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedMemberParameter_id", table = "SubjectMembership")
     public Feature getOwnedMemberParameter() {
         return ownedMemberParameter;
     }
@@ -455,15 +456,35 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedMemberShortName")
+    private String ownedMemberShortName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "ownedMemberShortName", table = "SubjectMembership")
+    public String getOwnedMemberShortName() {
+        return ownedMemberShortName;
+    }
+
+    @JsonSetter
+    public void setOwnedMemberShortName(String ownedMemberShortName) {
+        this.ownedMemberShortName = ownedMemberShortName;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("ownedRelatedElement")
     private List<Element> ownedRelatedElement;
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "SubjectMembership_ownedRelatedElement",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getOwnedRelatedElement() {
         if (ownedRelatedElement == null) {
             ownedRelatedElement = new ArrayList<>();
@@ -484,10 +505,10 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "SubjectMembership_ownedRelationship",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Relationship> getOwnedRelationship() {
         if (ownedRelationship == null) {
             ownedRelationship = new ArrayList<>();
@@ -508,8 +529,8 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "ownedSubjectParameterType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownedSubjectParameterId", table = "SubjectMembership")
+    @Any(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "ownedSubjectParameter_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedSubjectParameter_id", table = "SubjectMembership")
     public Usage getOwnedSubjectParameter() {
         return ownedSubjectParameter;
     }
@@ -529,8 +550,8 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownerType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "ownerId", table = "SubjectMembership")
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owner_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owner_id", table = "SubjectMembership")
     public Element getOwner() {
         return owner;
     }
@@ -550,8 +571,8 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureOfTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningFeatureOfTypeId", table = "SubjectMembership")
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureOfType_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningFeatureOfType_id", table = "SubjectMembership")
     public Feature getOwningFeatureOfType() {
         return owningFeatureOfType;
     }
@@ -565,19 +586,19 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
 
 
     // @info.archinnov.achilles.annotations.Column("owningMembership")
-    private Membership owningMembership;
+    private OwningMembership owningMembership;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "MembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembershipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningMembershipId", table = "SubjectMembership")
-    public Membership getOwningMembership() {
+    @Any(metaDef = "OwningMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembership_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningMembership_id", table = "SubjectMembership")
+    public OwningMembership getOwningMembership() {
         return owningMembership;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = MembershipImpl.class)
-    public void setOwningMembership(Membership owningMembership) {
+    @JsonDeserialize(using = DataDeserializer.class, as = OwningMembershipImpl.class)
+    public void setOwningMembership(OwningMembership owningMembership) {
         this.owningMembership = owningMembership;
     }
 
@@ -590,8 +611,8 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespaceType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespaceId", table = "SubjectMembership")
+    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespace_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningNamespace_id", table = "SubjectMembership")
     public Namespace getOwningNamespace() {
         return owningNamespace;
     }
@@ -609,8 +630,8 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElementType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelatedElementId", table = "SubjectMembership")
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElement_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningRelatedElement_id", table = "SubjectMembership")
     public Element getOwningRelatedElement() {
         return owningRelatedElement;
     }
@@ -628,8 +649,8 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationshipType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelationshipId", table = "SubjectMembership")
+    @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationship_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningRelationship_id", table = "SubjectMembership")
     public Relationship getOwningRelationship() {
         return owningRelationship;
     }
@@ -649,8 +670,8 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningTypeType"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningTypeId", table = "SubjectMembership")
+    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "owningType_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningType_id", table = "SubjectMembership")
     public Type getOwningType() {
         return owningType;
     }
@@ -690,10 +711,10 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "SubjectMembership_relatedElement",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getRelatedElement() {
         if (relatedElement == null) {
             relatedElement = new ArrayList<>();
@@ -709,15 +730,33 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
 
 
 
+    // @info.archinnov.achilles.annotations.Column("shortName")
+    private String shortName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "shortName", table = "SubjectMembership")
+    public String getShortName() {
+        return shortName;
+    }
+
+    @JsonSetter
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("source")
     private List<Element> source;
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "SubjectMembership_source",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getSource() {
         if (source == null) {
             source = new ArrayList<>();
@@ -738,10 +777,10 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "SubjectMembership_target",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getTarget() {
         if (target == null) {
             target = new ArrayList<>();
@@ -764,10 +803,10 @@ public class SubjectMembershipImpl extends SysMLTypeImpl implements SubjectMembe
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attributeType"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "SubjectMembership_textualRepresentation",
-            joinColumns = @JoinColumn(name = "classId"),
-            inverseJoinColumns = @JoinColumn(name = "attributeId"))
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<TextualRepresentation> getTextualRepresentation() {
         if (textualRepresentation == null) {
             textualRepresentation = new ArrayList<>();

@@ -41,8 +41,8 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isSufficient;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<ConnectorImpl, Redefinition> ownedRedefinition;
+	public static volatile SingularAttribute<ConnectorImpl, UUID> elementId;
 	public static volatile ListAttribute<ConnectorImpl, TextualRepresentation> textualRepresentation;
-	public static volatile SingularAttribute<ConnectorImpl, UUID> identifier;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isDerived;
 	public static volatile ListAttribute<ConnectorImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ConnectorImpl, Feature> ownedFeature;
@@ -57,6 +57,7 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<ConnectorImpl, Element> relatedElement;
 	public static volatile SingularAttribute<ConnectorImpl, String> name;
 	public static volatile CollectionAttribute<ConnectorImpl, Feature> connectorEnd;
+	public static volatile SingularAttribute<ConnectorImpl, String> shortName;
 	public static volatile ListAttribute<ConnectorImpl, Element> ownedMember;
 	public static volatile ListAttribute<ConnectorImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<ConnectorImpl, Disjoining> ownedDisjoining;
@@ -79,6 +80,7 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile SingularAttribute<ConnectorImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<ConnectorImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ConnectorImpl, Element> ownedElement;
+	public static volatile ListAttribute<ConnectorImpl, String> aliasIds;
 	public static volatile ListAttribute<ConnectorImpl, Relationship> ownedRelationship;
 	public static volatile ListAttribute<ConnectorImpl, FeatureMembership> featureMembership;
 	public static volatile ListAttribute<ConnectorImpl, Import> ownedImport;
@@ -86,8 +88,6 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<ConnectorImpl, Feature> relatedFeature;
 	public static volatile ListAttribute<ConnectorImpl, Element> target;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isDirected;
-	public static volatile SingularAttribute<ConnectorImpl, String> humanId;
-	public static volatile ListAttribute<ConnectorImpl, String> aliasId;
 	public static volatile ListAttribute<ConnectorImpl, Specialization> ownedSpecialization;
 
 	public static final String CHAINING_FEATURE = "chainingFeature";
@@ -101,8 +101,8 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
+	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
-	public static final String IDENTIFIER = "identifier";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";
@@ -117,6 +117,7 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NAME = "name";
 	public static final String CONNECTOR_END = "connectorEnd";
+	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
@@ -139,6 +140,7 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String OWNED_IMPORT = "ownedImport";
@@ -146,8 +148,6 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String TARGET = "target";
 	public static final String IS_DIRECTED = "isDirected";
-	public static final String HUMAN_ID = "humanId";
-	public static final String ALIAS_ID = "aliasId";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 
 }
