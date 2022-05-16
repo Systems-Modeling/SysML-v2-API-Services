@@ -1,7 +1,7 @@
 name := """SysML-v2-API-Services"""
 organization := "org.omg"
 
-version := "2022-04-m1"
+version := "2022-04"
 
 javacOptions ++= Seq("-source", "11", "-target", "11", "-Xlint")
 
