@@ -1248,7 +1248,7 @@ definitions:
           uuid
       '@type':
         type: string
-      identifier:
+      elementId:
         type: string
         format: uuid
     additionalProperties:
@@ -1262,7 +1262,7 @@ definitions:
           uuid
       '@type':
         type: string
-      identifier:
+      elementId:
         type: string
         format: uuid
       source:
