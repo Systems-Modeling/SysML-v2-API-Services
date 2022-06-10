@@ -26,6 +26,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface ConnectorAsUsage extends Usage, Connector, SysMLType {
+public interface ConnectorAsUsage extends Connector, Usage, SysMLType {
 
 }

@@ -26,6 +26,7 @@ import org.omg.sysml.metamodel.EnumerationUsage;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureChaining;
 import org.omg.sysml.metamodel.FeatureDirectionKind;
+import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
 import org.omg.sysml.metamodel.FlowConnectionUsage;
@@ -151,6 +152,7 @@ public abstract class ExhibitStateUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<ExhibitStateUsageImpl, InterfaceUsage> nestedInterface;
 	public static volatile ListAttribute<ExhibitStateUsageImpl, Specialization> ownedSpecialization;
 	public static volatile ListAttribute<ExhibitStateUsageImpl, ViewpointUsage> nestedViewpoint;
+	public static volatile CollectionAttribute<ExhibitStateUsageImpl, FeatureInverting> ownedFeatureInverting;
 
 	public static final String DIRECTED_USAGE = "directedUsage";
 	public static final String NESTED_PART = "nestedPart";
@@ -243,6 +245,7 @@ public abstract class ExhibitStateUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String NESTED_INTERFACE = "nestedInterface";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";
+	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 
 }
 

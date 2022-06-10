@@ -1754,6 +1754,32 @@ public class PortUsageImpl extends SysMLTypeImpl implements PortUsage {
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedFeatureInverting")
+    private Collection<FeatureInverting> ownedFeatureInverting;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "FeatureInvertingMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "PortUsage_ownedFeatureInverting",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public Collection<FeatureInverting> getOwnedFeatureInverting() {
+        if (ownedFeatureInverting == null) {
+            ownedFeatureInverting = new ArrayList<>();
+        }
+        return ownedFeatureInverting;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureInvertingImpl.class)
+    public void setOwnedFeatureInverting(Collection<FeatureInverting> ownedFeatureInverting) {
+        this.ownedFeatureInverting = ownedFeatureInverting;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedFeatureMembership")
     private List<FeatureMembership> ownedFeatureMembership;
 
