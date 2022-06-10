@@ -26,6 +26,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface MetadataDefinition extends Metaclass, ItemDefinition, SysMLType {
+public interface MetadataDefinition extends ItemDefinition, Metaclass, SysMLType {
 
 }

@@ -15,6 +15,7 @@ import org.omg.sysml.metamodel.Expression;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureChaining;
 import org.omg.sysml.metamodel.FeatureDirectionKind;
+import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
 import org.omg.sysml.metamodel.Import;
@@ -87,6 +88,7 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<OperatorExpressionImpl, Specialization> ownedSpecialization;
 	public static volatile ListAttribute<OperatorExpressionImpl, Expression> operand;
+	public static volatile CollectionAttribute<OperatorExpressionImpl, FeatureInverting> ownedFeatureInverting;
 
 	public static final String ARGUMENT = "argument";
 	public static final String CHAINING_FEATURE = "chainingFeature";
@@ -144,6 +146,7 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.lifecycle.im
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String OPERAND = "operand";
+	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 
 }
 

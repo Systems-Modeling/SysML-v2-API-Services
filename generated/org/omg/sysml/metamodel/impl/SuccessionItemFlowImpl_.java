@@ -17,6 +17,7 @@ import org.omg.sysml.metamodel.Expression;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureChaining;
 import org.omg.sysml.metamodel.FeatureDirectionKind;
+import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
 import org.omg.sysml.metamodel.Import;
@@ -107,6 +108,7 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Element> target;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, Boolean> isDirected;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Specialization> ownedSpecialization;
+	public static volatile CollectionAttribute<SuccessionItemFlowImpl, FeatureInverting> ownedFeatureInverting;
 
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
@@ -178,6 +180,7 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.lifecycle.im
 	public static final String TARGET = "target";
 	public static final String IS_DIRECTED = "isDirected";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
+	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 
 }
 
