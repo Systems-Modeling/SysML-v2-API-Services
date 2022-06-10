@@ -332,11 +332,13 @@ public class AnnotationImpl extends SysMLTypeImpl implements Annotation {
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningAnnotatedElement")
     private Element owningAnnotatedElement;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningAnnotatedElement_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningAnnotatedElement_id", table = "Annotation")
     public Element getOwningAnnotatedElement() {

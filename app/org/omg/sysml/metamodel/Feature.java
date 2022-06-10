@@ -43,7 +43,7 @@ public interface Feature extends Type, SysMLType {
 
     Boolean getIsComposite();
 
-    Boolean getIsPortion();
+    Boolean getIsEnd();
 
     Type getEndOwningType();
 
@@ -53,15 +53,17 @@ public interface Feature extends Type, SysMLType {
 
     List<? extends TypeFeaturing> getOwnedTypeFeaturing();
 
+    Boolean getIsDerived();
+
     List<? extends Feature> getChainingFeature();
+
+    Collection<? extends FeatureInverting> getOwnedFeatureInverting();
 
     List<? extends FeatureChaining> getOwnedFeatureChaining();
 
-    Boolean getIsDerived();
-
     Boolean getIsReadOnly();
 
-    Boolean getIsEnd();
+    Boolean getIsPortion();
 
     FeatureDirectionKind getDirection();
 

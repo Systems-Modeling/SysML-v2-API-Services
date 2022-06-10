@@ -85,6 +85,7 @@
                         @MetaValue(value = "Feature", targetEntity = FeatureImpl.class),
                         @MetaValue(value = "FeatureChainExpression", targetEntity = FeatureChainExpressionImpl.class),
                         @MetaValue(value = "FeatureChaining", targetEntity = FeatureChainingImpl.class),
+                        @MetaValue(value = "FeatureInverting", targetEntity = FeatureInvertingImpl.class),
                         @MetaValue(value = "FeatureMembership", targetEntity = FeatureMembershipImpl.class),
                         @MetaValue(value = "FeatureReferenceExpression", targetEntity = FeatureReferenceExpressionImpl.class),
                         @MetaValue(value = "FeatureTyping", targetEntity = FeatureTypingImpl.class),

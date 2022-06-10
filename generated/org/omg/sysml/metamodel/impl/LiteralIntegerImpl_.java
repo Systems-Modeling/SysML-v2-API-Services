@@ -14,6 +14,7 @@ import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureChaining;
 import org.omg.sysml.metamodel.FeatureDirectionKind;
+import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
 import org.omg.sysml.metamodel.Import;
@@ -84,6 +85,7 @@ public abstract class LiteralIntegerImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<LiteralIntegerImpl, Import> ownedImport;
 	public static volatile SingularAttribute<LiteralIntegerImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<LiteralIntegerImpl, Specialization> ownedSpecialization;
+	public static volatile CollectionAttribute<LiteralIntegerImpl, FeatureInverting> ownedFeatureInverting;
 
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
@@ -139,6 +141,7 @@ public abstract class LiteralIntegerImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
+	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 
 }
 

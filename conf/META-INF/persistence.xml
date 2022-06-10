@@ -82,6 +82,7 @@
         <class>org.omg.sysml.metamodel.impl.FeatureChainExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.FeatureChainingImpl</class>
         <class>org.omg.sysml.metamodel.impl.FeatureImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FeatureInvertingImpl</class>
         <class>org.omg.sysml.metamodel.impl.FeatureMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.FeatureReferenceExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.FeatureTypingImpl</class>

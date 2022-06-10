@@ -14,6 +14,7 @@ import org.omg.sysml.metamodel.Expression;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureChaining;
 import org.omg.sysml.metamodel.FeatureDirectionKind;
+import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
 import org.omg.sysml.metamodel.Import;
@@ -81,6 +82,7 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<MultiplicityRangeImpl, Import> ownedImport;
 	public static volatile SingularAttribute<MultiplicityRangeImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Specialization> ownedSpecialization;
+	public static volatile CollectionAttribute<MultiplicityRangeImpl, FeatureInverting> ownedFeatureInverting;
 
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
@@ -133,6 +135,7 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
+	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 
 }
 

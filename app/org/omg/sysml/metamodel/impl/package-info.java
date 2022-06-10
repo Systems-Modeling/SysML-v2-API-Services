@@ -81,6 +81,7 @@
                         @MetaValue(value = "Feature", targetEntity = FeatureImpl.class),
                         @MetaValue(value = "FeatureChainExpression", targetEntity = FeatureChainExpressionImpl.class),
                         @MetaValue(value = "FeatureChaining", targetEntity = FeatureChainingImpl.class),
+                        @MetaValue(value = "FeatureInverting", targetEntity = FeatureInvertingImpl.class),
                         @MetaValue(value = "FeatureMembership", targetEntity = FeatureMembershipImpl.class),
                         @MetaValue(value = "FeatureReferenceExpression", targetEntity = FeatureReferenceExpressionImpl.class),
                         @MetaValue(value = "FeatureTyping", targetEntity = FeatureTypingImpl.class),
@@ -644,6 +645,7 @@
                         @MetaValue(value = "Feature", targetEntity = FeatureImpl.class),
                         @MetaValue(value = "FeatureChainExpression", targetEntity = FeatureChainExpressionImpl.class),
                         @MetaValue(value = "FeatureChaining", targetEntity = FeatureChainingImpl.class),
+                        @MetaValue(value = "FeatureInverting", targetEntity = FeatureInvertingImpl.class),
                         @MetaValue(value = "FeatureMembership", targetEntity = FeatureMembershipImpl.class),
                         @MetaValue(value = "FeatureReferenceExpression", targetEntity = FeatureReferenceExpressionImpl.class),
                         @MetaValue(value = "FeatureTyping", targetEntity = FeatureTypingImpl.class),
@@ -905,6 +907,10 @@
         @AnyMetaDef(name = "FeatureChainingMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
                         @MetaValue(value = "FeatureChaining", targetEntity = FeatureChainingImpl.class),
+                }),
+        @AnyMetaDef(name = "FeatureInvertingMetaDef", metaType = "string", idType = "java.util.UUID",
+                metaValues = {
+                        @MetaValue(value = "FeatureInverting", targetEntity = FeatureInvertingImpl.class),
                 }),
         @AnyMetaDef(name = "FeatureMembershipMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -1473,6 +1479,7 @@
                         @MetaValue(value = "EndFeatureMembership", targetEntity = EndFeatureMembershipImpl.class),
                         @MetaValue(value = "Expose", targetEntity = ExposeImpl.class),
                         @MetaValue(value = "FeatureChaining", targetEntity = FeatureChainingImpl.class),
+                        @MetaValue(value = "FeatureInverting", targetEntity = FeatureInvertingImpl.class),
                         @MetaValue(value = "FeatureMembership", targetEntity = FeatureMembershipImpl.class),
                         @MetaValue(value = "FeatureTyping", targetEntity = FeatureTypingImpl.class),
                         @MetaValue(value = "FeatureValue", targetEntity = FeatureValueImpl.class),

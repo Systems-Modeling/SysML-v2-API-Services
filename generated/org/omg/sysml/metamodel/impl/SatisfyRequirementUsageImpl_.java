@@ -26,6 +26,7 @@ import org.omg.sysml.metamodel.EnumerationUsage;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureChaining;
 import org.omg.sysml.metamodel.FeatureDirectionKind;
+import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
 import org.omg.sysml.metamodel.FlowConnectionUsage;
@@ -113,6 +114,7 @@ public abstract class SatisfyRequirementUsageImpl_ extends org.omg.sysml.lifecyc
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, InterfaceUsage> nestedInterface;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, Specialization> ownedSpecialization;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, ViewpointUsage> nestedViewpoint;
+	public static volatile CollectionAttribute<SatisfyRequirementUsageImpl, FeatureInverting> ownedFeatureInverting;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, Usage> directedUsage;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, PartUsage> nestedPart;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, Feature> chainingFeature;
@@ -211,6 +213,7 @@ public abstract class SatisfyRequirementUsageImpl_ extends org.omg.sysml.lifecyc
 	public static final String NESTED_INTERFACE = "nestedInterface";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";
+	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 	public static final String DIRECTED_USAGE = "directedUsage";
 	public static final String NESTED_PART = "nestedPart";
 	public static final String CHAINING_FEATURE = "chainingFeature";

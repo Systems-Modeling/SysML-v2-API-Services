@@ -87,6 +87,7 @@
         "ownedEndFeature": {"@type": "@id"},
         "ownedFeature": {"@type": "@id"},
         "ownedFeatureChaining": {"@type": "@id"},
+        "ownedFeatureInverting": {"@type": "@id"},
         "ownedFeatureMembership": {"@type": "@id"},
         "ownedImport": {"@type": "@id"},
         "ownedMember": {"@type": "@id"},

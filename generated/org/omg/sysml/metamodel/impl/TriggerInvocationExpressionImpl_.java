@@ -15,6 +15,7 @@ import org.omg.sysml.metamodel.Expression;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureChaining;
 import org.omg.sysml.metamodel.FeatureDirectionKind;
+import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
 import org.omg.sysml.metamodel.Import;
@@ -87,6 +88,7 @@ public abstract class TriggerInvocationExpressionImpl_ extends org.omg.sysml.lif
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Import> ownedImport;
 	public static volatile SingularAttribute<TriggerInvocationExpressionImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Specialization> ownedSpecialization;
+	public static volatile CollectionAttribute<TriggerInvocationExpressionImpl, FeatureInverting> ownedFeatureInverting;
 
 	public static final String ARGUMENT = "argument";
 	public static final String CHAINING_FEATURE = "chainingFeature";
@@ -143,6 +145,7 @@ public abstract class TriggerInvocationExpressionImpl_ extends org.omg.sysml.lif
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
+	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 
 }
 

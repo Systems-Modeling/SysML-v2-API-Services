@@ -29,6 +29,7 @@ import org.omg.sysml.metamodel.Expression;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureChaining;
 import org.omg.sysml.metamodel.FeatureDirectionKind;
+import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
 import org.omg.sysml.metamodel.FlowConnectionUsage;
@@ -122,6 +123,7 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, InterfaceUsage> nestedInterface;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Specialization> ownedSpecialization;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, ViewpointUsage> nestedViewpoint;
+	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, FeatureInverting> ownedFeatureInverting;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Usage> directedUsage;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, PartUsage> nestedPart;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Feature> chainingFeature;
@@ -232,6 +234,7 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static final String NESTED_INTERFACE = "nestedInterface";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";
+	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 	public static final String DIRECTED_USAGE = "directedUsage";
 	public static final String NESTED_PART = "nestedPart";
 	public static final String CHAINING_FEATURE = "chainingFeature";
