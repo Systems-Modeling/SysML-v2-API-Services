@@ -10,6 +10,8 @@ You do not need to clone this repository or setup anything on your local machine
 2. **Scenario 2: Running the SysML v2 REST/HTTP API and Services locally on your machine**
 You can clone this repository, setup the backend database (PostgreSQL), and run the pilot implementation of SysML v2 API & Services locally on your machine. The same REST API that is deployed on the SST servers will be available on localhost. Follow the instructions below if you are interested in this scenario.
 
+Refer to the [SysML v2 API Cookbook](https://github.com/Systems-Modeling/SysML-v2-API-Cookbook) for examples and patterns to use the SysML v2 API, specifically the REST/HTTP API.
+
 ## Setting up pilot implementation of SysML v2 API and Services on your local machine
 
 ### Setup PostgreSQL
