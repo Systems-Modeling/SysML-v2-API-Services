@@ -51,7 +51,8 @@ public final class RelationshipController extends JsonLdController<Relationship,
         this.adorner = new DataJsonLdAdorner<>(metamodelProvider, environment, INLINE_JSON_LD_CONTEXT);
     }
 
-    public Result getRelationshipsByProjectIdCommitIdRelatedElementId(UUID projectId, UUID commitId, UUID relatedElementId, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<String> direction, Request request) {
+    @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
+    public Result getRelationshipsByProjectIdCommitIdRelatedElementId(UUID projectId, UUID commitId, UUID relatedElementId, Optional<String> direction, Optional<Boolean> excludeUsed, Request request) {
         PageRequest pageRequest = PageRequest.from(request);
         RelationshipDirection relationshipDirection = direction
                 .flatMap(d -> Arrays.stream(RelationshipDirection.values())
@@ -64,6 +65,7 @@ public final class RelationshipController extends JsonLdController<Relationship,
                 commitId,
                 relatedElementId,
                 relationshipDirection,
+                excludeUsed.orElse(false),
                 pageRequest.getAfter(),
                 pageRequest.getBefore(),
                 pageRequest.getSize()

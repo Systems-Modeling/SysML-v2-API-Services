@@ -57,9 +57,9 @@ public class RelationshipService extends BaseService<Relationship, RelationshipD
         return relationship.getElementId() != null ? dao.update(relationship) : dao.persist(relationship);
     }
 
-    public List<Relationship> getRelationshipsByProjectCommitRelatedElement(UUID projectId, UUID commitId, UUID relatedElementId, RelationshipDirection direction, @Nullable UUID after, @Nullable UUID before, int maxResults) {
+    public List<Relationship> getRelationshipsByProjectCommitRelatedElement(UUID projectId, UUID commitId, UUID relatedElementId, RelationshipDirection direction, boolean excludeUsed, @Nullable UUID after, @Nullable UUID before, int maxResults) {
         Commit commit = projectDao.findById(projectId).flatMap(project -> commitDao.findByProjectAndId(project, commitId)).orElseThrow(() -> new IllegalArgumentException("Commit " + commitId + " not found"));
-        Element relatedElement = elementDao.findByCommitAndId(commit, relatedElementId).orElseThrow(() -> new IllegalArgumentException("Element " + relatedElementId + " not found"));
-        return dao.findAllByCommitRelatedElement(commit, relatedElement, direction, after, before, maxResults);
+        Element relatedElement = elementDao.findByCommitAndId(commit, relatedElementId, excludeUsed).orElseThrow(() -> new IllegalArgumentException("Element " + relatedElementId + " not found"));
+        return dao.findAllByCommitRelatedElement(commit, relatedElement, direction, excludeUsed, after, before, maxResults);
     }
 }

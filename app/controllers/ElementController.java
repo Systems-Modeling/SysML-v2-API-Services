@@ -36,6 +36,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@SuppressWarnings("OptionalUsedAsFieldOrParameterType")
 public final class ElementController extends JsonLdController<Element, DataJsonLdAdorner.Parameters> {
 
     private final ElementService elementService;
@@ -49,20 +50,20 @@ public final class ElementController extends JsonLdController<Element, DataJsonL
         this.adorner = new DataJsonLdAdorner<>(metamodelProvider, environment, INLINE_JSON_LD_CONTEXT);
     }
 
-    public Result getElementsByProjectIdCommitId(UUID projectId, UUID commitId, Request request) {
+    public Result getElementsByProjectIdCommitId(UUID projectId, UUID commitId, Optional<Boolean> excludeUsed, Request request) {
         PageRequest pageRequest = PageRequest.from(request);
-        List<Element> elements = elementService.getElementsByProjectIdCommitId(projectId, commitId, pageRequest.getAfter(), pageRequest.getBefore(), pageRequest.getSize());
+        List<Element> elements = elementService.getElementsByProjectIdCommitId(projectId, commitId, excludeUsed.orElse(false), pageRequest.getAfter(), pageRequest.getBefore(), pageRequest.getSize());
         return buildPaginatedResult(elements, projectId, commitId, request, pageRequest);
     }
 
-    public Result getElementByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId, Request request) {
-        Optional<Element> element = elementService.getElementByProjectIdCommitIdElementId(projectId, commitId, elementId);
+    public Result getElementByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId, Optional<Boolean> excludeUsed, Request request) {
+        Optional<Element> element = elementService.getElementByProjectIdCommitIdElementId(projectId, commitId, elementId, excludeUsed.orElse(false));
         return buildResult(element.orElse(null), request, new DataJsonLdAdorner.Parameters(projectId, commitId));
     }
 
-    public Result getRootsByProjectIdCommitId(UUID projectId, UUID commitId, Request request) {
+    public Result getRootsByProjectIdCommitId(UUID projectId, UUID commitId, Optional<Boolean> excludeUsed, Request request) {
         PageRequest pageRequest = PageRequest.from(request);
-        List<Element> roots = elementService.getRootsByProjectIdCommitId(projectId, commitId, pageRequest.getAfter(), pageRequest.getBefore(), pageRequest.getSize());
+        List<Element> roots = elementService.getRootsByProjectIdCommitId(projectId, commitId, excludeUsed.orElse(false), pageRequest.getAfter(), pageRequest.getBefore(), pageRequest.getSize());
         return buildPaginatedResult(roots, projectId, commitId, request, pageRequest);
     }
 

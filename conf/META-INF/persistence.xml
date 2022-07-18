@@ -13,6 +13,7 @@
         <class>org.omg.sysml.internal.impl</class>
         <class>org.omg.sysml.internal.impl.CommitDataVersionIndexImpl</class>
         <class>org.omg.sysml.internal.impl.CommitNamedElementIndexImpl</class>
+        <class>org.omg.sysml.internal.impl.WorkingDataVersionImpl</class>
 
         <class>org.omg.sysml.lifecycle.impl</class>
         <class>org.omg.sysml.lifecycle.impl.BranchImpl</class>

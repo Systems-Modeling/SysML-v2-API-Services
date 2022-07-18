@@ -89,7 +89,7 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
                 (fnData, fnCommit) -> {
                     UUID id = fnData.getId();
                     // TODO change to dataDao
-                    return elementDao.findByCommitAndId(fnCommit, id)
+                    return elementDao.findByCommitAndId(fnCommit, id, false)
                             .orElseThrow(() -> new NoSuchElementException(
                                     String.format("Element with %s %s not found", IDENTITY_FIELD, id)
                             ));
@@ -122,7 +122,7 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
                     if (fnData.getId() != null) {
                         UUID id = fnData.getId();
                         // TODO change to dataDao
-                        return elementDao.findByCommitAndId(fnCommit, id)
+                        return elementDao.findByCommitAndId(fnCommit, id, false)
                                 .orElseThrow(() -> new NoSuchElementException(
                                         String.format("Element with %s %s not found", IDENTITY_FIELD, id)
                                 ));
