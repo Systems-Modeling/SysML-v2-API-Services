@@ -29,8 +29,10 @@ import org.hibernate.Hibernate;
 import org.hibernate.proxy.HibernateProxy;
 import org.omg.sysml.data.ProjectUsage;
 import org.omg.sysml.internal.CommitDataVersionIndex;
+import org.omg.sysml.internal.WorkingDataVersion;
 import org.omg.sysml.internal.impl.CommitDataVersionIndexImpl;
 import org.omg.sysml.internal.impl.CommitDataVersionIndexImpl_;
+import org.omg.sysml.internal.impl.WorkingDataVersionImpl;
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.Data;
 import org.omg.sysml.lifecycle.DataIdentity;
@@ -95,6 +97,7 @@ public class JpaDataDao implements DataDao {
             Query q = query.getId() == null || em.contains(query) ? query : em.find(QueryImpl.class, query.getId());
             return getCommitIndex(c, em).getWorkingDataVersion().stream()
                     .filter(scope(q))
+                    .map(WorkingDataVersion::getDataVersion)
                     .map(DataVersion::getPayload)
                     .filter(constrain(q.getWhere()))
                     .map(data -> JpaDataDao.resolve(data, Data.class))
@@ -115,17 +118,21 @@ public class JpaDataDao implements DataDao {
         CommitDataVersionIndex index = new CommitDataVersionIndexImpl();
         index.setCommit(commit);
         index.setWorkingDataVersion(streamWorkingDataVersions(commit, em).collect(Collectors.toSet()));
+
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
+        index.getWorkingDataVersion().forEach(em::persist);
         em.persist(index);
         transaction.commit();
+
         return index;
     }
 
-    protected Stream<DataVersion> streamWorkingDataVersions(Commit commit, EntityManager em) {
+    protected Stream<WorkingDataVersion> streamWorkingDataVersions(Commit commit, EntityManager em) {
         Set<UUID> visitedIds = ConcurrentHashMap.newKeySet();
         Set<ProjectUsage> projectUsages = ConcurrentHashMap.newKeySet();
-        Map<Commit, Set<DataVersion>> results = queryCommitTree(commit,
+
+        Map<Commit, Set<WorkingDataVersion>> _ownedDataVersions = queryCommitTree(commit,
                 c -> c.getChange().stream()
                         .filter(record -> record.getIdentity() != null && record.getIdentity().getId() != null)
                         .filter(record -> !visitedIds.contains(record.getIdentity().getId()))
@@ -136,20 +143,36 @@ public class JpaDataDao implements DataDao {
                                 projectUsages.add(((ProjectUsage) record.getPayload()));
                             }
                         })
+                        .map(version -> {
+                            WorkingDataVersionImpl workingDataVersion = new WorkingDataVersionImpl();
+                            workingDataVersion.setDataVersion(version);
+                            return workingDataVersion;
+                        })
                         .collect(Collectors.toSet())
         );
-        Stream<DataVersion> ownedDataVersions = results.values().stream()
+        Stream<WorkingDataVersion> ownedDataVersions = _ownedDataVersions.values().stream()
                 .flatMap(Set::stream);
-        Stream<DataVersion> usedDataVersions = projectUsages.stream()
-                    .map(ProjectUsage::getUsedProjectCommit)
-                    .filter(Objects::nonNull)
-                    .map(fnCommit -> getCommitIndex(fnCommit, em))
-                    .map(CommitDataVersionIndex::getWorkingDataVersion)
-                    .flatMap(Set::stream)
-                    .filter(record -> !visitedIds.contains(record.getIdentity().getId()))
-                    .peek(record -> visitedIds.add(record.getIdentity().getId()))
-                    .collect(Collectors.toSet())
-                    .stream();
+
+        Set<WorkingDataVersion> _usedDataVersions = ConcurrentHashMap.newKeySet();
+        for (ProjectUsage projectUsage : projectUsages) {
+            Commit usedCommit = projectUsage.getUsedProjectCommit();
+            if (usedCommit == null) {
+                continue;
+            }
+            getCommitIndex(usedCommit, em).getWorkingDataVersion().stream()
+                    .map(WorkingDataVersion::getDataVersion)
+                    .filter(version -> !visitedIds.contains(version.getIdentity().getId()))
+                    .peek(version -> visitedIds.add(version.getIdentity().getId()))
+                    .map(version -> {
+                        WorkingDataVersionImpl workingDataVersion = new WorkingDataVersionImpl();
+                        workingDataVersion.setSource(projectUsage);
+                        workingDataVersion.setDataVersion(version);
+                        return workingDataVersion;
+                    })
+                    .forEach(_usedDataVersions::add);
+        }
+        Stream<WorkingDataVersion> usedDataVersions = _usedDataVersions.stream();
+
         return Streams.concat(ownedDataVersions, usedDataVersions);
     }
 
@@ -241,12 +264,12 @@ public class JpaDataDao implements DataDao {
         }
     }
 
-    protected Predicate<DataVersion> scope(Query query) {
+    protected Predicate<WorkingDataVersion> scope(Query query) {
         if (query.getScope() == null || query.getScope().isEmpty()) {
             return ev -> true;
         }
-        return ev -> ev.getIdentity() != null && query.getScope().stream()
+        return working -> working.getDataVersion().getIdentity() != null && query.getScope().stream()
                 .map(DataIdentity::getId)
-                .anyMatch(id -> Objects.equals(id, ev.getIdentity().getId()));
+                .anyMatch(id -> Objects.equals(id, working.getDataVersion().getIdentity().getId()));
     }
 }

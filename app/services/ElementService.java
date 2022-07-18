@@ -51,28 +51,28 @@ public class ElementService extends BaseService<Element, ElementDao> {
         return element.getElementId() != null ? dao.update(element) : dao.persist(element);
     }
 
-    public Optional<Element> getElementByCommitIdElementId(UUID commitId, UUID elementId) {
+    public Optional<Element> getElementByCommitIdElementId(UUID commitId, UUID elementId, boolean excludeUsed) {
         return commitDao.findById(commitId)
-                .flatMap(m -> dao.findByCommitAndId(m, elementId));
+                .flatMap(m -> dao.findByCommitAndId(m, elementId, excludeUsed));
     }
 
-    public List<Element> getElementsByProjectIdCommitId(UUID projectId, UUID commitId, @Nullable UUID after, @Nullable UUID before, int maxResults) {
+    public List<Element> getElementsByProjectIdCommitId(UUID projectId, UUID commitId, boolean excludeUsed, @Nullable UUID after, @Nullable UUID before, int maxResults) {
         return projectDao.findById(projectId)
                 .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
-                .map(commit -> dao.findAllByCommit(commit, after, before, maxResults))
+                .map(commit -> dao.findAllByCommit(commit, excludeUsed, after, before, maxResults))
                 .orElse(Collections.emptyList());
     }
 
-    public Optional<Element> getElementByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId) {
+    public Optional<Element> getElementByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId, boolean excludeUsed) {
         return projectDao.findById(projectId)
                 .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
-                .flatMap(commit -> dao.findByCommitAndId(commit, elementId));
+                .flatMap(commit -> dao.findByCommitAndId(commit, elementId, excludeUsed));
     }
 
-    public List<Element> getRootsByProjectIdCommitId(UUID projectId, UUID commitId, @Nullable UUID after, @Nullable UUID before, int maxResults) {
+    public List<Element> getRootsByProjectIdCommitId(UUID projectId, UUID commitId, boolean excludeUsed, @Nullable UUID after, @Nullable UUID before, int maxResults) {
         return projectDao.findById(projectId)
                 .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
-                .map(commit -> dao.findRootsByCommit(commit, after, before, maxResults))
+                .map(commit -> dao.findRootsByCommit(commit, excludeUsed, after, before, maxResults))
                 .orElse(Collections.emptyList());
     }
 

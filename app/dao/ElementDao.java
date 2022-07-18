@@ -32,11 +32,11 @@ import java.util.UUID;
 
 public interface ElementDao extends Dao<Element> {
 
-    List<Element> findAllByCommit(Commit commit, @Nullable UUID after, @Nullable UUID before, int maxResults);
+    List<Element> findAllByCommit(Commit commit, boolean excludeUsed, @Nullable UUID after, @Nullable UUID before, int maxResults);
 
-    Optional<Element> findByCommitAndId(Commit commit, UUID id);
+    Optional<Element> findByCommitAndId(Commit commit, UUID id, boolean excludeUsed);
 
-    List<Element> findRootsByCommit(Commit commit, @Nullable UUID after, @Nullable UUID before, int maxResults);
+    List<Element> findRootsByCommit(Commit commit, boolean excludeUsed, @Nullable UUID after, @Nullable UUID before, int maxResults);
 
     Optional<Element> findByCommitAndQualifiedName(Commit commit, String qualifiedName);
 }

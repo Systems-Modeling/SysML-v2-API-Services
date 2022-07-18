@@ -33,5 +33,5 @@ import java.util.UUID;
 
 public interface RelationshipDao extends Dao<Relationship> {
 
-    List<Relationship> findAllByCommitRelatedElement(Commit commit, Element relatedElement, RelationshipDirection direction, @Nullable UUID after, @Nullable UUID before, int maxResults);
+    List<Relationship> findAllByCommitRelatedElement(Commit commit, Element relatedElement, RelationshipDirection direction, boolean excludeUsed, @Nullable UUID after, @Nullable UUID before, int maxResults);
 }
