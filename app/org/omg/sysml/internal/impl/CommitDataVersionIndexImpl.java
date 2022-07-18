@@ -23,12 +23,14 @@
 package org.omg.sysml.internal.impl;
 
 import org.omg.sysml.internal.CommitDataVersionIndex;
+import org.omg.sysml.internal.WorkingDataVersion;
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.DataVersion;
 import org.omg.sysml.lifecycle.impl.CommitImpl;
 import org.omg.sysml.lifecycle.impl.DataVersionImpl;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
@@ -36,13 +38,14 @@ import java.util.UUID;
 public class CommitDataVersionIndexImpl implements CommitDataVersionIndex {
     private UUID id;
     private Commit commit;
-    private Set<DataVersion> workingDataVersion;
+    private Set<WorkingDataVersion> workingDataVersion;
 
     @Id
     public UUID getId() {
         return id;
     }
 
+    @Override
     public void setId(UUID id) {
         this.id = id;
     }
@@ -61,13 +64,13 @@ public class CommitDataVersionIndexImpl implements CommitDataVersionIndex {
     }
 
     @Override
-    @ManyToMany(targetEntity = DataVersionImpl.class, fetch = FetchType.LAZY)
-    public Set<DataVersion> getWorkingDataVersion() {
+    @ManyToMany(targetEntity = WorkingDataVersionImpl.class, fetch = FetchType.LAZY)
+    public Set<WorkingDataVersion> getWorkingDataVersion() {
         return workingDataVersion;
     }
 
     @Override
-    public void setWorkingDataVersion(Set<DataVersion> workingDataVersion) {
+    public void setWorkingDataVersion(Set<WorkingDataVersion> workingDataVersion) {
         this.workingDataVersion = workingDataVersion;
     }
 }

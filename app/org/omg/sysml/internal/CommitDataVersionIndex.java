@@ -24,18 +24,19 @@ package org.omg.sysml.internal;
 
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.DataVersion;
+import org.omg.sysml.record.Record;
+import org.omg.sysml.record.impl.RecordImpl;
 
 import java.util.Set;
 import java.util.UUID;
 
-public interface CommitDataVersionIndex {
-    UUID getId();
+public interface CommitDataVersionIndex extends Record {
 
     Commit getCommit();
 
     void setCommit(Commit commit);
 
-    Set<DataVersion> getWorkingDataVersion();
+    Set<WorkingDataVersion> getWorkingDataVersion();
 
-    void setWorkingDataVersion(Set<DataVersion> workingDataVersion);
+    void setWorkingDataVersion(Set<WorkingDataVersion> workingDataVersion);
 }

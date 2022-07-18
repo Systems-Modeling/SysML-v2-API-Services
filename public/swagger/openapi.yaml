@@ -543,22 +543,28 @@ paths:
         type: string
         format: uuid
         required: true
-      - name: page[after]
-        in: query
-        description: Page after
-        type: string
-        required: false
-      - name: page[before]
-        in: query
-        description: Page before
-        type: string
-        required: false
-      - name: page[size]
-        in: query
-        description: Page size
-        type: integer
-        required: false
     get:
+      parameters:
+        - name: excludeUsed
+          in: query
+          description: Exclude elements from ProjectUsages
+          type: boolean
+          required: false
+        - name: page[after]
+          in: query
+          description: Page after
+          type: string
+          required: false
+        - name: page[before]
+          in: query
+          description: Page before
+          type: string
+          required: false
+        - name: page[size]
+          in: query
+          description: Page size
+          type: integer
+          required: false
       tags:
         - Element
       operationId: getElementsByProjectCommit
@@ -602,6 +608,12 @@ paths:
         format: uuid
         required: true
     get:
+      parameters:
+        - name: excludeUsed
+          in: query
+          description: Exclude elements from ProjectUsages
+          type: boolean
+          required: false
       tags:
         - Element
       operationId: getElementByProjectCommitId
@@ -638,6 +650,11 @@ paths:
         required: true
     get:
       parameters:
+        - name: excludeUsed
+          in: query
+          description: Exclude elements from ProjectUsages
+          type: boolean
+          required: false
         - name: page[after]
           in: query
           description: Page after
@@ -695,18 +712,23 @@ paths:
         type: string
         format: uuid
         required: true
-      - name: direction
-        in: query
-        description: Filter for relationships that are incoming (in), outgoing (out), or both relative to the related element
-        type: string
-        enum:
-          - 'in'
-          - 'out'
-          - 'both'
-        default: 'both'
-        required: false
     get:
       parameters:
+        - name: direction
+          in: query
+          description: Filter for relationships that are incoming (in), outgoing (out), or both relative to the related element
+          type: string
+          enum:
+            - 'in'
+            - 'out'
+            - 'both'
+          default: 'both'
+          required: false
+        - name: excludeUsed
+          in: query
+          description: Exclude relationships from ProjectUsages
+          type: boolean
+          required: false
         - name: page[after]
           in: query
           description: Page after
