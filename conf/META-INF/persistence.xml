@@ -141,6 +141,7 @@
         <class>org.omg.sysml.metamodel.impl.PortioningFeatureImpl</class>
         <class>org.omg.sysml.metamodel.impl.PortUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.PredicateImpl</class>
+        <class>org.omg.sysml.metamodel.impl.PrefixCommentImpl</class>
         <class>org.omg.sysml.metamodel.impl.RedefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.ReferenceUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.RelationshipImpl</class>
