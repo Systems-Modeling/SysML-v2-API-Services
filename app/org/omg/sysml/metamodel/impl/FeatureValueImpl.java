@@ -155,11 +155,13 @@ public class FeatureValueImpl extends SysMLTypeImpl implements FeatureValue {
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("featureWithValue")
     private Feature featureWithValue;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "featureWithValue_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "featureWithValue_id", table = "FeatureValue")
     public Feature getFeatureWithValue() {

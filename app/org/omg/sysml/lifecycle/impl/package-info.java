@@ -143,6 +143,7 @@
                         @MetaValue(value = "PortUsage", targetEntity = PortUsageImpl.class),
                         @MetaValue(value = "PortioningFeature", targetEntity = PortioningFeatureImpl.class),
                         @MetaValue(value = "Predicate", targetEntity = PredicateImpl.class),
+                        @MetaValue(value = "PrefixComment", targetEntity = PrefixCommentImpl.class),
                         @MetaValue(value = "Redefinition", targetEntity = RedefinitionImpl.class),
                         @MetaValue(value = "ReferenceUsage", targetEntity = ReferenceUsageImpl.class),
                         @MetaValue(value = "Relationship", targetEntity = RelationshipImpl.class),

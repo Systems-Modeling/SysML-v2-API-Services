@@ -139,6 +139,7 @@
                         @MetaValue(value = "PortUsage", targetEntity = PortUsageImpl.class),
                         @MetaValue(value = "PortioningFeature", targetEntity = PortioningFeatureImpl.class),
                         @MetaValue(value = "Predicate", targetEntity = PredicateImpl.class),
+                        @MetaValue(value = "PrefixComment", targetEntity = PrefixCommentImpl.class),
                         @MetaValue(value = "Redefinition", targetEntity = RedefinitionImpl.class),
                         @MetaValue(value = "ReferenceUsage", targetEntity = ReferenceUsageImpl.class),
                         @MetaValue(value = "Relationship", targetEntity = RelationshipImpl.class),
@@ -255,6 +256,7 @@
                         @MetaValue(value = "Documentation", targetEntity = DocumentationImpl.class),
                         @MetaValue(value = "MetadataFeature", targetEntity = MetadataFeatureImpl.class),
                         @MetaValue(value = "MetadataUsage", targetEntity = MetadataUsageImpl.class),
+                        @MetaValue(value = "PrefixComment", targetEntity = PrefixCommentImpl.class),
                         @MetaValue(value = "TextualRepresentation", targetEntity = TextualRepresentationImpl.class),
                 }),
         @AnyMetaDef(name = "AnnotationMetaDef", metaType = "string", idType = "java.util.UUID",
@@ -448,6 +450,7 @@
                 metaValues = {
                         @MetaValue(value = "Comment", targetEntity = CommentImpl.class),
                         @MetaValue(value = "Documentation", targetEntity = DocumentationImpl.class),
+                        @MetaValue(value = "PrefixComment", targetEntity = PrefixCommentImpl.class),
                 }),
         @AnyMetaDef(name = "ConcernDefinitionMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -703,6 +706,7 @@
                         @MetaValue(value = "PortUsage", targetEntity = PortUsageImpl.class),
                         @MetaValue(value = "PortioningFeature", targetEntity = PortioningFeatureImpl.class),
                         @MetaValue(value = "Predicate", targetEntity = PredicateImpl.class),
+                        @MetaValue(value = "PrefixComment", targetEntity = PrefixCommentImpl.class),
                         @MetaValue(value = "Redefinition", targetEntity = RedefinitionImpl.class),
                         @MetaValue(value = "ReferenceUsage", targetEntity = ReferenceUsageImpl.class),
                         @MetaValue(value = "Relationship", targetEntity = RelationshipImpl.class),
@@ -1448,6 +1452,10 @@
                         @MetaValue(value = "Predicate", targetEntity = PredicateImpl.class),
                         @MetaValue(value = "RequirementDefinition", targetEntity = RequirementDefinitionImpl.class),
                         @MetaValue(value = "ViewpointDefinition", targetEntity = ViewpointDefinitionImpl.class),
+                }),
+        @AnyMetaDef(name = "PrefixCommentMetaDef", metaType = "string", idType = "java.util.UUID",
+                metaValues = {
+                        @MetaValue(value = "PrefixComment", targetEntity = PrefixCommentImpl.class),
                 }),
         @AnyMetaDef(name = "RedefinitionMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
