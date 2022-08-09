@@ -1,0 +1,29 @@
+{
+    "@context": {
+        "@vocab": "http://omg.org/ns/sysml/v2/metamodel#",
+        "sysml": "http://omg.org/ns/sysml/v2/metamodel#",
+        "dcterms": "http://purl.org/dc/terms/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+        "aliasIds": {"@type": "xsd:string"},
+        "annotatedElement": {"@type": "@id"},
+        "annotation": {"@type": "@id"},
+        "body": {"@type": "xsd:string"},
+        "documentation": {"@type": "@id"},
+        "effectiveName": {"@type": "xsd:string"},
+        "elementId": {"@type": "dcterms:identifier"},
+        "locale": {"@type": "xsd:string"},
+        "name": {"@type": "xsd:string"},
+        "ownedAnnotation": {"@type": "@id"},
+        "ownedElement": {"@type": "@id"},
+        "ownedRelationship": {"@type": "@id"},
+        "owner": {"@type": "@id"},
+        "owningMembership": {"@type": "@id"},
+        "owningNamespace": {"@type": "@id"},
+        "owningRelationship": {"@type": "@id"},
+        "qualifiedName": {"@type": "xsd:string"},
+        "shortName": {"@type": "xsd:string"},
+        "textualRepresentation": {"@type": "@id"}
+
+    }
+}
