@@ -80,3 +80,21 @@ $ sbt run
 ![REST/HTTP API](https://gist.githubusercontent.com/manasbajaj/0635b32fcf42a75eeca79744af953732/raw/0f73c2f3c8464bc36cb9341516bf9bdfb2342163/SysML-v2-REST-HTTP-API-Swagger-Doc.png)
 
 4. You can now make REST/HTTP requests to your local SysML v2 API and Services web application either via Swagger doc, or via any REST/HTTP client such as Postman.
+
+## Docker
+- Build SysMLv2 docker image locally: `ant dev-build-only`
+
+### Docker Compose
+- Run with Docker compose:
+   - `docker compose -f docker/docker-compose.yml up`
+- Clean up compose: 
+   -`docker compose -f docker/docker-compose.yml down`
+
+### Without Docker Compose
+- Run without Docker compose:
+   1. `docker run --name sysmlv2postgres --network sysmlv2 -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_DB=sysml2 -d postgres:alpine`
+   1. `docker run -it --rm --name sysmlv2server --network sysmlv2 phoenixintegration/mccdev:<version>-mock.sysml2.server.<postfix>`
+
+### Useful commands
+- Extract Database files: `docker exec -t sysmlv2postgres pg_dump -U postgres sysml2 > docker/examples.sql`
+- Restore Database files: `cat docker/examples.sql | docker exec -i --user postgres sysmlv2postgres psql -U postgres`

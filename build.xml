@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="sysml2-mock-server-docker" default="all" basedir=".">
+   <property environment="env" />
+
+   <!-- Version number to publish docker image under -->
+   <property name="publish.version" value="23.1.0" />
+
+   <!-- The prefix for MC DockerHub images. -->
+   <property name="mccdev" value="phoenixintegration/mccdev" />
+
+   <property name="mock.sysml2.server.dockerfile" value="${basedir}/docker/Dockerfile" />
+
+   <!-- Private targets ********************************************************************************* -->
+
+   <!-- Set the tag.suffix property and isNightly property for use by a nightly build. -->
+   <target name="-setNightlyTagSuffix" >
+      <fail
+         unless="TagSuffix"
+         message='TagSuffix property is required.${line.separator}Should be something like "SNAPSHOT" for trunk builds and "BETA" for branch builds and "RC" for tags.' />
+
+      <property
+         name="tag.suffix"
+         value="${TagSuffix}" />
+   </target>
+
+   <!-- Check that the tag.suffix property has been set. -->
+   <target name="-tag.suffix.check">
+      <fail unless="tag.suffix" message="publish.tag property required" />
+   </target>
+
+   <target name="-set-mock.sysml2.server.tag" depends="-tag.suffix.check">
+      <property 
+         name="mock.sysml2.server.tag" 
+         value="${publish.version}-sysmlv2.server.${tag.suffix}"/>
+   </target>
+
+   <!-- Macro defs ************************************************************************************** -->
+   <macrodef name="docker-build"
+      description="Builds an image on docker when given a dockerfile, publish name, and publish tag.">
+
+      <attribute name="dockerfile" />
+      <attribute name="publish.name" />
+      <attribute name="publish.tag" />
+      <sequential>
+         <echo message="Building @{publish.name}:@{publish.tag}" />
+         <exec executable="docker" failonerror="true">
+            <arg value="build" />
+            <arg value="." />
+            <arg value="-f" />
+            <arg value="@{dockerfile}" />
+            <arg value="--tag" />
+            <arg value="@{publish.name}:@{publish.tag}" />
+         </exec>
+      </sequential>
+   </macrodef>
+
+   <macrodef name="docker-publish"
+      description="Publishes an image to docker when given a publish name and tag.">
+      <attribute name="publish.name" />
+      <attribute name="publish.tag" />
+      <sequential >
+         <echo message="Publishing @{publish.name}:@{publish.tag}" />
+         <exec executable="docker" failonerror="true" >
+            <arg value="push" />
+            <arg value="@{publish.name}:@{publish.tag}" />
+         </exec>
+      </sequential>
+   </macrodef>
+
+   <!-- Public targets ********************************************************************************** -->
+
+   <!-- Set the tag.suffix property for use by a user build. -->
+   <target name="setUserTagSuffix" >
+      <fail
+         unless="env.TRIGRAM"
+         message="TRIGRAM environment variable is required" />
+      <property
+         name="tag.suffix"
+         value="${env.TRIGRAM}" />
+   </target>
+
+   <target name="mock.sysml2.server-docker-build" depends="-tag.suffix.check, -set-mock.sysml2.server.tag">
+      <docker-build 
+         dockerfile="${mock.sysml2.server.dockerfile}"
+         publish.name="${mccdev}"
+         publish.tag="${mock.sysml2.server.tag}"/>
+   </target>
+
+   <target name="mock.sysml2.server-docker-publish" depends="-tag.suffix.check, -set-mock.sysml2.server.tag">
+      <docker-publish
+         publish.name="${mccdev}"
+         publish.tag="${mock.sysml2.server.tag}"/>
+   </target>
+
+   <target name="mock.sysml2.server-docker-build-and-publish"
+      depends="-tag.suffix.check, mock.sysml2.server-docker-build, mock.sysml2.server-docker-publish"
+      description="Build and publish the mock.sysml2.server docker image.">
+   </target>
+
+   <target name="publish-images" depends="mock.sysml2.server-docker-build-and-publish" />
+
+   <target name="dev-build-only" depends="setUserTagSuffix,mock.sysml2.server-docker-build" />
+
+   <target name="nightly" depends="-setNightlyTagSuffix,publish-images" />
+   <target name="all" depends="setUserTagSuffix,publish-images" />
+</project>
