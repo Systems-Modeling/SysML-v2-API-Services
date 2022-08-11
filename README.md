@@ -90,6 +90,7 @@ $ sbt run
 ### Building an image
 An ant script has been created to use with Jenkins. It is simple to use this script to create your own local image, if needed.
 - Build SysMLv2 docker image locally without publishing: `ant dev-build-only`
+   - Requires setting the `TRIGRAM` environment variable: `export TRIGRAM=DEV`
 - To build and publish a developer image to Docker Hub: `ant`
 
 ### Deploy with Docker Compose
