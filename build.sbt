@@ -18,6 +18,9 @@ libraryDependencies += "com.fasterxml.jackson.core" % "jackson-databind" % "2.9.
 libraryDependencies += "com.fasterxml.jackson.datatype" % "jackson-datatype-hibernate5" % "2.9.8"
 libraryDependencies += "io.swagger" % "swagger-play2_2.12" % "1.6.0"
 libraryDependencies += "org.reflections" % "reflections" % "0.9.10"
+libraryDependencies += "org.apache.logging.log4j" % "log4j-api" % "2.17.0"
+libraryDependencies += "org.apache.logging.log4j" % "log4j-core" % "2.17.0"
+libraryDependencies += "org.apache.logging.log4j" % "log4j-slf4j-impl" % "2.17.0"
 
 javacOptions ++= Seq("-s", "app")
 
