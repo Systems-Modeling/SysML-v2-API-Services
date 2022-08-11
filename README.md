@@ -90,9 +90,10 @@ An ant script has been created to use with Jenkins. It is simple to use this scr
 
 ### Deploy with Docker Compose
 A `docker-compose.yml` file has been created to deploy both the SysML server and a postgres database. This is the suggested method if you just need things running. You can choose the initial state of the postgres database by commenting/uncommenting the files under `services:sysmlv2postgres:volumes`. `examples.sql`, `training.sql`, and `validation.sql` have been created from the `.sysml` files on the [SysML v2 GitHub](https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation/tree/master/sysml/src).
-- Run with Docker compose:
+1. Run with Docker compose:
    - `docker compose -f docker/docker-compose.yml up`
-- Clean up compose: 
+1. Once the docker image has been started, you should be good to start following step 3 under [Run SysML v2 API & Services](#run-sysml-v2-api--services)
+1. (Optional) Clean up docker compose: 
    -`docker compose -f docker/docker-compose.yml down`
 
 ### Deploy without Docker Compose
@@ -100,6 +101,7 @@ If you'd prefer to run without using the docker compose file:
    1. `docker network create sysmlv2`
    1. `docker run --name sysmlv2postgres --network sysmlv2 -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_DB=sysml2 -d postgres:alpine`
    1. `docker run -it --rm --name sysmlv2server --network sysmlv2 phoenixintegration/mccdev:<version>-mock.sysml2.server.<postfix>`
+   1. Once the docker image has been started, you should be good to start following step 3 under [Run SysML v2 API & Services](#run-sysml-v2-api--services)
 
 ### Generating Database Files
 There are 3 files already included that contain most of the `.sysml` files that can be found on [GitHub](https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation/tree/master/sysml/src). If you have your own files that you'd like to upload to the REST server, follow the steps below.
