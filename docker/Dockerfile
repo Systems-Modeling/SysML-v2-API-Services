@@ -14,8 +14,9 @@ RUN apt-get update && \
 # Copy the whole API Service base so we can compile and run in the docker container.
 COPY . /sysml2-server
 
-# Overwrite the persistence.xml with the docker specific persistence.xml.
+# Overwrite configurations with docker configuration files. 
 COPY ./conf/META-INF/persistence-docker.xml /sysml2-server/conf/META-INF/persistence.xml
+COPY ./conf/application-docker.conf /sysml2-server/application.conf
 
 RUN cd /sysml2-server && sbt clean
 

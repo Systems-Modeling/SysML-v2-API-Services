@@ -107,9 +107,6 @@
       <mkdir dir="${artifacts.dir}"/>
       <copy todir="${artifacts.dir}" >
          <fileset dir="docker"/>
-         <resources>
-            <file file="${basedir}/README.md" />
-         </resources>
       </copy>
    </target>
 
