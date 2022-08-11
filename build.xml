@@ -109,6 +109,7 @@
          <resources>
             <file file="${basedir}/docker/docker-compose.yml"/>
             <file file="${mock.sysml2.server.dockerfile}"/>
+            <file file="${basedir}/README.md" />
          </resources>
       </copy>
    </target>
