@@ -8,6 +8,7 @@
    <!-- The prefix for MC DockerHub images. -->
    <property name="mccdev" value="phoenixintegration/mccdev" />
 
+   <property name="artifacts.dir" value="${basedir}/artifacts" />
    <property name="mock.sysml2.server.dockerfile" value="${basedir}/docker/Dockerfile" />
 
    <!-- Private targets ********************************************************************************* -->
@@ -101,6 +102,16 @@
 
    <target name="dev-build-only" depends="setUserTagSuffix,mock.sysml2.server-docker-build" />
 
-   <target name="nightly" depends="-setNightlyTagSuffix,publish-images" />
+   <target name="archive">
+      <mkdir dir="${artifacts.dir}"/>
+      <copy todir="${artifacts.dir}" >
+         <resources>
+            <file file="${basedir}/docker/docker-compose.yml"/>
+            <file file="${mock.sysml2.server.dockerfile}"/>
+         </resources>
+      </copy>
+   </target>
+
+   <target name="nightly" depends="-setNightlyTagSuffix,publish-images,archive" />
    <target name="all" depends="setUserTagSuffix,publish-images" />
 </project>

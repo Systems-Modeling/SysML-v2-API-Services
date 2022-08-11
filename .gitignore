@@ -6,6 +6,7 @@ target
 /.classpath
 /.project
 /.settings
+/artifacts
 /RUNNING_PID
 .DS_Store
 *.iml
