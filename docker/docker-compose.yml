@@ -7,7 +7,7 @@ networks:
 
 services:
    sysmlv2server:
-      image: 'phoenixintegration/mccdev-base:23.1.0-sysmlv2.server.CRL'
+      image: 'phoenixintegration/mccdev-base:23.1.0-sysmlv2.server.SNAPSHOT'
       stdin_open: true
       tty: true
       ports:
