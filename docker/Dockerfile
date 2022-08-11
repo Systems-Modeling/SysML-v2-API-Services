@@ -16,7 +16,7 @@ COPY . /sysml2-server
 
 # Overwrite configurations with docker configuration files. 
 COPY ./conf/META-INF/persistence-docker.xml /sysml2-server/conf/META-INF/persistence.xml
-COPY ./conf/application-docker.conf /sysml2-server/application.conf
+COPY ./conf/application-docker.conf /sysml2-server/conf/application.conf
 
 RUN cd /sysml2-server && sbt clean
 
