@@ -81,20 +81,40 @@ $ sbt run
 
 4. You can now make REST/HTTP requests to your local SysML v2 API and Services web application either via Swagger doc, or via any REST/HTTP client such as Postman.
 
-## Docker
-- Build SysMLv2 docker image locally: `ant dev-build-only`
+## Setting up pilot implementation of SysML v2 API and Services using Docker
 
-### Docker Compose
+### Building an image
+An ant script has been created to use with Jenkins. It is simple to use this script to create your own local image, if needed.
+- Build SysMLv2 docker image locally without publishing: `ant dev-build-only`
+- To build and publish a developer image to Docker Hub: `ant`
+
+### Deploy with Docker Compose
+A `docker-compose.yml` file has been created to deploy both the SysML server and a postgres database. This is the suggested method if you just need things running. You can choose the initial state of the postgres database by commenting/uncommenting the files under `services:sysmlv2postgres:volumes`. `examples.sql`, `training.sql`, and `validation.sql` have been created from the `.sysml` files on the [SysML v2 GitHub](https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation/tree/master/sysml/src).
 - Run with Docker compose:
    - `docker compose -f docker/docker-compose.yml up`
 - Clean up compose: 
    -`docker compose -f docker/docker-compose.yml down`
 
-### Without Docker Compose
-- Run without Docker compose:
+### Deploy without Docker Compose
+If you'd prefer to run without using the docker compose file:
+   1. `docker network create sysmlv2`
    1. `docker run --name sysmlv2postgres --network sysmlv2 -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_DB=sysml2 -d postgres:alpine`
    1. `docker run -it --rm --name sysmlv2server --network sysmlv2 phoenixintegration/mccdev:<version>-mock.sysml2.server.<postfix>`
 
-### Useful commands
-- Extract Database files: `docker exec -t sysmlv2postgres pg_dump -U postgres sysml2 > docker/examples.sql`
-- Restore Database files: `cat docker/examples.sql | docker exec -i --user postgres sysmlv2postgres psql -U postgres`
+### Generating Database Files
+There are 3 files already included that contain most of the `.sysml` files that can be found on [GitHub](https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation/tree/master/sysml/src). If you have your own files that you'd like to upload to the REST server, follow the steps below.
+1. Deploy the SysML v2 server
+1. Follow setup at https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation
+1. Once building, open the projects in Eclipse
+1. Go to `Run -> Run Configurations`
+1. Find `Save SysML Test` and change the arguments to the following:
+   -  `-b http://localhost:9000 -d -l "${workspace_loc:/SysML-v2-Pilot-Implementation/sysml.library}" `
+      `${workspace_loc:/SysML-v2-Pilot-Implementation/sysml/src/}"`
+      `"Kernel Libraries"`
+      `"Systems Library"`
+      `"Domain Libraries"`
+1. In `org.omg.sysml.xtext.util.SysMLRepositorySaveTest.java`, change the `TEST_FILES` variable to point to the files you want to add to the database. This configuration assumes that the `.sysml` files are in `SysML-v2-Pilot-Implementation/sysml/src/`.
+1. Once you have some files added, extract the database files:
+   - `docker exec -t sysmlv2postgres pg_dump -U postgres sysml2 > docker/examples.sql`
+1. This file can then be added to `docker/docker-compose.yml` under `services:sysmlv2postgres:volumes`, or done manually:
+   - `cat docker/examples.sql | docker exec -i --user postgres sysmlv2postgres psql -U postgres`
