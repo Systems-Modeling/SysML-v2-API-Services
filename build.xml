@@ -5,8 +5,9 @@
    <!-- Version number to publish docker image under -->
    <property name="publish.version" value="23.1.0" />
 
-   <!-- The prefix for MC DockerHub images. -->
-   <property name="mccdev" value="phoenixintegration/mccdev" />
+   <!-- The prefix for MC Docker Hub images. -->
+   <!-- TODO: This really shouldn't be mccdev-base. Get someone with permissions to make a repo for us. -->
+   <property name="mccdev" value="phoenixintegration/mccdev-base" />
 
    <property name="artifacts.dir" value="${basedir}/artifacts" />
    <property name="mock.sysml2.server.dockerfile" value="${basedir}/docker/Dockerfile" />
