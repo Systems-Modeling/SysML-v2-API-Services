@@ -15,7 +15,7 @@ RUN apt-get update && \
 COPY . /sysml2-server
 
 # Overwrite the persistence.xml with the docker specific persistence.xml.
-COPY ./conf/META-INF/persistence-docker.xml /sysml2-server/conf/META-INF/persistence-docker.xml
+COPY ./conf/META-INF/persistence-docker.xml /sysml2-server/conf/META-INF/persistence.xml
 
 RUN cd /sysml2-server && sbt clean
 
