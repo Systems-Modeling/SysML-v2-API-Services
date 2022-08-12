@@ -3,6 +3,7 @@
 ## Install Docker for Ubuntu
 1. Follow the steps from the [Docker website](https://docs.docker.com/engine/install/ubuntu/)
 1. (Optional) [Add user to docker group](https://docs.docker.com/engine/install/linux-postinstall/).
+   - Note: If done on a VM, you will have to restart the VM to get these changes to take place.
 
 ## Deploy with Docker Compose
 A `docker-compose.yml` file has been created to deploy both the SysML server and a postgres database. This is the suggested method if you just need things running. You can choose the initial state of the postgres database by commenting/uncommenting the files under `services:sysmlv2postgres:volumes`. `examples.sql`, `training.sql`, and `validation.sql` have been created from the `.sysml` files on the [SysML v2 GitHub](https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation/tree/master/sysml/src).

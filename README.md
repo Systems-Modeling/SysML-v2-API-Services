@@ -81,11 +81,10 @@ $ sbt run
 
 4. You can now make REST/HTTP requests to your local SysML v2 API and Services web application either via Swagger doc, or via any REST/HTTP client such as Postman.
 
-## Setting up pilot implementation of SysML v2 API and Services using Docker
+## SysML v2 API and Services using Docker
 
-### Install Docker for Ubuntu
-1. Follow the steps from the [Docker website](https://docs.docker.com/engine/install/ubuntu/)
-1. (Optional) [Add user to docker group](https://docs.docker.com/engine/install/linux-postinstall/).
+### Setup and Deployment
+For the setup and deployment, see the docker folder's [README](docker/README.md).
 
 ### Building an image
 An ant script has been created to use with Jenkins. It is simple to use this script to create your own local image, if needed.
@@ -93,24 +92,8 @@ An ant script has been created to use with Jenkins. It is simple to use this scr
    - Requires setting the `TRIGRAM` environment variable: `export TRIGRAM=DEV`
 - To build and publish a developer image to Docker Hub: `ant`
 
-### Deploy with Docker Compose
-A `docker-compose.yml` file has been created to deploy both the SysML server and a postgres database. This is the suggested method if you just need things running. You can choose the initial state of the postgres database by commenting/uncommenting the files under `services:sysmlv2postgres:volumes`. `examples.sql`, `training.sql`, and `validation.sql` have been created from the `.sysml` files on the [SysML v2 GitHub](https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation/tree/master/sysml/src).
-1. Log in to Docker Hub
-1. Run with Docker compose:
-   - `docker compose -f docker/docker-compose.yml up`
-1. Once the docker image has been started, you should be good to start following step 3 under [Run SysML v2 API & Services](#run-sysml-v2-api--services)
-1. (Optional) Clean up docker compose: 
-   -`docker compose -f docker/docker-compose.yml down`
-
-### Deploy without Docker Compose
-If you'd prefer to run without using the docker compose file:
-   1. `docker network create sysmlv2`
-   1. `docker run --name sysmlv2postgres --network sysmlv2 -p 5432:5432 -e POSTGRES_PASSWORD=mysecretpassword -e POSTGRES_DB=sysml2 -d postgres:alpine`
-   1. `docker run -it --rm --name sysmlv2server -p 9000:9000 --network sysmlv2 phoenixintegration/mccdev:<version>-mock.sysml2.server.<postfix>`
-   1. Once the docker image has been started, you should be good to start following step 3 under [Run SysML v2 API & Services](#run-sysml-v2-api--services)
-
 ### Generating Database Files
-There are 3 files already included that contain most of the `.sysml` files that can be found on [GitHub](https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation/tree/master/sysml/src). If you have your own files that you'd like to upload to the REST server, follow the steps below.
+There are 3 `.sql` files already included that contain most of the `.sysml` files that can be found on [GitHub](https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation/tree/master/sysml/src). Each `.sql` file is created from the directory with the same name using the method described below. If you have your own files that you'd like to upload to the REST server, follow the steps below.
 1. Deploy the SysML v2 server
 1. Follow setup at https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation
 1. Once building, open the projects in Eclipse
