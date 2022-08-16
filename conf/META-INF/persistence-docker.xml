@@ -1,0 +1,217 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+    <persistence-unit name="sysml2-hibernate" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
+        <class>org.omg.sysml.data.impl</class>
+        <class>org.omg.sysml.data.impl.ExternalDataImpl</class>
+        <class>org.omg.sysml.data.impl.ExternalRelationshipImpl</class>
+        <class>org.omg.sysml.data.impl.ProjectUsageImpl</class>
+
+        <class>org.omg.sysml.internal.impl</class>
+        <class>org.omg.sysml.internal.impl.CommitDataVersionIndexImpl</class>
+        <class>org.omg.sysml.internal.impl.CommitNamedElementIndexImpl</class>
+        <class>org.omg.sysml.internal.impl.WorkingDataVersionImpl</class>
+
+        <class>org.omg.sysml.lifecycle.impl</class>
+        <class>org.omg.sysml.lifecycle.impl.BranchImpl</class>
+        <class>org.omg.sysml.lifecycle.impl.CommitImpl</class>
+        <class>org.omg.sysml.lifecycle.impl.DataImpl</class>
+        <class>org.omg.sysml.lifecycle.impl.DataIdentityImpl</class>
+        <class>org.omg.sysml.lifecycle.impl.DataVersionImpl</class>
+        <class>org.omg.sysml.lifecycle.impl.ProjectImpl</class>
+        <class>org.omg.sysml.lifecycle.impl.TagImpl</class>
+
+        <class>org.omg.sysml.metamodel.impl</class>
+        <class>org.omg.sysml.metamodel.impl.AcceptActionUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ActionDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ActionUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ActorMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.AllocationDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.AllocationUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.AnalysisCaseDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.AnalysisCaseUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.AnnotatingElementImpl</class>
+        <class>org.omg.sysml.metamodel.impl.AnnotationImpl</class>
+        <class>org.omg.sysml.metamodel.impl.AssertConstraintUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.AssignmentActionUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.AssociationImpl</class>
+        <class>org.omg.sysml.metamodel.impl.AssociationStructureImpl</class>
+        <class>org.omg.sysml.metamodel.impl.AttributeDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.AttributeUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.BehaviorImpl</class>
+        <class>org.omg.sysml.metamodel.impl.BindingConnectorAsUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.BindingConnectorImpl</class>
+        <class>org.omg.sysml.metamodel.impl.BooleanExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.CalculationDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.CalculationUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.CaseDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.CaseUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ClassifierImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ClassImpl</class>
+        <class>org.omg.sysml.metamodel.impl.CollectExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.CommentImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ConcernDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ConcernUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ConjugatedPortDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ConjugatedPortTypingImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ConjugationImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ConnectionDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ConnectionUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ConnectorAsUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ConnectorImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ConstraintDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ConstraintUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ControlNodeImpl</class>
+        <class>org.omg.sysml.metamodel.impl.DataTypeImpl</class>
+        <class>org.omg.sysml.metamodel.impl.DecisionNodeImpl</class>
+        <class>org.omg.sysml.metamodel.impl.DefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.DependencyImpl</class>
+        <class>org.omg.sysml.metamodel.impl.DisjoiningImpl</class>
+        <class>org.omg.sysml.metamodel.impl.DocumentationImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ElementFilterMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ElementImpl</class>
+        <class>org.omg.sysml.metamodel.impl.EndFeatureMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.EnumerationDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.EnumerationUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.EventOccurrenceUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ExhibitStateUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ExposeImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FeatureChainExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FeatureChainingImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FeatureImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FeatureInvertingImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FeatureMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FeatureReferenceExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FeatureTypingImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FeatureValueImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FlowConnectionUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ForkNodeImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ForLoopActionUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FramedConcernMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FunctionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.IfActionUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ImportImpl</class>
+        <class>org.omg.sysml.metamodel.impl.IncludeUseCaseUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.InteractionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.InterfaceDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.InterfaceUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.InvariantImpl</class>
+        <class>org.omg.sysml.metamodel.impl.InvocationExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ItemDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ItemFeatureImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ItemFlowEndImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ItemFlowFeatureImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ItemFlowImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ItemUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.JoinNodeImpl</class>
+        <class>org.omg.sysml.metamodel.impl.LifeClassImpl</class>
+        <class>org.omg.sysml.metamodel.impl.LiteralBooleanImpl</class>
+        <class>org.omg.sysml.metamodel.impl.LiteralExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.LiteralInfinityImpl</class>
+        <class>org.omg.sysml.metamodel.impl.LiteralIntegerImpl</class>
+        <class>org.omg.sysml.metamodel.impl.LiteralRationalImpl</class>
+        <class>org.omg.sysml.metamodel.impl.LiteralStringImpl</class>
+        <class>org.omg.sysml.metamodel.impl.LoopActionUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.MembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.MergeNodeImpl</class>
+        <class>org.omg.sysml.metamodel.impl.MetaclassImpl</class>
+        <class>org.omg.sysml.metamodel.impl.MetadataDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.MetadataFeatureImpl</class>
+        <class>org.omg.sysml.metamodel.impl.MetadataUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.MultiplicityImpl</class>
+        <class>org.omg.sysml.metamodel.impl.MultiplicityRangeImpl</class>
+        <class>org.omg.sysml.metamodel.impl.NamespaceImpl</class>
+        <class>org.omg.sysml.metamodel.impl.NullExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ObjectiveMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.OccurrenceDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.OccurrenceUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.OperatorExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.OwningMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.PackageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ParameterMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.PartDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.PartUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.PerformActionUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.PortConjugationImpl</class>
+        <class>org.omg.sysml.metamodel.impl.PortDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.PortioningFeatureImpl</class>
+        <class>org.omg.sysml.metamodel.impl.PortUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.PredicateImpl</class>
+        <class>org.omg.sysml.metamodel.impl.PrefixCommentImpl</class>
+        <class>org.omg.sysml.metamodel.impl.RedefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ReferenceUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.RelationshipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.RenderingDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.RenderingUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.RequirementConstraintMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.RequirementDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.RequirementUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.RequirementVerificationMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ResultExpressionMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ReturnParameterMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.SatisfyRequirementUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.SelectExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.SendActionUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.SourceEndImpl</class>
+        <class>org.omg.sysml.metamodel.impl.SpecializationImpl</class>
+        <class>org.omg.sysml.metamodel.impl.StakeholderMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.StateDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.StateSubactionMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.StateUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.StepImpl</class>
+        <class>org.omg.sysml.metamodel.impl.StructureImpl</class>
+        <class>org.omg.sysml.metamodel.impl.SubclassificationImpl</class>
+        <class>org.omg.sysml.metamodel.impl.SubjectMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.SubsettingImpl</class>
+        <class>org.omg.sysml.metamodel.impl.SuccessionAsUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.SuccessionFlowConnectionUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.SuccessionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.SuccessionItemFlowImpl</class>
+        <class>org.omg.sysml.metamodel.impl.SysMLTypeImpl</class>
+        <class>org.omg.sysml.metamodel.impl.TargetEndImpl</class>
+        <class>org.omg.sysml.metamodel.impl.TextualRepresentationImpl</class>
+        <class>org.omg.sysml.metamodel.impl.TransitionFeatureMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.TransitionUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.TriggerInvocationExpressionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.TypeFeaturingImpl</class>
+        <class>org.omg.sysml.metamodel.impl.TypeImpl</class>
+        <class>org.omg.sysml.metamodel.impl.UsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.UseCaseDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.UseCaseUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.VariantMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.VerificationCaseDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.VerificationCaseUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ViewDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ViewpointDefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ViewpointUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ViewRenderingMembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ViewUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.WhileLoopActionUsageImpl</class>
+
+        <class>org.omg.sysml.query.impl</class>
+        <class>org.omg.sysml.query.impl.CompositeConstraintImpl</class>
+        <class>org.omg.sysml.query.impl.ConstraintImpl</class>
+        <class>org.omg.sysml.query.impl.PrimitiveConstraintImpl</class>
+        <class>org.omg.sysml.query.impl.QueryImpl</class>
+
+        <class>org.omg.sysml.record.impl</class>
+        <class>org.omg.sysml.record.impl.RecordImpl</class>
+
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://sysmlv2postgres:5432/sysml2"/>
+            <property name="javax.persistence.jdbc.user" value="postgres"/>
+            <property name="javax.persistence.jdbc.password" value="mysecretpassword"/>
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL95Dialect"/>
+            <property name="hibernate.hbm2ddl.auto" value="none"/>
+
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>

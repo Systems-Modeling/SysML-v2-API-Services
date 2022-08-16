@@ -1,0 +1,48 @@
+version: "3.7"
+
+# Docker compose file for the mock SysML2 server. 
+networks: 
+   sysmlv2:
+      name: sysmlv2
+
+services:
+   sysmlv2server:
+      image: 'phoenixintegration/mccdev-base:23.1.0-sysmlv2.server.SNAPSHOT'
+      stdin_open: true
+      tty: true
+      ports:
+         - '9000:9000/tcp'
+      depends_on:
+         - sysmlv2postgres
+      deploy:
+         replicas: 1
+      networks:
+         - sysmlv2
+
+   sysmlv2postgres:
+      image: 'postgres:14.4-alpine'
+      deploy:
+      # This configures Postgres to accept up to a maximum of 200 concurrent connections.
+      command: [ "-N", "200" ]
+      environment:
+         # This information must match what is in the README for the MC-SysML-v2-API-Services
+         # https://github.com/Phoenix-Integration-Inc/MC-SysML-v2-API-Services
+         POSTGRES_PASSWORD: "mysecretpassword"
+         POSTGRES_USER: "postgres"
+         POSTGRES_DB: "sysml2"
+      ports:
+         - "5432:5432/tcp"
+      volumes:
+         # Default data that will be loaded into the database generated from the different folders
+         # from https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation/tree/master/sysml/src.
+
+         # TODO: Generate sql files better so we can use more than one at a time.
+         - ./examples.sql:/docker-entrypoint-initdb.d/examples.sql
+         # - ./training.sql:/docker-entrypoint-initdb.d/training.sql
+         # - ./validation.sql:/docker-entrypoint-initdb.d/validation.sql
+      networks:
+         - sysmlv2
+
+volumes:
+   vizpostgres:
+

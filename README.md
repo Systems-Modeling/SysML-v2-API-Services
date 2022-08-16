@@ -80,3 +80,32 @@ $ sbt run
 ![REST/HTTP API](https://gist.githubusercontent.com/manasbajaj/0635b32fcf42a75eeca79744af953732/raw/0f73c2f3c8464bc36cb9341516bf9bdfb2342163/SysML-v2-REST-HTTP-API-Swagger-Doc.png)
 
 4. You can now make REST/HTTP requests to your local SysML v2 API and Services web application either via Swagger doc, or via any REST/HTTP client such as Postman.
+
+## SysML v2 API and Services using Docker
+
+### Setup and Deployment
+For the setup and deployment, see the docker folder's [README](docker/README.md).
+
+### Building an image
+An ant script has been created to use with Jenkins. It is simple to use this script to create your own local image, if needed.
+- Build SysMLv2 docker image locally without publishing: `ant dev-build-only`
+   - Requires setting the `TRIGRAM` environment variable: `export TRIGRAM=DEV`
+- To build and publish a developer image to Docker Hub: `ant`
+
+### Generating Database Files
+There are 3 `.sql` files already included that contain most of the `.sysml` files that can be found on [GitHub](https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation/tree/master/sysml/src). Each `.sql` file is created from the directory with the same name using the method described below. If you have your own files that you'd like to upload to the REST server, follow the steps below.
+1. Deploy the SysML v2 server
+1. Follow setup at https://github.com/Systems-Modeling/SysML-v2-Pilot-Implementation
+1. Once building, open the projects in Eclipse
+1. Go to `Run -> Run Configurations`
+1. Find `Save SysML Test` and change the arguments to the following:
+   -  `-b http://localhost:9000 -d -l "${workspace_loc:/SysML-v2-Pilot-Implementation/sysml.library}" `
+      `${workspace_loc:/SysML-v2-Pilot-Implementation/sysml/src/}"`
+      `"Kernel Libraries"`
+      `"Systems Library"`
+      `"Domain Libraries"`
+1. In `org.omg.sysml.xtext.util.SysMLRepositorySaveTest.java`, change the `TEST_FILES` variable to point to the files you want to add to the database. This configuration assumes that the `.sysml` files are in `SysML-v2-Pilot-Implementation/sysml/src/`.
+1. Once you have some files added, extract the database files:
+   - `docker exec -t sysmlv2postgres pg_dump -U postgres sysml2 > docker/examples.sql`
+1. This file can then be added to `docker/docker-compose.yml` under `services:sysmlv2postgres:volumes`, or done manually:
+   - `cat docker/examples.sql | docker exec -i --user postgres sysmlv2postgres psql -U postgres`
