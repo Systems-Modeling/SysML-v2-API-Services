@@ -28,6 +28,7 @@ public abstract class NamespaceImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<NamespaceImpl, Documentation> documentation;
 	public static volatile ListAttribute<NamespaceImpl, Membership> membership;
 	public static volatile ListAttribute<NamespaceImpl, Import> ownedImport;
+	public static volatile SingularAttribute<NamespaceImpl, Boolean> isImpliedIncluded;
 	public static volatile ListAttribute<NamespaceImpl, Element> member;
 	public static volatile SingularAttribute<NamespaceImpl, String> name;
 	public static volatile SingularAttribute<NamespaceImpl, String> shortName;
@@ -46,6 +47,7 @@ public abstract class NamespaceImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String DOCUMENTATION = "documentation";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_IMPORT = "ownedImport";
+	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String MEMBER = "member";
 	public static final String NAME = "name";
 	public static final String SHORT_NAME = "shortName";

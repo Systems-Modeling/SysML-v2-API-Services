@@ -93,11 +93,13 @@ public class ElementFilterMembershipImpl extends SysMLTypeImpl implements Elemen
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("condition")
     private Expression condition;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "condition_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "condition_id", table = "ElementFilterMembership")
     public Expression getCondition() {
@@ -170,6 +172,38 @@ public class ElementFilterMembershipImpl extends SysMLTypeImpl implements Elemen
     @JsonSetter
     public void setElementId(java.util.UUID elementId) {
         this.elementId = elementId;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isImplied")
+    private Boolean isImplied;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isImplied", table = "ElementFilterMembership")
+    public Boolean getIsImplied() {
+        return isImplied;
+    }
+
+    @JsonSetter
+    public void setIsImplied(Boolean isImplied) {
+        this.isImplied = isImplied;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isImpliedIncluded")
+    private Boolean isImpliedIncluded;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isImpliedIncluded", table = "ElementFilterMembership")
+    public Boolean getIsImpliedIncluded() {
+        return isImpliedIncluded;
+    }
+
+    @JsonSetter
+    public void setIsImpliedIncluded(Boolean isImpliedIncluded) {
+        this.isImpliedIncluded = isImpliedIncluded;
     }
 
 
@@ -340,11 +374,13 @@ public class ElementFilterMembershipImpl extends SysMLTypeImpl implements Elemen
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedMemberElement")
     private Element ownedMemberElement;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberElement_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownedMemberElement_id", table = "ElementFilterMembership")
     public Element getOwnedMemberElement() {
@@ -488,11 +524,13 @@ public class ElementFilterMembershipImpl extends SysMLTypeImpl implements Elemen
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private OwningMembership owningMembership;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "OwningMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembership_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningMembership_id", table = "ElementFilterMembership")
     public OwningMembership getOwningMembership() {

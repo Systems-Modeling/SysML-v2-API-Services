@@ -25,6 +25,7 @@ public abstract class AnnotatingElementImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile SingularAttribute<AnnotatingElementImpl, String> qualifiedName;
 	public static volatile ListAttribute<AnnotatingElementImpl, Documentation> documentation;
 	public static volatile ListAttribute<AnnotatingElementImpl, Element> annotatedElement;
+	public static volatile SingularAttribute<AnnotatingElementImpl, Boolean> isImpliedIncluded;
 	public static volatile SingularAttribute<AnnotatingElementImpl, String> name;
 	public static volatile SingularAttribute<AnnotatingElementImpl, String> shortName;
 	public static volatile SingularAttribute<AnnotatingElementImpl, String> effectiveName;
@@ -39,6 +40,7 @@ public abstract class AnnotatingElementImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String ANNOTATED_ELEMENT = "annotatedElement";
+	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String NAME = "name";
 	public static final String SHORT_NAME = "shortName";
 	public static final String EFFECTIVE_NAME = "effectiveName";

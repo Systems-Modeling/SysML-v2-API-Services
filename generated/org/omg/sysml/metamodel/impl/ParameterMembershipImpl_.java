@@ -18,6 +18,7 @@ public abstract class ParameterMembershipImpl_ extends org.omg.sysml.lifecycle.i
 
 	public static volatile SingularAttribute<ParameterMembershipImpl, UUID> elementId;
 	public static volatile ListAttribute<ParameterMembershipImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<ParameterMembershipImpl, Boolean> isImplied;
 	public static volatile ListAttribute<ParameterMembershipImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ParameterMembershipImpl, Element> ownedElement;
 	public static volatile ListAttribute<ParameterMembershipImpl, String> aliasIds;
@@ -30,6 +31,7 @@ public abstract class ParameterMembershipImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile ListAttribute<ParameterMembershipImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<ParameterMembershipImpl, Element> source;
 	public static volatile SingularAttribute<ParameterMembershipImpl, String> memberElementId;
+	public static volatile SingularAttribute<ParameterMembershipImpl, Boolean> isImpliedIncluded;
 	public static volatile ListAttribute<ParameterMembershipImpl, Element> target;
 	public static volatile ListAttribute<ParameterMembershipImpl, Element> relatedElement;
 	public static volatile SingularAttribute<ParameterMembershipImpl, String> name;
@@ -41,6 +43,7 @@ public abstract class ParameterMembershipImpl_ extends org.omg.sysml.lifecycle.i
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";
@@ -53,6 +56,7 @@ public abstract class ParameterMembershipImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
 	public static final String MEMBER_ELEMENT_ID = "memberElementId";
+	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String TARGET = "target";
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NAME = "name";

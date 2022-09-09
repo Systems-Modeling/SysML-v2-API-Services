@@ -198,6 +198,32 @@ public class PerformActionUsageImpl extends SysMLTypeImpl implements PerformActi
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("differencingType")
+    private List<Type> differencingType;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "PerformActionUsage_differencingType",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Type> getDifferencingType() {
+        if (differencingType == null) {
+            differencingType = new ArrayList<>();
+        }
+        return differencingType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeImpl.class)
+    public void setDifferencingType(List<Type> differencingType) {
+        this.differencingType = differencingType;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("directedFeature")
     private List<Feature> directedFeature;
 
@@ -600,6 +626,32 @@ public class PerformActionUsageImpl extends SysMLTypeImpl implements PerformActi
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("intersectingType")
+    private List<Type> intersectingType;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "PerformActionUsage_intersectingType",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Type> getIntersectingType() {
+        if (intersectingType == null) {
+            intersectingType = new ArrayList<>();
+        }
+        return intersectingType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeImpl.class)
+    public void setIntersectingType(List<Type> intersectingType) {
+        this.intersectingType = intersectingType;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("isAbstract")
     private Boolean isAbstract;
 
@@ -678,6 +730,22 @@ public class PerformActionUsageImpl extends SysMLTypeImpl implements PerformActi
     @JsonSetter
     public void setIsEnd(Boolean isEnd) {
         this.isEnd = isEnd;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isImpliedIncluded")
+    private Boolean isImpliedIncluded;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isImpliedIncluded", table = "PerformActionUsage")
+    public Boolean getIsImpliedIncluded() {
+        return isImpliedIncluded;
+    }
+
+    @JsonSetter
+    public void setIsImpliedIncluded(Boolean isImpliedIncluded) {
+        this.isImpliedIncluded = isImpliedIncluded;
     }
 
 
@@ -1260,6 +1328,32 @@ public class PerformActionUsageImpl extends SysMLTypeImpl implements PerformActi
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedMetadata")
+    private List<MetadataUsage> nestedMetadata;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MetadataUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "PerformActionUsage_nestedMetadata",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<MetadataUsage> getNestedMetadata() {
+        if (nestedMetadata == null) {
+            nestedMetadata = new ArrayList<>();
+        }
+        return nestedMetadata;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = MetadataUsageImpl.class)
+    public void setNestedMetadata(List<MetadataUsage> nestedMetadata) {
+        this.nestedMetadata = nestedMetadata;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedOccurrence")
     private List<OccurrenceUsage> nestedOccurrence;
 
@@ -1697,6 +1791,32 @@ public class PerformActionUsageImpl extends SysMLTypeImpl implements PerformActi
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedDifferencing")
+    private List<Differencing> ownedDifferencing;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "DifferencingMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "PerformActionUsage_ownedDifferencing",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Differencing> getOwnedDifferencing() {
+        if (ownedDifferencing == null) {
+            ownedDifferencing = new ArrayList<>();
+        }
+        return ownedDifferencing;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DifferencingImpl.class)
+    public void setOwnedDifferencing(List<Differencing> ownedDifferencing) {
+        this.ownedDifferencing = ownedDifferencing;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedDisjoining")
     private Collection<Disjoining> ownedDisjoining;
 
@@ -1905,6 +2025,32 @@ public class PerformActionUsageImpl extends SysMLTypeImpl implements PerformActi
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedIntersecting")
+    private List<Intersecting> ownedIntersecting;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "IntersectingMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "PerformActionUsage_ownedIntersecting",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Intersecting> getOwnedIntersecting() {
+        if (ownedIntersecting == null) {
+            ownedIntersecting = new ArrayList<>();
+        }
+        return ownedIntersecting;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = IntersectingImpl.class)
+    public void setOwnedIntersecting(List<Intersecting> ownedIntersecting) {
+        this.ownedIntersecting = ownedIntersecting;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedMember")
     private List<Element> ownedMember;
 
@@ -1978,6 +2124,27 @@ public class PerformActionUsageImpl extends SysMLTypeImpl implements PerformActi
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = RedefinitionImpl.class)
     public void setOwnedRedefinition(Collection<Redefinition> ownedRedefinition) {
         this.ownedRedefinition = ownedRedefinition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedReferenceSubsetting")
+    private ReferenceSubsetting ownedReferenceSubsetting;
+
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "ReferenceSubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "ownedReferenceSubsetting_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedReferenceSubsetting_id", table = "PerformActionUsage")
+    public ReferenceSubsetting getOwnedReferenceSubsetting() {
+        return ownedReferenceSubsetting;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = ReferenceSubsettingImpl.class)
+    public void setOwnedReferenceSubsetting(ReferenceSubsetting ownedReferenceSubsetting) {
+        this.ownedReferenceSubsetting = ownedReferenceSubsetting;
     }
 
 
@@ -2111,6 +2278,32 @@ public class PerformActionUsageImpl extends SysMLTypeImpl implements PerformActi
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedUnioning")
+    private List<Unioning> ownedUnioning;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "UnioningMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "PerformActionUsage_ownedUnioning",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Unioning> getOwnedUnioning() {
+        if (ownedUnioning == null) {
+            ownedUnioning = new ArrayList<>();
+        }
+        return ownedUnioning;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = UnioningImpl.class)
+    public void setOwnedUnioning(List<Unioning> ownedUnioning) {
+        this.ownedUnioning = ownedUnioning;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owner")
     private Element owner;
 
@@ -2152,11 +2345,13 @@ public class PerformActionUsageImpl extends SysMLTypeImpl implements PerformActi
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningFeatureMembership")
     private FeatureMembership owningFeatureMembership;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureMembership_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningFeatureMembership_id", table = "PerformActionUsage")
     public FeatureMembership getOwningFeatureMembership() {
@@ -2171,11 +2366,13 @@ public class PerformActionUsageImpl extends SysMLTypeImpl implements PerformActi
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private OwningMembership owningMembership;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "OwningMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembership_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningMembership_id", table = "PerformActionUsage")
     public OwningMembership getOwningMembership() {
@@ -2444,6 +2641,32 @@ public class PerformActionUsageImpl extends SysMLTypeImpl implements PerformActi
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeImpl.class)
     public void setType(List<Type> type) {
         this.type = type;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("unioningType")
+    private List<Type> unioningType;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "PerformActionUsage_unioningType",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Type> getUnioningType() {
+        if (unioningType == null) {
+            unioningType = new ArrayList<>();
+        }
+        return unioningType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeImpl.class)
+    public void setUnioningType(List<Type> unioningType) {
+        this.unioningType = unioningType;
     }
 
 

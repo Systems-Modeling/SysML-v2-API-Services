@@ -20,6 +20,7 @@ import org.omg.sysml.metamodel.Classifier;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
+import org.omg.sysml.metamodel.Differencing;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -34,8 +35,10 @@ import org.omg.sysml.metamodel.FlowConnectionUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceDefinition;
 import org.omg.sysml.metamodel.InterfaceUsage;
+import org.omg.sysml.metamodel.Intersecting;
 import org.omg.sysml.metamodel.ItemUsage;
 import org.omg.sysml.metamodel.Membership;
+import org.omg.sysml.metamodel.MetadataUsage;
 import org.omg.sysml.metamodel.OccurrenceUsage;
 import org.omg.sysml.metamodel.PartDefinition;
 import org.omg.sysml.metamodel.PartUsage;
@@ -54,6 +57,7 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.TypeFeaturing;
+import org.omg.sysml.metamodel.Unioning;
 import org.omg.sysml.metamodel.Usage;
 import org.omg.sysml.metamodel.UseCaseUsage;
 import org.omg.sysml.metamodel.VariantMembership;
@@ -75,8 +79,10 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile CollectionAttribute<InterfaceUsageImpl, TransitionUsage> nestedTransition;
 	public static volatile ListAttribute<InterfaceUsageImpl, ConstraintUsage> nestedConstraint;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isSufficient;
+	public static volatile ListAttribute<InterfaceUsageImpl, Differencing> ownedDifferencing;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<InterfaceUsageImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isImplied;
 	public static volatile ListAttribute<InterfaceUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<InterfaceUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile ListAttribute<InterfaceUsageImpl, Feature> ownedFeature;
@@ -91,7 +97,7 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<InterfaceUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<InterfaceUsageImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<InterfaceUsageImpl, AllocationUsage> nestedAllocation;
-	public static volatile CollectionAttribute<InterfaceUsageImpl, Association> association;
+	public static volatile ListAttribute<InterfaceUsageImpl, Association> association;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isPortion;
 	public static volatile ListAttribute<InterfaceUsageImpl, ReferenceUsage> nestedReference;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isReadOnly;
@@ -109,9 +115,11 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile SingularAttribute<InterfaceUsageImpl, PortionKind> portionKind;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<InterfaceUsageImpl, Feature> relatedFeature;
+	public static volatile ListAttribute<InterfaceUsageImpl, MetadataUsage> nestedMetadata;
 	public static volatile ListAttribute<InterfaceUsageImpl, RenderingUsage> nestedRendering;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, InterfaceDefinition> interfaceDefinition;
 	public static volatile ListAttribute<InterfaceUsageImpl, ConnectorAsUsage> nestedConnection;
+	public static volatile ListAttribute<InterfaceUsageImpl, Type> unioningType;
 	public static volatile ListAttribute<InterfaceUsageImpl, InterfaceUsage> nestedInterface;
 	public static volatile ListAttribute<InterfaceUsageImpl, Specialization> ownedSpecialization;
 	public static volatile ListAttribute<InterfaceUsageImpl, ViewpointUsage> nestedViewpoint;
@@ -130,6 +138,7 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<InterfaceUsageImpl, Annotation> ownedAnnotation;
 	public static volatile SingularAttribute<InterfaceUsageImpl, String> qualifiedName;
+	public static volatile ListAttribute<InterfaceUsageImpl, Type> intersectingType;
 	public static volatile ListAttribute<InterfaceUsageImpl, VerificationCaseUsage> nestedVerificationCase;
 	public static volatile ListAttribute<InterfaceUsageImpl, Feature> endFeature;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isEnd;
@@ -137,7 +146,7 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<InterfaceUsageImpl, Type> featuringType;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<InterfaceUsageImpl, String> name;
-	public static volatile CollectionAttribute<InterfaceUsageImpl, Feature> connectorEnd;
+	public static volatile ListAttribute<InterfaceUsageImpl, Feature> connectorEnd;
 	public static volatile ListAttribute<InterfaceUsageImpl, AssociationStructure> connectionDefinition;
 	public static volatile ListAttribute<InterfaceUsageImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, FlowConnectionUsage> nestedFlow;
@@ -146,8 +155,9 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<InterfaceUsageImpl, Membership> membership;
 	public static volatile ListAttribute<InterfaceUsageImpl, Element> ownedRelatedElement;
+	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isImpliedIncluded;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isNonunique;
-	public static volatile CollectionAttribute<InterfaceUsageImpl, Feature> targetFeature;
+	public static volatile ListAttribute<InterfaceUsageImpl, Feature> targetFeature;
 	public static volatile ListAttribute<InterfaceUsageImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile ListAttribute<InterfaceUsageImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<InterfaceUsageImpl, Membership> inheritedMembership;
@@ -163,8 +173,11 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<InterfaceUsageImpl, Import> ownedImport;
 	public static volatile ListAttribute<InterfaceUsageImpl, Structure> itemDefinition;
 	public static volatile ListAttribute<InterfaceUsageImpl, Element> target;
+	public static volatile ListAttribute<InterfaceUsageImpl, Type> differencingType;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, VariantMembership> variantMembership;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isDirected;
+	public static volatile ListAttribute<InterfaceUsageImpl, Unioning> ownedUnioning;
+	public static volatile ListAttribute<InterfaceUsageImpl, Intersecting> ownedIntersecting;
 
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String USAGE = "usage";
@@ -176,8 +189,10 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String NESTED_TRANSITION = "nestedTransition";
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_IMPLIED = "isImplied";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";
@@ -210,9 +225,11 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String PORTION_KIND = "portionKind";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String RELATED_FEATURE = "relatedFeature";
+	public static final String NESTED_METADATA = "nestedMetadata";
 	public static final String NESTED_RENDERING = "nestedRendering";
 	public static final String INTERFACE_DEFINITION = "interfaceDefinition";
 	public static final String NESTED_CONNECTION = "nestedConnection";
+	public static final String UNIONING_TYPE = "unioningType";
 	public static final String NESTED_INTERFACE = "nestedInterface";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";
@@ -231,6 +248,7 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String QUALIFIED_NAME = "qualifiedName";
+	public static final String INTERSECTING_TYPE = "intersectingType";
 	public static final String NESTED_VERIFICATION_CASE = "nestedVerificationCase";
 	public static final String END_FEATURE = "endFeature";
 	public static final String IS_END = "isEnd";
@@ -247,6 +265,7 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
+	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String TARGET_FEATURE = "targetFeature";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
@@ -264,8 +283,11 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String ITEM_DEFINITION = "itemDefinition";
 	public static final String TARGET = "target";
+	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String IS_DIRECTED = "isDirected";
+	public static final String OWNED_UNIONING = "ownedUnioning";
+	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 
 }
 

@@ -7,17 +7,21 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Annotation;
+import org.omg.sysml.metamodel.Differencing;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.Import;
+import org.omg.sysml.metamodel.Intersecting;
 import org.omg.sysml.metamodel.Membership;
 import org.omg.sysml.metamodel.Relationship;
 import org.omg.sysml.metamodel.Specialization;
 import org.omg.sysml.metamodel.Subclassification;
 import org.omg.sysml.metamodel.TextualRepresentation;
+import org.omg.sysml.metamodel.Type;
+import org.omg.sysml.metamodel.Unioning;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(DataTypeImpl.class)
@@ -26,6 +30,7 @@ public abstract class DataTypeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile SingularAttribute<DataTypeImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<DataTypeImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<DataTypeImpl, Membership> membership;
+	public static volatile SingularAttribute<DataTypeImpl, Boolean> isImpliedIncluded;
 	public static volatile ListAttribute<DataTypeImpl, Feature> output;
 	public static volatile ListAttribute<DataTypeImpl, Feature> feature;
 	public static volatile ListAttribute<DataTypeImpl, Membership> inheritedMembership;
@@ -35,6 +40,7 @@ public abstract class DataTypeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile CollectionAttribute<DataTypeImpl, Subclassification> ownedSubclassification;
 	public static volatile ListAttribute<DataTypeImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<DataTypeImpl, Boolean> isSufficient;
+	public static volatile ListAttribute<DataTypeImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<DataTypeImpl, String> effectiveName;
 	public static volatile SingularAttribute<DataTypeImpl, UUID> elementId;
 	public static volatile ListAttribute<DataTypeImpl, TextualRepresentation> textualRepresentation;
@@ -47,20 +53,26 @@ public abstract class DataTypeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile SingularAttribute<DataTypeImpl, String> qualifiedName;
 	public static volatile ListAttribute<DataTypeImpl, Documentation> documentation;
 	public static volatile ListAttribute<DataTypeImpl, FeatureMembership> featureMembership;
+	public static volatile ListAttribute<DataTypeImpl, Type> intersectingType;
 	public static volatile ListAttribute<DataTypeImpl, Feature> endFeature;
 	public static volatile ListAttribute<DataTypeImpl, Feature> directedFeature;
 	public static volatile ListAttribute<DataTypeImpl, Import> ownedImport;
 	public static volatile SingularAttribute<DataTypeImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<DataTypeImpl, Feature> input;
+	public static volatile ListAttribute<DataTypeImpl, Type> differencingType;
+	public static volatile ListAttribute<DataTypeImpl, Unioning> ownedUnioning;
+	public static volatile ListAttribute<DataTypeImpl, Type> unioningType;
 	public static volatile SingularAttribute<DataTypeImpl, String> name;
 	public static volatile ListAttribute<DataTypeImpl, Specialization> ownedSpecialization;
 	public static volatile SingularAttribute<DataTypeImpl, String> shortName;
+	public static volatile ListAttribute<DataTypeImpl, Intersecting> ownedIntersecting;
 	public static volatile ListAttribute<DataTypeImpl, Element> ownedMember;
 	public static volatile ListAttribute<DataTypeImpl, Membership> ownedMembership;
 
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
+	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String OUTPUT = "output";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
@@ -70,6 +82,7 @@ public abstract class DataTypeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String OWNED_SUBCLASSIFICATION = "ownedSubclassification";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
@@ -82,14 +95,19 @@ public abstract class DataTypeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
+	public static final String INTERSECTING_TYPE = "intersectingType";
 	public static final String END_FEATURE = "endFeature";
 	public static final String DIRECTED_FEATURE = "directedFeature";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String INPUT = "input";
+	public static final String DIFFERENCING_TYPE = "differencingType";
+	public static final String OWNED_UNIONING = "ownedUnioning";
+	public static final String UNIONING_TYPE = "unioningType";
 	public static final String NAME = "name";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String SHORT_NAME = "shortName";
+	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 

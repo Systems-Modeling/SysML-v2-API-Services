@@ -6,24 +6,29 @@
         "xsd": "http://www.w3.org/2001/XMLSchema#",
 
         "aliasIds": {"@type": "xsd:string"},
-        "annotatedElement": {"@type": "@id"},
-        "annotation": {"@type": "@id"},
-        "body": {"@type": "xsd:string"},
+        "differencingType": {"@type": "@id"},
         "documentation": {"@type": "@id"},
         "effectiveName": {"@type": "xsd:string"},
         "elementId": {"@type": "dcterms:identifier"},
-        "locale": {"@type": "xsd:string"},
+        "isImplied": {"@type": "xsd:boolean"},
+        "isImpliedIncluded": {"@type": "xsd:boolean"},
         "name": {"@type": "xsd:string"},
         "ownedAnnotation": {"@type": "@id"},
         "ownedElement": {"@type": "@id"},
+        "ownedRelatedElement": {"@type": "@id"},
         "ownedRelationship": {"@type": "@id"},
         "owner": {"@type": "@id"},
         "owningMembership": {"@type": "@id"},
         "owningNamespace": {"@type": "@id"},
+        "owningRelatedElement": {"@type": "@id"},
         "owningRelationship": {"@type": "@id"},
         "qualifiedName": {"@type": "xsd:string"},
+        "relatedElement": {"@type": "@id"},
         "shortName": {"@type": "xsd:string"},
-        "textualRepresentation": {"@type": "@id"}
+        "source": {"@type": "@id"},
+        "target": {"@type": "@id"},
+        "textualRepresentation": {"@type": "@id"},
+        "typeDifferenced": {"@type": "@id"}
 
     }
 }

@@ -19,6 +19,7 @@ import org.omg.sysml.metamodel.Classifier;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
+import org.omg.sysml.metamodel.Differencing;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -32,8 +33,10 @@ import org.omg.sysml.metamodel.FeatureTyping;
 import org.omg.sysml.metamodel.FlowConnectionUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
+import org.omg.sysml.metamodel.Intersecting;
 import org.omg.sysml.metamodel.ItemUsage;
 import org.omg.sysml.metamodel.Membership;
+import org.omg.sysml.metamodel.MetadataUsage;
 import org.omg.sysml.metamodel.OccurrenceUsage;
 import org.omg.sysml.metamodel.PartUsage;
 import org.omg.sysml.metamodel.PortUsage;
@@ -50,6 +53,7 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.TypeFeaturing;
+import org.omg.sysml.metamodel.Unioning;
 import org.omg.sysml.metamodel.Usage;
 import org.omg.sysml.metamodel.UseCaseUsage;
 import org.omg.sysml.metamodel.VariantMembership;
@@ -74,6 +78,7 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<ViewpointUsageImpl, ConstraintUsage> nestedConstraint;
 	public static volatile CollectionAttribute<ViewpointUsageImpl, String> text;
 	public static volatile SingularAttribute<ViewpointUsageImpl, Boolean> isSufficient;
+	public static volatile ListAttribute<ViewpointUsageImpl, Differencing> ownedDifferencing;
 	public static volatile CollectionAttribute<ViewpointUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<ViewpointUsageImpl, TextualRepresentation> textualRepresentation;
 	public static volatile ListAttribute<ViewpointUsageImpl, AttributeUsage> nestedAttribute;
@@ -110,8 +115,10 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<ViewpointUsageImpl, FeatureMembership> featureMembership;
 	public static volatile SingularAttribute<ViewpointUsageImpl, PortionKind> portionKind;
 	public static volatile SingularAttribute<ViewpointUsageImpl, Boolean> isAbstract;
+	public static volatile ListAttribute<ViewpointUsageImpl, MetadataUsage> nestedMetadata;
 	public static volatile ListAttribute<ViewpointUsageImpl, RenderingUsage> nestedRendering;
 	public static volatile ListAttribute<ViewpointUsageImpl, ConnectorAsUsage> nestedConnection;
+	public static volatile ListAttribute<ViewpointUsageImpl, Type> unioningType;
 	public static volatile ListAttribute<ViewpointUsageImpl, InterfaceUsage> nestedInterface;
 	public static volatile ListAttribute<ViewpointUsageImpl, Specialization> ownedSpecialization;
 	public static volatile ListAttribute<ViewpointUsageImpl, ViewpointUsage> nestedViewpoint;
@@ -129,6 +136,7 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile SingularAttribute<ViewpointUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<ViewpointUsageImpl, Annotation> ownedAnnotation;
 	public static volatile SingularAttribute<ViewpointUsageImpl, String> qualifiedName;
+	public static volatile ListAttribute<ViewpointUsageImpl, Type> intersectingType;
 	public static volatile ListAttribute<ViewpointUsageImpl, VerificationCaseUsage> nestedVerificationCase;
 	public static volatile ListAttribute<ViewpointUsageImpl, Feature> endFeature;
 	public static volatile SingularAttribute<ViewpointUsageImpl, Boolean> isEnd;
@@ -143,6 +151,7 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile CollectionAttribute<ViewpointUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile SingularAttribute<ViewpointUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<ViewpointUsageImpl, Membership> membership;
+	public static volatile SingularAttribute<ViewpointUsageImpl, Boolean> isImpliedIncluded;
 	public static volatile SingularAttribute<ViewpointUsageImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<ViewpointUsageImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile ListAttribute<ViewpointUsageImpl, FeatureTyping> ownedTyping;
@@ -158,7 +167,10 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<ViewpointUsageImpl, Relationship> ownedRelationship;
 	public static volatile CollectionAttribute<ViewpointUsageImpl, ConcernUsage> nestedConcern;
 	public static volatile ListAttribute<ViewpointUsageImpl, Import> ownedImport;
+	public static volatile ListAttribute<ViewpointUsageImpl, Type> differencingType;
 	public static volatile CollectionAttribute<ViewpointUsageImpl, VariantMembership> variantMembership;
+	public static volatile ListAttribute<ViewpointUsageImpl, Unioning> ownedUnioning;
+	public static volatile ListAttribute<ViewpointUsageImpl, Intersecting> ownedIntersecting;
 
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String REQUIRED_CONSTRAINT = "requiredConstraint";
@@ -173,6 +185,7 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String NESTED_CONSTRAINT = "nestedConstraint";
 	public static final String TEXT = "text";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
@@ -209,8 +222,10 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String PORTION_KIND = "portionKind";
 	public static final String IS_ABSTRACT = "isAbstract";
+	public static final String NESTED_METADATA = "nestedMetadata";
 	public static final String NESTED_RENDERING = "nestedRendering";
 	public static final String NESTED_CONNECTION = "nestedConnection";
+	public static final String UNIONING_TYPE = "unioningType";
 	public static final String NESTED_INTERFACE = "nestedInterface";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";
@@ -228,6 +243,7 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String QUALIFIED_NAME = "qualifiedName";
+	public static final String INTERSECTING_TYPE = "intersectingType";
 	public static final String NESTED_VERIFICATION_CASE = "nestedVerificationCase";
 	public static final String END_FEATURE = "endFeature";
 	public static final String IS_END = "isEnd";
@@ -242,6 +258,7 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
+	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String OWNED_TYPING = "ownedTyping";
@@ -257,7 +274,10 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String NESTED_CONCERN = "nestedConcern";
 	public static final String OWNED_IMPORT = "ownedImport";
+	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
+	public static final String OWNED_UNIONING = "ownedUnioning";
+	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 
 }
 

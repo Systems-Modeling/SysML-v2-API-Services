@@ -29,13 +29,15 @@ import java.util.Set;
 public interface ItemFlow extends Connector, Step, SysMLType {
     List<? extends Classifier> getItemType();
 
-    List<? extends Feature> getTargetInputFeature();
+    Feature getTargetInputFeature();
 
-    List<? extends Feature> getSourceOutputFeature();
+    Feature getSourceOutputFeature();
 
     Collection<? extends ItemFlowEnd> getItemFlowEnd();
 
-    Collection<? extends ItemFeature> getItemFeature();
+    ItemFeature getItemFeature();
 
     Collection<? extends ItemFlowFeature> getItemFlowFeature();
+
+    List<? extends Interaction> getInteraction();
 }

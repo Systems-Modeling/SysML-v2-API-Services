@@ -11,6 +11,8 @@
         "documentation": {"@type": "@id"},
         "effectiveName": {"@type": "xsd:string"},
         "elementId": {"@type": "dcterms:identifier"},
+        "isImplied": {"@type": "xsd:boolean"},
+        "isImpliedIncluded": {"@type": "xsd:boolean"},
         "name": {"@type": "xsd:string"},
         "originalPortDefinition": {"@type": "@id"},
         "originalType": {"@type": "@id"},

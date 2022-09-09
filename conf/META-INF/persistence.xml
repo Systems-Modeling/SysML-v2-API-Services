@@ -69,6 +69,7 @@
         <class>org.omg.sysml.metamodel.impl.DecisionNodeImpl</class>
         <class>org.omg.sysml.metamodel.impl.DefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.DependencyImpl</class>
+        <class>org.omg.sysml.metamodel.impl.DifferencingImpl</class>
         <class>org.omg.sysml.metamodel.impl.DisjoiningImpl</class>
         <class>org.omg.sysml.metamodel.impl.DocumentationImpl</class>
         <class>org.omg.sysml.metamodel.impl.ElementFilterMembershipImpl</class>
@@ -88,6 +89,8 @@
         <class>org.omg.sysml.metamodel.impl.FeatureReferenceExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.FeatureTypingImpl</class>
         <class>org.omg.sysml.metamodel.impl.FeatureValueImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FeaturingImpl</class>
+        <class>org.omg.sysml.metamodel.impl.FlowConnectionDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.FlowConnectionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.ForkNodeImpl</class>
         <class>org.omg.sysml.metamodel.impl.ForLoopActionUsageImpl</class>
@@ -99,6 +102,7 @@
         <class>org.omg.sysml.metamodel.impl.InteractionImpl</class>
         <class>org.omg.sysml.metamodel.impl.InterfaceDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.InterfaceUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.IntersectingImpl</class>
         <class>org.omg.sysml.metamodel.impl.InvariantImpl</class>
         <class>org.omg.sysml.metamodel.impl.InvocationExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.ItemDefinitionImpl</class>
@@ -141,8 +145,8 @@
         <class>org.omg.sysml.metamodel.impl.PortioningFeatureImpl</class>
         <class>org.omg.sysml.metamodel.impl.PortUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.PredicateImpl</class>
-        <class>org.omg.sysml.metamodel.impl.PrefixCommentImpl</class>
         <class>org.omg.sysml.metamodel.impl.RedefinitionImpl</class>
+        <class>org.omg.sysml.metamodel.impl.ReferenceSubsettingImpl</class>
         <class>org.omg.sysml.metamodel.impl.ReferenceUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.RelationshipImpl</class>
         <class>org.omg.sysml.metamodel.impl.RenderingDefinitionImpl</class>
@@ -179,6 +183,7 @@
         <class>org.omg.sysml.metamodel.impl.TriggerInvocationExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.TypeFeaturingImpl</class>
         <class>org.omg.sysml.metamodel.impl.TypeImpl</class>
+        <class>org.omg.sysml.metamodel.impl.UnioningImpl</class>
         <class>org.omg.sysml.metamodel.impl.UsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.UseCaseDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.UseCaseUsageImpl</class>

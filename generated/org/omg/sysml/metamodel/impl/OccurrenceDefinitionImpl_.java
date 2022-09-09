@@ -16,6 +16,7 @@ import org.omg.sysml.metamodel.CaseUsage;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
+import org.omg.sysml.metamodel.Differencing;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -25,8 +26,10 @@ import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FlowConnectionUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
+import org.omg.sysml.metamodel.Intersecting;
 import org.omg.sysml.metamodel.ItemUsage;
 import org.omg.sysml.metamodel.Membership;
+import org.omg.sysml.metamodel.MetadataUsage;
 import org.omg.sysml.metamodel.OccurrenceUsage;
 import org.omg.sysml.metamodel.PartUsage;
 import org.omg.sysml.metamodel.PortUsage;
@@ -39,6 +42,8 @@ import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Subclassification;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.TransitionUsage;
+import org.omg.sysml.metamodel.Type;
+import org.omg.sysml.metamodel.Unioning;
 import org.omg.sysml.metamodel.Usage;
 import org.omg.sysml.metamodel.UseCaseUsage;
 import org.omg.sysml.metamodel.VariantMembership;
@@ -61,9 +66,11 @@ public abstract class OccurrenceDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, RenderingUsage> ownedRendering;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, Feature> output;
+	public static volatile ListAttribute<OccurrenceDefinitionImpl, MetadataUsage> ownedMetadata;
 	public static volatile CollectionAttribute<OccurrenceDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<OccurrenceDefinitionImpl, Boolean> isSufficient;
+	public static volatile ListAttribute<OccurrenceDefinitionImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<OccurrenceDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, TextualRepresentation> textualRepresentation;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, Annotation> ownedAnnotation;
@@ -71,6 +78,7 @@ public abstract class OccurrenceDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, Feature> ownedFeature;
 	public static volatile SingularAttribute<OccurrenceDefinitionImpl, String> qualifiedName;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, Documentation> documentation;
+	public static volatile ListAttribute<OccurrenceDefinitionImpl, Type> intersectingType;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, Feature> endFeature;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, Feature> directedFeature;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, AllocationUsage> ownedAllocation;
@@ -92,6 +100,7 @@ public abstract class OccurrenceDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, StateUsage> ownedState;
 	public static volatile SingularAttribute<OccurrenceDefinitionImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, Membership> membership;
+	public static volatile SingularAttribute<OccurrenceDefinitionImpl, Boolean> isImpliedIncluded;
 	public static volatile SingularAttribute<OccurrenceDefinitionImpl, Boolean> isVariation;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, Feature> feature;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, Membership> inheritedMembership;
@@ -111,10 +120,14 @@ public abstract class OccurrenceDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, Import> ownedImport;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<OccurrenceDefinitionImpl, Boolean> isAbstract;
+	public static volatile ListAttribute<OccurrenceDefinitionImpl, Type> differencingType;
 	public static volatile CollectionAttribute<OccurrenceDefinitionImpl, VariantMembership> variantMembership;
+	public static volatile ListAttribute<OccurrenceDefinitionImpl, Unioning> ownedUnioning;
+	public static volatile ListAttribute<OccurrenceDefinitionImpl, Type> unioningType;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, Specialization> ownedSpecialization;
 	public static volatile CollectionAttribute<OccurrenceDefinitionImpl, ConcernUsage> ownedConcern;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, AttributeUsage> ownedAttribute;
+	public static volatile ListAttribute<OccurrenceDefinitionImpl, Intersecting> ownedIntersecting;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, PartUsage> ownedPart;
 
 	public static final String DIRECTED_USAGE = "directedUsage";
@@ -128,9 +141,11 @@ public abstract class OccurrenceDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static final String OWNED_RENDERING = "ownedRendering";
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
+	public static final String OWNED_METADATA = "ownedMetadata";
 	public static final String VARIANT = "variant";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -138,6 +153,7 @@ public abstract class OccurrenceDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
+	public static final String INTERSECTING_TYPE = "intersectingType";
 	public static final String END_FEATURE = "endFeature";
 	public static final String DIRECTED_FEATURE = "directedFeature";
 	public static final String OWNED_ALLOCATION = "ownedAllocation";
@@ -159,6 +175,7 @@ public abstract class OccurrenceDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static final String OWNED_STATE = "ownedState";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
+	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
@@ -178,10 +195,14 @@ public abstract class OccurrenceDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
+	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
+	public static final String OWNED_UNIONING = "ownedUnioning";
+	public static final String UNIONING_TYPE = "unioningType";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String OWNED_CONCERN = "ownedConcern";
 	public static final String OWNED_ATTRIBUTE = "ownedAttribute";
+	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 	public static final String OWNED_PART = "ownedPart";
 
 }

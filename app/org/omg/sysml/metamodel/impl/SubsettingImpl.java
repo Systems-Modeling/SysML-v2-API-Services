@@ -174,6 +174,38 @@ public class SubsettingImpl extends SysMLTypeImpl implements Subsetting {
 
 
 
+    // @info.archinnov.achilles.annotations.Column("isImplied")
+    private Boolean isImplied;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isImplied", table = "Subsetting")
+    public Boolean getIsImplied() {
+        return isImplied;
+    }
+
+    @JsonSetter
+    public void setIsImplied(Boolean isImplied) {
+        this.isImplied = isImplied;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isImpliedIncluded")
+    private Boolean isImpliedIncluded;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isImpliedIncluded", table = "Subsetting")
+    public Boolean getIsImpliedIncluded() {
+        return isImpliedIncluded;
+    }
+
+    @JsonSetter
+    public void setIsImpliedIncluded(Boolean isImpliedIncluded) {
+        this.isImpliedIncluded = isImpliedIncluded;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("name")
     private String name;
 
@@ -334,11 +366,13 @@ public class SubsettingImpl extends SysMLTypeImpl implements Subsetting {
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private OwningMembership owningMembership;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "OwningMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembership_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningMembership_id", table = "Subsetting")
     public OwningMembership getOwningMembership() {

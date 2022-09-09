@@ -26,7 +26,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface FeatureMembership extends OwningMembership, TypeFeaturing, SysMLType {
+public interface FeatureMembership extends OwningMembership, Featuring, SysMLType {
     Type getOwningType();
 
     Feature getOwnedMemberFeature();

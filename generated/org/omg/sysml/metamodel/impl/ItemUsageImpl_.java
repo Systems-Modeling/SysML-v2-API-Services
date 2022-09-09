@@ -18,6 +18,7 @@ import org.omg.sysml.metamodel.Classifier;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
+import org.omg.sysml.metamodel.Differencing;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -31,8 +32,10 @@ import org.omg.sysml.metamodel.FeatureTyping;
 import org.omg.sysml.metamodel.FlowConnectionUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
+import org.omg.sysml.metamodel.Intersecting;
 import org.omg.sysml.metamodel.ItemUsage;
 import org.omg.sysml.metamodel.Membership;
+import org.omg.sysml.metamodel.MetadataUsage;
 import org.omg.sysml.metamodel.OccurrenceUsage;
 import org.omg.sysml.metamodel.PartUsage;
 import org.omg.sysml.metamodel.PortUsage;
@@ -50,6 +53,7 @@ import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.TransitionUsage;
 import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.TypeFeaturing;
+import org.omg.sysml.metamodel.Unioning;
 import org.omg.sysml.metamodel.Usage;
 import org.omg.sysml.metamodel.UseCaseUsage;
 import org.omg.sysml.metamodel.VariantMembership;
@@ -79,6 +83,7 @@ public abstract class ItemUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile CollectionAttribute<ItemUsageImpl, Usage> variant;
 	public static volatile SingularAttribute<ItemUsageImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<ItemUsageImpl, StateUsage> nestedState;
+	public static volatile ListAttribute<ItemUsageImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<ItemUsageImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<ItemUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<ItemUsageImpl, UUID> elementId;
@@ -91,6 +96,7 @@ public abstract class ItemUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile SingularAttribute<ItemUsageImpl, String> qualifiedName;
 	public static volatile ListAttribute<ItemUsageImpl, Documentation> documentation;
 	public static volatile ListAttribute<ItemUsageImpl, AnalysisCaseUsage> nestedAnalysisCase;
+	public static volatile ListAttribute<ItemUsageImpl, Type> intersectingType;
 	public static volatile ListAttribute<ItemUsageImpl, VerificationCaseUsage> nestedVerificationCase;
 	public static volatile ListAttribute<ItemUsageImpl, Feature> endFeature;
 	public static volatile ListAttribute<ItemUsageImpl, Feature> directedFeature;
@@ -113,6 +119,7 @@ public abstract class ItemUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile SingularAttribute<ItemUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<ItemUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<ItemUsageImpl, Boolean> isPortion;
+	public static volatile SingularAttribute<ItemUsageImpl, Boolean> isImpliedIncluded;
 	public static volatile SingularAttribute<ItemUsageImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<ItemUsageImpl, ReferenceUsage> nestedReference;
 	public static volatile ListAttribute<ItemUsageImpl, FeatureChaining> ownedFeatureChaining;
@@ -142,11 +149,16 @@ public abstract class ItemUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<ItemUsageImpl, Import> ownedImport;
 	public static volatile SingularAttribute<ItemUsageImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<ItemUsageImpl, Structure> itemDefinition;
+	public static volatile ListAttribute<ItemUsageImpl, MetadataUsage> nestedMetadata;
+	public static volatile ListAttribute<ItemUsageImpl, Type> differencingType;
 	public static volatile CollectionAttribute<ItemUsageImpl, VariantMembership> variantMembership;
 	public static volatile ListAttribute<ItemUsageImpl, RenderingUsage> nestedRendering;
+	public static volatile ListAttribute<ItemUsageImpl, Unioning> ownedUnioning;
 	public static volatile ListAttribute<ItemUsageImpl, ConnectorAsUsage> nestedConnection;
+	public static volatile ListAttribute<ItemUsageImpl, Type> unioningType;
 	public static volatile ListAttribute<ItemUsageImpl, InterfaceUsage> nestedInterface;
 	public static volatile ListAttribute<ItemUsageImpl, Specialization> ownedSpecialization;
+	public static volatile ListAttribute<ItemUsageImpl, Intersecting> ownedIntersecting;
 	public static volatile ListAttribute<ItemUsageImpl, ViewpointUsage> nestedViewpoint;
 	public static volatile CollectionAttribute<ItemUsageImpl, FeatureInverting> ownedFeatureInverting;
 
@@ -168,6 +180,7 @@ public abstract class ItemUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String VARIANT = "variant";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String NESTED_STATE = "nestedState";
+	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
@@ -180,6 +193,7 @@ public abstract class ItemUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
 	public static final String NESTED_ANALYSIS_CASE = "nestedAnalysisCase";
+	public static final String INTERSECTING_TYPE = "intersectingType";
 	public static final String NESTED_VERIFICATION_CASE = "nestedVerificationCase";
 	public static final String END_FEATURE = "endFeature";
 	public static final String DIRECTED_FEATURE = "directedFeature";
@@ -202,6 +216,7 @@ public abstract class ItemUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";
+	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String NESTED_REFERENCE = "nestedReference";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
@@ -231,11 +246,16 @@ public abstract class ItemUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String ITEM_DEFINITION = "itemDefinition";
+	public static final String NESTED_METADATA = "nestedMetadata";
+	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String NESTED_RENDERING = "nestedRendering";
+	public static final String OWNED_UNIONING = "ownedUnioning";
 	public static final String NESTED_CONNECTION = "nestedConnection";
+	public static final String UNIONING_TYPE = "unioningType";
 	public static final String NESTED_INTERFACE = "nestedInterface";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
+	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 

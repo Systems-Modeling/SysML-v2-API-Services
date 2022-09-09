@@ -9,8 +9,9 @@
         "documentation": {"@type": "@id"},
         "effectiveName": {"@type": "xsd:string"},
         "elementId": {"@type": "dcterms:identifier"},
-        "featureOfType": {"@type": "@id"},
-        "featuringType": {"@type": "@id"},
+        "feature": {"@type": "@id"},
+        "isImplied": {"@type": "xsd:boolean"},
+        "isImpliedIncluded": {"@type": "xsd:boolean"},
         "memberElement": {"@type": "@id"},
         "memberElementId": {"@type": "xsd:string"},
         "memberName": {"@type": "xsd:string"},
@@ -29,7 +30,6 @@
         "ownedRelatedElement": {"@type": "@id"},
         "ownedRelationship": {"@type": "@id"},
         "owner": {"@type": "@id"},
-        "owningFeatureOfType": {"@type": "@id"},
         "owningMembership": {"@type": "@id"},
         "owningNamespace": {"@type": "@id"},
         "owningRelatedElement": {"@type": "@id"},
@@ -41,6 +41,7 @@
         "source": {"@type": "@id"},
         "target": {"@type": "@id"},
         "textualRepresentation": {"@type": "@id"},
+        "type": {"@type": "@id"},
         "visibility": {"@type": "@vocab"}
 
     }

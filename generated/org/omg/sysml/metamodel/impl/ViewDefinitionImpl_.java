@@ -16,6 +16,7 @@ import org.omg.sysml.metamodel.CaseUsage;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
+import org.omg.sysml.metamodel.Differencing;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -26,8 +27,10 @@ import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FlowConnectionUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
+import org.omg.sysml.metamodel.Intersecting;
 import org.omg.sysml.metamodel.ItemUsage;
 import org.omg.sysml.metamodel.Membership;
+import org.omg.sysml.metamodel.MetadataUsage;
 import org.omg.sysml.metamodel.OccurrenceUsage;
 import org.omg.sysml.metamodel.PartUsage;
 import org.omg.sysml.metamodel.PortUsage;
@@ -40,6 +43,8 @@ import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Subclassification;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.TransitionUsage;
+import org.omg.sysml.metamodel.Type;
+import org.omg.sysml.metamodel.Unioning;
 import org.omg.sysml.metamodel.Usage;
 import org.omg.sysml.metamodel.UseCaseUsage;
 import org.omg.sysml.metamodel.VariantMembership;
@@ -62,10 +67,12 @@ public abstract class ViewDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<ViewDefinitionImpl, RenderingUsage> ownedRendering;
 	public static volatile ListAttribute<ViewDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile ListAttribute<ViewDefinitionImpl, Feature> output;
+	public static volatile ListAttribute<ViewDefinitionImpl, MetadataUsage> ownedMetadata;
 	public static volatile ListAttribute<ViewDefinitionImpl, ViewUsage> view;
 	public static volatile CollectionAttribute<ViewDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<ViewDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<ViewDefinitionImpl, Boolean> isSufficient;
+	public static volatile ListAttribute<ViewDefinitionImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<ViewDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<ViewDefinitionImpl, TextualRepresentation> textualRepresentation;
 	public static volatile ListAttribute<ViewDefinitionImpl, Annotation> ownedAnnotation;
@@ -73,6 +80,7 @@ public abstract class ViewDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<ViewDefinitionImpl, Feature> ownedFeature;
 	public static volatile SingularAttribute<ViewDefinitionImpl, String> qualifiedName;
 	public static volatile ListAttribute<ViewDefinitionImpl, Documentation> documentation;
+	public static volatile ListAttribute<ViewDefinitionImpl, Type> intersectingType;
 	public static volatile ListAttribute<ViewDefinitionImpl, Feature> endFeature;
 	public static volatile ListAttribute<ViewDefinitionImpl, Feature> directedFeature;
 	public static volatile ListAttribute<ViewDefinitionImpl, AllocationUsage> ownedAllocation;
@@ -96,6 +104,7 @@ public abstract class ViewDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<ViewDefinitionImpl, Membership> membership;
 	public static volatile ListAttribute<ViewDefinitionImpl, Expression> viewCondition;
 	public static volatile ListAttribute<ViewDefinitionImpl, ViewpointUsage> satisfiedViewpoint;
+	public static volatile SingularAttribute<ViewDefinitionImpl, Boolean> isImpliedIncluded;
 	public static volatile SingularAttribute<ViewDefinitionImpl, Boolean> isVariation;
 	public static volatile ListAttribute<ViewDefinitionImpl, Feature> feature;
 	public static volatile ListAttribute<ViewDefinitionImpl, Membership> inheritedMembership;
@@ -115,10 +124,14 @@ public abstract class ViewDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<ViewDefinitionImpl, Import> ownedImport;
 	public static volatile ListAttribute<ViewDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<ViewDefinitionImpl, Boolean> isAbstract;
+	public static volatile ListAttribute<ViewDefinitionImpl, Type> differencingType;
 	public static volatile CollectionAttribute<ViewDefinitionImpl, VariantMembership> variantMembership;
+	public static volatile ListAttribute<ViewDefinitionImpl, Unioning> ownedUnioning;
+	public static volatile ListAttribute<ViewDefinitionImpl, Type> unioningType;
 	public static volatile ListAttribute<ViewDefinitionImpl, Specialization> ownedSpecialization;
 	public static volatile CollectionAttribute<ViewDefinitionImpl, ConcernUsage> ownedConcern;
 	public static volatile ListAttribute<ViewDefinitionImpl, AttributeUsage> ownedAttribute;
+	public static volatile ListAttribute<ViewDefinitionImpl, Intersecting> ownedIntersecting;
 	public static volatile ListAttribute<ViewDefinitionImpl, PartUsage> ownedPart;
 
 	public static final String DIRECTED_USAGE = "directedUsage";
@@ -132,10 +145,12 @@ public abstract class ViewDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_RENDERING = "ownedRendering";
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
+	public static final String OWNED_METADATA = "ownedMetadata";
 	public static final String VIEW = "view";
 	public static final String VARIANT = "variant";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -143,6 +158,7 @@ public abstract class ViewDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
+	public static final String INTERSECTING_TYPE = "intersectingType";
 	public static final String END_FEATURE = "endFeature";
 	public static final String DIRECTED_FEATURE = "directedFeature";
 	public static final String OWNED_ALLOCATION = "ownedAllocation";
@@ -166,6 +182,7 @@ public abstract class ViewDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String MEMBERSHIP = "membership";
 	public static final String VIEW_CONDITION = "viewCondition";
 	public static final String SATISFIED_VIEWPOINT = "satisfiedViewpoint";
+	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
@@ -185,10 +202,14 @@ public abstract class ViewDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
+	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
+	public static final String OWNED_UNIONING = "ownedUnioning";
+	public static final String UNIONING_TYPE = "unioningType";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String OWNED_CONCERN = "ownedConcern";
 	public static final String OWNED_ATTRIBUTE = "ownedAttribute";
+	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 	public static final String OWNED_PART = "ownedPart";
 
 }

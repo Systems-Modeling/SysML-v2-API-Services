@@ -7,6 +7,7 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Annotation;
+import org.omg.sysml.metamodel.Differencing;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -17,6 +18,7 @@ import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
 import org.omg.sysml.metamodel.Import;
+import org.omg.sysml.metamodel.Intersecting;
 import org.omg.sysml.metamodel.Membership;
 import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
@@ -25,6 +27,7 @@ import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.TypeFeaturing;
+import org.omg.sysml.metamodel.Unioning;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(MetadataFeatureImpl.class)
@@ -38,6 +41,7 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<MetadataFeatureImpl, Type> type;
 	public static volatile ListAttribute<MetadataFeatureImpl, Feature> output;
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isSufficient;
+	public static volatile ListAttribute<MetadataFeatureImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<MetadataFeatureImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<MetadataFeatureImpl, UUID> elementId;
@@ -47,6 +51,7 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<MetadataFeatureImpl, Feature> ownedFeature;
 	public static volatile SingularAttribute<MetadataFeatureImpl, String> qualifiedName;
 	public static volatile ListAttribute<MetadataFeatureImpl, Documentation> documentation;
+	public static volatile ListAttribute<MetadataFeatureImpl, Type> intersectingType;
 	public static volatile ListAttribute<MetadataFeatureImpl, Feature> endFeature;
 	public static volatile ListAttribute<MetadataFeatureImpl, Feature> directedFeature;
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isEnd;
@@ -60,6 +65,7 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile CollectionAttribute<MetadataFeatureImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<MetadataFeatureImpl, Membership> membership;
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isPortion;
+	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isImpliedIncluded;
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<MetadataFeatureImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isReadOnly;
@@ -81,7 +87,11 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<MetadataFeatureImpl, Import> ownedImport;
 	public static volatile ListAttribute<MetadataFeatureImpl, Element> annotatedElement;
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isAbstract;
+	public static volatile ListAttribute<MetadataFeatureImpl, Type> differencingType;
+	public static volatile ListAttribute<MetadataFeatureImpl, Unioning> ownedUnioning;
+	public static volatile ListAttribute<MetadataFeatureImpl, Type> unioningType;
 	public static volatile ListAttribute<MetadataFeatureImpl, Specialization> ownedSpecialization;
+	public static volatile ListAttribute<MetadataFeatureImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<MetadataFeatureImpl, FeatureInverting> ownedFeatureInverting;
 
 	public static final String CHAINING_FEATURE = "chainingFeature";
@@ -92,6 +102,7 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String TYPE = "type";
 	public static final String OUTPUT = "output";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
@@ -101,6 +112,7 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
+	public static final String INTERSECTING_TYPE = "intersectingType";
 	public static final String END_FEATURE = "endFeature";
 	public static final String DIRECTED_FEATURE = "directedFeature";
 	public static final String IS_END = "isEnd";
@@ -114,6 +126,7 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";
+	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String IS_READ_ONLY = "isReadOnly";
@@ -135,7 +148,11 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String ANNOTATED_ELEMENT = "annotatedElement";
 	public static final String IS_ABSTRACT = "isAbstract";
+	public static final String DIFFERENCING_TYPE = "differencingType";
+	public static final String OWNED_UNIONING = "ownedUnioning";
+	public static final String UNIONING_TYPE = "unioningType";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
+	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 
 }

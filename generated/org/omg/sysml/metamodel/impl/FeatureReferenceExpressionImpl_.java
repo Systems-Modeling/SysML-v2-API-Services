@@ -8,6 +8,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.Behavior;
+import org.omg.sysml.metamodel.Differencing;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -18,6 +19,7 @@ import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
 import org.omg.sysml.metamodel.Import;
+import org.omg.sysml.metamodel.Intersecting;
 import org.omg.sysml.metamodel.Membership;
 import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
@@ -26,6 +28,7 @@ import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.TypeFeaturing;
+import org.omg.sysml.metamodel.Unioning;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(FeatureReferenceExpressionImpl.class)
@@ -39,6 +42,7 @@ public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.life
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Type> type;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Feature> output;
 	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isSufficient;
+	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, UUID> elementId;
@@ -48,6 +52,7 @@ public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.life
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Feature> ownedFeature;
 	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, String> qualifiedName;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Documentation> documentation;
+	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Type> intersectingType;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Feature> endFeature;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Feature> directedFeature;
 	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isEnd;
@@ -61,6 +66,7 @@ public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.life
 	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Membership> membership;
 	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isPortion;
+	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isImpliedIncluded;
 	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isReadOnly;
@@ -83,7 +89,11 @@ public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.life
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, FeatureMembership> featureMembership;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Import> ownedImport;
 	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isAbstract;
+	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Type> differencingType;
+	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Unioning> ownedUnioning;
+	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Type> unioningType;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Specialization> ownedSpecialization;
+	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, FeatureInverting> ownedFeatureInverting;
 
 	public static final String CHAINING_FEATURE = "chainingFeature";
@@ -94,6 +104,7 @@ public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.life
 	public static final String TYPE = "type";
 	public static final String OUTPUT = "output";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
@@ -103,6 +114,7 @@ public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.life
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
+	public static final String INTERSECTING_TYPE = "intersectingType";
 	public static final String END_FEATURE = "endFeature";
 	public static final String DIRECTED_FEATURE = "directedFeature";
 	public static final String IS_END = "isEnd";
@@ -116,6 +128,7 @@ public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.life
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";
+	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String IS_READ_ONLY = "isReadOnly";
@@ -138,7 +151,11 @@ public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.life
 	public static final String FEATURE_MEMBERSHIP = "featureMembership";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String IS_ABSTRACT = "isAbstract";
+	public static final String DIFFERENCING_TYPE = "differencingType";
+	public static final String OWNED_UNIONING = "ownedUnioning";
+	public static final String UNIONING_TYPE = "unioningType";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
+	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 
 }

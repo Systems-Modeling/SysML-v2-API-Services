@@ -26,6 +26,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface MetadataUsage extends ItemUsage, MetadataFeature, SysMLType {
+public interface MetadataUsage extends MetadataFeature, ItemUsage, SysMLType {
     Metaclass getMetadataDefinition();
 }

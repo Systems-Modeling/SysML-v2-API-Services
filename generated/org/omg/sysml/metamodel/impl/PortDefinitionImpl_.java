@@ -16,6 +16,7 @@ import org.omg.sysml.metamodel.CaseUsage;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
+import org.omg.sysml.metamodel.Differencing;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -25,8 +26,10 @@ import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FlowConnectionUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
+import org.omg.sysml.metamodel.Intersecting;
 import org.omg.sysml.metamodel.ItemUsage;
 import org.omg.sysml.metamodel.Membership;
+import org.omg.sysml.metamodel.MetadataUsage;
 import org.omg.sysml.metamodel.OccurrenceUsage;
 import org.omg.sysml.metamodel.PartUsage;
 import org.omg.sysml.metamodel.PortUsage;
@@ -39,6 +42,8 @@ import org.omg.sysml.metamodel.StateUsage;
 import org.omg.sysml.metamodel.Subclassification;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.TransitionUsage;
+import org.omg.sysml.metamodel.Type;
+import org.omg.sysml.metamodel.Unioning;
 import org.omg.sysml.metamodel.Usage;
 import org.omg.sysml.metamodel.UseCaseUsage;
 import org.omg.sysml.metamodel.VariantMembership;
@@ -61,9 +66,11 @@ public abstract class PortDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<PortDefinitionImpl, RenderingUsage> ownedRendering;
 	public static volatile ListAttribute<PortDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile ListAttribute<PortDefinitionImpl, Feature> output;
+	public static volatile ListAttribute<PortDefinitionImpl, MetadataUsage> ownedMetadata;
 	public static volatile CollectionAttribute<PortDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<PortDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<PortDefinitionImpl, Boolean> isSufficient;
+	public static volatile ListAttribute<PortDefinitionImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<PortDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<PortDefinitionImpl, TextualRepresentation> textualRepresentation;
 	public static volatile ListAttribute<PortDefinitionImpl, Annotation> ownedAnnotation;
@@ -71,6 +78,7 @@ public abstract class PortDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<PortDefinitionImpl, Feature> ownedFeature;
 	public static volatile SingularAttribute<PortDefinitionImpl, String> qualifiedName;
 	public static volatile ListAttribute<PortDefinitionImpl, Documentation> documentation;
+	public static volatile ListAttribute<PortDefinitionImpl, Type> intersectingType;
 	public static volatile ListAttribute<PortDefinitionImpl, Feature> endFeature;
 	public static volatile ListAttribute<PortDefinitionImpl, Feature> directedFeature;
 	public static volatile ListAttribute<PortDefinitionImpl, AllocationUsage> ownedAllocation;
@@ -92,6 +100,7 @@ public abstract class PortDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<PortDefinitionImpl, StateUsage> ownedState;
 	public static volatile SingularAttribute<PortDefinitionImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<PortDefinitionImpl, Membership> membership;
+	public static volatile SingularAttribute<PortDefinitionImpl, Boolean> isImpliedIncluded;
 	public static volatile SingularAttribute<PortDefinitionImpl, Boolean> isVariation;
 	public static volatile ListAttribute<PortDefinitionImpl, Feature> feature;
 	public static volatile ListAttribute<PortDefinitionImpl, Membership> inheritedMembership;
@@ -111,10 +120,14 @@ public abstract class PortDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<PortDefinitionImpl, Import> ownedImport;
 	public static volatile ListAttribute<PortDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<PortDefinitionImpl, Boolean> isAbstract;
+	public static volatile ListAttribute<PortDefinitionImpl, Type> differencingType;
 	public static volatile CollectionAttribute<PortDefinitionImpl, VariantMembership> variantMembership;
+	public static volatile ListAttribute<PortDefinitionImpl, Unioning> ownedUnioning;
+	public static volatile ListAttribute<PortDefinitionImpl, Type> unioningType;
 	public static volatile ListAttribute<PortDefinitionImpl, Specialization> ownedSpecialization;
 	public static volatile CollectionAttribute<PortDefinitionImpl, ConcernUsage> ownedConcern;
 	public static volatile ListAttribute<PortDefinitionImpl, AttributeUsage> ownedAttribute;
+	public static volatile ListAttribute<PortDefinitionImpl, Intersecting> ownedIntersecting;
 	public static volatile ListAttribute<PortDefinitionImpl, PartUsage> ownedPart;
 
 	public static final String DIRECTED_USAGE = "directedUsage";
@@ -128,9 +141,11 @@ public abstract class PortDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_RENDERING = "ownedRendering";
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
+	public static final String OWNED_METADATA = "ownedMetadata";
 	public static final String VARIANT = "variant";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -138,6 +153,7 @@ public abstract class PortDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
+	public static final String INTERSECTING_TYPE = "intersectingType";
 	public static final String END_FEATURE = "endFeature";
 	public static final String DIRECTED_FEATURE = "directedFeature";
 	public static final String OWNED_ALLOCATION = "ownedAllocation";
@@ -159,6 +175,7 @@ public abstract class PortDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_STATE = "ownedState";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
+	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
@@ -178,10 +195,14 @@ public abstract class PortDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
+	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
+	public static final String OWNED_UNIONING = "ownedUnioning";
+	public static final String UNIONING_TYPE = "unioningType";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String OWNED_CONCERN = "ownedConcern";
 	public static final String OWNED_ATTRIBUTE = "ownedAttribute";
+	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 	public static final String OWNED_PART = "ownedPart";
 
 }

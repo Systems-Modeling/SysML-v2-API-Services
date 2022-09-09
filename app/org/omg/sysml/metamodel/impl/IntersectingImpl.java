@@ -62,14 +62,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.HashSet;
 
-@Entity(name = "PrefixCommentImpl")
-@SecondaryTable(name = "PrefixComment")
-@org.hibernate.annotations.Table(appliesTo = "PrefixComment", fetch = FetchMode.SELECT, optional = false)
-// @info.archinnov.achilles.annotations.Table(table = "PrefixComment")
-@DiscriminatorValue(value = "PrefixComment")
-@JsonTypeName(value = "PrefixComment")
+@Entity(name = "IntersectingImpl")
+@SecondaryTable(name = "Intersecting")
+@org.hibernate.annotations.Table(appliesTo = "Intersecting", fetch = FetchMode.SELECT, optional = false)
+// @info.archinnov.achilles.annotations.Table(table = "Intersecting")
+@DiscriminatorValue(value = "Intersecting")
+@JsonTypeName(value = "Intersecting")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class PrefixCommentImpl extends SysMLTypeImpl implements PrefixComment {
+public class IntersectingImpl extends SysMLTypeImpl implements Intersecting {
     // @info.archinnov.achilles.annotations.Column("aliasIds")
     private List<String> aliasIds;
 
@@ -77,8 +77,8 @@ public class PrefixCommentImpl extends SysMLTypeImpl implements PrefixComment {
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     @ElementCollection(targetClass = String.class)
-    @CollectionTable(name = "PrefixComment_aliasIds",
-            joinColumns = @JoinColumn(name = "PrefixComment_id"))
+    @CollectionTable(name = "Intersecting_aliasIds",
+            joinColumns = @JoinColumn(name = "Intersecting_id"))
     public List<String> getAliasIds() {
         if (aliasIds == null) {
             aliasIds = new ArrayList<>();
@@ -94,74 +94,6 @@ public class PrefixCommentImpl extends SysMLTypeImpl implements PrefixComment {
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("annotatedElement")
-    private List<Element> annotatedElement;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PrefixComment_annotatedElement",
-            joinColumns = @JoinColumn(name = "class_id"),
-            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public List<Element> getAnnotatedElement() {
-        if (annotatedElement == null) {
-            annotatedElement = new ArrayList<>();
-        }
-        return annotatedElement;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
-    public void setAnnotatedElement(List<Element> annotatedElement) {
-        this.annotatedElement = annotatedElement;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("annotation")
-    private List<Annotation> annotation;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PrefixComment_annotation",
-            joinColumns = @JoinColumn(name = "class_id"),
-            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public List<Annotation> getAnnotation() {
-        if (annotation == null) {
-            annotation = new ArrayList<>();
-        }
-        return annotation;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AnnotationImpl.class)
-    public void setAnnotation(List<Annotation> annotation) {
-        this.annotation = annotation;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("body")
-    private String body;
-
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "body", table = "PrefixComment")
-    public String getBody() {
-        return body;
-    }
-
-    @JsonSetter
-    public void setBody(String body) {
-        this.body = body;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("documentation")
     private List<Documentation> documentation;
 
@@ -169,7 +101,7 @@ public class PrefixCommentImpl extends SysMLTypeImpl implements PrefixComment {
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "DocumentationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PrefixComment_documentation",
+    @JoinTable(name = "Intersecting_documentation",
             joinColumns = @JoinColumn(name = "class_id"),
             inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Documentation> getDocumentation() {
@@ -195,7 +127,7 @@ public class PrefixCommentImpl extends SysMLTypeImpl implements PrefixComment {
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "effectiveName", table = "PrefixComment")
+    @javax.persistence.Column(name = "effectiveName", table = "Intersecting")
     public String getEffectiveName() {
         return effectiveName;
     }
@@ -211,7 +143,7 @@ public class PrefixCommentImpl extends SysMLTypeImpl implements PrefixComment {
     private java.util.UUID elementId;
 
     @JsonGetter
-    @javax.persistence.Column(name = "elementId", table = "PrefixComment")
+    @javax.persistence.Column(name = "elementId", table = "Intersecting")
     public java.util.UUID getElementId() {
         return elementId;
     }
@@ -223,20 +155,53 @@ public class PrefixCommentImpl extends SysMLTypeImpl implements PrefixComment {
 
 
 
-    // @info.archinnov.achilles.annotations.Column("locale")
-    private String locale;
+    // @info.archinnov.achilles.annotations.Column("intersectingType")
+    private Type intersectingType;
 
     @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "locale", table = "PrefixComment")
-    public String getLocale() {
-        return locale;
+    @JsonSerialize(using = DataSerializer.class)
+    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "intersectingType_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "intersectingType_id", table = "Intersecting")
+    public Type getIntersectingType() {
+        return intersectingType;
     }
 
     @JsonSetter
-    public void setLocale(String locale) {
-        this.locale = locale;
+    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
+    public void setIntersectingType(Type intersectingType) {
+        this.intersectingType = intersectingType;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isImplied")
+    private Boolean isImplied;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isImplied", table = "Intersecting")
+    public Boolean getIsImplied() {
+        return isImplied;
+    }
+
+    @JsonSetter
+    public void setIsImplied(Boolean isImplied) {
+        this.isImplied = isImplied;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isImpliedIncluded")
+    private Boolean isImpliedIncluded;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isImpliedIncluded", table = "Intersecting")
+    public Boolean getIsImpliedIncluded() {
+        return isImpliedIncluded;
+    }
+
+    @JsonSetter
+    public void setIsImpliedIncluded(Boolean isImpliedIncluded) {
+        this.isImpliedIncluded = isImpliedIncluded;
     }
 
 
@@ -247,7 +212,7 @@ public class PrefixCommentImpl extends SysMLTypeImpl implements PrefixComment {
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "name", table = "PrefixComment")
+    @javax.persistence.Column(name = "name", table = "Intersecting")
     public String getName() {
         return name;
     }
@@ -267,7 +232,7 @@ public class PrefixCommentImpl extends SysMLTypeImpl implements PrefixComment {
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PrefixComment_ownedAnnotation",
+    @JoinTable(name = "Intersecting_ownedAnnotation",
             joinColumns = @JoinColumn(name = "class_id"),
             inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Annotation> getOwnedAnnotation() {
@@ -293,7 +258,7 @@ public class PrefixCommentImpl extends SysMLTypeImpl implements PrefixComment {
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PrefixComment_ownedElement",
+    @JoinTable(name = "Intersecting_ownedElement",
             joinColumns = @JoinColumn(name = "class_id"),
             inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Element> getOwnedElement() {
@@ -311,13 +276,37 @@ public class PrefixCommentImpl extends SysMLTypeImpl implements PrefixComment {
 
 
 
+    // @info.archinnov.achilles.annotations.Column("ownedRelatedElement")
+    private List<Element> ownedRelatedElement;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Intersecting_ownedRelatedElement",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Element> getOwnedRelatedElement() {
+        if (ownedRelatedElement == null) {
+            ownedRelatedElement = new ArrayList<>();
+        }
+        return ownedRelatedElement;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
+    public void setOwnedRelatedElement(List<Element> ownedRelatedElement) {
+        this.ownedRelatedElement = ownedRelatedElement;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("ownedRelationship")
     private List<Relationship> ownedRelationship;
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     @ManyToAny(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PrefixComment_ownedRelationship",
+    @JoinTable(name = "Intersecting_ownedRelationship",
             joinColumns = @JoinColumn(name = "class_id"),
             inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Relationship> getOwnedRelationship() {
@@ -343,7 +332,7 @@ public class PrefixCommentImpl extends SysMLTypeImpl implements PrefixComment {
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owner_type"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owner_id", table = "PrefixComment")
+    @JoinColumn(name = "owner_id", table = "Intersecting")
     public Element getOwner() {
         return owner;
     }
@@ -356,13 +345,15 @@ public class PrefixCommentImpl extends SysMLTypeImpl implements PrefixComment {
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private OwningMembership owningMembership;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "OwningMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembership_type"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningMembership_id", table = "PrefixComment")
+    @JoinColumn(name = "owningMembership_id", table = "Intersecting")
     public OwningMembership getOwningMembership() {
         return owningMembership;
     }
@@ -383,7 +374,7 @@ public class PrefixCommentImpl extends SysMLTypeImpl implements PrefixComment {
     @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
     @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "owningNamespace_type"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningNamespace_id", table = "PrefixComment")
+    @JoinColumn(name = "owningNamespace_id", table = "Intersecting")
     public Namespace getOwningNamespace() {
         return owningNamespace;
     }
@@ -396,13 +387,32 @@ public class PrefixCommentImpl extends SysMLTypeImpl implements PrefixComment {
 
 
 
+    // @info.archinnov.achilles.annotations.Column("owningRelatedElement")
+    private Element owningRelatedElement;
+
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelatedElement_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningRelatedElement_id", table = "Intersecting")
+    public Element getOwningRelatedElement() {
+        return owningRelatedElement;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
+    public void setOwningRelatedElement(Element owningRelatedElement) {
+        this.owningRelatedElement = owningRelatedElement;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("owningRelationship")
     private Relationship owningRelationship;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
     @Any(metaDef = "RelationshipMetaDef", metaColumn = @javax.persistence.Column(name = "owningRelationship_type"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningRelationship_id", table = "PrefixComment")
+    @JoinColumn(name = "owningRelationship_id", table = "Intersecting")
     public Relationship getOwningRelationship() {
         return owningRelationship;
     }
@@ -423,7 +433,7 @@ public class PrefixCommentImpl extends SysMLTypeImpl implements PrefixComment {
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
     // @javax.persistence.Transient
-    @javax.persistence.Column(name = "qualifiedName", table = "PrefixComment")
+    @javax.persistence.Column(name = "qualifiedName", table = "Intersecting")
     public String getQualifiedName() {
         return qualifiedName;
     }
@@ -435,13 +445,39 @@ public class PrefixCommentImpl extends SysMLTypeImpl implements PrefixComment {
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("relatedElement")
+    private List<Element> relatedElement;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Intersecting_relatedElement",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Element> getRelatedElement() {
+        if (relatedElement == null) {
+            relatedElement = new ArrayList<>();
+        }
+        return relatedElement;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
+    public void setRelatedElement(List<Element> relatedElement) {
+        this.relatedElement = relatedElement;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("shortName")
     private String shortName;
 
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "shortName", table = "PrefixComment")
+    @javax.persistence.Column(name = "shortName", table = "Intersecting")
     public String getShortName() {
         return shortName;
     }
@@ -449,6 +485,54 @@ public class PrefixCommentImpl extends SysMLTypeImpl implements PrefixComment {
     @JsonSetter
     public void setShortName(String shortName) {
         this.shortName = shortName;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("source")
+    private List<Element> source;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Intersecting_source",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Element> getSource() {
+        if (source == null) {
+            source = new ArrayList<>();
+        }
+        return source;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
+    public void setSource(List<Element> source) {
+        this.source = source;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("target")
+    private List<Element> target;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "Intersecting_target",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Element> getTarget() {
+        if (target == null) {
+            target = new ArrayList<>();
+        }
+        return target;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
+    public void setTarget(List<Element> target) {
+        this.target = target;
     }
 
 
@@ -461,7 +545,7 @@ public class PrefixCommentImpl extends SysMLTypeImpl implements PrefixComment {
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "TextualRepresentationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "PrefixComment_textualRepresentation",
+    @JoinTable(name = "Intersecting_textualRepresentation",
             joinColumns = @JoinColumn(name = "class_id"),
             inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<TextualRepresentation> getTextualRepresentation() {
@@ -475,6 +559,27 @@ public class PrefixCommentImpl extends SysMLTypeImpl implements PrefixComment {
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TextualRepresentationImpl.class)
     public void setTextualRepresentation(List<TextualRepresentation> textualRepresentation) {
         this.textualRepresentation = textualRepresentation;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("typeIntersected")
+    private Type typeIntersected;
+
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "typeIntersected_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "typeIntersected_id", table = "Intersecting")
+    public Type getTypeIntersected() {
+        return typeIntersected;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
+    public void setTypeIntersected(Type typeIntersected) {
+        this.typeIntersected = typeIntersected;
     }
 
 

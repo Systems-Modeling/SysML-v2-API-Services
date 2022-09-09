@@ -10,6 +10,7 @@
         "effectiveName": {"@type": "xsd:string"},
         "elementId": {"@type": "dcterms:identifier"},
         "importedMembership": {"@type": "@id"},
+        "isImpliedIncluded": {"@type": "xsd:boolean"},
         "member": {"@type": "@id"},
         "membership": {"@type": "@id"},
         "name": {"@type": "xsd:string"},

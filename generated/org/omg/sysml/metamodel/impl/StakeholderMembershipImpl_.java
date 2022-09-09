@@ -18,6 +18,7 @@ public abstract class StakeholderMembershipImpl_ extends org.omg.sysml.lifecycle
 
 	public static volatile SingularAttribute<StakeholderMembershipImpl, UUID> elementId;
 	public static volatile ListAttribute<StakeholderMembershipImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<StakeholderMembershipImpl, Boolean> isImplied;
 	public static volatile ListAttribute<StakeholderMembershipImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<StakeholderMembershipImpl, Element> ownedElement;
 	public static volatile ListAttribute<StakeholderMembershipImpl, String> aliasIds;
@@ -30,6 +31,7 @@ public abstract class StakeholderMembershipImpl_ extends org.omg.sysml.lifecycle
 	public static volatile ListAttribute<StakeholderMembershipImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<StakeholderMembershipImpl, Element> source;
 	public static volatile SingularAttribute<StakeholderMembershipImpl, String> memberElementId;
+	public static volatile SingularAttribute<StakeholderMembershipImpl, Boolean> isImpliedIncluded;
 	public static volatile ListAttribute<StakeholderMembershipImpl, Element> target;
 	public static volatile ListAttribute<StakeholderMembershipImpl, Element> relatedElement;
 	public static volatile SingularAttribute<StakeholderMembershipImpl, String> name;
@@ -41,6 +43,7 @@ public abstract class StakeholderMembershipImpl_ extends org.omg.sysml.lifecycle
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";
@@ -53,6 +56,7 @@ public abstract class StakeholderMembershipImpl_ extends org.omg.sysml.lifecycle
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
 	public static final String MEMBER_ELEMENT_ID = "memberElementId";
+	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String TARGET = "target";
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NAME = "name";

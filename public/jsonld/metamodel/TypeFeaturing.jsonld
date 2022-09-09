@@ -9,8 +9,11 @@
         "documentation": {"@type": "@id"},
         "effectiveName": {"@type": "xsd:string"},
         "elementId": {"@type": "dcterms:identifier"},
+        "feature": {"@type": "@id"},
         "featureOfType": {"@type": "@id"},
         "featuringType": {"@type": "@id"},
+        "isImplied": {"@type": "xsd:boolean"},
+        "isImpliedIncluded": {"@type": "xsd:boolean"},
         "name": {"@type": "xsd:string"},
         "ownedAnnotation": {"@type": "@id"},
         "ownedElement": {"@type": "@id"},
@@ -27,7 +30,8 @@
         "shortName": {"@type": "xsd:string"},
         "source": {"@type": "@id"},
         "target": {"@type": "@id"},
-        "textualRepresentation": {"@type": "@id"}
+        "textualRepresentation": {"@type": "@id"},
+        "type": {"@type": "@id"}
 
     }
 }

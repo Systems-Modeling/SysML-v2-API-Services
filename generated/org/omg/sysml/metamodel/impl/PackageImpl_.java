@@ -29,6 +29,7 @@ public abstract class PackageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl
 	public static volatile ListAttribute<PackageImpl, Documentation> documentation;
 	public static volatile ListAttribute<PackageImpl, Membership> membership;
 	public static volatile ListAttribute<PackageImpl, Import> ownedImport;
+	public static volatile SingularAttribute<PackageImpl, Boolean> isImpliedIncluded;
 	public static volatile ListAttribute<PackageImpl, Expression> filterCondition;
 	public static volatile ListAttribute<PackageImpl, Element> member;
 	public static volatile SingularAttribute<PackageImpl, String> name;
@@ -48,6 +49,7 @@ public abstract class PackageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl
 	public static final String DOCUMENTATION = "documentation";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_IMPORT = "ownedImport";
+	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String FILTER_CONDITION = "filterCondition";
 	public static final String MEMBER = "member";
 	public static final String NAME = "name";

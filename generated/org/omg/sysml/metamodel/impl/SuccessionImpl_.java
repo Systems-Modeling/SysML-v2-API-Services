@@ -8,6 +8,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.Association;
+import org.omg.sysml.metamodel.Differencing;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -19,6 +20,7 @@ import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
 import org.omg.sysml.metamodel.Import;
+import org.omg.sysml.metamodel.Intersecting;
 import org.omg.sysml.metamodel.Membership;
 import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
@@ -28,6 +30,7 @@ import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.TypeFeaturing;
+import org.omg.sysml.metamodel.Unioning;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(SuccessionImpl.class)
@@ -43,15 +46,18 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile ListAttribute<SuccessionImpl, Feature> output;
 	public static volatile CollectionAttribute<SuccessionImpl, Expression> guardExpression;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isSufficient;
+	public static volatile ListAttribute<SuccessionImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<SuccessionImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<SuccessionImpl, UUID> elementId;
 	public static volatile ListAttribute<SuccessionImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isDerived;
+	public static volatile SingularAttribute<SuccessionImpl, Boolean> isImplied;
 	public static volatile ListAttribute<SuccessionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<SuccessionImpl, Feature> ownedFeature;
 	public static volatile SingularAttribute<SuccessionImpl, String> qualifiedName;
 	public static volatile ListAttribute<SuccessionImpl, Documentation> documentation;
+	public static volatile ListAttribute<SuccessionImpl, Type> intersectingType;
 	public static volatile ListAttribute<SuccessionImpl, Feature> endFeature;
 	public static volatile ListAttribute<SuccessionImpl, Feature> directedFeature;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isEnd;
@@ -61,18 +67,19 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile ListAttribute<SuccessionImpl, Element> relatedElement;
 	public static volatile CollectionAttribute<SuccessionImpl, Step> effectStep;
 	public static volatile SingularAttribute<SuccessionImpl, String> name;
-	public static volatile CollectionAttribute<SuccessionImpl, Feature> connectorEnd;
+	public static volatile ListAttribute<SuccessionImpl, Feature> connectorEnd;
 	public static volatile SingularAttribute<SuccessionImpl, String> shortName;
 	public static volatile ListAttribute<SuccessionImpl, Element> ownedMember;
 	public static volatile ListAttribute<SuccessionImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<SuccessionImpl, Disjoining> ownedDisjoining;
-	public static volatile CollectionAttribute<SuccessionImpl, Association> association;
+	public static volatile ListAttribute<SuccessionImpl, Association> association;
 	public static volatile ListAttribute<SuccessionImpl, Membership> membership;
 	public static volatile ListAttribute<SuccessionImpl, Element> ownedRelatedElement;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isPortion;
 	public static volatile CollectionAttribute<SuccessionImpl, Step> triggerStep;
+	public static volatile SingularAttribute<SuccessionImpl, Boolean> isImpliedIncluded;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isNonunique;
-	public static volatile CollectionAttribute<SuccessionImpl, Feature> targetFeature;
+	public static volatile ListAttribute<SuccessionImpl, Feature> targetFeature;
 	public static volatile ListAttribute<SuccessionImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isReadOnly;
 	public static volatile ListAttribute<SuccessionImpl, FeatureTyping> ownedTyping;
@@ -93,8 +100,12 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<SuccessionImpl, Feature> relatedFeature;
 	public static volatile ListAttribute<SuccessionImpl, Element> target;
+	public static volatile ListAttribute<SuccessionImpl, Type> differencingType;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isDirected;
+	public static volatile ListAttribute<SuccessionImpl, Unioning> ownedUnioning;
+	public static volatile ListAttribute<SuccessionImpl, Type> unioningType;
 	public static volatile ListAttribute<SuccessionImpl, Specialization> ownedSpecialization;
+	public static volatile ListAttribute<SuccessionImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<SuccessionImpl, FeatureInverting> ownedFeatureInverting;
 
 	public static final String CHAINING_FEATURE = "chainingFeature";
@@ -107,15 +118,18 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String OUTPUT = "output";
 	public static final String GUARD_EXPRESSION = "guardExpression";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IS_DERIVED = "isDerived";
+	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
+	public static final String INTERSECTING_TYPE = "intersectingType";
 	public static final String END_FEATURE = "endFeature";
 	public static final String DIRECTED_FEATURE = "directedFeature";
 	public static final String IS_END = "isEnd";
@@ -135,6 +149,7 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String IS_PORTION = "isPortion";
 	public static final String TRIGGER_STEP = "triggerStep";
+	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String TARGET_FEATURE = "targetFeature";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
@@ -157,8 +172,12 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String TARGET = "target";
+	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String IS_DIRECTED = "isDirected";
+	public static final String OWNED_UNIONING = "ownedUnioning";
+	public static final String UNIONING_TYPE = "unioningType";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
+	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 
 }

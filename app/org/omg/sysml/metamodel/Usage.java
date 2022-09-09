@@ -96,4 +96,6 @@ public interface Usage extends Feature, SysMLType {
     Boolean getIsReference();
 
     Collection<? extends FlowConnectionUsage> getNestedFlow();
+
+    List<? extends MetadataUsage> getNestedMetadata();
 }

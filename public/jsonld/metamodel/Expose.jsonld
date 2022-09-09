@@ -12,6 +12,8 @@
         "importOwningNamespace": {"@type": "@id"},
         "importedMemberName": {"@type": "xsd:string"},
         "importedNamespace": {"@type": "@id"},
+        "isImplied": {"@type": "xsd:boolean"},
+        "isImpliedIncluded": {"@type": "xsd:boolean"},
         "isImportAll": {"@type": "xsd:boolean"},
         "isRecursive": {"@type": "xsd:boolean"},
         "name": {"@type": "xsd:string"},

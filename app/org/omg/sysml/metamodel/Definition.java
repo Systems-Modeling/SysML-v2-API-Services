@@ -88,4 +88,6 @@ public interface Definition extends Classifier, SysMLType {
     List<? extends UseCaseUsage> getOwnedUseCase();
 
     Collection<? extends FlowConnectionUsage> getOwnedFlow();
+
+    List<? extends MetadataUsage> getOwnedMetadata();
 }

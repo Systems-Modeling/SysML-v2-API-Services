@@ -16,6 +16,7 @@ import org.omg.sysml.metamodel.CaseUsage;
 import org.omg.sysml.metamodel.ConcernUsage;
 import org.omg.sysml.metamodel.ConnectorAsUsage;
 import org.omg.sysml.metamodel.ConstraintUsage;
+import org.omg.sysml.metamodel.Differencing;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -25,8 +26,10 @@ import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FlowConnectionUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
+import org.omg.sysml.metamodel.Intersecting;
 import org.omg.sysml.metamodel.ItemUsage;
 import org.omg.sysml.metamodel.Membership;
+import org.omg.sysml.metamodel.MetadataUsage;
 import org.omg.sysml.metamodel.OccurrenceUsage;
 import org.omg.sysml.metamodel.PartUsage;
 import org.omg.sysml.metamodel.PortUsage;
@@ -40,6 +43,8 @@ import org.omg.sysml.metamodel.Step;
 import org.omg.sysml.metamodel.Subclassification;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.TransitionUsage;
+import org.omg.sysml.metamodel.Type;
+import org.omg.sysml.metamodel.Unioning;
 import org.omg.sysml.metamodel.Usage;
 import org.omg.sysml.metamodel.UseCaseUsage;
 import org.omg.sysml.metamodel.VariantMembership;
@@ -62,10 +67,12 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<ActionDefinitionImpl, RenderingUsage> ownedRendering;
 	public static volatile ListAttribute<ActionDefinitionImpl, ConstraintUsage> ownedConstraint;
 	public static volatile ListAttribute<ActionDefinitionImpl, Feature> output;
+	public static volatile ListAttribute<ActionDefinitionImpl, MetadataUsage> ownedMetadata;
 	public static volatile CollectionAttribute<ActionDefinitionImpl, Usage> variant;
 	public static volatile ListAttribute<ActionDefinitionImpl, ActionUsage> action;
 	public static volatile ListAttribute<ActionDefinitionImpl, ItemUsage> ownedItem;
 	public static volatile SingularAttribute<ActionDefinitionImpl, Boolean> isSufficient;
+	public static volatile ListAttribute<ActionDefinitionImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<ActionDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<ActionDefinitionImpl, TextualRepresentation> textualRepresentation;
 	public static volatile ListAttribute<ActionDefinitionImpl, Annotation> ownedAnnotation;
@@ -73,6 +80,7 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<ActionDefinitionImpl, Feature> ownedFeature;
 	public static volatile SingularAttribute<ActionDefinitionImpl, String> qualifiedName;
 	public static volatile ListAttribute<ActionDefinitionImpl, Documentation> documentation;
+	public static volatile ListAttribute<ActionDefinitionImpl, Type> intersectingType;
 	public static volatile ListAttribute<ActionDefinitionImpl, Feature> endFeature;
 	public static volatile ListAttribute<ActionDefinitionImpl, Feature> directedFeature;
 	public static volatile ListAttribute<ActionDefinitionImpl, AllocationUsage> ownedAllocation;
@@ -94,6 +102,7 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<ActionDefinitionImpl, StateUsage> ownedState;
 	public static volatile SingularAttribute<ActionDefinitionImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<ActionDefinitionImpl, Membership> membership;
+	public static volatile SingularAttribute<ActionDefinitionImpl, Boolean> isImpliedIncluded;
 	public static volatile SingularAttribute<ActionDefinitionImpl, Boolean> isVariation;
 	public static volatile ListAttribute<ActionDefinitionImpl, Feature> feature;
 	public static volatile ListAttribute<ActionDefinitionImpl, Membership> inheritedMembership;
@@ -114,11 +123,15 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<ActionDefinitionImpl, Import> ownedImport;
 	public static volatile ListAttribute<ActionDefinitionImpl, RequirementUsage> ownedRequirement;
 	public static volatile SingularAttribute<ActionDefinitionImpl, Boolean> isAbstract;
+	public static volatile ListAttribute<ActionDefinitionImpl, Type> differencingType;
 	public static volatile CollectionAttribute<ActionDefinitionImpl, VariantMembership> variantMembership;
+	public static volatile ListAttribute<ActionDefinitionImpl, Unioning> ownedUnioning;
+	public static volatile ListAttribute<ActionDefinitionImpl, Type> unioningType;
 	public static volatile ListAttribute<ActionDefinitionImpl, Specialization> ownedSpecialization;
 	public static volatile CollectionAttribute<ActionDefinitionImpl, ConcernUsage> ownedConcern;
 	public static volatile CollectionAttribute<ActionDefinitionImpl, Step> step;
 	public static volatile ListAttribute<ActionDefinitionImpl, AttributeUsage> ownedAttribute;
+	public static volatile ListAttribute<ActionDefinitionImpl, Intersecting> ownedIntersecting;
 	public static volatile ListAttribute<ActionDefinitionImpl, PartUsage> ownedPart;
 
 	public static final String DIRECTED_USAGE = "directedUsage";
@@ -132,10 +145,12 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String OWNED_RENDERING = "ownedRendering";
 	public static final String OWNED_CONSTRAINT = "ownedConstraint";
 	public static final String OUTPUT = "output";
+	public static final String OWNED_METADATA = "ownedMetadata";
 	public static final String VARIANT = "variant";
 	public static final String ACTION = "action";
 	public static final String OWNED_ITEM = "ownedItem";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -143,6 +158,7 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
+	public static final String INTERSECTING_TYPE = "intersectingType";
 	public static final String END_FEATURE = "endFeature";
 	public static final String DIRECTED_FEATURE = "directedFeature";
 	public static final String OWNED_ALLOCATION = "ownedAllocation";
@@ -164,6 +180,7 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String OWNED_STATE = "ownedState";
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
+	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
@@ -184,11 +201,15 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String OWNED_REQUIREMENT = "ownedRequirement";
 	public static final String IS_ABSTRACT = "isAbstract";
+	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
+	public static final String OWNED_UNIONING = "ownedUnioning";
+	public static final String UNIONING_TYPE = "unioningType";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String OWNED_CONCERN = "ownedConcern";
 	public static final String STEP = "step";
 	public static final String OWNED_ATTRIBUTE = "ownedAttribute";
+	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 	public static final String OWNED_PART = "ownedPart";
 
 }
