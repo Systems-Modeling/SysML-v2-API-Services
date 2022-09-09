@@ -205,6 +205,22 @@ public class AnnotatingElementImpl extends SysMLTypeImpl implements AnnotatingEl
 
 
 
+    // @info.archinnov.achilles.annotations.Column("isImpliedIncluded")
+    private Boolean isImpliedIncluded;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isImpliedIncluded", table = "AnnotatingElement")
+    public Boolean getIsImpliedIncluded() {
+        return isImpliedIncluded;
+    }
+
+    @JsonSetter
+    public void setIsImpliedIncluded(Boolean isImpliedIncluded) {
+        this.isImpliedIncluded = isImpliedIncluded;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("name")
     private String name;
 
@@ -320,11 +336,13 @@ public class AnnotatingElementImpl extends SysMLTypeImpl implements AnnotatingEl
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private OwningMembership owningMembership;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "OwningMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembership_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningMembership_id", table = "AnnotatingElement")
     public OwningMembership getOwningMembership() {

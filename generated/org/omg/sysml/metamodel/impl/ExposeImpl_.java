@@ -18,6 +18,7 @@ public abstract class ExposeImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_
 
 	public static volatile SingularAttribute<ExposeImpl, UUID> elementId;
 	public static volatile ListAttribute<ExposeImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<ExposeImpl, Boolean> isImplied;
 	public static volatile ListAttribute<ExposeImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ExposeImpl, Element> ownedElement;
 	public static volatile SingularAttribute<ExposeImpl, String> importedMemberName;
@@ -28,6 +29,7 @@ public abstract class ExposeImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_
 	public static volatile ListAttribute<ExposeImpl, Documentation> documentation;
 	public static volatile ListAttribute<ExposeImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<ExposeImpl, Element> source;
+	public static volatile SingularAttribute<ExposeImpl, Boolean> isImpliedIncluded;
 	public static volatile ListAttribute<ExposeImpl, Element> target;
 	public static volatile SingularAttribute<ExposeImpl, Boolean> isRecursive;
 	public static volatile ListAttribute<ExposeImpl, Element> relatedElement;
@@ -38,6 +40,7 @@ public abstract class ExposeImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String IMPORTED_MEMBER_NAME = "importedMemberName";
@@ -48,6 +51,7 @@ public abstract class ExposeImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_
 	public static final String DOCUMENTATION = "documentation";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
+	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String TARGET = "target";
 	public static final String IS_RECURSIVE = "isRecursive";
 	public static final String RELATED_ELEMENT = "relatedElement";

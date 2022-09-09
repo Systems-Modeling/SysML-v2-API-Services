@@ -155,6 +155,25 @@ public class TypeFeaturingImpl extends SysMLTypeImpl implements TypeFeaturing {
 
 
 
+    // @info.archinnov.achilles.annotations.Column("feature")
+    private Feature feature;
+
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "feature_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "feature_id", table = "TypeFeaturing")
+    public Feature getFeature() {
+        return feature;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
+    public void setFeature(Feature feature) {
+        this.feature = feature;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("featureOfType")
     private Feature featureOfType;
 
@@ -189,6 +208,38 @@ public class TypeFeaturingImpl extends SysMLTypeImpl implements TypeFeaturing {
     @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
     public void setFeaturingType(Type featuringType) {
         this.featuringType = featuringType;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isImplied")
+    private Boolean isImplied;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isImplied", table = "TypeFeaturing")
+    public Boolean getIsImplied() {
+        return isImplied;
+    }
+
+    @JsonSetter
+    public void setIsImplied(Boolean isImplied) {
+        this.isImplied = isImplied;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isImpliedIncluded")
+    private Boolean isImpliedIncluded;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isImpliedIncluded", table = "TypeFeaturing")
+    public Boolean getIsImpliedIncluded() {
+        return isImpliedIncluded;
+    }
+
+    @JsonSetter
+    public void setIsImpliedIncluded(Boolean isImpliedIncluded) {
+        this.isImpliedIncluded = isImpliedIncluded;
     }
 
 
@@ -353,11 +404,13 @@ public class TypeFeaturingImpl extends SysMLTypeImpl implements TypeFeaturing {
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private OwningMembership owningMembership;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "OwningMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembership_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningMembership_id", table = "TypeFeaturing")
     public OwningMembership getOwningMembership() {
@@ -565,6 +618,25 @@ public class TypeFeaturingImpl extends SysMLTypeImpl implements TypeFeaturing {
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TextualRepresentationImpl.class)
     public void setTextualRepresentation(List<TextualRepresentation> textualRepresentation) {
         this.textualRepresentation = textualRepresentation;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("type")
+    private Type type;
+
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "type_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "type_id", table = "TypeFeaturing")
+    public Type getType() {
+        return type;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
+    public void setType(Type type) {
+        this.type = type;
     }
 
 

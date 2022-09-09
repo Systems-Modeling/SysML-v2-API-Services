@@ -26,6 +26,7 @@ public abstract class ElementImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl
 	public static volatile SingularAttribute<ElementImpl, String> name;
 	public static volatile SingularAttribute<ElementImpl, String> shortName;
 	public static volatile SingularAttribute<ElementImpl, String> effectiveName;
+	public static volatile SingularAttribute<ElementImpl, Boolean> isImpliedIncluded;
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
@@ -38,6 +39,7 @@ public abstract class ElementImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl
 	public static final String NAME = "name";
 	public static final String SHORT_NAME = "shortName";
 	public static final String EFFECTIVE_NAME = "effectiveName";
+	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 
 }
 

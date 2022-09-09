@@ -146,6 +146,32 @@ public class ConnectionDefinitionImpl extends SysMLTypeImpl implements Connectio
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("differencingType")
+    private List<Type> differencingType;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConnectionDefinition_differencingType",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Type> getDifferencingType() {
+        if (differencingType == null) {
+            differencingType = new ArrayList<>();
+        }
+        return differencingType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeImpl.class)
+    public void setDifferencingType(List<Type> differencingType) {
+        this.differencingType = differencingType;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("directedFeature")
     private List<Feature> directedFeature;
 
@@ -441,6 +467,32 @@ public class ConnectionDefinitionImpl extends SysMLTypeImpl implements Connectio
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("intersectingType")
+    private List<Type> intersectingType;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConnectionDefinition_intersectingType",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Type> getIntersectingType() {
+        if (intersectingType == null) {
+            intersectingType = new ArrayList<>();
+        }
+        return intersectingType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeImpl.class)
+    public void setIntersectingType(List<Type> intersectingType) {
+        this.intersectingType = intersectingType;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("isAbstract")
     private Boolean isAbstract;
 
@@ -471,6 +523,38 @@ public class ConnectionDefinitionImpl extends SysMLTypeImpl implements Connectio
     @JsonSetter
     public void setIsConjugated(Boolean isConjugated) {
         this.isConjugated = isConjugated;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isImplied")
+    private Boolean isImplied;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isImplied", table = "ConnectionDefinition")
+    public Boolean getIsImplied() {
+        return isImplied;
+    }
+
+    @JsonSetter
+    public void setIsImplied(Boolean isImplied) {
+        this.isImplied = isImplied;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isImpliedIncluded")
+    private Boolean isImpliedIncluded;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isImpliedIncluded", table = "ConnectionDefinition")
+    public Boolean getIsImpliedIncluded() {
+        return isImpliedIncluded;
+    }
+
+    @JsonSetter
+    public void setIsImpliedIncluded(Boolean isImpliedIncluded) {
+        this.isImpliedIncluded = isImpliedIncluded;
     }
 
 
@@ -943,6 +1027,32 @@ public class ConnectionDefinitionImpl extends SysMLTypeImpl implements Connectio
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedDifferencing")
+    private List<Differencing> ownedDifferencing;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "DifferencingMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConnectionDefinition_ownedDifferencing",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Differencing> getOwnedDifferencing() {
+        if (ownedDifferencing == null) {
+            ownedDifferencing = new ArrayList<>();
+        }
+        return ownedDifferencing;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DifferencingImpl.class)
+    public void setOwnedDifferencing(List<Differencing> ownedDifferencing) {
+        this.ownedDifferencing = ownedDifferencing;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedDisjoining")
     private Collection<Disjoining> ownedDisjoining;
 
@@ -1177,6 +1287,32 @@ public class ConnectionDefinitionImpl extends SysMLTypeImpl implements Connectio
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedIntersecting")
+    private List<Intersecting> ownedIntersecting;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "IntersectingMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConnectionDefinition_ownedIntersecting",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Intersecting> getOwnedIntersecting() {
+        if (ownedIntersecting == null) {
+            ownedIntersecting = new ArrayList<>();
+        }
+        return ownedIntersecting;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = IntersectingImpl.class)
+    public void setOwnedIntersecting(List<Intersecting> ownedIntersecting) {
+        this.ownedIntersecting = ownedIntersecting;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedItem")
     private List<ItemUsage> ownedItem;
 
@@ -1250,6 +1386,32 @@ public class ConnectionDefinitionImpl extends SysMLTypeImpl implements Connectio
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = MembershipImpl.class)
     public void setOwnedMembership(List<Membership> ownedMembership) {
         this.ownedMembership = ownedMembership;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedMetadata")
+    private List<MetadataUsage> ownedMetadata;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MetadataUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConnectionDefinition_ownedMetadata",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<MetadataUsage> getOwnedMetadata() {
+        if (ownedMetadata == null) {
+            ownedMetadata = new ArrayList<>();
+        }
+        return ownedMetadata;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = MetadataUsageImpl.class)
+    public void setOwnedMetadata(List<MetadataUsage> ownedMetadata) {
+        this.ownedMetadata = ownedMetadata;
     }
 
 
@@ -1563,6 +1725,32 @@ public class ConnectionDefinitionImpl extends SysMLTypeImpl implements Connectio
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedUnioning")
+    private List<Unioning> ownedUnioning;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "UnioningMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConnectionDefinition_ownedUnioning",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Unioning> getOwnedUnioning() {
+        if (ownedUnioning == null) {
+            ownedUnioning = new ArrayList<>();
+        }
+        return ownedUnioning;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = UnioningImpl.class)
+    public void setOwnedUnioning(List<Unioning> ownedUnioning) {
+        this.ownedUnioning = ownedUnioning;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedUsage")
     private List<Usage> ownedUsage;
 
@@ -1713,11 +1901,13 @@ public class ConnectionDefinitionImpl extends SysMLTypeImpl implements Connectio
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private OwningMembership owningMembership;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "OwningMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembership_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningMembership_id", table = "ConnectionDefinition")
     public OwningMembership getOwningMembership() {
@@ -1998,6 +2188,32 @@ public class ConnectionDefinitionImpl extends SysMLTypeImpl implements Connectio
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TextualRepresentationImpl.class)
     public void setTextualRepresentation(List<TextualRepresentation> textualRepresentation) {
         this.textualRepresentation = textualRepresentation;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("unioningType")
+    private List<Type> unioningType;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ConnectionDefinition_unioningType",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Type> getUnioningType() {
+        if (unioningType == null) {
+            unioningType = new ArrayList<>();
+        }
+        return unioningType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeImpl.class)
+    public void setUnioningType(List<Type> unioningType) {
+        this.unioningType = unioningType;
     }
 
 

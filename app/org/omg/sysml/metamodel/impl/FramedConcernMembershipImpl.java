@@ -155,40 +155,53 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
 
 
-    // @info.archinnov.achilles.annotations.Column("featureOfType")
-    private Feature featureOfType;
+    // @info.archinnov.achilles.annotations.Column("feature")
+    private Feature feature;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "featureOfType_type"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "featureOfType_id", table = "FramedConcernMembership")
-    public Feature getFeatureOfType() {
-        return featureOfType;
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "feature_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "feature_id", table = "FramedConcernMembership")
+    public Feature getFeature() {
+        return feature;
     }
 
     @JsonSetter
     @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
-    public void setFeatureOfType(Feature featureOfType) {
-        this.featureOfType = featureOfType;
+    public void setFeature(Feature feature) {
+        this.feature = feature;
     }
 
 
 
-    // @info.archinnov.achilles.annotations.Column("featuringType")
-    private Type featuringType;
+    // @info.archinnov.achilles.annotations.Column("isImplied")
+    private Boolean isImplied;
 
     @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "featuringType_type"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "featuringType_id", table = "FramedConcernMembership")
-    public Type getFeaturingType() {
-        return featuringType;
+    @javax.persistence.Column(name = "isImplied", table = "FramedConcernMembership")
+    public Boolean getIsImplied() {
+        return isImplied;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
-    public void setFeaturingType(Type featuringType) {
-        this.featuringType = featuringType;
+    public void setIsImplied(Boolean isImplied) {
+        this.isImplied = isImplied;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isImpliedIncluded")
+    private Boolean isImpliedIncluded;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isImpliedIncluded", table = "FramedConcernMembership")
+    public Boolean getIsImpliedIncluded() {
+        return isImpliedIncluded;
+    }
+
+    @JsonSetter
+    public void setIsImpliedIncluded(Boolean isImpliedIncluded) {
+        this.isImpliedIncluded = isImpliedIncluded;
     }
 
 
@@ -351,11 +364,13 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedConcern")
     private ConcernUsage ownedConcern;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "ConcernUsageMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConcern_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownedConcern_id", table = "FramedConcernMembership")
     public ConcernUsage getOwnedConcern() {
@@ -370,11 +385,13 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedConstraint")
     private ConstraintUsage ownedConstraint;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "ConstraintUsageMetaDef", metaColumn = @javax.persistence.Column(name = "ownedConstraint_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownedConstraint_id", table = "FramedConcernMembership")
     public ConstraintUsage getOwnedConstraint() {
@@ -415,11 +432,13 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedMemberElement")
     private Element ownedMemberElement;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberElement_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownedMemberElement_id", table = "FramedConcernMembership")
     public Element getOwnedMemberElement() {
@@ -454,11 +473,13 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedMemberFeature")
     private Feature ownedMemberFeature;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberFeature_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownedMemberFeature_id", table = "FramedConcernMembership")
     public Feature getOwnedMemberFeature() {
@@ -583,31 +604,12 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("owningFeatureOfType")
-    private Feature owningFeatureOfType;
-
-    @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureOfType_type"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "owningFeatureOfType_id", table = "FramedConcernMembership")
-    public Feature getOwningFeatureOfType() {
-        return owningFeatureOfType;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
-    public void setOwningFeatureOfType(Feature owningFeatureOfType) {
-        this.owningFeatureOfType = owningFeatureOfType;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private OwningMembership owningMembership;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "OwningMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembership_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningMembership_id", table = "FramedConcernMembership")
     public OwningMembership getOwningMembership() {
@@ -878,6 +880,25 @@ public class FramedConcernMembershipImpl extends SysMLTypeImpl implements Framed
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TextualRepresentationImpl.class)
     public void setTextualRepresentation(List<TextualRepresentation> textualRepresentation) {
         this.textualRepresentation = textualRepresentation;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("type")
+    private Type type;
+
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "type_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "type_id", table = "FramedConcernMembership")
+    public Type getType() {
+        return type;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
+    public void setType(Type type) {
+        this.type = type;
     }
 
 

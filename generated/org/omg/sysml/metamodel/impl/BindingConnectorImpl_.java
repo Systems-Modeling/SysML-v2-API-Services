@@ -8,6 +8,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.metamodel.Annotation;
 import org.omg.sysml.metamodel.Association;
+import org.omg.sysml.metamodel.Differencing;
 import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
@@ -18,6 +19,7 @@ import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
 import org.omg.sysml.metamodel.Import;
+import org.omg.sysml.metamodel.Intersecting;
 import org.omg.sysml.metamodel.Membership;
 import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
@@ -26,6 +28,7 @@ import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.Type;
 import org.omg.sysml.metamodel.TypeFeaturing;
+import org.omg.sysml.metamodel.Unioning;
 
 @Generated(value = "org.hibernate.jpamodelgen.JPAMetaModelEntityProcessor")
 @StaticMetamodel(BindingConnectorImpl.class)
@@ -40,15 +43,18 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<BindingConnectorImpl, Type> type;
 	public static volatile ListAttribute<BindingConnectorImpl, Feature> output;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isSufficient;
+	public static volatile ListAttribute<BindingConnectorImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isOrdered;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<BindingConnectorImpl, UUID> elementId;
 	public static volatile ListAttribute<BindingConnectorImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isDerived;
+	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isImplied;
 	public static volatile ListAttribute<BindingConnectorImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<BindingConnectorImpl, Feature> ownedFeature;
 	public static volatile SingularAttribute<BindingConnectorImpl, String> qualifiedName;
 	public static volatile ListAttribute<BindingConnectorImpl, Documentation> documentation;
+	public static volatile ListAttribute<BindingConnectorImpl, Type> intersectingType;
 	public static volatile ListAttribute<BindingConnectorImpl, Feature> endFeature;
 	public static volatile ListAttribute<BindingConnectorImpl, Feature> directedFeature;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isEnd;
@@ -57,17 +63,18 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isComposite;
 	public static volatile ListAttribute<BindingConnectorImpl, Element> relatedElement;
 	public static volatile SingularAttribute<BindingConnectorImpl, String> name;
-	public static volatile CollectionAttribute<BindingConnectorImpl, Feature> connectorEnd;
+	public static volatile ListAttribute<BindingConnectorImpl, Feature> connectorEnd;
 	public static volatile SingularAttribute<BindingConnectorImpl, String> shortName;
 	public static volatile ListAttribute<BindingConnectorImpl, Element> ownedMember;
 	public static volatile ListAttribute<BindingConnectorImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<BindingConnectorImpl, Disjoining> ownedDisjoining;
-	public static volatile CollectionAttribute<BindingConnectorImpl, Association> association;
+	public static volatile ListAttribute<BindingConnectorImpl, Association> association;
 	public static volatile ListAttribute<BindingConnectorImpl, Membership> membership;
 	public static volatile ListAttribute<BindingConnectorImpl, Element> ownedRelatedElement;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isPortion;
+	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isImpliedIncluded;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isNonunique;
-	public static volatile CollectionAttribute<BindingConnectorImpl, Feature> targetFeature;
+	public static volatile ListAttribute<BindingConnectorImpl, Feature> targetFeature;
 	public static volatile ListAttribute<BindingConnectorImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isReadOnly;
 	public static volatile ListAttribute<BindingConnectorImpl, FeatureTyping> ownedTyping;
@@ -88,8 +95,12 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isAbstract;
 	public static volatile ListAttribute<BindingConnectorImpl, Feature> relatedFeature;
 	public static volatile ListAttribute<BindingConnectorImpl, Element> target;
+	public static volatile ListAttribute<BindingConnectorImpl, Type> differencingType;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isDirected;
+	public static volatile ListAttribute<BindingConnectorImpl, Unioning> ownedUnioning;
+	public static volatile ListAttribute<BindingConnectorImpl, Type> unioningType;
 	public static volatile ListAttribute<BindingConnectorImpl, Specialization> ownedSpecialization;
+	public static volatile ListAttribute<BindingConnectorImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<BindingConnectorImpl, FeatureInverting> ownedFeatureInverting;
 
 	public static final String CHAINING_FEATURE = "chainingFeature";
@@ -101,15 +112,18 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String TYPE = "type";
 	public static final String OUTPUT = "output";
 	public static final String IS_SUFFICIENT = "isSufficient";
+	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String IS_ORDERED = "isOrdered";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IS_DERIVED = "isDerived";
+	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";
+	public static final String INTERSECTING_TYPE = "intersectingType";
 	public static final String END_FEATURE = "endFeature";
 	public static final String DIRECTED_FEATURE = "directedFeature";
 	public static final String IS_END = "isEnd";
@@ -127,6 +141,7 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String IS_PORTION = "isPortion";
+	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String TARGET_FEATURE = "targetFeature";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
@@ -149,8 +164,12 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String IS_ABSTRACT = "isAbstract";
 	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String TARGET = "target";
+	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String IS_DIRECTED = "isDirected";
+	public static final String OWNED_UNIONING = "ownedUnioning";
+	public static final String UNIONING_TYPE = "unioningType";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
+	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 
 }

@@ -70,6 +70,32 @@ import java.util.HashSet;
 @JsonTypeName(value = "SuccessionFlowConnectionUsage")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
 public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements SuccessionFlowConnectionUsage {
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("actionDefinition")
+    private List<Behavior> actionDefinition;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "BehaviorMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "SuccessionFlowConnectionUsage_actionDefinition",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Behavior> getActionDefinition() {
+        if (actionDefinition == null) {
+            actionDefinition = new ArrayList<>();
+        }
+        return actionDefinition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = BehaviorImpl.class)
+    public void setActionDefinition(List<Behavior> actionDefinition) {
+        this.actionDefinition = actionDefinition;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("aliasIds")
     private List<String> aliasIds;
 
@@ -95,7 +121,7 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("association")
-    private Collection<Association> association;
+    private List<Association> association;
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
@@ -104,7 +130,7 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
     @JoinTable(name = "SuccessionFlowConnectionUsage_association",
             joinColumns = @JoinColumn(name = "class_id"),
             inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public Collection<Association> getAssociation() {
+    public List<Association> getAssociation() {
         if (association == null) {
             association = new ArrayList<>();
         }
@@ -113,7 +139,7 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
 
     @JsonSetter
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AssociationImpl.class)
-    public void setAssociation(Collection<Association> association) {
+    public void setAssociation(List<Association> association) {
         this.association = association;
     }
 
@@ -199,7 +225,7 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("connectorEnd")
-    private Collection<Feature> connectorEnd;
+    private List<Feature> connectorEnd;
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
@@ -208,7 +234,7 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
     @JoinTable(name = "SuccessionFlowConnectionUsage_connectorEnd",
             joinColumns = @JoinColumn(name = "class_id"),
             inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public Collection<Feature> getConnectorEnd() {
+    public List<Feature> getConnectorEnd() {
         if (connectorEnd == null) {
             connectorEnd = new ArrayList<>();
         }
@@ -217,7 +243,7 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
 
     @JsonSetter
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
-    public void setConnectorEnd(Collection<Feature> connectorEnd) {
+    public void setConnectorEnd(List<Feature> connectorEnd) {
         this.connectorEnd = connectorEnd;
     }
 
@@ -245,6 +271,32 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ClassifierImpl.class)
     public void setDefinition(List<Classifier> definition) {
         this.definition = definition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("differencingType")
+    private List<Type> differencingType;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "SuccessionFlowConnectionUsage_differencingType",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Type> getDifferencingType() {
+        if (differencingType == null) {
+            differencingType = new ArrayList<>();
+        }
+        return differencingType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeImpl.class)
+    public void setDifferencingType(List<Type> differencingType) {
+        this.differencingType = differencingType;
     }
 
 
@@ -533,6 +585,32 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("flowConnectionDefinition")
+    private List<Interaction> flowConnectionDefinition;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "InteractionMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "SuccessionFlowConnectionUsage_flowConnectionDefinition",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Interaction> getFlowConnectionDefinition() {
+        if (flowConnectionDefinition == null) {
+            flowConnectionDefinition = new ArrayList<>();
+        }
+        return flowConnectionDefinition;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = InteractionImpl.class)
+    public void setFlowConnectionDefinition(List<Interaction> flowConnectionDefinition) {
+        this.flowConnectionDefinition = flowConnectionDefinition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("guardExpression")
     private Collection<Expression> guardExpression;
 
@@ -683,6 +761,58 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("interaction")
+    private List<Interaction> interaction;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "InteractionMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "SuccessionFlowConnectionUsage_interaction",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Interaction> getInteraction() {
+        if (interaction == null) {
+            interaction = new ArrayList<>();
+        }
+        return interaction;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = InteractionImpl.class)
+    public void setInteraction(List<Interaction> interaction) {
+        this.interaction = interaction;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("intersectingType")
+    private List<Type> intersectingType;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "SuccessionFlowConnectionUsage_intersectingType",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Type> getIntersectingType() {
+        if (intersectingType == null) {
+            intersectingType = new ArrayList<>();
+        }
+        return intersectingType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeImpl.class)
+    public void setIntersectingType(List<Type> intersectingType) {
+        this.intersectingType = intersectingType;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("isAbstract")
     private Boolean isAbstract;
 
@@ -777,6 +907,38 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
     @JsonSetter
     public void setIsEnd(Boolean isEnd) {
         this.isEnd = isEnd;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isImplied")
+    private Boolean isImplied;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isImplied", table = "SuccessionFlowConnectionUsage")
+    public Boolean getIsImplied() {
+        return isImplied;
+    }
+
+    @JsonSetter
+    public void setIsImplied(Boolean isImplied) {
+        this.isImplied = isImplied;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isImpliedIncluded")
+    private Boolean isImpliedIncluded;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isImpliedIncluded", table = "SuccessionFlowConnectionUsage")
+    public Boolean getIsImpliedIncluded() {
+        return isImpliedIncluded;
+    }
+
+    @JsonSetter
+    public void setIsImpliedIncluded(Boolean isImpliedIncluded) {
+        this.isImpliedIncluded = isImpliedIncluded;
     }
 
 
@@ -957,25 +1119,20 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("itemFeature")
-    private Collection<ItemFeature> itemFeature;
+    private ItemFeature itemFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ItemFeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SuccessionFlowConnectionUsage_itemFeature",
-            joinColumns = @JoinColumn(name = "class_id"),
-            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public Collection<ItemFeature> getItemFeature() {
-        if (itemFeature == null) {
-            itemFeature = new ArrayList<>();
-        }
+    @Any(metaDef = "ItemFeatureMetaDef", metaColumn = @javax.persistence.Column(name = "itemFeature_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "itemFeature_id", table = "SuccessionFlowConnectionUsage")
+    public ItemFeature getItemFeature() {
         return itemFeature;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ItemFeatureImpl.class)
-    public void setItemFeature(Collection<ItemFeature> itemFeature) {
+    @JsonDeserialize(using = DataDeserializer.class, as = ItemFeatureImpl.class)
+    public void setItemFeature(ItemFeature itemFeature) {
         this.itemFeature = itemFeature;
     }
 
@@ -1489,6 +1646,32 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("nestedMetadata")
+    private List<MetadataUsage> nestedMetadata;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "MetadataUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "SuccessionFlowConnectionUsage_nestedMetadata",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<MetadataUsage> getNestedMetadata() {
+        if (nestedMetadata == null) {
+            nestedMetadata = new ArrayList<>();
+        }
+        return nestedMetadata;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = MetadataUsageImpl.class)
+    public void setNestedMetadata(List<MetadataUsage> nestedMetadata) {
+        this.nestedMetadata = nestedMetadata;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("nestedOccurrence")
     private List<OccurrenceUsage> nestedOccurrence;
 
@@ -1926,6 +2109,32 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedDifferencing")
+    private List<Differencing> ownedDifferencing;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "DifferencingMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "SuccessionFlowConnectionUsage_ownedDifferencing",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Differencing> getOwnedDifferencing() {
+        if (ownedDifferencing == null) {
+            ownedDifferencing = new ArrayList<>();
+        }
+        return ownedDifferencing;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DifferencingImpl.class)
+    public void setOwnedDifferencing(List<Differencing> ownedDifferencing) {
+        this.ownedDifferencing = ownedDifferencing;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedDisjoining")
     private Collection<Disjoining> ownedDisjoining;
 
@@ -2134,6 +2343,32 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedIntersecting")
+    private List<Intersecting> ownedIntersecting;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "IntersectingMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "SuccessionFlowConnectionUsage_ownedIntersecting",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Intersecting> getOwnedIntersecting() {
+        if (ownedIntersecting == null) {
+            ownedIntersecting = new ArrayList<>();
+        }
+        return ownedIntersecting;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = IntersectingImpl.class)
+    public void setOwnedIntersecting(List<Intersecting> ownedIntersecting) {
+        this.ownedIntersecting = ownedIntersecting;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedMember")
     private List<Element> ownedMember;
 
@@ -2207,6 +2442,27 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = RedefinitionImpl.class)
     public void setOwnedRedefinition(Collection<Redefinition> ownedRedefinition) {
         this.ownedRedefinition = ownedRedefinition;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedReferenceSubsetting")
+    private ReferenceSubsetting ownedReferenceSubsetting;
+
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "ReferenceSubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "ownedReferenceSubsetting_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedReferenceSubsetting_id", table = "SuccessionFlowConnectionUsage")
+    public ReferenceSubsetting getOwnedReferenceSubsetting() {
+        return ownedReferenceSubsetting;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = ReferenceSubsettingImpl.class)
+    public void setOwnedReferenceSubsetting(ReferenceSubsetting ownedReferenceSubsetting) {
+        this.ownedReferenceSubsetting = ownedReferenceSubsetting;
     }
 
 
@@ -2364,6 +2620,32 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedUnioning")
+    private List<Unioning> ownedUnioning;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "UnioningMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "SuccessionFlowConnectionUsage_ownedUnioning",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Unioning> getOwnedUnioning() {
+        if (ownedUnioning == null) {
+            ownedUnioning = new ArrayList<>();
+        }
+        return ownedUnioning;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = UnioningImpl.class)
+    public void setOwnedUnioning(List<Unioning> ownedUnioning) {
+        this.ownedUnioning = ownedUnioning;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owner")
     private Element owner;
 
@@ -2405,11 +2687,13 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningFeatureMembership")
     private FeatureMembership owningFeatureMembership;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "FeatureMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningFeatureMembership_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningFeatureMembership_id", table = "SuccessionFlowConnectionUsage")
     public FeatureMembership getOwningFeatureMembership() {
@@ -2424,11 +2708,13 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private OwningMembership owningMembership;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "OwningMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembership_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningMembership_id", table = "SuccessionFlowConnectionUsage")
     public OwningMembership getOwningMembership() {
@@ -2772,25 +3058,20 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("sourceOutputFeature")
-    private List<Feature> sourceOutputFeature;
+    private Feature sourceOutputFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SuccessionFlowConnectionUsage_sourceOutputFeature",
-            joinColumns = @JoinColumn(name = "class_id"),
-            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public List<Feature> getSourceOutputFeature() {
-        if (sourceOutputFeature == null) {
-            sourceOutputFeature = new ArrayList<>();
-        }
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "sourceOutputFeature_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "sourceOutputFeature_id", table = "SuccessionFlowConnectionUsage")
+    public Feature getSourceOutputFeature() {
         return sourceOutputFeature;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
-    public void setSourceOutputFeature(List<Feature> sourceOutputFeature) {
+    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
+    public void setSourceOutputFeature(Feature sourceOutputFeature) {
         this.sourceOutputFeature = sourceOutputFeature;
     }
 
@@ -2822,7 +3103,7 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("targetFeature")
-    private Collection<Feature> targetFeature;
+    private List<Feature> targetFeature;
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
@@ -2831,7 +3112,7 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
     @JoinTable(name = "SuccessionFlowConnectionUsage_targetFeature",
             joinColumns = @JoinColumn(name = "class_id"),
             inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public Collection<Feature> getTargetFeature() {
+    public List<Feature> getTargetFeature() {
         if (targetFeature == null) {
             targetFeature = new ArrayList<>();
         }
@@ -2840,7 +3121,7 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
 
     @JsonSetter
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
-    public void setTargetFeature(Collection<Feature> targetFeature) {
+    public void setTargetFeature(List<Feature> targetFeature) {
         this.targetFeature = targetFeature;
     }
 
@@ -2848,25 +3129,20 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("targetInputFeature")
-    private List<Feature> targetInputFeature;
+    private Feature targetInputFeature;
 
     @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
+    @JsonSerialize(using = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SuccessionFlowConnectionUsage_targetInputFeature",
-            joinColumns = @JoinColumn(name = "class_id"),
-            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public List<Feature> getTargetInputFeature() {
-        if (targetInputFeature == null) {
-            targetInputFeature = new ArrayList<>();
-        }
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "targetInputFeature_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "targetInputFeature_id", table = "SuccessionFlowConnectionUsage")
+    public Feature getTargetInputFeature() {
         return targetInputFeature;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
-    public void setTargetInputFeature(List<Feature> targetInputFeature) {
+    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
+    public void setTargetInputFeature(Feature targetInputFeature) {
         this.targetInputFeature = targetInputFeature;
     }
 
@@ -2967,6 +3243,32 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeImpl.class)
     public void setType(List<Type> type) {
         this.type = type;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("unioningType")
+    private List<Type> unioningType;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "SuccessionFlowConnectionUsage_unioningType",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public List<Type> getUnioningType() {
+        if (unioningType == null) {
+            unioningType = new ArrayList<>();
+        }
+        return unioningType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeImpl.class)
+    public void setUnioningType(List<Type> unioningType) {
+        this.unioningType = unioningType;
     }
 
 

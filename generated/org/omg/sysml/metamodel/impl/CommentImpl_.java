@@ -27,6 +27,7 @@ public abstract class CommentImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl
 	public static volatile ListAttribute<CommentImpl, Element> annotatedElement;
 	public static volatile SingularAttribute<CommentImpl, String> body;
 	public static volatile SingularAttribute<CommentImpl, String> locale;
+	public static volatile SingularAttribute<CommentImpl, Boolean> isImpliedIncluded;
 	public static volatile SingularAttribute<CommentImpl, String> name;
 	public static volatile SingularAttribute<CommentImpl, String> shortName;
 	public static volatile SingularAttribute<CommentImpl, String> effectiveName;
@@ -43,6 +44,7 @@ public abstract class CommentImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl
 	public static final String ANNOTATED_ELEMENT = "annotatedElement";
 	public static final String BODY = "body";
 	public static final String LOCALE = "locale";
+	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String NAME = "name";
 	public static final String SHORT_NAME = "shortName";
 	public static final String EFFECTIVE_NAME = "effectiveName";

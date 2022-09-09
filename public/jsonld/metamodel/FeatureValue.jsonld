@@ -11,6 +11,8 @@
         "elementId": {"@type": "dcterms:identifier"},
         "featureWithValue": {"@type": "@id"},
         "isDefault": {"@type": "xsd:boolean"},
+        "isImplied": {"@type": "xsd:boolean"},
+        "isImpliedIncluded": {"@type": "xsd:boolean"},
         "isInitial": {"@type": "xsd:boolean"},
         "memberElement": {"@type": "@id"},
         "memberElementId": {"@type": "xsd:string"},

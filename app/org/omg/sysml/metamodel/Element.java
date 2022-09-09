@@ -51,9 +51,11 @@ public interface Element extends SysMLType {
 
     String getShortName();
 
-    String getEffectiveName();
-
     String getName();
 
+    String getEffectiveName();
+
     String getQualifiedName();
+
+    Boolean getIsImpliedIncluded();
 }

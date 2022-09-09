@@ -29,13 +29,13 @@ import java.util.Set;
 public interface Connector extends Feature, Relationship, SysMLType {
     List<? extends Feature> getRelatedFeature();
 
-    Collection<? extends Association> getAssociation();
+    List<? extends Association> getAssociation();
 
     Boolean getIsDirected();
 
-    Collection<? extends Feature> getConnectorEnd();
+    List<? extends Feature> getConnectorEnd();
 
     Feature getSourceFeature();
 
-    Collection<? extends Feature> getTargetFeature();
+    List<? extends Feature> getTargetFeature();
 }
