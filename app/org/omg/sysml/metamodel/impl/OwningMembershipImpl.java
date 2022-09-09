@@ -155,6 +155,38 @@ public class OwningMembershipImpl extends SysMLTypeImpl implements OwningMembers
 
 
 
+    // @info.archinnov.achilles.annotations.Column("isImplied")
+    private Boolean isImplied;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isImplied", table = "OwningMembership")
+    public Boolean getIsImplied() {
+        return isImplied;
+    }
+
+    @JsonSetter
+    public void setIsImplied(Boolean isImplied) {
+        this.isImplied = isImplied;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isImpliedIncluded")
+    private Boolean isImpliedIncluded;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isImpliedIncluded", table = "OwningMembership")
+    public Boolean getIsImpliedIncluded() {
+        return isImpliedIncluded;
+    }
+
+    @JsonSetter
+    public void setIsImpliedIncluded(Boolean isImpliedIncluded) {
+        this.isImpliedIncluded = isImpliedIncluded;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("memberElement")
     private Element memberElement;
 
@@ -321,11 +353,13 @@ public class OwningMembershipImpl extends SysMLTypeImpl implements OwningMembers
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedMemberElement")
     private Element ownedMemberElement;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberElement_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownedMemberElement_id", table = "OwningMembership")
     public Element getOwnedMemberElement() {
@@ -469,11 +503,13 @@ public class OwningMembershipImpl extends SysMLTypeImpl implements OwningMembers
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private OwningMembership owningMembership;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "OwningMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembership_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningMembership_id", table = "OwningMembership")
     public OwningMembership getOwningMembership() {

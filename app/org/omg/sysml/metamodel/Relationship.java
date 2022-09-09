@@ -36,4 +36,6 @@ public interface Relationship extends Element, SysMLType {
     Element getOwningRelatedElement();
 
     List<? extends Element> getOwnedRelatedElement();
+
+    Boolean getIsImplied();
 }

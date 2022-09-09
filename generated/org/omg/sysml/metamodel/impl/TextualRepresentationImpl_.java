@@ -27,6 +27,7 @@ public abstract class TextualRepresentationImpl_ extends org.omg.sysml.lifecycle
 	public static volatile SingularAttribute<TextualRepresentationImpl, String> language;
 	public static volatile ListAttribute<TextualRepresentationImpl, Element> annotatedElement;
 	public static volatile SingularAttribute<TextualRepresentationImpl, String> body;
+	public static volatile SingularAttribute<TextualRepresentationImpl, Boolean> isImpliedIncluded;
 	public static volatile SingularAttribute<TextualRepresentationImpl, String> name;
 	public static volatile SingularAttribute<TextualRepresentationImpl, String> shortName;
 	public static volatile SingularAttribute<TextualRepresentationImpl, String> effectiveName;
@@ -43,6 +44,7 @@ public abstract class TextualRepresentationImpl_ extends org.omg.sysml.lifecycle
 	public static final String LANGUAGE = "language";
 	public static final String ANNOTATED_ELEMENT = "annotatedElement";
 	public static final String BODY = "body";
+	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String NAME = "name";
 	public static final String SHORT_NAME = "shortName";
 	public static final String EFFECTIVE_NAME = "effectiveName";

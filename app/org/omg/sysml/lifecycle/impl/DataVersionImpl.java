@@ -66,7 +66,7 @@ public class DataVersionImpl extends RecordImpl implements DataVersion {
 
     @Transient
     @JsonProperty("@type")
-    public static String getType() {
+    public String getType() {
         return DataVersion.NAME;
     }
 }

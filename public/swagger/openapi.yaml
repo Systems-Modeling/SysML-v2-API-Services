@@ -1210,12 +1210,15 @@ definitions:
             type: string
             format: uuid
       previousCommit:
-        description: Commit
-        type: object
-        properties:
-          '@id':
-            type: string
-            format: uuid
+        description: array(Commit)
+        type: array
+        items:
+          description: Commit
+          type: object
+          properties:
+            '@id':
+              type: string
+              format: uuid
   DataVersion:
     type: object
     properties:

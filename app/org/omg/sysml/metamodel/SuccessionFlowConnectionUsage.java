@@ -26,6 +26,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface SuccessionFlowConnectionUsage extends FlowConnectionUsage, SuccessionItemFlow, SysMLType {
+public interface SuccessionFlowConnectionUsage extends SuccessionItemFlow, FlowConnectionUsage, SysMLType {
 
 }

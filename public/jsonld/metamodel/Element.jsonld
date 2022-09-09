@@ -9,6 +9,7 @@
         "documentation": {"@type": "@id"},
         "effectiveName": {"@type": "xsd:string"},
         "elementId": {"@type": "dcterms:identifier"},
+        "isImpliedIncluded": {"@type": "xsd:boolean"},
         "name": {"@type": "xsd:string"},
         "ownedAnnotation": {"@type": "@id"},
         "ownedElement": {"@type": "@id"},

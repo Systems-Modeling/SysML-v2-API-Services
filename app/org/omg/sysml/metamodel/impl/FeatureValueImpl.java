@@ -192,6 +192,38 @@ public class FeatureValueImpl extends SysMLTypeImpl implements FeatureValue {
 
 
 
+    // @info.archinnov.achilles.annotations.Column("isImplied")
+    private Boolean isImplied;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isImplied", table = "FeatureValue")
+    public Boolean getIsImplied() {
+        return isImplied;
+    }
+
+    @JsonSetter
+    public void setIsImplied(Boolean isImplied) {
+        this.isImplied = isImplied;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("isImpliedIncluded")
+    private Boolean isImpliedIncluded;
+
+    @JsonGetter
+    @javax.persistence.Column(name = "isImpliedIncluded", table = "FeatureValue")
+    public Boolean getIsImpliedIncluded() {
+        return isImpliedIncluded;
+    }
+
+    @JsonSetter
+    public void setIsImpliedIncluded(Boolean isImpliedIncluded) {
+        this.isImpliedIncluded = isImpliedIncluded;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Column("isInitial")
     private Boolean isInitial;
 
@@ -374,11 +406,13 @@ public class FeatureValueImpl extends SysMLTypeImpl implements FeatureValue {
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedMemberElement")
     private Element ownedMemberElement;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedMemberElement_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "ownedMemberElement_id", table = "FeatureValue")
     public Element getOwnedMemberElement() {
@@ -522,11 +556,13 @@ public class FeatureValueImpl extends SysMLTypeImpl implements FeatureValue {
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private OwningMembership owningMembership;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "OwningMembershipMetaDef", metaColumn = @javax.persistence.Column(name = "owningMembership_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "owningMembership_id", table = "FeatureValue")
     public OwningMembership getOwningMembership() {
@@ -738,11 +774,13 @@ public class FeatureValueImpl extends SysMLTypeImpl implements FeatureValue {
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("value")
     private Expression value;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "value_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "value_id", table = "FeatureValue")
     public Expression getValue() {

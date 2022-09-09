@@ -52,16 +52,18 @@ public abstract class JpaIdentityDeserializer<T> extends StdDeserializer<T> {
         if (p.currentToken() != JsonToken.START_OBJECT) {
             throw new JsonParseException(p, "Expected START_OBJECT. Received " + p.getCurrentName() + ".");
         }
+        T t = null;
         JsonToken token;
         while ((token = p.nextToken()) != null && token != JsonToken.END_OBJECT) {
-            if (token == JsonToken.FIELD_NAME && isIdentityField(p.getCurrentName())) {
-                if (p.nextToken() == null) {
+            if (t == null && token == JsonToken.FIELD_NAME && isIdentityField(p.getCurrentName())) {
+                token = p.nextToken();
+                if (token == null) {
                     throw new JsonParseException(p, "No value for identity field.");
                 }
-                return deserializeFromIdentity(p);
+                t = deserializeFromIdentity(p);
             }
         }
-        return null;
+        return t;
     }
 
     @Override

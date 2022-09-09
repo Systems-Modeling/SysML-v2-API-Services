@@ -26,6 +26,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface PrefixComment extends Comment, SysMLType {
+public interface Featuring extends Relationship, SysMLType {
+    Type getType();
 
+    Feature getFeature();
 }
