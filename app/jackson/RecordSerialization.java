@@ -66,14 +66,13 @@ public class RecordSerialization {
         }
 
         @Override
-        @SuppressWarnings("unchecked")
         protected R deserializeFromIdentity(JsonParser parser) throws IOException {
             UUID id = UUID.fromString(parser.getText());
-            Record record = getEntityManager().find(getRecordClass(), id);
+            R record = getEntityManager().find(getRecordClass(), id);
             if (record == null) {
                 throw new IOException(new EntityNotFoundException("Record " + id + " not found."));
             }
-            return (R) record;
+            return record;
         }
     }
 
