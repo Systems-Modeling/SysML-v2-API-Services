@@ -86,7 +86,7 @@ public class CommitController extends JsonLdController<Commit, ProjectContainmen
     }
 
     public Result getCommitsByProject(UUID projectId, Request request) {
-        PageRequest pageRequest = PageRequest.from(request);
+        PageRequest<UUID> pageRequest = uuidRequest(request);
         List<Commit> commits = commitService.getByProjectId(
                 projectId,
                 pageRequest.getAfter(),
@@ -105,7 +105,7 @@ public class CommitController extends JsonLdController<Commit, ProjectContainmen
                 writer -> writer.withView(CommitImpl.Views.Compact.class)
         );
         Result result = buildResult(json, ld);
-        return paginateResult(
+        return uuidResponse(
                 result,
                 commits.size(),
                 idx -> commits.get(idx).getId(),

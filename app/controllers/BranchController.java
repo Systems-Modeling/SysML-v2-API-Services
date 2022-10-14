@@ -69,14 +69,14 @@ public class BranchController extends JsonLdController<Branch, ProjectContainmen
     }
 
     public Result getBranchesByProject(UUID projectId, Request request) {
-        PageRequest pageRequest = PageRequest.from(request);
+        PageRequest<UUID> pageRequest = uuidRequest(request);
         List<Branch> branches = branchService.getByProjectId(
                 projectId,
                 pageRequest.getAfter(),
                 pageRequest.getBefore(),
                 pageRequest.getSize()
         );
-        return paginateResult(
+        return uuidResponse(
                 buildResult(branches, List.class, metamodelProvider.getImplementationClass(Branch.class), request, new ProjectContainmentParameters(projectId)),
                 branches.size(),
                 idx -> branches.get(idx).getId(),

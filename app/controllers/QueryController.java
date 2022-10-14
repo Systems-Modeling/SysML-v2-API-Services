@@ -67,12 +67,12 @@ public class QueryController extends JsonLdController<Data, DataJsonLdAdorner.Pa
     }
 
     public Result getQueriesByProject(UUID projectId, Request request) {
-        PageRequest pageRequest = PageRequest.from(request);
+        PageRequest<UUID> pageRequest = uuidRequest(request);
         List<Query> queries = queryService.getByProjectId(projectId, pageRequest.getAfter(), pageRequest.getBefore(), pageRequest.getSize());
         return Optional.of(queries)
                 .map(collection -> JacksonHelper.collectionToTree(collection, List.class, metamodelProvider.getImplementationClass(Query.class)))
                 .map(Results::ok)
-                .map(result -> paginateResult(
+                .map(result -> uuidResponse(
                         result,
                         queries.size(),
                         idx -> queries.get(idx).getId(),
