@@ -51,7 +51,7 @@ public final class ElementController extends JsonLdController<Element, DataJsonL
     }
 
     public Result getElementsByProjectIdCommitId(UUID projectId, UUID commitId, Optional<Boolean> excludeUsed, Request request) {
-        PageRequest pageRequest = PageRequest.from(request);
+        PageRequest<UUID> pageRequest = uuidRequest(request);
         List<Element> elements = elementService.getElementsByProjectIdCommitId(projectId, commitId, excludeUsed.orElse(false), pageRequest.getAfter(), pageRequest.getBefore(), pageRequest.getSize());
         return buildPaginatedResult(elements, projectId, commitId, request, pageRequest);
     }
@@ -62,7 +62,7 @@ public final class ElementController extends JsonLdController<Element, DataJsonL
     }
 
     public Result getRootsByProjectIdCommitId(UUID projectId, UUID commitId, Optional<Boolean> excludeUsed, Request request) {
-        PageRequest pageRequest = PageRequest.from(request);
+        PageRequest<UUID> pageRequest = uuidRequest(request);
         List<Element> roots = elementService.getRootsByProjectIdCommitId(projectId, commitId, excludeUsed.orElse(false), pageRequest.getAfter(), pageRequest.getBefore(), pageRequest.getSize());
         return buildPaginatedResult(roots, projectId, commitId, request, pageRequest);
     }
@@ -72,8 +72,8 @@ public final class ElementController extends JsonLdController<Element, DataJsonL
         return buildResult(element.orElse(null), request, new DataJsonLdAdorner.Parameters(projectId, commitId));
     }
 
-    private Result buildPaginatedResult(List<Element> elements, UUID projectId, UUID commitId, Request request, PageRequest pageRequest) {
-        return paginateResult(
+    private Result buildPaginatedResult(List<Element> elements, UUID projectId, UUID commitId, Request request, PageRequest<UUID> pageRequest) {
+        return uuidResponse(
                 buildResult(elements, List.class, metamodelProvider.getImplementationClass(Element.class), request, new DataJsonLdAdorner.Parameters(projectId, commitId)),
                 elements.size(),
                 idx -> elements.get(idx).getElementId(),

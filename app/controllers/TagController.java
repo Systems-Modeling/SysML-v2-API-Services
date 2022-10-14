@@ -67,14 +67,14 @@ public class TagController extends JsonLdController<Tag, ProjectContainmentParam
     }
 
     public Result getTagsByProject(UUID projectId, Request request) {
-        PageRequest pageRequest = PageRequest.from(request);
+        PageRequest<UUID> pageRequest = uuidRequest(request);
         List<Tag> tags = tagService.getByProjectId(
                 projectId,
                 pageRequest.getAfter(),
                 pageRequest.getBefore(),
                 pageRequest.getSize()
         );
-        return paginateResult(
+        return uuidResponse(
                 buildResult(tags, List.class, metamodelProvider.getImplementationClass(Tag.class), request, new ProjectContainmentParameters(projectId)),
                 tags.size(),
                 idx -> tags.get(idx).getId(),

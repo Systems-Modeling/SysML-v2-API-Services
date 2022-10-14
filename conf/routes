@@ -47,6 +47,10 @@ GET           /projects/:projectId/queries/:queryId/results                     
 GET           /projects/:projectId/query-results                                                     controllers.QueryController.getQueryResultsByProjectIdQuery(projectId : java.util.UUID, commitId : java.util.Optional[java.util.UUID], request : Request)
 POST          /projects/:projectId/query-results                                                     controllers.QueryController.getQueryResultsByProjectIdQuery(projectId : java.util.UUID, commitId : java.util.Optional[java.util.UUID], request : Request)
 
+# Meta endpoints
+GET           /meta/datatypes                                                                        controllers.SchemaController.getSchemas(request : Request)
+GET           /meta/datatypes/:datatypeId                                                            controllers.SchemaController.getSchemaById(datatypeId : String)
+
 # Extension endpoints
 POST          /x/named/projects/:projectId/commits                                                   controllers.CommitController.postCommitByProjectNameResolved(projectId : java.util.UUID, branchId : java.util.Optional[java.util.UUID], request : Request)
 GET           /x/named/projects/:projectId/commits/:commitId/elements/:qualifiedName                 controllers.ElementController.getElementByProjectIdCommitIdQualifiedName(projectId : java.util.UUID, commitId : java.util.UUID, qualifiedName : String, request : Request)
