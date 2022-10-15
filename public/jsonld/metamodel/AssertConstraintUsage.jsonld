@@ -37,6 +37,7 @@
         "isEnd": {"@type": "xsd:boolean"},
         "isImpliedIncluded": {"@type": "xsd:boolean"},
         "isIndividual": {"@type": "xsd:boolean"},
+        "isLibraryElement": {"@type": "xsd:boolean"},
         "isModelLevelEvaluable": {"@type": "xsd:boolean"},
         "isNegated": {"@type": "xsd:boolean"},
         "isNonunique": {"@type": "xsd:boolean"},

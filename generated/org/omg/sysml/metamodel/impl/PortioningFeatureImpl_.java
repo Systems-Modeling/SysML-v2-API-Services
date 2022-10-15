@@ -47,6 +47,7 @@ public abstract class PortioningFeatureImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile CollectionAttribute<PortioningFeatureImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<PortioningFeatureImpl, UUID> elementId;
 	public static volatile ListAttribute<PortioningFeatureImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<PortioningFeatureImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<PortioningFeatureImpl, Boolean> isDerived;
 	public static volatile ListAttribute<PortioningFeatureImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<PortioningFeatureImpl, Feature> ownedFeature;
@@ -107,6 +108,7 @@ public abstract class PortioningFeatureImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";

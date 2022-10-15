@@ -18,6 +18,7 @@ public abstract class ImportImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_
 
 	public static volatile SingularAttribute<ImportImpl, UUID> elementId;
 	public static volatile ListAttribute<ImportImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<ImportImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<ImportImpl, Boolean> isImplied;
 	public static volatile ListAttribute<ImportImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ImportImpl, Element> ownedElement;
@@ -40,6 +41,7 @@ public abstract class ImportImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";

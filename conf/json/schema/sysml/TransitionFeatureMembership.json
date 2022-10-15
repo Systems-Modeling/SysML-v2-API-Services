@@ -54,6 +54,13 @@
           "type" : "null"
         } ]
       },
+      "isLibraryElement" : {
+        "oneOf" : [ {
+          "type" : "boolean"
+        }, {
+          "type" : "null"
+        } ]
+      },
       "kind" : {
         "oneOf" : [ {
           "$ref" : "http://www.omg.org/spec/SysML/2.0/TransitionFeatureKind"
@@ -123,12 +130,8 @@
         } ]
       },
       "ownedMemberFeature" : {
-        "oneOf" : [ {
-          "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
-          "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
-        }, {
-          "type" : "null"
-        } ]
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+        "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
       },
       "ownedMemberName" : {
         "oneOf" : [ {
@@ -250,8 +253,12 @@
         "$comment" : "http://www.omg.org/spec/SysML/2.0/Step"
       },
       "type" : {
-        "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
-        "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+        "oneOf" : [ {
+          "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+        }, {
+          "type" : "null"
+        } ]
       },
       "visibility" : {
         "oneOf" : [ {
@@ -261,7 +268,7 @@
         } ]
       }
     },
-    "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "feature", "isImplied", "isImpliedIncluded", "kind", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberFeature", "ownedMemberName", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "transitionFeature", "type", "visibility" ]
+    "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "feature", "isImplied", "isImpliedIncluded", "isLibraryElement", "kind", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberFeature", "ownedMemberName", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "transitionFeature", "type", "visibility" ]
   }, {
     "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
   } ],

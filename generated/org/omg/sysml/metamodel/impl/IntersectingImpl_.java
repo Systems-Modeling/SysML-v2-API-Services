@@ -17,6 +17,7 @@ public abstract class IntersectingImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 
 	public static volatile SingularAttribute<IntersectingImpl, UUID> elementId;
 	public static volatile ListAttribute<IntersectingImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<IntersectingImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<IntersectingImpl, Boolean> isImplied;
 	public static volatile ListAttribute<IntersectingImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<IntersectingImpl, Element> ownedElement;
@@ -35,6 +36,7 @@ public abstract class IntersectingImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";

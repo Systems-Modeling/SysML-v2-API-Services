@@ -78,6 +78,7 @@ public abstract class JoinNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile ListAttribute<JoinNodeImpl, Differencing> ownedDifferencing;
 	public static volatile CollectionAttribute<JoinNodeImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<JoinNodeImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<JoinNodeImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<JoinNodeImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<JoinNodeImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile ListAttribute<JoinNodeImpl, Feature> ownedFeature;
@@ -177,6 +178,7 @@ public abstract class JoinNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";

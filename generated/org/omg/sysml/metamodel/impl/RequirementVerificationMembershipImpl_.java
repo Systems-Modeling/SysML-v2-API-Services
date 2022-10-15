@@ -29,6 +29,7 @@ public abstract class RequirementVerificationMembershipImpl_ extends org.omg.sys
 	public static volatile SingularAttribute<RequirementVerificationMembershipImpl, String> ownedMemberShortName;
 	public static volatile SingularAttribute<RequirementVerificationMembershipImpl, UUID> elementId;
 	public static volatile ListAttribute<RequirementVerificationMembershipImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<RequirementVerificationMembershipImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<RequirementVerificationMembershipImpl, Boolean> isImplied;
 	public static volatile ListAttribute<RequirementVerificationMembershipImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<RequirementVerificationMembershipImpl, Element> ownedElement;
@@ -55,6 +56,7 @@ public abstract class RequirementVerificationMembershipImpl_ extends org.omg.sys
 	public static final String OWNED_MEMBER_SHORT_NAME = "ownedMemberShortName";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";

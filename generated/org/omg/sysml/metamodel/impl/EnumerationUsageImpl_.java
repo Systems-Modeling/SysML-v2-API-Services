@@ -86,6 +86,7 @@ public abstract class EnumerationUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile CollectionAttribute<EnumerationUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<EnumerationUsageImpl, UUID> elementId;
 	public static volatile ListAttribute<EnumerationUsageImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<EnumerationUsageImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<EnumerationUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<EnumerationUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<EnumerationUsageImpl, Annotation> ownedAnnotation;
@@ -180,6 +181,7 @@ public abstract class EnumerationUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

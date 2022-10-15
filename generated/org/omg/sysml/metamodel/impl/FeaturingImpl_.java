@@ -17,6 +17,7 @@ public abstract class FeaturingImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 
 	public static volatile SingularAttribute<FeaturingImpl, UUID> elementId;
 	public static volatile ListAttribute<FeaturingImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<FeaturingImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<FeaturingImpl, Boolean> isImplied;
 	public static volatile ListAttribute<FeaturingImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<FeaturingImpl, Element> ownedElement;
@@ -35,6 +36,7 @@ public abstract class FeaturingImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";

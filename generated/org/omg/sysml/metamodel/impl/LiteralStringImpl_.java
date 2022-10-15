@@ -47,6 +47,7 @@ public abstract class LiteralStringImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static volatile CollectionAttribute<LiteralStringImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<LiteralStringImpl, UUID> elementId;
 	public static volatile ListAttribute<LiteralStringImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<LiteralStringImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<LiteralStringImpl, Boolean> isDerived;
 	public static volatile ListAttribute<LiteralStringImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<LiteralStringImpl, Feature> ownedFeature;
@@ -110,6 +111,7 @@ public abstract class LiteralStringImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";

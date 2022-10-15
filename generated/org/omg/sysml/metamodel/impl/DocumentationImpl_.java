@@ -18,6 +18,7 @@ public abstract class DocumentationImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static volatile ListAttribute<DocumentationImpl, Annotation> annotation;
 	public static volatile SingularAttribute<DocumentationImpl, UUID> elementId;
 	public static volatile ListAttribute<DocumentationImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<DocumentationImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<DocumentationImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<DocumentationImpl, Element> ownedElement;
 	public static volatile ListAttribute<DocumentationImpl, String> aliasIds;
@@ -35,6 +36,7 @@ public abstract class DocumentationImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static final String ANNOTATION = "annotation";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";

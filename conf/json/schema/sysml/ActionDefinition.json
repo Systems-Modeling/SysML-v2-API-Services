@@ -149,6 +149,13 @@
             "type" : "null"
           } ]
         },
+        "isLibraryElement" : {
+          "oneOf" : [ {
+            "type" : "boolean"
+          }, {
+            "type" : "null"
+          } ]
+        },
         "isSufficient" : {
           "oneOf" : [ {
             "type" : "boolean"
@@ -605,7 +612,7 @@
           }
         }
       },
-      "required" : [ "@type", "action", "aliasIds", "differencingType", "directedFeature", "directedUsage", "documentation", "effectiveName", "elementId", "endFeature", "feature", "featureMembership", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isConjugated", "isImpliedIncluded", "isIndividual", "isSufficient", "isVariation", "lifeClass", "member", "membership", "multiplicity", "name", "output", "ownedAction", "ownedAllocation", "ownedAnalysisCase", "ownedAnnotation", "ownedAttribute", "ownedCalculation", "ownedCase", "ownedConcern", "ownedConjugator", "ownedConnection", "ownedConstraint", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedEnumeration", "ownedFeature", "ownedFeatureMembership", "ownedFlow", "ownedImport", "ownedInterface", "ownedIntersecting", "ownedItem", "ownedMember", "ownedMembership", "ownedMetadata", "ownedOccurrence", "ownedPart", "ownedPort", "ownedReference", "ownedRelationship", "ownedRendering", "ownedRequirement", "ownedSpecialization", "ownedState", "ownedSubclassification", "ownedTransition", "ownedUnioning", "ownedUsage", "ownedUseCase", "ownedVerificationCase", "ownedView", "ownedViewpoint", "owner", "owningMembership", "owningNamespace", "owningRelationship", "parameter", "qualifiedName", "shortName", "step", "textualRepresentation", "unioningType", "usage", "variant", "variantMembership" ]
+      "required" : [ "@type", "action", "aliasIds", "differencingType", "directedFeature", "directedUsage", "documentation", "effectiveName", "elementId", "endFeature", "feature", "featureMembership", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isConjugated", "isImpliedIncluded", "isIndividual", "isLibraryElement", "isSufficient", "isVariation", "lifeClass", "member", "membership", "multiplicity", "name", "output", "ownedAction", "ownedAllocation", "ownedAnalysisCase", "ownedAnnotation", "ownedAttribute", "ownedCalculation", "ownedCase", "ownedConcern", "ownedConjugator", "ownedConnection", "ownedConstraint", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedEnumeration", "ownedFeature", "ownedFeatureMembership", "ownedFlow", "ownedImport", "ownedInterface", "ownedIntersecting", "ownedItem", "ownedMember", "ownedMembership", "ownedMetadata", "ownedOccurrence", "ownedPart", "ownedPort", "ownedReference", "ownedRelationship", "ownedRendering", "ownedRequirement", "ownedSpecialization", "ownedState", "ownedSubclassification", "ownedTransition", "ownedUnioning", "ownedUsage", "ownedUseCase", "ownedVerificationCase", "ownedView", "ownedViewpoint", "owner", "owningMembership", "owningNamespace", "owningRelationship", "parameter", "qualifiedName", "shortName", "step", "textualRepresentation", "unioningType", "usage", "variant", "variantMembership" ]
     }, {
       "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
     } ],
@@ -789,6 +796,13 @@
             } ]
           },
           "isIndividual" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
             "oneOf" : [ {
               "type" : "boolean"
             }, {
@@ -1282,7 +1296,7 @@
             }
           }
         },
-        "required" : [ "@type", "action", "actorParameter", "aliasIds", "analysisAction", "calculation", "differencingType", "directedFeature", "directedUsage", "documentation", "effectiveName", "elementId", "endFeature", "expression", "feature", "featureMembership", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isConjugated", "isImpliedIncluded", "isIndividual", "isModelLevelEvaluable", "isSufficient", "isVariation", "lifeClass", "member", "membership", "multiplicity", "name", "objectiveRequirement", "output", "ownedAction", "ownedAllocation", "ownedAnalysisCase", "ownedAnnotation", "ownedAttribute", "ownedCalculation", "ownedCase", "ownedConcern", "ownedConjugator", "ownedConnection", "ownedConstraint", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedEnumeration", "ownedFeature", "ownedFeatureMembership", "ownedFlow", "ownedImport", "ownedInterface", "ownedIntersecting", "ownedItem", "ownedMember", "ownedMembership", "ownedMetadata", "ownedOccurrence", "ownedPart", "ownedPort", "ownedReference", "ownedRelationship", "ownedRendering", "ownedRequirement", "ownedSpecialization", "ownedState", "ownedSubclassification", "ownedTransition", "ownedUnioning", "ownedUsage", "ownedUseCase", "ownedVerificationCase", "ownedView", "ownedViewpoint", "owner", "owningMembership", "owningNamespace", "owningRelationship", "parameter", "qualifiedName", "result", "resultExpression", "shortName", "step", "subjectParameter", "textualRepresentation", "unioningType", "usage", "variant", "variantMembership" ]
+        "required" : [ "@type", "action", "actorParameter", "aliasIds", "analysisAction", "calculation", "differencingType", "directedFeature", "directedUsage", "documentation", "effectiveName", "elementId", "endFeature", "expression", "feature", "featureMembership", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isConjugated", "isImpliedIncluded", "isIndividual", "isLibraryElement", "isModelLevelEvaluable", "isSufficient", "isVariation", "lifeClass", "member", "membership", "multiplicity", "name", "objectiveRequirement", "output", "ownedAction", "ownedAllocation", "ownedAnalysisCase", "ownedAnnotation", "ownedAttribute", "ownedCalculation", "ownedCase", "ownedConcern", "ownedConjugator", "ownedConnection", "ownedConstraint", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedEnumeration", "ownedFeature", "ownedFeatureMembership", "ownedFlow", "ownedImport", "ownedInterface", "ownedIntersecting", "ownedItem", "ownedMember", "ownedMembership", "ownedMetadata", "ownedOccurrence", "ownedPart", "ownedPort", "ownedReference", "ownedRelationship", "ownedRendering", "ownedRequirement", "ownedSpecialization", "ownedState", "ownedSubclassification", "ownedTransition", "ownedUnioning", "ownedUsage", "ownedUseCase", "ownedVerificationCase", "ownedView", "ownedViewpoint", "owner", "owningMembership", "owningNamespace", "owningRelationship", "parameter", "qualifiedName", "result", "resultExpression", "shortName", "step", "subjectParameter", "textualRepresentation", "unioningType", "usage", "variant", "variantMembership" ]
       }, {
         "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
       } ],
@@ -1446,6 +1460,13 @@
               } ]
             },
             "isIndividual" : {
+              "oneOf" : [ {
+                "type" : "boolean"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "isLibraryElement" : {
               "oneOf" : [ {
                 "type" : "boolean"
               }, {
@@ -1919,7 +1940,7 @@
               }
             }
           },
-          "required" : [ "@type", "action", "aliasIds", "calculation", "differencingType", "directedFeature", "directedUsage", "documentation", "effectiveName", "elementId", "endFeature", "expression", "feature", "featureMembership", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isConjugated", "isImpliedIncluded", "isIndividual", "isModelLevelEvaluable", "isSufficient", "isVariation", "lifeClass", "member", "membership", "multiplicity", "name", "output", "ownedAction", "ownedAllocation", "ownedAnalysisCase", "ownedAnnotation", "ownedAttribute", "ownedCalculation", "ownedCase", "ownedConcern", "ownedConjugator", "ownedConnection", "ownedConstraint", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedEnumeration", "ownedFeature", "ownedFeatureMembership", "ownedFlow", "ownedImport", "ownedInterface", "ownedIntersecting", "ownedItem", "ownedMember", "ownedMembership", "ownedMetadata", "ownedOccurrence", "ownedPart", "ownedPort", "ownedReference", "ownedRelationship", "ownedRendering", "ownedRequirement", "ownedSpecialization", "ownedState", "ownedSubclassification", "ownedTransition", "ownedUnioning", "ownedUsage", "ownedUseCase", "ownedVerificationCase", "ownedView", "ownedViewpoint", "owner", "owningMembership", "owningNamespace", "owningRelationship", "parameter", "qualifiedName", "result", "shortName", "step", "textualRepresentation", "unioningType", "usage", "variant", "variantMembership" ]
+          "required" : [ "@type", "action", "aliasIds", "calculation", "differencingType", "directedFeature", "directedUsage", "documentation", "effectiveName", "elementId", "endFeature", "expression", "feature", "featureMembership", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isConjugated", "isImpliedIncluded", "isIndividual", "isLibraryElement", "isModelLevelEvaluable", "isSufficient", "isVariation", "lifeClass", "member", "membership", "multiplicity", "name", "output", "ownedAction", "ownedAllocation", "ownedAnalysisCase", "ownedAnnotation", "ownedAttribute", "ownedCalculation", "ownedCase", "ownedConcern", "ownedConjugator", "ownedConnection", "ownedConstraint", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedEnumeration", "ownedFeature", "ownedFeatureMembership", "ownedFlow", "ownedImport", "ownedInterface", "ownedIntersecting", "ownedItem", "ownedMember", "ownedMembership", "ownedMetadata", "ownedOccurrence", "ownedPart", "ownedPort", "ownedReference", "ownedRelationship", "ownedRendering", "ownedRequirement", "ownedSpecialization", "ownedState", "ownedSubclassification", "ownedTransition", "ownedUnioning", "ownedUsage", "ownedUseCase", "ownedVerificationCase", "ownedView", "ownedViewpoint", "owner", "owningMembership", "owningNamespace", "owningRelationship", "parameter", "qualifiedName", "result", "shortName", "step", "textualRepresentation", "unioningType", "usage", "variant", "variantMembership" ]
         }, {
           "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
         } ],
@@ -2093,6 +2114,13 @@
               } ]
             },
             "isIndividual" : {
+              "oneOf" : [ {
+                "type" : "boolean"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "isLibraryElement" : {
               "oneOf" : [ {
                 "type" : "boolean"
               }, {
@@ -2578,7 +2606,7 @@
               }
             }
           },
-          "required" : [ "@type", "action", "actorParameter", "aliasIds", "calculation", "differencingType", "directedFeature", "directedUsage", "documentation", "effectiveName", "elementId", "endFeature", "expression", "feature", "featureMembership", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isConjugated", "isImpliedIncluded", "isIndividual", "isModelLevelEvaluable", "isSufficient", "isVariation", "lifeClass", "member", "membership", "multiplicity", "name", "objectiveRequirement", "output", "ownedAction", "ownedAllocation", "ownedAnalysisCase", "ownedAnnotation", "ownedAttribute", "ownedCalculation", "ownedCase", "ownedConcern", "ownedConjugator", "ownedConnection", "ownedConstraint", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedEnumeration", "ownedFeature", "ownedFeatureMembership", "ownedFlow", "ownedImport", "ownedInterface", "ownedIntersecting", "ownedItem", "ownedMember", "ownedMembership", "ownedMetadata", "ownedOccurrence", "ownedPart", "ownedPort", "ownedReference", "ownedRelationship", "ownedRendering", "ownedRequirement", "ownedSpecialization", "ownedState", "ownedSubclassification", "ownedTransition", "ownedUnioning", "ownedUsage", "ownedUseCase", "ownedVerificationCase", "ownedView", "ownedViewpoint", "owner", "owningMembership", "owningNamespace", "owningRelationship", "parameter", "qualifiedName", "result", "shortName", "step", "subjectParameter", "textualRepresentation", "unioningType", "usage", "variant", "variantMembership" ]
+          "required" : [ "@type", "action", "actorParameter", "aliasIds", "calculation", "differencingType", "directedFeature", "directedUsage", "documentation", "effectiveName", "elementId", "endFeature", "expression", "feature", "featureMembership", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isConjugated", "isImpliedIncluded", "isIndividual", "isLibraryElement", "isModelLevelEvaluable", "isSufficient", "isVariation", "lifeClass", "member", "membership", "multiplicity", "name", "objectiveRequirement", "output", "ownedAction", "ownedAllocation", "ownedAnalysisCase", "ownedAnnotation", "ownedAttribute", "ownedCalculation", "ownedCase", "ownedConcern", "ownedConjugator", "ownedConnection", "ownedConstraint", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedEnumeration", "ownedFeature", "ownedFeatureMembership", "ownedFlow", "ownedImport", "ownedInterface", "ownedIntersecting", "ownedItem", "ownedMember", "ownedMembership", "ownedMetadata", "ownedOccurrence", "ownedPart", "ownedPort", "ownedReference", "ownedRelationship", "ownedRendering", "ownedRequirement", "ownedSpecialization", "ownedState", "ownedSubclassification", "ownedTransition", "ownedUnioning", "ownedUsage", "ownedUseCase", "ownedVerificationCase", "ownedView", "ownedViewpoint", "owner", "owningMembership", "owningNamespace", "owningRelationship", "parameter", "qualifiedName", "result", "shortName", "step", "subjectParameter", "textualRepresentation", "unioningType", "usage", "variant", "variantMembership" ]
         }, {
           "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
         } ],
@@ -2757,6 +2785,13 @@
             } ]
           },
           "isIndividual" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
             "oneOf" : [ {
               "type" : "boolean"
             }, {
@@ -3280,7 +3315,7 @@
             }
           }
         },
-        "required" : [ "@type", "action", "aliasIds", "associationEnd", "connectionEnd", "differencingType", "directedFeature", "directedUsage", "documentation", "effectiveName", "elementId", "endFeature", "feature", "featureMembership", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isConjugated", "isImplied", "isImpliedIncluded", "isIndividual", "isSufficient", "isVariation", "lifeClass", "member", "membership", "multiplicity", "name", "output", "ownedAction", "ownedAllocation", "ownedAnalysisCase", "ownedAnnotation", "ownedAttribute", "ownedCalculation", "ownedCase", "ownedConcern", "ownedConjugator", "ownedConnection", "ownedConstraint", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedEnumeration", "ownedFeature", "ownedFeatureMembership", "ownedFlow", "ownedImport", "ownedInterface", "ownedIntersecting", "ownedItem", "ownedMember", "ownedMembership", "ownedMetadata", "ownedOccurrence", "ownedPart", "ownedPort", "ownedReference", "ownedRelatedElement", "ownedRelationship", "ownedRendering", "ownedRequirement", "ownedSpecialization", "ownedState", "ownedSubclassification", "ownedTransition", "ownedUnioning", "ownedUsage", "ownedUseCase", "ownedVerificationCase", "ownedView", "ownedViewpoint", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "parameter", "qualifiedName", "relatedElement", "relatedType", "shortName", "source", "sourceType", "step", "target", "targetType", "textualRepresentation", "unioningType", "usage", "variant", "variantMembership" ]
+        "required" : [ "@type", "action", "aliasIds", "associationEnd", "connectionEnd", "differencingType", "directedFeature", "directedUsage", "documentation", "effectiveName", "elementId", "endFeature", "feature", "featureMembership", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isConjugated", "isImplied", "isImpliedIncluded", "isIndividual", "isLibraryElement", "isSufficient", "isVariation", "lifeClass", "member", "membership", "multiplicity", "name", "output", "ownedAction", "ownedAllocation", "ownedAnalysisCase", "ownedAnnotation", "ownedAttribute", "ownedCalculation", "ownedCase", "ownedConcern", "ownedConjugator", "ownedConnection", "ownedConstraint", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedEnumeration", "ownedFeature", "ownedFeatureMembership", "ownedFlow", "ownedImport", "ownedInterface", "ownedIntersecting", "ownedItem", "ownedMember", "ownedMembership", "ownedMetadata", "ownedOccurrence", "ownedPart", "ownedPort", "ownedReference", "ownedRelatedElement", "ownedRelationship", "ownedRendering", "ownedRequirement", "ownedSpecialization", "ownedState", "ownedSubclassification", "ownedTransition", "ownedUnioning", "ownedUsage", "ownedUseCase", "ownedVerificationCase", "ownedView", "ownedViewpoint", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "parameter", "qualifiedName", "relatedElement", "relatedType", "shortName", "source", "sourceType", "step", "target", "targetType", "textualRepresentation", "unioningType", "usage", "variant", "variantMembership" ]
       }, {
         "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
       } ],
@@ -3465,6 +3500,13 @@
             } ]
           },
           "isIndividual" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
             "oneOf" : [ {
               "type" : "boolean"
             }, {
@@ -3941,7 +3983,7 @@
             }
           }
         },
-        "required" : [ "@type", "action", "aliasIds", "differencingType", "directedFeature", "directedUsage", "doAction", "documentation", "effectiveName", "elementId", "endFeature", "entryAction", "exitAction", "feature", "featureMembership", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isConjugated", "isImpliedIncluded", "isIndividual", "isParallel", "isSufficient", "isVariation", "lifeClass", "member", "membership", "multiplicity", "name", "output", "ownedAction", "ownedAllocation", "ownedAnalysisCase", "ownedAnnotation", "ownedAttribute", "ownedCalculation", "ownedCase", "ownedConcern", "ownedConjugator", "ownedConnection", "ownedConstraint", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedEnumeration", "ownedFeature", "ownedFeatureMembership", "ownedFlow", "ownedImport", "ownedInterface", "ownedIntersecting", "ownedItem", "ownedMember", "ownedMembership", "ownedMetadata", "ownedOccurrence", "ownedPart", "ownedPort", "ownedReference", "ownedRelationship", "ownedRendering", "ownedRequirement", "ownedSpecialization", "ownedState", "ownedSubclassification", "ownedTransition", "ownedUnioning", "ownedUsage", "ownedUseCase", "ownedVerificationCase", "ownedView", "ownedViewpoint", "owner", "owningMembership", "owningNamespace", "owningRelationship", "parameter", "qualifiedName", "shortName", "state", "step", "textualRepresentation", "unioningType", "usage", "variant", "variantMembership" ]
+        "required" : [ "@type", "action", "aliasIds", "differencingType", "directedFeature", "directedUsage", "doAction", "documentation", "effectiveName", "elementId", "endFeature", "entryAction", "exitAction", "feature", "featureMembership", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isConjugated", "isImpliedIncluded", "isIndividual", "isLibraryElement", "isParallel", "isSufficient", "isVariation", "lifeClass", "member", "membership", "multiplicity", "name", "output", "ownedAction", "ownedAllocation", "ownedAnalysisCase", "ownedAnnotation", "ownedAttribute", "ownedCalculation", "ownedCase", "ownedConcern", "ownedConjugator", "ownedConnection", "ownedConstraint", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedEnumeration", "ownedFeature", "ownedFeatureMembership", "ownedFlow", "ownedImport", "ownedInterface", "ownedIntersecting", "ownedItem", "ownedMember", "ownedMembership", "ownedMetadata", "ownedOccurrence", "ownedPart", "ownedPort", "ownedReference", "ownedRelationship", "ownedRendering", "ownedRequirement", "ownedSpecialization", "ownedState", "ownedSubclassification", "ownedTransition", "ownedUnioning", "ownedUsage", "ownedUseCase", "ownedVerificationCase", "ownedView", "ownedViewpoint", "owner", "owningMembership", "owningNamespace", "owningRelationship", "parameter", "qualifiedName", "shortName", "state", "step", "textualRepresentation", "unioningType", "usage", "variant", "variantMembership" ]
       }, {
         "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
       } ],
@@ -4118,6 +4160,13 @@
             } ]
           },
           "isIndividual" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
             "oneOf" : [ {
               "type" : "boolean"
             }, {
@@ -4603,7 +4652,7 @@
             }
           }
         },
-        "required" : [ "@type", "action", "actorParameter", "aliasIds", "calculation", "differencingType", "directedFeature", "directedUsage", "documentation", "effectiveName", "elementId", "endFeature", "expression", "feature", "featureMembership", "importedMembership", "includedUseCase", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isConjugated", "isImpliedIncluded", "isIndividual", "isModelLevelEvaluable", "isSufficient", "isVariation", "lifeClass", "member", "membership", "multiplicity", "name", "objectiveRequirement", "output", "ownedAction", "ownedAllocation", "ownedAnalysisCase", "ownedAnnotation", "ownedAttribute", "ownedCalculation", "ownedCase", "ownedConcern", "ownedConjugator", "ownedConnection", "ownedConstraint", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedEnumeration", "ownedFeature", "ownedFeatureMembership", "ownedFlow", "ownedImport", "ownedInterface", "ownedIntersecting", "ownedItem", "ownedMember", "ownedMembership", "ownedMetadata", "ownedOccurrence", "ownedPart", "ownedPort", "ownedReference", "ownedRelationship", "ownedRendering", "ownedRequirement", "ownedSpecialization", "ownedState", "ownedSubclassification", "ownedTransition", "ownedUnioning", "ownedUsage", "ownedUseCase", "ownedVerificationCase", "ownedView", "ownedViewpoint", "owner", "owningMembership", "owningNamespace", "owningRelationship", "parameter", "qualifiedName", "result", "shortName", "step", "subjectParameter", "textualRepresentation", "unioningType", "usage", "variant", "variantMembership" ]
+        "required" : [ "@type", "action", "actorParameter", "aliasIds", "calculation", "differencingType", "directedFeature", "directedUsage", "documentation", "effectiveName", "elementId", "endFeature", "expression", "feature", "featureMembership", "importedMembership", "includedUseCase", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isConjugated", "isImpliedIncluded", "isIndividual", "isLibraryElement", "isModelLevelEvaluable", "isSufficient", "isVariation", "lifeClass", "member", "membership", "multiplicity", "name", "objectiveRequirement", "output", "ownedAction", "ownedAllocation", "ownedAnalysisCase", "ownedAnnotation", "ownedAttribute", "ownedCalculation", "ownedCase", "ownedConcern", "ownedConjugator", "ownedConnection", "ownedConstraint", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedEnumeration", "ownedFeature", "ownedFeatureMembership", "ownedFlow", "ownedImport", "ownedInterface", "ownedIntersecting", "ownedItem", "ownedMember", "ownedMembership", "ownedMetadata", "ownedOccurrence", "ownedPart", "ownedPort", "ownedReference", "ownedRelationship", "ownedRendering", "ownedRequirement", "ownedSpecialization", "ownedState", "ownedSubclassification", "ownedTransition", "ownedUnioning", "ownedUsage", "ownedUseCase", "ownedVerificationCase", "ownedView", "ownedViewpoint", "owner", "owningMembership", "owningNamespace", "owningRelationship", "parameter", "qualifiedName", "result", "shortName", "step", "subjectParameter", "textualRepresentation", "unioningType", "usage", "variant", "variantMembership" ]
       }, {
         "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
       } ],
@@ -4773,6 +4822,13 @@
             } ]
           },
           "isIndividual" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
             "oneOf" : [ {
               "type" : "boolean"
             }, {
@@ -5265,7 +5321,7 @@
             }
           }
         },
-        "required" : [ "@type", "action", "actorParameter", "aliasIds", "calculation", "differencingType", "directedFeature", "directedUsage", "documentation", "effectiveName", "elementId", "endFeature", "expression", "feature", "featureMembership", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isConjugated", "isImpliedIncluded", "isIndividual", "isModelLevelEvaluable", "isSufficient", "isVariation", "lifeClass", "member", "membership", "multiplicity", "name", "objectiveRequirement", "output", "ownedAction", "ownedAllocation", "ownedAnalysisCase", "ownedAnnotation", "ownedAttribute", "ownedCalculation", "ownedCase", "ownedConcern", "ownedConjugator", "ownedConnection", "ownedConstraint", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedEnumeration", "ownedFeature", "ownedFeatureMembership", "ownedFlow", "ownedImport", "ownedInterface", "ownedIntersecting", "ownedItem", "ownedMember", "ownedMembership", "ownedMetadata", "ownedOccurrence", "ownedPart", "ownedPort", "ownedReference", "ownedRelationship", "ownedRendering", "ownedRequirement", "ownedSpecialization", "ownedState", "ownedSubclassification", "ownedTransition", "ownedUnioning", "ownedUsage", "ownedUseCase", "ownedVerificationCase", "ownedView", "ownedViewpoint", "owner", "owningMembership", "owningNamespace", "owningRelationship", "parameter", "qualifiedName", "result", "shortName", "step", "subjectParameter", "textualRepresentation", "unioningType", "usage", "variant", "variantMembership", "verifiedRequirement" ]
+        "required" : [ "@type", "action", "actorParameter", "aliasIds", "calculation", "differencingType", "directedFeature", "directedUsage", "documentation", "effectiveName", "elementId", "endFeature", "expression", "feature", "featureMembership", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isConjugated", "isImpliedIncluded", "isIndividual", "isLibraryElement", "isModelLevelEvaluable", "isSufficient", "isVariation", "lifeClass", "member", "membership", "multiplicity", "name", "objectiveRequirement", "output", "ownedAction", "ownedAllocation", "ownedAnalysisCase", "ownedAnnotation", "ownedAttribute", "ownedCalculation", "ownedCase", "ownedConcern", "ownedConjugator", "ownedConnection", "ownedConstraint", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedEnumeration", "ownedFeature", "ownedFeatureMembership", "ownedFlow", "ownedImport", "ownedInterface", "ownedIntersecting", "ownedItem", "ownedMember", "ownedMembership", "ownedMetadata", "ownedOccurrence", "ownedPart", "ownedPort", "ownedReference", "ownedRelationship", "ownedRendering", "ownedRequirement", "ownedSpecialization", "ownedState", "ownedSubclassification", "ownedTransition", "ownedUnioning", "ownedUsage", "ownedUseCase", "ownedVerificationCase", "ownedView", "ownedViewpoint", "owner", "owningMembership", "owningNamespace", "owningRelationship", "parameter", "qualifiedName", "result", "shortName", "step", "subjectParameter", "textualRepresentation", "unioningType", "usage", "variant", "variantMembership", "verifiedRequirement" ]
       }, {
         "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
       } ],

@@ -47,6 +47,7 @@ public abstract class LiteralIntegerImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile CollectionAttribute<LiteralIntegerImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<LiteralIntegerImpl, UUID> elementId;
 	public static volatile ListAttribute<LiteralIntegerImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<LiteralIntegerImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<LiteralIntegerImpl, Boolean> isDerived;
 	public static volatile ListAttribute<LiteralIntegerImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<LiteralIntegerImpl, Feature> ownedFeature;
@@ -110,6 +111,7 @@ public abstract class LiteralIntegerImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";

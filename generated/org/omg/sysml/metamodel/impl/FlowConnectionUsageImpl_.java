@@ -85,6 +85,7 @@ public abstract class FlowConnectionUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Differencing> ownedDifferencing;
 	public static volatile CollectionAttribute<FlowConnectionUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<FlowConnectionUsageImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<FlowConnectionUsageImpl, Boolean> isImplied;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, EnumerationUsage> nestedEnumeration;
@@ -202,6 +203,7 @@ public abstract class FlowConnectionUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";

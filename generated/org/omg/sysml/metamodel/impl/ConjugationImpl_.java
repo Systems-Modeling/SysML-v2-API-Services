@@ -17,6 +17,7 @@ public abstract class ConjugationImpl_ extends org.omg.sysml.lifecycle.impl.Data
 
 	public static volatile SingularAttribute<ConjugationImpl, UUID> elementId;
 	public static volatile ListAttribute<ConjugationImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<ConjugationImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<ConjugationImpl, Boolean> isImplied;
 	public static volatile ListAttribute<ConjugationImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ConjugationImpl, Element> ownedElement;
@@ -35,6 +36,7 @@ public abstract class ConjugationImpl_ extends org.omg.sysml.lifecycle.impl.Data
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";

@@ -87,6 +87,7 @@ public abstract class OccurrenceUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile CollectionAttribute<OccurrenceUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<OccurrenceUsageImpl, UUID> elementId;
 	public static volatile ListAttribute<OccurrenceUsageImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<OccurrenceUsageImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<OccurrenceUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<OccurrenceUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<OccurrenceUsageImpl, Annotation> ownedAnnotation;
@@ -183,6 +184,7 @@ public abstract class OccurrenceUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

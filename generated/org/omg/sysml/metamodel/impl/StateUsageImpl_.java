@@ -79,6 +79,7 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile ListAttribute<StateUsageImpl, Differencing> ownedDifferencing;
 	public static volatile CollectionAttribute<StateUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<StateUsageImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<StateUsageImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<StateUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<StateUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile ListAttribute<StateUsageImpl, Feature> ownedFeature;
@@ -180,6 +181,7 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";

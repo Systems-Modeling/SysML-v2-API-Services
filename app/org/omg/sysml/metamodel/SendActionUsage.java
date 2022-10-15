@@ -30,4 +30,6 @@ public interface SendActionUsage extends ActionUsage, SysMLType {
     Expression getReceiverArgument();
 
     Expression getPayloadArgument();
+
+    Expression getSenderArgument();
 }

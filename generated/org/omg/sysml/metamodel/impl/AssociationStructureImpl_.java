@@ -34,6 +34,7 @@ public abstract class AssociationStructureImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile ListAttribute<AssociationStructureImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<AssociationStructureImpl, UUID> elementId;
 	public static volatile ListAttribute<AssociationStructureImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<AssociationStructureImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<AssociationStructureImpl, Boolean> isImplied;
 	public static volatile ListAttribute<AssociationStructureImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<AssociationStructureImpl, Feature> ownedFeature;
@@ -84,6 +85,7 @@ public abstract class AssociationStructureImpl_ extends org.omg.sysml.lifecycle.
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";

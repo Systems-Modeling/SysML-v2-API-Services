@@ -81,6 +81,7 @@ public abstract class ConcernUsageImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static volatile ListAttribute<ConcernUsageImpl, Differencing> ownedDifferencing;
 	public static volatile CollectionAttribute<ConcernUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<ConcernUsageImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<ConcernUsageImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<ConcernUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<ConcernUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile ListAttribute<ConcernUsageImpl, Feature> ownedFeature;
@@ -187,6 +188,7 @@ public abstract class ConcernUsageImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";

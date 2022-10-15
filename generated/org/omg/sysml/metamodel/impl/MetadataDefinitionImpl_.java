@@ -73,6 +73,7 @@ public abstract class MetadataDefinitionImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile ListAttribute<MetadataDefinitionImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<MetadataDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<MetadataDefinitionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<MetadataDefinitionImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<MetadataDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<MetadataDefinitionImpl, ViewUsage> ownedView;
 	public static volatile ListAttribute<MetadataDefinitionImpl, Feature> ownedFeature;
@@ -148,6 +149,7 @@ public abstract class MetadataDefinitionImpl_ extends org.omg.sysml.lifecycle.im
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";

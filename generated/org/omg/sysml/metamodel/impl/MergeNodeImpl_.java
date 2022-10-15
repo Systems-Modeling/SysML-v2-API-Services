@@ -78,6 +78,7 @@ public abstract class MergeNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<MergeNodeImpl, Differencing> ownedDifferencing;
 	public static volatile CollectionAttribute<MergeNodeImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<MergeNodeImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<MergeNodeImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<MergeNodeImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<MergeNodeImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile ListAttribute<MergeNodeImpl, Feature> ownedFeature;
@@ -177,6 +178,7 @@ public abstract class MergeNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";

@@ -50,6 +50,7 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile CollectionAttribute<OperatorExpressionImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<OperatorExpressionImpl, UUID> elementId;
 	public static volatile ListAttribute<OperatorExpressionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isDerived;
 	public static volatile ListAttribute<OperatorExpressionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<OperatorExpressionImpl, Feature> ownedFeature;
@@ -115,6 +116,7 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.lifecycle.im
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";

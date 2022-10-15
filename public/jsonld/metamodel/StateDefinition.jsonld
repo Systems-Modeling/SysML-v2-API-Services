@@ -28,6 +28,7 @@
         "isConjugated": {"@type": "xsd:boolean"},
         "isImpliedIncluded": {"@type": "xsd:boolean"},
         "isIndividual": {"@type": "xsd:boolean"},
+        "isLibraryElement": {"@type": "xsd:boolean"},
         "isParallel": {"@type": "xsd:boolean"},
         "isSufficient": {"@type": "xsd:boolean"},
         "isVariation": {"@type": "xsd:boolean"},

@@ -47,6 +47,7 @@ public abstract class ExpressionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile CollectionAttribute<ExpressionImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<ExpressionImpl, UUID> elementId;
 	public static volatile ListAttribute<ExpressionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<ExpressionImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<ExpressionImpl, Boolean> isDerived;
 	public static volatile ListAttribute<ExpressionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ExpressionImpl, Feature> ownedFeature;
@@ -109,6 +110,7 @@ public abstract class ExpressionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";

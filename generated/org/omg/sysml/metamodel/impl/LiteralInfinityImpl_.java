@@ -47,6 +47,7 @@ public abstract class LiteralInfinityImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile CollectionAttribute<LiteralInfinityImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<LiteralInfinityImpl, UUID> elementId;
 	public static volatile ListAttribute<LiteralInfinityImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<LiteralInfinityImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<LiteralInfinityImpl, Boolean> isDerived;
 	public static volatile ListAttribute<LiteralInfinityImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<LiteralInfinityImpl, Feature> ownedFeature;
@@ -109,6 +110,7 @@ public abstract class LiteralInfinityImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";

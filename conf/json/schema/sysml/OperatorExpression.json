@@ -200,6 +200,13 @@
             "type" : "null"
           } ]
         },
+        "isLibraryElement" : {
+          "oneOf" : [ {
+            "type" : "boolean"
+          }, {
+            "type" : "null"
+          } ]
+        },
         "isModelLevelEvaluable" : {
           "oneOf" : [ {
             "type" : "boolean"
@@ -546,7 +553,7 @@
           }
         }
       },
-      "required" : [ "@type", "aliasIds", "argument", "behavior", "chainingFeature", "differencingType", "directedFeature", "direction", "documentation", "effectiveName", "elementId", "endFeature", "endOwningType", "feature", "featureMembership", "featuringType", "function", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isComposite", "isConjugated", "isDerived", "isEnd", "isImpliedIncluded", "isModelLevelEvaluable", "isNonunique", "isOrdered", "isPortion", "isReadOnly", "isSufficient", "isUnique", "member", "membership", "multiplicity", "name", "operand", "operator", "output", "ownedAnnotation", "ownedConjugator", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedFeature", "ownedFeatureChaining", "ownedFeatureInverting", "ownedFeatureMembership", "ownedImport", "ownedIntersecting", "ownedMember", "ownedMembership", "ownedRedefinition", "ownedReferenceSubsetting", "ownedRelationship", "ownedSpecialization", "ownedSubsetting", "ownedTypeFeaturing", "ownedTyping", "ownedUnioning", "owner", "owningFeatureMembership", "owningMembership", "owningNamespace", "owningRelationship", "owningType", "parameter", "qualifiedName", "result", "shortName", "textualRepresentation", "type", "unioningType" ]
+      "required" : [ "@type", "aliasIds", "argument", "behavior", "chainingFeature", "differencingType", "directedFeature", "direction", "documentation", "effectiveName", "elementId", "endFeature", "endOwningType", "feature", "featureMembership", "featuringType", "function", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isComposite", "isConjugated", "isDerived", "isEnd", "isImpliedIncluded", "isLibraryElement", "isModelLevelEvaluable", "isNonunique", "isOrdered", "isPortion", "isReadOnly", "isSufficient", "isUnique", "member", "membership", "multiplicity", "name", "operand", "operator", "output", "ownedAnnotation", "ownedConjugator", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedFeature", "ownedFeatureChaining", "ownedFeatureInverting", "ownedFeatureMembership", "ownedImport", "ownedIntersecting", "ownedMember", "ownedMembership", "ownedRedefinition", "ownedReferenceSubsetting", "ownedRelationship", "ownedSpecialization", "ownedSubsetting", "ownedTypeFeaturing", "ownedTyping", "ownedUnioning", "owner", "owningFeatureMembership", "owningMembership", "owningNamespace", "owningRelationship", "owningType", "parameter", "qualifiedName", "result", "shortName", "textualRepresentation", "type", "unioningType" ]
     }, {
       "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
     } ],
@@ -753,6 +760,13 @@
             } ]
           },
           "isImpliedIncluded" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
             "oneOf" : [ {
               "type" : "boolean"
             }, {
@@ -1105,7 +1119,7 @@
             }
           }
         },
-        "required" : [ "@type", "aliasIds", "argument", "behavior", "chainingFeature", "differencingType", "directedFeature", "direction", "documentation", "effectiveName", "elementId", "endFeature", "endOwningType", "feature", "featureMembership", "featuringType", "function", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isComposite", "isConjugated", "isDerived", "isEnd", "isImpliedIncluded", "isModelLevelEvaluable", "isNonunique", "isOrdered", "isPortion", "isReadOnly", "isSufficient", "isUnique", "member", "membership", "multiplicity", "name", "operand", "operator", "output", "ownedAnnotation", "ownedConjugator", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedFeature", "ownedFeatureChaining", "ownedFeatureInverting", "ownedFeatureMembership", "ownedImport", "ownedIntersecting", "ownedMember", "ownedMembership", "ownedRedefinition", "ownedReferenceSubsetting", "ownedRelationship", "ownedSpecialization", "ownedSubsetting", "ownedTypeFeaturing", "ownedTyping", "ownedUnioning", "owner", "owningFeatureMembership", "owningMembership", "owningNamespace", "owningRelationship", "owningType", "parameter", "qualifiedName", "result", "shortName", "textualRepresentation", "type", "unioningType" ]
+        "required" : [ "@type", "aliasIds", "argument", "behavior", "chainingFeature", "differencingType", "directedFeature", "direction", "documentation", "effectiveName", "elementId", "endFeature", "endOwningType", "feature", "featureMembership", "featuringType", "function", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isComposite", "isConjugated", "isDerived", "isEnd", "isImpliedIncluded", "isLibraryElement", "isModelLevelEvaluable", "isNonunique", "isOrdered", "isPortion", "isReadOnly", "isSufficient", "isUnique", "member", "membership", "multiplicity", "name", "operand", "operator", "output", "ownedAnnotation", "ownedConjugator", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedFeature", "ownedFeatureChaining", "ownedFeatureInverting", "ownedFeatureMembership", "ownedImport", "ownedIntersecting", "ownedMember", "ownedMembership", "ownedRedefinition", "ownedReferenceSubsetting", "ownedRelationship", "ownedSpecialization", "ownedSubsetting", "ownedTypeFeaturing", "ownedTyping", "ownedUnioning", "owner", "owningFeatureMembership", "owningMembership", "owningNamespace", "owningRelationship", "owningType", "parameter", "qualifiedName", "result", "shortName", "textualRepresentation", "type", "unioningType" ]
       }, {
         "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
       } ],
@@ -1305,6 +1319,13 @@
             } ]
           },
           "isImpliedIncluded" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
             "oneOf" : [ {
               "type" : "boolean"
             }, {
@@ -1661,7 +1682,7 @@
             }
           }
         },
-        "required" : [ "@type", "aliasIds", "argument", "behavior", "chainingFeature", "differencingType", "directedFeature", "direction", "documentation", "effectiveName", "elementId", "endFeature", "endOwningType", "feature", "featureMembership", "featuringType", "function", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isComposite", "isConjugated", "isDerived", "isEnd", "isImpliedIncluded", "isModelLevelEvaluable", "isNonunique", "isOrdered", "isPortion", "isReadOnly", "isSufficient", "isUnique", "member", "membership", "multiplicity", "name", "operand", "operator", "output", "ownedAnnotation", "ownedConjugator", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedFeature", "ownedFeatureChaining", "ownedFeatureInverting", "ownedFeatureMembership", "ownedImport", "ownedIntersecting", "ownedMember", "ownedMembership", "ownedRedefinition", "ownedReferenceSubsetting", "ownedRelationship", "ownedSpecialization", "ownedSubsetting", "ownedTypeFeaturing", "ownedTyping", "ownedUnioning", "owner", "owningFeatureMembership", "owningMembership", "owningNamespace", "owningRelationship", "owningType", "parameter", "qualifiedName", "result", "shortName", "targetFeature", "textualRepresentation", "type", "unioningType" ]
+        "required" : [ "@type", "aliasIds", "argument", "behavior", "chainingFeature", "differencingType", "directedFeature", "direction", "documentation", "effectiveName", "elementId", "endFeature", "endOwningType", "feature", "featureMembership", "featuringType", "function", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isComposite", "isConjugated", "isDerived", "isEnd", "isImpliedIncluded", "isLibraryElement", "isModelLevelEvaluable", "isNonunique", "isOrdered", "isPortion", "isReadOnly", "isSufficient", "isUnique", "member", "membership", "multiplicity", "name", "operand", "operator", "output", "ownedAnnotation", "ownedConjugator", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedFeature", "ownedFeatureChaining", "ownedFeatureInverting", "ownedFeatureMembership", "ownedImport", "ownedIntersecting", "ownedMember", "ownedMembership", "ownedRedefinition", "ownedReferenceSubsetting", "ownedRelationship", "ownedSpecialization", "ownedSubsetting", "ownedTypeFeaturing", "ownedTyping", "ownedUnioning", "owner", "owningFeatureMembership", "owningMembership", "owningNamespace", "owningRelationship", "owningType", "parameter", "qualifiedName", "result", "shortName", "targetFeature", "textualRepresentation", "type", "unioningType" ]
       }, {
         "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
       } ],
@@ -1879,6 +1900,13 @@
             } ]
           },
           "isImpliedIncluded" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
             "oneOf" : [ {
               "type" : "boolean"
             }, {
@@ -2231,7 +2259,7 @@
             }
           }
         },
-        "required" : [ "@type", "aliasIds", "argument", "behavior", "chainingFeature", "differencingType", "directedFeature", "direction", "documentation", "effectiveName", "elementId", "endFeature", "endOwningType", "feature", "featureMembership", "featuringType", "function", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isComposite", "isConjugated", "isDerived", "isEnd", "isImpliedIncluded", "isModelLevelEvaluable", "isNonunique", "isOrdered", "isPortion", "isReadOnly", "isSufficient", "isUnique", "member", "membership", "multiplicity", "name", "operand", "operator", "output", "ownedAnnotation", "ownedConjugator", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedFeature", "ownedFeatureChaining", "ownedFeatureInverting", "ownedFeatureMembership", "ownedImport", "ownedIntersecting", "ownedMember", "ownedMembership", "ownedRedefinition", "ownedReferenceSubsetting", "ownedRelationship", "ownedSpecialization", "ownedSubsetting", "ownedTypeFeaturing", "ownedTyping", "ownedUnioning", "owner", "owningFeatureMembership", "owningMembership", "owningNamespace", "owningRelationship", "owningType", "parameter", "qualifiedName", "result", "shortName", "textualRepresentation", "type", "unioningType" ]
+        "required" : [ "@type", "aliasIds", "argument", "behavior", "chainingFeature", "differencingType", "directedFeature", "direction", "documentation", "effectiveName", "elementId", "endFeature", "endOwningType", "feature", "featureMembership", "featuringType", "function", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isComposite", "isConjugated", "isDerived", "isEnd", "isImpliedIncluded", "isLibraryElement", "isModelLevelEvaluable", "isNonunique", "isOrdered", "isPortion", "isReadOnly", "isSufficient", "isUnique", "member", "membership", "multiplicity", "name", "operand", "operator", "output", "ownedAnnotation", "ownedConjugator", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedFeature", "ownedFeatureChaining", "ownedFeatureInverting", "ownedFeatureMembership", "ownedImport", "ownedIntersecting", "ownedMember", "ownedMembership", "ownedRedefinition", "ownedReferenceSubsetting", "ownedRelationship", "ownedSpecialization", "ownedSubsetting", "ownedTypeFeaturing", "ownedTyping", "ownedUnioning", "owner", "owningFeatureMembership", "owningMembership", "owningNamespace", "owningRelationship", "owningType", "parameter", "qualifiedName", "result", "shortName", "textualRepresentation", "type", "unioningType" ]
       }, {
         "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
       } ],

@@ -78,6 +78,7 @@ public abstract class AssertConstraintUsageImpl_ extends org.omg.sysml.lifecycle
 	public static volatile ListAttribute<AssertConstraintUsageImpl, Differencing> ownedDifferencing;
 	public static volatile CollectionAttribute<AssertConstraintUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<AssertConstraintUsageImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<AssertConstraintUsageImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<AssertConstraintUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<AssertConstraintUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile ListAttribute<AssertConstraintUsageImpl, Feature> ownedFeature;
@@ -178,6 +179,7 @@ public abstract class AssertConstraintUsageImpl_ extends org.omg.sysml.lifecycle
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";

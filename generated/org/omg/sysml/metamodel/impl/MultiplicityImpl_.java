@@ -46,6 +46,7 @@ public abstract class MultiplicityImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static volatile CollectionAttribute<MultiplicityImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<MultiplicityImpl, UUID> elementId;
 	public static volatile ListAttribute<MultiplicityImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<MultiplicityImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<MultiplicityImpl, Boolean> isDerived;
 	public static volatile ListAttribute<MultiplicityImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<MultiplicityImpl, Feature> ownedFeature;
@@ -105,6 +106,7 @@ public abstract class MultiplicityImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";

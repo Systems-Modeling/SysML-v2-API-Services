@@ -54,6 +54,13 @@
           "type" : "null"
         } ]
       },
+      "isLibraryElement" : {
+        "oneOf" : [ {
+          "type" : "boolean"
+        }, {
+          "type" : "null"
+        } ]
+      },
       "name" : {
         "oneOf" : [ {
           "type" : "string"
@@ -201,7 +208,7 @@
         }
       }
     },
-    "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "general", "isImplied", "isImpliedIncluded", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningClassifier", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "specific", "subclassifier", "superclassifier", "target", "textualRepresentation" ]
+    "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "general", "isImplied", "isImpliedIncluded", "isLibraryElement", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningClassifier", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "specific", "subclassifier", "superclassifier", "target", "textualRepresentation" ]
   }, {
     "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
   } ],

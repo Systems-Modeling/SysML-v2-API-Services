@@ -73,6 +73,7 @@ public abstract class ConjugatedPortDefinitionImpl_ extends org.omg.sysml.lifecy
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<ConjugatedPortDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<ConjugatedPortDefinitionImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, ViewUsage> ownedView;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, Feature> ownedFeature;
@@ -148,6 +149,7 @@ public abstract class ConjugatedPortDefinitionImpl_ extends org.omg.sysml.lifecy
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";

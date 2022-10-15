@@ -65,6 +65,13 @@
           "type" : "null"
         } ]
       },
+      "isLibraryElement" : {
+        "oneOf" : [ {
+          "type" : "boolean"
+        }, {
+          "type" : "null"
+        } ]
+      },
       "locale" : {
         "oneOf" : [ {
           "type" : "string"
@@ -154,7 +161,7 @@
         }
       }
     },
-    "required" : [ "@type", "aliasIds", "annotatedElement", "annotation", "body", "documentation", "documentedElement", "effectiveName", "elementId", "isImpliedIncluded", "locale", "name", "ownedAnnotation", "ownedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelationship", "qualifiedName", "shortName", "textualRepresentation" ]
+    "required" : [ "@type", "aliasIds", "annotatedElement", "annotation", "body", "documentation", "documentedElement", "effectiveName", "elementId", "isImpliedIncluded", "isLibraryElement", "locale", "name", "ownedAnnotation", "ownedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelationship", "qualifiedName", "shortName", "textualRepresentation" ]
   }, {
     "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
   } ],

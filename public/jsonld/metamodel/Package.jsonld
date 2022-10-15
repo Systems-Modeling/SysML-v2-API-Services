@@ -12,6 +12,7 @@
         "filterCondition": {"@type": "@id"},
         "importedMembership": {"@type": "@id"},
         "isImpliedIncluded": {"@type": "xsd:boolean"},
+        "isLibraryElement": {"@type": "xsd:boolean"},
         "member": {"@type": "@id"},
         "membership": {"@type": "@id"},
         "name": {"@type": "xsd:string"},

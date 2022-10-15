@@ -55,6 +55,13 @@
             "type" : "null"
           } ]
         },
+        "isLibraryElement" : {
+          "oneOf" : [ {
+            "type" : "boolean"
+          }, {
+            "type" : "null"
+          } ]
+        },
         "name" : {
           "oneOf" : [ {
             "type" : "string"
@@ -186,17 +193,17 @@
           }
         }
       },
-      "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "general", "isImplied", "isImpliedIncluded", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "specific", "target", "textualRepresentation" ]
+      "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "general", "isImplied", "isImpliedIncluded", "isLibraryElement", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "specific", "target", "textualRepresentation" ]
     }, {
       "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
     } ],
     "unevaluatedProperties" : false
   }, {
-    "$ref" : "http://www.omg.org/spec/SysML/2.0/Subclassification"
+    "$ref" : "http://www.omg.org/spec/SysML/2.0/FeatureTyping"
   }, {
     "$ref" : "http://www.omg.org/spec/SysML/2.0/Subsetting"
   }, {
-    "$ref" : "http://www.omg.org/spec/SysML/2.0/FeatureTyping"
+    "$ref" : "http://www.omg.org/spec/SysML/2.0/Subclassification"
   } ],
   "$defs" : {
     "http://www.omg.org/spec/SysML/2.0/ConjugatedPortTyping" : {
@@ -252,6 +259,13 @@
             } ]
           },
           "isImpliedIncluded" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
             "oneOf" : [ {
               "type" : "boolean"
             }, {
@@ -401,15 +415,19 @@
             }
           },
           "type" : {
-            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
-            "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+            }, {
+              "type" : "null"
+            } ]
           },
           "typedFeature" : {
             "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
             "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
           }
         },
-        "required" : [ "@type", "aliasIds", "conjugatedPortDefinition", "documentation", "effectiveName", "elementId", "general", "isImplied", "isImpliedIncluded", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningFeature", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "portDefinition", "qualifiedName", "relatedElement", "shortName", "source", "specific", "target", "textualRepresentation", "type", "typedFeature" ]
+        "required" : [ "@type", "aliasIds", "conjugatedPortDefinition", "documentation", "effectiveName", "elementId", "general", "isImplied", "isImpliedIncluded", "isLibraryElement", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningFeature", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "portDefinition", "qualifiedName", "relatedElement", "shortName", "source", "specific", "target", "textualRepresentation", "type", "typedFeature" ]
       }, {
         "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
       } ],
@@ -465,6 +483,13 @@
               } ]
             },
             "isImpliedIncluded" : {
+              "oneOf" : [ {
+                "type" : "boolean"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "isLibraryElement" : {
               "oneOf" : [ {
                 "type" : "boolean"
               }, {
@@ -610,15 +635,19 @@
               }
             },
             "type" : {
-              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
-              "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+              }, {
+                "type" : "null"
+              } ]
             },
             "typedFeature" : {
               "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
               "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
             }
           },
-          "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "general", "isImplied", "isImpliedIncluded", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningFeature", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "specific", "target", "textualRepresentation", "type", "typedFeature" ]
+          "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "general", "isImplied", "isImpliedIncluded", "isLibraryElement", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningFeature", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "specific", "target", "textualRepresentation", "type", "typedFeature" ]
         }, {
           "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
         } ],
@@ -694,6 +723,13 @@
               "type" : "null"
             } ]
           },
+          "isLibraryElement" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
           "name" : {
             "oneOf" : [ {
               "type" : "string"
@@ -738,12 +774,8 @@
             } ]
           },
           "owningFeature" : {
-            "oneOf" : [ {
-              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
-              "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
-            }, {
-              "type" : "null"
-            } ]
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
           },
           "owningMembership" : {
             "oneOf" : [ {
@@ -849,7 +881,7 @@
             }
           }
         },
-        "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "general", "isImplied", "isImpliedIncluded", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningFeature", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "redefinedFeature", "redefiningFeature", "relatedElement", "shortName", "source", "specific", "subsettedFeature", "subsettingFeature", "target", "textualRepresentation" ]
+        "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "general", "isImplied", "isImpliedIncluded", "isLibraryElement", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningFeature", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "redefinedFeature", "redefiningFeature", "relatedElement", "shortName", "source", "specific", "subsettedFeature", "subsettingFeature", "target", "textualRepresentation" ]
       }, {
         "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
       } ],
@@ -910,6 +942,13 @@
               "type" : "null"
             } ]
           },
+          "isLibraryElement" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
           "name" : {
             "oneOf" : [ {
               "type" : "string"
@@ -954,12 +993,8 @@
             } ]
           },
           "owningFeature" : {
-            "oneOf" : [ {
-              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
-              "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
-            }, {
-              "type" : "null"
-            } ]
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
           },
           "owningMembership" : {
             "oneOf" : [ {
@@ -1065,7 +1100,7 @@
             }
           }
         },
-        "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "general", "isImplied", "isImpliedIncluded", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningFeature", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "referencedFeature", "referencingFeature", "relatedElement", "shortName", "source", "specific", "subsettedFeature", "subsettingFeature", "target", "textualRepresentation" ]
+        "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "general", "isImplied", "isImpliedIncluded", "isLibraryElement", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningFeature", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "referencedFeature", "referencingFeature", "relatedElement", "shortName", "source", "specific", "subsettedFeature", "subsettingFeature", "target", "textualRepresentation" ]
       }, {
         "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
       } ],
@@ -1120,6 +1155,13 @@
             } ]
           },
           "isImpliedIncluded" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
             "oneOf" : [ {
               "type" : "boolean"
             }, {
@@ -1273,7 +1315,7 @@
             }
           }
         },
-        "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "general", "isImplied", "isImpliedIncluded", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningClassifier", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "specific", "subclassifier", "superclassifier", "target", "textualRepresentation" ]
+        "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "general", "isImplied", "isImpliedIncluded", "isLibraryElement", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningClassifier", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "specific", "subclassifier", "superclassifier", "target", "textualRepresentation" ]
       }, {
         "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
       } ],
@@ -1335,6 +1377,13 @@
                 "type" : "null"
               } ]
             },
+            "isLibraryElement" : {
+              "oneOf" : [ {
+                "type" : "boolean"
+              }, {
+                "type" : "null"
+              } ]
+            },
             "name" : {
               "oneOf" : [ {
                 "type" : "string"
@@ -1379,12 +1428,8 @@
               } ]
             },
             "owningFeature" : {
-              "oneOf" : [ {
-                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
-                "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
-              }, {
-                "type" : "null"
-              } ]
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
             },
             "owningMembership" : {
               "oneOf" : [ {
@@ -1482,15 +1527,15 @@
               }
             }
           },
-          "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "general", "isImplied", "isImpliedIncluded", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningFeature", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "specific", "subsettedFeature", "subsettingFeature", "target", "textualRepresentation" ]
+          "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "general", "isImplied", "isImpliedIncluded", "isLibraryElement", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningFeature", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "specific", "subsettedFeature", "subsettingFeature", "target", "textualRepresentation" ]
         }, {
           "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
         } ],
         "unevaluatedProperties" : false
       }, {
-        "$ref" : "http://www.omg.org/spec/SysML/2.0/Redefinition"
-      }, {
         "$ref" : "http://www.omg.org/spec/SysML/2.0/ReferenceSubsetting"
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/Redefinition"
       } ]
     }
   }

@@ -54,6 +54,13 @@
           "type" : "null"
         } ]
       },
+      "isLibraryElement" : {
+        "oneOf" : [ {
+          "type" : "boolean"
+        }, {
+          "type" : "null"
+        } ]
+      },
       "name" : {
         "oneOf" : [ {
           "type" : "string"
@@ -185,7 +192,7 @@
         "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
       }
     },
-    "required" : [ "@type", "aliasIds", "disjoiningType", "documentation", "effectiveName", "elementId", "isImplied", "isImpliedIncluded", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "typeDisjoined" ]
+    "required" : [ "@type", "aliasIds", "disjoiningType", "documentation", "effectiveName", "elementId", "isImplied", "isImpliedIncluded", "isLibraryElement", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "typeDisjoined" ]
   }, {
     "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
   } ],
