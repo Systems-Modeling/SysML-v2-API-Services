@@ -22,7 +22,9 @@
 
 package org.omg.sysml.metamodel;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public enum PortionKind {
-    TIMESLICE,
-    SNAPSHOT
+    @JsonProperty("timeslice") TIMESLICE,
+    @JsonProperty("snapshot") SNAPSHOT
 }

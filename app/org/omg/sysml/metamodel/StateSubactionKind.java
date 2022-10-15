@@ -22,8 +22,10 @@
 
 package org.omg.sysml.metamodel;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public enum StateSubactionKind {
-    ENTRY,
-    DO,
-    EXIT
+    @JsonProperty("entry") ENTRY,
+    @JsonProperty("do") DO,
+    @JsonProperty("exit") EXIT
 }
