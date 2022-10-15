@@ -29,6 +29,7 @@ public abstract class StateSubactionMembershipImpl_ extends org.omg.sysml.lifecy
 	public static volatile SingularAttribute<StateSubactionMembershipImpl, String> ownedMemberShortName;
 	public static volatile SingularAttribute<StateSubactionMembershipImpl, UUID> elementId;
 	public static volatile ListAttribute<StateSubactionMembershipImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<StateSubactionMembershipImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<StateSubactionMembershipImpl, Boolean> isImplied;
 	public static volatile ListAttribute<StateSubactionMembershipImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<StateSubactionMembershipImpl, Element> ownedElement;
@@ -55,6 +56,7 @@ public abstract class StateSubactionMembershipImpl_ extends org.omg.sysml.lifecy
 	public static final String OWNED_MEMBER_SHORT_NAME = "ownedMemberShortName";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";

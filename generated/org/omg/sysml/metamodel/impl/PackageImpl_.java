@@ -21,6 +21,7 @@ public abstract class PackageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl
 	public static volatile SingularAttribute<PackageImpl, UUID> elementId;
 	public static volatile ListAttribute<PackageImpl, TextualRepresentation> textualRepresentation;
 	public static volatile ListAttribute<PackageImpl, Membership> importedMembership;
+	public static volatile SingularAttribute<PackageImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<PackageImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<PackageImpl, Element> ownedElement;
 	public static volatile ListAttribute<PackageImpl, String> aliasIds;
@@ -41,6 +42,7 @@ public abstract class PackageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";

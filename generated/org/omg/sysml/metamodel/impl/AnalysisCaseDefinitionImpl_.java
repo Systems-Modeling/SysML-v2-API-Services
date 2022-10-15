@@ -77,6 +77,7 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.lifecycl
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, ViewUsage> ownedView;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Feature> ownedFeature;
@@ -160,6 +161,7 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.lifecycl
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";

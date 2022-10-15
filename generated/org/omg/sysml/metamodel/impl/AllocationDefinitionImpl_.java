@@ -74,6 +74,7 @@ public abstract class AllocationDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile ListAttribute<AllocationDefinitionImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<AllocationDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<AllocationDefinitionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<AllocationDefinitionImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<AllocationDefinitionImpl, Boolean> isImplied;
 	public static volatile ListAttribute<AllocationDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<AllocationDefinitionImpl, ViewUsage> ownedView;
@@ -159,6 +160,7 @@ public abstract class AllocationDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";

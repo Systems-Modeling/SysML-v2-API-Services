@@ -78,6 +78,7 @@ public abstract class PerformActionUsageImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile ListAttribute<PerformActionUsageImpl, Differencing> ownedDifferencing;
 	public static volatile CollectionAttribute<PerformActionUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<PerformActionUsageImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<PerformActionUsageImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<PerformActionUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<PerformActionUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile ListAttribute<PerformActionUsageImpl, Feature> ownedFeature;
@@ -177,6 +178,7 @@ public abstract class PerformActionUsageImpl_ extends org.omg.sysml.lifecycle.im
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";

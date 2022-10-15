@@ -75,6 +75,7 @@ public abstract class ViewDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<ViewDefinitionImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<ViewDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<ViewDefinitionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<ViewDefinitionImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<ViewDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ViewDefinitionImpl, ViewUsage> ownedView;
 	public static volatile ListAttribute<ViewDefinitionImpl, Feature> ownedFeature;
@@ -153,6 +154,7 @@ public abstract class ViewDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";

@@ -80,6 +80,7 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<TransitionUsageImpl, Differencing> ownedDifferencing;
 	public static volatile CollectionAttribute<TransitionUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<TransitionUsageImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<TransitionUsageImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<TransitionUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<TransitionUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile ListAttribute<TransitionUsageImpl, Feature> ownedFeature;
@@ -182,6 +183,7 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";

@@ -73,6 +73,13 @@
             "type" : "null"
           } ]
         },
+        "isLibraryElement" : {
+          "oneOf" : [ {
+            "type" : "boolean"
+          }, {
+            "type" : "null"
+          } ]
+        },
         "isRecursive" : {
           "oneOf" : [ {
             "type" : "boolean"
@@ -206,7 +213,7 @@
           } ]
         }
       },
-      "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "importOwningNamespace", "importedMemberName", "importedNamespace", "isImplied", "isImpliedIncluded", "isImportAll", "isRecursive", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "visibility" ]
+      "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "importOwningNamespace", "importedMemberName", "importedNamespace", "isImplied", "isImpliedIncluded", "isImportAll", "isLibraryElement", "isRecursive", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "visibility" ]
     }, {
       "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
     } ],
@@ -282,6 +289,13 @@
             } ]
           },
           "isImportAll" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
             "oneOf" : [ {
               "type" : "boolean"
             }, {
@@ -421,7 +435,7 @@
             } ]
           }
         },
-        "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "importOwningNamespace", "importedMemberName", "importedNamespace", "isImplied", "isImpliedIncluded", "isImportAll", "isRecursive", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "visibility" ]
+        "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "importOwningNamespace", "importedMemberName", "importedNamespace", "isImplied", "isImpliedIncluded", "isImportAll", "isLibraryElement", "isRecursive", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "visibility" ]
       }, {
         "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
       } ],

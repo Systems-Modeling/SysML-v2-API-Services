@@ -17,6 +17,7 @@ public abstract class TypeFeaturingImpl_ extends org.omg.sysml.lifecycle.impl.Da
 
 	public static volatile SingularAttribute<TypeFeaturingImpl, UUID> elementId;
 	public static volatile ListAttribute<TypeFeaturingImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<TypeFeaturingImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<TypeFeaturingImpl, Boolean> isImplied;
 	public static volatile ListAttribute<TypeFeaturingImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<TypeFeaturingImpl, Element> ownedElement;
@@ -35,6 +36,7 @@ public abstract class TypeFeaturingImpl_ extends org.omg.sysml.lifecycle.impl.Da
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";

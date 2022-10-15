@@ -48,6 +48,7 @@ public abstract class InvariantImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile CollectionAttribute<InvariantImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<InvariantImpl, UUID> elementId;
 	public static volatile ListAttribute<InvariantImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<InvariantImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<InvariantImpl, Boolean> isDerived;
 	public static volatile ListAttribute<InvariantImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<InvariantImpl, Feature> ownedFeature;
@@ -111,6 +112,7 @@ public abstract class InvariantImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";

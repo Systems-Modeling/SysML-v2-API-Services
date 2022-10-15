@@ -35,6 +35,7 @@ public abstract class InteractionImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static volatile ListAttribute<InteractionImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<InteractionImpl, UUID> elementId;
 	public static volatile ListAttribute<InteractionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<InteractionImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<InteractionImpl, Boolean> isImplied;
 	public static volatile ListAttribute<InteractionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<InteractionImpl, Feature> ownedFeature;
@@ -87,6 +88,7 @@ public abstract class InteractionImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";

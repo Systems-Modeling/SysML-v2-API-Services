@@ -78,6 +78,7 @@ public abstract class ConcernDefinitionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<ConcernDefinitionImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<ConcernDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<ConcernDefinitionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<ConcernDefinitionImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<ConcernDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ConcernDefinitionImpl, ViewUsage> ownedView;
 	public static volatile ListAttribute<ConcernDefinitionImpl, Feature> ownedFeature;
@@ -164,6 +165,7 @@ public abstract class ConcernDefinitionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";

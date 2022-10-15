@@ -47,6 +47,7 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile CollectionAttribute<LiteralBooleanImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<LiteralBooleanImpl, UUID> elementId;
 	public static volatile ListAttribute<LiteralBooleanImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isDerived;
 	public static volatile ListAttribute<LiteralBooleanImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<LiteralBooleanImpl, Feature> ownedFeature;
@@ -110,6 +111,7 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";

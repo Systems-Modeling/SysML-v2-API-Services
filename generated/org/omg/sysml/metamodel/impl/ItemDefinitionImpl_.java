@@ -73,6 +73,7 @@ public abstract class ItemDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<ItemDefinitionImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<ItemDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<ItemDefinitionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<ItemDefinitionImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<ItemDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ItemDefinitionImpl, ViewUsage> ownedView;
 	public static volatile ListAttribute<ItemDefinitionImpl, Feature> ownedFeature;
@@ -148,6 +149,7 @@ public abstract class ItemDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";

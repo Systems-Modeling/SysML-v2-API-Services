@@ -18,6 +18,7 @@ public abstract class CommentImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl
 	public static volatile ListAttribute<CommentImpl, Annotation> annotation;
 	public static volatile SingularAttribute<CommentImpl, UUID> elementId;
 	public static volatile ListAttribute<CommentImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<CommentImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<CommentImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<CommentImpl, Element> ownedElement;
 	public static volatile ListAttribute<CommentImpl, String> aliasIds;
@@ -35,6 +36,7 @@ public abstract class CommentImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl
 	public static final String ANNOTATION = "annotation";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";

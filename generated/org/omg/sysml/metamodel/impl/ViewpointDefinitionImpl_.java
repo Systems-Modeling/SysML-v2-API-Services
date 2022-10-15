@@ -78,6 +78,7 @@ public abstract class ViewpointDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile ListAttribute<ViewpointDefinitionImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<ViewpointDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<ViewpointDefinitionImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, ViewUsage> ownedView;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, Feature> ownedFeature;
@@ -165,6 +166,7 @@ public abstract class ViewpointDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";

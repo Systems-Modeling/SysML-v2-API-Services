@@ -746,6 +746,24 @@ public class SendActionUsageImpl extends SysMLTypeImpl implements SendActionUsag
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("isLibraryElement")
+    private Boolean isLibraryElement;
+
+    @JsonGetter
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "isLibraryElement", table = "SendActionUsage")
+    public Boolean getIsLibraryElement() {
+        return isLibraryElement;
+    }
+
+    @JsonSetter
+    public void setIsLibraryElement(Boolean isLibraryElement) {
+        this.isLibraryElement = isLibraryElement;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("isNonunique")
     private Boolean isNonunique;
 
@@ -2571,6 +2589,27 @@ public class SendActionUsageImpl extends SysMLTypeImpl implements SendActionUsag
     @JsonDeserialize(using = DataDeserializer.class, as = ExpressionImpl.class)
     public void setReceiverArgument(Expression receiverArgument) {
         this.receiverArgument = receiverArgument;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("senderArgument")
+    private Expression senderArgument;
+
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "senderArgument_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "senderArgument_id", table = "SendActionUsage")
+    public Expression getSenderArgument() {
+        return senderArgument;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = ExpressionImpl.class)
+    public void setSenderArgument(Expression senderArgument) {
+        this.senderArgument = senderArgument;
     }
 
 

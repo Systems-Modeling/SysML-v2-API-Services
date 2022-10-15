@@ -78,6 +78,7 @@ public abstract class IfActionUsageImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static volatile ListAttribute<IfActionUsageImpl, Differencing> ownedDifferencing;
 	public static volatile CollectionAttribute<IfActionUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<IfActionUsageImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<IfActionUsageImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<IfActionUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<IfActionUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile ListAttribute<IfActionUsageImpl, Feature> ownedFeature;
@@ -177,6 +178,7 @@ public abstract class IfActionUsageImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";

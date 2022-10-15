@@ -78,6 +78,7 @@ public abstract class AcceptActionUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<AcceptActionUsageImpl, Differencing> ownedDifferencing;
 	public static volatile CollectionAttribute<AcceptActionUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<AcceptActionUsageImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<AcceptActionUsageImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<AcceptActionUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<AcceptActionUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile ListAttribute<AcceptActionUsageImpl, Feature> ownedFeature;
@@ -177,6 +178,7 @@ public abstract class AcceptActionUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";

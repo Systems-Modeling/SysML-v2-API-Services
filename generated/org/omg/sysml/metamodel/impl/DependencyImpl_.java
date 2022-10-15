@@ -17,6 +17,7 @@ public abstract class DependencyImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 
 	public static volatile SingularAttribute<DependencyImpl, UUID> elementId;
 	public static volatile ListAttribute<DependencyImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<DependencyImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<DependencyImpl, Boolean> isImplied;
 	public static volatile ListAttribute<DependencyImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<DependencyImpl, Element> ownedElement;
@@ -37,6 +38,7 @@ public abstract class DependencyImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";

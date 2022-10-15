@@ -221,6 +221,13 @@
             "type" : "null"
           } ]
         },
+        "isLibraryElement" : {
+          "oneOf" : [ {
+            "type" : "boolean"
+          }, {
+            "type" : "null"
+          } ]
+        },
         "isNonunique" : {
           "type" : "boolean"
         },
@@ -611,7 +618,7 @@
           }
         }
       },
-      "required" : [ "@type", "aliasIds", "association", "chainingFeature", "connectorEnd", "differencingType", "directedFeature", "direction", "documentation", "effectStep", "effectiveName", "elementId", "endFeature", "endOwningType", "feature", "featureMembership", "featuringType", "guardExpression", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isComposite", "isConjugated", "isDerived", "isDirected", "isEnd", "isImplied", "isImpliedIncluded", "isNonunique", "isOrdered", "isPortion", "isReadOnly", "isSufficient", "isUnique", "member", "membership", "multiplicity", "name", "output", "ownedAnnotation", "ownedConjugator", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedFeature", "ownedFeatureChaining", "ownedFeatureInverting", "ownedFeatureMembership", "ownedImport", "ownedIntersecting", "ownedMember", "ownedMembership", "ownedRedefinition", "ownedReferenceSubsetting", "ownedRelatedElement", "ownedRelationship", "ownedSpecialization", "ownedSubsetting", "ownedTypeFeaturing", "ownedTyping", "ownedUnioning", "owner", "owningFeatureMembership", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "relatedFeature", "shortName", "source", "sourceFeature", "target", "targetFeature", "textualRepresentation", "transitionStep", "triggerStep", "type", "unioningType" ]
+      "required" : [ "@type", "aliasIds", "association", "chainingFeature", "connectorEnd", "differencingType", "directedFeature", "direction", "documentation", "effectStep", "effectiveName", "elementId", "endFeature", "endOwningType", "feature", "featureMembership", "featuringType", "guardExpression", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isComposite", "isConjugated", "isDerived", "isDirected", "isEnd", "isImplied", "isImpliedIncluded", "isLibraryElement", "isNonunique", "isOrdered", "isPortion", "isReadOnly", "isSufficient", "isUnique", "member", "membership", "multiplicity", "name", "output", "ownedAnnotation", "ownedConjugator", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedFeature", "ownedFeatureChaining", "ownedFeatureInverting", "ownedFeatureMembership", "ownedImport", "ownedIntersecting", "ownedMember", "ownedMembership", "ownedRedefinition", "ownedReferenceSubsetting", "ownedRelatedElement", "ownedRelationship", "ownedSpecialization", "ownedSubsetting", "ownedTypeFeaturing", "ownedTyping", "ownedUnioning", "owner", "owningFeatureMembership", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "relatedFeature", "shortName", "source", "sourceFeature", "target", "targetFeature", "textualRepresentation", "transitionStep", "triggerStep", "type", "unioningType" ]
     }, {
       "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
     } ],
@@ -875,6 +882,13 @@
             } ]
           },
           "isImpliedIncluded" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
             "oneOf" : [ {
               "type" : "boolean"
             }, {
@@ -1511,7 +1525,7 @@
             }
           }
         },
-        "required" : [ "@type", "aliasIds", "association", "chainingFeature", "connectorEnd", "definition", "differencingType", "directedFeature", "directedUsage", "direction", "documentation", "effectStep", "effectiveName", "elementId", "endFeature", "endOwningType", "feature", "featureMembership", "featuringType", "guardExpression", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isComposite", "isConjugated", "isDerived", "isDirected", "isEnd", "isImplied", "isImpliedIncluded", "isNonunique", "isOrdered", "isPortion", "isReadOnly", "isReference", "isSufficient", "isUnique", "isVariation", "member", "membership", "multiplicity", "name", "nestedAction", "nestedAllocation", "nestedAnalysisCase", "nestedAttribute", "nestedCalculation", "nestedCase", "nestedConcern", "nestedConnection", "nestedConstraint", "nestedEnumeration", "nestedFlow", "nestedInterface", "nestedItem", "nestedMetadata", "nestedOccurrence", "nestedPart", "nestedPort", "nestedReference", "nestedRendering", "nestedRequirement", "nestedState", "nestedTransition", "nestedUsage", "nestedUseCase", "nestedVerificationCase", "nestedView", "nestedViewpoint", "output", "ownedAnnotation", "ownedConjugator", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedFeature", "ownedFeatureChaining", "ownedFeatureInverting", "ownedFeatureMembership", "ownedImport", "ownedIntersecting", "ownedMember", "ownedMembership", "ownedRedefinition", "ownedReferenceSubsetting", "ownedRelatedElement", "ownedRelationship", "ownedSpecialization", "ownedSubsetting", "ownedTypeFeaturing", "ownedTyping", "ownedUnioning", "owner", "owningDefinition", "owningFeatureMembership", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "owningUsage", "qualifiedName", "relatedElement", "relatedFeature", "shortName", "source", "sourceFeature", "target", "targetFeature", "textualRepresentation", "transitionStep", "triggerStep", "type", "unioningType", "usage", "variant", "variantMembership" ]
+        "required" : [ "@type", "aliasIds", "association", "chainingFeature", "connectorEnd", "definition", "differencingType", "directedFeature", "directedUsage", "direction", "documentation", "effectStep", "effectiveName", "elementId", "endFeature", "endOwningType", "feature", "featureMembership", "featuringType", "guardExpression", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "intersectingType", "isAbstract", "isComposite", "isConjugated", "isDerived", "isDirected", "isEnd", "isImplied", "isImpliedIncluded", "isLibraryElement", "isNonunique", "isOrdered", "isPortion", "isReadOnly", "isReference", "isSufficient", "isUnique", "isVariation", "member", "membership", "multiplicity", "name", "nestedAction", "nestedAllocation", "nestedAnalysisCase", "nestedAttribute", "nestedCalculation", "nestedCase", "nestedConcern", "nestedConnection", "nestedConstraint", "nestedEnumeration", "nestedFlow", "nestedInterface", "nestedItem", "nestedMetadata", "nestedOccurrence", "nestedPart", "nestedPort", "nestedReference", "nestedRendering", "nestedRequirement", "nestedState", "nestedTransition", "nestedUsage", "nestedUseCase", "nestedVerificationCase", "nestedView", "nestedViewpoint", "output", "ownedAnnotation", "ownedConjugator", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedFeature", "ownedFeatureChaining", "ownedFeatureInverting", "ownedFeatureMembership", "ownedImport", "ownedIntersecting", "ownedMember", "ownedMembership", "ownedRedefinition", "ownedReferenceSubsetting", "ownedRelatedElement", "ownedRelationship", "ownedSpecialization", "ownedSubsetting", "ownedTypeFeaturing", "ownedTyping", "ownedUnioning", "owner", "owningDefinition", "owningFeatureMembership", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "owningUsage", "qualifiedName", "relatedElement", "relatedFeature", "shortName", "source", "sourceFeature", "target", "targetFeature", "textualRepresentation", "transitionStep", "triggerStep", "type", "unioningType", "usage", "variant", "variantMembership" ]
       }, {
         "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
       } ],
@@ -1799,6 +1813,13 @@
             } ]
           },
           "isIndividual" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
             "oneOf" : [ {
               "type" : "boolean"
             }, {
@@ -2525,7 +2546,7 @@
             }
           }
         },
-        "required" : [ "@type", "actionDefinition", "aliasIds", "association", "behavior", "chainingFeature", "connectionDefinition", "connectorEnd", "definition", "differencingType", "directedFeature", "directedUsage", "direction", "documentation", "effectStep", "effectiveName", "elementId", "endFeature", "endOwningType", "feature", "featureMembership", "featuringType", "flowConnectionDefinition", "guardExpression", "importedMembership", "individualDefinition", "inheritedFeature", "inheritedMembership", "input", "interaction", "intersectingType", "isAbstract", "isComposite", "isConjugated", "isDerived", "isDirected", "isEnd", "isImplied", "isImpliedIncluded", "isIndividual", "isNonunique", "isOrdered", "isPortion", "isReadOnly", "isReference", "isSufficient", "isUnique", "isVariation", "itemDefinition", "itemFeature", "itemFlowEnd", "itemFlowFeature", "itemType", "member", "membership", "multiplicity", "name", "nestedAction", "nestedAllocation", "nestedAnalysisCase", "nestedAttribute", "nestedCalculation", "nestedCase", "nestedConcern", "nestedConnection", "nestedConstraint", "nestedEnumeration", "nestedFlow", "nestedInterface", "nestedItem", "nestedMetadata", "nestedOccurrence", "nestedPart", "nestedPort", "nestedReference", "nestedRendering", "nestedRequirement", "nestedState", "nestedTransition", "nestedUsage", "nestedUseCase", "nestedVerificationCase", "nestedView", "nestedViewpoint", "occurrenceDefinition", "output", "ownedAnnotation", "ownedConjugator", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedFeature", "ownedFeatureChaining", "ownedFeatureInverting", "ownedFeatureMembership", "ownedImport", "ownedIntersecting", "ownedMember", "ownedMembership", "ownedRedefinition", "ownedReferenceSubsetting", "ownedRelatedElement", "ownedRelationship", "ownedSpecialization", "ownedSubsetting", "ownedTypeFeaturing", "ownedTyping", "ownedUnioning", "owner", "owningDefinition", "owningFeatureMembership", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "owningUsage", "parameter", "partDefinition", "portionKind", "portioningFeature", "qualifiedName", "relatedElement", "relatedFeature", "shortName", "source", "sourceFeature", "sourceOutputFeature", "target", "targetFeature", "targetInputFeature", "textualRepresentation", "transitionStep", "triggerStep", "type", "unioningType", "usage", "variant", "variantMembership" ]
+        "required" : [ "@type", "actionDefinition", "aliasIds", "association", "behavior", "chainingFeature", "connectionDefinition", "connectorEnd", "definition", "differencingType", "directedFeature", "directedUsage", "direction", "documentation", "effectStep", "effectiveName", "elementId", "endFeature", "endOwningType", "feature", "featureMembership", "featuringType", "flowConnectionDefinition", "guardExpression", "importedMembership", "individualDefinition", "inheritedFeature", "inheritedMembership", "input", "interaction", "intersectingType", "isAbstract", "isComposite", "isConjugated", "isDerived", "isDirected", "isEnd", "isImplied", "isImpliedIncluded", "isIndividual", "isLibraryElement", "isNonunique", "isOrdered", "isPortion", "isReadOnly", "isReference", "isSufficient", "isUnique", "isVariation", "itemDefinition", "itemFeature", "itemFlowEnd", "itemFlowFeature", "itemType", "member", "membership", "multiplicity", "name", "nestedAction", "nestedAllocation", "nestedAnalysisCase", "nestedAttribute", "nestedCalculation", "nestedCase", "nestedConcern", "nestedConnection", "nestedConstraint", "nestedEnumeration", "nestedFlow", "nestedInterface", "nestedItem", "nestedMetadata", "nestedOccurrence", "nestedPart", "nestedPort", "nestedReference", "nestedRendering", "nestedRequirement", "nestedState", "nestedTransition", "nestedUsage", "nestedUseCase", "nestedVerificationCase", "nestedView", "nestedViewpoint", "occurrenceDefinition", "output", "ownedAnnotation", "ownedConjugator", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedFeature", "ownedFeatureChaining", "ownedFeatureInverting", "ownedFeatureMembership", "ownedImport", "ownedIntersecting", "ownedMember", "ownedMembership", "ownedRedefinition", "ownedReferenceSubsetting", "ownedRelatedElement", "ownedRelationship", "ownedSpecialization", "ownedSubsetting", "ownedTypeFeaturing", "ownedTyping", "ownedUnioning", "owner", "owningDefinition", "owningFeatureMembership", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "owningUsage", "parameter", "partDefinition", "portionKind", "portioningFeature", "qualifiedName", "relatedElement", "relatedFeature", "shortName", "source", "sourceFeature", "sourceOutputFeature", "target", "targetFeature", "targetInputFeature", "textualRepresentation", "transitionStep", "triggerStep", "type", "unioningType", "usage", "variant", "variantMembership" ]
       }, {
         "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
       } ],
@@ -2762,6 +2783,13 @@
               } ]
             },
             "isImpliedIncluded" : {
+              "oneOf" : [ {
+                "type" : "boolean"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "isLibraryElement" : {
               "oneOf" : [ {
                 "type" : "boolean"
               }, {
@@ -3212,7 +3240,7 @@
               }
             }
           },
-          "required" : [ "@type", "aliasIds", "association", "behavior", "chainingFeature", "connectorEnd", "differencingType", "directedFeature", "direction", "documentation", "effectStep", "effectiveName", "elementId", "endFeature", "endOwningType", "feature", "featureMembership", "featuringType", "guardExpression", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "interaction", "intersectingType", "isAbstract", "isComposite", "isConjugated", "isDerived", "isDirected", "isEnd", "isImplied", "isImpliedIncluded", "isNonunique", "isOrdered", "isPortion", "isReadOnly", "isSufficient", "isUnique", "itemFeature", "itemFlowEnd", "itemFlowFeature", "itemType", "member", "membership", "multiplicity", "name", "output", "ownedAnnotation", "ownedConjugator", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedFeature", "ownedFeatureChaining", "ownedFeatureInverting", "ownedFeatureMembership", "ownedImport", "ownedIntersecting", "ownedMember", "ownedMembership", "ownedRedefinition", "ownedReferenceSubsetting", "ownedRelatedElement", "ownedRelationship", "ownedSpecialization", "ownedSubsetting", "ownedTypeFeaturing", "ownedTyping", "ownedUnioning", "owner", "owningFeatureMembership", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "parameter", "qualifiedName", "relatedElement", "relatedFeature", "shortName", "source", "sourceFeature", "sourceOutputFeature", "target", "targetFeature", "targetInputFeature", "textualRepresentation", "transitionStep", "triggerStep", "type", "unioningType" ]
+          "required" : [ "@type", "aliasIds", "association", "behavior", "chainingFeature", "connectorEnd", "differencingType", "directedFeature", "direction", "documentation", "effectStep", "effectiveName", "elementId", "endFeature", "endOwningType", "feature", "featureMembership", "featuringType", "guardExpression", "importedMembership", "inheritedFeature", "inheritedMembership", "input", "interaction", "intersectingType", "isAbstract", "isComposite", "isConjugated", "isDerived", "isDirected", "isEnd", "isImplied", "isImpliedIncluded", "isLibraryElement", "isNonunique", "isOrdered", "isPortion", "isReadOnly", "isSufficient", "isUnique", "itemFeature", "itemFlowEnd", "itemFlowFeature", "itemType", "member", "membership", "multiplicity", "name", "output", "ownedAnnotation", "ownedConjugator", "ownedDifferencing", "ownedDisjoining", "ownedElement", "ownedEndFeature", "ownedFeature", "ownedFeatureChaining", "ownedFeatureInverting", "ownedFeatureMembership", "ownedImport", "ownedIntersecting", "ownedMember", "ownedMembership", "ownedRedefinition", "ownedReferenceSubsetting", "ownedRelatedElement", "ownedRelationship", "ownedSpecialization", "ownedSubsetting", "ownedTypeFeaturing", "ownedTyping", "ownedUnioning", "owner", "owningFeatureMembership", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "parameter", "qualifiedName", "relatedElement", "relatedFeature", "shortName", "source", "sourceFeature", "sourceOutputFeature", "target", "targetFeature", "targetInputFeature", "textualRepresentation", "transitionStep", "triggerStep", "type", "unioningType" ]
         }, {
           "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
         } ],

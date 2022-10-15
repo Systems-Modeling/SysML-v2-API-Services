@@ -112,6 +112,7 @@
         <class>org.omg.sysml.metamodel.impl.ItemFlowImpl</class>
         <class>org.omg.sysml.metamodel.impl.ItemUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.JoinNodeImpl</class>
+        <class>org.omg.sysml.metamodel.impl.LibraryPackageImpl</class>
         <class>org.omg.sysml.metamodel.impl.LifeClassImpl</class>
         <class>org.omg.sysml.metamodel.impl.LiteralBooleanImpl</class>
         <class>org.omg.sysml.metamodel.impl.LiteralExpressionImpl</class>
@@ -123,6 +124,7 @@
         <class>org.omg.sysml.metamodel.impl.MembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.MergeNodeImpl</class>
         <class>org.omg.sysml.metamodel.impl.MetaclassImpl</class>
+        <class>org.omg.sysml.metamodel.impl.MetadataAccessExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.MetadataDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.MetadataFeatureImpl</class>
         <class>org.omg.sysml.metamodel.impl.MetadataUsageImpl</class>

@@ -82,6 +82,7 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<InterfaceUsageImpl, Differencing> ownedDifferencing;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<InterfaceUsageImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isImplied;
 	public static volatile ListAttribute<InterfaceUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<InterfaceUsageImpl, EnumerationUsage> nestedEnumeration;
@@ -192,6 +193,7 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";

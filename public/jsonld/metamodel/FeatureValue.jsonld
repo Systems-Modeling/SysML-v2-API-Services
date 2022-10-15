@@ -14,6 +14,7 @@
         "isImplied": {"@type": "xsd:boolean"},
         "isImpliedIncluded": {"@type": "xsd:boolean"},
         "isInitial": {"@type": "xsd:boolean"},
+        "isLibraryElement": {"@type": "xsd:boolean"},
         "memberElement": {"@type": "@id"},
         "memberElementId": {"@type": "xsd:string"},
         "memberName": {"@type": "xsd:string"},

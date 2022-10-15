@@ -18,6 +18,7 @@ public abstract class AnnotatingElementImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<AnnotatingElementImpl, Annotation> annotation;
 	public static volatile SingularAttribute<AnnotatingElementImpl, UUID> elementId;
 	public static volatile ListAttribute<AnnotatingElementImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<AnnotatingElementImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<AnnotatingElementImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<AnnotatingElementImpl, Element> ownedElement;
 	public static volatile ListAttribute<AnnotatingElementImpl, String> aliasIds;
@@ -33,6 +34,7 @@ public abstract class AnnotatingElementImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String ANNOTATION = "annotation";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";

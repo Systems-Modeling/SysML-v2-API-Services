@@ -47,6 +47,7 @@ public abstract class LiteralExpressionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile CollectionAttribute<LiteralExpressionImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<LiteralExpressionImpl, UUID> elementId;
 	public static volatile ListAttribute<LiteralExpressionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<LiteralExpressionImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<LiteralExpressionImpl, Boolean> isDerived;
 	public static volatile ListAttribute<LiteralExpressionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<LiteralExpressionImpl, Feature> ownedFeature;
@@ -109,6 +110,7 @@ public abstract class LiteralExpressionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";

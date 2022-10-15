@@ -87,6 +87,7 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Differencing> ownedDifferencing;
 	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, Boolean> isImplied;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, EnumerationUsage> nestedEnumeration;
@@ -207,6 +208,7 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";

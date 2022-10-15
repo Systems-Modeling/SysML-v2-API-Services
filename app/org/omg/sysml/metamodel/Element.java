@@ -58,4 +58,6 @@ public interface Element extends SysMLType {
     String getQualifiedName();
 
     Boolean getIsImpliedIncluded();
+
+    Boolean getIsLibraryElement();
 }

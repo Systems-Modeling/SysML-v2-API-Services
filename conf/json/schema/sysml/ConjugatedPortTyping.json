@@ -58,6 +58,13 @@
           "type" : "null"
         } ]
       },
+      "isLibraryElement" : {
+        "oneOf" : [ {
+          "type" : "boolean"
+        }, {
+          "type" : "null"
+        } ]
+      },
       "name" : {
         "oneOf" : [ {
           "type" : "string"
@@ -201,15 +208,19 @@
         }
       },
       "type" : {
-        "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
-        "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+        "oneOf" : [ {
+          "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+        }, {
+          "type" : "null"
+        } ]
       },
       "typedFeature" : {
         "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
         "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
       }
     },
-    "required" : [ "@type", "aliasIds", "conjugatedPortDefinition", "documentation", "effectiveName", "elementId", "general", "isImplied", "isImpliedIncluded", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningFeature", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "portDefinition", "qualifiedName", "relatedElement", "shortName", "source", "specific", "target", "textualRepresentation", "type", "typedFeature" ]
+    "required" : [ "@type", "aliasIds", "conjugatedPortDefinition", "documentation", "effectiveName", "elementId", "general", "isImplied", "isImpliedIncluded", "isLibraryElement", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningFeature", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "portDefinition", "qualifiedName", "relatedElement", "shortName", "source", "specific", "target", "textualRepresentation", "type", "typedFeature" ]
   }, {
     "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
   } ],

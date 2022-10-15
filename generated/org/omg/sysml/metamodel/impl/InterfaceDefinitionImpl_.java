@@ -74,6 +74,7 @@ public abstract class InterfaceDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile ListAttribute<InterfaceDefinitionImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<InterfaceDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<InterfaceDefinitionImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<InterfaceDefinitionImpl, Boolean> isImplied;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<InterfaceDefinitionImpl, ViewUsage> ownedView;
@@ -159,6 +160,7 @@ public abstract class InterfaceDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";

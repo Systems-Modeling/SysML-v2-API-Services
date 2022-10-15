@@ -68,6 +68,13 @@
           "type" : "null"
         } ]
       },
+      "isLibraryElement" : {
+        "oneOf" : [ {
+          "type" : "boolean"
+        }, {
+          "type" : "null"
+        } ]
+      },
       "memberElement" : {
         "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
         "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
@@ -252,7 +259,7 @@
         } ]
       }
     },
-    "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "featureWithValue", "isDefault", "isImplied", "isImpliedIncluded", "isInitial", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberName", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "value", "visibility" ]
+    "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "featureWithValue", "isDefault", "isImplied", "isImpliedIncluded", "isInitial", "isLibraryElement", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberName", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "value", "visibility" ]
   }, {
     "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
   } ],

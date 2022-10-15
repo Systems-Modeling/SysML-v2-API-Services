@@ -54,6 +54,13 @@
           "type" : "null"
         } ]
       },
+      "isLibraryElement" : {
+        "oneOf" : [ {
+          "type" : "boolean"
+        }, {
+          "type" : "null"
+        } ]
+      },
       "name" : {
         "oneOf" : [ {
           "type" : "string"
@@ -173,15 +180,11 @@
         }
       },
       "typeIntersected" : {
-        "oneOf" : [ {
-          "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
-          "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
-        }, {
-          "type" : "null"
-        } ]
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+        "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
       }
     },
-    "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "intersectingType", "isImplied", "isImpliedIncluded", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "typeIntersected" ]
+    "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "intersectingType", "isImplied", "isImpliedIncluded", "isLibraryElement", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "typeIntersected" ]
   }, {
     "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
   } ],

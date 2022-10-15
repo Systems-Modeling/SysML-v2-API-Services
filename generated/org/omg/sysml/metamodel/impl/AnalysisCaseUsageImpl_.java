@@ -78,6 +78,7 @@ public abstract class AnalysisCaseUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, Differencing> ownedDifferencing;
 	public static volatile CollectionAttribute<AnalysisCaseUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<AnalysisCaseUsageImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, Feature> ownedFeature;
@@ -180,6 +181,7 @@ public abstract class AnalysisCaseUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";

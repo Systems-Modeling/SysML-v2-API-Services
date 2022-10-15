@@ -47,6 +47,7 @@ public abstract class BehaviorImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile SingularAttribute<BehaviorImpl, UUID> elementId;
 	public static volatile ListAttribute<BehaviorImpl, TextualRepresentation> textualRepresentation;
 	public static volatile ListAttribute<BehaviorImpl, Membership> importedMembership;
+	public static volatile SingularAttribute<BehaviorImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<BehaviorImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<BehaviorImpl, Element> ownedElement;
 	public static volatile ListAttribute<BehaviorImpl, String> aliasIds;
@@ -91,6 +92,7 @@ public abstract class BehaviorImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";

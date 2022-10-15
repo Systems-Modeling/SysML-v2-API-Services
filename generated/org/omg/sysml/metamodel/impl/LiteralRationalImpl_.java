@@ -47,6 +47,7 @@ public abstract class LiteralRationalImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile CollectionAttribute<LiteralRationalImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<LiteralRationalImpl, UUID> elementId;
 	public static volatile ListAttribute<LiteralRationalImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<LiteralRationalImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<LiteralRationalImpl, Boolean> isDerived;
 	public static volatile ListAttribute<LiteralRationalImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<LiteralRationalImpl, Feature> ownedFeature;
@@ -110,6 +111,7 @@ public abstract class LiteralRationalImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";

@@ -45,6 +45,7 @@ public abstract class StructureImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile SingularAttribute<StructureImpl, UUID> elementId;
 	public static volatile ListAttribute<StructureImpl, TextualRepresentation> textualRepresentation;
 	public static volatile ListAttribute<StructureImpl, Membership> importedMembership;
+	public static volatile SingularAttribute<StructureImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<StructureImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<StructureImpl, Element> ownedElement;
 	public static volatile ListAttribute<StructureImpl, String> aliasIds;
@@ -87,6 +88,7 @@ public abstract class StructureImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";

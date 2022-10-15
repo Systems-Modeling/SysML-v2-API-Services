@@ -50,6 +50,7 @@ public abstract class SelectExpressionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile CollectionAttribute<SelectExpressionImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<SelectExpressionImpl, UUID> elementId;
 	public static volatile ListAttribute<SelectExpressionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<SelectExpressionImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<SelectExpressionImpl, Boolean> isDerived;
 	public static volatile ListAttribute<SelectExpressionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<SelectExpressionImpl, Feature> ownedFeature;
@@ -115,6 +116,7 @@ public abstract class SelectExpressionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";

@@ -29,6 +29,7 @@ public abstract class RequirementConstraintMembershipImpl_ extends org.omg.sysml
 	public static volatile SingularAttribute<RequirementConstraintMembershipImpl, String> ownedMemberShortName;
 	public static volatile SingularAttribute<RequirementConstraintMembershipImpl, UUID> elementId;
 	public static volatile ListAttribute<RequirementConstraintMembershipImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<RequirementConstraintMembershipImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<RequirementConstraintMembershipImpl, Boolean> isImplied;
 	public static volatile ListAttribute<RequirementConstraintMembershipImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<RequirementConstraintMembershipImpl, Element> ownedElement;
@@ -55,6 +56,7 @@ public abstract class RequirementConstraintMembershipImpl_ extends org.omg.sysml
 	public static final String OWNED_MEMBER_SHORT_NAME = "ownedMemberShortName";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
