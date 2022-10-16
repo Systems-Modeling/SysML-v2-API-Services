@@ -17,6 +17,7 @@ public abstract class PortConjugationImpl_ extends org.omg.sysml.lifecycle.impl.
 
 	public static volatile SingularAttribute<PortConjugationImpl, UUID> elementId;
 	public static volatile ListAttribute<PortConjugationImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<PortConjugationImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<PortConjugationImpl, Boolean> isImplied;
 	public static volatile ListAttribute<PortConjugationImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<PortConjugationImpl, Element> ownedElement;
@@ -35,6 +36,7 @@ public abstract class PortConjugationImpl_ extends org.omg.sysml.lifecycle.impl.
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";

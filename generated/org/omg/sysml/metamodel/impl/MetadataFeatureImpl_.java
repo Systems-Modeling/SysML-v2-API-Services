@@ -46,6 +46,7 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile CollectionAttribute<MetadataFeatureImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<MetadataFeatureImpl, UUID> elementId;
 	public static volatile ListAttribute<MetadataFeatureImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isDerived;
 	public static volatile ListAttribute<MetadataFeatureImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<MetadataFeatureImpl, Feature> ownedFeature;
@@ -107,6 +108,7 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";

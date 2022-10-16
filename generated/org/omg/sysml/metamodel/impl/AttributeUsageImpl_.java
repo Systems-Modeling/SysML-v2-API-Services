@@ -86,6 +86,7 @@ public abstract class AttributeUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile CollectionAttribute<AttributeUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<AttributeUsageImpl, UUID> elementId;
 	public static volatile ListAttribute<AttributeUsageImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<AttributeUsageImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<AttributeUsageImpl, Boolean> isDerived;
 	public static volatile ListAttribute<AttributeUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<AttributeUsageImpl, Annotation> ownedAnnotation;
@@ -180,6 +181,7 @@ public abstract class AttributeUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

@@ -81,6 +81,7 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<RequirementUsageImpl, Differencing> ownedDifferencing;
 	public static volatile CollectionAttribute<RequirementUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<RequirementUsageImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<RequirementUsageImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<RequirementUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<RequirementUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile ListAttribute<RequirementUsageImpl, Feature> ownedFeature;
@@ -187,6 +188,7 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";

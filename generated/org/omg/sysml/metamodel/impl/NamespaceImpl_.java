@@ -20,6 +20,7 @@ public abstract class NamespaceImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile SingularAttribute<NamespaceImpl, UUID> elementId;
 	public static volatile ListAttribute<NamespaceImpl, TextualRepresentation> textualRepresentation;
 	public static volatile ListAttribute<NamespaceImpl, Membership> importedMembership;
+	public static volatile SingularAttribute<NamespaceImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<NamespaceImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<NamespaceImpl, Element> ownedElement;
 	public static volatile ListAttribute<NamespaceImpl, String> aliasIds;
@@ -39,6 +40,7 @@ public abstract class NamespaceImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";

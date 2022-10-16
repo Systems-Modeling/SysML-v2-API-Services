@@ -78,6 +78,7 @@ public abstract class UseCaseDefinitionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<UseCaseDefinitionImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<UseCaseDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<UseCaseDefinitionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<UseCaseDefinitionImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<UseCaseDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<UseCaseDefinitionImpl, ViewUsage> ownedView;
 	public static volatile ListAttribute<UseCaseDefinitionImpl, Feature> ownedFeature;
@@ -161,6 +162,7 @@ public abstract class UseCaseDefinitionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";

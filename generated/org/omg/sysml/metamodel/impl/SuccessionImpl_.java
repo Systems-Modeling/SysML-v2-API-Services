@@ -51,6 +51,7 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile CollectionAttribute<SuccessionImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<SuccessionImpl, UUID> elementId;
 	public static volatile ListAttribute<SuccessionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<SuccessionImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isDerived;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isImplied;
 	public static volatile ListAttribute<SuccessionImpl, Annotation> ownedAnnotation;
@@ -123,6 +124,7 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

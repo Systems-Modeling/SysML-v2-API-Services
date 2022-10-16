@@ -45,6 +45,7 @@ public abstract class DataTypeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile SingularAttribute<DataTypeImpl, UUID> elementId;
 	public static volatile ListAttribute<DataTypeImpl, TextualRepresentation> textualRepresentation;
 	public static volatile ListAttribute<DataTypeImpl, Membership> importedMembership;
+	public static volatile SingularAttribute<DataTypeImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<DataTypeImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<DataTypeImpl, Element> ownedElement;
 	public static volatile ListAttribute<DataTypeImpl, String> aliasIds;
@@ -87,6 +88,7 @@ public abstract class DataTypeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";

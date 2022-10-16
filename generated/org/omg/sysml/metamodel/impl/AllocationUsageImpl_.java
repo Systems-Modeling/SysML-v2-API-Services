@@ -82,6 +82,7 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<AllocationUsageImpl, Differencing> ownedDifferencing;
 	public static volatile CollectionAttribute<AllocationUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<AllocationUsageImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isImplied;
 	public static volatile ListAttribute<AllocationUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<AllocationUsageImpl, EnumerationUsage> nestedEnumeration;
@@ -192,6 +193,7 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";

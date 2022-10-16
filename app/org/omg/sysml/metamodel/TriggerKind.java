@@ -22,8 +22,10 @@
 
 package org.omg.sysml.metamodel;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public enum TriggerKind {
-    WHEN,
-    AT,
-    AFTER
+    @JsonProperty("when") WHEN,
+    @JsonProperty("at") AT,
+    @JsonProperty("after") AFTER
 }

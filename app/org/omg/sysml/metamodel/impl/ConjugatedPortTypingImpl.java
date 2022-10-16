@@ -93,13 +93,11 @@ public class ConjugatedPortTypingImpl extends SysMLTypeImpl implements Conjugate
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("conjugatedPortDefinition")
     private ConjugatedPortDefinition conjugatedPortDefinition;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    // @javax.persistence.Transient
     @Any(metaDef = "ConjugatedPortDefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "conjugatedPortDefinition_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "conjugatedPortDefinition_id", table = "ConjugatedPortTyping")
     public ConjugatedPortDefinition getConjugatedPortDefinition() {
@@ -223,6 +221,24 @@ public class ConjugatedPortTypingImpl extends SysMLTypeImpl implements Conjugate
     @JsonSetter
     public void setIsImpliedIncluded(Boolean isImpliedIncluded) {
         this.isImpliedIncluded = isImpliedIncluded;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("isLibraryElement")
+    private Boolean isLibraryElement;
+
+    @JsonGetter
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "isLibraryElement", table = "ConjugatedPortTyping")
+    public Boolean getIsLibraryElement() {
+        return isLibraryElement;
+    }
+
+    @JsonSetter
+    public void setIsLibraryElement(Boolean isLibraryElement) {
+        this.isLibraryElement = isLibraryElement;
     }
 
 
@@ -488,11 +504,13 @@ public class ConjugatedPortTypingImpl extends SysMLTypeImpl implements Conjugate
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("portDefinition")
     private PortDefinition portDefinition;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "PortDefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "portDefinition_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "portDefinition_id", table = "ConjugatedPortTyping")
     public PortDefinition getPortDefinition() {

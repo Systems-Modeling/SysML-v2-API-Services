@@ -46,6 +46,7 @@ public abstract class FeatureImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl
 	public static volatile CollectionAttribute<FeatureImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<FeatureImpl, UUID> elementId;
 	public static volatile ListAttribute<FeatureImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<FeatureImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<FeatureImpl, Boolean> isDerived;
 	public static volatile ListAttribute<FeatureImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<FeatureImpl, Feature> ownedFeature;
@@ -105,6 +106,7 @@ public abstract class FeatureImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";

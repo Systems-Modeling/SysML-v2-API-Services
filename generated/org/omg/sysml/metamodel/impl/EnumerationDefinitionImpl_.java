@@ -73,6 +73,7 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.lifecycle
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<EnumerationDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<EnumerationDefinitionImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, ViewUsage> ownedView;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Feature> ownedFeature;
@@ -148,6 +149,7 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.lifecycle
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";

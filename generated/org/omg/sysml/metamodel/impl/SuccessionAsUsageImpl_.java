@@ -78,6 +78,7 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Differencing> ownedDifferencing;
 	public static volatile CollectionAttribute<SuccessionAsUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isImplied;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, EnumerationUsage> nestedEnumeration;
@@ -184,6 +185,7 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";

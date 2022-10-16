@@ -13,6 +13,7 @@
         "effectiveName": {"@type": "xsd:string"},
         "elementId": {"@type": "dcterms:identifier"},
         "isImpliedIncluded": {"@type": "xsd:boolean"},
+        "isLibraryElement": {"@type": "xsd:boolean"},
         "locale": {"@type": "xsd:string"},
         "name": {"@type": "xsd:string"},
         "ownedAnnotation": {"@type": "@id"},

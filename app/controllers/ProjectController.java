@@ -81,9 +81,9 @@ public class ProjectController extends JsonLdController<Project, Void> {
     }
 
     public Result getProjects(Request request) {
-        PageRequest pageRequest = PageRequest.from(request);
+        PageRequest<UUID> pageRequest = uuidRequest(request);
         List<Project> projects = projectService.getAll(pageRequest.getAfter(), pageRequest.getBefore(), pageRequest.getSize());
-        return paginateResult(
+        return uuidResponse(
                 buildResult(projects, List.class, metamodelProvider.getImplementationClass(Project.class), request, null),
                 projects.size(),
                 idx -> projects.get(idx).getId(),

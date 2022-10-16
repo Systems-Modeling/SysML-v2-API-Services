@@ -45,6 +45,7 @@ public abstract class LifeClassImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile SingularAttribute<LifeClassImpl, UUID> elementId;
 	public static volatile ListAttribute<LifeClassImpl, TextualRepresentation> textualRepresentation;
 	public static volatile ListAttribute<LifeClassImpl, Membership> importedMembership;
+	public static volatile SingularAttribute<LifeClassImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<LifeClassImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<LifeClassImpl, Element> ownedElement;
 	public static volatile ListAttribute<LifeClassImpl, String> aliasIds;
@@ -87,6 +88,7 @@ public abstract class LifeClassImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";

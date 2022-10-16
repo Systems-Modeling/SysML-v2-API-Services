@@ -47,6 +47,7 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile CollectionAttribute<MultiplicityRangeImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<MultiplicityRangeImpl, UUID> elementId;
 	public static volatile ListAttribute<MultiplicityRangeImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<MultiplicityRangeImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<MultiplicityRangeImpl, Boolean> isDerived;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<MultiplicityRangeImpl, Feature> ownedFeature;
@@ -107,6 +108,7 @@ public abstract class MultiplicityRangeImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";

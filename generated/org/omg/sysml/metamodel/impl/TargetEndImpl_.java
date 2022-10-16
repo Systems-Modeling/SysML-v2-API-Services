@@ -46,6 +46,7 @@ public abstract class TargetEndImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile CollectionAttribute<TargetEndImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<TargetEndImpl, UUID> elementId;
 	public static volatile ListAttribute<TargetEndImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<TargetEndImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<TargetEndImpl, Boolean> isDerived;
 	public static volatile ListAttribute<TargetEndImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<TargetEndImpl, Feature> ownedFeature;
@@ -105,6 +106,7 @@ public abstract class TargetEndImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";

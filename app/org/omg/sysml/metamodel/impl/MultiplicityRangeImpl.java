@@ -631,6 +631,24 @@ public class MultiplicityRangeImpl extends SysMLTypeImpl implements Multiplicity
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("isLibraryElement")
+    private Boolean isLibraryElement;
+
+    @JsonGetter
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "isLibraryElement", table = "MultiplicityRange")
+    public Boolean getIsLibraryElement() {
+        return isLibraryElement;
+    }
+
+    @JsonSetter
+    public void setIsLibraryElement(Boolean isLibraryElement) {
+        this.isLibraryElement = isLibraryElement;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("isNonunique")
     private Boolean isNonunique;
 

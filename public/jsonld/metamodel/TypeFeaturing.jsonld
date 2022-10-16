@@ -14,6 +14,7 @@
         "featuringType": {"@type": "@id"},
         "isImplied": {"@type": "xsd:boolean"},
         "isImpliedIncluded": {"@type": "xsd:boolean"},
+        "isLibraryElement": {"@type": "xsd:boolean"},
         "name": {"@type": "xsd:string"},
         "ownedAnnotation": {"@type": "@id"},
         "ownedElement": {"@type": "@id"},

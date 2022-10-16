@@ -75,6 +75,7 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<ActionDefinitionImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<ActionDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<ActionDefinitionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<ActionDefinitionImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<ActionDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ActionDefinitionImpl, ViewUsage> ownedView;
 	public static volatile ListAttribute<ActionDefinitionImpl, Feature> ownedFeature;
@@ -153,6 +154,7 @@ public abstract class ActionDefinitionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";

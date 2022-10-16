@@ -15,6 +15,7 @@
         "isImplied": {"@type": "xsd:boolean"},
         "isImpliedIncluded": {"@type": "xsd:boolean"},
         "isImportAll": {"@type": "xsd:boolean"},
+        "isLibraryElement": {"@type": "xsd:boolean"},
         "isRecursive": {"@type": "xsd:boolean"},
         "name": {"@type": "xsd:string"},
         "ownedAnnotation": {"@type": "@id"},

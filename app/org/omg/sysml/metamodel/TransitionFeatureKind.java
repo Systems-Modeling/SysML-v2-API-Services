@@ -22,8 +22,10 @@
 
 package org.omg.sysml.metamodel;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public enum TransitionFeatureKind {
-    TRIGGER,
-    GUARD,
-    EFFECT
+    @JsonProperty("trigger") TRIGGER,
+    @JsonProperty("guard") GUARD,
+    @JsonProperty("effect") EFFECT
 }

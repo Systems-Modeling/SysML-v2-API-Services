@@ -1,0 +1,5403 @@
+{
+  "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$id" : "http://www.omg.org/spec/SysML/2.0/Membership",
+  "title" : "Membership",
+  "anyOf" : [ {
+    "allOf" : [ {
+      "type" : "object",
+      "properties" : {
+        "@type" : {
+          "type" : "string",
+          "const" : "Membership"
+        },
+        "aliasIds" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "documentation" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Documentation"
+          }
+        },
+        "effectiveName" : {
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "elementId" : {
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "isImplied" : {
+          "oneOf" : [ {
+            "type" : "boolean"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "isImpliedIncluded" : {
+          "oneOf" : [ {
+            "type" : "boolean"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "isLibraryElement" : {
+          "oneOf" : [ {
+            "type" : "boolean"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "memberElement" : {
+          "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+        },
+        "memberElementId" : {
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "memberName" : {
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "memberShortName" : {
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "membershipOwningNamespace" : {
+          "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+        },
+        "name" : {
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "ownedAnnotation" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Annotation"
+          }
+        },
+        "ownedElement" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          }
+        },
+        "ownedRelatedElement" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          }
+        },
+        "ownedRelationship" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+          }
+        },
+        "owner" : {
+          "oneOf" : [ {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "owningMembership" : {
+          "oneOf" : [ {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/OwningMembership"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "owningNamespace" : {
+          "oneOf" : [ {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "owningRelatedElement" : {
+          "oneOf" : [ {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "owningRelationship" : {
+          "oneOf" : [ {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "qualifiedName" : {
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "relatedElement" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "minItems" : 2
+        },
+        "shortName" : {
+          "oneOf" : [ {
+            "type" : "string"
+          }, {
+            "type" : "null"
+          } ]
+        },
+        "source" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          }
+        },
+        "target" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          }
+        },
+        "textualRepresentation" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/TextualRepresentation"
+          }
+        },
+        "visibility" : {
+          "oneOf" : [ {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/VisibilityKind"
+          }, {
+            "type" : "null"
+          } ]
+        }
+      },
+      "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "isImplied", "isImpliedIncluded", "isLibraryElement", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedElement", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "visibility" ]
+    }, {
+      "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
+    } ],
+    "unevaluatedProperties" : false
+  }, {
+    "$ref" : "http://www.omg.org/spec/SysML/2.0/OwningMembership"
+  } ],
+  "$defs" : {
+    "http://www.omg.org/spec/SysML/2.0/ActorMembership" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/ActorMembership",
+      "title" : "ActorMembership",
+      "allOf" : [ {
+        "type" : "object",
+        "properties" : {
+          "@type" : {
+            "type" : "string",
+            "const" : "ActorMembership"
+          },
+          "aliasIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "documentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Documentation"
+            }
+          },
+          "effectiveName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "elementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "feature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "isImplied" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isImpliedIncluded" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "memberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "membershipOwningNamespace" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+          },
+          "name" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedActorParameter" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/PartUsage"
+          },
+          "ownedAnnotation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Annotation"
+            }
+          },
+          "ownedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedMemberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "ownedMemberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberFeature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "ownedMemberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberParameter" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "ownedMemberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedRelatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedRelationship" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }
+          },
+          "owner" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningMembership" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/OwningMembership"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningNamespace" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelatedElement" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelationship" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningType" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+          },
+          "qualifiedName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "relatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "minItems" : 2
+          },
+          "shortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "source" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "target" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "textualRepresentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/TextualRepresentation"
+            }
+          },
+          "type" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "visibility" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/VisibilityKind"
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "feature", "isImplied", "isImpliedIncluded", "isLibraryElement", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedActorParameter", "ownedAnnotation", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberFeature", "ownedMemberName", "ownedMemberParameter", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "type", "visibility" ]
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "http://www.omg.org/spec/SysML/2.0/ElementFilterMembership" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/ElementFilterMembership",
+      "title" : "ElementFilterMembership",
+      "allOf" : [ {
+        "type" : "object",
+        "properties" : {
+          "@type" : {
+            "type" : "string",
+            "const" : "ElementFilterMembership"
+          },
+          "aliasIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "condition" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Expression"
+          },
+          "documentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Documentation"
+            }
+          },
+          "effectiveName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "elementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isImplied" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isImpliedIncluded" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "memberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "membershipOwningNamespace" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+          },
+          "name" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedAnnotation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Annotation"
+            }
+          },
+          "ownedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedMemberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "ownedMemberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedRelatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedRelationship" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }
+          },
+          "owner" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningMembership" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/OwningMembership"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningNamespace" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelatedElement" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelationship" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "qualifiedName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "relatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "minItems" : 2
+          },
+          "shortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "source" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "target" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "textualRepresentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/TextualRepresentation"
+            }
+          },
+          "visibility" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/VisibilityKind"
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "@type", "aliasIds", "condition", "documentation", "effectiveName", "elementId", "isImplied", "isImpliedIncluded", "isLibraryElement", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberName", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "visibility" ]
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "http://www.omg.org/spec/SysML/2.0/EndFeatureMembership" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/EndFeatureMembership",
+      "title" : "EndFeatureMembership",
+      "allOf" : [ {
+        "type" : "object",
+        "properties" : {
+          "@type" : {
+            "type" : "string",
+            "const" : "EndFeatureMembership"
+          },
+          "aliasIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "documentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Documentation"
+            }
+          },
+          "effectiveName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "elementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "feature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "isImplied" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isImpliedIncluded" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "memberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "membershipOwningNamespace" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+          },
+          "name" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedAnnotation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Annotation"
+            }
+          },
+          "ownedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedMemberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "ownedMemberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberFeature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "ownedMemberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedRelatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedRelationship" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }
+          },
+          "owner" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningMembership" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/OwningMembership"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningNamespace" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelatedElement" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelationship" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningType" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+          },
+          "qualifiedName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "relatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "minItems" : 2
+          },
+          "shortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "source" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "target" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "textualRepresentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/TextualRepresentation"
+            }
+          },
+          "type" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "visibility" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/VisibilityKind"
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "feature", "isImplied", "isImpliedIncluded", "isLibraryElement", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberFeature", "ownedMemberName", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "type", "visibility" ]
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "http://www.omg.org/spec/SysML/2.0/FeatureMembership" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/FeatureMembership",
+      "title" : "FeatureMembership",
+      "anyOf" : [ {
+        "allOf" : [ {
+          "type" : "object",
+          "properties" : {
+            "@type" : {
+              "type" : "string",
+              "const" : "FeatureMembership"
+            },
+            "aliasIds" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            },
+            "documentation" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Documentation"
+              }
+            },
+            "effectiveName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "elementId" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "feature" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+            },
+            "isImplied" : {
+              "oneOf" : [ {
+                "type" : "boolean"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "isImpliedIncluded" : {
+              "oneOf" : [ {
+                "type" : "boolean"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "isLibraryElement" : {
+              "oneOf" : [ {
+                "type" : "boolean"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "memberElement" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "memberElementId" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "memberName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "memberShortName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "membershipOwningNamespace" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+            },
+            "name" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "ownedAnnotation" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Annotation"
+              }
+            },
+            "ownedElement" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }
+            },
+            "ownedMemberElement" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "ownedMemberElementId" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "ownedMemberFeature" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+            },
+            "ownedMemberName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "ownedMemberShortName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "ownedRelatedElement" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }
+            },
+            "ownedRelationship" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+              }
+            },
+            "owner" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "owningMembership" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/OwningMembership"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "owningNamespace" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "owningRelatedElement" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "owningRelationship" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "owningType" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+            },
+            "qualifiedName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "relatedElement" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              },
+              "minItems" : 2
+            },
+            "shortName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "source" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }
+            },
+            "target" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }
+            },
+            "textualRepresentation" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/TextualRepresentation"
+              }
+            },
+            "type" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "visibility" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/VisibilityKind"
+              }, {
+                "type" : "null"
+              } ]
+            }
+          },
+          "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "feature", "isImplied", "isImpliedIncluded", "isLibraryElement", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberFeature", "ownedMemberName", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "type", "visibility" ]
+        }, {
+          "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
+        } ],
+        "unevaluatedProperties" : false
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/ViewRenderingMembership"
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/StateSubactionMembership"
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/TransitionFeatureMembership"
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/RequirementConstraintMembership"
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/ObjectiveMembership"
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/ResultExpressionMembership"
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/ParameterMembership"
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/EndFeatureMembership"
+      } ]
+    },
+    "http://www.omg.org/spec/SysML/2.0/FeatureValue" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/FeatureValue",
+      "title" : "FeatureValue",
+      "allOf" : [ {
+        "type" : "object",
+        "properties" : {
+          "@type" : {
+            "type" : "string",
+            "const" : "FeatureValue"
+          },
+          "aliasIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "documentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Documentation"
+            }
+          },
+          "effectiveName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "elementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "featureWithValue" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "isDefault" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isImplied" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isImpliedIncluded" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isInitial" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "memberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "membershipOwningNamespace" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+          },
+          "name" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedAnnotation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Annotation"
+            }
+          },
+          "ownedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedMemberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "ownedMemberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedRelatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedRelationship" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }
+          },
+          "owner" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningMembership" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/OwningMembership"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningNamespace" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelatedElement" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelationship" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "qualifiedName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "relatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "minItems" : 2
+          },
+          "shortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "source" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "target" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "textualRepresentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/TextualRepresentation"
+            }
+          },
+          "value" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Expression"
+          },
+          "visibility" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/VisibilityKind"
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "featureWithValue", "isDefault", "isImplied", "isImpliedIncluded", "isInitial", "isLibraryElement", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberName", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "value", "visibility" ]
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "http://www.omg.org/spec/SysML/2.0/FramedConcernMembership" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/FramedConcernMembership",
+      "title" : "FramedConcernMembership",
+      "allOf" : [ {
+        "type" : "object",
+        "properties" : {
+          "@type" : {
+            "type" : "string",
+            "const" : "FramedConcernMembership"
+          },
+          "aliasIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "documentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Documentation"
+            }
+          },
+          "effectiveName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "elementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "feature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "isImplied" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isImpliedIncluded" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "kind" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/RequirementConstraintKind"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "memberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "membershipOwningNamespace" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+          },
+          "name" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedAnnotation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Annotation"
+            }
+          },
+          "ownedConcern" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/ConcernUsage"
+          },
+          "ownedConstraint" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/ConstraintUsage"
+          },
+          "ownedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedMemberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "ownedMemberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberFeature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "ownedMemberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedRelatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedRelationship" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }
+          },
+          "owner" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningMembership" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/OwningMembership"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningNamespace" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelatedElement" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelationship" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningType" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+          },
+          "qualifiedName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "referencedConcern" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/ConcernUsage"
+          },
+          "referencedConstraint" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/ConstraintUsage"
+          },
+          "relatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "minItems" : 2
+          },
+          "shortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "source" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "target" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "textualRepresentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/TextualRepresentation"
+            }
+          },
+          "type" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "visibility" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/VisibilityKind"
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "feature", "isImplied", "isImpliedIncluded", "isLibraryElement", "kind", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedConcern", "ownedConstraint", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberFeature", "ownedMemberName", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "referencedConcern", "referencedConstraint", "relatedElement", "shortName", "source", "target", "textualRepresentation", "type", "visibility" ]
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "http://www.omg.org/spec/SysML/2.0/Identified" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/Identified",
+      "title" : "Identified",
+      "type" : "object",
+      "properties" : {
+        "@id" : {
+          "type" : "string",
+          "format" : "uuid"
+        }
+      },
+      "required" : [ "@id" ]
+    },
+    "http://www.omg.org/spec/SysML/2.0/ObjectiveMembership" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/ObjectiveMembership",
+      "title" : "ObjectiveMembership",
+      "allOf" : [ {
+        "type" : "object",
+        "properties" : {
+          "@type" : {
+            "type" : "string",
+            "const" : "ObjectiveMembership"
+          },
+          "aliasIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "documentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Documentation"
+            }
+          },
+          "effectiveName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "elementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "feature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "isImplied" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isImpliedIncluded" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "memberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "membershipOwningNamespace" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+          },
+          "name" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedAnnotation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Annotation"
+            }
+          },
+          "ownedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedMemberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "ownedMemberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberFeature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "ownedMemberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedObjectiveRequirement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/RequirementUsage"
+          },
+          "ownedRelatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedRelationship" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }
+          },
+          "owner" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningMembership" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/OwningMembership"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningNamespace" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelatedElement" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelationship" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningType" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+          },
+          "qualifiedName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "relatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "minItems" : 2
+          },
+          "shortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "source" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "target" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "textualRepresentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/TextualRepresentation"
+            }
+          },
+          "type" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "visibility" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/VisibilityKind"
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "feature", "isImplied", "isImpliedIncluded", "isLibraryElement", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberFeature", "ownedMemberName", "ownedMemberShortName", "ownedObjectiveRequirement", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "type", "visibility" ]
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "http://www.omg.org/spec/SysML/2.0/OwningMembership" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/OwningMembership",
+      "title" : "OwningMembership",
+      "anyOf" : [ {
+        "allOf" : [ {
+          "type" : "object",
+          "properties" : {
+            "@type" : {
+              "type" : "string",
+              "const" : "OwningMembership"
+            },
+            "aliasIds" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            },
+            "documentation" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Documentation"
+              }
+            },
+            "effectiveName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "elementId" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "isImplied" : {
+              "oneOf" : [ {
+                "type" : "boolean"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "isImpliedIncluded" : {
+              "oneOf" : [ {
+                "type" : "boolean"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "isLibraryElement" : {
+              "oneOf" : [ {
+                "type" : "boolean"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "memberElement" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "memberElementId" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "memberName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "memberShortName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "membershipOwningNamespace" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+            },
+            "name" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "ownedAnnotation" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Annotation"
+              }
+            },
+            "ownedElement" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }
+            },
+            "ownedMemberElement" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "ownedMemberElementId" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "ownedMemberName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "ownedMemberShortName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "ownedRelatedElement" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }
+            },
+            "ownedRelationship" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+              }
+            },
+            "owner" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "owningMembership" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/OwningMembership"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "owningNamespace" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "owningRelatedElement" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "owningRelationship" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "qualifiedName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "relatedElement" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              },
+              "minItems" : 2
+            },
+            "shortName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "source" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }
+            },
+            "target" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }
+            },
+            "textualRepresentation" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/TextualRepresentation"
+              }
+            },
+            "visibility" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/VisibilityKind"
+              }, {
+                "type" : "null"
+              } ]
+            }
+          },
+          "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "isImplied", "isImpliedIncluded", "isLibraryElement", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberName", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "visibility" ]
+        }, {
+          "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
+        } ],
+        "unevaluatedProperties" : false
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/VariantMembership"
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/ElementFilterMembership"
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/FeatureValue"
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/FeatureMembership"
+      } ]
+    },
+    "http://www.omg.org/spec/SysML/2.0/ParameterMembership" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/ParameterMembership",
+      "title" : "ParameterMembership",
+      "anyOf" : [ {
+        "allOf" : [ {
+          "type" : "object",
+          "properties" : {
+            "@type" : {
+              "type" : "string",
+              "const" : "ParameterMembership"
+            },
+            "aliasIds" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            },
+            "documentation" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Documentation"
+              }
+            },
+            "effectiveName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "elementId" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "feature" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+            },
+            "isImplied" : {
+              "oneOf" : [ {
+                "type" : "boolean"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "isImpliedIncluded" : {
+              "oneOf" : [ {
+                "type" : "boolean"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "isLibraryElement" : {
+              "oneOf" : [ {
+                "type" : "boolean"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "memberElement" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "memberElementId" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "memberName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "memberShortName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "membershipOwningNamespace" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+            },
+            "name" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "ownedAnnotation" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Annotation"
+              }
+            },
+            "ownedElement" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }
+            },
+            "ownedMemberElement" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "ownedMemberElementId" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "ownedMemberFeature" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+            },
+            "ownedMemberName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "ownedMemberParameter" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+            },
+            "ownedMemberShortName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "ownedRelatedElement" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }
+            },
+            "ownedRelationship" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+              }
+            },
+            "owner" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "owningMembership" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/OwningMembership"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "owningNamespace" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "owningRelatedElement" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "owningRelationship" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "owningType" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+            },
+            "qualifiedName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "relatedElement" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              },
+              "minItems" : 2
+            },
+            "shortName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "source" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }
+            },
+            "target" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }
+            },
+            "textualRepresentation" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/TextualRepresentation"
+              }
+            },
+            "type" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "visibility" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/VisibilityKind"
+              }, {
+                "type" : "null"
+              } ]
+            }
+          },
+          "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "feature", "isImplied", "isImpliedIncluded", "isLibraryElement", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberFeature", "ownedMemberName", "ownedMemberParameter", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "type", "visibility" ]
+        }, {
+          "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
+        } ],
+        "unevaluatedProperties" : false
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/StakeholderMembership"
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/SubjectMembership"
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/ActorMembership"
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/ReturnParameterMembership"
+      } ]
+    },
+    "http://www.omg.org/spec/SysML/2.0/RequirementConstraintKind" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/RequirementConstraintKind",
+      "title" : "RequirementConstraintKind",
+      "type" : "string",
+      "enum" : [ "assumption", "requirement" ]
+    },
+    "http://www.omg.org/spec/SysML/2.0/RequirementConstraintMembership" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/RequirementConstraintMembership",
+      "title" : "RequirementConstraintMembership",
+      "anyOf" : [ {
+        "allOf" : [ {
+          "type" : "object",
+          "properties" : {
+            "@type" : {
+              "type" : "string",
+              "const" : "RequirementConstraintMembership"
+            },
+            "aliasIds" : {
+              "type" : "array",
+              "items" : {
+                "type" : "string"
+              }
+            },
+            "documentation" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Documentation"
+              }
+            },
+            "effectiveName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "elementId" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "feature" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+            },
+            "isImplied" : {
+              "oneOf" : [ {
+                "type" : "boolean"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "isImpliedIncluded" : {
+              "oneOf" : [ {
+                "type" : "boolean"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "isLibraryElement" : {
+              "oneOf" : [ {
+                "type" : "boolean"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "kind" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/RequirementConstraintKind"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "memberElement" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "memberElementId" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "memberName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "memberShortName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "membershipOwningNamespace" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+            },
+            "name" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "ownedAnnotation" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Annotation"
+              }
+            },
+            "ownedConstraint" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/ConstraintUsage"
+            },
+            "ownedElement" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }
+            },
+            "ownedMemberElement" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "ownedMemberElementId" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "ownedMemberFeature" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+            },
+            "ownedMemberName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "ownedMemberShortName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "ownedRelatedElement" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }
+            },
+            "ownedRelationship" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+              }
+            },
+            "owner" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "owningMembership" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/OwningMembership"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "owningNamespace" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "owningRelatedElement" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "owningRelationship" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "owningType" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+            },
+            "qualifiedName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "referencedConstraint" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/ConstraintUsage"
+            },
+            "relatedElement" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              },
+              "minItems" : 2
+            },
+            "shortName" : {
+              "oneOf" : [ {
+                "type" : "string"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "source" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }
+            },
+            "target" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+              }
+            },
+            "textualRepresentation" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/TextualRepresentation"
+              }
+            },
+            "type" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+                "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+              }, {
+                "type" : "null"
+              } ]
+            },
+            "visibility" : {
+              "oneOf" : [ {
+                "$ref" : "http://www.omg.org/spec/SysML/2.0/VisibilityKind"
+              }, {
+                "type" : "null"
+              } ]
+            }
+          },
+          "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "feature", "isImplied", "isImpliedIncluded", "isLibraryElement", "kind", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedConstraint", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberFeature", "ownedMemberName", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "referencedConstraint", "relatedElement", "shortName", "source", "target", "textualRepresentation", "type", "visibility" ]
+        }, {
+          "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
+        } ],
+        "unevaluatedProperties" : false
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/FramedConcernMembership"
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/RequirementVerificationMembership"
+      } ]
+    },
+    "http://www.omg.org/spec/SysML/2.0/RequirementVerificationMembership" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/RequirementVerificationMembership",
+      "title" : "RequirementVerificationMembership",
+      "allOf" : [ {
+        "type" : "object",
+        "properties" : {
+          "@type" : {
+            "type" : "string",
+            "const" : "RequirementVerificationMembership"
+          },
+          "aliasIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "documentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Documentation"
+            }
+          },
+          "effectiveName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "elementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "feature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "isImplied" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isImpliedIncluded" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "kind" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/RequirementConstraintKind"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "memberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "membershipOwningNamespace" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+          },
+          "name" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedAnnotation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Annotation"
+            }
+          },
+          "ownedConstraint" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/ConstraintUsage"
+          },
+          "ownedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedMemberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "ownedMemberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberFeature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "ownedMemberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedRelatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedRelationship" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }
+          },
+          "ownedRequirement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/RequirementUsage"
+          },
+          "owner" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningMembership" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/OwningMembership"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningNamespace" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelatedElement" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelationship" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningType" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+          },
+          "qualifiedName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "referencedConstraint" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/ConstraintUsage"
+          },
+          "relatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "minItems" : 2
+          },
+          "shortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "source" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "target" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "textualRepresentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/TextualRepresentation"
+            }
+          },
+          "type" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "verifiedRequirement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/RequirementUsage"
+          },
+          "visibility" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/VisibilityKind"
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "feature", "isImplied", "isImpliedIncluded", "isLibraryElement", "kind", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedConstraint", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberFeature", "ownedMemberName", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "ownedRequirement", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "referencedConstraint", "relatedElement", "shortName", "source", "target", "textualRepresentation", "type", "verifiedRequirement", "visibility" ]
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "http://www.omg.org/spec/SysML/2.0/ResultExpressionMembership" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/ResultExpressionMembership",
+      "title" : "ResultExpressionMembership",
+      "allOf" : [ {
+        "type" : "object",
+        "properties" : {
+          "@type" : {
+            "type" : "string",
+            "const" : "ResultExpressionMembership"
+          },
+          "aliasIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "documentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Documentation"
+            }
+          },
+          "effectiveName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "elementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "feature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "isImplied" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isImpliedIncluded" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "memberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "membershipOwningNamespace" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+          },
+          "name" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedAnnotation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Annotation"
+            }
+          },
+          "ownedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedMemberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "ownedMemberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberFeature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "ownedMemberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedRelatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedRelationship" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }
+          },
+          "ownedResultExpression" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Expression"
+          },
+          "owner" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningMembership" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/OwningMembership"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningNamespace" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelatedElement" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelationship" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningType" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+          },
+          "qualifiedName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "relatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "minItems" : 2
+          },
+          "shortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "source" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "target" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "textualRepresentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/TextualRepresentation"
+            }
+          },
+          "type" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "visibility" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/VisibilityKind"
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "feature", "isImplied", "isImpliedIncluded", "isLibraryElement", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberFeature", "ownedMemberName", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "ownedResultExpression", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "type", "visibility" ]
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "http://www.omg.org/spec/SysML/2.0/ReturnParameterMembership" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/ReturnParameterMembership",
+      "title" : "ReturnParameterMembership",
+      "allOf" : [ {
+        "type" : "object",
+        "properties" : {
+          "@type" : {
+            "type" : "string",
+            "const" : "ReturnParameterMembership"
+          },
+          "aliasIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "documentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Documentation"
+            }
+          },
+          "effectiveName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "elementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "feature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "isImplied" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isImpliedIncluded" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "memberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "membershipOwningNamespace" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+          },
+          "name" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedAnnotation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Annotation"
+            }
+          },
+          "ownedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedMemberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "ownedMemberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberFeature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "ownedMemberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberParameter" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "ownedMemberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedRelatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedRelationship" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }
+          },
+          "owner" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningMembership" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/OwningMembership"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningNamespace" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelatedElement" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelationship" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningType" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+          },
+          "qualifiedName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "relatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "minItems" : 2
+          },
+          "shortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "source" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "target" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "textualRepresentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/TextualRepresentation"
+            }
+          },
+          "type" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "visibility" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/VisibilityKind"
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "feature", "isImplied", "isImpliedIncluded", "isLibraryElement", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberFeature", "ownedMemberName", "ownedMemberParameter", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "type", "visibility" ]
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "http://www.omg.org/spec/SysML/2.0/StakeholderMembership" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/StakeholderMembership",
+      "title" : "StakeholderMembership",
+      "allOf" : [ {
+        "type" : "object",
+        "properties" : {
+          "@type" : {
+            "type" : "string",
+            "const" : "StakeholderMembership"
+          },
+          "aliasIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "documentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Documentation"
+            }
+          },
+          "effectiveName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "elementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "feature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "isImplied" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isImpliedIncluded" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "memberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "membershipOwningNamespace" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+          },
+          "name" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedAnnotation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Annotation"
+            }
+          },
+          "ownedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedMemberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "ownedMemberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberFeature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "ownedMemberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberParameter" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "ownedMemberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedRelatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedRelationship" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }
+          },
+          "ownedStakeholderParameter" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/PartUsage"
+          },
+          "owner" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningMembership" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/OwningMembership"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningNamespace" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelatedElement" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelationship" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningType" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+          },
+          "qualifiedName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "relatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "minItems" : 2
+          },
+          "shortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "source" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "target" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "textualRepresentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/TextualRepresentation"
+            }
+          },
+          "type" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "visibility" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/VisibilityKind"
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "feature", "isImplied", "isImpliedIncluded", "isLibraryElement", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberFeature", "ownedMemberName", "ownedMemberParameter", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "ownedStakeholderParameter", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "type", "visibility" ]
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "http://www.omg.org/spec/SysML/2.0/StateSubactionKind" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/StateSubactionKind",
+      "title" : "StateSubactionKind",
+      "type" : "string",
+      "enum" : [ "entry", "do", "exit" ]
+    },
+    "http://www.omg.org/spec/SysML/2.0/StateSubactionMembership" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/StateSubactionMembership",
+      "title" : "StateSubactionMembership",
+      "allOf" : [ {
+        "type" : "object",
+        "properties" : {
+          "@type" : {
+            "type" : "string",
+            "const" : "StateSubactionMembership"
+          },
+          "action" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/ActionUsage"
+          },
+          "aliasIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "documentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Documentation"
+            }
+          },
+          "effectiveName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "elementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "feature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "isImplied" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isImpliedIncluded" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "kind" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/StateSubactionKind"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "memberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "membershipOwningNamespace" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+          },
+          "name" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedAnnotation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Annotation"
+            }
+          },
+          "ownedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedMemberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "ownedMemberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberFeature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "ownedMemberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedRelatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedRelationship" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }
+          },
+          "owner" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningMembership" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/OwningMembership"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningNamespace" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelatedElement" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelationship" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningType" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+          },
+          "qualifiedName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "relatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "minItems" : 2
+          },
+          "shortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "source" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "target" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "textualRepresentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/TextualRepresentation"
+            }
+          },
+          "type" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "visibility" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/VisibilityKind"
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "@type", "action", "aliasIds", "documentation", "effectiveName", "elementId", "feature", "isImplied", "isImpliedIncluded", "isLibraryElement", "kind", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberFeature", "ownedMemberName", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "type", "visibility" ]
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "http://www.omg.org/spec/SysML/2.0/SubjectMembership" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/SubjectMembership",
+      "title" : "SubjectMembership",
+      "allOf" : [ {
+        "type" : "object",
+        "properties" : {
+          "@type" : {
+            "type" : "string",
+            "const" : "SubjectMembership"
+          },
+          "aliasIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "documentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Documentation"
+            }
+          },
+          "effectiveName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "elementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "feature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "isImplied" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isImpliedIncluded" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "memberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "membershipOwningNamespace" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+          },
+          "name" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedAnnotation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Annotation"
+            }
+          },
+          "ownedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedMemberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "ownedMemberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberFeature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "ownedMemberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberParameter" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "ownedMemberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedRelatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedRelationship" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }
+          },
+          "ownedSubjectParameter" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Usage"
+          },
+          "owner" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningMembership" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/OwningMembership"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningNamespace" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelatedElement" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelationship" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningType" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+          },
+          "qualifiedName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "relatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "minItems" : 2
+          },
+          "shortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "source" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "target" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "textualRepresentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/TextualRepresentation"
+            }
+          },
+          "type" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "visibility" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/VisibilityKind"
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "feature", "isImplied", "isImpliedIncluded", "isLibraryElement", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberFeature", "ownedMemberName", "ownedMemberParameter", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "ownedSubjectParameter", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "type", "visibility" ]
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "http://www.omg.org/spec/SysML/2.0/TransitionFeatureKind" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/TransitionFeatureKind",
+      "title" : "TransitionFeatureKind",
+      "type" : "string",
+      "enum" : [ "trigger", "guard", "effect" ]
+    },
+    "http://www.omg.org/spec/SysML/2.0/TransitionFeatureMembership" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/TransitionFeatureMembership",
+      "title" : "TransitionFeatureMembership",
+      "allOf" : [ {
+        "type" : "object",
+        "properties" : {
+          "@type" : {
+            "type" : "string",
+            "const" : "TransitionFeatureMembership"
+          },
+          "aliasIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "documentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Documentation"
+            }
+          },
+          "effectiveName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "elementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "feature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "isImplied" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isImpliedIncluded" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "kind" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/TransitionFeatureKind"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "memberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "membershipOwningNamespace" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+          },
+          "name" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedAnnotation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Annotation"
+            }
+          },
+          "ownedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedMemberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "ownedMemberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberFeature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "ownedMemberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedRelatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedRelationship" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }
+          },
+          "owner" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningMembership" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/OwningMembership"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningNamespace" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelatedElement" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelationship" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningType" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+          },
+          "qualifiedName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "relatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "minItems" : 2
+          },
+          "shortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "source" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "target" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "textualRepresentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/TextualRepresentation"
+            }
+          },
+          "transitionFeature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Step"
+          },
+          "type" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "visibility" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/VisibilityKind"
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "feature", "isImplied", "isImpliedIncluded", "isLibraryElement", "kind", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberFeature", "ownedMemberName", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "transitionFeature", "type", "visibility" ]
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "http://www.omg.org/spec/SysML/2.0/VariantMembership" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/VariantMembership",
+      "title" : "VariantMembership",
+      "allOf" : [ {
+        "type" : "object",
+        "properties" : {
+          "@type" : {
+            "type" : "string",
+            "const" : "VariantMembership"
+          },
+          "aliasIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "documentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Documentation"
+            }
+          },
+          "effectiveName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "elementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isImplied" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isImpliedIncluded" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "memberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "membershipOwningNamespace" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+          },
+          "name" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedAnnotation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Annotation"
+            }
+          },
+          "ownedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedMemberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "ownedMemberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedRelatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedRelationship" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }
+          },
+          "ownedVariantUsage" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Usage"
+          },
+          "owner" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningMembership" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/OwningMembership"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningNamespace" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelatedElement" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelationship" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "qualifiedName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "relatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "minItems" : 2
+          },
+          "shortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "source" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "target" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "textualRepresentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/TextualRepresentation"
+            }
+          },
+          "visibility" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/VisibilityKind"
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "isImplied", "isImpliedIncluded", "isLibraryElement", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberName", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "ownedVariantUsage", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "qualifiedName", "relatedElement", "shortName", "source", "target", "textualRepresentation", "visibility" ]
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "http://www.omg.org/spec/SysML/2.0/ViewRenderingMembership" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/ViewRenderingMembership",
+      "title" : "ViewRenderingMembership",
+      "allOf" : [ {
+        "type" : "object",
+        "properties" : {
+          "@type" : {
+            "type" : "string",
+            "const" : "ViewRenderingMembership"
+          },
+          "aliasIds" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "documentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Documentation"
+            }
+          },
+          "effectiveName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "elementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "feature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "isImplied" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isImpliedIncluded" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "isLibraryElement" : {
+            "oneOf" : [ {
+              "type" : "boolean"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "memberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "memberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "membershipOwningNamespace" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+          },
+          "name" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedAnnotation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Annotation"
+            }
+          },
+          "ownedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedMemberElement" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+          },
+          "ownedMemberElementId" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberFeature" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Feature"
+          },
+          "ownedMemberName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedMemberShortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "ownedRelatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "ownedRelationship" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }
+          },
+          "ownedRendering" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/RenderingUsage"
+          },
+          "owner" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningMembership" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/OwningMembership"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningNamespace" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Namespace"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelatedElement" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningRelationship" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Relationship"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "owningType" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+          },
+          "qualifiedName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "referencedRendering" : {
+            "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment" : "http://www.omg.org/spec/SysML/2.0/RenderingUsage"
+          },
+          "relatedElement" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            },
+            "minItems" : 2
+          },
+          "shortName" : {
+            "oneOf" : [ {
+              "type" : "string"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "source" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "target" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Element"
+            }
+          },
+          "textualRepresentation" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/TextualRepresentation"
+            }
+          },
+          "type" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment" : "http://www.omg.org/spec/SysML/2.0/Type"
+            }, {
+              "type" : "null"
+            } ]
+          },
+          "visibility" : {
+            "oneOf" : [ {
+              "$ref" : "http://www.omg.org/spec/SysML/2.0/VisibilityKind"
+            }, {
+              "type" : "null"
+            } ]
+          }
+        },
+        "required" : [ "@type", "aliasIds", "documentation", "effectiveName", "elementId", "feature", "isImplied", "isImpliedIncluded", "isLibraryElement", "memberElement", "memberElementId", "memberName", "memberShortName", "membershipOwningNamespace", "name", "ownedAnnotation", "ownedElement", "ownedMemberElement", "ownedMemberElementId", "ownedMemberFeature", "ownedMemberName", "ownedMemberShortName", "ownedRelatedElement", "ownedRelationship", "ownedRendering", "owner", "owningMembership", "owningNamespace", "owningRelatedElement", "owningRelationship", "owningType", "qualifiedName", "referencedRendering", "relatedElement", "shortName", "source", "target", "textualRepresentation", "type", "visibility" ]
+      }, {
+        "$ref" : "http://www.omg.org/spec/SysML/2.0/Identified"
+      } ],
+      "unevaluatedProperties" : false
+    },
+    "http://www.omg.org/spec/SysML/2.0/VisibilityKind" : {
+      "$id" : "http://www.omg.org/spec/SysML/2.0/VisibilityKind",
+      "title" : "VisibilityKind",
+      "type" : "string",
+      "enum" : [ "private", "protected", "public" ]
+    }
+  }
+}

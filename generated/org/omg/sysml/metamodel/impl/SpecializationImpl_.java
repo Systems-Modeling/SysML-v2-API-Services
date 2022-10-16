@@ -17,6 +17,7 @@ public abstract class SpecializationImpl_ extends org.omg.sysml.lifecycle.impl.D
 
 	public static volatile SingularAttribute<SpecializationImpl, UUID> elementId;
 	public static volatile ListAttribute<SpecializationImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<SpecializationImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<SpecializationImpl, Boolean> isImplied;
 	public static volatile ListAttribute<SpecializationImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<SpecializationImpl, Element> ownedElement;
@@ -35,6 +36,7 @@ public abstract class SpecializationImpl_ extends org.omg.sysml.lifecycle.impl.D
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";

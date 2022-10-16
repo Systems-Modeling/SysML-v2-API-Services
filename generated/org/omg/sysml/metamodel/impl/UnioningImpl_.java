@@ -17,6 +17,7 @@ public abstract class UnioningImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 
 	public static volatile SingularAttribute<UnioningImpl, UUID> elementId;
 	public static volatile ListAttribute<UnioningImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<UnioningImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<UnioningImpl, Boolean> isImplied;
 	public static volatile ListAttribute<UnioningImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<UnioningImpl, Element> ownedElement;
@@ -35,6 +36,7 @@ public abstract class UnioningImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";

@@ -47,6 +47,7 @@ public abstract class BooleanExpressionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile CollectionAttribute<BooleanExpressionImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<BooleanExpressionImpl, UUID> elementId;
 	public static volatile ListAttribute<BooleanExpressionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<BooleanExpressionImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<BooleanExpressionImpl, Boolean> isDerived;
 	public static volatile ListAttribute<BooleanExpressionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<BooleanExpressionImpl, Feature> ownedFeature;
@@ -109,6 +110,7 @@ public abstract class BooleanExpressionImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";

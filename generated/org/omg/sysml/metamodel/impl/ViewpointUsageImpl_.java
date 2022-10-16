@@ -81,6 +81,7 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<ViewpointUsageImpl, Differencing> ownedDifferencing;
 	public static volatile CollectionAttribute<ViewpointUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<ViewpointUsageImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<ViewpointUsageImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<ViewpointUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<ViewpointUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile ListAttribute<ViewpointUsageImpl, Feature> ownedFeature;
@@ -188,6 +189,7 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";

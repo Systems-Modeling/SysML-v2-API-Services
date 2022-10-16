@@ -73,6 +73,7 @@ public abstract class PortDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<PortDefinitionImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<PortDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<PortDefinitionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<PortDefinitionImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<PortDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<PortDefinitionImpl, ViewUsage> ownedView;
 	public static volatile ListAttribute<PortDefinitionImpl, Feature> ownedFeature;
@@ -148,6 +149,7 @@ public abstract class PortDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";

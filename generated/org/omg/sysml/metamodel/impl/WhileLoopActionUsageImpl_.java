@@ -78,6 +78,7 @@ public abstract class WhileLoopActionUsageImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile ListAttribute<WhileLoopActionUsageImpl, Differencing> ownedDifferencing;
 	public static volatile CollectionAttribute<WhileLoopActionUsageImpl, Redefinition> ownedRedefinition;
 	public static volatile ListAttribute<WhileLoopActionUsageImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<WhileLoopActionUsageImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<WhileLoopActionUsageImpl, AttributeUsage> nestedAttribute;
 	public static volatile ListAttribute<WhileLoopActionUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile ListAttribute<WhileLoopActionUsageImpl, Feature> ownedFeature;
@@ -177,6 +178,7 @@ public abstract class WhileLoopActionUsageImpl_ extends org.omg.sysml.lifecycle.
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";

@@ -17,6 +17,7 @@ public abstract class ConjugatedPortTypingImpl_ extends org.omg.sysml.lifecycle.
 
 	public static volatile SingularAttribute<ConjugatedPortTypingImpl, UUID> elementId;
 	public static volatile ListAttribute<ConjugatedPortTypingImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<ConjugatedPortTypingImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<ConjugatedPortTypingImpl, Boolean> isImplied;
 	public static volatile ListAttribute<ConjugatedPortTypingImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ConjugatedPortTypingImpl, Element> ownedElement;
@@ -35,6 +36,7 @@ public abstract class ConjugatedPortTypingImpl_ extends org.omg.sysml.lifecycle.
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";

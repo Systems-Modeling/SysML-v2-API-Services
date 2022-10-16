@@ -48,6 +48,7 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile CollectionAttribute<BindingConnectorImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<BindingConnectorImpl, UUID> elementId;
 	public static volatile ListAttribute<BindingConnectorImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isDerived;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isImplied;
 	public static volatile ListAttribute<BindingConnectorImpl, Annotation> ownedAnnotation;
@@ -117,6 +118,7 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

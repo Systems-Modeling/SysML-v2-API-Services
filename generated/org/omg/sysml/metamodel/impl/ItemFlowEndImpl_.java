@@ -46,6 +46,7 @@ public abstract class ItemFlowEndImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static volatile CollectionAttribute<ItemFlowEndImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<ItemFlowEndImpl, UUID> elementId;
 	public static volatile ListAttribute<ItemFlowEndImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<ItemFlowEndImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<ItemFlowEndImpl, Boolean> isDerived;
 	public static volatile ListAttribute<ItemFlowEndImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ItemFlowEndImpl, Feature> ownedFeature;
@@ -105,6 +106,7 @@ public abstract class ItemFlowEndImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";

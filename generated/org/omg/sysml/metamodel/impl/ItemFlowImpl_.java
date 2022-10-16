@@ -53,6 +53,7 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile CollectionAttribute<ItemFlowImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<ItemFlowImpl, UUID> elementId;
 	public static volatile ListAttribute<ItemFlowImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isDerived;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isImplied;
 	public static volatile ListAttribute<ItemFlowImpl, Annotation> ownedAnnotation;
@@ -128,6 +129,7 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";

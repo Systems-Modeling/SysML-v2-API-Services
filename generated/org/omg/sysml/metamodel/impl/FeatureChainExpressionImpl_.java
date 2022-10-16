@@ -50,6 +50,7 @@ public abstract class FeatureChainExpressionImpl_ extends org.omg.sysml.lifecycl
 	public static volatile CollectionAttribute<FeatureChainExpressionImpl, Redefinition> ownedRedefinition;
 	public static volatile SingularAttribute<FeatureChainExpressionImpl, UUID> elementId;
 	public static volatile ListAttribute<FeatureChainExpressionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<FeatureChainExpressionImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<FeatureChainExpressionImpl, Boolean> isDerived;
 	public static volatile ListAttribute<FeatureChainExpressionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<FeatureChainExpressionImpl, Feature> ownedFeature;
@@ -115,6 +116,7 @@ public abstract class FeatureChainExpressionImpl_ extends org.omg.sysml.lifecycl
 	public static final String OWNED_REDEFINITION = "ownedRedefinition";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_FEATURE = "ownedFeature";

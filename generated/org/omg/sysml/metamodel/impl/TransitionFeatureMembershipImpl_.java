@@ -29,6 +29,7 @@ public abstract class TransitionFeatureMembershipImpl_ extends org.omg.sysml.lif
 	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, String> ownedMemberShortName;
 	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, UUID> elementId;
 	public static volatile ListAttribute<TransitionFeatureMembershipImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<TransitionFeatureMembershipImpl, Boolean> isImplied;
 	public static volatile ListAttribute<TransitionFeatureMembershipImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<TransitionFeatureMembershipImpl, Element> ownedElement;
@@ -55,6 +56,7 @@ public abstract class TransitionFeatureMembershipImpl_ extends org.omg.sysml.lif
 	public static final String OWNED_MEMBER_SHORT_NAME = "ownedMemberShortName";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";

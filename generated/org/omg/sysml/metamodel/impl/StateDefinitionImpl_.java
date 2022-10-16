@@ -76,6 +76,7 @@ public abstract class StateDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<StateDefinitionImpl, Differencing> ownedDifferencing;
 	public static volatile SingularAttribute<StateDefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<StateDefinitionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<StateDefinitionImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<StateDefinitionImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<StateDefinitionImpl, ViewUsage> ownedView;
 	public static volatile ListAttribute<StateDefinitionImpl, Feature> ownedFeature;
@@ -156,6 +157,7 @@ public abstract class StateDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_VIEW = "ownedView";
 	public static final String OWNED_FEATURE = "ownedFeature";

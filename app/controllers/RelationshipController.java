@@ -53,7 +53,7 @@ public final class RelationshipController extends JsonLdController<Relationship,
 
     @SuppressWarnings("OptionalUsedAsFieldOrParameterType")
     public Result getRelationshipsByProjectIdCommitIdRelatedElementId(UUID projectId, UUID commitId, UUID relatedElementId, Optional<String> direction, Optional<Boolean> excludeUsed, Request request) {
-        PageRequest pageRequest = PageRequest.from(request);
+        PageRequest<UUID> pageRequest = uuidRequest(request);
         RelationshipDirection relationshipDirection = direction
                 .flatMap(d -> Arrays.stream(RelationshipDirection.values())
                         .filter(rd -> rd.toString().equalsIgnoreCase(d))
@@ -74,7 +74,7 @@ public final class RelationshipController extends JsonLdController<Relationship,
     }
 
     private Result buildPaginatedResult(List<Relationship> relationships, UUID projectId, UUID commitId, Request request, PageRequest pageRequest) {
-        return paginateResult(
+        return uuidResponse(
                 buildResult(relationships, List.class, metamodelProvider.getImplementationClass(Relationship.class), request, new DataJsonLdAdorner.Parameters(projectId, commitId)),
                 relationships.size(),
                 idx -> relationships.get(idx).getElementId(),

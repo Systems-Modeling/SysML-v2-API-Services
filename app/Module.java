@@ -24,6 +24,7 @@ import com.google.inject.AbstractModule;
 import config.MetamodelProvider;
 import config.impl.JPAMetamodelProvider;
 import dao.*;
+import dao.impl.FlatSchemaDao;
 import dao.impl.jpa.*;
 import jackson.databind.ObjectMapperFactory;
 import jackson.databind.impl.HibernateObjectMapperFactory;
@@ -45,5 +46,6 @@ public class Module extends AbstractModule {
         bind(QueryDao.class).to(JpaQueryDao.class);
         bind(BranchDao.class).to(JpaBranchDao.class);
         bind(TagDao.class).to(JpaTagDao.class);
+        bind(SchemaDao.class).to(FlatSchemaDao.class);
     }
 }
