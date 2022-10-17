@@ -1,5 +1,10 @@
 {
   "$schema" : "https://json-schema.org/draft/2020-12/schema",
+  "$id": "http://www.omg.org/spec/SysML/2.0/Project",
+  "type": "array",
+  "items": {
+    "$ref": "http://www.omg.org/spec/SysML/2.0/Element"
+  },
   "$defs" : {
     "http://www.omg.org/spec/SysML/2.0/AnnotatingElement" : {
       "$id" : "http://www.omg.org/spec/SysML/2.0/AnnotatingElement",
