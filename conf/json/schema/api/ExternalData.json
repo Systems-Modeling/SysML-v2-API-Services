@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "http://www.omg.org/spec/SysML/2.0/API/ExternalData",
+  "type": "object",
+  "properties": {
+    "@id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "@type": {
+      "type": "string",
+      "const": "ExternalData"
+    },
+    "resourceIdentifier": {
+      "type": "string",
+      "format": "uri"
+    }
+  },
+  "required": [
+    "@id",
+    "@type",
+    "resourceIdentifier"
+  ],
+  "additionalProperties": false
+}

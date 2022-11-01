@@ -41,7 +41,7 @@ public class BranchImpl extends RecordImpl implements Branch {
     private Project owningProject;
     private Commit head;
     private String name;
-    private ZonedDateTime timestamp;
+    private ZonedDateTime created;
 
     @Override
     @ManyToOne(targetEntity = ProjectImpl.class, fetch = FetchType.LAZY)
@@ -91,12 +91,12 @@ public class BranchImpl extends RecordImpl implements Branch {
 
     @Override
     @Column
-    public ZonedDateTime getTimestamp() {
-        return timestamp;
+    public ZonedDateTime getCreated() {
+        return created;
     }
 
-    public void setTimestamp(ZonedDateTime timestamp) {
-        this.timestamp = timestamp;
+    public void setCreated(ZonedDateTime created) {
+        this.created = created;
     }
 
     @Transient

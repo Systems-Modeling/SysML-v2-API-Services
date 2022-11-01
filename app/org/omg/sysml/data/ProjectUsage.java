@@ -26,7 +26,7 @@ import org.omg.sysml.lifecycle.Project;
 
 public interface ProjectUsage extends Data {
 
-    Commit getUsedProjectCommit();
+    Commit getUsedCommit();
 
     Project getUsedProject();
 }

@@ -27,11 +27,11 @@ import org.omg.sysml.metamodel.Element;
 
 public interface ExternalRelationship extends Data {
 
-    String getSpecification();
-
-    String getLanguage();
-
     Element getElementEnd();
 
     ExternalData getExternalDataEnd();
+
+    String getLanguage();
+
+    String getSpecification();
 }

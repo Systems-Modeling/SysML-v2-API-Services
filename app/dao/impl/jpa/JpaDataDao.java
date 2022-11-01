@@ -35,7 +35,6 @@ import org.omg.sysml.internal.impl.CommitDataVersionIndexImpl_;
 import org.omg.sysml.internal.impl.WorkingDataVersionImpl;
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.Data;
-import org.omg.sysml.lifecycle.DataIdentity;
 import org.omg.sysml.lifecycle.DataVersion;
 import org.omg.sysml.lifecycle.impl.CommitImpl;
 import org.omg.sysml.query.*;
@@ -96,7 +95,7 @@ public class JpaDataDao implements DataDao {
             Commit c = em.contains(commit) ? commit : em.find(CommitImpl.class, commit.getId());
             Query q = query.getId() == null || em.contains(query) ? query : em.find(QueryImpl.class, query.getId());
             return getCommitIndex(c, em).getWorkingDataVersion().stream()
-                    .filter(scope(q))
+//                    .filter(scope(q))
                     .map(WorkingDataVersion::getDataVersion)
                     .map(DataVersion::getPayload)
                     .filter(constrain(q.getWhere()))
@@ -155,7 +154,7 @@ public class JpaDataDao implements DataDao {
 
         Set<WorkingDataVersion> _usedDataVersions = ConcurrentHashMap.newKeySet();
         for (ProjectUsage projectUsage : projectUsages) {
-            Commit usedCommit = projectUsage.getUsedProjectCommit();
+            Commit usedCommit = projectUsage.getUsedCommit();
             if (usedCommit == null) {
                 continue;
             }
@@ -263,7 +262,7 @@ public class JpaDataDao implements DataDao {
             throw new IllegalArgumentException("Unknown constraint type: " + constraint.getClass().getSimpleName());
         }
     }
-
+/*
     protected Predicate<WorkingDataVersion> scope(Query query) {
         if (query.getScope() == null || query.getScope().isEmpty()) {
             return ev -> true;
@@ -272,4 +271,5 @@ public class JpaDataDao implements DataDao {
                 .map(DataIdentity::getId)
                 .anyMatch(id -> Objects.equals(id, working.getDataVersion().getIdentity().getId()));
     }
+*/
 }

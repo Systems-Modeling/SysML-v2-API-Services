@@ -34,7 +34,6 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.time.ZonedDateTime;
 import java.util.Optional;
-import java.util.UUID;
 
 @Singleton
 public class JpaProjectDao extends SimpleJpaDao<Project, ProjectImpl> implements ProjectDao {
@@ -61,7 +60,7 @@ public class JpaProjectDao extends SimpleJpaDao<Project, ProjectImpl> implements
         defaultBranch.setOwningProject(project);
         defaultBranch.setName(Project.DEFAULT_BRANCH_NAME);
         // TODO Add timestamp to Project and inherit into defaultBranch
-        defaultBranch.setTimestamp(ZonedDateTime.now());
+        defaultBranch.setCreated(ZonedDateTime.now());
         project.setDefaultBranch(defaultBranch);
         return super.persist(project);
     }

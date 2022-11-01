@@ -65,10 +65,10 @@ public class CommitController extends JsonLdController<Commit, ProjectContainmen
     private Result postCommitByProject(UUID projectId, @SuppressWarnings("OptionalUsedAsFieldOrParameterType") Optional<UUID> branchId, Request request, CommitCreator creator) {
         JsonNode requestBodyJson = request.body().asJson();
         Commit requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Commit.class));
-        if (requestedObject.getId() != null || requestedObject.getTimestamp() != null) {
+        if (requestedObject.getId() != null || requestedObject.getCreated() != null) {
             return Results.badRequest();
         }
-        requestedObject.setTimestamp(ZonedDateTime.now());
+        requestedObject.setCreated(ZonedDateTime.now());
         Optional<Commit> commit = creator.create(projectId, branchId.orElse(null), requestedObject);
         if (commit.isEmpty()) {
             return Results.internalServerError();

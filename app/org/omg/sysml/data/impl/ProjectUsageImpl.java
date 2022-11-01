@@ -63,30 +63,30 @@ public class ProjectUsageImpl extends DataImpl implements ProjectUsage {
         this.id = id;
     }
 
-    private Commit usedProjectCommit;
+    private Commit usedCommit;
 
     @JsonGetter
     @JsonSerialize(using = RecordSerialization.RecordSerializer.class)
     @ManyToOne(targetEntity = CommitImpl.class, fetch = FetchType.LAZY)
-    @JoinColumn(name = "usedProjectCommitId", table = "ProjectUsage")
-    public Commit getUsedProjectCommit() {
-        return usedProjectCommit;
+    @JoinColumn(name = "usedCommitId", table = "ProjectUsage")
+    public Commit getUsedCommit() {
+        return usedCommit;
     }
 
     @JsonSetter
     @JsonDeserialize(as = CommitImpl.class, using = RecordSerialization.CommitDeserializer.class)
-    public void setUsedProjectCommit(Commit usedProjectCommit) {
-        this.usedProjectCommit = usedProjectCommit;
+    public void setUsedCommit(Commit usedCommit) {
+        this.usedCommit = usedCommit;
     }
 
     @Override
     @Transient
     @JsonSerialize(as = ProjectImpl.class, using = RecordSerialization.RecordSerializer.class)
     public Project getUsedProject() {
-        Commit usedProjectCommit = getUsedProjectCommit();
-        if (usedProjectCommit == null) {
+        Commit usedCommit = getUsedCommit();
+        if (usedCommit == null) {
             return null;
         }
-        return usedProjectCommit.getOwningProject();
+        return usedCommit.getOwningProject();
     }
 }
