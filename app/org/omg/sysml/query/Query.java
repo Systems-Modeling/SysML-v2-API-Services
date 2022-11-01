@@ -22,7 +22,6 @@
 
 package org.omg.sysml.query;
 
-import org.omg.sysml.lifecycle.DataIdentity;
 import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.record.Record;
 
@@ -36,12 +35,11 @@ public interface Query extends Record {
     Set<String> getSelect();
 
     void setSelect(Set<String> select);
-
+/*
     Set<DataIdentity> getScope();
 
     void setScope(Set<DataIdentity> scope);
 
-/*
     Boolean getRecursiveInScope();
 
     void setRecursiveInScope(Boolean recursiveInScope);

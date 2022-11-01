@@ -64,28 +64,6 @@ public class ExternalRelationshipImpl extends DataImpl implements ExternalRelati
         this.id = id;
     }
 
-    private String specification;
-
-    @JsonGetter
-    @Column(name = "specification", table = "ExternalRelationship")
-    public String getSpecification() { return specification; }
-
-    @JsonSetter
-    public void setSpecification(String specification) {
-        this.specification = specification;
-    }
-
-    private String language;
-
-    @JsonGetter
-    @Column(name = "language", table = "ExternalRelationship")
-    public String getLanguage() { return language; }
-
-    @JsonSetter
-    public void setLanguage(String language) {
-        this.language = language;
-    }
-
     private Element elementEnd;
 
     @JsonGetter
@@ -116,5 +94,27 @@ public class ExternalRelationshipImpl extends DataImpl implements ExternalRelati
     @JsonDeserialize(using = DataDeserializer.class, as = ExternalDataImpl.class)
     public void setExternalDataEnd(ExternalData externalDataEnd) {
         this.externalDataEnd = externalDataEnd;
+    }
+
+    private String language;
+
+    @JsonGetter
+    @Column(name = "language", table = "ExternalRelationship")
+    public String getLanguage() { return language; }
+
+    @JsonSetter
+    public void setLanguage(String language) {
+        this.language = language;
+    }
+
+    private String specification;
+
+    @JsonGetter
+    @Column(name = "specification", table = "ExternalRelationship")
+    public String getSpecification() { return specification; }
+
+    @JsonSetter
+    public void setSpecification(String specification) {
+        this.specification = specification;
     }
 }

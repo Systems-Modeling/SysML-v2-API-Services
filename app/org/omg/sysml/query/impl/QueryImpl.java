@@ -38,6 +38,7 @@ import org.omg.sysml.query.Query;
 import org.omg.sysml.record.impl.RecordImpl;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -45,8 +46,8 @@ import java.util.Set;
 public class QueryImpl extends RecordImpl implements Query {
     private Project owningProject;
     private Set<String> select;
-    private Set<DataIdentity> scope;
 /*
+    private Set<DataIdentity> scope;
     private Boolean recursiveInScope;
     private List<String> orderBy;
 */
@@ -80,6 +81,7 @@ public class QueryImpl extends RecordImpl implements Query {
         this.select = select;
     }
 
+/*
     @Override
     @ManyToMany(targetEntity = DataIdentityImpl.class, cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public Set<DataIdentity> getScope() {
@@ -95,7 +97,6 @@ public class QueryImpl extends RecordImpl implements Query {
         this.scope = scope;
     }
 
-/*
     @Override
     @Column
     public Boolean getRecursiveInScope() {

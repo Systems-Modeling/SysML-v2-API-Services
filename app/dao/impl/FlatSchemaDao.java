@@ -22,10 +22,13 @@ package dao.impl;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.google.common.collect.Streams;
 import config.MetamodelProvider;
 import dao.SchemaDao;
 import jackson.databind.ObjectMapperFactory;
+import org.omg.sysml.data.ExternalData;
+import org.omg.sysml.data.ExternalRelationship;
+import org.omg.sysml.data.ProjectUsage;
 
 import javax.annotation.Nullable;
 import javax.inject.Inject;
@@ -47,10 +50,15 @@ public class FlatSchemaDao implements SchemaDao {
     public FlatSchemaDao(MetamodelProvider metamodelProvider, ObjectMapperFactory mapperFactory) {
         this.mapper = mapperFactory.getObjectMapper();
         try (Stream<Class<?>> interfaces = metamodelProvider.getAllInterfaces().stream()) {
-            map = interfaces
-                    .map(type -> FlatSchemaDao.class.getResourceAsStream(String.format("/json/schema/sysml/%s.json",
-                            type.getSimpleName())))
-                    .filter(Objects::nonNull)
+            map = Streams.concat(
+                            interfaces
+                                    .map(type -> FlatSchemaDao.class.getResourceAsStream(String.format("/json/schema/lang/%s.json",
+                                            type.getSimpleName())))
+                                    .filter(Objects::nonNull),
+                            Stream.of(ExternalData.class, ExternalRelationship.class, ProjectUsage.class)
+                                    .map(type -> FlatSchemaDao.class.getResourceAsStream(String.format("/json/schema/api/%s.json",
+                                            type.getSimpleName())))
+                    )
                     .map(input -> {
                         try {
                             return mapper.reader().readTree(input);

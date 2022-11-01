@@ -41,7 +41,7 @@ import java.util.Set;
 public class CommitImpl extends RecordImpl implements Commit {
     private Project owningProject;
     private Set<DataVersion> change;
-    private ZonedDateTime timestamp;
+    private ZonedDateTime created;
     private Commit previousCommit;
 
     @Override
@@ -74,12 +74,12 @@ public class CommitImpl extends RecordImpl implements Commit {
     @Override
     @Column
     @JsonView(Views.Compact.class)
-    public ZonedDateTime getTimestamp() {
-        return timestamp;
+    public ZonedDateTime getCreated() {
+        return created;
     }
 
-    public void setTimestamp(ZonedDateTime timestamp) {
-        this.timestamp = timestamp;
+    public void setCreated(ZonedDateTime created) {
+        this.created = created;
     }
 
     @ManyToOne(targetEntity = CommitImpl.class, fetch = FetchType.LAZY)

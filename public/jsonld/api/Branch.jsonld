@@ -5,6 +5,6 @@
         "head": {"@type": "@id"},
         "name": {"@type": "xsd:string"},
         "owningProject": {"@type": "@id"},
-        "timestamp": {"@type": "xsd:dateTime"}
+        "created": {"@type": "xsd:dateTime"}
     }
 }

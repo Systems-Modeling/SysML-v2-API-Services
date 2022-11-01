@@ -55,10 +55,10 @@ public class TagController extends JsonLdController<Tag, ProjectContainmentParam
     public Result postTagByProject(UUID projectId, Request request) {
         JsonNode requestBodyJson = request.body().asJson();
         Tag requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Tag.class));
-        if (requestedObject.getId() != null || requestedObject.getTimestamp() != null) {
+        if (requestedObject.getId() != null || requestedObject.getCreated() != null) {
             return Results.badRequest();
         }
-        requestedObject.setTimestamp(ZonedDateTime.now());
+        requestedObject.setCreated(ZonedDateTime.now());
         Optional<Tag> tag = tagService.create(projectId, requestedObject);
         if (tag.isEmpty()) {
             return Results.internalServerError();
