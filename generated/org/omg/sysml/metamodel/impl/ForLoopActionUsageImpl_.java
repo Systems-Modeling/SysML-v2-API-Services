@@ -145,7 +145,6 @@ public abstract class ForLoopActionUsageImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile SingularAttribute<ForLoopActionUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<ForLoopActionUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<ForLoopActionUsageImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<ForLoopActionUsageImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<ForLoopActionUsageImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile ListAttribute<ForLoopActionUsageImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<ForLoopActionUsageImpl, Membership> inheritedMembership;
@@ -245,7 +244,6 @@ public abstract class ForLoopActionUsageImpl_ extends org.omg.sysml.lifecycle.im
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";

@@ -69,7 +69,6 @@ public abstract class InvariantImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<InvariantImpl, Membership> membership;
 	public static volatile SingularAttribute<InvariantImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<InvariantImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<InvariantImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<InvariantImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile SingularAttribute<InvariantImpl, Boolean> isReadOnly;
 	public static volatile ListAttribute<InvariantImpl, FeatureTyping> ownedTyping;
@@ -133,7 +132,6 @@ public abstract class InvariantImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String OWNED_TYPING = "ownedTyping";

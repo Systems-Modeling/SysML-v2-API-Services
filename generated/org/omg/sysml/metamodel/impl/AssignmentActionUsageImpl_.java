@@ -145,7 +145,6 @@ public abstract class AssignmentActionUsageImpl_ extends org.omg.sysml.lifecycle
 	public static volatile SingularAttribute<AssignmentActionUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<AssignmentActionUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<AssignmentActionUsageImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<AssignmentActionUsageImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<AssignmentActionUsageImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile ListAttribute<AssignmentActionUsageImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<AssignmentActionUsageImpl, Membership> inheritedMembership;
@@ -245,7 +244,6 @@ public abstract class AssignmentActionUsageImpl_ extends org.omg.sysml.lifecycle
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";

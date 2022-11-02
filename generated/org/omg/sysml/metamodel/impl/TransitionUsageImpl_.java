@@ -150,7 +150,6 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile SingularAttribute<TransitionUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<TransitionUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<TransitionUsageImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<TransitionUsageImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<TransitionUsageImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile ListAttribute<TransitionUsageImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<TransitionUsageImpl, Membership> inheritedMembership;
@@ -253,7 +252,6 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";

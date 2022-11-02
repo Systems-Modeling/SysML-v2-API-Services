@@ -146,7 +146,6 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Membership> membership;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Element> ownedRelatedElement;
 	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Feature> targetFeature;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, FeatureTyping> ownedTyping;
@@ -250,7 +249,6 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String TARGET_FEATURE = "targetFeature";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String OWNED_TYPING = "ownedTyping";

@@ -68,7 +68,6 @@ public abstract class NullExpressionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<NullExpressionImpl, Membership> membership;
 	public static volatile SingularAttribute<NullExpressionImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<NullExpressionImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<NullExpressionImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<NullExpressionImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile SingularAttribute<NullExpressionImpl, Boolean> isReadOnly;
 	public static volatile ListAttribute<NullExpressionImpl, FeatureTyping> ownedTyping;
@@ -131,7 +130,6 @@ public abstract class NullExpressionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String OWNED_TYPING = "ownedTyping";
