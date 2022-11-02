@@ -118,7 +118,6 @@ public abstract class AttributeUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<AttributeUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<AttributeUsageImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<AttributeUsageImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<AttributeUsageImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<AttributeUsageImpl, ReferenceUsage> nestedReference;
 	public static volatile ListAttribute<AttributeUsageImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile SingularAttribute<AttributeUsageImpl, Boolean> isReadOnly;
@@ -213,7 +212,6 @@ public abstract class AttributeUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String NESTED_REFERENCE = "nestedReference";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String IS_READ_ONLY = "isReadOnly";

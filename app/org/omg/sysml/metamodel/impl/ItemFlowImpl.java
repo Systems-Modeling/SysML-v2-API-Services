@@ -758,24 +758,6 @@ public class ItemFlowImpl extends SysMLTypeImpl implements ItemFlow {
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("isNonunique")
-    private Boolean isNonunique;
-
-    @JsonGetter
-    // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isNonunique", table = "ItemFlow")
-    public Boolean getIsNonunique() {
-        return isNonunique;
-    }
-
-    @JsonSetter
-    public void setIsNonunique(Boolean isNonunique) {
-        this.isNonunique = isNonunique;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("isOrdered")
     private Boolean isOrdered;
 
@@ -879,7 +861,7 @@ public class ItemFlowImpl extends SysMLTypeImpl implements ItemFlow {
 
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("itemFlowEnd")
-    private Collection<ItemFlowEnd> itemFlowEnd;
+    private List<ItemFlowEnd> itemFlowEnd;
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
@@ -888,7 +870,7 @@ public class ItemFlowImpl extends SysMLTypeImpl implements ItemFlow {
     @JoinTable(name = "ItemFlow_itemFlowEnd",
             joinColumns = @JoinColumn(name = "class_id"),
             inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public Collection<ItemFlowEnd> getItemFlowEnd() {
+    public List<ItemFlowEnd> getItemFlowEnd() {
         if (itemFlowEnd == null) {
             itemFlowEnd = new ArrayList<>();
         }
@@ -897,34 +879,8 @@ public class ItemFlowImpl extends SysMLTypeImpl implements ItemFlow {
 
     @JsonSetter
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ItemFlowEndImpl.class)
-    public void setItemFlowEnd(Collection<ItemFlowEnd> itemFlowEnd) {
+    public void setItemFlowEnd(List<ItemFlowEnd> itemFlowEnd) {
         this.itemFlowEnd = itemFlowEnd;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("itemFlowFeature")
-    private Collection<ItemFlowFeature> itemFlowFeature;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ItemFlowFeatureMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ItemFlow_itemFlowFeature",
-            joinColumns = @JoinColumn(name = "class_id"),
-            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public Collection<ItemFlowFeature> getItemFlowFeature() {
-        if (itemFlowFeature == null) {
-            itemFlowFeature = new ArrayList<>();
-        }
-        return itemFlowFeature;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ItemFlowFeatureImpl.class)
-    public void setItemFlowFeature(Collection<ItemFlowFeature> itemFlowFeature) {
-        this.itemFlowFeature = itemFlowFeature;
     }
 
 

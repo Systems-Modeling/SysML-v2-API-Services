@@ -70,7 +70,6 @@ public abstract class InvocationExpressionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile ListAttribute<InvocationExpressionImpl, Membership> membership;
 	public static volatile SingularAttribute<InvocationExpressionImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<InvocationExpressionImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<InvocationExpressionImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<InvocationExpressionImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile SingularAttribute<InvocationExpressionImpl, Boolean> isReadOnly;
 	public static volatile ListAttribute<InvocationExpressionImpl, FeatureTyping> ownedTyping;
@@ -134,7 +133,6 @@ public abstract class InvocationExpressionImpl_ extends org.omg.sysml.lifecycle.
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String OWNED_TYPING = "ownedTyping";

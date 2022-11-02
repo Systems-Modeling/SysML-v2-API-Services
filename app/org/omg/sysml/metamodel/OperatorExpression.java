@@ -28,6 +28,4 @@ import java.util.Set;
 
 public interface OperatorExpression extends InvocationExpression, SysMLType {
     String getOperator();
-
-    List<? extends Expression> getOperand();
 }

@@ -74,7 +74,6 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<ConnectorImpl, Element> ownedRelatedElement;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<ConnectorImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<ConnectorImpl, Feature> targetFeature;
 	public static volatile ListAttribute<ConnectorImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isReadOnly;
@@ -144,7 +143,6 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String TARGET_FEATURE = "targetFeature";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String IS_READ_ONLY = "isReadOnly";

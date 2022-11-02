@@ -68,7 +68,6 @@ public abstract class MetadataAccessExpressionImpl_ extends org.omg.sysml.lifecy
 	public static volatile ListAttribute<MetadataAccessExpressionImpl, Membership> membership;
 	public static volatile SingularAttribute<MetadataAccessExpressionImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<MetadataAccessExpressionImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<MetadataAccessExpressionImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<MetadataAccessExpressionImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile SingularAttribute<MetadataAccessExpressionImpl, Boolean> isReadOnly;
 	public static volatile ListAttribute<MetadataAccessExpressionImpl, FeatureTyping> ownedTyping;
@@ -131,7 +130,6 @@ public abstract class MetadataAccessExpressionImpl_ extends org.omg.sysml.lifecy
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String OWNED_TYPING = "ownedTyping";

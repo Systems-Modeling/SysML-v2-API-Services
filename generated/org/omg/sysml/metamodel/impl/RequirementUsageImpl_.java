@@ -152,7 +152,6 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile SingularAttribute<RequirementUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<RequirementUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<RequirementUsageImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<RequirementUsageImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<RequirementUsageImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile ListAttribute<RequirementUsageImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<RequirementUsageImpl, Membership> inheritedMembership;
@@ -259,7 +258,6 @@ public abstract class RequirementUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";

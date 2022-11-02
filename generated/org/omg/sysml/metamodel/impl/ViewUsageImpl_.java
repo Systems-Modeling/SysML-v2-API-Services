@@ -150,7 +150,6 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<ViewUsageImpl, Membership> membership;
 	public static volatile ListAttribute<ViewUsageImpl, ViewpointUsage> satisfiedViewpoint;
 	public static volatile SingularAttribute<ViewUsageImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<ViewUsageImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<ViewUsageImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile ListAttribute<ViewUsageImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<ViewUsageImpl, Membership> inheritedMembership;
@@ -253,7 +252,6 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String MEMBERSHIP = "membership";
 	public static final String SATISFIED_VIEWPOINT = "satisfiedViewpoint";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";

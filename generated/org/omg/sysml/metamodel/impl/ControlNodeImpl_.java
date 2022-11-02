@@ -145,7 +145,6 @@ public abstract class ControlNodeImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static volatile SingularAttribute<ControlNodeImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<ControlNodeImpl, Membership> membership;
 	public static volatile SingularAttribute<ControlNodeImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<ControlNodeImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<ControlNodeImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile ListAttribute<ControlNodeImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<ControlNodeImpl, Membership> inheritedMembership;
@@ -245,7 +244,6 @@ public abstract class ControlNodeImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";

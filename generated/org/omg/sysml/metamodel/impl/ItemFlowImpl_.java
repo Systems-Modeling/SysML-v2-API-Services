@@ -24,7 +24,6 @@ import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.Interaction;
 import org.omg.sysml.metamodel.Intersecting;
 import org.omg.sysml.metamodel.ItemFlowEnd;
-import org.omg.sysml.metamodel.ItemFlowFeature;
 import org.omg.sysml.metamodel.Membership;
 import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
@@ -71,7 +70,7 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile SingularAttribute<ItemFlowImpl, String> name;
 	public static volatile ListAttribute<ItemFlowImpl, Feature> connectorEnd;
 	public static volatile SingularAttribute<ItemFlowImpl, String> shortName;
-	public static volatile CollectionAttribute<ItemFlowImpl, ItemFlowEnd> itemFlowEnd;
+	public static volatile ListAttribute<ItemFlowImpl, ItemFlowEnd> itemFlowEnd;
 	public static volatile ListAttribute<ItemFlowImpl, Element> ownedMember;
 	public static volatile ListAttribute<ItemFlowImpl, Membership> ownedMembership;
 	public static volatile ListAttribute<ItemFlowImpl, Classifier> itemType;
@@ -81,7 +80,6 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile ListAttribute<ItemFlowImpl, Element> ownedRelatedElement;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<ItemFlowImpl, Feature> targetFeature;
 	public static volatile ListAttribute<ItemFlowImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isReadOnly;
@@ -96,7 +94,6 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile ListAttribute<ItemFlowImpl, Behavior> behavior;
 	public static volatile SingularAttribute<ItemFlowImpl, String> effectiveName;
 	public static volatile SingularAttribute<ItemFlowImpl, FeatureDirectionKind> direction;
-	public static volatile CollectionAttribute<ItemFlowImpl, ItemFlowFeature> itemFlowFeature;
 	public static volatile ListAttribute<ItemFlowImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ItemFlowImpl, Element> ownedElement;
 	public static volatile ListAttribute<ItemFlowImpl, String> aliasIds;
@@ -157,7 +154,6 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String TARGET_FEATURE = "targetFeature";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String IS_READ_ONLY = "isReadOnly";
@@ -172,7 +168,6 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String BEHAVIOR = "behavior";
 	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String DIRECTION = "direction";
-	public static final String ITEM_FLOW_FEATURE = "itemFlowFeature";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";

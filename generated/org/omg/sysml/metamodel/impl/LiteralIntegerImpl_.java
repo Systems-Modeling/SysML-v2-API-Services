@@ -68,7 +68,6 @@ public abstract class LiteralIntegerImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<LiteralIntegerImpl, Membership> membership;
 	public static volatile SingularAttribute<LiteralIntegerImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<LiteralIntegerImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<LiteralIntegerImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<LiteralIntegerImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile SingularAttribute<LiteralIntegerImpl, Boolean> isReadOnly;
 	public static volatile ListAttribute<LiteralIntegerImpl, FeatureTyping> ownedTyping;
@@ -132,7 +131,6 @@ public abstract class LiteralIntegerImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String OWNED_TYPING = "ownedTyping";

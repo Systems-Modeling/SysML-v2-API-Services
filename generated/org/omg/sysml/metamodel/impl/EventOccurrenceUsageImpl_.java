@@ -120,7 +120,6 @@ public abstract class EventOccurrenceUsageImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile ListAttribute<EventOccurrenceUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<EventOccurrenceUsageImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<EventOccurrenceUsageImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<EventOccurrenceUsageImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<EventOccurrenceUsageImpl, ReferenceUsage> nestedReference;
 	public static volatile ListAttribute<EventOccurrenceUsageImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile SingularAttribute<EventOccurrenceUsageImpl, Boolean> isReadOnly;
@@ -217,7 +216,6 @@ public abstract class EventOccurrenceUsageImpl_ extends org.omg.sysml.lifecycle.
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String NESTED_REFERENCE = "nestedReference";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String IS_READ_ONLY = "isReadOnly";

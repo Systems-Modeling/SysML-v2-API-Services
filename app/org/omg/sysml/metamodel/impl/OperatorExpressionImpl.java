@@ -713,24 +713,6 @@ public class OperatorExpressionImpl extends SysMLTypeImpl implements OperatorExp
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("isNonunique")
-    private Boolean isNonunique;
-
-    @JsonGetter
-    // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isNonunique", table = "OperatorExpression")
-    public Boolean getIsNonunique() {
-        return isNonunique;
-    }
-
-    @JsonSetter
-    public void setIsNonunique(Boolean isNonunique) {
-        this.isNonunique = isNonunique;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("isOrdered")
     private Boolean isOrdered;
 
@@ -898,32 +880,6 @@ public class OperatorExpressionImpl extends SysMLTypeImpl implements OperatorExp
     @JsonSetter
     public void setName(String name) {
         this.name = name;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("operand")
-    private List<Expression> operand;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "OperatorExpression_operand",
-            joinColumns = @JoinColumn(name = "class_id"),
-            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public List<Expression> getOperand() {
-        if (operand == null) {
-            operand = new ArrayList<>();
-        }
-        return operand;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ExpressionImpl.class)
-    public void setOperand(List<Expression> operand) {
-        this.operand = operand;
     }
 
 

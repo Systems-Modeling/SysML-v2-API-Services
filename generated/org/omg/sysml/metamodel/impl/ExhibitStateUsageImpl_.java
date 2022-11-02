@@ -146,7 +146,6 @@ public abstract class ExhibitStateUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile SingularAttribute<ExhibitStateUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<ExhibitStateUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<ExhibitStateUsageImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<ExhibitStateUsageImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<ExhibitStateUsageImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile ListAttribute<ExhibitStateUsageImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<ExhibitStateUsageImpl, Membership> inheritedMembership;
@@ -248,7 +247,6 @@ public abstract class ExhibitStateUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";

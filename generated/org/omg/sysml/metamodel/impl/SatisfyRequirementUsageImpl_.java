@@ -153,7 +153,6 @@ public abstract class SatisfyRequirementUsageImpl_ extends org.omg.sysml.lifecyc
 	public static volatile SingularAttribute<SatisfyRequirementUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<SatisfyRequirementUsageImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<SatisfyRequirementUsageImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, Membership> inheritedMembership;
@@ -261,7 +260,6 @@ public abstract class SatisfyRequirementUsageImpl_ extends org.omg.sysml.lifecyc
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";

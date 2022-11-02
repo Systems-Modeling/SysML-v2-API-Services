@@ -38,7 +38,6 @@ import org.omg.sysml.metamodel.Interaction;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
 import org.omg.sysml.metamodel.ItemFlowEnd;
-import org.omg.sysml.metamodel.ItemFlowFeature;
 import org.omg.sysml.metamodel.ItemUsage;
 import org.omg.sysml.metamodel.Membership;
 import org.omg.sysml.metamodel.MetadataUsage;
@@ -113,7 +112,6 @@ public abstract class FlowConnectionUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Behavior> behavior;
 	public static volatile SingularAttribute<FlowConnectionUsageImpl, String> effectiveName;
-	public static volatile CollectionAttribute<FlowConnectionUsageImpl, ItemFlowFeature> itemFlowFeature;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Element> ownedElement;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, PartDefinition> partDefinition;
@@ -154,7 +152,7 @@ public abstract class FlowConnectionUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile SingularAttribute<FlowConnectionUsageImpl, String> name;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Feature> connectorEnd;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, AssociationStructure> connectionDefinition;
-	public static volatile CollectionAttribute<FlowConnectionUsageImpl, ItemFlowEnd> itemFlowEnd;
+	public static volatile ListAttribute<FlowConnectionUsageImpl, ItemFlowEnd> itemFlowEnd;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<FlowConnectionUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Classifier> itemType;
@@ -165,7 +163,6 @@ public abstract class FlowConnectionUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Interaction> flowConnectionDefinition;
 	public static volatile SingularAttribute<FlowConnectionUsageImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<FlowConnectionUsageImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Feature> targetFeature;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, FeatureTyping> ownedTyping;
@@ -231,7 +228,6 @@ public abstract class FlowConnectionUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
 	public static final String EFFECTIVE_NAME = "effectiveName";
-	public static final String ITEM_FLOW_FEATURE = "itemFlowFeature";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String PART_DEFINITION = "partDefinition";
@@ -283,7 +279,6 @@ public abstract class FlowConnectionUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String FLOW_CONNECTION_DEFINITION = "flowConnectionDefinition";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String TARGET_FEATURE = "targetFeature";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String OWNED_TYPING = "ownedTyping";
