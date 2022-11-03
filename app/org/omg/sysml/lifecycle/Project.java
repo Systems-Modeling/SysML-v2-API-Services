@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -23,15 +24,16 @@ package org.omg.sysml.lifecycle;
 
 import org.omg.sysml.record.Record;
 
+import java.time.ZonedDateTime;
+
 public interface Project extends Record {
 
     String NAME = "Project";
     String DEFAULT_BRANCH_NAME = "main";
 
-    // Collection<Element> getContainedElement();
-    String getName();
+    ZonedDateTime getCreated();
 
-    void setName(String name);
+    void setCreated(ZonedDateTime created);
 
     String getDescription();
 
@@ -40,4 +42,8 @@ public interface Project extends Record {
     Branch getDefaultBranch();
 
     void setDefaultBranch(Branch defaultBranch);
+
+    String getName();
+
+    void setName(String name);
 }

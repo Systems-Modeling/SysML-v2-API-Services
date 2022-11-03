@@ -2,7 +2,7 @@
  * SysML v2 REST/HTTP Pilot Implementation
  * Copyright (C) 2020 InterCAX LLC
  * Copyright (C) 2020 California Institute of Technology ("Caltech")
- * Copyright (C) 2021 Twingineer LLC
+ * Copyright (C) 2021-2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -22,7 +22,9 @@
 
 package org.omg.sysml.lifecycle.impl;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -42,6 +44,7 @@ public class CommitImpl extends RecordImpl implements Commit {
     private Project owningProject;
     private Set<DataVersion> change;
     private ZonedDateTime created;
+    private String description;
     private Commit previousCommit;
 
     @Override
@@ -80,6 +83,21 @@ public class CommitImpl extends RecordImpl implements Commit {
 
     public void setCreated(ZonedDateTime created) {
         this.created = created;
+    }
+
+    @JsonProperty(required = true)
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "description", table = "Commit")
+    public String getDescription() {
+        return description;
+    }
+
+    @JsonProperty(required = true)
+    @JsonSetter
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @ManyToOne(targetEntity = CommitImpl.class, fetch = FetchType.LAZY)

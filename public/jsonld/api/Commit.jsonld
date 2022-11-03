@@ -2,8 +2,9 @@
     "@context": {
         "@vocab": "http://omg.org/ns/sysml/v2/api#",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
+        "created": {"@type": "xsd:dateTime"},
+        "description": {"@type": "xsd:string"},
         "owningProject": {"@type": "@id"},
-        "previousCommit": {"@type": "@id"},
-        "timestamp": {"@type": "xsd:dateTime"}
+        "previousCommit": {"@type": "@id"}
     }
 }
