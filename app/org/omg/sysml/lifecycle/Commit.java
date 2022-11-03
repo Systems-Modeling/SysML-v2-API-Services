@@ -2,7 +2,7 @@
  * SysML v2 REST/HTTP Pilot Implementation
  * Copyright (C) 2020 InterCAX LLC
  * Copyright (C) 2020 California Institute of Technology ("Caltech")
- * Copyright (C) 2021 Twingineer LLC
+ * Copyright (C) 2021-2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -39,11 +39,15 @@ public interface Commit extends Record {
 
     void setChange(Set<DataVersion> changes);
 
-    Commit getPreviousCommit();
-
-    void setPreviousCommit(Commit previousCommit);
-
     ZonedDateTime getCreated();
 
     void setCreated(ZonedDateTime created);
+
+    String getDescription();
+
+    void setDescription(String description);
+
+    Commit getPreviousCommit();
+
+    void setPreviousCommit(Commit previousCommit);
 }

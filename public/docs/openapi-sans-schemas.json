@@ -2597,8 +2597,8 @@
         "tags": [
           "Meta"
         ],
-        "summary": "Get types by ID",
-        "operationId": "getDataTypeById",
+        "summary": "Get datatype by ID",
+        "operationId": "getDatatypeById",
         "parameters": [
           {
             "name": "datatypeId",
