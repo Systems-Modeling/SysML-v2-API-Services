@@ -71,7 +71,6 @@ public abstract class SelectExpressionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<SelectExpressionImpl, Membership> membership;
 	public static volatile SingularAttribute<SelectExpressionImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<SelectExpressionImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<SelectExpressionImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<SelectExpressionImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile SingularAttribute<SelectExpressionImpl, Boolean> isReadOnly;
 	public static volatile ListAttribute<SelectExpressionImpl, FeatureTyping> ownedTyping;
@@ -98,7 +97,6 @@ public abstract class SelectExpressionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<SelectExpressionImpl, Type> unioningType;
 	public static volatile ListAttribute<SelectExpressionImpl, Specialization> ownedSpecialization;
 	public static volatile ListAttribute<SelectExpressionImpl, Intersecting> ownedIntersecting;
-	public static volatile ListAttribute<SelectExpressionImpl, Expression> operand;
 	public static volatile CollectionAttribute<SelectExpressionImpl, FeatureInverting> ownedFeatureInverting;
 
 	public static final String ARGUMENT = "argument";
@@ -137,7 +135,6 @@ public abstract class SelectExpressionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String OWNED_TYPING = "ownedTyping";
@@ -164,7 +161,6 @@ public abstract class SelectExpressionImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String UNIONING_TYPE = "unioningType";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";
-	public static final String OPERAND = "operand";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 
 }

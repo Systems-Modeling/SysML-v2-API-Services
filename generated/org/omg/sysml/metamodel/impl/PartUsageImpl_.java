@@ -145,7 +145,6 @@ public abstract class PartUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile SingularAttribute<PartUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<PartUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<PartUsageImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<PartUsageImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<PartUsageImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile ListAttribute<PartUsageImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<PartUsageImpl, Membership> inheritedMembership;
@@ -244,7 +243,6 @@ public abstract class PartUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";

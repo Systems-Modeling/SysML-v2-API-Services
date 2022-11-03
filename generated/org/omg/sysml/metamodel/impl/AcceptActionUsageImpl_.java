@@ -145,7 +145,6 @@ public abstract class AcceptActionUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile SingularAttribute<AcceptActionUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<AcceptActionUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<AcceptActionUsageImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<AcceptActionUsageImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<AcceptActionUsageImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile ListAttribute<AcceptActionUsageImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<AcceptActionUsageImpl, Membership> inheritedMembership;
@@ -245,7 +244,6 @@ public abstract class AcceptActionUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";

@@ -30,7 +30,6 @@
         "isEnd": {"@type": "xsd:boolean"},
         "isImpliedIncluded": {"@type": "xsd:boolean"},
         "isLibraryElement": {"@type": "xsd:boolean"},
-        "isNonunique": {"@type": "xsd:boolean"},
         "isOrdered": {"@type": "xsd:boolean"},
         "isPortion": {"@type": "xsd:boolean"},
         "isReadOnly": {"@type": "xsd:boolean"},

@@ -810,24 +810,6 @@ public class SuccessionAsUsageImpl extends SysMLTypeImpl implements SuccessionAs
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("isNonunique")
-    private Boolean isNonunique;
-
-    @JsonGetter
-    // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isNonunique", table = "SuccessionAsUsage")
-    public Boolean getIsNonunique() {
-        return isNonunique;
-    }
-
-    @JsonSetter
-    public void setIsNonunique(Boolean isNonunique) {
-        this.isNonunique = isNonunique;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("isOrdered")
     private Boolean isOrdered;
 

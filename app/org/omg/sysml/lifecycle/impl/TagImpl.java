@@ -39,7 +39,7 @@ public class TagImpl extends RecordImpl implements Tag {
     private Project owningProject;
     private Commit taggedCommit;
     private String name;
-    private ZonedDateTime timestamp;
+    private ZonedDateTime created;
 
     @Override
     @ManyToOne(targetEntity = ProjectImpl.class, fetch = FetchType.LAZY)
@@ -88,12 +88,12 @@ public class TagImpl extends RecordImpl implements Tag {
 
     @Override
     @Column
-    public ZonedDateTime getTimestamp() {
-        return timestamp;
+    public ZonedDateTime getCreated() {
+        return created;
     }
 
-    public void setTimestamp(ZonedDateTime timestamp) {
-        this.timestamp = timestamp;
+    public void setCreated(ZonedDateTime created) {
+        this.created = created;
     }
 
     @Transient

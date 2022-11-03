@@ -49,12 +49,14 @@ public class JpaQueryDao extends SimpleJpaDao<Query, QueryImpl> implements Query
     @Override
     public Optional<Query> persist(Query query) {
         return jpaManager.transact(em -> {
+/*
             query.setScope(
                     query.getScope().stream()
                             .filter(identity -> Objects.nonNull(identity.getId()))
                             .map(em::merge)
                             .collect(Collectors.toSet())
             );
+*/
             return super.persist(query, em);
         });
     }

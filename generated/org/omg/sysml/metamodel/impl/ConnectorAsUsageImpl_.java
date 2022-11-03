@@ -146,7 +146,6 @@ public abstract class ConnectorAsUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<ConnectorAsUsageImpl, Membership> membership;
 	public static volatile ListAttribute<ConnectorAsUsageImpl, Element> ownedRelatedElement;
 	public static volatile SingularAttribute<ConnectorAsUsageImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<ConnectorAsUsageImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<ConnectorAsUsageImpl, Feature> targetFeature;
 	public static volatile ListAttribute<ConnectorAsUsageImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile ListAttribute<ConnectorAsUsageImpl, FeatureTyping> ownedTyping;
@@ -250,7 +249,6 @@ public abstract class ConnectorAsUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String TARGET_FEATURE = "targetFeature";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String OWNED_TYPING = "ownedTyping";

@@ -784,24 +784,6 @@ public abstract class LoopActionUsageImpl extends SysMLTypeImpl implements LoopA
 
 
 
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("isNonunique")
-    private Boolean isNonunique;
-
-    @JsonGetter
-    // @javax.persistence.Transient
-    @javax.persistence.Column(name = "isNonunique", table = "LoopActionUsage")
-    public Boolean getIsNonunique() {
-        return isNonunique;
-    }
-
-    @JsonSetter
-    public void setIsNonunique(Boolean isNonunique) {
-        this.isNonunique = isNonunique;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("isOrdered")
     private Boolean isOrdered;
 

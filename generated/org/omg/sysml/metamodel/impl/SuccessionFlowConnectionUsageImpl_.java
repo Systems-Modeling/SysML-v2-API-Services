@@ -39,7 +39,6 @@ import org.omg.sysml.metamodel.Interaction;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
 import org.omg.sysml.metamodel.ItemFlowEnd;
-import org.omg.sysml.metamodel.ItemFlowFeature;
 import org.omg.sysml.metamodel.ItemUsage;
 import org.omg.sysml.metamodel.Membership;
 import org.omg.sysml.metamodel.MetadataUsage;
@@ -115,7 +114,6 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Behavior> behavior;
 	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, String> effectiveName;
-	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, ItemFlowFeature> itemFlowFeature;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Element> ownedElement;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, PartDefinition> partDefinition;
@@ -158,7 +156,7 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, String> name;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Feature> connectorEnd;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, AssociationStructure> connectionDefinition;
-	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, ItemFlowEnd> itemFlowEnd;
+	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, ItemFlowEnd> itemFlowEnd;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Membership> ownedMembership;
 	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Classifier> itemType;
@@ -170,7 +168,6 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Interaction> flowConnectionDefinition;
 	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, Step> triggerStep;
 	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Feature> targetFeature;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, FeatureTyping> ownedTyping;
@@ -236,7 +233,6 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
 	public static final String EFFECTIVE_NAME = "effectiveName";
-	public static final String ITEM_FLOW_FEATURE = "itemFlowFeature";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String PART_DEFINITION = "partDefinition";
@@ -291,7 +287,6 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static final String FLOW_CONNECTION_DEFINITION = "flowConnectionDefinition";
 	public static final String TRIGGER_STEP = "triggerStep";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String TARGET_FEATURE = "targetFeature";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String OWNED_TYPING = "ownedTyping";

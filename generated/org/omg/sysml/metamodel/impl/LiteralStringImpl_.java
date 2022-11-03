@@ -68,7 +68,6 @@ public abstract class LiteralStringImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static volatile ListAttribute<LiteralStringImpl, Membership> membership;
 	public static volatile SingularAttribute<LiteralStringImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<LiteralStringImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<LiteralStringImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<LiteralStringImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile SingularAttribute<LiteralStringImpl, Boolean> isReadOnly;
 	public static volatile ListAttribute<LiteralStringImpl, FeatureTyping> ownedTyping;
@@ -132,7 +131,6 @@ public abstract class LiteralStringImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String OWNED_TYPING = "ownedTyping";

@@ -145,7 +145,6 @@ public abstract class ConstraintUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile SingularAttribute<ConstraintUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<ConstraintUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<ConstraintUsageImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<ConstraintUsageImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<ConstraintUsageImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile ListAttribute<ConstraintUsageImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<ConstraintUsageImpl, Membership> inheritedMembership;
@@ -245,7 +244,6 @@ public abstract class ConstraintUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";

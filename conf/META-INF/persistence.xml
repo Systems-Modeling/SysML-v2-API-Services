@@ -108,7 +108,6 @@
         <class>org.omg.sysml.metamodel.impl.ItemDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.ItemFeatureImpl</class>
         <class>org.omg.sysml.metamodel.impl.ItemFlowEndImpl</class>
-        <class>org.omg.sysml.metamodel.impl.ItemFlowFeatureImpl</class>
         <class>org.omg.sysml.metamodel.impl.ItemFlowImpl</class>
         <class>org.omg.sysml.metamodel.impl.ItemUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.JoinNodeImpl</class>
@@ -162,7 +161,6 @@
         <class>org.omg.sysml.metamodel.impl.SatisfyRequirementUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.SelectExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.SendActionUsageImpl</class>
-        <class>org.omg.sysml.metamodel.impl.SourceEndImpl</class>
         <class>org.omg.sysml.metamodel.impl.SpecializationImpl</class>
         <class>org.omg.sysml.metamodel.impl.StakeholderMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.StateDefinitionImpl</class>
@@ -178,7 +176,6 @@
         <class>org.omg.sysml.metamodel.impl.SuccessionImpl</class>
         <class>org.omg.sysml.metamodel.impl.SuccessionItemFlowImpl</class>
         <class>org.omg.sysml.metamodel.impl.SysMLTypeImpl</class>
-        <class>org.omg.sysml.metamodel.impl.TargetEndImpl</class>
         <class>org.omg.sysml.metamodel.impl.TextualRepresentationImpl</class>
         <class>org.omg.sysml.metamodel.impl.TransitionFeatureMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.TransitionUsageImpl</class>

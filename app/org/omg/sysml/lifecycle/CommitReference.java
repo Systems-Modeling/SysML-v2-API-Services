@@ -36,7 +36,7 @@ public interface CommitReference extends Record {
 
     Commit getReferencedCommit();
 
-    ZonedDateTime getTimestamp();
+    ZonedDateTime getCreated();
 
-    void setTimestamp(ZonedDateTime timestamp);
+    void setCreated(ZonedDateTime created);
 }

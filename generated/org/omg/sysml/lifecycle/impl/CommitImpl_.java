@@ -10,15 +10,15 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(CommitImpl.class)
 public abstract class CommitImpl_ extends org.omg.sysml.record.impl.RecordImpl_ {
 
+	public static volatile SingularAttribute<CommitImpl, ZonedDateTime> created;
 	public static volatile SetAttribute<CommitImpl, DataVersionImpl> change;
 	public static volatile SingularAttribute<CommitImpl, CommitImpl> previousCommit;
 	public static volatile SingularAttribute<CommitImpl, ProjectImpl> owningProject;
-	public static volatile SingularAttribute<CommitImpl, ZonedDateTime> timestamp;
 
+	public static final String CREATED = "created";
 	public static final String CHANGE = "change";
 	public static final String PREVIOUS_COMMIT = "previousCommit";
 	public static final String OWNING_PROJECT = "owningProject";
-	public static final String TIMESTAMP = "timestamp";
 
 }
 

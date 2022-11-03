@@ -10,14 +10,14 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class BranchImpl_ extends org.omg.sysml.record.impl.RecordImpl_ {
 
 	public static volatile SingularAttribute<BranchImpl, CommitImpl> head;
+	public static volatile SingularAttribute<BranchImpl, ZonedDateTime> created;
 	public static volatile SingularAttribute<BranchImpl, String> name;
 	public static volatile SingularAttribute<BranchImpl, ProjectImpl> owningProject;
-	public static volatile SingularAttribute<BranchImpl, ZonedDateTime> timestamp;
 
 	public static final String HEAD = "head";
+	public static final String CREATED = "created";
 	public static final String NAME = "name";
 	public static final String OWNING_PROJECT = "owningProject";
-	public static final String TIMESTAMP = "timestamp";
 
 }
 

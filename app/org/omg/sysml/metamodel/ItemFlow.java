@@ -33,11 +33,9 @@ public interface ItemFlow extends Connector, Step, SysMLType {
 
     Feature getSourceOutputFeature();
 
-    Collection<? extends ItemFlowEnd> getItemFlowEnd();
+    List<? extends ItemFlowEnd> getItemFlowEnd();
 
     ItemFeature getItemFeature();
-
-    Collection<? extends ItemFlowFeature> getItemFlowFeature();
 
     List<? extends Interaction> getInteraction();
 }

@@ -25,7 +25,6 @@ import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.Interaction;
 import org.omg.sysml.metamodel.Intersecting;
 import org.omg.sysml.metamodel.ItemFlowEnd;
-import org.omg.sysml.metamodel.ItemFlowFeature;
 import org.omg.sysml.metamodel.Membership;
 import org.omg.sysml.metamodel.Redefinition;
 import org.omg.sysml.metamodel.Relationship;
@@ -75,7 +74,7 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, String> name;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Feature> connectorEnd;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, String> shortName;
-	public static volatile CollectionAttribute<SuccessionItemFlowImpl, ItemFlowEnd> itemFlowEnd;
+	public static volatile ListAttribute<SuccessionItemFlowImpl, ItemFlowEnd> itemFlowEnd;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Element> ownedMember;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Membership> ownedMembership;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Classifier> itemType;
@@ -86,7 +85,6 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, Boolean> isPortion;
 	public static volatile CollectionAttribute<SuccessionItemFlowImpl, Step> triggerStep;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<SuccessionItemFlowImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Feature> targetFeature;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, Boolean> isReadOnly;
@@ -101,7 +99,6 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Behavior> behavior;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, String> effectiveName;
 	public static volatile SingularAttribute<SuccessionItemFlowImpl, FeatureDirectionKind> direction;
-	public static volatile CollectionAttribute<SuccessionItemFlowImpl, ItemFlowFeature> itemFlowFeature;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Membership> importedMembership;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, Element> ownedElement;
 	public static volatile ListAttribute<SuccessionItemFlowImpl, String> aliasIds;
@@ -165,7 +162,6 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.lifecycle.im
 	public static final String IS_PORTION = "isPortion";
 	public static final String TRIGGER_STEP = "triggerStep";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String TARGET_FEATURE = "targetFeature";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String IS_READ_ONLY = "isReadOnly";
@@ -180,7 +176,6 @@ public abstract class SuccessionItemFlowImpl_ extends org.omg.sysml.lifecycle.im
 	public static final String BEHAVIOR = "behavior";
 	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String DIRECTION = "direction";
-	public static final String ITEM_FLOW_FEATURE = "itemFlowFeature";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";

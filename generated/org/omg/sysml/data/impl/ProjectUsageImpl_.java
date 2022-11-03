@@ -10,11 +10,11 @@ import org.omg.sysml.lifecycle.impl.CommitImpl;
 @StaticMetamodel(ProjectUsageImpl.class)
 public abstract class ProjectUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
-	public static volatile SingularAttribute<ProjectUsageImpl, CommitImpl> usedProjectCommit;
 	public static volatile SingularAttribute<ProjectUsageImpl, UUID> id;
+	public static volatile SingularAttribute<ProjectUsageImpl, CommitImpl> usedCommit;
 
-	public static final String USED_PROJECT_COMMIT = "usedProjectCommit";
 	public static final String ID = "id";
+	public static final String USED_COMMIT = "usedCommit";
 
 }
 

@@ -67,7 +67,6 @@ public abstract class MultiplicityImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static volatile ListAttribute<MultiplicityImpl, Membership> membership;
 	public static volatile SingularAttribute<MultiplicityImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<MultiplicityImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<MultiplicityImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<MultiplicityImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile SingularAttribute<MultiplicityImpl, Boolean> isReadOnly;
 	public static volatile ListAttribute<MultiplicityImpl, FeatureTyping> ownedTyping;
@@ -127,7 +126,6 @@ public abstract class MultiplicityImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String OWNED_TYPING = "ownedTyping";

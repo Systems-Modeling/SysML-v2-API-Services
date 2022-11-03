@@ -57,10 +57,10 @@ public class BranchController extends JsonLdController<Branch, ProjectContainmen
     public Result postBranchByProject(UUID projectId, Request request) {
         JsonNode requestBodyJson = request.body().asJson();
         Branch requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Branch.class));
-        if (requestedObject.getId() != null || requestedObject.getTimestamp() != null) {
+        if (requestedObject.getId() != null || requestedObject.getCreated() != null) {
             return Results.badRequest();
         }
-        requestedObject.setTimestamp(ZonedDateTime.now());
+        requestedObject.setCreated(ZonedDateTime.now());
         Optional<Branch> branch = branchService.create(projectId, requestedObject);
         if (branch.isEmpty()) {
             return Results.internalServerError();

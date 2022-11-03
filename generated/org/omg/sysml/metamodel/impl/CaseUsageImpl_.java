@@ -147,7 +147,6 @@ public abstract class CaseUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile SingularAttribute<CaseUsageImpl, Boolean> isIndividual;
 	public static volatile ListAttribute<CaseUsageImpl, Membership> membership;
 	public static volatile SingularAttribute<CaseUsageImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<CaseUsageImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<CaseUsageImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile ListAttribute<CaseUsageImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<CaseUsageImpl, Membership> inheritedMembership;
@@ -249,7 +248,6 @@ public abstract class CaseUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String IS_INDIVIDUAL = "isIndividual";
 	public static final String MEMBERSHIP = "membership";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";

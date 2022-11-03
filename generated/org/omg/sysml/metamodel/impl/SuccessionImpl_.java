@@ -79,7 +79,6 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isPortion;
 	public static volatile CollectionAttribute<SuccessionImpl, Step> triggerStep;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isImpliedIncluded;
-	public static volatile SingularAttribute<SuccessionImpl, Boolean> isNonunique;
 	public static volatile ListAttribute<SuccessionImpl, Feature> targetFeature;
 	public static volatile ListAttribute<SuccessionImpl, FeatureChaining> ownedFeatureChaining;
 	public static volatile SingularAttribute<SuccessionImpl, Boolean> isReadOnly;
@@ -152,7 +151,6 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String IS_PORTION = "isPortion";
 	public static final String TRIGGER_STEP = "triggerStep";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
-	public static final String IS_NONUNIQUE = "isNonunique";
 	public static final String TARGET_FEATURE = "targetFeature";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
 	public static final String IS_READ_ONLY = "isReadOnly";

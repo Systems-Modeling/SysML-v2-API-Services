@@ -68,6 +68,4 @@ public interface Feature extends Type, SysMLType {
     FeatureDirectionKind getDirection();
 
     ReferenceSubsetting getOwnedReferenceSubsetting();
-
-    Boolean getIsNonunique();
 }

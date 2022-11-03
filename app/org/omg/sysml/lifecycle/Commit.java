@@ -43,7 +43,7 @@ public interface Commit extends Record {
 
     void setPreviousCommit(Commit previousCommit);
 
-    ZonedDateTime getTimestamp();
+    ZonedDateTime getCreated();
 
-    void setTimestamp(ZonedDateTime timestamp);
+    void setCreated(ZonedDateTime created);
 }
