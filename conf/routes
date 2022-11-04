@@ -29,6 +29,8 @@ DELETE        /projects/:projectId/tags/:tagId                                  
 GET           /projects/:projectId/commits                                                           controllers.CommitController.getCommitsByProject(projectId : java.util.UUID, request : Request)
 POST          /projects/:projectId/commits                                                           controllers.CommitController.postCommitByProject(projectId : java.util.UUID, branchId : java.util.Optional[java.util.UUID], request : Request)
 GET           /projects/:projectId/commits/:commitId                                                 controllers.CommitController.getCommitByProjectAndId(projectId : java.util.UUID, commitId : java.util.UUID, request : Request)
+GET           /projects/:projectId/commits/:commitId/changes                                         controllers.CommitController.getChangesByProjectAndCommit(projectId : java.util.UUID, commitId : java.util.UUID, request : Request)
+GET           /projects/:projectId/commits/:commitId/changes/:changeId                               controllers.CommitController.getChangeByProjectCommitAndId(projectId : java.util.UUID, commitId : java.util.UUID, changeId : java.util.UUID, request : Request)
 
 # Element endpoints
 GET           /projects/:projectId/commits/:commitId/elements                                        controllers.ElementController.getElementsByProjectIdCommitId(projectId : java.util.UUID, commitId : java.util.UUID, excludeUsed : java.util.Optional[java.lang.Boolean], request : Request)

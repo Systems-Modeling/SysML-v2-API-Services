@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -23,11 +24,12 @@ package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import config.MetamodelProvider;
+import jackson.JacksonHelper;
 import jackson.jsonld.JsonLdAdorner;
 import jackson.jsonld.RecordAdorners.CommitAdorner;
 import jackson.jsonld.RecordAdorners.ProjectContainmentParameters;
 import org.omg.sysml.lifecycle.Commit;
-import org.omg.sysml.lifecycle.impl.CommitImpl;
+import org.omg.sysml.lifecycle.DataVersion;
 import play.Environment;
 import play.libs.Json;
 import play.mvc.Http.Request;
@@ -79,8 +81,7 @@ public class CommitController extends JsonLdController<Commit, ProjectContainmen
                 request,
                 new ProjectContainmentParameters(projectId),
                 ld,
-                Json.mapper(),
-                writer -> writer.withView(CommitImpl.Views.Compact.class)
+                Json.mapper()
         );
         return buildResult(json, ld);
     }
@@ -101,8 +102,7 @@ public class CommitController extends JsonLdController<Commit, ProjectContainmen
                 request,
                 new ProjectContainmentParameters(projectId),
                 ld,
-                Json.mapper(),
-                writer -> writer.withView(CommitImpl.Views.Compact.class)
+                Json.mapper()
         );
         Result result = buildResult(json, ld);
         return uuidResponse(
@@ -121,6 +121,49 @@ public class CommitController extends JsonLdController<Commit, ProjectContainmen
         }
         Optional<Commit> commit = commitService.getByProjectIdAndId(projectId, commitId);
         return buildResult(commit.orElse(null), request, new ProjectContainmentParameters(projectId));
+    }
+
+    public Result getChangesByProjectAndCommit(UUID projectId, UUID commitId, Request request) {
+        if (respondWithJsonLd(request)) {
+            // TODO implement
+            return Results.status(NOT_IMPLEMENTED);
+        }
+        PageRequest<UUID> pageRequest = uuidRequest(request);
+        List<DataVersion> changes = commitService.getChangesByProjectIdAndCommitId(
+                projectId,
+                commitId,
+                pageRequest.getAfter(),
+                pageRequest.getBefore(),
+                pageRequest.getSize()
+        );
+        boolean ld = respondWithJsonLd(request);
+        JsonNode json = JacksonHelper.collectionToTree(
+                changes,
+                List.class,
+                metamodelProvider.getImplementationClass(DataVersion.class),
+                Json.mapper()
+        );
+        Result result = buildResult(json, ld);
+        return uuidResponse(
+                result,
+                changes.size(),
+                idx -> changes.get(idx).getId(),
+                request,
+                pageRequest
+        );
+    }
+
+    public Result getChangeByProjectCommitAndId(UUID projectId, UUID commitId, UUID changeId, Request request) {
+        if (respondWithJsonLd(request)) {
+            // TODO implement
+            return Results.status(NOT_IMPLEMENTED);
+        }
+        Optional<DataVersion> change = commitService.getChangeByProjectIdCommitIdAndId(projectId, commitId, changeId);
+        JsonNode json = JacksonHelper.objectToTree(
+                change,
+                Json.mapper()
+        );
+        return Results.ok(json);
     }
 
     @Override

@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -23,6 +24,7 @@ package dao;
 
 import org.omg.sysml.lifecycle.Branch;
 import org.omg.sysml.lifecycle.Commit;
+import org.omg.sysml.lifecycle.DataVersion;
 import org.omg.sysml.lifecycle.Project;
 
 import java.util.List;
@@ -49,5 +51,7 @@ public interface CommitDao extends Dao<Commit> {
 
     Optional<Commit> findByProjectAndId(Project project, UUID id);
 
-    Optional<Commit> findByProjectAndIdResolved(Project project, UUID id);
+    List<DataVersion> findChangesByCommit(Commit commit, UUID after, UUID before, int maxResults);
+
+    Optional<DataVersion> findChangeByCommitAndId(Commit commit, UUID id);
 }

@@ -21,14 +21,13 @@
 package dao.impl;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Streams;
 import config.MetamodelProvider;
 import dao.SchemaDao;
-import jackson.databind.ObjectMapperFactory;
 import org.omg.sysml.data.ExternalData;
 import org.omg.sysml.data.ExternalRelationship;
 import org.omg.sysml.data.ProjectUsage;
+import play.libs.Json;
 
 import javax.annotation.Nullable;
 import javax.inject.Inject;
@@ -44,11 +43,9 @@ import java.util.stream.Stream;
 public class FlatSchemaDao implements SchemaDao {
 
     private final TreeMap<String, JsonNode> map;
-    private final ObjectMapper mapper;
 
     @Inject
-    public FlatSchemaDao(MetamodelProvider metamodelProvider, ObjectMapperFactory mapperFactory) {
-        this.mapper = mapperFactory.getObjectMapper();
+    public FlatSchemaDao(MetamodelProvider metamodelProvider) {
         try (Stream<Class<?>> interfaces = metamodelProvider.getAllInterfaces().stream()) {
             map = Streams.concat(
                             interfaces
@@ -61,7 +58,7 @@ public class FlatSchemaDao implements SchemaDao {
                     )
                     .map(input -> {
                         try {
-                            return mapper.reader().readTree(input);
+                            return Json.mapper().reader().readTree(input);
                         } catch (IOException e) {
                             throw new UncheckedIOException(e);
                         }

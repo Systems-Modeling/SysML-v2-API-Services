@@ -2,7 +2,7 @@
  * SysML v2 REST/HTTP Pilot Implementation
  * Copyright (C) 2020 InterCAX LLC
  * Copyright (C) 2020 California Institute of Technology ("Caltech")
- * Copyright (C) 2021 Twingineer LLC
+ * Copyright (C) 2021-2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -24,7 +24,6 @@ package dao.impl.jpa;
 
 import dao.Dao;
 import jpa.manager.JPAManager;
-import org.omg.sysml.lifecycle.Project;
 
 import javax.annotation.Nullable;
 import javax.persistence.EntityManager;
@@ -111,11 +110,11 @@ public abstract class JpaDao<E> implements Dao<E> {
         }
     }
 
-    protected <X> Paginated<TypedQuery<X>> paginateQuery(@Nullable UUID after, @Nullable UUID before, int maxResults, CriteriaQuery<X> query, CriteriaBuilder builder, EntityManager em, Path<UUID> idPath) {
+    protected static <X> Paginated<TypedQuery<X>> paginateQuery(@Nullable UUID after, @Nullable UUID before, int maxResults, CriteriaQuery<X> query, CriteriaBuilder builder, EntityManager em, Path<UUID> idPath) {
         return paginateQuery(after, before, maxResults, query, builder, em, idPath, null);
     }
 
-    protected <X> Paginated<TypedQuery<X>> paginateQuery(@Nullable UUID after, @Nullable UUID before, int maxResults, CriteriaQuery<X> query, CriteriaBuilder builder, EntityManager em, Path<UUID> idPath, @Nullable Expression<Boolean> where) {
+    protected static <X> Paginated<TypedQuery<X>> paginateQuery(@Nullable UUID after, @Nullable UUID before, int maxResults, CriteriaQuery<X> query, CriteriaBuilder builder, EntityManager em, Path<UUID> idPath, @Nullable Expression<Boolean> where) {
         if (after != null) {
             Expression<Boolean> expr = builder.greaterThan(idPath, after);
             where = where != null ? builder.and(where, expr) : expr;
@@ -137,7 +136,7 @@ public abstract class JpaDao<E> implements Dao<E> {
         return new Paginated<>(typedQuery, reversed);
     }
 
-    protected <X> Paginated<Stream<X>> paginateStream(@Nullable UUID after, @Nullable UUID before, int maxResults, Stream<X> stream, Function<X, UUID> idFunction) {
+    protected static <X> Paginated<Stream<X>> paginateStream(@Nullable UUID after, @Nullable UUID before, int maxResults, Stream<X> stream, Function<X, UUID> idFunction) {
         if (after != null) {
             stream = stream.filter(x -> idFunction.apply(x).compareTo(after) > 0);
         }

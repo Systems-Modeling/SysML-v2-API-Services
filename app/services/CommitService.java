@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -26,6 +27,7 @@ import dao.CommitDao;
 import dao.ProjectDao;
 import org.omg.sysml.lifecycle.Branch;
 import org.omg.sysml.lifecycle.Commit;
+import org.omg.sysml.lifecycle.DataVersion;
 import org.omg.sysml.lifecycle.Project;
 
 import javax.inject.Inject;
@@ -77,6 +79,17 @@ public class CommitService extends BaseService<Commit, CommitDao> {
 
     public Optional<Commit> getByProjectIdAndId(UUID projectId, UUID commitId) {
         return projectDao.findById(projectId)
-                .flatMap(project -> dao.findByProjectAndIdResolved(project, commitId));
+                .flatMap(project -> dao.findByProjectAndId(project, commitId));
+    }
+
+    public List<DataVersion> getChangesByProjectIdAndCommitId(UUID projectId, UUID commitId, UUID after, UUID before, int maxResults) {
+        return getByProjectIdAndId(projectId, commitId)
+                .map(commit -> dao.findChangesByCommit(commit, after, before, maxResults))
+                .orElse(Collections.emptyList());
+    }
+
+    public Optional<DataVersion> getChangeByProjectIdCommitIdAndId(UUID projectId, UUID commitId, UUID changeId) {
+        return getByProjectIdAndId(projectId, commitId)
+                .flatMap(commit -> dao.findChangeByCommitAndId(commit, changeId));
     }
 }
