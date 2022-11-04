@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -30,6 +31,7 @@ import com.fasterxml.jackson.databind.module.SimpleAbstractTypeResolver;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.type.ClassKey;
 import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import config.MetamodelProvider;
 import jackson.EntityManagerHandlerInstantiator;
 import jackson.databind.ObjectMapperFactory;
@@ -64,6 +66,8 @@ public class HibernateObjectMapperFactory implements ObjectMapperFactory {
         hibernate5Module.enable(Hibernate5Module.Feature.FORCE_LAZY_LOADING);
         hibernate5Module.disable(Hibernate5Module.Feature.USE_TRANSIENT_ANNOTATION);
         objectMapper.registerModule(hibernate5Module);
+
+        objectMapper.registerModule(new JavaTimeModule());
 
         //See point #5 of https://blog.lahteenmaki.net/making-jackson-tolerable.html
         objectMapper.configure(DeserializationFeature.FAIL_ON_NULL_FOR_PRIMITIVES, true);

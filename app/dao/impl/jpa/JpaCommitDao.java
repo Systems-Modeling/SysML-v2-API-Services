@@ -2,7 +2,7 @@
  * SysML v2 REST/HTTP Pilot Implementation
  * Copyright (C) 2020 InterCAX LLC
  * Copyright (C) 2020 California Institute of Technology ("Caltech")
- * Copyright (C) 2021 Twingineer LLC
+ * Copyright (C) 2021-2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -27,22 +27,15 @@ import dao.ElementDao;
 import javabean.JavaBeanHelper;
 import jpa.manager.JPAManager;
 import org.omg.sysml.lifecycle.*;
-import org.omg.sysml.lifecycle.impl.CommitImpl;
-import org.omg.sysml.lifecycle.impl.CommitImpl_;
-import org.omg.sysml.lifecycle.impl.DataIdentityImpl;
-import org.omg.sysml.lifecycle.impl.DataImpl;
+import org.omg.sysml.lifecycle.impl.*;
 import org.omg.sysml.metamodel.Element;
-import org.omg.sysml.metamodel.impl.ElementImpl_;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Expression;
-import javax.persistence.criteria.Root;
+import javax.persistence.criteria.*;
 import java.lang.reflect.Method;
 import java.util.*;
 import java.util.function.BiFunction;
@@ -334,9 +327,43 @@ public class JpaCommitDao extends SimpleJpaDao<Commit, CommitImpl> implements Co
     }
 
     @Override
-    public Optional<Commit> findByProjectAndIdResolved(Project project, UUID id) {
+    public List<DataVersion> findChangesByCommit(Commit commit, UUID after, UUID before, int maxResults) {
         return jpaManager.transact(em -> {
-            return findByProjectAndId(project, id, em).map(JpaCommitDao::resolve);
+            CriteriaBuilder builder = em.getCriteriaBuilder();
+            CriteriaQuery<DataVersionImpl> query = builder.createQuery(DataVersionImpl.class);
+            Root<CommitImpl> commitRoot = query.from(CommitImpl.class);
+            SetJoin<CommitImpl, DataVersionImpl> dataVersionJoin = commitRoot.join(CommitImpl_.change);
+            Path<UUID> idPath = dataVersionJoin.get(DataVersionImpl_.id);
+            Expression<Boolean> where = builder.equal(commitRoot.get(CommitImpl_.id), commit.getId());
+            query.select(dataVersionJoin);
+            Paginated<TypedQuery<DataVersionImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, idPath, where);
+            List<DataVersion> result = paginated.get()
+                    .getResultStream()
+                    .collect(Collectors.toList());
+            if (paginated.isReversed()) {
+                Collections.reverse(result);
+            }
+            return result;
+        });
+    }
+
+    @Override
+    public Optional<DataVersion> findChangeByCommitAndId(Commit commit, UUID id) {
+        return jpaManager.transact(em -> {
+            CriteriaBuilder builder = em.getCriteriaBuilder();
+            CriteriaQuery<DataVersionImpl> query = builder.createQuery(DataVersionImpl.class);
+            Root<CommitImpl> commitRoot = query.from(CommitImpl.class);
+            SetJoin<CommitImpl, DataVersionImpl> dataVersionJoin = commitRoot.join(CommitImpl_.change);
+            Expression<Boolean> where = builder.and(
+                    builder.equal(commitRoot.get(CommitImpl_.id), commit.getId()),
+                    builder.equal(dataVersionJoin.get(DataVersionImpl_.id), id)
+            );
+            query.select(dataVersionJoin).where(where);
+            try {
+                return Optional.of(em.createQuery(query).getSingleResult());
+            } catch (NoResultException e) {
+                return Optional.empty();
+            }
         });
     }
 }

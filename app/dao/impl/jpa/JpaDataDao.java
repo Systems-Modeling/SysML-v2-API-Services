@@ -1,6 +1,6 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2021 Twingineer LLC
+ * Copyright (C) 2021-2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -33,10 +33,11 @@ import org.omg.sysml.internal.WorkingDataVersion;
 import org.omg.sysml.internal.impl.CommitDataVersionIndexImpl;
 import org.omg.sysml.internal.impl.CommitDataVersionIndexImpl_;
 import org.omg.sysml.internal.impl.WorkingDataVersionImpl;
+import org.omg.sysml.internal.impl.WorkingDataVersionImpl_;
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.Data;
 import org.omg.sysml.lifecycle.DataVersion;
-import org.omg.sysml.lifecycle.impl.CommitImpl;
+import org.omg.sysml.lifecycle.impl.*;
 import org.omg.sysml.query.*;
 import org.omg.sysml.query.impl.QueryImpl;
 
@@ -44,9 +45,8 @@ import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.*;
 import java.beans.PropertyDescriptor;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -54,6 +54,8 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static dao.impl.jpa.JpaDao.paginateQuery;
 
 public class JpaDataDao implements DataDao {
 
@@ -102,6 +104,31 @@ public class JpaDataDao implements DataDao {
                     .map(data -> JpaDataDao.resolve(data, Data.class))
                     .collect(Collectors.toList());
         });
+    }
+
+    List<DataVersion> findChangesByCommit(Commit commit, UUID after, UUID before, int maxResults, boolean excludeUsed, EntityManager em) {
+        CommitDataVersionIndex commitIndex = getCommitIndex(commit, em);
+
+        CriteriaBuilder builder = em.getCriteriaBuilder();
+        CriteriaQuery<DataVersionImpl> query = builder.createQuery(DataVersionImpl.class);
+        Root<CommitDataVersionIndexImpl> commitIndexRoot = query.from(CommitDataVersionIndexImpl.class);
+        SetJoin<CommitDataVersionIndexImpl, WorkingDataVersionImpl> workingDataVersionJoin = commitIndexRoot.join(CommitDataVersionIndexImpl_.workingDataVersion);
+        Join<WorkingDataVersionImpl, DataVersionImpl> dataVersionJoin = workingDataVersionJoin.join(WorkingDataVersionImpl_.dataVersion);
+        Join<DataVersionImpl, DataIdentityImpl> dataIdentityJoin = dataVersionJoin.join(DataVersionImpl_.identity);
+        Path<UUID> idPath = dataIdentityJoin.get(DataIdentityImpl_.id);
+        Expression<Boolean> where = builder.equal(commitIndexRoot.get(CommitDataVersionIndexImpl_.id), commitIndex.getId());
+        if (excludeUsed) {
+            where = builder.and(where, builder.isNull(workingDataVersionJoin.get(WorkingDataVersionImpl_.source)));
+        }
+        query.select(dataVersionJoin);
+        JpaDao.Paginated<TypedQuery<DataVersionImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, idPath, where);
+        List<DataVersion> result = paginated.get()
+                .getResultStream()
+                .collect(Collectors.toList());
+        if (paginated.isReversed()) {
+            Collections.reverse(result);
+        }
+        return result;
     }
 
     protected CommitDataVersionIndex getCommitIndex(Commit commit, EntityManager em) {
