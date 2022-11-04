@@ -14,6 +14,10 @@
           "type": "string",
           "const": "Project"
         },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
         "defaultBranch": {
           "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
           "$comment": "http://www.omg.org/spec/SysML/2.0/API/Branch"
@@ -35,6 +39,7 @@
       "required": [
         "@id",
         "@type",
+        "created",
         "defaultBranch",
         "description",
         "name"
@@ -151,6 +156,16 @@
           "type": "string",
           "format": "date-time"
         },
+        "description": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "owningProject": {
           "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
           "$comment": "http://www.omg.org/spec/SysML/2.0/API/Branch"
@@ -167,6 +182,7 @@
         "@id",
         "@type",
         "created",
+        "description",
         "owningProject",
         "previousCommit"
       ],
@@ -465,13 +481,20 @@
           "type": "string",
           "const": "Error"
         },
-        "message": {
-          "type": "string"
+        "description": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "required": [
         "@type",
-        "message"
+        "description"
       ],
       "additionalProperties": true
     }

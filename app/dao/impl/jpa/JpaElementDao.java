@@ -2,7 +2,7 @@
  * SysML v2 REST/HTTP Pilot Implementation
  * Copyright (C) 2020 InterCAX LLC
  * Copyright (C) 2020 California Institute of Technology ("Caltech")
- * Copyright (C) 2021 Twingineer LLC
+ * Copyright (C) 2021-2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -133,32 +133,13 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
         return jpaManager.transact(em -> {
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
             Commit c = em.contains(commit) ? commit : em.find(CommitImpl.class, commit.getId());
-            CommitDataVersionIndex commitIndex = dataDao.getCommitIndex(c, em);
-
-            CriteriaBuilder builder = em.getCriteriaBuilder();
-            CriteriaQuery<DataVersionImpl> query = builder.createQuery(DataVersionImpl.class);
-            Root<CommitDataVersionIndexImpl> commitIndexRoot = query.from(CommitDataVersionIndexImpl.class);
-            SetJoin<CommitDataVersionIndexImpl, WorkingDataVersionImpl> workingDataVersionJoin = commitIndexRoot.join(CommitDataVersionIndexImpl_.workingDataVersion);
-            Join<WorkingDataVersionImpl, DataVersionImpl> dataVersionJoin = workingDataVersionJoin.join(WorkingDataVersionImpl_.dataVersion);
-            Join<DataVersionImpl, DataIdentityImpl> dataIdentityJoin = dataVersionJoin.join(DataVersionImpl_.identity);
-            Path<UUID> idPath = dataIdentityJoin.get(DataIdentityImpl_.id);
-            Expression<Boolean> where = builder.equal(commitIndexRoot.get(CommitDataVersionIndexImpl_.id), commitIndex.getId());
-            if (excludeUsed) {
-                where = builder.and(where, builder.isNull(workingDataVersionJoin.get(WorkingDataVersionImpl_.source)));
-            }
-            query.select(dataVersionJoin);
-            Paginated<TypedQuery<DataVersionImpl>> paginated = paginateQuery(after, before, maxResults, query, builder, em, idPath, where);
-            List<Element> result = paginated.get()
-                    .getResultStream()
+            return dataDao.findChangesByCommit(c, after, before, maxResults, excludeUsed, em)
+                    .stream()
                     .map(DataVersion::getPayload)
                     .filter(data -> data instanceof Element)
                     .map(data -> (Element) data)
                     .map(element -> JpaDataDao.resolve(element, Element.class))
                     .collect(Collectors.toList());
-            if (paginated.isReversed()) {
-                Collections.reverse(result);
-            }
-            return result;
         });
     }
 

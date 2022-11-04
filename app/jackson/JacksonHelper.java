@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -25,6 +26,7 @@ import com.fasterxml.jackson.databind.*;
 import play.libs.Json;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.util.Collection;
 import java.util.function.Function;
 import java.util.function.UnaryOperator;
@@ -60,11 +62,23 @@ public class JacksonHelper {
         return readerOperator.apply(mapper.readerFor(o.getClass()));
     }
 
+    public static JsonNode objectToTree(Object o, ObjectMapper mapper) {
+        ObjectReader reader = mapper.readerFor(o.getClass());
+        ObjectWriter writer = mapper.writerFor(o.getClass());
+        return objectToTree(o, reader, writer);
+    }
+
     public static JsonNode objectToTree(Object o, ObjectMapper mapper, Function<ObjectMapper, ObjectWriter> writerFunction, Function<ObjectMapper, ObjectReader> readerFunction) {
+        ObjectReader reader = readerFunction.apply(mapper);
+        ObjectWriter writer = writerFunction.apply(mapper);
+        return objectToTree(o, reader, writer);
+    }
+
+    private static JsonNode objectToTree(Object o, ObjectReader reader, ObjectWriter writer) throws UncheckedIOException {
         try {
-            return readerFunction.apply(mapper).readTree(writerFunction.apply(mapper).writeValueAsString(o));
+            return reader.readTree(writer.writeValueAsString(o));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new UncheckedIOException(e);
         }
     }
 }

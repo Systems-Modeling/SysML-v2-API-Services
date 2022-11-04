@@ -2,7 +2,7 @@
  * SysML v2 REST/HTTP Pilot Implementation
  * Copyright (C) 2020 InterCAX LLC
  * Copyright (C) 2020 California Institute of Technology ("Caltech")
- * Copyright (C) 2021 Twingineer LLC
+ * Copyright (C) 2021-2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -22,8 +22,10 @@
 
 package org.omg.sysml.lifecycle.impl;
 
+import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jackson.RecordSerialization;
@@ -42,12 +44,12 @@ public class CommitImpl extends RecordImpl implements Commit {
     private Project owningProject;
     private Set<DataVersion> change;
     private ZonedDateTime created;
+    private String description;
     private Commit previousCommit;
 
     @Override
     @ManyToOne(targetEntity = ProjectImpl.class, fetch = FetchType.LAZY)
     @JsonSerialize(as = ProjectImpl.class, using = RecordSerialization.RecordSerializer.class)
-    @JsonView(Views.Compact.class)
     public Project getOwningProject() {
         return owningProject;
     }
@@ -58,7 +60,7 @@ public class CommitImpl extends RecordImpl implements Commit {
     }
 
     @OneToMany(targetEntity = DataVersionImpl.class, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonView(Views.Complete.class)
+    @JsonIgnore
     public Set<DataVersion> getChange() {
         if (change == null) {
             change = new HashSet<>();
@@ -73,7 +75,6 @@ public class CommitImpl extends RecordImpl implements Commit {
 
     @Override
     @Column
-    @JsonView(Views.Compact.class)
     public ZonedDateTime getCreated() {
         return created;
     }
@@ -82,9 +83,23 @@ public class CommitImpl extends RecordImpl implements Commit {
         this.created = created;
     }
 
+    @JsonProperty(required = true)
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "description", table = "Commit")
+    public String getDescription() {
+        return description;
+    }
+
+    @JsonProperty(required = true)
+    @JsonSetter
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @ManyToOne(targetEntity = CommitImpl.class, fetch = FetchType.LAZY)
     @JsonSerialize(as = CommitImpl.class, using = RecordSerialization.RecordSerializer.class)
-    @JsonView(Views.Compact.class)
     public Commit getPreviousCommit() {
         return previousCommit;
     }
@@ -96,16 +111,7 @@ public class CommitImpl extends RecordImpl implements Commit {
 
     @Transient
     @JsonProperty("@type")
-    @JsonView(Views.Compact.class)
     public String getType() {
         return Commit.NAME;
-    }
-
-    public static class Views {
-        public interface Compact {
-        }
-
-        public interface Complete extends Compact {
-        }
     }
 }

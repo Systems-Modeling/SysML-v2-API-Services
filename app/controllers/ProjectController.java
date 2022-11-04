@@ -2,7 +2,7 @@
  * SysML v2 REST/HTTP Pilot Implementation
  * Copyright (C) 2020 InterCAX LLC
  * Copyright (C) 2020 California Institute of Technology ("Caltech")
- * Copyright (C) 2021 Twingineer LLC
+ * Copyright (C) 2021-2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -35,6 +35,7 @@ import play.mvc.Results;
 import services.ProjectService;
 
 import javax.inject.Inject;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -95,6 +96,10 @@ public class ProjectController extends JsonLdController<Project, Void> {
     public Result postProject(Request request) {
         JsonNode requestBodyJson = request.body().asJson();
         Project requestedObject = Json.fromJson(requestBodyJson, metamodelProvider.getImplementationClass(Project.class));
+        if (requestedObject.getId() != null || requestedObject.getCreated() != null) {
+            return Results.badRequest();
+        }
+        requestedObject.setCreated(ZonedDateTime.now());
         Optional<Project> project = projectService.create(requestedObject);
         if (project.isEmpty()) {
             return Results.internalServerError();

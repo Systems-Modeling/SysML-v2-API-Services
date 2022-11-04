@@ -29,9 +29,6 @@
     },
     {
       "name": "Meta"
-    },
-    {
-      "name": "Extension"
     }
   ],
   "paths": {
@@ -79,14 +76,6 @@
                     "$ref": "#/components/schemas/Project"
                   }
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Project"
-                  }
-                }
               }
             }
           },
@@ -97,11 +86,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -109,11 +93,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -150,11 +129,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Project"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Project"
-                }
               }
             }
           },
@@ -165,11 +139,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -177,11 +146,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -223,11 +187,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Project"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Project"
-                }
               }
             }
           },
@@ -242,11 +201,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -254,11 +208,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -307,11 +256,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Project"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Project"
-                }
               }
             }
           },
@@ -322,11 +266,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -334,11 +273,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -378,11 +312,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Project"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Project"
-                }
               }
             }
           },
@@ -397,11 +326,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -409,11 +333,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -481,14 +400,6 @@
                     "$ref": "#/components/schemas/Branch"
                   }
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Branch"
-                  }
-                }
               }
             }
           },
@@ -503,11 +414,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -515,11 +421,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -568,11 +469,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Branch"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Branch"
-                }
               }
             }
           },
@@ -583,11 +479,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -595,11 +486,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -651,11 +537,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Branch"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Branch"
-                }
               }
             }
           },
@@ -670,11 +551,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -682,11 +558,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -735,11 +606,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Branch"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Branch"
-                }
               }
             }
           },
@@ -754,11 +620,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -766,11 +627,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -838,14 +694,6 @@
                     "$ref": "#/components/schemas/Tag"
                   }
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Tag"
-                  }
-                }
               }
             }
           },
@@ -860,11 +708,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -872,11 +715,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -925,11 +763,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Branch"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Branch"
-                }
               }
             }
           },
@@ -940,11 +773,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -952,11 +780,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -1008,11 +831,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Tag"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Tag"
-                }
               }
             }
           },
@@ -1027,11 +845,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -1039,11 +852,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -1092,11 +900,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Tag"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Tag"
-                }
               }
             }
           },
@@ -1111,11 +914,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -1123,11 +921,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -1195,14 +988,6 @@
                     "$ref": "#/components/schemas/Commit"
                   }
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Commit"
-                  }
-                }
               }
             }
           },
@@ -1217,11 +1002,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -1229,11 +1009,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -1291,11 +1066,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Commit"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Commit"
-                }
               }
             }
           },
@@ -1306,11 +1076,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -1318,11 +1083,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -1374,10 +1134,103 @@
                 "schema": {
                   "$ref": "#/components/schemas/Commit"
                 }
-              },
-              "application/ld+json": {
+              }
+            }
+          },
+          "404": {
+            "description": "Not found.",
+            "content": {}
+          },
+          "415": {
+            "description": "The requested content type is not acceptable.",
+            "content": {
+              "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Commit"
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected response.",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/projects/{projectId}/commits/{commitId}/changes": {
+      "get": {
+        "tags": [
+          "Commit"
+        ],
+        "summary": "Get changes by project and commit",
+        "operationId": "getChangesByProjectCommit",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "description": "ID of the project",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "commitId",
+            "in": "path",
+            "description": "ID of the commit",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "page[after]",
+            "in": "query",
+            "description": "Page after",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page[before]",
+            "in": "query",
+            "description": "Page before",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page[size]",
+            "in": "query",
+            "description": "Page size",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DataVersion"
+                  }
                 }
               }
             }
@@ -1393,11 +1246,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -1408,8 +1256,84 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
+              }
+            }
+          },
+          "default": {
+            "description": "Unexpected response.",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/projects/{projectId}/commits/{commitId}/changes/{changeId}": {
+      "get": {
+        "tags": [
+          "Commit"
+        ],
+        "summary": "Get change by project, commit and ID",
+        "operationId": "getChangeByProjectCommitId",
+        "parameters": [
+          {
+            "name": "projectId",
+            "in": "path",
+            "description": "ID of the project",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "commitId",
+            "in": "path",
+            "description": "ID of the commit",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "changeId",
+            "in": "path",
+            "description": "ID of the change",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Ok",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DataVersion"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not found.",
+            "content": {}
+          },
+          "415": {
+            "description": "The requested content type is not acceptable.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {
+              "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -1495,14 +1419,6 @@
                     "$ref": "#/components/schemas/Element"
                   }
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Element"
-                  }
-                }
               }
             }
           },
@@ -1517,11 +1433,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -1529,11 +1440,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -1602,11 +1508,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Element"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Element"
-                }
               }
             }
           },
@@ -1621,11 +1522,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -1633,11 +1529,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -1723,14 +1614,6 @@
                     "$ref": "#/components/schemas/Element"
                   }
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Element"
-                  }
-                }
               }
             }
           },
@@ -1745,11 +1628,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -1757,11 +1635,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -1871,14 +1744,6 @@
                     "$ref": "#/components/schemas/Relationship"
                   }
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Relationship"
-                  }
-                }
               }
             }
           },
@@ -1889,11 +1754,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -1901,11 +1761,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -2262,14 +2117,6 @@
                     "$ref": "#/components/schemas/Element"
                   }
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Element"
-                  }
-                }
               }
             }
           },
@@ -2284,11 +2131,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -2296,11 +2138,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -2363,14 +2200,6 @@
                     "$ref": "#/components/schemas/Element"
                   }
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Element"
-                  }
-                }
               }
             }
           },
@@ -2385,11 +2214,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -2397,11 +2221,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -2464,14 +2283,6 @@
                     "$ref": "#/components/schemas/Element"
                   }
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Element"
-                  }
-                }
               }
             }
           },
@@ -2486,11 +2297,6 @@
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
               }
             }
           },
@@ -2498,11 +2304,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
@@ -2597,8 +2398,8 @@
         "tags": [
           "Meta"
         ],
-        "summary": "Get types by ID",
-        "operationId": "getDataTypeById",
+        "summary": "Get datatype by ID",
+        "operationId": "getDatatypeById",
         "parameters": [
           {
             "name": "datatypeId",
@@ -2640,193 +2441,6 @@
             "description": "Internal server error.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "Unexpected response.",
-            "content": {}
-          }
-        }
-      }
-    },
-    "/x/named/projects/{projectId}/commits": {
-      "post": {
-        "tags": [
-          "Extension"
-        ],
-        "summary": "Create commit by project, resolving references by qualified name",
-        "operationId": "postCommitByProjectNameResolved",
-        "parameters": [
-          {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "branchId",
-            "in": "query",
-            "description": "ID of the branch - project's default branch if unspecified",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Identified"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "Created",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Commit"
-                }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Commit"
-                }
-              }
-            }
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "default": {
-            "description": "Unexpected response.",
-            "content": {}
-          }
-        },
-        "x-codegen-request-body-name": "body"
-      }
-    },
-    "/x/named/projects/{projectId}/commits/{commitId}/elements/{qualifiedName}": {
-      "get": {
-        "tags": [
-          "Extension"
-        ],
-        "summary": "Get element by project, commit and qualified name",
-        "operationId": "getElementByProjectCommitQualifiedName",
-        "parameters": [
-          {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "commitId",
-            "in": "path",
-            "description": "ID of the commit",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
-          },
-          {
-            "name": "qualifiedName",
-            "in": "path",
-            "description": "Qualified name of the element",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Ok",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Element"
-                }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Element"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              },
-              "application/ld+json": {
                 "schema": {
                   "$ref": "#/components/schemas/Error"
                 }
