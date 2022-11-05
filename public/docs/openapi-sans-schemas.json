@@ -115,7 +115,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Project"
+                "$ref": "#/components/schemas/ProjectRequest"
               }
             }
           },
@@ -242,7 +242,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Project"
+                "$ref": "#/components/schemas/ProjectRequest"
               }
             }
           },
@@ -455,7 +455,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Branch"
+                "$ref": "#/components/schemas/BranchRequest"
               }
             }
           },
@@ -749,7 +749,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "$ref": "#/components/schemas/TagRequest"
               }
             }
           },
@@ -1052,7 +1052,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Commit"
+                "$ref": "#/components/schemas/CommitRequest"
               }
             }
           },
@@ -1883,7 +1883,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Query"
+                "$ref": "#/components/schemas/QueryRequest"
               }
             }
           },
@@ -2183,7 +2183,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Query"
+                "$ref": "#/components/schemas/QueryRequest"
               }
             }
           },
@@ -2266,7 +2266,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Query"
+                "$ref": "#/components/schemas/QueryRequest"
               }
             }
           },

@@ -1,0 +1,907 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$defs": {
+    "Project": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/Project",
+      "title": "Project",
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "@type": {
+          "type": "string",
+          "const": "Project"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "defaultBranch": {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment": "http://www.omg.org/spec/SysML/2.0/API/Branch"
+        },
+        "description": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "@id",
+        "@type",
+        "created",
+        "defaultBranch",
+        "description",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "ProjectRequest": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/ProjectRequest",
+      "title": "ProjectRequest",
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Project"
+        },
+        "defaultBranch": {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment": "http://www.omg.org/spec/SysML/2.0/API/Branch"
+        },
+        "description": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "Branch": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/Branch",
+      "title": "Branch",
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "@type": {
+          "type": "string",
+          "const": "Branch"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "head": {
+          "oneOf": [
+            {
+              "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment": "http://www.omg.org/spec/SysML/2.0/API/Commit"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "owningProject": {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment": "http://www.omg.org/spec/SysML/2.0/API/Project"
+        },
+        "referencedCommit": {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment": "http://www.omg.org/spec/SysML/2.0/API/Commit"
+        }
+      },
+      "required": [
+        "@id",
+        "@type",
+        "created",
+        "head",
+        "name",
+        "owningProject",
+        "referencedCommit"
+      ],
+      "additionalProperties": false
+    },
+    "BranchRequest": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/BranchRequest",
+      "title": "BranchRequest",
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Branch"
+        },
+        "head": {
+          "oneOf": [
+            {
+              "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
+              "$comment": "http://www.omg.org/spec/SysML/2.0/API/Commit"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "name": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "head",
+        "name"
+      ],
+      "additionalProperties": false
+    },
+    "Tag": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/Tag",
+      "title": "Tag",
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "@type": {
+          "type": "string",
+          "const": "Tag"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "name": {
+          "type": "string"
+        },
+        "owningProject": {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment": "http://www.omg.org/spec/SysML/2.0/API/Project"
+        },
+        "referencedCommit": {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment": "http://www.omg.org/spec/SysML/2.0/API/Commit"
+        },
+        "taggedCommit": {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment": "http://www.omg.org/spec/SysML/2.0/API/Commit"
+        }
+      },
+      "required": [
+        "@id",
+        "@type",
+        "created",
+        "name",
+        "owningProject",
+        "referencedCommit",
+        "taggedCommit"
+      ],
+      "additionalProperties": false
+    },
+    "TagRequest": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/TagRequest",
+      "title": "TagRequest",
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Tag"
+        },
+        "name": {
+          "type": "string"
+        },
+        "taggedCommit": {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment": "http://www.omg.org/spec/SysML/2.0/API/Commit"
+        }
+      },
+      "required": [
+        "name",
+        "taggedCommit"
+      ],
+      "additionalProperties": false
+    },
+    "Commit": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/Commit",
+      "title": "Commit",
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "@type": {
+          "type": "string",
+          "const": "Commit"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "description": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "owningProject": {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment": "http://www.omg.org/spec/SysML/2.0/API/Branch"
+        },
+        "previousCommit": {
+          "type": "array",
+          "items": {
+            "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
+            "$comment": "http://www.omg.org/spec/SysML/2.0/API/Commit"
+          }
+        }
+      },
+      "required": [
+        "@id",
+        "@type",
+        "created",
+        "description",
+        "owningProject",
+        "previousCommit"
+      ],
+      "additionalProperties": false
+    },
+    "CommitRequest": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/CommitRequest",
+      "title": "CommitRequest",
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Commit"
+        },
+        "change": {
+          "type": "array",
+          "items": {
+            "$ref": "http://www.omg.org/spec/SysML/2.0/API/DataVersionRequest"
+          }
+        },
+        "description": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "change"
+      ],
+      "additionalProperties": false
+    },
+    "DataVersion": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/DataVersion",
+      "title": "DataVersion",
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "@type": {
+          "type": "string",
+          "const": "DataVersion"
+        },
+        "identity": {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/API/DataIdentity"
+        },
+        "payload": {
+          "oneOf": [
+            {
+              "$ref": "http://www.omg.org/spec/SysML/2.0/API/Data"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "@id",
+        "@type",
+        "identity",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "DataVersionRequest": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/DataVersionRequest",
+      "title": "DataVersionRequest",
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "DataVersion"
+        },
+        "identity": {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/API/DataIdentityRequest"
+        },
+        "payload": {
+          "oneOf": [
+            {
+              "$ref": "http://www.omg.org/spec/SysML/2.0/API/DataRequest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    "Data": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/Data",
+      "title": "Data",
+      "oneOf": [
+        {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/Element"
+        },
+        {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/API/ExternalData"
+        },
+        {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/API/ExternalRelationship"
+        },
+        {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/API/ProjectUsage"
+        }
+      ]
+    },
+    "DataRequest": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/DataRequest",
+      "title": "DataRequest",
+      "oneOf": [
+        {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/API/ElementRequest"
+        },
+        {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/API/ExternalDataRequest"
+        },
+        {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/API/ExternalRelationshipRequest"
+        },
+        {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/API/ProjectUsageRequest"
+        }
+      ]
+    },
+    "DataIdentity": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/DataIdentity",
+      "title": "DataIdentity",
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "@type": {
+          "type": "string",
+          "const": "DataIdentity"
+        }
+      },
+      "required": [
+        "@id",
+        "@type"
+      ],
+      "additionalProperties": false
+    },
+    "DataIdentityRequest": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/DataIdentityRequest",
+      "title": "DataIdentityRequest",
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "@type": {
+          "type": "string",
+          "const": "DataIdentity"
+        }
+      },
+      "required": [
+        "@id"
+      ],
+      "additionalProperties": false
+    },
+    "ProjectUsage": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/ProjectUsage",
+      "title": "ProjectUsage",
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "@type": {
+          "type": "string",
+          "const": "ProjectUsage"
+        },
+        "usedCommit": {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment": "http://www.omg.org/spec/SysML/2.0/API/Commit"
+        },
+        "usedProject": {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment": "http://www.omg.org/spec/SysML/2.0/API/Project"
+        }
+      },
+      "required": [
+        "@id",
+        "@type",
+        "usedCommit",
+        "usedProject"
+      ],
+      "additionalProperties": false
+    },
+    "ProjectUsageRequest": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/ProjectUsageRequest",
+      "title": "ProjectUsageRequest",
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "@type": {
+          "type": "string",
+          "const": "ProjectUsage"
+        },
+        "usedCommit": {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment": "http://www.omg.org/spec/SysML/2.0/API/Commit"
+        },
+        "usedProject": {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment": "http://www.omg.org/spec/SysML/2.0/API/Project"
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "additionalProperties": false
+    },
+    "ExternalData": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/ExternalData",
+      "title": "ExternalData",
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "@type": {
+          "type": "string",
+          "const": "ExternalData"
+        },
+        "resourceIdentifier": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "@id",
+        "@type",
+        "resourceIdentifier"
+      ],
+      "additionalProperties": false
+    },
+    "ExternalDataRequest": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/ExternalDataRequest",
+      "title": "ExternalDataRequest",
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "@type": {
+          "type": "string",
+          "const": "ExternalData"
+        },
+        "resourceIdentifier": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "additionalProperties": false
+    },
+    "ExternalRelationship": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/ExternalRelationship",
+      "title": "ExternalRelationship",
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "@type": {
+          "type": "string",
+          "const": "ExternalRelationship"
+        },
+        "elementEnd": {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment": "http://www.omg.org/spec/SysML/2.0/Element"
+        },
+        "externalDataEnd": {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment": "http://www.omg.org/spec/SysML/2.0/API/ExternalData"
+        },
+        "language": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "specification": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "@id",
+        "@type",
+        "elementEnd",
+        "externalDataEnd",
+        "language",
+        "specification"
+      ],
+      "additionalProperties": false
+    },
+    "ExternalRelationshipRequest": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/ExternalRelationshipRequest",
+      "title": "ExternalRelationshipRequest",
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "@type": {
+          "type": "string",
+          "const": "ExternalRelationship"
+        },
+        "elementEnd": {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment": "http://www.omg.org/spec/SysML/2.0/Element"
+        },
+        "externalDataEnd": {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment": "http://www.omg.org/spec/SysML/2.0/API/ExternalData"
+        },
+        "language": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "specification": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "additionalProperties": false
+    },
+    "Query": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/Query",
+      "title": "Query",
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "@type": {
+          "type": "string",
+          "const": "Query"
+        },
+        "owningProject": {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
+          "$comment": "http://www.omg.org/spec/SysML/2.0/API/Project"
+        },
+        "select": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "where": {
+          "oneOf": [
+            {
+              "$ref": "http://www.omg.org/spec/SysML/2.0/API/Constraint"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "@id",
+        "@type",
+        "owningProject",
+        "select",
+        "where"
+      ],
+      "additionalProperties": false
+    },
+    "QueryRequest": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/QueryRequest",
+      "title": "QueryRequest",
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Query"
+        },
+        "select": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "where": {
+          "oneOf": [
+            {
+              "$ref": "http://www.omg.org/spec/SysML/2.0/API/ConstraintRequest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+      ],
+      "additionalProperties": false
+    },
+    "Constraint": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/Constraint",
+      "title": "Constraint",
+      "oneOf": [
+        {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/API/CompositeConstraint"
+        },
+        {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/API/PrimitiveConstraint"
+        }
+      ]
+    },
+    "ConstraintRequest": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/ConstraintRequest",
+      "title": "ConstraintRequest",
+      "oneOf": [
+        {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/API/CompositeConstraintRequest"
+        },
+        {
+          "$ref": "http://www.omg.org/spec/SysML/2.0/API/PrimitiveConstraintRequest"
+        }
+      ]
+    },
+    "CompositeConstraint": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/CompositeConstraint",
+      "title": "CompositeConstraint",
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "CompositeConstraint"
+        },
+        "constraint": {
+          "type": "array",
+          "items": {
+            "$ref": "http://www.omg.org/spec/SysML/2.0/API/Constraint"
+          },
+          "minItems": 2
+        },
+        "operator": {
+          "type": "string",
+          "enum": [
+            "and",
+            "or"
+          ]
+        }
+      },
+      "required": [
+        "@type",
+        "constraint",
+        "operator"
+      ],
+      "additionalProperties": false
+    },
+    "CompositeConstraintRequest": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/CompositeConstraintRequest",
+      "title": "CompositeConstraintRequest",
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "CompositeConstraint"
+        },
+        "constraint": {
+          "type": "array",
+          "items": {
+            "$ref": "http://www.omg.org/spec/SysML/2.0/API/Constraint"
+          },
+          "minItems": 2
+        },
+        "operator": {
+          "type": "string",
+          "enum": [
+            "and",
+            "or"
+          ]
+        }
+      },
+      "required": [
+        "@type",
+        "constraint",
+        "operator"
+      ],
+      "additionalProperties": false
+    },
+    "PrimitiveConstraint": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/PrimitiveConstraint",
+      "title": "PrimitiveConstraint",
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "PrimitiveConstraint"
+        },
+        "inverse": {
+          "type": "boolean"
+        },
+        "operator": {
+          "type": "string",
+          "enum": [
+            "=",
+            ">",
+            "<"
+          ]
+        },
+        "property": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "@type",
+        "inverse",
+        "operator",
+        "property",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "PrimitiveConstraintRequest": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/PrimitiveConstraint",
+      "title": "PrimitiveConstraint",
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "PrimitiveConstraint"
+        },
+        "inverse": {
+          "type": "boolean"
+        },
+        "operator": {
+          "type": "string",
+          "enum": [
+            "=",
+            ">",
+            "<"
+          ]
+        },
+        "property": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "@type",
+        "operator",
+        "property",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "Error": {
+      "$id": "http://www.omg.org/spec/SysML/2.0/API/Error",
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string",
+          "const": "Error"
+        },
+        "description": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "@type",
+        "description"
+      ],
+      "additionalProperties": true
+    }
+  }
+}
