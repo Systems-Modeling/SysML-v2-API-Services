@@ -2,8 +2,8 @@
   "openapi": "3.1.0",
   "info": {
     "title": "SysML v2 API and Services",
-    "description": "REST/HTTP binding (PSM) for the SysML v2 standard API.",
-    "version": "1.0.0"
+    "description": "REST/HTTP platform specific model (PSM) for the SysML v2 API",
+    "version": "2.0.0"
   },
   "tags": [
     {
@@ -25,6 +25,9 @@
       "name": "Relationship"
     },
     {
+      "name": "Dime"
+    },
+    {
       "name": "Query"
     },
     {
@@ -41,33 +44,18 @@
         "operationId": "getProjects",
         "parameters": [
           {
-            "name": "page[after]",
-            "in": "query",
-            "description": "Page after",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/pageAfter"
           },
           {
-            "name": "page[before]",
-            "in": "query",
-            "description": "Page before",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/pageBefore"
           },
           {
-            "name": "page[size]",
-            "in": "query",
-            "description": "Page size",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/pageSize"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -75,33 +63,17 @@
                   "items": {
                     "$ref": "#/components/schemas/Project"
                   }
-                }
-              }
-            }
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Projects": {
+                    "$ref": "#/components/examples/Projects"
+                  }
                 }
               }
             }
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
         }
       },
@@ -115,7 +87,12 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Project"
+                "$ref": "#/components/schemas/ProjectRequest"
+              },
+              "examples": {
+                "ProjectRequest": {
+                  "$ref": "#/components/examples/ProjectRequest"
+                }
               }
             }
           },
@@ -128,36 +105,19 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Project"
-                }
-              }
-            }
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Project": {
+                    "$ref": "#/components/examples/Project"
+                  }
                 }
               }
             }
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
-        },
-        "x-codegen-request-body-name": "body"
+        }
       }
     },
     "/projects/{projectId}": {
@@ -169,54 +129,30 @@
         "operationId": "getProjectById",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Project"
+                },
+                "examples": {
+                  "Project": {
+                    "$ref": "#/components/examples/Project"
+                  }
                 }
               }
             }
           },
           "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
         }
       },
@@ -228,21 +164,19 @@
         "operationId": "putProjectById",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           }
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Project"
+                "$ref": "#/components/schemas/ProjectRequest"
+              },
+              "examples": {
+                "ProjectRequest": {
+                  "$ref": "#/components/examples/ProjectRequest"
+                }
               }
             }
           },
@@ -250,41 +184,27 @@
         },
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Project"
+                },
+                "examples": {
+                  "Project": {
+                    "$ref": "#/components/examples/Project"
+                  }
                 }
               }
             }
           },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+          "404": {
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
-        },
-        "x-codegen-request-body-name": "body"
+        }
       },
       "delete": {
         "tags": [
@@ -294,54 +214,30 @@
         "operationId": "deleteProjectById",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Project"
+                },
+                "examples": {
+                  "Project": {
+                    "$ref": "#/components/examples/Project"
+                  }
                 }
               }
             }
           },
-          "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+          "204": {
+            "$ref": "#/components/responses/204"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
         }
       }
@@ -355,43 +251,21 @@
         "operationId": "getBranchesByProject",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           },
           {
-            "name": "page[after]",
-            "in": "query",
-            "description": "Page after",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/pageAfter"
           },
           {
-            "name": "page[before]",
-            "in": "query",
-            "description": "Page before",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/pageBefore"
           },
           {
-            "name": "page[size]",
-            "in": "query",
-            "description": "Page size",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/pageSize"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -399,37 +273,20 @@
                   "items": {
                     "$ref": "#/components/schemas/Branch"
                   }
+                },
+                "examples": {
+                  "Branches": {
+                    "$ref": "#/components/examples/Branches"
+                  }
                 }
               }
             }
           },
           "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
         }
       },
@@ -441,21 +298,19 @@
         "operationId": "postBranchByProject",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           }
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Branch"
+                "$ref": "#/components/schemas/BranchRequest"
+              },
+              "examples": {
+                "BranchRequest": {
+                  "$ref": "#/components/examples/BranchRequest"
+                }
               }
             }
           },
@@ -468,36 +323,19 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Branch"
-                }
-              }
-            }
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Branch": {
+                    "$ref": "#/components/examples/Branch"
+                  }
                 }
               }
             }
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
-        },
-        "x-codegen-request-body-name": "body"
+        }
       }
     },
     "/projects/{projectId}/branches/{branchId}": {
@@ -509,64 +347,33 @@
         "operationId": "getBranchesByProjectAndId",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           },
           {
-            "name": "branchId",
-            "in": "path",
-            "description": "ID of the branch",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/branchId"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Branch"
+                },
+                "examples": {
+                  "Branch": {
+                    "$ref": "#/components/examples/Branch"
+                  }
                 }
               }
             }
           },
           "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
         }
       },
@@ -578,64 +385,36 @@
         "operationId": "deleteBranchByProjectAndId",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           },
           {
-            "name": "branchId",
-            "in": "path",
-            "description": "ID of the branch",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/branchId"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Branch"
+                },
+                "examples": {
+                  "Branch": {
+                    "$ref": "#/components/examples/Branch"
+                  }
                 }
               }
             }
+          },
+          "204": {
+            "$ref": "#/components/responses/204"
           },
           "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
         }
       }
@@ -649,43 +428,21 @@
         "operationId": "getTagsByProject",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           },
           {
-            "name": "page[after]",
-            "in": "query",
-            "description": "Page after",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/pageAfter"
           },
           {
-            "name": "page[before]",
-            "in": "query",
-            "description": "Page before",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/pageBefore"
           },
           {
-            "name": "page[size]",
-            "in": "query",
-            "description": "Page size",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/pageSize"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -693,37 +450,20 @@
                   "items": {
                     "$ref": "#/components/schemas/Tag"
                   }
+                },
+                "examples": {
+                  "Tags": {
+                    "$ref": "#/components/examples/Tags"
+                  }
                 }
               }
             }
           },
           "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
         }
       },
@@ -735,21 +475,19 @@
         "operationId": "postTagByProject",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           }
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Tag"
+                "$ref": "#/components/schemas/TagRequest"
+              },
+              "examples": {
+                "TagRequest": {
+                  "$ref": "#/components/examples/TagRequest"
+                }
               }
             }
           },
@@ -761,37 +499,20 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Branch"
-                }
-              }
-            }
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "$ref": "#/components/schemas/Tag"
+                },
+                "examples": {
+                  "Tag": {
+                    "$ref": "#/components/examples/Tag"
+                  }
                 }
               }
             }
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
-        },
-        "x-codegen-request-body-name": "body"
+        }
       }
     },
     "/projects/{projectId}/tags/{tagId}": {
@@ -803,64 +524,33 @@
         "operationId": "getTagByProjectAndId",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           },
           {
-            "name": "tagId",
-            "in": "path",
-            "description": "ID of the tag",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/tagId"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Tag"
+                },
+                "examples": {
+                  "Tag": {
+                    "$ref": "#/components/examples/Tag"
+                  }
                 }
               }
             }
           },
           "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
         }
       },
@@ -872,64 +562,36 @@
         "operationId": "deleteTagByProjectAndId",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           },
           {
-            "name": "tagId",
-            "in": "path",
-            "description": "ID of the tag",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/tagId"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Tag"
+                },
+                "examples": {
+                  "Tag": {
+                    "$ref": "#/components/examples/Tag"
+                  }
                 }
               }
             }
+          },
+          "204": {
+            "$ref": "#/components/responses/204"
           },
           "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
         }
       }
@@ -943,43 +605,21 @@
         "operationId": "getCommitsByProject",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           },
           {
-            "name": "page[after]",
-            "in": "query",
-            "description": "Page after",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/pageAfter"
           },
           {
-            "name": "page[before]",
-            "in": "query",
-            "description": "Page before",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/pageBefore"
           },
           {
-            "name": "page[size]",
-            "in": "query",
-            "description": "Page size",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/pageSize"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -987,37 +627,20 @@
                   "items": {
                     "$ref": "#/components/schemas/Commit"
                   }
+                },
+                "examples": {
+                  "Commits": {
+                    "$ref": "#/components/examples/Commits"
+                  }
                 }
               }
             }
           },
           "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
         }
       },
@@ -1029,30 +652,31 @@
         "operationId": "postCommitByProject",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           },
           {
-            "name": "branchId",
-            "in": "query",
-            "description": "ID of the branch - project's default branch if unspecified",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/defaultingBranchId"
           }
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Commit"
+                "$ref": "#/components/schemas/CommitRequest"
+              },
+              "examples": {
+                "ElementCommitRequest": {
+                  "$ref": "#/components/examples/ElementCommitRequest"
+                },
+                "RelationshipCommitRequest": {
+                  "$ref": "#/components/examples/RelationshipCommitRequest"
+                },
+                "ProjectUsageCommitRequest": {
+                  "$ref": "#/components/examples/ProjectUsageCommitRequest"
+                },
+                "DeleteCommitRequest": {
+                  "$ref": "#/components/examples/DeleteCommitRequest"
+                }
               }
             }
           },
@@ -1065,36 +689,19 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Commit"
-                }
-              }
-            }
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Commit": {
+                    "$ref": "#/components/examples/Commit"
+                  }
                 }
               }
             }
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
-        },
-        "x-codegen-request-body-name": "body"
+        }
       }
     },
     "/projects/{projectId}/commits/{commitId}": {
@@ -1106,64 +713,33 @@
         "operationId": "getCommitByProjectAndId",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           },
           {
-            "name": "commitId",
-            "in": "path",
-            "description": "ID of the commit",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/commitId"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Commit"
+                },
+                "examples": {
+                  "Commit": {
+                    "$ref": "#/components/examples/Commit"
+                  }
                 }
               }
             }
           },
           "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
         }
       }
@@ -1177,53 +753,24 @@
         "operationId": "getChangesByProjectCommit",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           },
           {
-            "name": "commitId",
-            "in": "path",
-            "description": "ID of the commit",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/commitId"
           },
           {
-            "name": "page[after]",
-            "in": "query",
-            "description": "Page after",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/pageAfter"
           },
           {
-            "name": "page[before]",
-            "in": "query",
-            "description": "Page before",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/pageBefore"
           },
           {
-            "name": "page[size]",
-            "in": "query",
-            "description": "Page size",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/pageSize"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -1231,37 +778,20 @@
                   "items": {
                     "$ref": "#/components/schemas/DataVersion"
                   }
+                },
+                "examples": {
+                  "DataVersions": {
+                    "$ref": "#/components/examples/DataVersions"
+                  }
                 }
               }
             }
           },
           "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
         }
       }
@@ -1275,74 +805,36 @@
         "operationId": "getChangeByProjectCommitId",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           },
           {
-            "name": "commitId",
-            "in": "path",
-            "description": "ID of the commit",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/commitId"
           },
           {
-            "name": "changeId",
-            "in": "path",
-            "description": "ID of the change",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/changeId"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/DataVersion"
+                },
+                "examples": {
+                  "DataVersion": {
+                    "$ref": "#/components/examples/DataVersion"
+                  }
                 }
               }
             }
           },
           "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
         }
       }
@@ -1356,61 +848,27 @@
         "operationId": "getElementsByProjectCommit",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           },
           {
-            "name": "commitId",
-            "in": "path",
-            "description": "ID of the commit",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/commitId"
           },
           {
-            "name": "excludeUsed",
-            "in": "query",
-            "description": "Exclude elements from ProjectUsages",
-            "schema": {
-              "type": "boolean"
-            }
+            "$ref": "#/components/parameters/excludeUsed"
           },
           {
-            "name": "page[after]",
-            "in": "query",
-            "description": "Page after",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/pageAfter"
           },
           {
-            "name": "page[before]",
-            "in": "query",
-            "description": "Page before",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/pageBefore"
           },
           {
-            "name": "page[size]",
-            "in": "query",
-            "description": "Page size",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/pageSize"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -1418,37 +876,20 @@
                   "items": {
                     "$ref": "#/components/schemas/Element"
                   }
+                },
+                "examples": {
+                  "Elements": {
+                    "$ref": "#/components/examples/Elements"
+                  }
                 }
               }
             }
           },
           "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
         }
       }
@@ -1462,82 +903,39 @@
         "operationId": "getElementByProjectCommitId",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           },
           {
-            "name": "commitId",
-            "in": "path",
-            "description": "ID of the commit",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/commitId"
           },
           {
-            "name": "elementId",
-            "in": "path",
-            "description": "ID of the element",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/elementId"
           },
           {
-            "name": "excludeUsed",
-            "in": "query",
-            "description": "Exclude elements from ProjectUsages",
-            "schema": {
-              "type": "boolean"
-            }
+            "$ref": "#/components/parameters/excludeUsed"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Element"
+                },
+                "examples": {
+                  "Element": {
+                    "$ref": "#/components/examples/Element"
+                  }
                 }
               }
             }
           },
           "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
         }
       }
@@ -1551,61 +949,27 @@
         "operationId": "getRootsByProjectCommit",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           },
           {
-            "name": "commitId",
-            "in": "path",
-            "description": "ID of the commit",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/commitId"
           },
           {
-            "name": "excludeUsed",
-            "in": "query",
-            "description": "Exclude elements from ProjectUsages",
-            "schema": {
-              "type": "boolean"
-            }
+            "$ref": "#/components/parameters/excludeUsed"
           },
           {
-            "name": "page[after]",
-            "in": "query",
-            "description": "Page after",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/pageAfter"
           },
           {
-            "name": "page[before]",
-            "in": "query",
-            "description": "Page before",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/pageBefore"
           },
           {
-            "name": "page[size]",
-            "in": "query",
-            "description": "Page size",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/pageSize"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -1613,37 +977,20 @@
                   "items": {
                     "$ref": "#/components/schemas/Element"
                   }
+                },
+                "examples": {
+                  "Elements": {
+                    "$ref": "#/components/examples/Elements"
+                  }
                 }
               }
             }
           },
           "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
         }
       }
@@ -1657,85 +1004,33 @@
         "operationId": "getRelationshipsByProjectCommitRelatedElement",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           },
           {
-            "name": "commitId",
-            "in": "path",
-            "description": "ID of the commit",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/commitId"
           },
           {
-            "name": "relatedElementId",
-            "in": "path",
-            "description": "ID of the related element",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/relatedElementId"
           },
           {
-            "name": "direction",
-            "in": "query",
-            "description": "Filter for relationships that are incoming (in), outgoing (out), or both relative to the related element",
-            "schema": {
-              "type": "string",
-              "default": "both",
-              "enum": [
-                "in",
-                "out",
-                "both"
-              ]
-            }
+            "$ref": "#/components/parameters/direction"
           },
           {
-            "name": "excludeUsed",
-            "in": "query",
-            "description": "Exclude relationships from ProjectUsages",
-            "schema": {
-              "type": "boolean"
-            }
+            "$ref": "#/components/parameters/excludeUsed"
           },
           {
-            "name": "page[after]",
-            "in": "query",
-            "description": "Page after",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/pageAfter"
           },
           {
-            "name": "page[before]",
-            "in": "query",
-            "description": "Page before",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/pageBefore"
           },
           {
-            "name": "page[size]",
-            "in": "query",
-            "description": "Page size",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/pageSize"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -1743,33 +1038,139 @@
                   "items": {
                     "$ref": "#/components/schemas/Relationship"
                   }
+                },
+                "examples": {
+                  "Relationships": {
+                    "$ref": "#/components/examples/Relationships"
+                  }
                 }
               }
             }
           },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+          "404": {
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
+          }
+        }
+      }
+    },
+    "/projects/{projectId}/commits/{compareCommitId}/diff": {
+      "get": {
+        "tags": [
+          "Dime"
+        ],
+        "summary": "Diff a base commit and compare commit",
+        "operationId": "diff",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/projectId"
+          },
+          {
+            "$ref": "#/components/parameters/baseCommitId"
+          },
+          {
+            "$ref": "#/components/parameters/compareCommitId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DataDifference"
+                  }
+                },
+                "examples": {
+                  "DataDifferences": {
+                    "$ref": "#/components/examples/DataDifferences"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "default": {
+            "$ref": "#/components/responses/default"
+          }
+        }
+      }
+    },
+    "/projects/{projectId}/branches/{targetBranchId}/merge": {
+      "post": {
+        "tags": [
+          "Dime"
+        ],
+        "summary": "Merge source commit(s) into a target branch",
+        "operationId": "merge",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/projectId"
+          },
+          {
+            "$ref": "#/components/parameters/sourceCommitId"
+          },
+          {
+            "$ref": "#/components/parameters/targetBranchId"
+          },
+          {
+            "$ref": "#/components/parameters/mergeDescription"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Data"
+                }
+              },
+              "examples": {
+                "Without Resolutions": {
+                  "type": "null"
+                },
+                "With Resolutions": {
+                  "$ref": "#/components/examples/Elements"
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MergeResult"
+                  }
+                },
+                "examples": {
+                  "ConflictFreeMergeResult": {
+                    "$ref": "#/components/examples/ConflictFreeMergeResult"
+                  },
+                  "ConflictingMergeResult": {
+                    "$ref": "#/components/examples/ConflictingMergeResult"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "default": {
+            "$ref": "#/components/responses/default"
           }
         }
       }
@@ -1783,43 +1184,21 @@
         "operationId": "getQueriesByProject",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           },
           {
-            "name": "page[after]",
-            "in": "query",
-            "description": "Page after",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/pageAfter"
           },
           {
-            "name": "page[before]",
-            "in": "query",
-            "description": "Page before",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/pageBefore"
           },
           {
-            "name": "page[size]",
-            "in": "query",
-            "description": "Page size",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/pageSize"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
@@ -1827,37 +1206,20 @@
                   "items": {
                     "$ref": "#/components/schemas/Query"
                   }
+                },
+                "examples": {
+                  "Queries": {
+                    "$ref": "#/components/examples/Queries"
+                  }
                 }
               }
             }
           },
           "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
         }
       },
@@ -1869,21 +1231,19 @@
         "operationId": "postQueryByProject",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           }
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Query"
+                "$ref": "#/components/schemas/QueryRequest"
+              },
+              "examples": {
+                "QueryRequest": {
+                  "$ref": "#/components/examples/QueryRequest"
+                }
               }
             }
           },
@@ -1896,36 +1256,19 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Query"
-                }
-              }
-            }
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
+                },
+                "examples": {
+                  "Query": {
+                    "$ref": "#/components/examples/Query"
+                  }
                 }
               }
             }
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
-        },
-        "x-codegen-request-body-name": "body"
+        }
       }
     },
     "/projects/{projectId}/queries/{queryId}": {
@@ -1937,64 +1280,86 @@
         "operationId": "getQueryByProjectAndId",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           },
           {
-            "name": "queryId",
-            "in": "path",
-            "description": "ID of the query",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/queryId"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Query"
+                },
+                "examples": {
+                  "Query": {
+                    "$ref": "#/components/examples/Query"
+                  }
                 }
               }
             }
           },
           "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Query"
+        ],
+        "summary": "Update project by project and ID",
+        "operationId": "putQueryByProjectAndId",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/projectId"
+          },
+          {
+            "$ref": "#/components/parameters/queryId"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryRequest"
+              },
+              "examples": {
+                "QueryRequest": {
+                  "$ref": "#/components/examples/QueryRequest"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Query"
+                },
+                "examples": {
+                  "Query": {
+                    "$ref": "#/components/examples/Query"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "default": {
+            "$ref": "#/components/responses/default"
           }
         }
       },
@@ -2006,64 +1371,36 @@
         "operationId": "deleteQueryByProjectAndId",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           },
           {
-            "name": "queryId",
-            "in": "path",
-            "description": "ID of the query",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/queryId"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/Query"
+                },
+                "examples": {
+                  "Query": {
+                    "$ref": "#/components/examples/Query"
+                  }
                 }
               }
             }
+          },
+          "204": {
+            "$ref": "#/components/responses/204"
           },
           "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
         }
       }
@@ -2077,76 +1414,48 @@
         "operationId": "getQueryResultsByProjectIdQueryId",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           },
           {
-            "name": "queryId",
-            "in": "path",
-            "description": "ID of the query",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/queryId"
           },
           {
-            "name": "commitId",
-            "in": "query",
-            "description": "ID of the commit - defaults to head of project",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/defaultingCommitId"
+          },
+          {
+            "$ref": "#/components/parameters/pageAfter"
+          },
+          {
+            "$ref": "#/components/parameters/pageBefore"
+          },
+          {
+            "$ref": "#/components/parameters/pageSize"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Element"
+                    "$ref": "#/components/schemas/Data"
+                  }
+                },
+                "examples": {
+                  "Elements": {
+                    "$ref": "#/components/examples/Elements"
                   }
                 }
               }
             }
           },
           "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
         }
       }
@@ -2160,30 +1469,31 @@
         "operationId": "getQueryResultsByProjectIdQuery",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           },
           {
-            "name": "commitId",
-            "in": "query",
-            "description": "ID of the commit - defaults to head of project",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/defaultingCommitId"
+          },
+          {
+            "$ref": "#/components/parameters/pageAfter"
+          },
+          {
+            "$ref": "#/components/parameters/pageBefore"
+          },
+          {
+            "$ref": "#/components/parameters/pageSize"
           }
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Query"
+                "$ref": "#/components/schemas/QueryRequest"
+              },
+              "examples": {
+                "QueryRequest": {
+                  "$ref": "#/components/examples/QueryRequest"
+                }
               }
             }
           },
@@ -2191,48 +1501,30 @@
         },
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Element"
+                    "$ref": "#/components/schemas/Data"
+                  }
+                },
+                "examples": {
+                  "Elements": {
+                    "$ref": "#/components/examples/Elements"
                   }
                 }
               }
             }
           },
           "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
-        },
-        "x-codegen-request-body-name": "body"
+        }
       },
       "post": {
         "tags": [
@@ -2243,30 +1535,31 @@
         "operationId": "getQueryResultsByProjectIdQueryPost",
         "parameters": [
           {
-            "name": "projectId",
-            "in": "path",
-            "description": "ID of the project",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/projectId"
           },
           {
-            "name": "commitId",
-            "in": "query",
-            "description": "ID of the commit - defaults to head of project",
-            "schema": {
-              "type": "string",
-              "format": "uuid"
-            }
+            "$ref": "#/components/parameters/defaultingCommitId"
+          },
+          {
+            "$ref": "#/components/parameters/pageAfter"
+          },
+          {
+            "$ref": "#/components/parameters/pageBefore"
+          },
+          {
+            "$ref": "#/components/parameters/pageSize"
           }
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Query"
+                "$ref": "#/components/schemas/QueryRequest"
+              },
+              "examples": {
+                "QueryRequest": {
+                  "$ref": "#/components/examples/QueryRequest"
+                }
               }
             }
           },
@@ -2274,48 +1567,30 @@
         },
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Element"
+                    "$ref": "#/components/schemas/Data"
+                  }
+                },
+                "examples": {
+                  "Elements": {
+                    "$ref": "#/components/examples/Elements"
                   }
                 }
               }
             }
           },
           "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
-        },
-        "x-codegen-request-body-name": "body"
+        }
       }
     },
     "/meta/datatypes": {
@@ -2327,68 +1602,48 @@
         "operationId": "getDatatypes",
         "parameters": [
           {
-            "name": "page[after]",
-            "in": "query",
-            "description": "Page after",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/pageAfter"
           },
           {
-            "name": "page[before]",
-            "in": "query",
-            "description": "Page before",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/pageBefore"
           },
           {
-            "name": "page[size]",
-            "in": "query",
-            "description": "Page size",
-            "schema": {
-              "type": "integer"
-            }
+            "$ref": "#/components/parameters/pageSize"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
+                  "type": "object",
+                  "properties": {
+                    "$schema": {
+                      "type": "string",
+                      "const": "https://json-schema.org/draft/2020-12/schema"
+                    },
+                    "$defs": {
+                      "type": "object",
+                      "additionalProperties": true
+                    }
+                  },
+                  "required": [
+                    "$schema",
+                    "$defs"
+                  ],
+                  "additionalProperties": false
+                },
+                "examples": {
+                  "Datatypes": {
+                    "$ref": "#/components/examples/Datatypes"
+                  }
                 }
               }
             }
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
         }
       }
@@ -2402,98 +1657,806 @@
         "operationId": "getDatatypeById",
         "parameters": [
           {
-            "name": "datatypeId",
-            "in": "path",
-            "description": "ID of the datatype",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uri"
-            }
+            "$ref": "#/components/parameters/datatypeId"
           }
         ],
         "responses": {
           "200": {
-            "description": "Ok",
+            "description": "OK",
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "type": "object",
+                  "properties": {
+                    "$schema": {
+                      "type": "string",
+                      "const": "https://json-schema.org/draft/2020-12/schema"
+                    },
+                    "$id": {
+                      "type": "string",
+                      "format": "uri"
+                    },
+                    "$defs": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "type": {
+                      "type": "string"
+                    },
+                    "properties": {
+                      "type": "object",
+                      "additionalProperties": true
+                    },
+                    "required": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "additionalProperties": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "$schema",
+                    "$id",
+                    "title",
+                    "type",
+                    "properties"
+                  ],
+                  "additionalProperties": false
+                },
+                "examples": {
+                  "ExternalData": {
+                    "$ref": "#/components/examples/ExternalDataDatatype"
+                  }
                 }
               }
             }
           },
           "404": {
-            "description": "Not found.",
-            "content": {}
-          },
-          "415": {
-            "description": "The requested content type is not acceptable.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Error"
-                }
-              }
-            }
+            "$ref": "#/components/responses/404"
           },
           "default": {
-            "description": "Unexpected response.",
-            "content": {}
+            "$ref": "#/components/responses/default"
           }
         }
       }
     }
   },
   "components": {
+    "parameters": {
+      "projectId": {
+        "name": "projectId",
+        "in": "path",
+        "description": "ID of the project",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "branchId": {
+        "name": "branchId",
+        "in": "path",
+        "description": "ID of the branch",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "defaultingBranchId": {
+        "name": "branchId",
+        "in": "query",
+        "description": "ID of the branch - project's default branch if unspecified",
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "tagId": {
+        "name": "tagId",
+        "in": "path",
+        "description": "ID of the tag",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "commitId": {
+        "name": "commitId",
+        "in": "path",
+        "description": "ID of the commit",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "defaultingCommitId": {
+        "name": "commitId",
+        "in": "query",
+        "description": "ID of the commit - defaults to head of project",
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "changeId": {
+        "name": "changeId",
+        "in": "path",
+        "description": "ID of the change (DataVersion)",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "elementId": {
+        "name": "elementId",
+        "in": "path",
+        "description": "ID of the element",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "relatedElementId": {
+        "name": "relatedElementId",
+        "in": "path",
+        "description": "ID of the related element",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "direction": {
+        "name": "direction",
+        "in": "query",
+        "description": "Filter for relationships that are incoming (in), outgoing (out), or both relative to the related element",
+        "schema": {
+          "type": "string",
+          "default": "both",
+          "enum": [
+            "in",
+            "out",
+            "both"
+          ]
+        }
+      },
+      "baseCommitId": {
+        "name": "baseCommitId",
+        "in": "query",
+        "description": "ID of the base commit",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "compareCommitId": {
+        "name": "compareCommitId",
+        "in": "path",
+        "description": "ID of the compare commit",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "sourceCommitId": {
+        "name": "sourceCommitId",
+        "in": "query",
+        "description": "ID(s) of the source commit(s) - comma separated",
+        "required": true,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "style": "form",
+        "explode": false
+      },
+      "targetBranchId": {
+        "name": "targetBranchId",
+        "in": "path",
+        "description": "ID of the target branch",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "mergeDescription": {
+        "name": "description",
+        "in": "query",
+        "description": "Description of merge commit - in case one is created",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "queryId": {
+        "name": "queryId",
+        "in": "path",
+        "description": "ID of the query",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "datatypeId": {
+        "name": "datatypeId",
+        "in": "path",
+        "description": "ID of the datatype",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "excludeUsed": {
+        "name": "excludeUsed",
+        "in": "query",
+        "description": "Exclude Data from ProjectUsages",
+        "schema": {
+          "type": "boolean"
+        }
+      },
+      "pageAfter": {
+        "name": "page[after]",
+        "in": "query",
+        "description": "Page after",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "pageBefore": {
+        "name": "page[before]",
+        "in": "query",
+        "description": "Page before",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "pageSize": {
+        "name": "page[size]",
+        "in": "query",
+        "description": "Page size",
+        "schema": {
+          "type": "integer"
+        }
+      }
+    },
     "schemas": {
     },
+    "examples": {
+      "Project": {
+        "value": {
+          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "@type": "Project",
+          "created": "1970-01-01T00:00:00.000Z",
+          "defaultBranch": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "description": "string",
+          "name": "string"
+        }
+      },
+      "Projects": {
+        "value": [
+          {
+            "$ref": "#/components/examples/Project/value"
+          }
+        ]
+      },
+      "ProjectRequest": {
+        "value": {
+          "@type": "Project",
+          "defaultBranch": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "description": "string",
+          "name": "string"
+        }
+      },
+      "Branch": {
+        "value": {
+          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "@type": "Branch",
+          "created": "1970-01-01T00:00:00.000Z",
+          "head": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "name": "string",
+          "owningProject": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "referencedCommit": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          }
+        }
+      },
+      "Branches": {
+        "value": [
+          {
+            "$ref": "#/components/examples/Branch/value"
+          }
+        ]
+      },
+      "BranchRequest": {
+        "value": {
+          "@type": "Branch",
+          "head": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "name": "string"
+        }
+      },
+      "Tag": {
+        "value": {
+          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "@type": "Tag",
+          "created": "1970-01-01T00:00:00.000Z",
+          "name": "string",
+          "owningProject": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "referencedCommit": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "taggedCommit": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          }
+        }
+      },
+      "Tags": {
+        "value": [
+          {
+            "$ref": "#/components/examples/Tag/value"
+          }
+        ]
+      },
+      "TagRequest": {
+        "value": {
+          "@type": "Tag",
+          "name": "string",
+          "taggedCommit": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          }
+        }
+      },
+      "Commit": {
+        "value": {
+          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "@type": "Commit",
+          "created": "1970-01-01T00:00:00.000Z",
+          "description": "string",
+          "owningProject": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "previousCommit": [
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }
+          ]
+        }
+      },
+      "Commits": {
+        "value": [
+          {
+            "$ref": "#/components/examples/Commit"
+          }
+        ]
+      },
+      "ElementCommitRequest": {
+        "value": {
+          "@type": "Commit",
+          "change": [
+            {
+              "@type": "DataVersion",
+              "payload": {
+                "$ref": "#/components/examples/Element"
+              }
+            }
+          ]
+        }
+      },
+      "RelationshipCommitRequest": {
+        "value": {
+          "@type": "Commit",
+          "change": [
+            {
+              "@type": "DataVersion",
+              "payload": {
+                "$ref": "#/components/examples/Relationship"
+              }
+            }
+          ]
+        }
+      },
+      "ProjectUsageCommitRequest": {
+        "value": {
+          "@type": "Commit",
+          "change": [
+            {
+              "@type": "DataVersion",
+              "payload": {
+                "$ref": "#/components/examples/ProjectUsageRequest"
+              }
+            }
+          ]
+        }
+      },
+      "DeleteCommitRequest": {
+        "value": {
+          "@type": "Commit",
+          "change": [
+            {
+              "@type": "DataVersion",
+              "identity": {
+                "$ref": "#/components/examples/DataIdentity/value"
+              },
+              "payload": null
+            }
+          ]
+        }
+      },
+      "Element": {
+        "value": {
+          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "@type": "Element",
+          "aliasIds": [
+            "string"
+          ],
+          "documentation": [
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }
+          ],
+          "effectiveName": "string",
+          "elementId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "isImpliedIncluded": false,
+          "isLibraryElement": false,
+          "name": "string",
+          "ownedAnnotation": [
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }
+          ],
+          "ownedElement": [
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }
+          ],
+          "ownedRelationship": [
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }
+          ],
+          "owner": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "owningMembership": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "owningNamespace": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "owningRelationship": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "qualifiedName": "string",
+          "shortName": "string",
+          "textualRepresentation": [
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }
+          ]
+        }
+      },
+      "Elements": {
+        "value": [
+          {
+            "$ref": "#/components/examples/Element/value"
+          }
+        ]
+      },
+      "Relationship": {
+        "value": {
+          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "@type": "Relationship",
+          "aliasIds": [
+            "string"
+          ],
+          "documentation": [
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }
+          ],
+          "effectiveName": "string",
+          "elementId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "isImplied": false,
+          "isImpliedIncluded": false,
+          "isLibraryElement": false,
+          "name": "string",
+          "ownedAnnotation": [
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }
+          ],
+          "ownedElement": [
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }
+          ],
+          "ownedRelatedElement": [
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }
+          ],
+          "ownedRelationship": [
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }
+          ],
+          "owner": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "owningMembership": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "owningNamespace": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "owningRelatedElement": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "owningRelationship": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "qualifiedName": "string",
+          "relatedElement": [
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }
+          ],
+          "shortName": "string",
+          "source": [
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }
+          ],
+          "target": [
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }
+          ],
+          "textualRepresentation": [
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }
+          ]
+        }
+      },
+      "Relationships": {
+        "value": [
+          {
+            "$ref": "#/components/examples/Relationship/value"
+          }
+        ]
+      },
+      "ProjectUsageRequest": {
+        "value": {
+          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "@type": "ProjectUsage",
+          "usedCommit": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          }
+        }
+      },
+      "DataVersion": {
+        "value": {
+          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "@type": "DataVersion",
+          "identity": {
+            "$ref": "#/components/examples/DataIdentity/value"
+          },
+          "payload": {
+            "$ref": "#/components/examples/Element/value"
+          }
+        }
+      },
+      "DataVersions": {
+        "value": [
+          {
+            "$ref": "#/components/examples/DataVersion/value"
+          }
+        ]
+      },
+      "DataIdentity": {
+        "value": {
+          "@type": "DataIdentity",
+          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+        }
+      },
+      "DataDifference": {
+        "value": {
+          "@type": "DataDifference",
+          "baseData": {
+            "$ref": "#/components/examples/DataVersion/value"
+          },
+          "compareData": {
+            "$ref": "#/components/examples/DataVersion/value"
+          }
+        }
+      },
+      "DataDifferences": {
+        "value": [
+          {
+            "$ref": "#/components/examples/DataDifference/value"
+          }
+        ]
+      },
+      "ConflictFreeMergeResult": {
+        "value": {
+          "@type": "MergeResult",
+          "conflict": [
+          ],
+          "mergeCommit": {
+            "$ref": "#/components/examples/Commit/value"
+          }
+        }
+      },
+      "ConflictingMergeResult": {
+        "value": {
+          "@type": "MergeResult",
+          "conflict": [
+            {
+              "$ref": "#/components/examples/DataIdentity/value"
+            }
+          ],
+          "mergeCommit": null
+        }
+      },
+      "Query": {
+        "value": {
+          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "@type": "Query",
+          "owningProject": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "select": [
+            "@id"
+          ],
+          "where": {
+            "@type": "PrimitiveConstraint",
+            "inverse": false,
+            "operator": "=",
+            "property": "@type",
+            "value": "Element"
+          }
+        }
+      },
+      "Queries": {
+        "value": [
+          {
+            "$ref": "#/components/examples/Query/value"
+          }
+        ]
+      },
+      "QueryRequest": {
+        "value": {
+          "@type": "Query",
+          "select": [
+            "@id"
+          ],
+          "where": {
+            "@type": "PrimitiveConstraint",
+            "operator": "=",
+            "property": "@type",
+            "value": "Element"
+          }
+        }
+      },
+      "ExternalDataDatatype": {
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$id": "http://www.omg.org/spec/SysML/2.0/API/ExternalData",
+          "type": "object",
+          "properties": {
+            "@id": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "@type": {
+              "type": "string",
+              "const": "ExternalData"
+            },
+            "resourceIdentifier": {
+              "type": "string",
+              "format": "uri"
+            }
+          },
+          "required": [
+            "@id",
+            "@type",
+            "resourceIdentifier"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "Datatypes": {
+        "value": {
+          "$schema": "https://json-schema.org/draft/2020-12/schema",
+          "$defs": {
+            "http://www.omg.org/spec/SysML/2.0/API/ExternalData": {
+              "$ref": "#/components/examples/ExternalDataDatatype"
+            }
+          }
+        }
+      }
+    },
     "responses": {
-      "BadContentType": {
-        "description": "The requested content type is not acceptable.",
+      "404": {
+        "description": "Not Found",
         "content": {
-          "*/*": {
+          "application/json": {
             "schema": {
               "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "404": {
+                "value": {
+                  "@type": "Error",
+                  "description": "Resource not found"
+                }
+              }
             }
           }
         }
       },
-      "Default": {
-        "description": "Unexpected response.",
-        "content": {}
-      },
-      "InternalServerError": {
-        "description": "Internal server error.",
-        "content": {
-          "*/*": {
-            "schema": {
-              "$ref": "#/components/schemas/Error"
-            }
-          }
-        }
-      },
-      "NoContent": {
+      "204": {
         "description": "No Content",
-        "content": {}
+        "content": {
+          "*/*": {
+            "schema": {
+              "type": "null"
+            },
+            "examples": {
+              "204": {
+                "value": null
+              }
+            }
+          }
+        }
       },
-      "NotFound": {
-        "description": "Not found.",
-        "content": {}
-      },
-      "Ok": {
-        "description": "Ok",
-        "content": {}
+      "default": {
+        "description": "Unexpected Error",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "examples": {
+              "default": {
+                "value": {
+                  "@type": "Error",
+                  "description": "Unexpected error"
+                }
+              }
+            }
+          }
+        }
       }
     }
   }
