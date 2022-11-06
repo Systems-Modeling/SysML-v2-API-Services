@@ -25,6 +25,9 @@
       "name": "Relationship"
     },
     {
+      "name": "Dime"
+    },
+    {
       "name": "Query"
     },
     {
@@ -1044,6 +1047,128 @@
               }
             }
           },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "default": {
+            "$ref": "#/components/responses/default"
+          }
+        }
+      }
+    },
+    "/projects/{projectId}/commits/{compareCommitId}/diff": {
+      "get": {
+        "tags": [
+          "Dime"
+        ],
+        "summary": "Diff a base commit and compare commit",
+        "operationId": "diff",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/projectId"
+          },
+          {
+            "$ref": "#/components/parameters/baseCommitId"
+          },
+          {
+            "$ref": "#/components/parameters/compareCommitId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DataDifference"
+                  }
+                },
+                "examples": {
+                  "DataDifferences": {
+                    "$ref": "#/components/examples/DataDifferences"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "default": {
+            "$ref": "#/components/responses/default"
+          }
+        }
+      }
+    },
+    "/projects/{projectId}/branches/{targetBranchId}/merge": {
+      "post": {
+        "tags": [
+          "Dime"
+        ],
+        "summary": "Merge source commit(s) into a target branch",
+        "operationId": "merge",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/projectId"
+          },
+          {
+            "$ref": "#/components/parameters/sourceCommitId"
+          },
+          {
+            "$ref": "#/components/parameters/targetBranchId"
+          },
+          {
+            "$ref": "#/components/parameters/mergeDescription"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Data"
+                }
+              },
+              "examples": {
+                "Without Resolutions": {
+                  "type": "null"
+                },
+                "With Resolutions": {
+                  "$ref": "#/components/examples/Elements"
+                }
+              }
+            }
+          },
+          "required": false
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/MergeResult"
+                  }
+                },
+                "examples": {
+                  "ConflictFreeMergeResult": {
+                    "$ref": "#/components/examples/ConflictFreeMergeResult"
+                  },
+                  "ConflictingMergeResult": {
+                    "$ref": "#/components/examples/ConflictingMergeResult"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
           "default": {
             "$ref": "#/components/responses/default"
           }
@@ -1653,6 +1778,59 @@
           ]
         }
       },
+      "baseCommitId": {
+        "name": "baseCommitId",
+        "in": "query",
+        "description": "ID of the base commit",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "compareCommitId": {
+        "name": "compareCommitId",
+        "in": "path",
+        "description": "ID of the compare commit",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "sourceCommitId": {
+        "name": "sourceCommitId",
+        "in": "query",
+        "description": "ID(s) of the source commit(s) - comma separated",
+        "required": true,
+        "schema": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "style": "form",
+        "explode": false
+      },
+      "targetBranchId": {
+        "name": "targetBranchId",
+        "in": "path",
+        "description": "ID of the target branch",
+        "required": true,
+        "schema": {
+          "type": "string",
+          "format": "uuid"
+        }
+      },
+      "mergeDescription": {
+        "name": "description",
+        "in": "query",
+        "description": "Description of merge commit - in case one is created",
+        "schema": {
+          "type": "string"
+        }
+      },
       "queryId": {
         "name": "queryId",
         "in": "path",
@@ -1813,9 +1991,11 @@
           "owningProject": {
             "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           },
-          "previousCommit": {
-            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
-          }
+          "previousCommit": [
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }
+          ]
         }
       },
       "Commits": {
@@ -1871,8 +2051,7 @@
             {
               "@type": "DataVersion",
               "identity": {
-                "@type": "DataIdentity",
-                "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+                "$ref": "#/components/examples/DataIdentity/value"
               },
               "payload": null
             }
@@ -2034,17 +2213,13 @@
       },
       "DataVersion": {
         "value": {
+          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
           "@type": "DataVersion",
           "identity": {
-            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-            "@type": "DataVersion",
-            "identity": {
-              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-              "@type": "DataIdentity"
-            },
-            "payload": {
-              "$ref": "#/components/examples/Element"
-            }
+            "$ref": "#/components/examples/DataIdentity/value"
+          },
+          "payload": {
+            "$ref": "#/components/examples/Element/value"
           }
         }
       },
@@ -2054,6 +2229,51 @@
             "$ref": "#/components/examples/DataVersion/value"
           }
         ]
+      },
+      "DataIdentity": {
+        "value": {
+          "@type": "DataIdentity",
+          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+        }
+      },
+      "DataDifference": {
+        "value": {
+          "@type": "DataDifference",
+          "baseData": {
+            "$ref": "#/components/examples/DataVersion/value"
+          },
+          "compareData": {
+            "$ref": "#/components/examples/DataVersion/value"
+          }
+        }
+      },
+      "DataDifferences": {
+        "value": [
+          {
+            "$ref": "#/components/examples/DataDifference/value"
+          }
+        ]
+      },
+      "ConflictFreeMergeResult": {
+        "value": {
+          "@type": "MergeResult",
+          "conflict": [
+          ],
+          "mergeCommit": {
+            "$ref": "#/components/examples/Commit/value"
+          }
+        }
+      },
+      "ConflictingMergeResult": {
+        "value": {
+          "@type": "MergeResult",
+          "conflict": [
+            {
+              "$ref": "#/components/examples/DataIdentity/value"
+            }
+          ],
+          "mergeCommit": null
+        }
       },
       "Query": {
         "value": {
