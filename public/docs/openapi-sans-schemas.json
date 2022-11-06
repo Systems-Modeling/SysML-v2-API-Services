@@ -1310,6 +1310,59 @@
           }
         }
       },
+      "put": {
+        "tags": [
+          "Query"
+        ],
+        "summary": "Update project by project and ID",
+        "operationId": "putQueryByProjectAndId",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/projectId"
+          },
+          {
+            "$ref": "#/components/parameters/queryId"
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QueryRequest"
+              },
+              "examples": {
+                "QueryRequest": {
+                  "$ref": "#/components/examples/QueryRequest"
+                }
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Query"
+                },
+                "examples": {
+                  "Query": {
+                    "$ref": "#/components/examples/Query"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "default": {
+            "$ref": "#/components/responses/default"
+          }
+        }
+      },
       "delete": {
         "tags": [
           "Query"
