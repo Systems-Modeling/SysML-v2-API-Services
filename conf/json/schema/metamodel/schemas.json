@@ -23,7 +23,7 @@
               }
             },
             "annotatedElement": {
-              "type": "array",in
+              "type": "array",
               "items": {
                 "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
                 "$comment": "http://www.omg.org/spec/SysML/2.0/Element"
