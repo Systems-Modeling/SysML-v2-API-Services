@@ -25,7 +25,7 @@
       "name": "Relationship"
     },
     {
-      "name": "Dime"
+      "name": "Diff & Merge"
     },
     {
       "name": "Query"
@@ -1059,7 +1059,7 @@
     "/projects/{projectId}/commits/{compareCommitId}/diff": {
       "get": {
         "tags": [
-          "Dime"
+          "Diff & Merge"
         ],
         "summary": "Diff a base commit and compare commit",
         "operationId": "diff",
@@ -1105,7 +1105,7 @@
     "/projects/{projectId}/branches/{targetBranchId}/merge": {
       "post": {
         "tags": [
-          "Dime"
+          "Diff & Merge"
         ],
         "summary": "Merge source commit(s) into a target branch",
         "operationId": "merge",
