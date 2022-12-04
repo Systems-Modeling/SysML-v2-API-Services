@@ -25,6 +25,7 @@ package dao.impl.jpa;
 import config.MetamodelProvider;
 import dao.RelationshipDao;
 import jpa.manager.JPAManager;
+import org.omg.sysml.internal.WorkingDataVersion;
 import org.omg.sysml.lifecycle.Commit;
 import org.omg.sysml.lifecycle.DataVersion;
 import org.omg.sysml.lifecycle.impl.CommitImpl;
@@ -127,8 +128,10 @@ public class JpaRelationshipDao extends JpaDao<Relationship> implements Relation
             // Reverting to non-relational streaming
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
             Commit c = em.contains(commit) ? commit : em.find(CommitImpl.class, commit.getId());
-            return dataDao.findChangesByCommit(c, after, before, maxResults, excludeUsed, em)
-                    .stream()
+            Stream<Relationship> stream = dataDao.getCommitIndex(c, em).getWorkingDataVersion().stream()
+                    .filter(working -> !excludeUsed || working.getSource() == null)
+                    .map(WorkingDataVersion::getDataVersion)
+//            return dataDao.findChangesByCommit(c, after, before, maxResults, excludeUsed, em).stream()
                     .map(DataVersion::getPayload)
                     .filter(data -> data instanceof Relationship)
                     .map(data -> (Relationship) data)
@@ -152,8 +155,16 @@ public class JpaRelationshipDao extends JpaDao<Relationship> implements Relation
                                         .anyMatch(id -> id.equals(relatedElement.getElementId()));
                             }
                     )
+                    .map(relationship -> JpaDataDao.resolve(relationship, Relationship.class));
+//                    .collect(Collectors.toList());
+            Paginated<Stream<Relationship>> paginatedStream = paginateStream(after, before, maxResults, stream, Relationship::getElementId);
+            List<Relationship> result = paginatedStream.get()
                     .map(relationship -> JpaDataDao.resolve(relationship, Relationship.class))
                     .collect(Collectors.toList());
+            if (paginatedStream.isReversed()) {
+                Collections.reverse(result);
+            }
+            return result;
         });
     }
 
