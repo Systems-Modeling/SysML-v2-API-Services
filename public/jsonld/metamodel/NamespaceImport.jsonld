@@ -1,0 +1,39 @@
+{
+    "@context": {
+        "@vocab": "http://omg.org/ns/sysml/v2/metamodel#",
+        "sysml": "http://omg.org/ns/sysml/v2/metamodel#",
+        "dcterms": "http://purl.org/dc/terms/",
+        "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+        "aliasIds": {"@type": "xsd:string"},
+        "documentation": {"@type": "@id"},
+        "effectiveName": {"@type": "xsd:string"},
+        "elementId": {"@type": "dcterms:identifier"},
+        "importOwningNamespace": {"@type": "@id"},
+        "importedElement": {"@type": "@id"},
+        "importedNamespace": {"@type": "@id"},
+        "isImplied": {"@type": "xsd:boolean"},
+        "isImpliedIncluded": {"@type": "xsd:boolean"},
+        "isImportAll": {"@type": "xsd:boolean"},
+        "isLibraryElement": {"@type": "xsd:boolean"},
+        "isRecursive": {"@type": "xsd:boolean"},
+        "name": {"@type": "xsd:string"},
+        "ownedAnnotation": {"@type": "@id"},
+        "ownedElement": {"@type": "@id"},
+        "ownedRelatedElement": {"@type": "@id"},
+        "ownedRelationship": {"@type": "@id"},
+        "owner": {"@type": "@id"},
+        "owningMembership": {"@type": "@id"},
+        "owningNamespace": {"@type": "@id"},
+        "owningRelatedElement": {"@type": "@id"},
+        "owningRelationship": {"@type": "@id"},
+        "qualifiedName": {"@type": "xsd:string"},
+        "relatedElement": {"@type": "@id"},
+        "shortName": {"@type": "xsd:string"},
+        "source": {"@type": "@id"},
+        "target": {"@type": "@id"},
+        "textualRepresentation": {"@type": "@id"},
+        "visibility": {"@type": "@vocab"}
+
+    }
+}

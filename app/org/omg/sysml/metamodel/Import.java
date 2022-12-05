@@ -27,15 +27,13 @@ import java.util.List;
 import java.util.Set;
 
 public interface Import extends Relationship, SysMLType {
-    Namespace getImportedNamespace();
-
     Namespace getImportOwningNamespace();
 
     VisibilityKind getVisibility();
 
-    String getImportedMemberName();
-
     Boolean getIsRecursive();
 
     Boolean getIsImportAll();
+
+    Element getImportedElement();
 }

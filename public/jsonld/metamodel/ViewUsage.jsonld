@@ -17,7 +17,7 @@
         "elementId": {"@type": "dcterms:identifier"},
         "endFeature": {"@type": "@id"},
         "endOwningType": {"@type": "@id"},
-        "exposedNamespace": {"@type": "@id"},
+        "exposedElement": {"@type": "@id"},
         "feature": {"@type": "@id"},
         "featureMembership": {"@type": "@id"},
         "featuringType": {"@type": "@id"},
@@ -120,8 +120,7 @@
         "variantMembership": {"@type": "@id"},
         "viewCondition": {"@type": "@id"},
         "viewDefinition": {"@type": "@id"},
-        "viewRendering": {"@type": "@id"},
-        "viewedElement": {"@type": "@id"}
+        "viewRendering": {"@type": "@id"}
 
     }
 }

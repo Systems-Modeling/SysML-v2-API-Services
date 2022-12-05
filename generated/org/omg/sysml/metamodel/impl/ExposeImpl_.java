@@ -22,7 +22,6 @@ public abstract class ExposeImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_
 	public static volatile SingularAttribute<ExposeImpl, Boolean> isImplied;
 	public static volatile ListAttribute<ExposeImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ExposeImpl, Element> ownedElement;
-	public static volatile SingularAttribute<ExposeImpl, String> importedMemberName;
 	public static volatile ListAttribute<ExposeImpl, String> aliasIds;
 	public static volatile SingularAttribute<ExposeImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<ExposeImpl, Relationship> ownedRelationship;
@@ -45,7 +44,6 @@ public abstract class ExposeImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
-	public static final String IMPORTED_MEMBER_NAME = "importedMemberName";
 	public static final String ALIAS_IDS = "aliasIds";
 	public static final String VISIBILITY = "visibility";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";

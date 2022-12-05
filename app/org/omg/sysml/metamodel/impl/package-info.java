@@ -119,6 +119,8 @@
                         @MetaValue(value = "LiteralString", targetEntity = LiteralStringImpl.class),
                         @MetaValue(value = "LoopActionUsage", targetEntity = LoopActionUsageImpl.class),
                         @MetaValue(value = "Membership", targetEntity = MembershipImpl.class),
+                        @MetaValue(value = "MembershipExpose", targetEntity = MembershipExposeImpl.class),
+                        @MetaValue(value = "MembershipImport", targetEntity = MembershipImportImpl.class),
                         @MetaValue(value = "MergeNode", targetEntity = MergeNodeImpl.class),
                         @MetaValue(value = "Metaclass", targetEntity = MetaclassImpl.class),
                         @MetaValue(value = "MetadataAccessExpression", targetEntity = MetadataAccessExpressionImpl.class),
@@ -128,6 +130,8 @@
                         @MetaValue(value = "Multiplicity", targetEntity = MultiplicityImpl.class),
                         @MetaValue(value = "MultiplicityRange", targetEntity = MultiplicityRangeImpl.class),
                         @MetaValue(value = "Namespace", targetEntity = NamespaceImpl.class),
+                        @MetaValue(value = "NamespaceExpose", targetEntity = NamespaceExposeImpl.class),
+                        @MetaValue(value = "NamespaceImport", targetEntity = NamespaceImportImpl.class),
                         @MetaValue(value = "NullExpression", targetEntity = NullExpressionImpl.class),
                         @MetaValue(value = "ObjectiveMembership", targetEntity = ObjectiveMembershipImpl.class),
                         @MetaValue(value = "OccurrenceDefinition", targetEntity = OccurrenceDefinitionImpl.class),
@@ -702,6 +706,8 @@
                         @MetaValue(value = "LiteralString", targetEntity = LiteralStringImpl.class),
                         @MetaValue(value = "LoopActionUsage", targetEntity = LoopActionUsageImpl.class),
                         @MetaValue(value = "Membership", targetEntity = MembershipImpl.class),
+                        @MetaValue(value = "MembershipExpose", targetEntity = MembershipExposeImpl.class),
+                        @MetaValue(value = "MembershipImport", targetEntity = MembershipImportImpl.class),
                         @MetaValue(value = "MergeNode", targetEntity = MergeNodeImpl.class),
                         @MetaValue(value = "Metaclass", targetEntity = MetaclassImpl.class),
                         @MetaValue(value = "MetadataAccessExpression", targetEntity = MetadataAccessExpressionImpl.class),
@@ -711,6 +717,8 @@
                         @MetaValue(value = "Multiplicity", targetEntity = MultiplicityImpl.class),
                         @MetaValue(value = "MultiplicityRange", targetEntity = MultiplicityRangeImpl.class),
                         @MetaValue(value = "Namespace", targetEntity = NamespaceImpl.class),
+                        @MetaValue(value = "NamespaceExpose", targetEntity = NamespaceExposeImpl.class),
+                        @MetaValue(value = "NamespaceImport", targetEntity = NamespaceImportImpl.class),
                         @MetaValue(value = "NullExpression", targetEntity = NullExpressionImpl.class),
                         @MetaValue(value = "ObjectiveMembership", targetEntity = ObjectiveMembershipImpl.class),
                         @MetaValue(value = "OccurrenceDefinition", targetEntity = OccurrenceDefinitionImpl.class),
@@ -806,6 +814,8 @@
         @AnyMetaDef(name = "ExposeMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
                         @MetaValue(value = "Expose", targetEntity = ExposeImpl.class),
+                        @MetaValue(value = "MembershipExpose", targetEntity = MembershipExposeImpl.class),
+                        @MetaValue(value = "NamespaceExpose", targetEntity = NamespaceExposeImpl.class),
                 }),
         @AnyMetaDef(name = "ExpressionMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -1029,6 +1039,10 @@
                 metaValues = {
                         @MetaValue(value = "Expose", targetEntity = ExposeImpl.class),
                         @MetaValue(value = "Import", targetEntity = ImportImpl.class),
+                        @MetaValue(value = "MembershipExpose", targetEntity = MembershipExposeImpl.class),
+                        @MetaValue(value = "MembershipImport", targetEntity = MembershipImportImpl.class),
+                        @MetaValue(value = "NamespaceExpose", targetEntity = NamespaceExposeImpl.class),
+                        @MetaValue(value = "NamespaceImport", targetEntity = NamespaceImportImpl.class),
                 }),
         @AnyMetaDef(name = "IncludeUseCaseUsageMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -1175,6 +1189,15 @@
                         @MetaValue(value = "TransitionFeatureMembership", targetEntity = TransitionFeatureMembershipImpl.class),
                         @MetaValue(value = "VariantMembership", targetEntity = VariantMembershipImpl.class),
                         @MetaValue(value = "ViewRenderingMembership", targetEntity = ViewRenderingMembershipImpl.class),
+                }),
+        @AnyMetaDef(name = "MembershipExposeMetaDef", metaType = "string", idType = "java.util.UUID",
+                metaValues = {
+                        @MetaValue(value = "MembershipExpose", targetEntity = MembershipExposeImpl.class),
+                }),
+        @AnyMetaDef(name = "MembershipImportMetaDef", metaType = "string", idType = "java.util.UUID",
+                metaValues = {
+                        @MetaValue(value = "MembershipExpose", targetEntity = MembershipExposeImpl.class),
+                        @MetaValue(value = "MembershipImport", targetEntity = MembershipImportImpl.class),
                 }),
         @AnyMetaDef(name = "MergeNodeMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -1335,6 +1358,15 @@
                         @MetaValue(value = "ViewpointDefinition", targetEntity = ViewpointDefinitionImpl.class),
                         @MetaValue(value = "ViewpointUsage", targetEntity = ViewpointUsageImpl.class),
                         @MetaValue(value = "WhileLoopActionUsage", targetEntity = WhileLoopActionUsageImpl.class),
+                }),
+        @AnyMetaDef(name = "NamespaceExposeMetaDef", metaType = "string", idType = "java.util.UUID",
+                metaValues = {
+                        @MetaValue(value = "NamespaceExpose", targetEntity = NamespaceExposeImpl.class),
+                }),
+        @AnyMetaDef(name = "NamespaceImportMetaDef", metaType = "string", idType = "java.util.UUID",
+                metaValues = {
+                        @MetaValue(value = "NamespaceExpose", targetEntity = NamespaceExposeImpl.class),
+                        @MetaValue(value = "NamespaceImport", targetEntity = NamespaceImportImpl.class),
                 }),
         @AnyMetaDef(name = "NullExpressionMetaDef", metaType = "string", idType = "java.util.UUID",
                 metaValues = {
@@ -1559,6 +1591,10 @@
                         @MetaValue(value = "Intersecting", targetEntity = IntersectingImpl.class),
                         @MetaValue(value = "ItemFlow", targetEntity = ItemFlowImpl.class),
                         @MetaValue(value = "Membership", targetEntity = MembershipImpl.class),
+                        @MetaValue(value = "MembershipExpose", targetEntity = MembershipExposeImpl.class),
+                        @MetaValue(value = "MembershipImport", targetEntity = MembershipImportImpl.class),
+                        @MetaValue(value = "NamespaceExpose", targetEntity = NamespaceExposeImpl.class),
+                        @MetaValue(value = "NamespaceImport", targetEntity = NamespaceImportImpl.class),
                         @MetaValue(value = "ObjectiveMembership", targetEntity = ObjectiveMembershipImpl.class),
                         @MetaValue(value = "OwningMembership", targetEntity = OwningMembershipImpl.class),
                         @MetaValue(value = "ParameterMembership", targetEntity = ParameterMembershipImpl.class),

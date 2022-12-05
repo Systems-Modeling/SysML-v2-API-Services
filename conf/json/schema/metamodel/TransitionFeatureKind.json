@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "http://www.omg.org/spec/SysML/2.0/TransitionFeatureKind",
+  "$id": "http://www.omg.org/spec/SysML/20230201/TransitionFeatureKind",
   "title": "TransitionFeatureKind",
   "type": "string",
   "enum": [
