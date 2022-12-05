@@ -351,27 +351,27 @@ public class ViewUsageImpl extends SysMLTypeImpl implements ViewUsage {
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("exposedNamespace")
-    private List<Namespace> exposedNamespace;
+    // @info.archinnov.achilles.annotations.Column("exposedElement")
+    private List<Element> exposedElement;
 
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ViewUsage_exposedNamespace",
+    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "ViewUsage_exposedElement",
             joinColumns = @JoinColumn(name = "class_id"),
             inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public List<Namespace> getExposedNamespace() {
-        if (exposedNamespace == null) {
-            exposedNamespace = new ArrayList<>();
+    public List<Element> getExposedElement() {
+        if (exposedElement == null) {
+            exposedElement = new ArrayList<>();
         }
-        return exposedNamespace;
+        return exposedElement;
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = NamespaceImpl.class)
-    public void setExposedNamespace(List<Namespace> exposedNamespace) {
-        this.exposedNamespace = exposedNamespace;
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
+    public void setExposedElement(List<Element> exposedElement) {
+        this.exposedElement = exposedElement;
     }
 
 
@@ -2797,32 +2797,6 @@ public class ViewUsageImpl extends SysMLTypeImpl implements ViewUsage {
     @JsonDeserialize(using = DataDeserializer.class, as = RenderingUsageImpl.class)
     public void setViewRendering(RenderingUsage viewRendering) {
         this.viewRendering = viewRendering;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("viewedElement")
-    private List<Element> viewedElement;
-
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "ViewUsage_viewedElement",
-            joinColumns = @JoinColumn(name = "class_id"),
-            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public List<Element> getViewedElement() {
-        if (viewedElement == null) {
-            viewedElement = new ArrayList<>();
-        }
-        return viewedElement;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ElementImpl.class)
-    public void setViewedElement(List<Element> viewedElement) {
-        this.viewedElement = viewedElement;
     }
 
 

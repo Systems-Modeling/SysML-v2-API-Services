@@ -120,7 +120,9 @@
         <class>org.omg.sysml.metamodel.impl.LiteralRationalImpl</class>
         <class>org.omg.sysml.metamodel.impl.LiteralStringImpl</class>
         <class>org.omg.sysml.metamodel.impl.LoopActionUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.MembershipExposeImpl</class>
         <class>org.omg.sysml.metamodel.impl.MembershipImpl</class>
+        <class>org.omg.sysml.metamodel.impl.MembershipImportImpl</class>
         <class>org.omg.sysml.metamodel.impl.MergeNodeImpl</class>
         <class>org.omg.sysml.metamodel.impl.MetaclassImpl</class>
         <class>org.omg.sysml.metamodel.impl.MetadataAccessExpressionImpl</class>
@@ -129,7 +131,9 @@
         <class>org.omg.sysml.metamodel.impl.MetadataUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.MultiplicityImpl</class>
         <class>org.omg.sysml.metamodel.impl.MultiplicityRangeImpl</class>
+        <class>org.omg.sysml.metamodel.impl.NamespaceExposeImpl</class>
         <class>org.omg.sysml.metamodel.impl.NamespaceImpl</class>
+        <class>org.omg.sysml.metamodel.impl.NamespaceImportImpl</class>
         <class>org.omg.sysml.metamodel.impl.NullExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.ObjectiveMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.OccurrenceDefinitionImpl</class>

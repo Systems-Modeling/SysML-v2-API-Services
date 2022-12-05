@@ -31,11 +31,9 @@ public interface ViewUsage extends PartUsage, SysMLType {
 
     List<? extends ViewpointUsage> getSatisfiedViewpoint();
 
-    List<? extends Namespace> getExposedNamespace();
+    List<? extends Element> getExposedElement();
 
     RenderingUsage getViewRendering();
 
     List<? extends Expression> getViewCondition();
-
-    List<? extends Element> getViewedElement();
 }

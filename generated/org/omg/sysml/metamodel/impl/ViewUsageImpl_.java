@@ -37,7 +37,6 @@ import org.omg.sysml.metamodel.Intersecting;
 import org.omg.sysml.metamodel.ItemUsage;
 import org.omg.sysml.metamodel.Membership;
 import org.omg.sysml.metamodel.MetadataUsage;
-import org.omg.sysml.metamodel.Namespace;
 import org.omg.sysml.metamodel.OccurrenceUsage;
 import org.omg.sysml.metamodel.PartDefinition;
 import org.omg.sysml.metamodel.PartUsage;
@@ -73,7 +72,6 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile CollectionAttribute<ViewUsageImpl, Subsetting> ownedSubsetting;
 	public static volatile ListAttribute<ViewUsageImpl, Type> type;
 	public static volatile ListAttribute<ViewUsageImpl, RequirementUsage> nestedRequirement;
-	public static volatile ListAttribute<ViewUsageImpl, Namespace> exposedNamespace;
 	public static volatile ListAttribute<ViewUsageImpl, Feature> output;
 	public static volatile ListAttribute<ViewUsageImpl, PortUsage> nestedPort;
 	public static volatile CollectionAttribute<ViewUsageImpl, TransitionUsage> nestedTransition;
@@ -106,6 +104,7 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile SingularAttribute<ViewUsageImpl, Boolean> isReference;
 	public static volatile ListAttribute<ViewUsageImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<ViewUsageImpl, String> effectiveName;
+	public static volatile ListAttribute<ViewUsageImpl, Element> exposedElement;
 	public static volatile ListAttribute<ViewUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ViewUsageImpl, Element> ownedElement;
 	public static volatile ListAttribute<ViewUsageImpl, PartDefinition> partDefinition;
@@ -161,7 +160,6 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile SingularAttribute<ViewUsageImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<ViewUsageImpl, ActionUsage> nestedAction;
 	public static volatile ListAttribute<ViewUsageImpl, Relationship> ownedRelationship;
-	public static volatile ListAttribute<ViewUsageImpl, Element> viewedElement;
 	public static volatile CollectionAttribute<ViewUsageImpl, ConcernUsage> nestedConcern;
 	public static volatile ListAttribute<ViewUsageImpl, Import> ownedImport;
 	public static volatile ListAttribute<ViewUsageImpl, Structure> itemDefinition;
@@ -175,7 +173,6 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String OWNED_SUBSETTING = "ownedSubsetting";
 	public static final String TYPE = "type";
 	public static final String NESTED_REQUIREMENT = "nestedRequirement";
-	public static final String EXPOSED_NAMESPACE = "exposedNamespace";
 	public static final String OUTPUT = "output";
 	public static final String NESTED_PORT = "nestedPort";
 	public static final String NESTED_TRANSITION = "nestedTransition";
@@ -208,6 +205,7 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String IS_REFERENCE = "isReference";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String EFFECTIVE_NAME = "effectiveName";
+	public static final String EXPOSED_ELEMENT = "exposedElement";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String PART_DEFINITION = "partDefinition";
@@ -263,7 +261,6 @@ public abstract class ViewUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String DIRECTION = "direction";
 	public static final String NESTED_ACTION = "nestedAction";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
-	public static final String VIEWED_ELEMENT = "viewedElement";
 	public static final String NESTED_CONCERN = "nestedConcern";
 	public static final String OWNED_IMPORT = "ownedImport";
 	public static final String ITEM_DEFINITION = "itemDefinition";

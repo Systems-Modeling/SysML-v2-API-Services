@@ -22,7 +22,6 @@ public abstract class ImportImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_
 	public static volatile SingularAttribute<ImportImpl, Boolean> isImplied;
 	public static volatile ListAttribute<ImportImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ImportImpl, Element> ownedElement;
-	public static volatile SingularAttribute<ImportImpl, String> importedMemberName;
 	public static volatile ListAttribute<ImportImpl, String> aliasIds;
 	public static volatile SingularAttribute<ImportImpl, VisibilityKind> visibility;
 	public static volatile ListAttribute<ImportImpl, Relationship> ownedRelationship;
@@ -45,7 +44,6 @@ public abstract class ImportImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
-	public static final String IMPORTED_MEMBER_NAME = "importedMemberName";
 	public static final String ALIAS_IDS = "aliasIds";
 	public static final String VISIBILITY = "visibility";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
