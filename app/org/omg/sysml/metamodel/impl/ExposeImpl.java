@@ -69,7 +69,7 @@ import java.util.HashSet;
 @DiscriminatorValue(value = "Expose")
 @JsonTypeName(value = "Expose")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME)
-public class ExposeImpl extends SysMLTypeImpl implements Expose {
+public abstract class ExposeImpl extends SysMLTypeImpl implements Expose {
     // @info.archinnov.achilles.annotations.Column("aliasIds")
     private List<String> aliasIds;
 
@@ -176,39 +176,23 @@ public class ExposeImpl extends SysMLTypeImpl implements Expose {
 
 
 
-    // @info.archinnov.achilles.annotations.Column("importedMemberName")
-    private String importedMemberName;
-
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "importedMemberName", table = "Expose")
-    public String getImportedMemberName() {
-        return importedMemberName;
-    }
-
-    @JsonSetter
-    public void setImportedMemberName(String importedMemberName) {
-        this.importedMemberName = importedMemberName;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Column("importedNamespace")
-    private Namespace importedNamespace;
+    // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("importedElement")
+    private Element importedElement;
 
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "NamespaceMetaDef", metaColumn = @javax.persistence.Column(name = "importedNamespace_type"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "importedNamespace_id", table = "Expose")
-    public Namespace getImportedNamespace() {
-        return importedNamespace;
+    // @javax.persistence.Transient
+    @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "importedElement_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "importedElement_id", table = "Expose")
+    public Element getImportedElement() {
+        return importedElement;
     }
 
     @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = NamespaceImpl.class)
-    public void setImportedNamespace(Namespace importedNamespace) {
-        this.importedNamespace = importedNamespace;
+    @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
+    public void setImportedElement(Element importedElement) {
+        this.importedElement = importedElement;
     }
 
 
