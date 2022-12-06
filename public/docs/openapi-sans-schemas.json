@@ -2065,7 +2065,7 @@
             {
               "@type": "DataVersion",
               "payload": {
-                "$ref": "#/components/examples/Element"
+                "$ref": "#/components/examples/Element/value"
               }
             }
           ]
@@ -2078,7 +2078,7 @@
             {
               "@type": "DataVersion",
               "payload": {
-                "$ref": "#/components/examples/Relationship"
+                "$ref": "#/components/examples/Relationship/value"
               }
             }
           ]
@@ -2091,7 +2091,7 @@
             {
               "@type": "DataVersion",
               "payload": {
-                "$ref": "#/components/examples/ProjectUsageRequest"
+                "$ref": "#/components/examples/ProjectUsageRequest/value"
               }
             }
           ]
