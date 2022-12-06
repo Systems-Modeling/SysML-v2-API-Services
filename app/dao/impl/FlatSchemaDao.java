@@ -49,7 +49,7 @@ public class FlatSchemaDao implements SchemaDao {
         try (Stream<Class<?>> interfaces = metamodelProvider.getAllInterfaces().stream()) {
             map = Streams.concat(
                             interfaces
-                                    .map(type -> FlatSchemaDao.class.getResourceAsStream(String.format("/json/schema/lang/%s.json",
+                                    .map(type -> FlatSchemaDao.class.getResourceAsStream(String.format("/json/schema/metamodel/%s.json",
                                             type.getSimpleName())))
                                     .filter(Objects::nonNull),
                             Stream.of(ExternalData.class, ExternalRelationship.class, ProjectUsage.class)
