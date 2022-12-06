@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "http://www.omg.org/spec/SysML/20230201/OwningMembership",
+  "$id": "https://www.omg.org/spec/SysML/20230201/OwningMembership",
   "title": "OwningMembership",
   "anyOf": [
     {
@@ -23,8 +23,8 @@
         "documentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Documentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
         },
         "effectiveName": {
@@ -78,8 +78,8 @@
           ]
         },
         "memberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "memberElementId": {
           "oneOf": [
@@ -112,8 +112,8 @@
           ]
         },
         "membershipOwningNamespace": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
         },
         "name": {
           "oneOf": [
@@ -128,20 +128,20 @@
         "ownedAnnotation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Annotation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
           }
         },
         "ownedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedMemberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "ownedMemberElementId": {
           "oneOf": [
@@ -176,22 +176,22 @@
         "ownedRelatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedRelationship": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
           }
         },
         "owner": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -201,8 +201,8 @@
         "owningMembership": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/OwningMembership"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/OwningMembership"
             },
             {
               "type": "null"
@@ -212,8 +212,8 @@
         "owningNamespace": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
             },
             {
               "type": "null"
@@ -223,8 +223,8 @@
         "owningRelatedElement": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -234,8 +234,8 @@
         "owningRelationship": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
             },
             {
               "type": "null"
@@ -255,8 +255,8 @@
         "relatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "shortName": {
@@ -272,28 +272,28 @@
         "source": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "target": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "textualRepresentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/TextualRepresentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/TextualRepresentation"
           }
         },
         "visibility": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/VisibilityKind"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/VisibilityKind"
             },
             {
               "type": "null"
@@ -341,21 +341,21 @@
       "additionalProperties": false
     },
     {
-      "$ref": "http://www.omg.org/spec/SysML/20230201/ElementFilterMembership"
+      "$ref": "https://www.omg.org/spec/SysML/20230201/ElementFilterMembership"
     },
     {
-      "$ref": "http://www.omg.org/spec/SysML/20230201/FeatureValue"
+      "$ref": "https://www.omg.org/spec/SysML/20230201/FeatureValue"
     },
     {
-      "$ref": "http://www.omg.org/spec/SysML/20230201/FeatureMembership"
+      "$ref": "https://www.omg.org/spec/SysML/20230201/FeatureMembership"
     },
     {
-      "$ref": "http://www.omg.org/spec/SysML/20230201/VariantMembership"
+      "$ref": "https://www.omg.org/spec/SysML/20230201/VariantMembership"
     }
   ],
   "$defs": {
     "Identified": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/Identified",
+      "$id": "https://www.omg.org/spec/SysML/20230201/Identified",
       "title": "Identified",
       "type": "object",
       "properties": {
@@ -370,7 +370,7 @@
       "additionalProperties": false
     },
     "VisibilityKind": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/VisibilityKind",
+      "$id": "https://www.omg.org/spec/SysML/20230201/VisibilityKind",
       "title": "VisibilityKind",
       "type": "string",
       "enum": [
@@ -380,7 +380,7 @@
       ]
     },
     "ElementFilterMembership": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/ElementFilterMembership",
+      "$id": "https://www.omg.org/spec/SysML/20230201/ElementFilterMembership",
       "title": "ElementFilterMembership",
       "type": "object",
       "properties": {
@@ -399,14 +399,14 @@
           }
         },
         "condition": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Expression"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Expression"
         },
         "documentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Documentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
         },
         "effectiveName": {
@@ -460,8 +460,8 @@
           ]
         },
         "memberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "memberElementId": {
           "oneOf": [
@@ -494,8 +494,8 @@
           ]
         },
         "membershipOwningNamespace": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
         },
         "name": {
           "oneOf": [
@@ -510,20 +510,20 @@
         "ownedAnnotation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Annotation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
           }
         },
         "ownedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedMemberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "ownedMemberElementId": {
           "oneOf": [
@@ -558,22 +558,22 @@
         "ownedRelatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedRelationship": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
           }
         },
         "owner": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -583,8 +583,8 @@
         "owningMembership": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/OwningMembership"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/OwningMembership"
             },
             {
               "type": "null"
@@ -594,8 +594,8 @@
         "owningNamespace": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
             },
             {
               "type": "null"
@@ -605,8 +605,8 @@
         "owningRelatedElement": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -616,8 +616,8 @@
         "owningRelationship": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
             },
             {
               "type": "null"
@@ -637,8 +637,8 @@
         "relatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "shortName": {
@@ -654,28 +654,28 @@
         "source": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "target": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "textualRepresentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/TextualRepresentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/TextualRepresentation"
           }
         },
         "visibility": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/VisibilityKind"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/VisibilityKind"
             },
             {
               "type": "null"
@@ -724,7 +724,7 @@
       "additionalProperties": false
     },
     "FeatureValue": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/FeatureValue",
+      "$id": "https://www.omg.org/spec/SysML/20230201/FeatureValue",
       "title": "FeatureValue",
       "type": "object",
       "properties": {
@@ -745,8 +745,8 @@
         "documentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Documentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
         },
         "effectiveName": {
@@ -770,8 +770,8 @@
           ]
         },
         "featureWithValue": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "isDefault": {
           "oneOf": [
@@ -824,8 +824,8 @@
           ]
         },
         "memberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "memberElementId": {
           "oneOf": [
@@ -858,8 +858,8 @@
           ]
         },
         "membershipOwningNamespace": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
         },
         "name": {
           "oneOf": [
@@ -874,20 +874,20 @@
         "ownedAnnotation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Annotation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
           }
         },
         "ownedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedMemberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "ownedMemberElementId": {
           "oneOf": [
@@ -922,22 +922,22 @@
         "ownedRelatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedRelationship": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
           }
         },
         "owner": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -947,8 +947,8 @@
         "owningMembership": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/OwningMembership"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/OwningMembership"
             },
             {
               "type": "null"
@@ -958,8 +958,8 @@
         "owningNamespace": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
             },
             {
               "type": "null"
@@ -969,8 +969,8 @@
         "owningRelatedElement": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -980,8 +980,8 @@
         "owningRelationship": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
             },
             {
               "type": "null"
@@ -1001,8 +1001,8 @@
         "relatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "shortName": {
@@ -1018,32 +1018,32 @@
         "source": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "target": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "textualRepresentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/TextualRepresentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/TextualRepresentation"
           }
         },
         "value": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Expression"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Expression"
         },
         "visibility": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/VisibilityKind"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/VisibilityKind"
             },
             {
               "type": "null"
@@ -1095,7 +1095,7 @@
       "additionalProperties": false
     },
     "FeatureMembership": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/FeatureMembership",
+      "$id": "https://www.omg.org/spec/SysML/20230201/FeatureMembership",
       "title": "FeatureMembership",
       "anyOf": [
         {
@@ -1118,8 +1118,8 @@
             "documentation": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Documentation"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
               }
             },
             "effectiveName": {
@@ -1143,8 +1143,8 @@
               ]
             },
             "feature": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
             },
             "isImplied": {
               "oneOf": [
@@ -1177,8 +1177,8 @@
               ]
             },
             "memberElement": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             "memberElementId": {
               "oneOf": [
@@ -1211,8 +1211,8 @@
               ]
             },
             "membershipOwningNamespace": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
             },
             "name": {
               "oneOf": [
@@ -1227,20 +1227,20 @@
             "ownedAnnotation": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Annotation"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
               }
             },
             "ownedElement": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
               }
             },
             "ownedMemberElement": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             "ownedMemberElementId": {
               "oneOf": [
@@ -1253,8 +1253,8 @@
               ]
             },
             "ownedMemberFeature": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
             },
             "ownedMemberName": {
               "oneOf": [
@@ -1279,22 +1279,22 @@
             "ownedRelatedElement": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
               }
             },
             "ownedRelationship": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
               }
             },
             "owner": {
               "oneOf": [
                 {
-                  "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                  "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+                  "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                  "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
                 },
                 {
                   "type": "null"
@@ -1304,8 +1304,8 @@
             "owningMembership": {
               "oneOf": [
                 {
-                  "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                  "$comment": "http://www.omg.org/spec/SysML/20230201/OwningMembership"
+                  "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                  "$comment": "https://www.omg.org/spec/SysML/20230201/OwningMembership"
                 },
                 {
                   "type": "null"
@@ -1315,8 +1315,8 @@
             "owningNamespace": {
               "oneOf": [
                 {
-                  "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                  "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+                  "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                  "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
                 },
                 {
                   "type": "null"
@@ -1326,8 +1326,8 @@
             "owningRelatedElement": {
               "oneOf": [
                 {
-                  "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                  "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+                  "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                  "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
                 },
                 {
                   "type": "null"
@@ -1337,8 +1337,8 @@
             "owningRelationship": {
               "oneOf": [
                 {
-                  "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                  "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+                  "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                  "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
                 },
                 {
                   "type": "null"
@@ -1346,8 +1346,8 @@
               ]
             },
             "owningType": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
             },
             "qualifiedName": {
               "oneOf": [
@@ -1362,8 +1362,8 @@
             "relatedElement": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
               }
             },
             "shortName": {
@@ -1379,32 +1379,32 @@
             "source": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
               }
             },
             "target": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
               }
             },
             "textualRepresentation": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/TextualRepresentation"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/TextualRepresentation"
               }
             },
             "type": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
             },
             "visibility": {
               "oneOf": [
                 {
-                  "$ref": "http://www.omg.org/spec/SysML/20230201/VisibilityKind"
+                  "$ref": "https://www.omg.org/spec/SysML/20230201/VisibilityKind"
                 },
                 {
                   "type": "null"
@@ -1456,33 +1456,33 @@
           "additionalProperties": false
         },
         {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/ResultExpressionMembership"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/ResultExpressionMembership"
         },
         {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/ParameterMembership"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/ParameterMembership"
         },
         {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/EndFeatureMembership"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/EndFeatureMembership"
         },
         {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/ObjectiveMembership"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/ObjectiveMembership"
         },
         {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/ViewRenderingMembership"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/ViewRenderingMembership"
         },
         {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/StateSubactionMembership"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/StateSubactionMembership"
         },
         {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/TransitionFeatureMembership"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/TransitionFeatureMembership"
         },
         {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/RequirementConstraintMembership"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/RequirementConstraintMembership"
         }
       ]
     },
     "ResultExpressionMembership": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/ResultExpressionMembership",
+      "$id": "https://www.omg.org/spec/SysML/20230201/ResultExpressionMembership",
       "title": "ResultExpressionMembership",
       "type": "object",
       "properties": {
@@ -1503,8 +1503,8 @@
         "documentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Documentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
         },
         "effectiveName": {
@@ -1528,8 +1528,8 @@
           ]
         },
         "feature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "isImplied": {
           "oneOf": [
@@ -1562,8 +1562,8 @@
           ]
         },
         "memberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "memberElementId": {
           "oneOf": [
@@ -1596,8 +1596,8 @@
           ]
         },
         "membershipOwningNamespace": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
         },
         "name": {
           "oneOf": [
@@ -1612,20 +1612,20 @@
         "ownedAnnotation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Annotation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
           }
         },
         "ownedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedMemberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "ownedMemberElementId": {
           "oneOf": [
@@ -1638,8 +1638,8 @@
           ]
         },
         "ownedMemberFeature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "ownedMemberName": {
           "oneOf": [
@@ -1664,26 +1664,26 @@
         "ownedRelatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedRelationship": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
           }
         },
         "ownedResultExpression": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Expression"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Expression"
         },
         "owner": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -1693,8 +1693,8 @@
         "owningMembership": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/OwningMembership"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/OwningMembership"
             },
             {
               "type": "null"
@@ -1704,8 +1704,8 @@
         "owningNamespace": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
             },
             {
               "type": "null"
@@ -1715,8 +1715,8 @@
         "owningRelatedElement": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -1726,8 +1726,8 @@
         "owningRelationship": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
             },
             {
               "type": "null"
@@ -1735,8 +1735,8 @@
           ]
         },
         "owningType": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "qualifiedName": {
           "oneOf": [
@@ -1751,8 +1751,8 @@
         "relatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "shortName": {
@@ -1768,32 +1768,32 @@
         "source": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "target": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "textualRepresentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/TextualRepresentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/TextualRepresentation"
           }
         },
         "type": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "visibility": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/VisibilityKind"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/VisibilityKind"
             },
             {
               "type": "null"
@@ -1846,7 +1846,7 @@
       "additionalProperties": false
     },
     "ParameterMembership": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/ParameterMembership",
+      "$id": "https://www.omg.org/spec/SysML/20230201/ParameterMembership",
       "title": "ParameterMembership",
       "anyOf": [
         {
@@ -1869,8 +1869,8 @@
             "documentation": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Documentation"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
               }
             },
             "effectiveName": {
@@ -1894,8 +1894,8 @@
               ]
             },
             "feature": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
             },
             "isImplied": {
               "oneOf": [
@@ -1928,8 +1928,8 @@
               ]
             },
             "memberElement": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             "memberElementId": {
               "oneOf": [
@@ -1962,8 +1962,8 @@
               ]
             },
             "membershipOwningNamespace": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
             },
             "name": {
               "oneOf": [
@@ -1978,20 +1978,20 @@
             "ownedAnnotation": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Annotation"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
               }
             },
             "ownedElement": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
               }
             },
             "ownedMemberElement": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             "ownedMemberElementId": {
               "oneOf": [
@@ -2004,8 +2004,8 @@
               ]
             },
             "ownedMemberFeature": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
             },
             "ownedMemberName": {
               "oneOf": [
@@ -2018,8 +2018,8 @@
               ]
             },
             "ownedMemberParameter": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
             },
             "ownedMemberShortName": {
               "oneOf": [
@@ -2034,22 +2034,22 @@
             "ownedRelatedElement": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
               }
             },
             "ownedRelationship": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
               }
             },
             "owner": {
               "oneOf": [
                 {
-                  "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                  "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+                  "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                  "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
                 },
                 {
                   "type": "null"
@@ -2059,8 +2059,8 @@
             "owningMembership": {
               "oneOf": [
                 {
-                  "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                  "$comment": "http://www.omg.org/spec/SysML/20230201/OwningMembership"
+                  "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                  "$comment": "https://www.omg.org/spec/SysML/20230201/OwningMembership"
                 },
                 {
                   "type": "null"
@@ -2070,8 +2070,8 @@
             "owningNamespace": {
               "oneOf": [
                 {
-                  "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                  "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+                  "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                  "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
                 },
                 {
                   "type": "null"
@@ -2081,8 +2081,8 @@
             "owningRelatedElement": {
               "oneOf": [
                 {
-                  "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                  "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+                  "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                  "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
                 },
                 {
                   "type": "null"
@@ -2092,8 +2092,8 @@
             "owningRelationship": {
               "oneOf": [
                 {
-                  "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                  "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+                  "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                  "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
                 },
                 {
                   "type": "null"
@@ -2101,8 +2101,8 @@
               ]
             },
             "owningType": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
             },
             "qualifiedName": {
               "oneOf": [
@@ -2117,8 +2117,8 @@
             "relatedElement": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
               }
             },
             "shortName": {
@@ -2134,32 +2134,32 @@
             "source": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
               }
             },
             "target": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
               }
             },
             "textualRepresentation": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/TextualRepresentation"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/TextualRepresentation"
               }
             },
             "type": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
             },
             "visibility": {
               "oneOf": [
                 {
-                  "$ref": "http://www.omg.org/spec/SysML/20230201/VisibilityKind"
+                  "$ref": "https://www.omg.org/spec/SysML/20230201/VisibilityKind"
                 },
                 {
                   "type": "null"
@@ -2212,21 +2212,21 @@
           "additionalProperties": false
         },
         {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/ReturnParameterMembership"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/ReturnParameterMembership"
         },
         {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/ActorMembership"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/ActorMembership"
         },
         {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/StakeholderMembership"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/StakeholderMembership"
         },
         {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/SubjectMembership"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/SubjectMembership"
         }
       ]
     },
     "ReturnParameterMembership": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/ReturnParameterMembership",
+      "$id": "https://www.omg.org/spec/SysML/20230201/ReturnParameterMembership",
       "title": "ReturnParameterMembership",
       "type": "object",
       "properties": {
@@ -2247,8 +2247,8 @@
         "documentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Documentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
         },
         "effectiveName": {
@@ -2272,8 +2272,8 @@
           ]
         },
         "feature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "isImplied": {
           "oneOf": [
@@ -2306,8 +2306,8 @@
           ]
         },
         "memberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "memberElementId": {
           "oneOf": [
@@ -2340,8 +2340,8 @@
           ]
         },
         "membershipOwningNamespace": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
         },
         "name": {
           "oneOf": [
@@ -2356,20 +2356,20 @@
         "ownedAnnotation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Annotation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
           }
         },
         "ownedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedMemberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "ownedMemberElementId": {
           "oneOf": [
@@ -2382,8 +2382,8 @@
           ]
         },
         "ownedMemberFeature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "ownedMemberName": {
           "oneOf": [
@@ -2396,8 +2396,8 @@
           ]
         },
         "ownedMemberParameter": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "ownedMemberShortName": {
           "oneOf": [
@@ -2412,22 +2412,22 @@
         "ownedRelatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedRelationship": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
           }
         },
         "owner": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -2437,8 +2437,8 @@
         "owningMembership": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/OwningMembership"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/OwningMembership"
             },
             {
               "type": "null"
@@ -2448,8 +2448,8 @@
         "owningNamespace": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
             },
             {
               "type": "null"
@@ -2459,8 +2459,8 @@
         "owningRelatedElement": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -2470,8 +2470,8 @@
         "owningRelationship": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
             },
             {
               "type": "null"
@@ -2479,8 +2479,8 @@
           ]
         },
         "owningType": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "qualifiedName": {
           "oneOf": [
@@ -2495,8 +2495,8 @@
         "relatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "shortName": {
@@ -2512,32 +2512,32 @@
         "source": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "target": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "textualRepresentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/TextualRepresentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/TextualRepresentation"
           }
         },
         "type": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "visibility": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/VisibilityKind"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/VisibilityKind"
             },
             {
               "type": "null"
@@ -2590,7 +2590,7 @@
       "additionalProperties": false
     },
     "ActorMembership": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/ActorMembership",
+      "$id": "https://www.omg.org/spec/SysML/20230201/ActorMembership",
       "title": "ActorMembership",
       "type": "object",
       "properties": {
@@ -2611,8 +2611,8 @@
         "documentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Documentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
         },
         "effectiveName": {
@@ -2636,8 +2636,8 @@
           ]
         },
         "feature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "isImplied": {
           "oneOf": [
@@ -2670,8 +2670,8 @@
           ]
         },
         "memberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "memberElementId": {
           "oneOf": [
@@ -2704,8 +2704,8 @@
           ]
         },
         "membershipOwningNamespace": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
         },
         "name": {
           "oneOf": [
@@ -2718,26 +2718,26 @@
           ]
         },
         "ownedActorParameter": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/PartUsage"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/PartUsage"
         },
         "ownedAnnotation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Annotation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
           }
         },
         "ownedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedMemberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "ownedMemberElementId": {
           "oneOf": [
@@ -2750,8 +2750,8 @@
           ]
         },
         "ownedMemberFeature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "ownedMemberName": {
           "oneOf": [
@@ -2764,8 +2764,8 @@
           ]
         },
         "ownedMemberParameter": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "ownedMemberShortName": {
           "oneOf": [
@@ -2780,22 +2780,22 @@
         "ownedRelatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedRelationship": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
           }
         },
         "owner": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -2805,8 +2805,8 @@
         "owningMembership": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/OwningMembership"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/OwningMembership"
             },
             {
               "type": "null"
@@ -2816,8 +2816,8 @@
         "owningNamespace": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
             },
             {
               "type": "null"
@@ -2827,8 +2827,8 @@
         "owningRelatedElement": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -2838,8 +2838,8 @@
         "owningRelationship": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
             },
             {
               "type": "null"
@@ -2847,8 +2847,8 @@
           ]
         },
         "owningType": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "qualifiedName": {
           "oneOf": [
@@ -2863,8 +2863,8 @@
         "relatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "shortName": {
@@ -2880,32 +2880,32 @@
         "source": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "target": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "textualRepresentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/TextualRepresentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/TextualRepresentation"
           }
         },
         "type": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "visibility": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/VisibilityKind"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/VisibilityKind"
             },
             {
               "type": "null"
@@ -2959,7 +2959,7 @@
       "additionalProperties": false
     },
     "StakeholderMembership": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/StakeholderMembership",
+      "$id": "https://www.omg.org/spec/SysML/20230201/StakeholderMembership",
       "title": "StakeholderMembership",
       "type": "object",
       "properties": {
@@ -2980,8 +2980,8 @@
         "documentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Documentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
         },
         "effectiveName": {
@@ -3005,8 +3005,8 @@
           ]
         },
         "feature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "isImplied": {
           "oneOf": [
@@ -3039,8 +3039,8 @@
           ]
         },
         "memberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "memberElementId": {
           "oneOf": [
@@ -3073,8 +3073,8 @@
           ]
         },
         "membershipOwningNamespace": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
         },
         "name": {
           "oneOf": [
@@ -3089,20 +3089,20 @@
         "ownedAnnotation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Annotation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
           }
         },
         "ownedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedMemberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "ownedMemberElementId": {
           "oneOf": [
@@ -3115,8 +3115,8 @@
           ]
         },
         "ownedMemberFeature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "ownedMemberName": {
           "oneOf": [
@@ -3129,8 +3129,8 @@
           ]
         },
         "ownedMemberParameter": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "ownedMemberShortName": {
           "oneOf": [
@@ -3145,26 +3145,26 @@
         "ownedRelatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedRelationship": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
           }
         },
         "ownedStakeholderParameter": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/PartUsage"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/PartUsage"
         },
         "owner": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -3174,8 +3174,8 @@
         "owningMembership": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/OwningMembership"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/OwningMembership"
             },
             {
               "type": "null"
@@ -3185,8 +3185,8 @@
         "owningNamespace": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
             },
             {
               "type": "null"
@@ -3196,8 +3196,8 @@
         "owningRelatedElement": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -3207,8 +3207,8 @@
         "owningRelationship": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
             },
             {
               "type": "null"
@@ -3216,8 +3216,8 @@
           ]
         },
         "owningType": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "qualifiedName": {
           "oneOf": [
@@ -3232,8 +3232,8 @@
         "relatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "shortName": {
@@ -3249,32 +3249,32 @@
         "source": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "target": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "textualRepresentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/TextualRepresentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/TextualRepresentation"
           }
         },
         "type": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "visibility": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/VisibilityKind"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/VisibilityKind"
             },
             {
               "type": "null"
@@ -3328,7 +3328,7 @@
       "additionalProperties": false
     },
     "SubjectMembership": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/SubjectMembership",
+      "$id": "https://www.omg.org/spec/SysML/20230201/SubjectMembership",
       "title": "SubjectMembership",
       "type": "object",
       "properties": {
@@ -3349,8 +3349,8 @@
         "documentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Documentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
         },
         "effectiveName": {
@@ -3374,8 +3374,8 @@
           ]
         },
         "feature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "isImplied": {
           "oneOf": [
@@ -3408,8 +3408,8 @@
           ]
         },
         "memberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "memberElementId": {
           "oneOf": [
@@ -3442,8 +3442,8 @@
           ]
         },
         "membershipOwningNamespace": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
         },
         "name": {
           "oneOf": [
@@ -3458,20 +3458,20 @@
         "ownedAnnotation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Annotation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
           }
         },
         "ownedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedMemberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "ownedMemberElementId": {
           "oneOf": [
@@ -3484,8 +3484,8 @@
           ]
         },
         "ownedMemberFeature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "ownedMemberName": {
           "oneOf": [
@@ -3498,8 +3498,8 @@
           ]
         },
         "ownedMemberParameter": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "ownedMemberShortName": {
           "oneOf": [
@@ -3514,26 +3514,26 @@
         "ownedRelatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedRelationship": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
           }
         },
         "ownedSubjectParameter": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Usage"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Usage"
         },
         "owner": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -3543,8 +3543,8 @@
         "owningMembership": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/OwningMembership"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/OwningMembership"
             },
             {
               "type": "null"
@@ -3554,8 +3554,8 @@
         "owningNamespace": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
             },
             {
               "type": "null"
@@ -3565,8 +3565,8 @@
         "owningRelatedElement": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -3576,8 +3576,8 @@
         "owningRelationship": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
             },
             {
               "type": "null"
@@ -3585,8 +3585,8 @@
           ]
         },
         "owningType": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "qualifiedName": {
           "oneOf": [
@@ -3601,8 +3601,8 @@
         "relatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "shortName": {
@@ -3618,32 +3618,32 @@
         "source": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "target": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "textualRepresentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/TextualRepresentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/TextualRepresentation"
           }
         },
         "type": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "visibility": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/VisibilityKind"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/VisibilityKind"
             },
             {
               "type": "null"
@@ -3697,7 +3697,7 @@
       "additionalProperties": false
     },
     "EndFeatureMembership": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/EndFeatureMembership",
+      "$id": "https://www.omg.org/spec/SysML/20230201/EndFeatureMembership",
       "title": "EndFeatureMembership",
       "type": "object",
       "properties": {
@@ -3718,8 +3718,8 @@
         "documentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Documentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
         },
         "effectiveName": {
@@ -3743,8 +3743,8 @@
           ]
         },
         "feature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "isImplied": {
           "oneOf": [
@@ -3777,8 +3777,8 @@
           ]
         },
         "memberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "memberElementId": {
           "oneOf": [
@@ -3811,8 +3811,8 @@
           ]
         },
         "membershipOwningNamespace": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
         },
         "name": {
           "oneOf": [
@@ -3827,20 +3827,20 @@
         "ownedAnnotation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Annotation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
           }
         },
         "ownedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedMemberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "ownedMemberElementId": {
           "oneOf": [
@@ -3853,8 +3853,8 @@
           ]
         },
         "ownedMemberFeature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "ownedMemberName": {
           "oneOf": [
@@ -3879,22 +3879,22 @@
         "ownedRelatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedRelationship": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
           }
         },
         "owner": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -3904,8 +3904,8 @@
         "owningMembership": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/OwningMembership"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/OwningMembership"
             },
             {
               "type": "null"
@@ -3915,8 +3915,8 @@
         "owningNamespace": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
             },
             {
               "type": "null"
@@ -3926,8 +3926,8 @@
         "owningRelatedElement": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -3937,8 +3937,8 @@
         "owningRelationship": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
             },
             {
               "type": "null"
@@ -3946,8 +3946,8 @@
           ]
         },
         "owningType": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "qualifiedName": {
           "oneOf": [
@@ -3962,8 +3962,8 @@
         "relatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "shortName": {
@@ -3979,32 +3979,32 @@
         "source": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "target": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "textualRepresentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/TextualRepresentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/TextualRepresentation"
           }
         },
         "type": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "visibility": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/VisibilityKind"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/VisibilityKind"
             },
             {
               "type": "null"
@@ -4056,7 +4056,7 @@
       "additionalProperties": false
     },
     "ObjectiveMembership": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/ObjectiveMembership",
+      "$id": "https://www.omg.org/spec/SysML/20230201/ObjectiveMembership",
       "title": "ObjectiveMembership",
       "type": "object",
       "properties": {
@@ -4077,8 +4077,8 @@
         "documentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Documentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
         },
         "effectiveName": {
@@ -4102,8 +4102,8 @@
           ]
         },
         "feature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "isImplied": {
           "oneOf": [
@@ -4136,8 +4136,8 @@
           ]
         },
         "memberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "memberElementId": {
           "oneOf": [
@@ -4170,8 +4170,8 @@
           ]
         },
         "membershipOwningNamespace": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
         },
         "name": {
           "oneOf": [
@@ -4186,20 +4186,20 @@
         "ownedAnnotation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Annotation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
           }
         },
         "ownedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedMemberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "ownedMemberElementId": {
           "oneOf": [
@@ -4212,8 +4212,8 @@
           ]
         },
         "ownedMemberFeature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "ownedMemberName": {
           "oneOf": [
@@ -4236,28 +4236,28 @@
           ]
         },
         "ownedObjectiveRequirement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/RequirementUsage"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/RequirementUsage"
         },
         "ownedRelatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedRelationship": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
           }
         },
         "owner": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -4267,8 +4267,8 @@
         "owningMembership": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/OwningMembership"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/OwningMembership"
             },
             {
               "type": "null"
@@ -4278,8 +4278,8 @@
         "owningNamespace": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
             },
             {
               "type": "null"
@@ -4289,8 +4289,8 @@
         "owningRelatedElement": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -4300,8 +4300,8 @@
         "owningRelationship": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
             },
             {
               "type": "null"
@@ -4309,8 +4309,8 @@
           ]
         },
         "owningType": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "qualifiedName": {
           "oneOf": [
@@ -4325,8 +4325,8 @@
         "relatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "shortName": {
@@ -4342,32 +4342,32 @@
         "source": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "target": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "textualRepresentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/TextualRepresentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/TextualRepresentation"
           }
         },
         "type": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "visibility": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/VisibilityKind"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/VisibilityKind"
             },
             {
               "type": "null"
@@ -4420,7 +4420,7 @@
       "additionalProperties": false
     },
     "ViewRenderingMembership": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/ViewRenderingMembership",
+      "$id": "https://www.omg.org/spec/SysML/20230201/ViewRenderingMembership",
       "title": "ViewRenderingMembership",
       "type": "object",
       "properties": {
@@ -4441,8 +4441,8 @@
         "documentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Documentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
         },
         "effectiveName": {
@@ -4466,8 +4466,8 @@
           ]
         },
         "feature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "isImplied": {
           "oneOf": [
@@ -4500,8 +4500,8 @@
           ]
         },
         "memberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "memberElementId": {
           "oneOf": [
@@ -4534,8 +4534,8 @@
           ]
         },
         "membershipOwningNamespace": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
         },
         "name": {
           "oneOf": [
@@ -4550,20 +4550,20 @@
         "ownedAnnotation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Annotation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
           }
         },
         "ownedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedMemberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "ownedMemberElementId": {
           "oneOf": [
@@ -4576,8 +4576,8 @@
           ]
         },
         "ownedMemberFeature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "ownedMemberName": {
           "oneOf": [
@@ -4602,26 +4602,26 @@
         "ownedRelatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedRelationship": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
           }
         },
         "ownedRendering": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/RenderingUsage"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/RenderingUsage"
         },
         "owner": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -4631,8 +4631,8 @@
         "owningMembership": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/OwningMembership"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/OwningMembership"
             },
             {
               "type": "null"
@@ -4642,8 +4642,8 @@
         "owningNamespace": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
             },
             {
               "type": "null"
@@ -4653,8 +4653,8 @@
         "owningRelatedElement": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -4664,8 +4664,8 @@
         "owningRelationship": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
             },
             {
               "type": "null"
@@ -4673,8 +4673,8 @@
           ]
         },
         "owningType": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "qualifiedName": {
           "oneOf": [
@@ -4687,14 +4687,14 @@
           ]
         },
         "referencedRendering": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/RenderingUsage"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/RenderingUsage"
         },
         "relatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "shortName": {
@@ -4710,32 +4710,32 @@
         "source": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "target": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "textualRepresentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/TextualRepresentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/TextualRepresentation"
           }
         },
         "type": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "visibility": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/VisibilityKind"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/VisibilityKind"
             },
             {
               "type": "null"
@@ -4789,7 +4789,7 @@
       "additionalProperties": false
     },
     "StateSubactionMembership": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/StateSubactionMembership",
+      "$id": "https://www.omg.org/spec/SysML/20230201/StateSubactionMembership",
       "title": "StateSubactionMembership",
       "type": "object",
       "properties": {
@@ -4802,8 +4802,8 @@
           "const": "StateSubactionMembership"
         },
         "action": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/ActionUsage"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/ActionUsage"
         },
         "aliasIds": {
           "type": "array",
@@ -4814,8 +4814,8 @@
         "documentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Documentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
         },
         "effectiveName": {
@@ -4839,8 +4839,8 @@
           ]
         },
         "feature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "isImplied": {
           "oneOf": [
@@ -4875,7 +4875,7 @@
         "kind": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/StateSubactionKind"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/StateSubactionKind"
             },
             {
               "type": "null"
@@ -4883,8 +4883,8 @@
           ]
         },
         "memberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "memberElementId": {
           "oneOf": [
@@ -4917,8 +4917,8 @@
           ]
         },
         "membershipOwningNamespace": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
         },
         "name": {
           "oneOf": [
@@ -4933,20 +4933,20 @@
         "ownedAnnotation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Annotation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
           }
         },
         "ownedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedMemberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "ownedMemberElementId": {
           "oneOf": [
@@ -4959,8 +4959,8 @@
           ]
         },
         "ownedMemberFeature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "ownedMemberName": {
           "oneOf": [
@@ -4985,22 +4985,22 @@
         "ownedRelatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedRelationship": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
           }
         },
         "owner": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -5010,8 +5010,8 @@
         "owningMembership": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/OwningMembership"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/OwningMembership"
             },
             {
               "type": "null"
@@ -5021,8 +5021,8 @@
         "owningNamespace": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
             },
             {
               "type": "null"
@@ -5032,8 +5032,8 @@
         "owningRelatedElement": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -5043,8 +5043,8 @@
         "owningRelationship": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
             },
             {
               "type": "null"
@@ -5052,8 +5052,8 @@
           ]
         },
         "owningType": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "qualifiedName": {
           "oneOf": [
@@ -5068,8 +5068,8 @@
         "relatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "shortName": {
@@ -5085,32 +5085,32 @@
         "source": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "target": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "textualRepresentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/TextualRepresentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/TextualRepresentation"
           }
         },
         "type": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "visibility": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/VisibilityKind"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/VisibilityKind"
             },
             {
               "type": "null"
@@ -5164,7 +5164,7 @@
       "additionalProperties": false
     },
     "StateSubactionKind": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/StateSubactionKind",
+      "$id": "https://www.omg.org/spec/SysML/20230201/StateSubactionKind",
       "title": "StateSubactionKind",
       "type": "string",
       "enum": [
@@ -5174,7 +5174,7 @@
       ]
     },
     "TransitionFeatureMembership": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/TransitionFeatureMembership",
+      "$id": "https://www.omg.org/spec/SysML/20230201/TransitionFeatureMembership",
       "title": "TransitionFeatureMembership",
       "type": "object",
       "properties": {
@@ -5195,8 +5195,8 @@
         "documentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Documentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
         },
         "effectiveName": {
@@ -5220,8 +5220,8 @@
           ]
         },
         "feature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "isImplied": {
           "oneOf": [
@@ -5256,7 +5256,7 @@
         "kind": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/TransitionFeatureKind"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/TransitionFeatureKind"
             },
             {
               "type": "null"
@@ -5264,8 +5264,8 @@
           ]
         },
         "memberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "memberElementId": {
           "oneOf": [
@@ -5298,8 +5298,8 @@
           ]
         },
         "membershipOwningNamespace": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
         },
         "name": {
           "oneOf": [
@@ -5314,20 +5314,20 @@
         "ownedAnnotation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Annotation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
           }
         },
         "ownedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedMemberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "ownedMemberElementId": {
           "oneOf": [
@@ -5340,8 +5340,8 @@
           ]
         },
         "ownedMemberFeature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "ownedMemberName": {
           "oneOf": [
@@ -5366,22 +5366,22 @@
         "ownedRelatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedRelationship": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
           }
         },
         "owner": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -5391,8 +5391,8 @@
         "owningMembership": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/OwningMembership"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/OwningMembership"
             },
             {
               "type": "null"
@@ -5402,8 +5402,8 @@
         "owningNamespace": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
             },
             {
               "type": "null"
@@ -5413,8 +5413,8 @@
         "owningRelatedElement": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -5424,8 +5424,8 @@
         "owningRelationship": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
             },
             {
               "type": "null"
@@ -5433,8 +5433,8 @@
           ]
         },
         "owningType": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "qualifiedName": {
           "oneOf": [
@@ -5449,8 +5449,8 @@
         "relatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "shortName": {
@@ -5466,36 +5466,36 @@
         "source": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "target": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "textualRepresentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/TextualRepresentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/TextualRepresentation"
           }
         },
         "transitionFeature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Step"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Step"
         },
         "type": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "visibility": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/VisibilityKind"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/VisibilityKind"
             },
             {
               "type": "null"
@@ -5549,7 +5549,7 @@
       "additionalProperties": false
     },
     "TransitionFeatureKind": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/TransitionFeatureKind",
+      "$id": "https://www.omg.org/spec/SysML/20230201/TransitionFeatureKind",
       "title": "TransitionFeatureKind",
       "type": "string",
       "enum": [
@@ -5559,7 +5559,7 @@
       ]
     },
     "RequirementConstraintMembership": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/RequirementConstraintMembership",
+      "$id": "https://www.omg.org/spec/SysML/20230201/RequirementConstraintMembership",
       "title": "RequirementConstraintMembership",
       "anyOf": [
         {
@@ -5582,8 +5582,8 @@
             "documentation": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Documentation"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
               }
             },
             "effectiveName": {
@@ -5607,8 +5607,8 @@
               ]
             },
             "feature": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
             },
             "isImplied": {
               "oneOf": [
@@ -5643,7 +5643,7 @@
             "kind": {
               "oneOf": [
                 {
-                  "$ref": "http://www.omg.org/spec/SysML/20230201/RequirementConstraintKind"
+                  "$ref": "https://www.omg.org/spec/SysML/20230201/RequirementConstraintKind"
                 },
                 {
                   "type": "null"
@@ -5651,8 +5651,8 @@
               ]
             },
             "memberElement": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             "memberElementId": {
               "oneOf": [
@@ -5685,8 +5685,8 @@
               ]
             },
             "membershipOwningNamespace": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
             },
             "name": {
               "oneOf": [
@@ -5701,24 +5701,24 @@
             "ownedAnnotation": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Annotation"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
               }
             },
             "ownedConstraint": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/ConstraintUsage"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/ConstraintUsage"
             },
             "ownedElement": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
               }
             },
             "ownedMemberElement": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             "ownedMemberElementId": {
               "oneOf": [
@@ -5731,8 +5731,8 @@
               ]
             },
             "ownedMemberFeature": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
             },
             "ownedMemberName": {
               "oneOf": [
@@ -5757,22 +5757,22 @@
             "ownedRelatedElement": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
               }
             },
             "ownedRelationship": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
               }
             },
             "owner": {
               "oneOf": [
                 {
-                  "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                  "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+                  "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                  "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
                 },
                 {
                   "type": "null"
@@ -5782,8 +5782,8 @@
             "owningMembership": {
               "oneOf": [
                 {
-                  "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                  "$comment": "http://www.omg.org/spec/SysML/20230201/OwningMembership"
+                  "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                  "$comment": "https://www.omg.org/spec/SysML/20230201/OwningMembership"
                 },
                 {
                   "type": "null"
@@ -5793,8 +5793,8 @@
             "owningNamespace": {
               "oneOf": [
                 {
-                  "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                  "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+                  "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                  "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
                 },
                 {
                   "type": "null"
@@ -5804,8 +5804,8 @@
             "owningRelatedElement": {
               "oneOf": [
                 {
-                  "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                  "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+                  "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                  "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
                 },
                 {
                   "type": "null"
@@ -5815,8 +5815,8 @@
             "owningRelationship": {
               "oneOf": [
                 {
-                  "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                  "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+                  "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                  "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
                 },
                 {
                   "type": "null"
@@ -5824,8 +5824,8 @@
               ]
             },
             "owningType": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
             },
             "qualifiedName": {
               "oneOf": [
@@ -5838,14 +5838,14 @@
               ]
             },
             "referencedConstraint": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/ConstraintUsage"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/ConstraintUsage"
             },
             "relatedElement": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
               }
             },
             "shortName": {
@@ -5861,32 +5861,32 @@
             "source": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
               }
             },
             "target": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
               }
             },
             "textualRepresentation": {
               "type": "array",
               "items": {
-                "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "http://www.omg.org/spec/SysML/20230201/TextualRepresentation"
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/TextualRepresentation"
               }
             },
             "type": {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
             },
             "visibility": {
               "oneOf": [
                 {
-                  "$ref": "http://www.omg.org/spec/SysML/20230201/VisibilityKind"
+                  "$ref": "https://www.omg.org/spec/SysML/20230201/VisibilityKind"
                 },
                 {
                   "type": "null"
@@ -5941,15 +5941,15 @@
           "additionalProperties": false
         },
         {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/RequirementVerificationMembership"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/RequirementVerificationMembership"
         },
         {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/FramedConcernMembership"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/FramedConcernMembership"
         }
       ]
     },
     "RequirementConstraintKind": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/RequirementConstraintKind",
+      "$id": "https://www.omg.org/spec/SysML/20230201/RequirementConstraintKind",
       "title": "RequirementConstraintKind",
       "type": "string",
       "enum": [
@@ -5958,7 +5958,7 @@
       ]
     },
     "RequirementVerificationMembership": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/RequirementVerificationMembership",
+      "$id": "https://www.omg.org/spec/SysML/20230201/RequirementVerificationMembership",
       "title": "RequirementVerificationMembership",
       "type": "object",
       "properties": {
@@ -5979,8 +5979,8 @@
         "documentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Documentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
         },
         "effectiveName": {
@@ -6004,8 +6004,8 @@
           ]
         },
         "feature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "isImplied": {
           "oneOf": [
@@ -6040,7 +6040,7 @@
         "kind": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/RequirementConstraintKind"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/RequirementConstraintKind"
             },
             {
               "type": "null"
@@ -6048,8 +6048,8 @@
           ]
         },
         "memberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "memberElementId": {
           "oneOf": [
@@ -6082,8 +6082,8 @@
           ]
         },
         "membershipOwningNamespace": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
         },
         "name": {
           "oneOf": [
@@ -6098,24 +6098,24 @@
         "ownedAnnotation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Annotation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
           }
         },
         "ownedConstraint": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/ConstraintUsage"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/ConstraintUsage"
         },
         "ownedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedMemberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "ownedMemberElementId": {
           "oneOf": [
@@ -6128,8 +6128,8 @@
           ]
         },
         "ownedMemberFeature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "ownedMemberName": {
           "oneOf": [
@@ -6154,26 +6154,26 @@
         "ownedRelatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedRelationship": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
           }
         },
         "ownedRequirement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/RequirementUsage"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/RequirementUsage"
         },
         "owner": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -6183,8 +6183,8 @@
         "owningMembership": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/OwningMembership"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/OwningMembership"
             },
             {
               "type": "null"
@@ -6194,8 +6194,8 @@
         "owningNamespace": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
             },
             {
               "type": "null"
@@ -6205,8 +6205,8 @@
         "owningRelatedElement": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -6216,8 +6216,8 @@
         "owningRelationship": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
             },
             {
               "type": "null"
@@ -6225,8 +6225,8 @@
           ]
         },
         "owningType": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "qualifiedName": {
           "oneOf": [
@@ -6239,14 +6239,14 @@
           ]
         },
         "referencedConstraint": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/ConstraintUsage"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/ConstraintUsage"
         },
         "relatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "shortName": {
@@ -6262,36 +6262,36 @@
         "source": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "target": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "textualRepresentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/TextualRepresentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/TextualRepresentation"
           }
         },
         "type": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "verifiedRequirement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/RequirementUsage"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/RequirementUsage"
         },
         "visibility": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/VisibilityKind"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/VisibilityKind"
             },
             {
               "type": "null"
@@ -6348,7 +6348,7 @@
       "additionalProperties": false
     },
     "FramedConcernMembership": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/FramedConcernMembership",
+      "$id": "https://www.omg.org/spec/SysML/20230201/FramedConcernMembership",
       "title": "FramedConcernMembership",
       "type": "object",
       "properties": {
@@ -6369,8 +6369,8 @@
         "documentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Documentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
         },
         "effectiveName": {
@@ -6394,8 +6394,8 @@
           ]
         },
         "feature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "isImplied": {
           "oneOf": [
@@ -6430,7 +6430,7 @@
         "kind": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/RequirementConstraintKind"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/RequirementConstraintKind"
             },
             {
               "type": "null"
@@ -6438,8 +6438,8 @@
           ]
         },
         "memberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "memberElementId": {
           "oneOf": [
@@ -6472,8 +6472,8 @@
           ]
         },
         "membershipOwningNamespace": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
         },
         "name": {
           "oneOf": [
@@ -6488,28 +6488,28 @@
         "ownedAnnotation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Annotation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
           }
         },
         "ownedConcern": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/ConcernUsage"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/ConcernUsage"
         },
         "ownedConstraint": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/ConstraintUsage"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/ConstraintUsage"
         },
         "ownedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedMemberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "ownedMemberElementId": {
           "oneOf": [
@@ -6522,8 +6522,8 @@
           ]
         },
         "ownedMemberFeature": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Feature"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
         },
         "ownedMemberName": {
           "oneOf": [
@@ -6548,22 +6548,22 @@
         "ownedRelatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedRelationship": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
           }
         },
         "owner": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -6573,8 +6573,8 @@
         "owningMembership": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/OwningMembership"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/OwningMembership"
             },
             {
               "type": "null"
@@ -6584,8 +6584,8 @@
         "owningNamespace": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
             },
             {
               "type": "null"
@@ -6595,8 +6595,8 @@
         "owningRelatedElement": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -6606,8 +6606,8 @@
         "owningRelationship": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
             },
             {
               "type": "null"
@@ -6615,8 +6615,8 @@
           ]
         },
         "owningType": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "qualifiedName": {
           "oneOf": [
@@ -6629,18 +6629,18 @@
           ]
         },
         "referencedConcern": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/ConcernUsage"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/ConcernUsage"
         },
         "referencedConstraint": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/ConstraintUsage"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/ConstraintUsage"
         },
         "relatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "shortName": {
@@ -6656,32 +6656,32 @@
         "source": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "target": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "textualRepresentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/TextualRepresentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/TextualRepresentation"
           }
         },
         "type": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Type"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Type"
         },
         "visibility": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/VisibilityKind"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/VisibilityKind"
             },
             {
               "type": "null"
@@ -6738,7 +6738,7 @@
       "additionalProperties": false
     },
     "VariantMembership": {
-      "$id": "http://www.omg.org/spec/SysML/20230201/VariantMembership",
+      "$id": "https://www.omg.org/spec/SysML/20230201/VariantMembership",
       "title": "VariantMembership",
       "type": "object",
       "properties": {
@@ -6759,8 +6759,8 @@
         "documentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Documentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
         },
         "effectiveName": {
@@ -6814,8 +6814,8 @@
           ]
         },
         "memberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "memberElementId": {
           "oneOf": [
@@ -6848,8 +6848,8 @@
           ]
         },
         "membershipOwningNamespace": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
         },
         "name": {
           "oneOf": [
@@ -6864,20 +6864,20 @@
         "ownedAnnotation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Annotation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
           }
         },
         "ownedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedMemberElement": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
         },
         "ownedMemberElementId": {
           "oneOf": [
@@ -6912,26 +6912,26 @@
         "ownedRelatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "ownedRelationship": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
           }
         },
         "ownedVariantUsage": {
-          "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "http://www.omg.org/spec/SysML/20230201/Usage"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Usage"
         },
         "owner": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -6941,8 +6941,8 @@
         "owningMembership": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/OwningMembership"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/OwningMembership"
             },
             {
               "type": "null"
@@ -6952,8 +6952,8 @@
         "owningNamespace": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Namespace"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Namespace"
             },
             {
               "type": "null"
@@ -6963,8 +6963,8 @@
         "owningRelatedElement": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
             },
             {
               "type": "null"
@@ -6974,8 +6974,8 @@
         "owningRelationship": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "http://www.omg.org/spec/SysML/20230201/Relationship"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
             },
             {
               "type": "null"
@@ -6995,8 +6995,8 @@
         "relatedElement": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "shortName": {
@@ -7012,28 +7012,28 @@
         "source": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "target": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/Element"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
           }
         },
         "textualRepresentation": {
           "type": "array",
           "items": {
-            "$ref": "http://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "http://www.omg.org/spec/SysML/20230201/TextualRepresentation"
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/TextualRepresentation"
           }
         },
         "visibility": {
           "oneOf": [
             {
-              "$ref": "http://www.omg.org/spec/SysML/20230201/VisibilityKind"
+              "$ref": "https://www.omg.org/spec/SysML/20230201/VisibilityKind"
             },
             {
               "type": "null"

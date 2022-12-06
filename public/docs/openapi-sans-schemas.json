@@ -2378,7 +2378,7 @@
       "ExternalDataDatatype": {
         "value": {
           "$schema": "https://json-schema.org/draft/2020-12/schema",
-          "$id": "http://www.omg.org/spec/SystemsModelingAPI/20230201/ExternalData",
+          "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/ExternalData",
           "type": "object",
           "properties": {
             "@id": {
@@ -2406,7 +2406,7 @@
         "value": {
           "$schema": "https://json-schema.org/draft/2020-12/schema",
           "$defs": {
-            "http://www.omg.org/spec/SystemsModelingAPI/20230201/ExternalData": {
+            "https://www.omg.org/spec/SystemsModelingAPI/20230201/ExternalData": {
               "$ref": "#/components/examples/ExternalDataDatatype"
             }
           }

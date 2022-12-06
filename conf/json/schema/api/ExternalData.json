@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "http://www.omg.org/spec/SystemsModelingAPI/20230201/ExternalData",
+  "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/ExternalData",
   "type": "object",
   "properties": {
     "@id": {
