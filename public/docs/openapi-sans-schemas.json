@@ -1,9 +1,9 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "SysML v2 API and Services",
-    "description": "REST/HTTP platform specific model (PSM) for the SysML v2 API",
-    "version": "2.0.0"
+    "title": "Systems Modeling API and Services",
+    "description": "REST/HTTP platform specific model (PSM) for the Systems Modeling API and Services",
+    "version": "1.0"
   },
   "tags": [
     {
@@ -1127,14 +1127,21 @@
           "content": {
             "application/json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Data"
-                }
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Data"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "examples": {
                 "Without Resolutions": {
-                  "type": "null"
+                  "value": []
                 },
                 "With Resolutions": {
                   "$ref": "#/components/examples/Elements"
@@ -2371,7 +2378,7 @@
       "ExternalDataDatatype": {
         "value": {
           "$schema": "https://json-schema.org/draft/2020-12/schema",
-          "$id": "http://www.omg.org/spec/SysML/2.0/API/ExternalData",
+          "$id": "http://www.omg.org/spec/SystemsModelingAPI/20230201/ExternalData",
           "type": "object",
           "properties": {
             "@id": {
@@ -2399,7 +2406,7 @@
         "value": {
           "$schema": "https://json-schema.org/draft/2020-12/schema",
           "$defs": {
-            "http://www.omg.org/spec/SysML/2.0/API/ExternalData": {
+            "http://www.omg.org/spec/SystemsModelingAPI/20230201/ExternalData": {
               "$ref": "#/components/examples/ExternalDataDatatype"
             }
           }
