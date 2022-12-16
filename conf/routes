@@ -35,6 +35,7 @@ GET           /projects/:projectId/commits/:commitId/changes/:changeId          
 # Element endpoints
 GET           /projects/:projectId/commits/:commitId/elements                                        controllers.ElementController.getElementsByProjectIdCommitId(projectId : java.util.UUID, commitId : java.util.UUID, excludeUsed : java.util.Optional[java.lang.Boolean], request : Request)
 GET           /projects/:projectId/commits/:commitId/elements/:elementId                             controllers.ElementController.getElementByProjectIdCommitIdElementId(projectId : java.util.UUID, commitId : java.util.UUID, elementId : java.util.UUID, excludeUsed : java.util.Optional[java.lang.Boolean], request : Request)
+GET           /projects/:projectId/commits/:commitId/elements/:elementId/projectUsage                controllers.ElementController.getProjectUsageByProjectIdCommitIdElementId(projectId : java.util.UUID, commitId : java.util.UUID, elementId : java.util.UUID, request : Request)
 GET           /projects/:projectId/commits/:commitId/roots                                           controllers.ElementController.getRootsByProjectIdCommitId(projectId : java.util.UUID, commitId : java.util.UUID, excludeUsed : java.util.Optional[java.lang.Boolean], request : Request)
 
 # Relationship endpoints

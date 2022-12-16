@@ -940,6 +940,49 @@
         }
       }
     },
+    "/projects/{projectId}/commits/{commitId}/elements/{elementId}/projectUsage": {
+      "get": {
+        "tags": [
+          "Element"
+        ],
+        "summary": "Get ProjectUsage that originates the provided element",
+        "operationId": "getProjectUsageByProjectCommitElement",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/projectId"
+          },
+          {
+            "$ref": "#/components/parameters/commitId"
+          },
+          {
+            "$ref": "#/components/parameters/elementId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectUsage"
+                },
+                "examples": {
+                  "ProjectUsage": {
+                    "$ref": "#/components/examples/ProjectUsage"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "default": {
+            "$ref": "#/components/responses/default"
+          }
+        }
+      }
+    },
     "/projects/{projectId}/commits/{commitId}/roots": {
       "get": {
         "tags": [
@@ -2297,6 +2340,18 @@
           "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
           "@type": "ProjectUsage",
           "usedCommit": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          }
+        }
+      },
+      "ProjectUsage": {
+        "value": {
+          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "@type": "ProjectUsage",
+          "usedCommit": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "usedProject": {
             "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           }
         }
