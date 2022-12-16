@@ -1130,6 +1130,15 @@
           },
           {
             "$ref": "#/components/parameters/mergeDescription"
+          },
+          {
+            "$ref": "#/components/parameters/pageAfter"
+          },
+          {
+            "$ref": "#/components/parameters/pageBefore"
+          },
+          {
+            "$ref": "#/components/parameters/pageSize"
           }
         ],
         "requestBody": {
@@ -1161,22 +1170,34 @@
           "required": false
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Commit"
+                },
+                "examples": {
+                  "Merged": {
+                    "$ref": "#/components/examples/MergeCommit"
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/MergeResult"
+                    "$ref": "#/components/schemas/DataIdentity"
                   }
                 },
                 "examples": {
-                  "ConflictFreeMergeResult": {
-                    "$ref": "#/components/examples/ConflictFreeMergeResult"
-                  },
-                  "ConflictingMergeResult": {
-                    "$ref": "#/components/examples/ConflictingMergeResult"
+                  "Conflicting": {
+                    "$ref": "#/components/examples/MergeConflicting"
                   }
                 }
               }
@@ -2323,26 +2344,31 @@
           }
         ]
       },
-      "ConflictFreeMergeResult": {
+      "MergeCommit": {
         "value": {
-          "@type": "MergeResult",
-          "conflict": [
-          ],
-          "mergeCommit": {
-            "$ref": "#/components/examples/Commit/value"
-          }
+          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "@type": "Commit",
+          "created": "1970-01-01T00:00:00.000Z",
+          "description": "string",
+          "owningProject": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "previousCommit": [
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            },
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }
+          ]
         }
       },
-      "ConflictingMergeResult": {
-        "value": {
-          "@type": "MergeResult",
-          "conflict": [
-            {
-              "$ref": "#/components/examples/DataIdentity/value"
-            }
-          ],
-          "mergeCommit": null
-        }
+      "MergeConflicting": {
+        "value": [
+          {
+            "$ref": "#/components/examples/DataIdentity/value"
+          }
+        ]
       },
       "Query": {
         "value": {
