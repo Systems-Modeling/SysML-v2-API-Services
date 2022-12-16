@@ -1072,6 +1072,15 @@
           },
           {
             "$ref": "#/components/parameters/compareCommitId"
+          },
+          {
+            "$ref": "#/components/parameters/pageAfter"
+          },
+          {
+            "$ref": "#/components/parameters/pageBefore"
+          },
+          {
+            "$ref": "#/components/parameters/pageSize"
           }
         ],
         "responses": {
