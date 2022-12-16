@@ -685,58 +685,6 @@
       ],
       "additionalProperties": false
     },
-    "MergeResult": {
-      "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/MergeResult",
-      "title": "MergeResult",
-      "allOf": [
-        {
-          "oneOf": [
-            {
-              "type": "object",
-              "properties": {
-                "@type": {
-                  "type": "string",
-                  "const": "MergeResult"
-                },
-                "conflict": {
-                  "type": "array",
-                  "maxItems": 0
-                },
-                "mergeCommit": {
-                  "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20230201/Commit"
-                }
-              }
-            },
-            {
-              "type": "object",
-              "properties": {
-                "@type": {
-                  "type": "string",
-                  "const": "MergeResult"
-                },
-                "conflict": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20230201/DataIdentity"
-                  },
-                  "minItems": 1
-                },
-                "mergeCommit": {
-                  "type": "null"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "required": [
-            "@type",
-            "conflict",
-            "mergeCommit"
-          ]
-        }
-      ]
-    },
     "Query": {
       "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/Query",
       "title": "Query",
