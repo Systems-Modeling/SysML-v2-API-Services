@@ -1,6 +1,6 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2021 Twingineer LLC
+ * Copyright (C) 2021-2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -25,6 +25,8 @@ import org.omg.sysml.lifecycle.Data;
 import org.omg.sysml.lifecycle.Project;
 
 public interface ProjectUsage extends Data {
+
+    String NAME = "ProjectUsage";
 
     Commit getUsedCommit();
 

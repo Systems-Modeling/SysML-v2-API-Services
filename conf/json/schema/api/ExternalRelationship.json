@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "http://www.omg.org/spec/SysML/2.0/API/ExternalRelationship",
+  "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/ExternalRelationship",
   "type": "object",
   "properties": {
     "@id": {
@@ -12,12 +12,12 @@
       "const": "ExternalRelationship"
     },
     "elementEnd": {
-      "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
-      "$comment": "http://www.omg.org/spec/SysML/2.0/Element"
+      "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+      "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
     },
     "externalDataEnd": {
-      "$ref": "http://www.omg.org/spec/SysML/2.0/Identified",
-      "$comment": "http://www.omg.org/spec/SysML/2.0/API/ExternalData"
+      "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+      "$comment": "https://www.omg.org/spec/SystemsModelingAPI/20230201/ExternalData"
     },
     "language": {
       "oneOf": [
@@ -51,7 +51,7 @@
   "additionalProperties": false,
   "$defs": {
     "Identified": {
-      "$id": "http://www.omg.org/spec/SysML/2.0/Identified",
+      "$id": "https://www.omg.org/spec/SysML/20230201/Identified",
       "title": "Identified",
       "type": "object",
       "properties": {

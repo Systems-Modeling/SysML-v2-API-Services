@@ -2,7 +2,7 @@
  * SysML v2 REST/HTTP Pilot Implementation
  * Copyright (C) 2020 InterCAX LLC
  * Copyright (C) 2020 California Institute of Technology ("Caltech")
- * Copyright (C) 2021 Twingineer LLC
+ * Copyright (C) 2021-2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -22,10 +22,7 @@
 
 package org.omg.sysml.data.impl;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonSetter;
-import com.fasterxml.jackson.annotation.JsonTypeInfo;
-import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.annotation.*;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jackson.RecordSerialization;
@@ -88,5 +85,11 @@ public class ProjectUsageImpl extends DataImpl implements ProjectUsage {
             return null;
         }
         return usedCommit.getOwningProject();
+    }
+
+    @Transient
+    @JsonProperty("@type")
+    public String getType() {
+        return ProjectUsage.NAME;
     }
 }

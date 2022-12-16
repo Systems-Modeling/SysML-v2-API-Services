@@ -2,7 +2,7 @@
  * SysML v2 REST/HTTP Pilot Implementation
  * Copyright (C) 2020 InterCAX LLC
  * Copyright (C) 2020 California Institute of Technology ("Caltech")
- * Copyright (C) 2021 Twingineer LLC
+ * Copyright (C) 2021-2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -22,13 +22,18 @@
 
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import config.MetamodelProvider;
+import jackson.JacksonHelper;
 import jackson.jsonld.DataJsonLdAdorner;
 import jackson.jsonld.JsonLdAdorner;
+import org.omg.sysml.data.ProjectUsage;
 import org.omg.sysml.metamodel.Element;
 import play.Environment;
+import play.libs.Json;
 import play.mvc.Http.Request;
 import play.mvc.Result;
+import play.mvc.Results;
 import services.ElementService;
 
 import javax.inject.Inject;
@@ -59,6 +64,22 @@ public final class ElementController extends JsonLdController<Element, DataJsonL
     public Result getElementByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId, Optional<Boolean> excludeUsed, Request request) {
         Optional<Element> element = elementService.getElementByProjectIdCommitIdElementId(projectId, commitId, elementId, excludeUsed.orElse(false));
         return buildResult(element.orElse(null), request, new DataJsonLdAdorner.Parameters(projectId, commitId));
+    }
+
+    public Result getProjectUsageByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId, Request request) {
+        if (respondWithJsonLd(request)) {
+            // TODO implement
+            return Results.status(NOT_IMPLEMENTED);
+        }
+        Optional<ProjectUsage> projectUsage = elementService.getProjectUsageByProjectIdCommitIdElementId(projectId, commitId, elementId);
+        if (projectUsage.isEmpty()) {
+            return Results.notFound();
+        }
+        JsonNode json = JacksonHelper.objectToTree(
+                projectUsage,
+                Json.mapper()
+        );
+        return Results.ok(json);
     }
 
     public Result getRootsByProjectIdCommitId(UUID projectId, UUID commitId, Optional<Boolean> excludeUsed, Request request) {

@@ -1,9 +1,9 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "SysML v2 API and Services",
-    "description": "REST/HTTP platform specific model (PSM) for the SysML v2 API",
-    "version": "2.0.0"
+    "title": "Systems Modeling API and Services",
+    "description": "REST/HTTP platform specific model (PSM) for the Systems Modeling API and Services",
+    "version": "1.0"
   },
   "tags": [
     {
@@ -940,6 +940,49 @@
         }
       }
     },
+    "/projects/{projectId}/commits/{commitId}/elements/{elementId}/projectUsage": {
+      "get": {
+        "tags": [
+          "Element"
+        ],
+        "summary": "Get ProjectUsage that originates the provided element",
+        "operationId": "getProjectUsageByProjectCommitElement",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/projectId"
+          },
+          {
+            "$ref": "#/components/parameters/commitId"
+          },
+          {
+            "$ref": "#/components/parameters/elementId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProjectUsage"
+                },
+                "examples": {
+                  "ProjectUsage": {
+                    "$ref": "#/components/examples/ProjectUsage"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/404"
+          },
+          "default": {
+            "$ref": "#/components/responses/default"
+          }
+        }
+      }
+    },
     "/projects/{projectId}/commits/{commitId}/roots": {
       "get": {
         "tags": [
@@ -1072,6 +1115,15 @@
           },
           {
             "$ref": "#/components/parameters/compareCommitId"
+          },
+          {
+            "$ref": "#/components/parameters/pageAfter"
+          },
+          {
+            "$ref": "#/components/parameters/pageBefore"
+          },
+          {
+            "$ref": "#/components/parameters/pageSize"
           }
         ],
         "responses": {
@@ -1121,20 +1173,36 @@
           },
           {
             "$ref": "#/components/parameters/mergeDescription"
+          },
+          {
+            "$ref": "#/components/parameters/pageAfter"
+          },
+          {
+            "$ref": "#/components/parameters/pageBefore"
+          },
+          {
+            "$ref": "#/components/parameters/pageSize"
           }
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "type": "array",
-                "items": {
-                  "$ref": "#/components/schemas/Data"
-                }
+                "oneOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Data"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
               },
               "examples": {
                 "Without Resolutions": {
-                  "type": "null"
+                  "value": []
                 },
                 "With Resolutions": {
                   "$ref": "#/components/examples/Elements"
@@ -1145,22 +1213,34 @@
           "required": false
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Commit"
+                },
+                "examples": {
+                  "Merged": {
+                    "$ref": "#/components/examples/MergeCommit"
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/MergeResult"
+                    "$ref": "#/components/schemas/DataIdentity"
                   }
                 },
                 "examples": {
-                  "ConflictFreeMergeResult": {
-                    "$ref": "#/components/examples/ConflictFreeMergeResult"
-                  },
-                  "ConflictingMergeResult": {
-                    "$ref": "#/components/examples/ConflictingMergeResult"
+                  "Conflicting": {
+                    "$ref": "#/components/examples/MergeConflicting"
                   }
                 }
               }
@@ -2065,7 +2145,7 @@
             {
               "@type": "DataVersion",
               "payload": {
-                "$ref": "#/components/examples/Element"
+                "$ref": "#/components/examples/Element/value"
               }
             }
           ]
@@ -2078,7 +2158,7 @@
             {
               "@type": "DataVersion",
               "payload": {
-                "$ref": "#/components/examples/Relationship"
+                "$ref": "#/components/examples/Relationship/value"
               }
             }
           ]
@@ -2091,7 +2171,7 @@
             {
               "@type": "DataVersion",
               "payload": {
-                "$ref": "#/components/examples/ProjectUsageRequest"
+                "$ref": "#/components/examples/ProjectUsageRequest/value"
               }
             }
           ]
@@ -2264,6 +2344,18 @@
           }
         }
       },
+      "ProjectUsage": {
+        "value": {
+          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "@type": "ProjectUsage",
+          "usedCommit": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "usedProject": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          }
+        }
+      },
       "DataVersion": {
         "value": {
           "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
@@ -2307,26 +2399,31 @@
           }
         ]
       },
-      "ConflictFreeMergeResult": {
+      "MergeCommit": {
         "value": {
-          "@type": "MergeResult",
-          "conflict": [
-          ],
-          "mergeCommit": {
-            "$ref": "#/components/examples/Commit/value"
-          }
+          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "@type": "Commit",
+          "created": "1970-01-01T00:00:00.000Z",
+          "description": "string",
+          "owningProject": {
+            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          },
+          "previousCommit": [
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            },
+            {
+              "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+            }
+          ]
         }
       },
-      "ConflictingMergeResult": {
-        "value": {
-          "@type": "MergeResult",
-          "conflict": [
-            {
-              "$ref": "#/components/examples/DataIdentity/value"
-            }
-          ],
-          "mergeCommit": null
-        }
+      "MergeConflicting": {
+        "value": [
+          {
+            "$ref": "#/components/examples/DataIdentity/value"
+          }
+        ]
       },
       "Query": {
         "value": {
@@ -2371,7 +2468,7 @@
       "ExternalDataDatatype": {
         "value": {
           "$schema": "https://json-schema.org/draft/2020-12/schema",
-          "$id": "http://www.omg.org/spec/SysML/2.0/API/ExternalData",
+          "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/ExternalData",
           "type": "object",
           "properties": {
             "@id": {
@@ -2399,7 +2496,7 @@
         "value": {
           "$schema": "https://json-schema.org/draft/2020-12/schema",
           "$defs": {
-            "http://www.omg.org/spec/SysML/2.0/API/ExternalData": {
+            "https://www.omg.org/spec/SystemsModelingAPI/20230201/ExternalData": {
               "$ref": "#/components/examples/ExternalDataDatatype"
             }
           }

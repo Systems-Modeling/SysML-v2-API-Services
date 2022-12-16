@@ -1,7 +1,7 @@
 {
     "@context": {
         "@vocab": "http://omg.org/ns/sysml/v2/api#",
-        "data": {"@type": "@id"},
-        "identity": {"@type": "@id"}
+        "identity": {"@type": "@id"},
+        "payload": {"@type": "@id"}
     }
 }

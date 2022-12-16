@@ -159,6 +159,9 @@ public class CommitController extends JsonLdController<Commit, ProjectContainmen
             return Results.status(NOT_IMPLEMENTED);
         }
         Optional<DataVersion> change = commitService.getChangeByProjectIdCommitIdAndId(projectId, commitId, changeId);
+        if (change.isEmpty()) {
+            return Results.notFound();
+        }
         JsonNode json = JacksonHelper.objectToTree(
                 change,
                 Json.mapper()
