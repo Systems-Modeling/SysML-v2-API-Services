@@ -1,7 +1,8 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2020  InterCAX LLC
- * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2020 InterCAX LLC
+ * Copyright (C) 2020 California Institute of Technology ("Caltech")
+ * Copyright (C) 2022 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -24,6 +25,7 @@ package services;
 import dao.CommitDao;
 import dao.ElementDao;
 import dao.ProjectDao;
+import org.omg.sysml.data.ProjectUsage;
 import org.omg.sysml.metamodel.Element;
 
 import javax.annotation.Nullable;
@@ -80,5 +82,11 @@ public class ElementService extends BaseService<Element, ElementDao> {
         return projectDao.findById(projectId)
                 .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
                 .flatMap(commit -> dao.findByCommitAndQualifiedName(commit, qualifiedName));
+    }
+
+    public Optional<ProjectUsage> getProjectUsageByProjectIdCommitIdElementId(UUID projectId, UUID commitId, UUID elementId) {
+        return projectDao.findById(projectId)
+                .flatMap(project -> commitDao.findByProjectAndId(project, commitId))
+                .flatMap(commit -> dao.findProjectUsageByCommitAndId(commit, elementId));
     }
 }

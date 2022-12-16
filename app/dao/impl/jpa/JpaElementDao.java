@@ -25,6 +25,7 @@ package dao.impl.jpa;
 import config.MetamodelProvider;
 import dao.ElementDao;
 import jpa.manager.JPAManager;
+import org.omg.sysml.data.ProjectUsage;
 import org.omg.sysml.internal.CommitDataVersionIndex;
 import org.omg.sysml.internal.CommitNamedElementIndex;
 import org.omg.sysml.internal.WorkingDataVersion;
@@ -204,6 +205,34 @@ public class JpaElementDao extends JpaDao<Element> implements ElementDao {
             // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
             Commit c = em.contains(commit) ? commit : em.find(CommitImpl.class, commit.getId());
             return Optional.ofNullable(getCommitNamedElementIndex(c, em).getWorkingNamedElement().get(qualifiedName));
+        });
+    }
+
+    @Override
+    public Optional<ProjectUsage> findProjectUsageByCommitAndId(Commit commit, UUID elementId) {
+        return jpaManager.transact(em -> {
+            // TODO Commit is detached at this point. This ternary mitigates by requerying for the Commit in this transaction. A better solution would be moving transaction handling up to service layer (supported by general wisdom) and optionally migrating to using Play's @Transactional/JPAApi. Pros would include removal of repetitive transaction handling at the DAO layer and ability to interface with multiple DAOs in the same transaction (consistent view). Cons include increased temptation to keep transaction open for longer than needed, e.g. during JSON serialization due to the convenience of @Transactional (deprecated in >= 2.8.x), and the service, a higher level of abstraction, becoming aware of transactions. An alternative would be DAO-to-DAO calls (generally discouraged) and delegating to non-transactional versions of methods.
+            Commit c = em.contains(commit) ? commit : em.find(CommitImpl.class, commit.getId());
+            CommitDataVersionIndex commitIndex = dataDao.getCommitIndex(c, em);
+
+            CriteriaBuilder builder = em.getCriteriaBuilder();
+            CriteriaQuery<WorkingDataVersionImpl> query = builder.createQuery(WorkingDataVersionImpl.class);
+            Root<CommitDataVersionIndexImpl> commitIndexRoot = query.from(CommitDataVersionIndexImpl.class);
+            SetJoin<CommitDataVersionIndexImpl, WorkingDataVersionImpl> workingDataVersionJoin = commitIndexRoot.join(CommitDataVersionIndexImpl_.workingDataVersion);
+            Join<WorkingDataVersionImpl, DataVersionImpl> dataVersionJoin = workingDataVersionJoin.join(WorkingDataVersionImpl_.dataVersion);
+            Join<DataVersionImpl, DataIdentityImpl> dataIdentityJoin = dataVersionJoin.join(DataVersionImpl_.identity);
+            Expression<Boolean> where = builder.and(
+                    builder.equal(commitIndexRoot.get(CommitDataVersionIndexImpl_.id), commitIndex.getId()),
+                    builder.equal(dataIdentityJoin.get(DataIdentityImpl_.id), elementId)
+            );
+            query.select(workingDataVersionJoin).where(where);
+            try {
+                return Optional.of(em.createQuery(query).getSingleResult())
+                        .map(WorkingDataVersion::getSource)
+                        .map(projectUsage -> JpaDataDao.resolve(projectUsage, ProjectUsage.class));
+            } catch (NoResultException e) {
+                return Optional.empty();
+            }
         });
     }
 
