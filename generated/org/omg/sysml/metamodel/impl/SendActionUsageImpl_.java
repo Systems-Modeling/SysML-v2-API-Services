@@ -99,10 +99,10 @@ public abstract class SendActionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile SingularAttribute<SendActionUsageImpl, Boolean> isVariation;
 	public static volatile ListAttribute<SendActionUsageImpl, Feature> feature;
 	public static volatile ListAttribute<SendActionUsageImpl, Element> member;
+	public static volatile SingularAttribute<SendActionUsageImpl, String> declaredName;
 	public static volatile SingularAttribute<SendActionUsageImpl, Boolean> isReference;
 	public static volatile ListAttribute<SendActionUsageImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<SendActionUsageImpl, Behavior> behavior;
-	public static volatile SingularAttribute<SendActionUsageImpl, String> effectiveName;
 	public static volatile ListAttribute<SendActionUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<SendActionUsageImpl, Element> ownedElement;
 	public static volatile ListAttribute<SendActionUsageImpl, String> aliasIds;
@@ -118,6 +118,7 @@ public abstract class SendActionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<SendActionUsageImpl, ViewpointUsage> nestedViewpoint;
 	public static volatile CollectionAttribute<SendActionUsageImpl, FeatureInverting> ownedFeatureInverting;
 	public static volatile ListAttribute<SendActionUsageImpl, Usage> directedUsage;
+	public static volatile SingularAttribute<SendActionUsageImpl, String> declaredShortName;
 	public static volatile ListAttribute<SendActionUsageImpl, PartUsage> nestedPart;
 	public static volatile ListAttribute<SendActionUsageImpl, Feature> chainingFeature;
 	public static volatile SingularAttribute<SendActionUsageImpl, Boolean> isConjugated;
@@ -198,10 +199,10 @@ public abstract class SendActionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String MEMBER = "member";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String IS_REFERENCE = "isReference";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";
@@ -217,6 +218,7 @@ public abstract class SendActionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 	public static final String DIRECTED_USAGE = "directedUsage";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String NESTED_PART = "nestedPart";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String IS_CONJUGATED = "isConjugated";

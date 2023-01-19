@@ -63,6 +63,7 @@ import org.omg.sysml.metamodel.ViewpointUsage;
 public abstract class UsageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile ListAttribute<UsageImpl, Usage> directedUsage;
+	public static volatile SingularAttribute<UsageImpl, String> declaredShortName;
 	public static volatile ListAttribute<UsageImpl, PartUsage> nestedPart;
 	public static volatile ListAttribute<UsageImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<UsageImpl, TypeFeaturing> ownedTypeFeaturing;
@@ -126,12 +127,12 @@ public abstract class UsageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ 
 	public static volatile ListAttribute<UsageImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<UsageImpl, Element> member;
 	public static volatile ListAttribute<UsageImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<UsageImpl, String> declaredName;
 	public static volatile SingularAttribute<UsageImpl, Boolean> isReference;
 	public static volatile ListAttribute<UsageImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<UsageImpl, Classifier> definition;
 	public static volatile ListAttribute<UsageImpl, UseCaseUsage> nestedUseCase;
 	public static volatile ListAttribute<UsageImpl, Feature> inheritedFeature;
-	public static volatile SingularAttribute<UsageImpl, String> effectiveName;
 	public static volatile SingularAttribute<UsageImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<UsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<UsageImpl, Element> ownedElement;
@@ -156,6 +157,7 @@ public abstract class UsageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ 
 	public static volatile CollectionAttribute<UsageImpl, FeatureInverting> ownedFeatureInverting;
 
 	public static final String DIRECTED_USAGE = "directedUsage";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String NESTED_PART = "nestedPart";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
@@ -219,12 +221,12 @@ public abstract class UsageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ 
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String IS_REFERENCE = "isReference";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String DEFINITION = "definition";
 	public static final String NESTED_USE_CASE = "nestedUseCase";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";

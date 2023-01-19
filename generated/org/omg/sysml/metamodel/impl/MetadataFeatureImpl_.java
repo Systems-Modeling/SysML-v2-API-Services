@@ -33,6 +33,7 @@ import org.omg.sysml.metamodel.Unioning;
 @StaticMetamodel(MetadataFeatureImpl.class)
 public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<MetadataFeatureImpl, String> declaredShortName;
 	public static volatile ListAttribute<MetadataFeatureImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<MetadataFeatureImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isConjugated;
@@ -74,9 +75,9 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<MetadataFeatureImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<MetadataFeatureImpl, Element> member;
 	public static volatile ListAttribute<MetadataFeatureImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<MetadataFeatureImpl, String> declaredName;
 	public static volatile ListAttribute<MetadataFeatureImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<MetadataFeatureImpl, Feature> inheritedFeature;
-	public static volatile SingularAttribute<MetadataFeatureImpl, String> effectiveName;
 	public static volatile SingularAttribute<MetadataFeatureImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<MetadataFeatureImpl, Annotation> annotation;
 	public static volatile ListAttribute<MetadataFeatureImpl, Membership> importedMembership;
@@ -94,6 +95,7 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<MetadataFeatureImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<MetadataFeatureImpl, FeatureInverting> ownedFeatureInverting;
 
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
@@ -135,9 +137,9 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String DIRECTION = "direction";
 	public static final String ANNOTATION = "annotation";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";

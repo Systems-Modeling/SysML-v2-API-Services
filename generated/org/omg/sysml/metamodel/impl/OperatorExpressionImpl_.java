@@ -35,6 +35,7 @@ import org.omg.sysml.metamodel.Unioning;
 @StaticMetamodel(OperatorExpressionImpl.class)
 public abstract class OperatorExpressionImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<OperatorExpressionImpl, String> declaredShortName;
 	public static volatile ListAttribute<OperatorExpressionImpl, Expression> argument;
 	public static volatile ListAttribute<OperatorExpressionImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<OperatorExpressionImpl, TypeFeaturing> ownedTypeFeaturing;
@@ -79,10 +80,10 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile ListAttribute<OperatorExpressionImpl, Feature> parameter;
 	public static volatile ListAttribute<OperatorExpressionImpl, Element> member;
 	public static volatile ListAttribute<OperatorExpressionImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<OperatorExpressionImpl, String> declaredName;
 	public static volatile ListAttribute<OperatorExpressionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<OperatorExpressionImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<OperatorExpressionImpl, Behavior> behavior;
-	public static volatile SingularAttribute<OperatorExpressionImpl, String> effectiveName;
 	public static volatile SingularAttribute<OperatorExpressionImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<OperatorExpressionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<OperatorExpressionImpl, Element> ownedElement;
@@ -99,6 +100,7 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile ListAttribute<OperatorExpressionImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<OperatorExpressionImpl, FeatureInverting> ownedFeatureInverting;
 
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String ARGUMENT = "argument";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
@@ -143,10 +145,10 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.lifecycle.im
 	public static final String PARAMETER = "parameter";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";

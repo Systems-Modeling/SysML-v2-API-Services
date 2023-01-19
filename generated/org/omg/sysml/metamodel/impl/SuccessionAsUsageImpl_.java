@@ -101,9 +101,9 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isVariation;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Feature> feature;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Element> member;
+	public static volatile SingularAttribute<SuccessionAsUsageImpl, String> declaredName;
 	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isReference;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Feature> inheritedFeature;
-	public static volatile SingularAttribute<SuccessionAsUsageImpl, String> effectiveName;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Element> ownedElement;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, String> aliasIds;
@@ -119,6 +119,7 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<SuccessionAsUsageImpl, ViewpointUsage> nestedViewpoint;
 	public static volatile CollectionAttribute<SuccessionAsUsageImpl, FeatureInverting> ownedFeatureInverting;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Usage> directedUsage;
+	public static volatile SingularAttribute<SuccessionAsUsageImpl, String> declaredShortName;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, PartUsage> nestedPart;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Feature> chainingFeature;
 	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isConjugated;
@@ -207,9 +208,9 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String MEMBER = "member";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String IS_REFERENCE = "isReference";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";
@@ -225,6 +226,7 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 	public static final String DIRECTED_USAGE = "directedUsage";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String NESTED_PART = "nestedPart";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String IS_CONJUGATED = "isConjugated";

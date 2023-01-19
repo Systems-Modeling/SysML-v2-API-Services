@@ -99,10 +99,10 @@ public abstract class ForLoopActionUsageImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile SingularAttribute<ForLoopActionUsageImpl, Boolean> isVariation;
 	public static volatile ListAttribute<ForLoopActionUsageImpl, Feature> feature;
 	public static volatile ListAttribute<ForLoopActionUsageImpl, Element> member;
+	public static volatile SingularAttribute<ForLoopActionUsageImpl, String> declaredName;
 	public static volatile SingularAttribute<ForLoopActionUsageImpl, Boolean> isReference;
 	public static volatile ListAttribute<ForLoopActionUsageImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<ForLoopActionUsageImpl, Behavior> behavior;
-	public static volatile SingularAttribute<ForLoopActionUsageImpl, String> effectiveName;
 	public static volatile ListAttribute<ForLoopActionUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ForLoopActionUsageImpl, Element> ownedElement;
 	public static volatile ListAttribute<ForLoopActionUsageImpl, String> aliasIds;
@@ -118,6 +118,7 @@ public abstract class ForLoopActionUsageImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile ListAttribute<ForLoopActionUsageImpl, ViewpointUsage> nestedViewpoint;
 	public static volatile CollectionAttribute<ForLoopActionUsageImpl, FeatureInverting> ownedFeatureInverting;
 	public static volatile ListAttribute<ForLoopActionUsageImpl, Usage> directedUsage;
+	public static volatile SingularAttribute<ForLoopActionUsageImpl, String> declaredShortName;
 	public static volatile ListAttribute<ForLoopActionUsageImpl, PartUsage> nestedPart;
 	public static volatile ListAttribute<ForLoopActionUsageImpl, Feature> chainingFeature;
 	public static volatile SingularAttribute<ForLoopActionUsageImpl, Boolean> isConjugated;
@@ -198,10 +199,10 @@ public abstract class ForLoopActionUsageImpl_ extends org.omg.sysml.lifecycle.im
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String MEMBER = "member";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String IS_REFERENCE = "isReference";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";
@@ -217,6 +218,7 @@ public abstract class ForLoopActionUsageImpl_ extends org.omg.sysml.lifecycle.im
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 	public static final String DIRECTED_USAGE = "directedUsage";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String NESTED_PART = "nestedPart";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String IS_CONJUGATED = "isConjugated";

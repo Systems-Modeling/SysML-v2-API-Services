@@ -59,6 +59,7 @@ public abstract class ViewpointDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 
 	public static volatile ListAttribute<ViewpointDefinitionImpl, Usage> directedUsage;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, PortUsage> ownedPort;
+	public static volatile SingularAttribute<ViewpointDefinitionImpl, String> declaredShortName;
 	public static volatile SingularAttribute<ViewpointDefinitionImpl, Boolean> isConjugated;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, EnumerationUsage> ownedEnumeration;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, VerificationCaseUsage> ownedVerificationCase;
@@ -118,11 +119,11 @@ public abstract class ViewpointDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile ListAttribute<ViewpointDefinitionImpl, PartUsage> viewpointStakeholder;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, Element> member;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<ViewpointDefinitionImpl, String> declaredName;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<ViewpointDefinitionImpl, Subclassification> ownedSubclassification;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, Feature> inheritedFeature;
 	public static volatile CollectionAttribute<ViewpointDefinitionImpl, TransitionUsage> ownedTransition;
-	public static volatile SingularAttribute<ViewpointDefinitionImpl, String> effectiveName;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<ViewpointDefinitionImpl, Expression> expression;
@@ -147,6 +148,7 @@ public abstract class ViewpointDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 
 	public static final String DIRECTED_USAGE = "directedUsage";
 	public static final String OWNED_PORT = "ownedPort";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String OWNED_ENUMERATION = "ownedEnumeration";
 	public static final String OWNED_VERIFICATION_CASE = "ownedVerificationCase";
@@ -206,11 +208,11 @@ public abstract class ViewpointDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String VIEWPOINT_STAKEHOLDER = "viewpointStakeholder";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String OWNED_SUBCLASSIFICATION = "ownedSubclassification";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String OWNED_TRANSITION = "ownedTransition";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String EXPRESSION = "expression";

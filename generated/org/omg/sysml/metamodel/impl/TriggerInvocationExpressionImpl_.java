@@ -36,6 +36,7 @@ import org.omg.sysml.metamodel.Unioning;
 @StaticMetamodel(TriggerInvocationExpressionImpl.class)
 public abstract class TriggerInvocationExpressionImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<TriggerInvocationExpressionImpl, String> declaredShortName;
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Expression> argument;
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, TypeFeaturing> ownedTypeFeaturing;
@@ -80,10 +81,10 @@ public abstract class TriggerInvocationExpressionImpl_ extends org.omg.sysml.lif
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Feature> parameter;
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Element> member;
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<TriggerInvocationExpressionImpl, String> declaredName;
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Behavior> behavior;
-	public static volatile SingularAttribute<TriggerInvocationExpressionImpl, String> effectiveName;
 	public static volatile SingularAttribute<TriggerInvocationExpressionImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Element> ownedElement;
@@ -100,6 +101,7 @@ public abstract class TriggerInvocationExpressionImpl_ extends org.omg.sysml.lif
 	public static volatile ListAttribute<TriggerInvocationExpressionImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<TriggerInvocationExpressionImpl, FeatureInverting> ownedFeatureInverting;
 
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String ARGUMENT = "argument";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
@@ -144,10 +146,10 @@ public abstract class TriggerInvocationExpressionImpl_ extends org.omg.sysml.lif
 	public static final String PARAMETER = "parameter";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";

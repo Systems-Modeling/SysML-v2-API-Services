@@ -57,6 +57,7 @@ public abstract class ConnectionDefinitionImpl_ extends org.omg.sysml.lifecycle.
 
 	public static volatile ListAttribute<ConnectionDefinitionImpl, Usage> directedUsage;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, PortUsage> ownedPort;
+	public static volatile SingularAttribute<ConnectionDefinitionImpl, String> declaredShortName;
 	public static volatile SingularAttribute<ConnectionDefinitionImpl, Boolean> isConjugated;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, EnumerationUsage> ownedEnumeration;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, VerificationCaseUsage> ownedVerificationCase;
@@ -112,11 +113,11 @@ public abstract class ConnectionDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile ListAttribute<ConnectionDefinitionImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, Element> member;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<ConnectionDefinitionImpl, String> declaredName;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<ConnectionDefinitionImpl, Subclassification> ownedSubclassification;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, Feature> inheritedFeature;
 	public static volatile CollectionAttribute<ConnectionDefinitionImpl, TransitionUsage> ownedTransition;
-	public static volatile SingularAttribute<ConnectionDefinitionImpl, String> effectiveName;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, Element> ownedElement;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, String> aliasIds;
@@ -142,6 +143,7 @@ public abstract class ConnectionDefinitionImpl_ extends org.omg.sysml.lifecycle.
 
 	public static final String DIRECTED_USAGE = "directedUsage";
 	public static final String OWNED_PORT = "ownedPort";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String OWNED_ENUMERATION = "ownedEnumeration";
 	public static final String OWNED_VERIFICATION_CASE = "ownedVerificationCase";
@@ -197,11 +199,11 @@ public abstract class ConnectionDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String OWNED_SUBCLASSIFICATION = "ownedSubclassification";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String OWNED_TRANSITION = "ownedTransition";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";

@@ -18,6 +18,26 @@
         "type": "string"
       }
     },
+    "declaredName": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "declaredShortName": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
     "differencingType": {
       "type": "array",
       "items": {
@@ -45,16 +65,6 @@
         "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
         "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
       }
-    },
-    "effectiveName": {
-      "oneOf": [
-        {
-          "type": "string"
-        },
-        {
-          "type": "null"
-        }
-      ]
     },
     "elementId": {
       "oneOf": [
@@ -654,11 +664,12 @@
     "@id",
     "@type",
     "aliasIds",
+    "declaredName",
+    "declaredShortName",
     "differencingType",
     "directedFeature",
     "directedUsage",
     "documentation",
-    "effectiveName",
     "elementId",
     "endFeature",
     "feature",

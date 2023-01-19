@@ -33,6 +33,7 @@ import org.omg.sysml.metamodel.Unioning;
 @StaticMetamodel(ItemFlowEndImpl.class)
 public abstract class ItemFlowEndImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<ItemFlowEndImpl, String> declaredShortName;
 	public static volatile ListAttribute<ItemFlowEndImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<ItemFlowEndImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<ItemFlowEndImpl, Boolean> isConjugated;
@@ -74,9 +75,9 @@ public abstract class ItemFlowEndImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static volatile ListAttribute<ItemFlowEndImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<ItemFlowEndImpl, Element> member;
 	public static volatile ListAttribute<ItemFlowEndImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<ItemFlowEndImpl, String> declaredName;
 	public static volatile ListAttribute<ItemFlowEndImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<ItemFlowEndImpl, Feature> inheritedFeature;
-	public static volatile SingularAttribute<ItemFlowEndImpl, String> effectiveName;
 	public static volatile SingularAttribute<ItemFlowEndImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<ItemFlowEndImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ItemFlowEndImpl, Element> ownedElement;
@@ -92,6 +93,7 @@ public abstract class ItemFlowEndImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static volatile ListAttribute<ItemFlowEndImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<ItemFlowEndImpl, FeatureInverting> ownedFeatureInverting;
 
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
@@ -133,9 +135,9 @@ public abstract class ItemFlowEndImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";

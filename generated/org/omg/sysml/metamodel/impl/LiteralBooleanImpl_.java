@@ -34,6 +34,7 @@ import org.omg.sysml.metamodel.Unioning;
 @StaticMetamodel(LiteralBooleanImpl.class)
 public abstract class LiteralBooleanImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<LiteralBooleanImpl, String> declaredShortName;
 	public static volatile ListAttribute<LiteralBooleanImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<LiteralBooleanImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isConjugated;
@@ -76,10 +77,10 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<LiteralBooleanImpl, Feature> parameter;
 	public static volatile ListAttribute<LiteralBooleanImpl, Element> member;
 	public static volatile ListAttribute<LiteralBooleanImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<LiteralBooleanImpl, String> declaredName;
 	public static volatile ListAttribute<LiteralBooleanImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<LiteralBooleanImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<LiteralBooleanImpl, Behavior> behavior;
-	public static volatile SingularAttribute<LiteralBooleanImpl, String> effectiveName;
 	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> value;
 	public static volatile SingularAttribute<LiteralBooleanImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<LiteralBooleanImpl, Membership> importedMembership;
@@ -97,6 +98,7 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<LiteralBooleanImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<LiteralBooleanImpl, FeatureInverting> ownedFeatureInverting;
 
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
@@ -139,10 +141,10 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String PARAMETER = "parameter";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String VALUE = "value";
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";

@@ -18,14 +18,7 @@
         "type": "string"
       }
     },
-    "documentation": {
-      "type": "array",
-      "items": {
-        "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
-        "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
-      }
-    },
-    "effectiveName": {
+    "declaredName": {
       "oneOf": [
         {
           "type": "string"
@@ -34,6 +27,23 @@
           "type": "null"
         }
       ]
+    },
+    "declaredShortName": {
+      "oneOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "documentation": {
+      "type": "array",
+      "items": {
+        "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+        "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
+      }
     },
     "elementId": {
       "oneOf": [
@@ -229,8 +239,9 @@
     "@id",
     "@type",
     "aliasIds",
+    "declaredName",
+    "declaredShortName",
     "documentation",
-    "effectiveName",
     "elementId",
     "isImplied",
     "isImpliedIncluded",

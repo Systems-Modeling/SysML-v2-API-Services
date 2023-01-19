@@ -58,6 +58,7 @@ public abstract class ViewDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 
 	public static volatile ListAttribute<ViewDefinitionImpl, Usage> directedUsage;
 	public static volatile ListAttribute<ViewDefinitionImpl, PortUsage> ownedPort;
+	public static volatile SingularAttribute<ViewDefinitionImpl, String> declaredShortName;
 	public static volatile SingularAttribute<ViewDefinitionImpl, Boolean> isConjugated;
 	public static volatile ListAttribute<ViewDefinitionImpl, EnumerationUsage> ownedEnumeration;
 	public static volatile ListAttribute<ViewDefinitionImpl, VerificationCaseUsage> ownedVerificationCase;
@@ -111,11 +112,11 @@ public abstract class ViewDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<ViewDefinitionImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<ViewDefinitionImpl, Element> member;
 	public static volatile ListAttribute<ViewDefinitionImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<ViewDefinitionImpl, String> declaredName;
 	public static volatile ListAttribute<ViewDefinitionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<ViewDefinitionImpl, Subclassification> ownedSubclassification;
 	public static volatile ListAttribute<ViewDefinitionImpl, Feature> inheritedFeature;
 	public static volatile CollectionAttribute<ViewDefinitionImpl, TransitionUsage> ownedTransition;
-	public static volatile SingularAttribute<ViewDefinitionImpl, String> effectiveName;
 	public static volatile ListAttribute<ViewDefinitionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ViewDefinitionImpl, Element> ownedElement;
 	public static volatile ListAttribute<ViewDefinitionImpl, String> aliasIds;
@@ -137,6 +138,7 @@ public abstract class ViewDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 
 	public static final String DIRECTED_USAGE = "directedUsage";
 	public static final String OWNED_PORT = "ownedPort";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String OWNED_ENUMERATION = "ownedEnumeration";
 	public static final String OWNED_VERIFICATION_CASE = "ownedVerificationCase";
@@ -190,11 +192,11 @@ public abstract class ViewDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String OWNED_SUBCLASSIFICATION = "ownedSubclassification";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String OWNED_TRANSITION = "ownedTransition";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";

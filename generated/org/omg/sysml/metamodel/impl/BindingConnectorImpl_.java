@@ -34,6 +34,7 @@ import org.omg.sysml.metamodel.Unioning;
 @StaticMetamodel(BindingConnectorImpl.class)
 public abstract class BindingConnectorImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<BindingConnectorImpl, String> declaredShortName;
 	public static volatile ListAttribute<BindingConnectorImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<BindingConnectorImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isConjugated;
@@ -82,9 +83,9 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<BindingConnectorImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<BindingConnectorImpl, Element> member;
 	public static volatile ListAttribute<BindingConnectorImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<BindingConnectorImpl, String> declaredName;
 	public static volatile ListAttribute<BindingConnectorImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<BindingConnectorImpl, Feature> inheritedFeature;
-	public static volatile SingularAttribute<BindingConnectorImpl, String> effectiveName;
 	public static volatile SingularAttribute<BindingConnectorImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<BindingConnectorImpl, Membership> importedMembership;
 	public static volatile ListAttribute<BindingConnectorImpl, Element> ownedElement;
@@ -103,6 +104,7 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<BindingConnectorImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<BindingConnectorImpl, FeatureInverting> ownedFeatureInverting;
 
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
@@ -151,9 +153,9 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";

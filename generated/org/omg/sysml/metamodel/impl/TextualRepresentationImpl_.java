@@ -18,6 +18,7 @@ public abstract class TextualRepresentationImpl_ extends org.omg.sysml.lifecycle
 	public static volatile ListAttribute<TextualRepresentationImpl, Annotation> annotation;
 	public static volatile SingularAttribute<TextualRepresentationImpl, UUID> elementId;
 	public static volatile ListAttribute<TextualRepresentationImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<TextualRepresentationImpl, String> declaredShortName;
 	public static volatile SingularAttribute<TextualRepresentationImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<TextualRepresentationImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<TextualRepresentationImpl, Element> ownedElement;
@@ -30,12 +31,13 @@ public abstract class TextualRepresentationImpl_ extends org.omg.sysml.lifecycle
 	public static volatile SingularAttribute<TextualRepresentationImpl, String> body;
 	public static volatile SingularAttribute<TextualRepresentationImpl, Boolean> isImpliedIncluded;
 	public static volatile SingularAttribute<TextualRepresentationImpl, String> name;
+	public static volatile SingularAttribute<TextualRepresentationImpl, String> declaredName;
 	public static volatile SingularAttribute<TextualRepresentationImpl, String> shortName;
-	public static volatile SingularAttribute<TextualRepresentationImpl, String> effectiveName;
 
 	public static final String ANNOTATION = "annotation";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
@@ -48,8 +50,8 @@ public abstract class TextualRepresentationImpl_ extends org.omg.sysml.lifecycle
 	public static final String BODY = "body";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String NAME = "name";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String SHORT_NAME = "shortName";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 
 }
 

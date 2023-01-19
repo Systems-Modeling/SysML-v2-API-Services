@@ -70,6 +70,26 @@
             "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
           }
         },
+        "declaredName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "declaredShortName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "definition": {
           "type": "array",
           "items": {
@@ -114,16 +134,6 @@
             "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
-        },
-        "effectiveName": {
-          "oneOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ]
         },
         "elementId": {
           "oneOf": [
@@ -1017,13 +1027,14 @@
         "calculationDefinition",
         "caseDefinition",
         "chainingFeature",
+        "declaredName",
+        "declaredShortName",
         "definition",
         "differencingType",
         "directedFeature",
         "directedUsage",
         "direction",
         "documentation",
-        "effectiveName",
         "elementId",
         "endFeature",
         "endOwningType",
@@ -1243,6 +1254,26 @@
             "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
           }
         },
+        "declaredName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "declaredShortName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "definition": {
           "type": "array",
           "items": {
@@ -1287,16 +1318,6 @@
             "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
-        },
-        "effectiveName": {
-          "oneOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ]
         },
         "elementId": {
           "oneOf": [
@@ -2202,13 +2223,14 @@
         "calculationDefinition",
         "caseDefinition",
         "chainingFeature",
+        "declaredName",
+        "declaredShortName",
         "definition",
         "differencingType",
         "directedFeature",
         "directedUsage",
         "direction",
         "documentation",
-        "effectiveName",
         "elementId",
         "endFeature",
         "endOwningType",
