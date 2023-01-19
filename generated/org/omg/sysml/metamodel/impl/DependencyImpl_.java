@@ -17,6 +17,7 @@ public abstract class DependencyImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 
 	public static volatile SingularAttribute<DependencyImpl, UUID> elementId;
 	public static volatile ListAttribute<DependencyImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<DependencyImpl, String> declaredShortName;
 	public static volatile SingularAttribute<DependencyImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<DependencyImpl, Boolean> isImplied;
 	public static volatile ListAttribute<DependencyImpl, Annotation> ownedAnnotation;
@@ -33,11 +34,12 @@ public abstract class DependencyImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile ListAttribute<DependencyImpl, Element> supplier;
 	public static volatile SingularAttribute<DependencyImpl, String> name;
 	public static volatile ListAttribute<DependencyImpl, Element> client;
+	public static volatile SingularAttribute<DependencyImpl, String> declaredName;
 	public static volatile SingularAttribute<DependencyImpl, String> shortName;
-	public static volatile SingularAttribute<DependencyImpl, String> effectiveName;
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -54,8 +56,8 @@ public abstract class DependencyImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String SUPPLIER = "supplier";
 	public static final String NAME = "name";
 	public static final String CLIENT = "client";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String SHORT_NAME = "shortName";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 
 }
 

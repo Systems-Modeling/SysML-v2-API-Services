@@ -35,6 +35,7 @@ import org.omg.sysml.metamodel.Unioning;
 @StaticMetamodel(FeatureChainExpressionImpl.class)
 public abstract class FeatureChainExpressionImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<FeatureChainExpressionImpl, String> declaredShortName;
 	public static volatile ListAttribute<FeatureChainExpressionImpl, Expression> argument;
 	public static volatile ListAttribute<FeatureChainExpressionImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<FeatureChainExpressionImpl, TypeFeaturing> ownedTypeFeaturing;
@@ -79,10 +80,10 @@ public abstract class FeatureChainExpressionImpl_ extends org.omg.sysml.lifecycl
 	public static volatile ListAttribute<FeatureChainExpressionImpl, Feature> parameter;
 	public static volatile ListAttribute<FeatureChainExpressionImpl, Element> member;
 	public static volatile ListAttribute<FeatureChainExpressionImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<FeatureChainExpressionImpl, String> declaredName;
 	public static volatile ListAttribute<FeatureChainExpressionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<FeatureChainExpressionImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<FeatureChainExpressionImpl, Behavior> behavior;
-	public static volatile SingularAttribute<FeatureChainExpressionImpl, String> effectiveName;
 	public static volatile SingularAttribute<FeatureChainExpressionImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<FeatureChainExpressionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<FeatureChainExpressionImpl, Element> ownedElement;
@@ -99,6 +100,7 @@ public abstract class FeatureChainExpressionImpl_ extends org.omg.sysml.lifecycl
 	public static volatile ListAttribute<FeatureChainExpressionImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<FeatureChainExpressionImpl, FeatureInverting> ownedFeatureInverting;
 
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String ARGUMENT = "argument";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
@@ -143,10 +145,10 @@ public abstract class FeatureChainExpressionImpl_ extends org.omg.sysml.lifecycl
 	public static final String PARAMETER = "parameter";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";

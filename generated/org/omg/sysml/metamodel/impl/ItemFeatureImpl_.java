@@ -33,6 +33,7 @@ import org.omg.sysml.metamodel.Unioning;
 @StaticMetamodel(ItemFeatureImpl.class)
 public abstract class ItemFeatureImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<ItemFeatureImpl, String> declaredShortName;
 	public static volatile ListAttribute<ItemFeatureImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<ItemFeatureImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<ItemFeatureImpl, Boolean> isConjugated;
@@ -74,9 +75,9 @@ public abstract class ItemFeatureImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static volatile ListAttribute<ItemFeatureImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<ItemFeatureImpl, Element> member;
 	public static volatile ListAttribute<ItemFeatureImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<ItemFeatureImpl, String> declaredName;
 	public static volatile ListAttribute<ItemFeatureImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<ItemFeatureImpl, Feature> inheritedFeature;
-	public static volatile SingularAttribute<ItemFeatureImpl, String> effectiveName;
 	public static volatile SingularAttribute<ItemFeatureImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<ItemFeatureImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ItemFeatureImpl, Element> ownedElement;
@@ -92,6 +93,7 @@ public abstract class ItemFeatureImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static volatile ListAttribute<ItemFeatureImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<ItemFeatureImpl, FeatureInverting> ownedFeatureInverting;
 
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
@@ -133,9 +135,9 @@ public abstract class ItemFeatureImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";

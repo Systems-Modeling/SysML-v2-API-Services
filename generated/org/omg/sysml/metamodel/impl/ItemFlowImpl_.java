@@ -38,6 +38,7 @@ import org.omg.sysml.metamodel.Unioning;
 @StaticMetamodel(ItemFlowImpl.class)
 public abstract class ItemFlowImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<ItemFlowImpl, String> declaredShortName;
 	public static volatile ListAttribute<ItemFlowImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<ItemFlowImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isConjugated;
@@ -89,10 +90,10 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile ListAttribute<ItemFlowImpl, Feature> parameter;
 	public static volatile ListAttribute<ItemFlowImpl, Element> member;
 	public static volatile ListAttribute<ItemFlowImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<ItemFlowImpl, String> declaredName;
 	public static volatile ListAttribute<ItemFlowImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<ItemFlowImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<ItemFlowImpl, Behavior> behavior;
-	public static volatile SingularAttribute<ItemFlowImpl, String> effectiveName;
 	public static volatile SingularAttribute<ItemFlowImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<ItemFlowImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ItemFlowImpl, Element> ownedElement;
@@ -112,6 +113,7 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile ListAttribute<ItemFlowImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<ItemFlowImpl, FeatureInverting> ownedFeatureInverting;
 
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
@@ -163,10 +165,10 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String PARAMETER = "parameter";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";

@@ -17,15 +17,16 @@ import org.omg.sysml.metamodel.VisibilityKind;
 @StaticMetamodel(FramedConcernMembershipImpl.class)
 public abstract class FramedConcernMembershipImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<FramedConcernMembershipImpl, String> declaredShortName;
 	public static volatile SingularAttribute<FramedConcernMembershipImpl, String> ownedMemberElementId;
 	public static volatile SingularAttribute<FramedConcernMembershipImpl, String> memberName;
 	public static volatile ListAttribute<FramedConcernMembershipImpl, Element> ownedRelatedElement;
 	public static volatile ListAttribute<FramedConcernMembershipImpl, Element> source;
 	public static volatile SingularAttribute<FramedConcernMembershipImpl, String> memberElementId;
 	public static volatile SingularAttribute<FramedConcernMembershipImpl, Boolean> isImpliedIncluded;
+	public static volatile SingularAttribute<FramedConcernMembershipImpl, String> declaredName;
 	public static volatile SingularAttribute<FramedConcernMembershipImpl, String> memberShortName;
 	public static volatile SingularAttribute<FramedConcernMembershipImpl, String> ownedMemberName;
-	public static volatile SingularAttribute<FramedConcernMembershipImpl, String> effectiveName;
 	public static volatile SingularAttribute<FramedConcernMembershipImpl, String> ownedMemberShortName;
 	public static volatile SingularAttribute<FramedConcernMembershipImpl, UUID> elementId;
 	public static volatile ListAttribute<FramedConcernMembershipImpl, TextualRepresentation> textualRepresentation;
@@ -44,15 +45,16 @@ public abstract class FramedConcernMembershipImpl_ extends org.omg.sysml.lifecyc
 	public static volatile SingularAttribute<FramedConcernMembershipImpl, String> name;
 	public static volatile SingularAttribute<FramedConcernMembershipImpl, String> shortName;
 
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String OWNED_MEMBER_ELEMENT_ID = "ownedMemberElementId";
 	public static final String MEMBER_NAME = "memberName";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
 	public static final String SOURCE = "source";
 	public static final String MEMBER_ELEMENT_ID = "memberElementId";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String MEMBER_SHORT_NAME = "memberShortName";
 	public static final String OWNED_MEMBER_NAME = "ownedMemberName";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String OWNED_MEMBER_SHORT_NAME = "ownedMemberShortName";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";

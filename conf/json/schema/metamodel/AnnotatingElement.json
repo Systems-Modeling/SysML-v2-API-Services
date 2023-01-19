@@ -35,14 +35,7 @@
             "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
           }
         },
-        "documentation": {
-          "type": "array",
-          "items": {
-            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
-          }
-        },
-        "effectiveName": {
+        "declaredName": {
           "oneOf": [
             {
               "type": "string"
@@ -51,6 +44,23 @@
               "type": "null"
             }
           ]
+        },
+        "declaredShortName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "documentation": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
+          }
         },
         "elementId": {
           "oneOf": [
@@ -191,8 +201,9 @@
         "aliasIds",
         "annotatedElement",
         "annotation",
+        "declaredName",
+        "declaredShortName",
         "documentation",
-        "effectiveName",
         "elementId",
         "isImpliedIncluded",
         "isLibraryElement",
@@ -275,14 +286,7 @@
             "body": {
               "type": "string"
             },
-            "documentation": {
-              "type": "array",
-              "items": {
-                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
-                "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
-              }
-            },
-            "effectiveName": {
+            "declaredName": {
               "oneOf": [
                 {
                   "type": "string"
@@ -291,6 +295,23 @@
                   "type": "null"
                 }
               ]
+            },
+            "declaredShortName": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "documentation": {
+              "type": "array",
+              "items": {
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
+              }
             },
             "elementId": {
               "oneOf": [
@@ -442,8 +463,9 @@
             "annotatedElement",
             "annotation",
             "body",
+            "declaredName",
+            "declaredShortName",
             "documentation",
-            "effectiveName",
             "elementId",
             "isImpliedIncluded",
             "isLibraryElement",
@@ -504,6 +526,26 @@
         "body": {
           "type": "string"
         },
+        "declaredName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "declaredShortName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "documentation": {
           "type": "array",
           "items": {
@@ -514,16 +556,6 @@
         "documentedElement": {
           "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
           "$comment": "https://www.omg.org/spec/SysML/20230201/Element"
-        },
-        "effectiveName": {
-          "oneOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ]
         },
         "elementId": {
           "oneOf": [
@@ -675,9 +707,10 @@
         "annotatedElement",
         "annotation",
         "body",
+        "declaredName",
+        "declaredShortName",
         "documentation",
         "documentedElement",
-        "effectiveName",
         "elementId",
         "isImpliedIncluded",
         "isLibraryElement",
@@ -733,14 +766,7 @@
         "body": {
           "type": "string"
         },
-        "documentation": {
-          "type": "array",
-          "items": {
-            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
-          }
-        },
-        "effectiveName": {
+        "declaredName": {
           "oneOf": [
             {
               "type": "string"
@@ -749,6 +775,23 @@
               "type": "null"
             }
           ]
+        },
+        "declaredShortName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "documentation": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
+          }
         },
         "elementId": {
           "oneOf": [
@@ -897,8 +940,9 @@
         "annotatedElement",
         "annotation",
         "body",
+        "declaredName",
+        "declaredShortName",
         "documentation",
-        "effectiveName",
         "elementId",
         "isImpliedIncluded",
         "isLibraryElement",
@@ -961,6 +1005,26 @@
                 "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
               }
             },
+            "declaredName": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "declaredShortName": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
             "differencingType": {
               "type": "array",
               "items": {
@@ -991,16 +1055,6 @@
                 "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
                 "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
               }
-            },
-            "effectiveName": {
-              "oneOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ]
             },
             "elementId": {
               "oneOf": [
@@ -1536,11 +1590,12 @@
             "annotatedElement",
             "annotation",
             "chainingFeature",
+            "declaredName",
+            "declaredShortName",
             "differencingType",
             "directedFeature",
             "direction",
             "documentation",
-            "effectiveName",
             "elementId",
             "endFeature",
             "endOwningType",
@@ -1662,6 +1717,26 @@
             "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
           }
         },
+        "declaredName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "declaredShortName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "definition": {
           "type": "array",
           "items": {
@@ -1706,16 +1781,6 @@
             "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
-        },
-        "effectiveName": {
-          "oneOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ]
         },
         "elementId": {
           "oneOf": [
@@ -2570,13 +2635,14 @@
         "annotatedElement",
         "annotation",
         "chainingFeature",
+        "declaredName",
+        "declaredShortName",
         "definition",
         "differencingType",
         "directedFeature",
         "directedUsage",
         "direction",
         "documentation",
-        "effectiveName",
         "elementId",
         "endFeature",
         "endOwningType",

@@ -57,6 +57,7 @@ public abstract class OccurrenceDefinitionImpl_ extends org.omg.sysml.lifecycle.
 
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, Usage> directedUsage;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, PortUsage> ownedPort;
+	public static volatile SingularAttribute<OccurrenceDefinitionImpl, String> declaredShortName;
 	public static volatile SingularAttribute<OccurrenceDefinitionImpl, Boolean> isConjugated;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, EnumerationUsage> ownedEnumeration;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, VerificationCaseUsage> ownedVerificationCase;
@@ -107,11 +108,11 @@ public abstract class OccurrenceDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, Element> member;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<OccurrenceDefinitionImpl, String> declaredName;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<OccurrenceDefinitionImpl, Subclassification> ownedSubclassification;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, Feature> inheritedFeature;
 	public static volatile CollectionAttribute<OccurrenceDefinitionImpl, TransitionUsage> ownedTransition;
-	public static volatile SingularAttribute<OccurrenceDefinitionImpl, String> effectiveName;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, Element> ownedElement;
 	public static volatile ListAttribute<OccurrenceDefinitionImpl, String> aliasIds;
@@ -133,6 +134,7 @@ public abstract class OccurrenceDefinitionImpl_ extends org.omg.sysml.lifecycle.
 
 	public static final String DIRECTED_USAGE = "directedUsage";
 	public static final String OWNED_PORT = "ownedPort";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String OWNED_ENUMERATION = "ownedEnumeration";
 	public static final String OWNED_VERIFICATION_CASE = "ownedVerificationCase";
@@ -183,11 +185,11 @@ public abstract class OccurrenceDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String OWNED_SUBCLASSIFICATION = "ownedSubclassification";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String OWNED_TRANSITION = "ownedTransition";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";

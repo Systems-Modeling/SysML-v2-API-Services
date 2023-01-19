@@ -60,6 +60,7 @@ public abstract class CalculationDefinitionImpl_ extends org.omg.sysml.lifecycle
 	public static volatile ListAttribute<CalculationDefinitionImpl, CalculationUsage> calculation;
 	public static volatile ListAttribute<CalculationDefinitionImpl, Usage> directedUsage;
 	public static volatile ListAttribute<CalculationDefinitionImpl, PortUsage> ownedPort;
+	public static volatile SingularAttribute<CalculationDefinitionImpl, String> declaredShortName;
 	public static volatile SingularAttribute<CalculationDefinitionImpl, Boolean> isConjugated;
 	public static volatile ListAttribute<CalculationDefinitionImpl, EnumerationUsage> ownedEnumeration;
 	public static volatile ListAttribute<CalculationDefinitionImpl, VerificationCaseUsage> ownedVerificationCase;
@@ -112,11 +113,11 @@ public abstract class CalculationDefinitionImpl_ extends org.omg.sysml.lifecycle
 	public static volatile ListAttribute<CalculationDefinitionImpl, Feature> parameter;
 	public static volatile ListAttribute<CalculationDefinitionImpl, Element> member;
 	public static volatile ListAttribute<CalculationDefinitionImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<CalculationDefinitionImpl, String> declaredName;
 	public static volatile ListAttribute<CalculationDefinitionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<CalculationDefinitionImpl, Subclassification> ownedSubclassification;
 	public static volatile ListAttribute<CalculationDefinitionImpl, Feature> inheritedFeature;
 	public static volatile CollectionAttribute<CalculationDefinitionImpl, TransitionUsage> ownedTransition;
-	public static volatile SingularAttribute<CalculationDefinitionImpl, String> effectiveName;
 	public static volatile ListAttribute<CalculationDefinitionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<CalculationDefinitionImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<CalculationDefinitionImpl, Expression> expression;
@@ -142,6 +143,7 @@ public abstract class CalculationDefinitionImpl_ extends org.omg.sysml.lifecycle
 	public static final String CALCULATION = "calculation";
 	public static final String DIRECTED_USAGE = "directedUsage";
 	public static final String OWNED_PORT = "ownedPort";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String OWNED_ENUMERATION = "ownedEnumeration";
 	public static final String OWNED_VERIFICATION_CASE = "ownedVerificationCase";
@@ -194,11 +196,11 @@ public abstract class CalculationDefinitionImpl_ extends org.omg.sysml.lifecycle
 	public static final String PARAMETER = "parameter";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String OWNED_SUBCLASSIFICATION = "ownedSubclassification";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String OWNED_TRANSITION = "ownedTransition";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String EXPRESSION = "expression";

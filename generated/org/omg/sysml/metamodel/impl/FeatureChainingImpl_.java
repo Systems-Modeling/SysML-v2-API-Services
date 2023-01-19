@@ -17,6 +17,7 @@ public abstract class FeatureChainingImpl_ extends org.omg.sysml.lifecycle.impl.
 
 	public static volatile SingularAttribute<FeatureChainingImpl, UUID> elementId;
 	public static volatile ListAttribute<FeatureChainingImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<FeatureChainingImpl, String> declaredShortName;
 	public static volatile SingularAttribute<FeatureChainingImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<FeatureChainingImpl, Boolean> isImplied;
 	public static volatile ListAttribute<FeatureChainingImpl, Annotation> ownedAnnotation;
@@ -31,11 +32,12 @@ public abstract class FeatureChainingImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<FeatureChainingImpl, Element> target;
 	public static volatile ListAttribute<FeatureChainingImpl, Element> relatedElement;
 	public static volatile SingularAttribute<FeatureChainingImpl, String> name;
+	public static volatile SingularAttribute<FeatureChainingImpl, String> declaredName;
 	public static volatile SingularAttribute<FeatureChainingImpl, String> shortName;
-	public static volatile SingularAttribute<FeatureChainingImpl, String> effectiveName;
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -50,8 +52,8 @@ public abstract class FeatureChainingImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String TARGET = "target";
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NAME = "name";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String SHORT_NAME = "shortName";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 
 }
 

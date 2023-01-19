@@ -7,8 +7,9 @@
 
         "action": {"@type": "@id"},
         "aliasIds": {"@type": "xsd:string"},
+        "declaredName": {"@type": "xsd:string"},
+        "declaredShortName": {"@type": "xsd:string"},
         "documentation": {"@type": "@id"},
-        "effectiveName": {"@type": "xsd:string"},
         "elementId": {"@type": "dcterms:identifier"},
         "feature": {"@type": "@id"},
         "isImplied": {"@type": "xsd:boolean"},

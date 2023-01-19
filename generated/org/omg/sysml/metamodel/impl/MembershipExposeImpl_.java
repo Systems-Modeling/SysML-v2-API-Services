@@ -18,6 +18,7 @@ public abstract class MembershipExposeImpl_ extends org.omg.sysml.lifecycle.impl
 
 	public static volatile SingularAttribute<MembershipExposeImpl, UUID> elementId;
 	public static volatile ListAttribute<MembershipExposeImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<MembershipExposeImpl, String> declaredShortName;
 	public static volatile SingularAttribute<MembershipExposeImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<MembershipExposeImpl, Boolean> isImplied;
 	public static volatile ListAttribute<MembershipExposeImpl, Annotation> ownedAnnotation;
@@ -34,12 +35,13 @@ public abstract class MembershipExposeImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile SingularAttribute<MembershipExposeImpl, Boolean> isRecursive;
 	public static volatile ListAttribute<MembershipExposeImpl, Element> relatedElement;
 	public static volatile SingularAttribute<MembershipExposeImpl, String> name;
+	public static volatile SingularAttribute<MembershipExposeImpl, String> declaredName;
 	public static volatile SingularAttribute<MembershipExposeImpl, Boolean> isImportAll;
 	public static volatile SingularAttribute<MembershipExposeImpl, String> shortName;
-	public static volatile SingularAttribute<MembershipExposeImpl, String> effectiveName;
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -56,9 +58,9 @@ public abstract class MembershipExposeImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String IS_RECURSIVE = "isRecursive";
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NAME = "name";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String IS_IMPORT_ALL = "isImportAll";
 	public static final String SHORT_NAME = "shortName";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 
 }
 

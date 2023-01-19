@@ -17,6 +17,7 @@ public abstract class ElementImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl
 
 	public static volatile SingularAttribute<ElementImpl, UUID> elementId;
 	public static volatile ListAttribute<ElementImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<ElementImpl, String> declaredShortName;
 	public static volatile SingularAttribute<ElementImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<ElementImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<ElementImpl, Element> ownedElement;
@@ -26,11 +27,12 @@ public abstract class ElementImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl
 	public static volatile ListAttribute<ElementImpl, Documentation> documentation;
 	public static volatile SingularAttribute<ElementImpl, Boolean> isImpliedIncluded;
 	public static volatile SingularAttribute<ElementImpl, String> name;
+	public static volatile SingularAttribute<ElementImpl, String> declaredName;
 	public static volatile SingularAttribute<ElementImpl, String> shortName;
-	public static volatile SingularAttribute<ElementImpl, String> effectiveName;
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
@@ -40,8 +42,8 @@ public abstract class ElementImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl
 	public static final String DOCUMENTATION = "documentation";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String NAME = "name";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String SHORT_NAME = "shortName";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 
 }
 

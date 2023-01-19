@@ -20,6 +20,7 @@ public abstract class LibraryPackageImpl_ extends org.omg.sysml.lifecycle.impl.D
 
 	public static volatile SingularAttribute<LibraryPackageImpl, UUID> elementId;
 	public static volatile ListAttribute<LibraryPackageImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<LibraryPackageImpl, String> declaredShortName;
 	public static volatile ListAttribute<LibraryPackageImpl, Membership> importedMembership;
 	public static volatile SingularAttribute<LibraryPackageImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<LibraryPackageImpl, Annotation> ownedAnnotation;
@@ -35,13 +36,14 @@ public abstract class LibraryPackageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<LibraryPackageImpl, Expression> filterCondition;
 	public static volatile ListAttribute<LibraryPackageImpl, Element> member;
 	public static volatile SingularAttribute<LibraryPackageImpl, String> name;
+	public static volatile SingularAttribute<LibraryPackageImpl, String> declaredName;
 	public static volatile SingularAttribute<LibraryPackageImpl, String> shortName;
-	public static volatile SingularAttribute<LibraryPackageImpl, String> effectiveName;
 	public static volatile ListAttribute<LibraryPackageImpl, Element> ownedMember;
 	public static volatile ListAttribute<LibraryPackageImpl, Membership> ownedMembership;
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -57,8 +59,8 @@ public abstract class LibraryPackageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String FILTER_CONDITION = "filterCondition";
 	public static final String MEMBER = "member";
 	public static final String NAME = "name";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String SHORT_NAME = "shortName";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 

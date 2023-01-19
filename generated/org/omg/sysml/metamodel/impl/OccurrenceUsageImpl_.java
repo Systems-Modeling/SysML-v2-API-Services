@@ -65,6 +65,7 @@ import org.omg.sysml.metamodel.ViewpointUsage;
 public abstract class OccurrenceUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
 	public static volatile ListAttribute<OccurrenceUsageImpl, Usage> directedUsage;
+	public static volatile SingularAttribute<OccurrenceUsageImpl, String> declaredShortName;
 	public static volatile ListAttribute<OccurrenceUsageImpl, PartUsage> nestedPart;
 	public static volatile ListAttribute<OccurrenceUsageImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<OccurrenceUsageImpl, TypeFeaturing> ownedTypeFeaturing;
@@ -130,12 +131,12 @@ public abstract class OccurrenceUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<OccurrenceUsageImpl, Element> member;
 	public static volatile ListAttribute<OccurrenceUsageImpl, Class> occurrenceDefinition;
 	public static volatile ListAttribute<OccurrenceUsageImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<OccurrenceUsageImpl, String> declaredName;
 	public static volatile SingularAttribute<OccurrenceUsageImpl, Boolean> isReference;
 	public static volatile ListAttribute<OccurrenceUsageImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<OccurrenceUsageImpl, Classifier> definition;
 	public static volatile ListAttribute<OccurrenceUsageImpl, UseCaseUsage> nestedUseCase;
 	public static volatile ListAttribute<OccurrenceUsageImpl, Feature> inheritedFeature;
-	public static volatile SingularAttribute<OccurrenceUsageImpl, String> effectiveName;
 	public static volatile SingularAttribute<OccurrenceUsageImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<OccurrenceUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<OccurrenceUsageImpl, Element> ownedElement;
@@ -161,6 +162,7 @@ public abstract class OccurrenceUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile CollectionAttribute<OccurrenceUsageImpl, FeatureInverting> ownedFeatureInverting;
 
 	public static final String DIRECTED_USAGE = "directedUsage";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String NESTED_PART = "nestedPart";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
@@ -226,12 +228,12 @@ public abstract class OccurrenceUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String MEMBER = "member";
 	public static final String OCCURRENCE_DEFINITION = "occurrenceDefinition";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String IS_REFERENCE = "isReference";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String DEFINITION = "definition";
 	public static final String NESTED_USE_CASE = "nestedUseCase";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";

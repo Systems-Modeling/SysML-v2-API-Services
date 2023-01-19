@@ -75,7 +75,8 @@ public class JpaDataDao implements DataDao {
     protected static List<Class<?>> SUPPORTED_PRIMITIVE_CONSTRAINT_CLASSES = Arrays.asList(
             Number.class,
             Boolean.class,
-            String.class
+            String.class,
+            UUID.class
     );
 
     @SuppressWarnings({"unchecked", "rawtypes"})
@@ -232,6 +233,10 @@ public class JpaDataDao implements DataDao {
                 Object actualValue;
                 Object constrainedValue;
                 switch (primitiveConstraint.getProperty()) {
+                    case "@id":
+                        actualValue = data.getId();
+                        constrainedValue = JavaBeanHelper.convert(primitiveConstraint.getValue(), UUID.class);
+                        break;
                     case "@type":
                         try {
                             Class<?> clazz = data instanceof HibernateProxy ?

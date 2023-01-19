@@ -99,10 +99,10 @@ public abstract class ForkNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile SingularAttribute<ForkNodeImpl, Boolean> isVariation;
 	public static volatile ListAttribute<ForkNodeImpl, Feature> feature;
 	public static volatile ListAttribute<ForkNodeImpl, Element> member;
+	public static volatile SingularAttribute<ForkNodeImpl, String> declaredName;
 	public static volatile SingularAttribute<ForkNodeImpl, Boolean> isReference;
 	public static volatile ListAttribute<ForkNodeImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<ForkNodeImpl, Behavior> behavior;
-	public static volatile SingularAttribute<ForkNodeImpl, String> effectiveName;
 	public static volatile ListAttribute<ForkNodeImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ForkNodeImpl, Element> ownedElement;
 	public static volatile ListAttribute<ForkNodeImpl, String> aliasIds;
@@ -118,6 +118,7 @@ public abstract class ForkNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile ListAttribute<ForkNodeImpl, ViewpointUsage> nestedViewpoint;
 	public static volatile CollectionAttribute<ForkNodeImpl, FeatureInverting> ownedFeatureInverting;
 	public static volatile ListAttribute<ForkNodeImpl, Usage> directedUsage;
+	public static volatile SingularAttribute<ForkNodeImpl, String> declaredShortName;
 	public static volatile ListAttribute<ForkNodeImpl, PartUsage> nestedPart;
 	public static volatile ListAttribute<ForkNodeImpl, Feature> chainingFeature;
 	public static volatile SingularAttribute<ForkNodeImpl, Boolean> isConjugated;
@@ -198,10 +199,10 @@ public abstract class ForkNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String MEMBER = "member";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String IS_REFERENCE = "isReference";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";
@@ -217,6 +218,7 @@ public abstract class ForkNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 	public static final String DIRECTED_USAGE = "directedUsage";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String NESTED_PART = "nestedPart";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String IS_CONJUGATED = "isConjugated";

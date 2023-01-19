@@ -93,6 +93,42 @@ public class FunctionImpl extends SysMLTypeImpl implements Function {
 
 
 
+    // @info.archinnov.achilles.annotations.Column("declaredName")
+    private String declaredName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "declaredName", table = "Function")
+    public String getDeclaredName() {
+        return declaredName;
+    }
+
+    @JsonSetter
+    public void setDeclaredName(String declaredName) {
+        this.declaredName = declaredName;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("declaredShortName")
+    private String declaredShortName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "declaredShortName", table = "Function")
+    public String getDeclaredShortName() {
+        return declaredShortName;
+    }
+
+    @JsonSetter
+    public void setDeclaredShortName(String declaredShortName) {
+        this.declaredShortName = declaredShortName;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("differencingType")
     private List<Type> differencingType;
@@ -167,26 +203,6 @@ public class FunctionImpl extends SysMLTypeImpl implements Function {
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DocumentationImpl.class)
     public void setDocumentation(List<Documentation> documentation) {
         this.documentation = documentation;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("effectiveName")
-    private String effectiveName;
-
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    // @javax.persistence.Transient
-    @javax.persistence.Column(name = "effectiveName", table = "Function")
-    public String getEffectiveName() {
-        return effectiveName;
-    }
-
-    @JsonSetter
-    public void setEffectiveName(String effectiveName) {
-        this.effectiveName = effectiveName;
     }
 
 
@@ -616,12 +632,14 @@ public class FunctionImpl extends SysMLTypeImpl implements Function {
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("name")
     private String name;
 
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
     @javax.persistence.Column(name = "name", table = "Function")
     public String getName() {
         return name;
@@ -1218,12 +1236,14 @@ public class FunctionImpl extends SysMLTypeImpl implements Function {
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("shortName")
     private String shortName;
 
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
     @javax.persistence.Column(name = "shortName", table = "Function")
     public String getShortName() {
         return shortName;

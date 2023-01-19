@@ -104,10 +104,10 @@ public abstract class ConcernUsageImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static volatile SingularAttribute<ConcernUsageImpl, Boolean> isVariation;
 	public static volatile ListAttribute<ConcernUsageImpl, Feature> feature;
 	public static volatile ListAttribute<ConcernUsageImpl, Element> member;
+	public static volatile SingularAttribute<ConcernUsageImpl, String> declaredName;
 	public static volatile SingularAttribute<ConcernUsageImpl, Boolean> isReference;
 	public static volatile ListAttribute<ConcernUsageImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<ConcernUsageImpl, Behavior> behavior;
-	public static volatile SingularAttribute<ConcernUsageImpl, String> effectiveName;
 	public static volatile ListAttribute<ConcernUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ConcernUsageImpl, Element> ownedElement;
 	public static volatile SingularAttribute<ConcernUsageImpl, Boolean> isModelLevelEvaluable;
@@ -124,6 +124,7 @@ public abstract class ConcernUsageImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static volatile ListAttribute<ConcernUsageImpl, ViewpointUsage> nestedViewpoint;
 	public static volatile CollectionAttribute<ConcernUsageImpl, FeatureInverting> ownedFeatureInverting;
 	public static volatile ListAttribute<ConcernUsageImpl, Usage> directedUsage;
+	public static volatile SingularAttribute<ConcernUsageImpl, String> declaredShortName;
 	public static volatile ListAttribute<ConcernUsageImpl, PartUsage> nestedPart;
 	public static volatile ListAttribute<ConcernUsageImpl, Feature> chainingFeature;
 	public static volatile SingularAttribute<ConcernUsageImpl, Boolean> isConjugated;
@@ -210,10 +211,10 @@ public abstract class ConcernUsageImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String MEMBER = "member";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String IS_REFERENCE = "isReference";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
@@ -230,6 +231,7 @@ public abstract class ConcernUsageImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 	public static final String DIRECTED_USAGE = "directedUsage";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String NESTED_PART = "nestedPart";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String IS_CONJUGATED = "isConjugated";

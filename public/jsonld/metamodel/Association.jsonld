@@ -7,10 +7,11 @@
 
         "aliasIds": {"@type": "xsd:string"},
         "associationEnd": {"@type": "@id"},
+        "declaredName": {"@type": "xsd:string"},
+        "declaredShortName": {"@type": "xsd:string"},
         "differencingType": {"@type": "@id"},
         "directedFeature": {"@type": "@id"},
         "documentation": {"@type": "@id"},
-        "effectiveName": {"@type": "xsd:string"},
         "elementId": {"@type": "dcterms:identifier"},
         "endFeature": {"@type": "@id"},
         "feature": {"@type": "@id"},

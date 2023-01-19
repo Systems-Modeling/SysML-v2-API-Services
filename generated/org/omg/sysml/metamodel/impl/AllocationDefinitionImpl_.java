@@ -57,6 +57,7 @@ public abstract class AllocationDefinitionImpl_ extends org.omg.sysml.lifecycle.
 
 	public static volatile ListAttribute<AllocationDefinitionImpl, Usage> directedUsage;
 	public static volatile ListAttribute<AllocationDefinitionImpl, PortUsage> ownedPort;
+	public static volatile SingularAttribute<AllocationDefinitionImpl, String> declaredShortName;
 	public static volatile SingularAttribute<AllocationDefinitionImpl, Boolean> isConjugated;
 	public static volatile ListAttribute<AllocationDefinitionImpl, EnumerationUsage> ownedEnumeration;
 	public static volatile ListAttribute<AllocationDefinitionImpl, VerificationCaseUsage> ownedVerificationCase;
@@ -112,11 +113,11 @@ public abstract class AllocationDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile ListAttribute<AllocationDefinitionImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<AllocationDefinitionImpl, Element> member;
 	public static volatile ListAttribute<AllocationDefinitionImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<AllocationDefinitionImpl, String> declaredName;
 	public static volatile ListAttribute<AllocationDefinitionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<AllocationDefinitionImpl, Subclassification> ownedSubclassification;
 	public static volatile ListAttribute<AllocationDefinitionImpl, Feature> inheritedFeature;
 	public static volatile CollectionAttribute<AllocationDefinitionImpl, TransitionUsage> ownedTransition;
-	public static volatile SingularAttribute<AllocationDefinitionImpl, String> effectiveName;
 	public static volatile ListAttribute<AllocationDefinitionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<AllocationDefinitionImpl, AllocationUsage> allocation;
 	public static volatile ListAttribute<AllocationDefinitionImpl, Element> ownedElement;
@@ -143,6 +144,7 @@ public abstract class AllocationDefinitionImpl_ extends org.omg.sysml.lifecycle.
 
 	public static final String DIRECTED_USAGE = "directedUsage";
 	public static final String OWNED_PORT = "ownedPort";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String OWNED_ENUMERATION = "ownedEnumeration";
 	public static final String OWNED_VERIFICATION_CASE = "ownedVerificationCase";
@@ -198,11 +200,11 @@ public abstract class AllocationDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String OWNED_SUBCLASSIFICATION = "ownedSubclassification";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String OWNED_TRANSITION = "ownedTransition";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String ALLOCATION = "allocation";
 	public static final String OWNED_ELEMENT = "ownedElement";

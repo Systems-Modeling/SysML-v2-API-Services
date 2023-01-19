@@ -100,10 +100,10 @@ public abstract class AnalysisCaseUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile SingularAttribute<AnalysisCaseUsageImpl, Boolean> isVariation;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, Feature> feature;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, Element> member;
+	public static volatile SingularAttribute<AnalysisCaseUsageImpl, String> declaredName;
 	public static volatile SingularAttribute<AnalysisCaseUsageImpl, Boolean> isReference;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, Behavior> behavior;
-	public static volatile SingularAttribute<AnalysisCaseUsageImpl, String> effectiveName;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, Element> ownedElement;
 	public static volatile SingularAttribute<AnalysisCaseUsageImpl, Boolean> isModelLevelEvaluable;
@@ -120,6 +120,7 @@ public abstract class AnalysisCaseUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, ViewpointUsage> nestedViewpoint;
 	public static volatile CollectionAttribute<AnalysisCaseUsageImpl, FeatureInverting> ownedFeatureInverting;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, Usage> directedUsage;
+	public static volatile SingularAttribute<AnalysisCaseUsageImpl, String> declaredShortName;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, PartUsage> nestedPart;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, Feature> chainingFeature;
 	public static volatile SingularAttribute<AnalysisCaseUsageImpl, Boolean> isConjugated;
@@ -202,10 +203,10 @@ public abstract class AnalysisCaseUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String MEMBER = "member";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String IS_REFERENCE = "isReference";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
@@ -222,6 +223,7 @@ public abstract class AnalysisCaseUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 	public static final String DIRECTED_USAGE = "directedUsage";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String NESTED_PART = "nestedPart";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String IS_CONJUGATED = "isConjugated";

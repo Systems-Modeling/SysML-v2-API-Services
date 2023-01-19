@@ -29,6 +29,7 @@ import org.omg.sysml.metamodel.Unioning;
 @StaticMetamodel(FunctionImpl.class)
 public abstract class FunctionImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<FunctionImpl, String> declaredShortName;
 	public static volatile SingularAttribute<FunctionImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<FunctionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<FunctionImpl, Membership> membership;
@@ -39,12 +40,12 @@ public abstract class FunctionImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile ListAttribute<FunctionImpl, Feature> parameter;
 	public static volatile ListAttribute<FunctionImpl, Element> member;
 	public static volatile ListAttribute<FunctionImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<FunctionImpl, String> declaredName;
 	public static volatile ListAttribute<FunctionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<FunctionImpl, Subclassification> ownedSubclassification;
 	public static volatile ListAttribute<FunctionImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<FunctionImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<FunctionImpl, Differencing> ownedDifferencing;
-	public static volatile SingularAttribute<FunctionImpl, String> effectiveName;
 	public static volatile SingularAttribute<FunctionImpl, UUID> elementId;
 	public static volatile ListAttribute<FunctionImpl, TextualRepresentation> textualRepresentation;
 	public static volatile ListAttribute<FunctionImpl, Membership> importedMembership;
@@ -76,6 +77,7 @@ public abstract class FunctionImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile ListAttribute<FunctionImpl, Element> ownedMember;
 	public static volatile ListAttribute<FunctionImpl, Membership> ownedMembership;
 
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
@@ -86,12 +88,12 @@ public abstract class FunctionImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String PARAMETER = "parameter";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String OWNED_SUBCLASSIFICATION = "ownedSubclassification";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";

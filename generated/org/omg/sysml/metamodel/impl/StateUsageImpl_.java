@@ -100,10 +100,10 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile SingularAttribute<StateUsageImpl, Boolean> isVariation;
 	public static volatile ListAttribute<StateUsageImpl, Feature> feature;
 	public static volatile ListAttribute<StateUsageImpl, Element> member;
+	public static volatile SingularAttribute<StateUsageImpl, String> declaredName;
 	public static volatile SingularAttribute<StateUsageImpl, Boolean> isReference;
 	public static volatile ListAttribute<StateUsageImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<StateUsageImpl, Behavior> behavior;
-	public static volatile SingularAttribute<StateUsageImpl, String> effectiveName;
 	public static volatile ListAttribute<StateUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<StateUsageImpl, Element> ownedElement;
 	public static volatile ListAttribute<StateUsageImpl, String> aliasIds;
@@ -119,6 +119,7 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile ListAttribute<StateUsageImpl, ViewpointUsage> nestedViewpoint;
 	public static volatile CollectionAttribute<StateUsageImpl, FeatureInverting> ownedFeatureInverting;
 	public static volatile ListAttribute<StateUsageImpl, Usage> directedUsage;
+	public static volatile SingularAttribute<StateUsageImpl, String> declaredShortName;
 	public static volatile ListAttribute<StateUsageImpl, PartUsage> nestedPart;
 	public static volatile ListAttribute<StateUsageImpl, Feature> chainingFeature;
 	public static volatile SingularAttribute<StateUsageImpl, Boolean> isConjugated;
@@ -201,10 +202,10 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String MEMBER = "member";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String IS_REFERENCE = "isReference";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";
@@ -220,6 +221,7 @@ public abstract class StateUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 	public static final String DIRECTED_USAGE = "directedUsage";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String NESTED_PART = "nestedPart";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String IS_CONJUGATED = "isConjugated";

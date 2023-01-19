@@ -33,6 +33,7 @@ import org.omg.sysml.metamodel.Unioning;
 @StaticMetamodel(MultiplicityImpl.class)
 public abstract class MultiplicityImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<MultiplicityImpl, String> declaredShortName;
 	public static volatile ListAttribute<MultiplicityImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<MultiplicityImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<MultiplicityImpl, Boolean> isConjugated;
@@ -74,9 +75,9 @@ public abstract class MultiplicityImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static volatile ListAttribute<MultiplicityImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<MultiplicityImpl, Element> member;
 	public static volatile ListAttribute<MultiplicityImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<MultiplicityImpl, String> declaredName;
 	public static volatile ListAttribute<MultiplicityImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<MultiplicityImpl, Feature> inheritedFeature;
-	public static volatile SingularAttribute<MultiplicityImpl, String> effectiveName;
 	public static volatile SingularAttribute<MultiplicityImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<MultiplicityImpl, Membership> importedMembership;
 	public static volatile ListAttribute<MultiplicityImpl, Element> ownedElement;
@@ -92,6 +93,7 @@ public abstract class MultiplicityImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static volatile ListAttribute<MultiplicityImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<MultiplicityImpl, FeatureInverting> ownedFeatureInverting;
 
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
@@ -133,9 +135,9 @@ public abstract class MultiplicityImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";

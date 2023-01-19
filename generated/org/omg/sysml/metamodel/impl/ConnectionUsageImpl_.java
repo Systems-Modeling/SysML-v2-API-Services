@@ -104,9 +104,9 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isVariation;
 	public static volatile ListAttribute<ConnectionUsageImpl, Feature> feature;
 	public static volatile ListAttribute<ConnectionUsageImpl, Element> member;
+	public static volatile SingularAttribute<ConnectionUsageImpl, String> declaredName;
 	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isReference;
 	public static volatile ListAttribute<ConnectionUsageImpl, Feature> inheritedFeature;
-	public static volatile SingularAttribute<ConnectionUsageImpl, String> effectiveName;
 	public static volatile ListAttribute<ConnectionUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ConnectionUsageImpl, Element> ownedElement;
 	public static volatile ListAttribute<ConnectionUsageImpl, PartDefinition> partDefinition;
@@ -124,6 +124,7 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<ConnectionUsageImpl, ViewpointUsage> nestedViewpoint;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, FeatureInverting> ownedFeatureInverting;
 	public static volatile ListAttribute<ConnectionUsageImpl, Usage> directedUsage;
+	public static volatile SingularAttribute<ConnectionUsageImpl, String> declaredShortName;
 	public static volatile ListAttribute<ConnectionUsageImpl, PartUsage> nestedPart;
 	public static volatile ListAttribute<ConnectionUsageImpl, Feature> chainingFeature;
 	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isConjugated;
@@ -213,9 +214,9 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String MEMBER = "member";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String IS_REFERENCE = "isReference";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String PART_DEFINITION = "partDefinition";
@@ -233,6 +234,7 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 	public static final String DIRECTED_USAGE = "directedUsage";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String NESTED_PART = "nestedPart";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String IS_CONJUGATED = "isConjugated";

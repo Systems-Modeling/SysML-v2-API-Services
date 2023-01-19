@@ -98,9 +98,9 @@ public abstract class MetadataUsageImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static volatile SingularAttribute<MetadataUsageImpl, Boolean> isVariation;
 	public static volatile ListAttribute<MetadataUsageImpl, Feature> feature;
 	public static volatile ListAttribute<MetadataUsageImpl, Element> member;
+	public static volatile SingularAttribute<MetadataUsageImpl, String> declaredName;
 	public static volatile SingularAttribute<MetadataUsageImpl, Boolean> isReference;
 	public static volatile ListAttribute<MetadataUsageImpl, Feature> inheritedFeature;
-	public static volatile SingularAttribute<MetadataUsageImpl, String> effectiveName;
 	public static volatile ListAttribute<MetadataUsageImpl, Annotation> annotation;
 	public static volatile ListAttribute<MetadataUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<MetadataUsageImpl, Element> ownedElement;
@@ -118,6 +118,7 @@ public abstract class MetadataUsageImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static volatile ListAttribute<MetadataUsageImpl, ViewpointUsage> nestedViewpoint;
 	public static volatile CollectionAttribute<MetadataUsageImpl, FeatureInverting> ownedFeatureInverting;
 	public static volatile ListAttribute<MetadataUsageImpl, Usage> directedUsage;
+	public static volatile SingularAttribute<MetadataUsageImpl, String> declaredShortName;
 	public static volatile ListAttribute<MetadataUsageImpl, PartUsage> nestedPart;
 	public static volatile ListAttribute<MetadataUsageImpl, Feature> chainingFeature;
 	public static volatile SingularAttribute<MetadataUsageImpl, Boolean> isConjugated;
@@ -197,9 +198,9 @@ public abstract class MetadataUsageImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String MEMBER = "member";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String IS_REFERENCE = "isReference";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String ANNOTATION = "annotation";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
@@ -217,6 +218,7 @@ public abstract class MetadataUsageImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 	public static final String DIRECTED_USAGE = "directedUsage";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String NESTED_PART = "nestedPart";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String IS_CONJUGATED = "isConjugated";

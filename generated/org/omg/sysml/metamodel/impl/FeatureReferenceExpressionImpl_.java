@@ -34,6 +34,7 @@ import org.omg.sysml.metamodel.Unioning;
 @StaticMetamodel(FeatureReferenceExpressionImpl.class)
 public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, String> declaredShortName;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, Boolean> isConjugated;
@@ -76,10 +77,10 @@ public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.life
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Feature> parameter;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Element> member;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, String> declaredName;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Behavior> behavior;
-	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, String> effectiveName;
 	public static volatile SingularAttribute<FeatureReferenceExpressionImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Element> ownedElement;
@@ -96,6 +97,7 @@ public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.life
 	public static volatile ListAttribute<FeatureReferenceExpressionImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<FeatureReferenceExpressionImpl, FeatureInverting> ownedFeatureInverting;
 
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
@@ -138,10 +140,10 @@ public abstract class FeatureReferenceExpressionImpl_ extends org.omg.sysml.life
 	public static final String PARAMETER = "parameter";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
