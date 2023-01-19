@@ -49,11 +49,13 @@ public interface Element extends SysMLType {
 
     List<? extends String> getAliasIds();
 
+    String getDeclaredShortName();
+
+    String getDeclaredName();
+
     String getShortName();
 
     String getName();
-
-    String getEffectiveName();
 
     String getQualifiedName();
 

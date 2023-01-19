@@ -27,5 +27,5 @@ import java.util.List;
 import java.util.Set;
 
 public interface LifeClass extends Class, SysMLType {
-
+    Boolean getIsSufficient();
 }

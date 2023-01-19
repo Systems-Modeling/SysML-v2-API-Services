@@ -19,6 +19,7 @@ public abstract class NamespaceImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 
 	public static volatile SingularAttribute<NamespaceImpl, UUID> elementId;
 	public static volatile ListAttribute<NamespaceImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<NamespaceImpl, String> declaredShortName;
 	public static volatile ListAttribute<NamespaceImpl, Membership> importedMembership;
 	public static volatile SingularAttribute<NamespaceImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<NamespaceImpl, Annotation> ownedAnnotation;
@@ -32,13 +33,14 @@ public abstract class NamespaceImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile SingularAttribute<NamespaceImpl, Boolean> isImpliedIncluded;
 	public static volatile ListAttribute<NamespaceImpl, Element> member;
 	public static volatile SingularAttribute<NamespaceImpl, String> name;
+	public static volatile SingularAttribute<NamespaceImpl, String> declaredName;
 	public static volatile SingularAttribute<NamespaceImpl, String> shortName;
-	public static volatile SingularAttribute<NamespaceImpl, String> effectiveName;
 	public static volatile ListAttribute<NamespaceImpl, Element> ownedMember;
 	public static volatile ListAttribute<NamespaceImpl, Membership> ownedMembership;
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -52,8 +54,8 @@ public abstract class NamespaceImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String MEMBER = "member";
 	public static final String NAME = "name";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String SHORT_NAME = "shortName";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
 

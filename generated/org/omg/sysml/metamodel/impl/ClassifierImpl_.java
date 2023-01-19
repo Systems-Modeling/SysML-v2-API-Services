@@ -27,6 +27,7 @@ import org.omg.sysml.metamodel.Unioning;
 @StaticMetamodel(ClassifierImpl.class)
 public abstract class ClassifierImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<ClassifierImpl, String> declaredShortName;
 	public static volatile SingularAttribute<ClassifierImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<ClassifierImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<ClassifierImpl, Membership> membership;
@@ -36,12 +37,12 @@ public abstract class ClassifierImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile ListAttribute<ClassifierImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<ClassifierImpl, Element> member;
 	public static volatile ListAttribute<ClassifierImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<ClassifierImpl, String> declaredName;
 	public static volatile ListAttribute<ClassifierImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<ClassifierImpl, Subclassification> ownedSubclassification;
 	public static volatile ListAttribute<ClassifierImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<ClassifierImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<ClassifierImpl, Differencing> ownedDifferencing;
-	public static volatile SingularAttribute<ClassifierImpl, String> effectiveName;
 	public static volatile SingularAttribute<ClassifierImpl, UUID> elementId;
 	public static volatile ListAttribute<ClassifierImpl, TextualRepresentation> textualRepresentation;
 	public static volatile ListAttribute<ClassifierImpl, Membership> importedMembership;
@@ -70,6 +71,7 @@ public abstract class ClassifierImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile ListAttribute<ClassifierImpl, Element> ownedMember;
 	public static volatile ListAttribute<ClassifierImpl, Membership> ownedMembership;
 
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
@@ -79,12 +81,12 @@ public abstract class ClassifierImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String OWNED_SUBCLASSIFICATION = "ownedSubclassification";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";

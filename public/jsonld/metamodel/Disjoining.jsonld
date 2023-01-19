@@ -6,9 +6,10 @@
         "xsd": "http://www.w3.org/2001/XMLSchema#",
 
         "aliasIds": {"@type": "xsd:string"},
+        "declaredName": {"@type": "xsd:string"},
+        "declaredShortName": {"@type": "xsd:string"},
         "disjoiningType": {"@type": "@id"},
         "documentation": {"@type": "@id"},
-        "effectiveName": {"@type": "xsd:string"},
         "elementId": {"@type": "dcterms:identifier"},
         "isImplied": {"@type": "xsd:boolean"},
         "isImpliedIncluded": {"@type": "xsd:boolean"},

@@ -223,6 +223,42 @@ public class AllocationUsageImpl extends SysMLTypeImpl implements AllocationUsag
 
 
 
+    // @info.archinnov.achilles.annotations.Column("declaredName")
+    private String declaredName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "declaredName", table = "AllocationUsage")
+    public String getDeclaredName() {
+        return declaredName;
+    }
+
+    @JsonSetter
+    public void setDeclaredName(String declaredName) {
+        this.declaredName = declaredName;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Column("declaredShortName")
+    private String declaredShortName;
+
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @javax.persistence.Column(name = "declaredShortName", table = "AllocationUsage")
+    public String getDeclaredShortName() {
+        return declaredShortName;
+    }
+
+    @JsonSetter
+    public void setDeclaredShortName(String declaredShortName) {
+        this.declaredShortName = declaredShortName;
+    }
+
+
+
     // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("definition")
     private List<Classifier> definition;
@@ -367,26 +403,6 @@ public class AllocationUsageImpl extends SysMLTypeImpl implements AllocationUsag
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DocumentationImpl.class)
     public void setDocumentation(List<Documentation> documentation) {
         this.documentation = documentation;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("effectiveName")
-    private String effectiveName;
-
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    // @javax.persistence.Transient
-    @javax.persistence.Column(name = "effectiveName", table = "AllocationUsage")
-    public String getEffectiveName() {
-        return effectiveName;
-    }
-
-    @JsonSetter
-    public void setEffectiveName(String effectiveName) {
-        this.effectiveName = effectiveName;
     }
 
 
@@ -1060,12 +1076,14 @@ public class AllocationUsageImpl extends SysMLTypeImpl implements AllocationUsag
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("name")
     private String name;
 
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
     @javax.persistence.Column(name = "name", table = "AllocationUsage")
     public String getName() {
         return name;
@@ -2738,12 +2756,14 @@ public class AllocationUsageImpl extends SysMLTypeImpl implements AllocationUsag
 
 
 
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("shortName")
     private String shortName;
 
     @JsonGetter
     @Lob
     @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    // @javax.persistence.Transient
     @javax.persistence.Column(name = "shortName", table = "AllocationUsage")
     public String getShortName() {
         return shortName;

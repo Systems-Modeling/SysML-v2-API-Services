@@ -34,6 +34,7 @@ import org.omg.sysml.metamodel.Unioning;
 @StaticMetamodel(LiteralIntegerImpl.class)
 public abstract class LiteralIntegerImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<LiteralIntegerImpl, String> declaredShortName;
 	public static volatile ListAttribute<LiteralIntegerImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<LiteralIntegerImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<LiteralIntegerImpl, Boolean> isConjugated;
@@ -76,10 +77,10 @@ public abstract class LiteralIntegerImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<LiteralIntegerImpl, Feature> parameter;
 	public static volatile ListAttribute<LiteralIntegerImpl, Element> member;
 	public static volatile ListAttribute<LiteralIntegerImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<LiteralIntegerImpl, String> declaredName;
 	public static volatile ListAttribute<LiteralIntegerImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<LiteralIntegerImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<LiteralIntegerImpl, Behavior> behavior;
-	public static volatile SingularAttribute<LiteralIntegerImpl, String> effectiveName;
 	public static volatile SingularAttribute<LiteralIntegerImpl, Integer> value;
 	public static volatile SingularAttribute<LiteralIntegerImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<LiteralIntegerImpl, Membership> importedMembership;
@@ -97,6 +98,7 @@ public abstract class LiteralIntegerImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<LiteralIntegerImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<LiteralIntegerImpl, FeatureInverting> ownedFeatureInverting;
 
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
@@ -139,10 +141,10 @@ public abstract class LiteralIntegerImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String PARAMETER = "parameter";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String VALUE = "value";
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";

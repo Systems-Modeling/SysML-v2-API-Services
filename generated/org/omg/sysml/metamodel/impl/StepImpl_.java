@@ -34,6 +34,7 @@ import org.omg.sysml.metamodel.Unioning;
 @StaticMetamodel(StepImpl.class)
 public abstract class StepImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<StepImpl, String> declaredShortName;
 	public static volatile ListAttribute<StepImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<StepImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<StepImpl, Boolean> isConjugated;
@@ -76,10 +77,10 @@ public abstract class StepImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 	public static volatile ListAttribute<StepImpl, Feature> parameter;
 	public static volatile ListAttribute<StepImpl, Element> member;
 	public static volatile ListAttribute<StepImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<StepImpl, String> declaredName;
 	public static volatile ListAttribute<StepImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<StepImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<StepImpl, Behavior> behavior;
-	public static volatile SingularAttribute<StepImpl, String> effectiveName;
 	public static volatile SingularAttribute<StepImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<StepImpl, Membership> importedMembership;
 	public static volatile ListAttribute<StepImpl, Element> ownedElement;
@@ -95,6 +96,7 @@ public abstract class StepImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 	public static volatile ListAttribute<StepImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<StepImpl, FeatureInverting> ownedFeatureInverting;
 
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
@@ -137,10 +139,10 @@ public abstract class StepImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 	public static final String PARAMETER = "parameter";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";

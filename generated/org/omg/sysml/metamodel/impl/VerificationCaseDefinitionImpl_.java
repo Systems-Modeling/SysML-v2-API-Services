@@ -60,6 +60,7 @@ public abstract class VerificationCaseDefinitionImpl_ extends org.omg.sysml.life
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, CalculationUsage> calculation;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, Usage> directedUsage;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, PortUsage> ownedPort;
+	public static volatile SingularAttribute<VerificationCaseDefinitionImpl, String> declaredShortName;
 	public static volatile SingularAttribute<VerificationCaseDefinitionImpl, Boolean> isConjugated;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, EnumerationUsage> ownedEnumeration;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, VerificationCaseUsage> ownedVerificationCase;
@@ -114,11 +115,11 @@ public abstract class VerificationCaseDefinitionImpl_ extends org.omg.sysml.life
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, Feature> parameter;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, Element> member;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<VerificationCaseDefinitionImpl, String> declaredName;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<VerificationCaseDefinitionImpl, Subclassification> ownedSubclassification;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, Feature> inheritedFeature;
 	public static volatile CollectionAttribute<VerificationCaseDefinitionImpl, TransitionUsage> ownedTransition;
-	public static volatile SingularAttribute<VerificationCaseDefinitionImpl, String> effectiveName;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, Element> ownedElement;
 	public static volatile CollectionAttribute<VerificationCaseDefinitionImpl, Expression> expression;
@@ -144,6 +145,7 @@ public abstract class VerificationCaseDefinitionImpl_ extends org.omg.sysml.life
 	public static final String CALCULATION = "calculation";
 	public static final String DIRECTED_USAGE = "directedUsage";
 	public static final String OWNED_PORT = "ownedPort";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String OWNED_ENUMERATION = "ownedEnumeration";
 	public static final String OWNED_VERIFICATION_CASE = "ownedVerificationCase";
@@ -198,11 +200,11 @@ public abstract class VerificationCaseDefinitionImpl_ extends org.omg.sysml.life
 	public static final String PARAMETER = "parameter";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String OWNED_SUBCLASSIFICATION = "ownedSubclassification";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String OWNED_TRANSITION = "ownedTransition";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String EXPRESSION = "expression";

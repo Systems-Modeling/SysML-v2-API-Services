@@ -45,6 +45,26 @@
             }
           ]
         },
+        "declaredName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "declaredShortName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "definition": {
           "type": "array",
           "items": {
@@ -89,16 +109,6 @@
             "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
-        },
-        "effectiveName": {
-          "oneOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ]
         },
         "elementId": {
           "oneOf": [
@@ -967,13 +977,14 @@
         "behavior",
         "chainingFeature",
         "constraintDefinition",
+        "declaredName",
+        "declaredShortName",
         "definition",
         "differencingType",
         "directedFeature",
         "directedUsage",
         "direction",
         "documentation",
-        "effectiveName",
         "elementId",
         "endFeature",
         "endOwningType",
@@ -1174,6 +1185,26 @@
                 }
               ]
             },
+            "declaredName": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "declaredShortName": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
             "definition": {
               "type": "array",
               "items": {
@@ -1218,16 +1249,6 @@
                 "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
                 "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
               }
-            },
-            "effectiveName": {
-              "oneOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ]
             },
             "elementId": {
               "oneOf": [
@@ -2107,13 +2128,14 @@
             "behavior",
             "chainingFeature",
             "constraintDefinition",
+            "declaredName",
+            "declaredShortName",
             "definition",
             "differencingType",
             "directedFeature",
             "directedUsage",
             "direction",
             "documentation",
-            "effectiveName",
             "elementId",
             "endFeature",
             "endOwningType",
@@ -2290,6 +2312,26 @@
             }
           ]
         },
+        "declaredName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "declaredShortName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "definition": {
           "type": "array",
           "items": {
@@ -2334,16 +2376,6 @@
             "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
-        },
-        "effectiveName": {
-          "oneOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ]
         },
         "elementId": {
           "oneOf": [
@@ -3285,13 +3317,14 @@
         "behavior",
         "chainingFeature",
         "constraintDefinition",
+        "declaredName",
+        "declaredShortName",
         "definition",
         "differencingType",
         "directedFeature",
         "directedUsage",
         "direction",
         "documentation",
-        "effectiveName",
         "elementId",
         "endFeature",
         "endOwningType",
@@ -3470,6 +3503,26 @@
                 }
               ]
             },
+            "declaredName": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "declaredShortName": {
+              "oneOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
             "definition": {
               "type": "array",
               "items": {
@@ -3514,16 +3567,6 @@
                 "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
                 "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
               }
-            },
-            "effectiveName": {
-              "oneOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ]
             },
             "elementId": {
               "oneOf": [
@@ -4446,13 +4489,14 @@
             "behavior",
             "chainingFeature",
             "constraintDefinition",
+            "declaredName",
+            "declaredShortName",
             "definition",
             "differencingType",
             "directedFeature",
             "directedUsage",
             "direction",
             "documentation",
-            "effectiveName",
             "elementId",
             "endFeature",
             "endOwningType",
@@ -4572,10 +4616,10 @@
           "$ref": "https://www.omg.org/spec/SysML/20230201/ViewpointUsage"
         },
         {
-          "$ref": "https://www.omg.org/spec/SysML/20230201/ConcernUsage"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/SatisfyRequirementUsage"
         },
         {
-          "$ref": "https://www.omg.org/spec/SysML/20230201/SatisfyRequirementUsage"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/ConcernUsage"
         }
       ]
     },
@@ -4637,6 +4681,26 @@
             }
           ]
         },
+        "declaredName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "declaredShortName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "definition": {
           "type": "array",
           "items": {
@@ -4681,16 +4745,6 @@
             "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
-        },
-        "effectiveName": {
-          "oneOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ]
         },
         "elementId": {
           "oneOf": [
@@ -5631,13 +5685,14 @@
         "behavior",
         "chainingFeature",
         "constraintDefinition",
+        "declaredName",
+        "declaredShortName",
         "definition",
         "differencingType",
         "directedFeature",
         "directedUsage",
         "direction",
         "documentation",
-        "effectiveName",
         "elementId",
         "endFeature",
         "endOwningType",
@@ -5824,6 +5879,26 @@
             }
           ]
         },
+        "declaredName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "declaredShortName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "definition": {
           "type": "array",
           "items": {
@@ -5868,16 +5943,6 @@
             "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20230201/Documentation"
           }
-        },
-        "effectiveName": {
-          "oneOf": [
-            {
-              "type": "string"
-            },
-            {
-              "type": "null"
-            }
-          ]
         },
         "elementId": {
           "oneOf": [
@@ -6801,13 +6866,14 @@
         "chainingFeature",
         "concernDefinition",
         "constraintDefinition",
+        "declaredName",
+        "declaredShortName",
         "definition",
         "differencingType",
         "directedFeature",
         "directedUsage",
         "direction",
         "documentation",
-        "effectiveName",
         "elementId",
         "endFeature",
         "endOwningType",

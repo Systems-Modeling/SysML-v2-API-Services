@@ -18,6 +18,7 @@ public abstract class MembershipImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 
 	public static volatile SingularAttribute<MembershipImpl, UUID> elementId;
 	public static volatile ListAttribute<MembershipImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<MembershipImpl, String> declaredShortName;
 	public static volatile SingularAttribute<MembershipImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<MembershipImpl, Boolean> isImplied;
 	public static volatile ListAttribute<MembershipImpl, Annotation> ownedAnnotation;
@@ -35,12 +36,13 @@ public abstract class MembershipImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile ListAttribute<MembershipImpl, Element> target;
 	public static volatile ListAttribute<MembershipImpl, Element> relatedElement;
 	public static volatile SingularAttribute<MembershipImpl, String> name;
+	public static volatile SingularAttribute<MembershipImpl, String> declaredName;
 	public static volatile SingularAttribute<MembershipImpl, String> memberShortName;
 	public static volatile SingularAttribute<MembershipImpl, String> shortName;
-	public static volatile SingularAttribute<MembershipImpl, String> effectiveName;
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -58,9 +60,9 @@ public abstract class MembershipImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String TARGET = "target";
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NAME = "name";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String MEMBER_SHORT_NAME = "memberShortName";
 	public static final String SHORT_NAME = "shortName";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 
 }
 

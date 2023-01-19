@@ -34,6 +34,7 @@ import org.omg.sysml.metamodel.Unioning;
 @StaticMetamodel(ConnectorImpl.class)
 public abstract class ConnectorImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<ConnectorImpl, String> declaredShortName;
 	public static volatile ListAttribute<ConnectorImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<ConnectorImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<ConnectorImpl, Boolean> isConjugated;
@@ -82,9 +83,9 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<ConnectorImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<ConnectorImpl, Element> member;
 	public static volatile ListAttribute<ConnectorImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<ConnectorImpl, String> declaredName;
 	public static volatile ListAttribute<ConnectorImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<ConnectorImpl, Feature> inheritedFeature;
-	public static volatile SingularAttribute<ConnectorImpl, String> effectiveName;
 	public static volatile SingularAttribute<ConnectorImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<ConnectorImpl, Membership> importedMembership;
 	public static volatile ListAttribute<ConnectorImpl, Element> ownedElement;
@@ -103,6 +104,7 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<ConnectorImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<ConnectorImpl, FeatureInverting> ownedFeatureInverting;
 
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
@@ -151,9 +153,9 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";

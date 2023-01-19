@@ -57,6 +57,7 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.lifecycle
 
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Usage> directedUsage;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, PortUsage> ownedPort;
+	public static volatile SingularAttribute<EnumerationDefinitionImpl, String> declaredShortName;
 	public static volatile SingularAttribute<EnumerationDefinitionImpl, Boolean> isConjugated;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, EnumerationUsage> ownedEnumeration;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, VerificationCaseUsage> ownedVerificationCase;
@@ -106,11 +107,11 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.lifecycle
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Element> member;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<EnumerationDefinitionImpl, String> declaredName;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<EnumerationDefinitionImpl, Subclassification> ownedSubclassification;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Feature> inheritedFeature;
 	public static volatile CollectionAttribute<EnumerationDefinitionImpl, TransitionUsage> ownedTransition;
-	public static volatile SingularAttribute<EnumerationDefinitionImpl, String> effectiveName;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, Element> ownedElement;
 	public static volatile ListAttribute<EnumerationDefinitionImpl, String> aliasIds;
@@ -133,6 +134,7 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.lifecycle
 
 	public static final String DIRECTED_USAGE = "directedUsage";
 	public static final String OWNED_PORT = "ownedPort";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String OWNED_ENUMERATION = "ownedEnumeration";
 	public static final String OWNED_VERIFICATION_CASE = "ownedVerificationCase";
@@ -182,11 +184,11 @@ public abstract class EnumerationDefinitionImpl_ extends org.omg.sysml.lifecycle
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String OWNED_SUBCLASSIFICATION = "ownedSubclassification";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String OWNED_TRANSITION = "ownedTransition";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";

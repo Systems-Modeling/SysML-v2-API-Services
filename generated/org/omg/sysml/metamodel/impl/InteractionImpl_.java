@@ -28,6 +28,7 @@ import org.omg.sysml.metamodel.Unioning;
 @StaticMetamodel(InteractionImpl.class)
 public abstract class InteractionImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<InteractionImpl, String> declaredShortName;
 	public static volatile SingularAttribute<InteractionImpl, Boolean> isConjugated;
 	public static volatile ListAttribute<InteractionImpl, Element> source;
 	public static volatile ListAttribute<InteractionImpl, Feature> output;
@@ -60,10 +61,10 @@ public abstract class InteractionImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static volatile ListAttribute<InteractionImpl, Feature> parameter;
 	public static volatile ListAttribute<InteractionImpl, Element> member;
 	public static volatile ListAttribute<InteractionImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<InteractionImpl, String> declaredName;
 	public static volatile ListAttribute<InteractionImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<InteractionImpl, Subclassification> ownedSubclassification;
 	public static volatile ListAttribute<InteractionImpl, Feature> inheritedFeature;
-	public static volatile SingularAttribute<InteractionImpl, String> effectiveName;
 	public static volatile ListAttribute<InteractionImpl, Membership> importedMembership;
 	public static volatile ListAttribute<InteractionImpl, Element> ownedElement;
 	public static volatile ListAttribute<InteractionImpl, String> aliasIds;
@@ -81,6 +82,7 @@ public abstract class InteractionImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static volatile CollectionAttribute<InteractionImpl, Step> step;
 	public static volatile ListAttribute<InteractionImpl, Intersecting> ownedIntersecting;
 
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String SOURCE = "source";
 	public static final String OUTPUT = "output";
@@ -113,10 +115,10 @@ public abstract class InteractionImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static final String PARAMETER = "parameter";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String OWNED_SUBCLASSIFICATION = "ownedSubclassification";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";

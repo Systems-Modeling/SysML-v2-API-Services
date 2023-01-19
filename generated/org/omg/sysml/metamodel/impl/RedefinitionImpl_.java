@@ -17,6 +17,7 @@ public abstract class RedefinitionImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 
 	public static volatile SingularAttribute<RedefinitionImpl, UUID> elementId;
 	public static volatile ListAttribute<RedefinitionImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<RedefinitionImpl, String> declaredShortName;
 	public static volatile SingularAttribute<RedefinitionImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<RedefinitionImpl, Boolean> isImplied;
 	public static volatile ListAttribute<RedefinitionImpl, Annotation> ownedAnnotation;
@@ -31,11 +32,12 @@ public abstract class RedefinitionImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static volatile ListAttribute<RedefinitionImpl, Element> target;
 	public static volatile ListAttribute<RedefinitionImpl, Element> relatedElement;
 	public static volatile SingularAttribute<RedefinitionImpl, String> name;
+	public static volatile SingularAttribute<RedefinitionImpl, String> declaredName;
 	public static volatile SingularAttribute<RedefinitionImpl, String> shortName;
-	public static volatile SingularAttribute<RedefinitionImpl, String> effectiveName;
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -50,8 +52,8 @@ public abstract class RedefinitionImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static final String TARGET = "target";
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NAME = "name";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String SHORT_NAME = "shortName";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 
 }
 

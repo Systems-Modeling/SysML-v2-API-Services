@@ -27,6 +27,7 @@ import org.omg.sysml.metamodel.Unioning;
 @StaticMetamodel(AssociationImpl.class)
 public abstract class AssociationImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<AssociationImpl, String> declaredShortName;
 	public static volatile SingularAttribute<AssociationImpl, Boolean> isConjugated;
 	public static volatile ListAttribute<AssociationImpl, Element> source;
 	public static volatile ListAttribute<AssociationImpl, Feature> output;
@@ -58,10 +59,10 @@ public abstract class AssociationImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static volatile ListAttribute<AssociationImpl, Membership> inheritedMembership;
 	public static volatile ListAttribute<AssociationImpl, Element> member;
 	public static volatile ListAttribute<AssociationImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<AssociationImpl, String> declaredName;
 	public static volatile ListAttribute<AssociationImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<AssociationImpl, Subclassification> ownedSubclassification;
 	public static volatile ListAttribute<AssociationImpl, Feature> inheritedFeature;
-	public static volatile SingularAttribute<AssociationImpl, String> effectiveName;
 	public static volatile ListAttribute<AssociationImpl, Membership> importedMembership;
 	public static volatile ListAttribute<AssociationImpl, Element> ownedElement;
 	public static volatile ListAttribute<AssociationImpl, String> aliasIds;
@@ -78,6 +79,7 @@ public abstract class AssociationImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static volatile ListAttribute<AssociationImpl, Specialization> ownedSpecialization;
 	public static volatile ListAttribute<AssociationImpl, Intersecting> ownedIntersecting;
 
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String SOURCE = "source";
 	public static final String OUTPUT = "output";
@@ -109,10 +111,10 @@ public abstract class AssociationImpl_ extends org.omg.sysml.lifecycle.impl.Data
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String OWNED_SUBCLASSIFICATION = "ownedSubclassification";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";

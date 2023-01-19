@@ -28,4 +28,6 @@ import java.util.Set;
 
 public interface EventOccurrenceUsage extends OccurrenceUsage, SysMLType {
     OccurrenceUsage getEventOccurrence();
+
+    Boolean getIsReference();
 }

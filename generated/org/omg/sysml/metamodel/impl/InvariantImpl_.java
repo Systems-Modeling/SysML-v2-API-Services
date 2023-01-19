@@ -34,6 +34,7 @@ import org.omg.sysml.metamodel.Unioning;
 @StaticMetamodel(InvariantImpl.class)
 public abstract class InvariantImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<InvariantImpl, String> declaredShortName;
 	public static volatile ListAttribute<InvariantImpl, Feature> chainingFeature;
 	public static volatile ListAttribute<InvariantImpl, TypeFeaturing> ownedTypeFeaturing;
 	public static volatile SingularAttribute<InvariantImpl, Boolean> isConjugated;
@@ -77,10 +78,10 @@ public abstract class InvariantImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<InvariantImpl, Feature> parameter;
 	public static volatile ListAttribute<InvariantImpl, Element> member;
 	public static volatile ListAttribute<InvariantImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<InvariantImpl, String> declaredName;
 	public static volatile ListAttribute<InvariantImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile ListAttribute<InvariantImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<InvariantImpl, Behavior> behavior;
-	public static volatile SingularAttribute<InvariantImpl, String> effectiveName;
 	public static volatile SingularAttribute<InvariantImpl, FeatureDirectionKind> direction;
 	public static volatile ListAttribute<InvariantImpl, Membership> importedMembership;
 	public static volatile ListAttribute<InvariantImpl, Element> ownedElement;
@@ -97,6 +98,7 @@ public abstract class InvariantImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<InvariantImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<InvariantImpl, FeatureInverting> ownedFeatureInverting;
 
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
 	public static final String IS_CONJUGATED = "isConjugated";
@@ -140,10 +142,10 @@ public abstract class InvariantImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String PARAMETER = "parameter";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String DIRECTION = "direction";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";

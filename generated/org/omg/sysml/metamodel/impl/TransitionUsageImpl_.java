@@ -103,10 +103,10 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile CollectionAttribute<TransitionUsageImpl, ActionUsage> effectAction;
 	public static volatile ListAttribute<TransitionUsageImpl, Feature> feature;
 	public static volatile ListAttribute<TransitionUsageImpl, Element> member;
+	public static volatile SingularAttribute<TransitionUsageImpl, String> declaredName;
 	public static volatile SingularAttribute<TransitionUsageImpl, Boolean> isReference;
 	public static volatile ListAttribute<TransitionUsageImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<TransitionUsageImpl, Behavior> behavior;
-	public static volatile SingularAttribute<TransitionUsageImpl, String> effectiveName;
 	public static volatile ListAttribute<TransitionUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<TransitionUsageImpl, Element> ownedElement;
 	public static volatile ListAttribute<TransitionUsageImpl, String> aliasIds;
@@ -122,6 +122,7 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<TransitionUsageImpl, ViewpointUsage> nestedViewpoint;
 	public static volatile CollectionAttribute<TransitionUsageImpl, FeatureInverting> ownedFeatureInverting;
 	public static volatile ListAttribute<TransitionUsageImpl, Usage> directedUsage;
+	public static volatile SingularAttribute<TransitionUsageImpl, String> declaredShortName;
 	public static volatile ListAttribute<TransitionUsageImpl, PartUsage> nestedPart;
 	public static volatile ListAttribute<TransitionUsageImpl, Feature> chainingFeature;
 	public static volatile SingularAttribute<TransitionUsageImpl, Boolean> isConjugated;
@@ -205,10 +206,10 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String EFFECT_ACTION = "effectAction";
 	public static final String FEATURE = "feature";
 	public static final String MEMBER = "member";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String IS_REFERENCE = "isReference";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String ALIAS_IDS = "aliasIds";
@@ -224,6 +225,7 @@ public abstract class TransitionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 	public static final String DIRECTED_USAGE = "directedUsage";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String NESTED_PART = "nestedPart";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String IS_CONJUGATED = "isConjugated";

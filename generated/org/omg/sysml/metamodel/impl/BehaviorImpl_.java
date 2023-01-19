@@ -28,6 +28,7 @@ import org.omg.sysml.metamodel.Unioning;
 @StaticMetamodel(BehaviorImpl.class)
 public abstract class BehaviorImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ {
 
+	public static volatile SingularAttribute<BehaviorImpl, String> declaredShortName;
 	public static volatile SingularAttribute<BehaviorImpl, Boolean> isConjugated;
 	public static volatile CollectionAttribute<BehaviorImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<BehaviorImpl, Membership> membership;
@@ -38,12 +39,12 @@ public abstract class BehaviorImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile ListAttribute<BehaviorImpl, Feature> parameter;
 	public static volatile ListAttribute<BehaviorImpl, Element> member;
 	public static volatile ListAttribute<BehaviorImpl, Feature> ownedEndFeature;
+	public static volatile SingularAttribute<BehaviorImpl, String> declaredName;
 	public static volatile ListAttribute<BehaviorImpl, FeatureMembership> ownedFeatureMembership;
 	public static volatile CollectionAttribute<BehaviorImpl, Subclassification> ownedSubclassification;
 	public static volatile ListAttribute<BehaviorImpl, Feature> inheritedFeature;
 	public static volatile SingularAttribute<BehaviorImpl, Boolean> isSufficient;
 	public static volatile ListAttribute<BehaviorImpl, Differencing> ownedDifferencing;
-	public static volatile SingularAttribute<BehaviorImpl, String> effectiveName;
 	public static volatile SingularAttribute<BehaviorImpl, UUID> elementId;
 	public static volatile ListAttribute<BehaviorImpl, TextualRepresentation> textualRepresentation;
 	public static volatile ListAttribute<BehaviorImpl, Membership> importedMembership;
@@ -73,6 +74,7 @@ public abstract class BehaviorImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile ListAttribute<BehaviorImpl, Element> ownedMember;
 	public static volatile ListAttribute<BehaviorImpl, Membership> ownedMembership;
 
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IS_CONJUGATED = "isConjugated";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
@@ -83,12 +85,12 @@ public abstract class BehaviorImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String PARAMETER = "parameter";
 	public static final String MEMBER = "member";
 	public static final String OWNED_END_FEATURE = "ownedEndFeature";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String OWNED_FEATURE_MEMBERSHIP = "ownedFeatureMembership";
 	public static final String OWNED_SUBCLASSIFICATION = "ownedSubclassification";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String IS_SUFFICIENT = "isSufficient";
 	public static final String OWNED_DIFFERENCING = "ownedDifferencing";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";

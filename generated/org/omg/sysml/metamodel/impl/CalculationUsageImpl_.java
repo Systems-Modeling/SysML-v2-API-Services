@@ -99,10 +99,10 @@ public abstract class CalculationUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile SingularAttribute<CalculationUsageImpl, Boolean> isVariation;
 	public static volatile ListAttribute<CalculationUsageImpl, Feature> feature;
 	public static volatile ListAttribute<CalculationUsageImpl, Element> member;
+	public static volatile SingularAttribute<CalculationUsageImpl, String> declaredName;
 	public static volatile SingularAttribute<CalculationUsageImpl, Boolean> isReference;
 	public static volatile ListAttribute<CalculationUsageImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<CalculationUsageImpl, Behavior> behavior;
-	public static volatile SingularAttribute<CalculationUsageImpl, String> effectiveName;
 	public static volatile ListAttribute<CalculationUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<CalculationUsageImpl, Element> ownedElement;
 	public static volatile SingularAttribute<CalculationUsageImpl, Boolean> isModelLevelEvaluable;
@@ -119,6 +119,7 @@ public abstract class CalculationUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<CalculationUsageImpl, ViewpointUsage> nestedViewpoint;
 	public static volatile CollectionAttribute<CalculationUsageImpl, FeatureInverting> ownedFeatureInverting;
 	public static volatile ListAttribute<CalculationUsageImpl, Usage> directedUsage;
+	public static volatile SingularAttribute<CalculationUsageImpl, String> declaredShortName;
 	public static volatile ListAttribute<CalculationUsageImpl, PartUsage> nestedPart;
 	public static volatile ListAttribute<CalculationUsageImpl, Feature> chainingFeature;
 	public static volatile SingularAttribute<CalculationUsageImpl, Boolean> isConjugated;
@@ -199,10 +200,10 @@ public abstract class CalculationUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String MEMBER = "member";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String IS_REFERENCE = "isReference";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
@@ -219,6 +220,7 @@ public abstract class CalculationUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 	public static final String DIRECTED_USAGE = "directedUsage";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String NESTED_PART = "nestedPart";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String IS_CONJUGATED = "isConjugated";

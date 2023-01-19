@@ -17,6 +17,7 @@ public abstract class FeatureInvertingImpl_ extends org.omg.sysml.lifecycle.impl
 
 	public static volatile SingularAttribute<FeatureInvertingImpl, UUID> elementId;
 	public static volatile ListAttribute<FeatureInvertingImpl, TextualRepresentation> textualRepresentation;
+	public static volatile SingularAttribute<FeatureInvertingImpl, String> declaredShortName;
 	public static volatile SingularAttribute<FeatureInvertingImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<FeatureInvertingImpl, Boolean> isImplied;
 	public static volatile ListAttribute<FeatureInvertingImpl, Annotation> ownedAnnotation;
@@ -31,11 +32,12 @@ public abstract class FeatureInvertingImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<FeatureInvertingImpl, Element> target;
 	public static volatile ListAttribute<FeatureInvertingImpl, Element> relatedElement;
 	public static volatile SingularAttribute<FeatureInvertingImpl, String> name;
+	public static volatile SingularAttribute<FeatureInvertingImpl, String> declaredName;
 	public static volatile SingularAttribute<FeatureInvertingImpl, String> shortName;
-	public static volatile SingularAttribute<FeatureInvertingImpl, String> effectiveName;
 
 	public static final String ELEMENT_ID = "elementId";
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_IMPLIED = "isImplied";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
@@ -50,8 +52,8 @@ public abstract class FeatureInvertingImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String TARGET = "target";
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NAME = "name";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String SHORT_NAME = "shortName";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 
 }
 

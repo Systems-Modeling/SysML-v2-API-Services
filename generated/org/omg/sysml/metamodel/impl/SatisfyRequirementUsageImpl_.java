@@ -104,10 +104,10 @@ public abstract class SatisfyRequirementUsageImpl_ extends org.omg.sysml.lifecyc
 	public static volatile SingularAttribute<SatisfyRequirementUsageImpl, Boolean> isVariation;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, Feature> feature;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, Element> member;
+	public static volatile SingularAttribute<SatisfyRequirementUsageImpl, String> declaredName;
 	public static volatile SingularAttribute<SatisfyRequirementUsageImpl, Boolean> isReference;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, Feature> inheritedFeature;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, Behavior> behavior;
-	public static volatile SingularAttribute<SatisfyRequirementUsageImpl, String> effectiveName;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, Membership> importedMembership;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, Element> ownedElement;
 	public static volatile SingularAttribute<SatisfyRequirementUsageImpl, Boolean> isModelLevelEvaluable;
@@ -124,6 +124,7 @@ public abstract class SatisfyRequirementUsageImpl_ extends org.omg.sysml.lifecyc
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, ViewpointUsage> nestedViewpoint;
 	public static volatile CollectionAttribute<SatisfyRequirementUsageImpl, FeatureInverting> ownedFeatureInverting;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, Usage> directedUsage;
+	public static volatile SingularAttribute<SatisfyRequirementUsageImpl, String> declaredShortName;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, PartUsage> nestedPart;
 	public static volatile ListAttribute<SatisfyRequirementUsageImpl, Feature> chainingFeature;
 	public static volatile SingularAttribute<SatisfyRequirementUsageImpl, Boolean> isConjugated;
@@ -211,10 +212,10 @@ public abstract class SatisfyRequirementUsageImpl_ extends org.omg.sysml.lifecyc
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String MEMBER = "member";
+	public static final String DECLARED_NAME = "declaredName";
 	public static final String IS_REFERENCE = "isReference";
 	public static final String INHERITED_FEATURE = "inheritedFeature";
 	public static final String BEHAVIOR = "behavior";
-	public static final String EFFECTIVE_NAME = "effectiveName";
 	public static final String IMPORTED_MEMBERSHIP = "importedMembership";
 	public static final String OWNED_ELEMENT = "ownedElement";
 	public static final String IS_MODEL_LEVEL_EVALUABLE = "isModelLevelEvaluable";
@@ -231,6 +232,7 @@ public abstract class SatisfyRequirementUsageImpl_ extends org.omg.sysml.lifecyc
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 	public static final String DIRECTED_USAGE = "directedUsage";
+	public static final String DECLARED_SHORT_NAME = "declaredShortName";
 	public static final String NESTED_PART = "nestedPart";
 	public static final String CHAINING_FEATURE = "chainingFeature";
 	public static final String IS_CONJUGATED = "isConjugated";
