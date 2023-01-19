@@ -24,14 +24,12 @@ package javabean;
 import java.beans.*;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class JavaBeanHelper {
+
     public static Map<String, PropertyDescriptor> getBeanProperties(Object bean) {
         try {
             return Arrays.stream(Introspector.getBeanInfo(bean.getClass(), Object.class).getPropertyDescriptors())
@@ -66,7 +64,16 @@ public class JavaBeanHelper {
     @SuppressWarnings("unchecked")
     public static <C> C convert(String text, Class<C> targetType) {
         PropertyEditor editor = PropertyEditorManager.findEditor(targetType);
+        if (editor == null) {
+            if (UUID.class.equals(targetType)) {
+                PropertyEditorManager.registerEditor(UUID.class, UuidPropertyEditor.class);
+                editor = PropertyEditorManager.findEditor(UUID.class);
+            } else {
+                return null;
+            }
+        }
         editor.setAsText(text);
         return (C) editor.getValue();
     }
+
 }
