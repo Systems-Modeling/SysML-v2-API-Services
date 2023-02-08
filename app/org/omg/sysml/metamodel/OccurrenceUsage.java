@@ -29,8 +29,6 @@ import java.util.Set;
 public interface OccurrenceUsage extends Usage, SysMLType {
     List<? extends Class> getOccurrenceDefinition();
 
-    PortioningFeature getPortioningFeature();
-
     OccurrenceDefinition getIndividualDefinition();
 
     Boolean getIsIndividual();

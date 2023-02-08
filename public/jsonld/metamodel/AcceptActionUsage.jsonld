@@ -111,7 +111,6 @@
         "payloadArgument": {"@type": "@id"},
         "payloadParameter": {"@type": "@id"},
         "portionKind": {"@type": "@vocab"},
-        "portioningFeature": {"@type": "@id"},
         "qualifiedName": {"@type": "xsd:string"},
         "receiverArgument": {"@type": "@id"},
         "shortName": {"@type": "xsd:string"},

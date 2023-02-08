@@ -150,7 +150,6 @@
                         @MetaValue(value = "PortConjugation", targetEntity = PortConjugationImpl.class),
                         @MetaValue(value = "PortDefinition", targetEntity = PortDefinitionImpl.class),
                         @MetaValue(value = "PortUsage", targetEntity = PortUsageImpl.class),
-                        @MetaValue(value = "PortioningFeature", targetEntity = PortioningFeatureImpl.class),
                         @MetaValue(value = "Predicate", targetEntity = PredicateImpl.class),
                         @MetaValue(value = "Redefinition", targetEntity = RedefinitionImpl.class),
                         @MetaValue(value = "ReferenceSubsetting", targetEntity = ReferenceSubsettingImpl.class),

@@ -111,7 +111,6 @@
         "parameter": {"@type": "@id"},
         "performedAction": {"@type": "@id"},
         "portionKind": {"@type": "@vocab"},
-        "portioningFeature": {"@type": "@id"},
         "qualifiedName": {"@type": "xsd:string"},
         "shortName": {"@type": "xsd:string"},
         "textualRepresentation": {"@type": "@id"},

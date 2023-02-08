@@ -26,6 +26,6 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface FlowConnectionDefinition extends Interaction, ActionDefinition, ConnectionDefinition, SysMLType {
+public interface FlowConnectionDefinition extends Interaction, ConnectionDefinition, ActionDefinition, SysMLType {
 
 }
