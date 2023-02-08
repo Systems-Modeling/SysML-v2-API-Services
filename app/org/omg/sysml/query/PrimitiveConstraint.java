@@ -2,6 +2,7 @@
  * SysML v2 REST/HTTP Pilot Implementation
  * Copyright (C) 2020  InterCAX LLC
  * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2023  Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -32,7 +33,7 @@ public interface PrimitiveConstraint extends Constraint {
 
     String getValue();
 
-    void setValue(String value);
+//    void setValue(String value);
 
     PrimitiveOperator getOperator();
 

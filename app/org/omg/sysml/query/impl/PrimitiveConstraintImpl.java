@@ -2,6 +2,7 @@
  * SysML v2 REST/HTTP Pilot Implementation
  * Copyright (C) 2020  InterCAX LLC
  * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2023  Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -21,13 +22,17 @@
 
 package org.omg.sysml.query.impl;
 
+import com.fasterxml.jackson.annotation.JsonRawValue;
 import com.fasterxml.jackson.annotation.JsonTypeName;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.deser.std.JsonNodeDeserializer;
 import org.omg.sysml.query.PrimitiveConstraint;
 import org.omg.sysml.query.PrimitiveOperator;
+import play.libs.Json;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.Collection;
 
 // @Embeddable // Can't embed and have polymorphism between Constraints, which is necessary for CompositeConstraint.constraint
 @Entity(name = "PrimitiveConstraint")
@@ -66,13 +71,14 @@ public class PrimitiveConstraintImpl extends ConstraintImpl implements Primitive
 
     @Override
     @Column
+    @JsonRawValue
     public String getValue() {
-        return value;
+        return value != null ? value : "null";
     }
 
-    @Override
-    public void setValue(String value) {
-        this.value = value;
+    @JsonDeserialize(using = OpenJsonNodeDeserializer.class)
+    public void setValue(JsonNode value) throws JsonProcessingException {
+        this.value = value != null ? Json.mapper().writeValueAsString(value) : "null";
     }
 
     @Override
@@ -87,5 +93,11 @@ public class PrimitiveConstraintImpl extends ConstraintImpl implements Primitive
     @Override
     public void setOperator(PrimitiveOperator operator) {
         this.operator = operator;
+    }
+
+    public static final class OpenJsonNodeDeserializer extends JsonNodeDeserializer {
+        public OpenJsonNodeDeserializer() {
+            super();
+        }
     }
 }
