@@ -377,13 +377,13 @@
       "additionalProperties": false
     },
     {
-      "$ref": "https://www.omg.org/spec/SysML/20230201/ActorMembership"
+      "$ref": "https://www.omg.org/spec/SysML/20230201/SubjectMembership"
     },
     {
       "$ref": "https://www.omg.org/spec/SysML/20230201/StakeholderMembership"
     },
     {
-      "$ref": "https://www.omg.org/spec/SysML/20230201/SubjectMembership"
+      "$ref": "https://www.omg.org/spec/SysML/20230201/ActorMembership"
     },
     {
       "$ref": "https://www.omg.org/spec/SysML/20230201/ReturnParameterMembership"
@@ -415,9 +415,9 @@
         "public"
       ]
     },
-    "ActorMembership": {
-      "$id": "https://www.omg.org/spec/SysML/20230201/ActorMembership",
-      "title": "ActorMembership",
+    "SubjectMembership": {
+      "$id": "https://www.omg.org/spec/SysML/20230201/SubjectMembership",
+      "title": "SubjectMembership",
       "type": "object",
       "properties": {
         "@id": {
@@ -426,7 +426,7 @@
         },
         "@type": {
           "type": "string",
-          "const": "ActorMembership"
+          "const": "SubjectMembership"
         },
         "aliasIds": {
           "type": "array",
@@ -553,10 +553,6 @@
             }
           ]
         },
-        "ownedActorParameter": {
-          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "https://www.omg.org/spec/SysML/20230201/PartUsage"
-        },
         "ownedAnnotation": {
           "type": "array",
           "items": {
@@ -626,6 +622,10 @@
             "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
           }
+        },
+        "ownedSubjectParameter": {
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Usage"
         },
         "owner": {
           "oneOf": [
@@ -767,7 +767,6 @@
         "memberShortName",
         "membershipOwningNamespace",
         "name",
-        "ownedActorParameter",
         "ownedAnnotation",
         "ownedElement",
         "ownedMemberElement",
@@ -778,6 +777,7 @@
         "ownedMemberShortName",
         "ownedRelatedElement",
         "ownedRelationship",
+        "ownedSubjectParameter",
         "owner",
         "owningMembership",
         "owningNamespace",
@@ -1175,9 +1175,9 @@
       ],
       "additionalProperties": false
     },
-    "SubjectMembership": {
-      "$id": "https://www.omg.org/spec/SysML/20230201/SubjectMembership",
-      "title": "SubjectMembership",
+    "ActorMembership": {
+      "$id": "https://www.omg.org/spec/SysML/20230201/ActorMembership",
+      "title": "ActorMembership",
       "type": "object",
       "properties": {
         "@id": {
@@ -1186,7 +1186,7 @@
         },
         "@type": {
           "type": "string",
-          "const": "SubjectMembership"
+          "const": "ActorMembership"
         },
         "aliasIds": {
           "type": "array",
@@ -1313,6 +1313,10 @@
             }
           ]
         },
+        "ownedActorParameter": {
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/PartUsage"
+        },
         "ownedAnnotation": {
           "type": "array",
           "items": {
@@ -1382,10 +1386,6 @@
             "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20230201/Relationship"
           }
-        },
-        "ownedSubjectParameter": {
-          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "https://www.omg.org/spec/SysML/20230201/Usage"
         },
         "owner": {
           "oneOf": [
@@ -1527,6 +1527,7 @@
         "memberShortName",
         "membershipOwningNamespace",
         "name",
+        "ownedActorParameter",
         "ownedAnnotation",
         "ownedElement",
         "ownedMemberElement",
@@ -1537,7 +1538,6 @@
         "ownedMemberShortName",
         "ownedRelatedElement",
         "ownedRelationship",
-        "ownedSubjectParameter",
         "owner",
         "owningMembership",
         "owningNamespace",

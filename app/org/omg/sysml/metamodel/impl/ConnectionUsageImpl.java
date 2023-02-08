@@ -2638,27 +2638,6 @@ public class ConnectionUsageImpl extends SysMLTypeImpl implements ConnectionUsag
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("portioningFeature")
-    private PortioningFeature portioningFeature;
-
-    @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "PortioningFeatureMetaDef", metaColumn = @javax.persistence.Column(name = "portioningFeature_type"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "portioningFeature_id", table = "ConnectionUsage")
-    public PortioningFeature getPortioningFeature() {
-        return portioningFeature;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = PortioningFeatureImpl.class)
-    public void setPortioningFeature(PortioningFeature portioningFeature) {
-        this.portioningFeature = portioningFeature;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("qualifiedName")
     private String qualifiedName;
 
