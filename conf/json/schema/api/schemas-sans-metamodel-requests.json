@@ -868,7 +868,23 @@
           "type": "string"
         },
         "value": {
-          "type": "string"
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "required": [
@@ -904,7 +920,23 @@
           "type": "string"
         },
         "value": {
-          "type": "string"
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "required": [
