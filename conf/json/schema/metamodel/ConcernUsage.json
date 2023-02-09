@@ -911,17 +911,6 @@
         }
       ]
     },
-    "portioningFeature": {
-      "oneOf": [
-        {
-          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "https://www.omg.org/spec/SysML/20230201/PortioningFeature"
-        },
-        {
-          "type": "null"
-        }
-      ]
-    },
     "predicate": {
       "oneOf": [
         {
@@ -1158,7 +1147,6 @@
     "owningUsage",
     "parameter",
     "portionKind",
-    "portioningFeature",
     "predicate",
     "qualifiedName",
     "reqId",

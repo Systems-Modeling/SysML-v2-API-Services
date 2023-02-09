@@ -2623,27 +2623,6 @@ public class RequirementUsageImpl extends SysMLTypeImpl implements RequirementUs
 
 
     // @info.archinnov.achilles.annotations.Transient
-    // @info.archinnov.achilles.annotations.Column("portioningFeature")
-    private PortioningFeature portioningFeature;
-
-    @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "PortioningFeatureMetaDef", metaColumn = @javax.persistence.Column(name = "portioningFeature_type"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "portioningFeature_id", table = "RequirementUsage")
-    public PortioningFeature getPortioningFeature() {
-        return portioningFeature;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = PortioningFeatureImpl.class)
-    public void setPortioningFeature(PortioningFeature portioningFeature) {
-        this.portioningFeature = portioningFeature;
-    }
-
-
-
-    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("predicate")
     private Predicate predicate;
 

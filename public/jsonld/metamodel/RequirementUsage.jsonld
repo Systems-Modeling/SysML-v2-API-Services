@@ -114,7 +114,6 @@
         "owningUsage": {"@type": "@id"},
         "parameter": {"@type": "@id"},
         "portionKind": {"@type": "@vocab"},
-        "portioningFeature": {"@type": "@id"},
         "predicate": {"@type": "@id"},
         "qualifiedName": {"@type": "xsd:string"},
         "reqId": {"@type": "xsd:string"},

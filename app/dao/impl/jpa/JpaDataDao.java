@@ -1,6 +1,6 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2021-2022 Twingineer LLC
+ * Copyright (C) 2021-2023 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -20,6 +20,7 @@
 
 package dao.impl.jpa;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.google.common.collect.Streams;
 import config.MetamodelProvider;
 import dao.DataDao;
@@ -40,6 +41,7 @@ import org.omg.sysml.lifecycle.DataVersion;
 import org.omg.sysml.lifecycle.impl.*;
 import org.omg.sysml.query.*;
 import org.omg.sysml.query.impl.QueryImpl;
+import play.libs.Json;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -48,6 +50,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 import java.beans.PropertyDescriptor;
+import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.Function;
@@ -232,10 +235,23 @@ public class JpaDataDao implements DataDao {
             return data -> {
                 Object actualValue;
                 Object constrainedValue;
+
+                JsonNode constrainedValueJson;
+                try {
+                    constrainedValueJson = primitiveConstraint.getValue() != null ?
+                            Json.mapper().readTree(primitiveConstraint.getValue()) :
+                            null;
+                } catch (IOException e) {
+                    throw new IllegalArgumentException(e);
+                }
+
                 switch (primitiveConstraint.getProperty()) {
                     case "@id":
                         actualValue = data.getId();
-                        constrainedValue = JavaBeanHelper.convert(primitiveConstraint.getValue(), UUID.class);
+                        constrainedValue = JavaBeanHelper.convert(
+                                constrainedValueJson != null ? constrainedValueJson.asText() : null,
+                                UUID.class
+                        );
                         break;
                     case "@type":
                         try {
@@ -246,7 +262,7 @@ public class JpaDataDao implements DataDao {
                         } catch (ClassNotFoundException e) {
                             throw new IllegalStateException(e);
                         }
-                        constrainedValue = primitiveConstraint.getValue();
+                        constrainedValue = constrainedValueJson != null ? constrainedValueJson.asText() : null;
                         break;
                     default:
                         PropertyDescriptor property = JavaBeanHelper.getBeanProperties(data).get(primitiveConstraint.getProperty());
@@ -254,11 +270,28 @@ public class JpaDataDao implements DataDao {
                             return false;
                         }
                         if (SUPPORTED_PRIMITIVE_CONSTRAINT_CLASSES.stream()
-                                .noneMatch(supported -> supported.isAssignableFrom(property.getPropertyType()))) {
+                                .anyMatch(supported -> supported.isAssignableFrom(property.getPropertyType()))) {
+                            actualValue = JavaBeanHelper.getBeanPropertyValue(data, property);
+                            constrainedValue = JavaBeanHelper.convert(
+                                    constrainedValueJson != null ? constrainedValueJson.asText() : null,
+                                    property.getPropertyType()
+                            );
+                        } else if (Data.class.isAssignableFrom(property.getPropertyType())) {
+                            Object _actualValue = JavaBeanHelper.getBeanPropertyValue(data, property);
+                            actualValue = _actualValue != null ? ((Data) _actualValue).getId() : null;
+                            constrainedValue = constrainedValueJson != null ?
+                                    JavaBeanHelper.convert(
+                                            // intentionally `textValue` instead of `asText` to get a null value for
+                                            // improved error reporting
+                                            constrainedValueJson.path("@id").textValue(),
+                                            UUID.class
+                                    ) : null;
+                            if (constrainedValue == null) {
+                                throw new IllegalArgumentException();
+                            }
+                        } else {
                             return false;
                         }
-                        actualValue = JavaBeanHelper.getBeanPropertyValue(data, property);
-                        constrainedValue = JavaBeanHelper.convert(primitiveConstraint.getValue(), property.getPropertyType());
                         break;
                 }
                 if (actualValue == null || constrainedValue == null) {

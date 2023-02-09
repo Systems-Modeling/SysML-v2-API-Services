@@ -108,7 +108,6 @@
         "owningUsage": {"@type": "@id"},
         "partDefinition": {"@type": "@id"},
         "portionKind": {"@type": "@vocab"},
-        "portioningFeature": {"@type": "@id"},
         "qualifiedName": {"@type": "xsd:string"},
         "renderingDefinition": {"@type": "@id"},
         "shortName": {"@type": "xsd:string"},

@@ -123,7 +123,6 @@
         "parameter": {"@type": "@id"},
         "partDefinition": {"@type": "@id"},
         "portionKind": {"@type": "@vocab"},
-        "portioningFeature": {"@type": "@id"},
         "qualifiedName": {"@type": "xsd:string"},
         "relatedElement": {"@type": "@id"},
         "relatedFeature": {"@type": "@id"},
