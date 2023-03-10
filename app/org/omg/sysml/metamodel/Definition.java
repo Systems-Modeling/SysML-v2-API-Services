@@ -27,67 +27,67 @@ import java.util.List;
 import java.util.Set;
 
 public interface Definition extends Classifier, SysMLType {
-    List<? extends Usage> getOwnedUsage();
-
-    List<? extends PortUsage> getOwnedPort();
-
-    List<? extends Usage> getDirectedUsage();
-
-    List<? extends Usage> getUsage();
-
-    List<? extends StateUsage> getOwnedState();
-
-    List<? extends ConstraintUsage> getOwnedConstraint();
-
-    Collection<? extends TransitionUsage> getOwnedTransition();
-
-    List<? extends RequirementUsage> getOwnedRequirement();
-
-    List<? extends CalculationUsage> getOwnedCalculation();
-
     Boolean getIsVariation();
-
-    Collection<? extends VariantMembership> getVariantMembership();
-
-    List<? extends AnalysisCaseUsage> getOwnedAnalysisCase();
 
     Collection<? extends Usage> getVariant();
 
-    List<? extends CaseUsage> getOwnedCase();
+    Collection<? extends VariantMembership> getVariantMembership();
+
+    List<? extends Usage> getUsage();
+
+    List<? extends Usage> getDirectedUsage();
+
+    List<? extends Usage> getOwnedUsage();
 
     List<? extends ReferenceUsage> getOwnedReference();
 
-    List<? extends ActionUsage> getOwnedAction();
+    List<? extends AttributeUsage> getOwnedAttribute();
 
-    List<? extends ConnectorAsUsage> getOwnedConnection();
+    List<? extends EnumerationUsage> getOwnedEnumeration();
+
+    List<? extends OccurrenceUsage> getOwnedOccurrence();
 
     List<? extends ItemUsage> getOwnedItem();
 
     List<? extends PartUsage> getOwnedPart();
 
+    List<? extends PortUsage> getOwnedPort();
+
+    List<? extends ConnectorAsUsage> getOwnedConnection();
+
+    Collection<? extends FlowConnectionUsage> getOwnedFlow();
+
     List<? extends InterfaceUsage> getOwnedInterface();
 
-    List<? extends AttributeUsage> getOwnedAttribute();
+    List<? extends AllocationUsage> getOwnedAllocation();
+
+    List<? extends ActionUsage> getOwnedAction();
+
+    List<? extends StateUsage> getOwnedState();
+
+    Collection<? extends TransitionUsage> getOwnedTransition();
+
+    List<? extends CalculationUsage> getOwnedCalculation();
+
+    List<? extends ConstraintUsage> getOwnedConstraint();
+
+    List<? extends RequirementUsage> getOwnedRequirement();
+
+    Collection<? extends ConcernUsage> getOwnedConcern();
+
+    List<? extends CaseUsage> getOwnedCase();
+
+    List<? extends AnalysisCaseUsage> getOwnedAnalysisCase();
+
+    List<? extends VerificationCaseUsage> getOwnedVerificationCase();
+
+    List<? extends UseCaseUsage> getOwnedUseCase();
 
     List<? extends ViewUsage> getOwnedView();
 
     List<? extends ViewpointUsage> getOwnedViewpoint();
 
     List<? extends RenderingUsage> getOwnedRendering();
-
-    List<? extends VerificationCaseUsage> getOwnedVerificationCase();
-
-    List<? extends EnumerationUsage> getOwnedEnumeration();
-
-    List<? extends AllocationUsage> getOwnedAllocation();
-
-    Collection<? extends ConcernUsage> getOwnedConcern();
-
-    List<? extends OccurrenceUsage> getOwnedOccurrence();
-
-    List<? extends UseCaseUsage> getOwnedUseCase();
-
-    Collection<? extends FlowConnectionUsage> getOwnedFlow();
 
     List<? extends MetadataUsage> getOwnedMetadata();
 }
