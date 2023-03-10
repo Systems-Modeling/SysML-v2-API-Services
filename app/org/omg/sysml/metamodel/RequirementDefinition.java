@@ -31,15 +31,15 @@ public interface RequirementDefinition extends ConstraintDefinition, SysMLType {
 
     Collection<? extends String> getText();
 
-    List<? extends ConstraintUsage> getAssumedConstraint();
-
-    List<? extends ConstraintUsage> getRequiredConstraint();
-
     Usage getSubjectParameter();
-
-    List<? extends ConcernUsage> getFramedConcern();
 
     List<? extends PartUsage> getActorParameter();
 
     List<? extends PartUsage> getStakeholderParameter();
+
+    List<? extends ConstraintUsage> getAssumedConstraint();
+
+    List<? extends ConstraintUsage> getRequiredConstraint();
+
+    List<? extends ConcernUsage> getFramedConcern();
 }

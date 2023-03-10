@@ -27,75 +27,75 @@ import java.util.List;
 import java.util.Set;
 
 public interface Usage extends Feature, SysMLType {
-    List<? extends Usage> getNestedUsage();
-
-    Usage getOwningUsage();
-
-    Definition getOwningDefinition();
-
-    List<? extends PortUsage> getNestedPort();
-
-    List<? extends ActionUsage> getNestedAction();
-
-    List<? extends StateUsage> getNestedState();
-
-    List<? extends ConstraintUsage> getNestedConstraint();
-
-    Collection<? extends TransitionUsage> getNestedTransition();
-
-    List<? extends RequirementUsage> getNestedRequirement();
-
-    List<? extends CalculationUsage> getNestedCalculation();
+    Boolean getIsReference();
 
     Boolean getIsVariation();
 
-    List<? extends Usage> getDirectedUsage();
-
-    List<? extends CaseUsage> getNestedCase();
-
-    List<? extends AnalysisCaseUsage> getNestedAnalysisCase();
+    Collection<? extends Usage> getVariant();
 
     Collection<? extends VariantMembership> getVariantMembership();
 
+    Definition getOwningDefinition();
+
+    Usage getOwningUsage();
+
+    List<? extends Classifier> getDefinition();
+
     List<? extends Usage> getUsage();
 
-    Collection<? extends Usage> getVariant();
+    List<? extends Usage> getDirectedUsage();
+
+    List<? extends Usage> getNestedUsage();
 
     List<? extends ReferenceUsage> getNestedReference();
 
-    List<? extends ConnectorAsUsage> getNestedConnection();
+    List<? extends AttributeUsage> getNestedAttribute();
+
+    List<? extends EnumerationUsage> getNestedEnumeration();
+
+    List<? extends OccurrenceUsage> getNestedOccurrence();
 
     List<? extends ItemUsage> getNestedItem();
 
     List<? extends PartUsage> getNestedPart();
 
+    List<? extends PortUsage> getNestedPort();
+
+    List<? extends ConnectorAsUsage> getNestedConnection();
+
+    Collection<? extends FlowConnectionUsage> getNestedFlow();
+
     List<? extends InterfaceUsage> getNestedInterface();
 
-    List<? extends AttributeUsage> getNestedAttribute();
+    List<? extends AllocationUsage> getNestedAllocation();
+
+    List<? extends ActionUsage> getNestedAction();
+
+    List<? extends StateUsage> getNestedState();
+
+    Collection<? extends TransitionUsage> getNestedTransition();
+
+    List<? extends CalculationUsage> getNestedCalculation();
+
+    List<? extends ConstraintUsage> getNestedConstraint();
+
+    List<? extends RequirementUsage> getNestedRequirement();
+
+    Collection<? extends ConcernUsage> getNestedConcern();
+
+    List<? extends CaseUsage> getNestedCase();
+
+    List<? extends AnalysisCaseUsage> getNestedAnalysisCase();
+
+    List<? extends VerificationCaseUsage> getNestedVerificationCase();
+
+    List<? extends UseCaseUsage> getNestedUseCase();
 
     List<? extends ViewUsage> getNestedView();
 
     List<? extends ViewpointUsage> getNestedViewpoint();
 
     List<? extends RenderingUsage> getNestedRendering();
-
-    List<? extends VerificationCaseUsage> getNestedVerificationCase();
-
-    List<? extends EnumerationUsage> getNestedEnumeration();
-
-    List<? extends AllocationUsage> getNestedAllocation();
-
-    Collection<? extends ConcernUsage> getNestedConcern();
-
-    List<? extends OccurrenceUsage> getNestedOccurrence();
-
-    List<? extends Classifier> getDefinition();
-
-    List<? extends UseCaseUsage> getNestedUseCase();
-
-    Boolean getIsReference();
-
-    Collection<? extends FlowConnectionUsage> getNestedFlow();
 
     List<? extends MetadataUsage> getNestedMetadata();
 }
