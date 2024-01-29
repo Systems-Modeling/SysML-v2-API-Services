@@ -38,7 +38,8 @@ public class HibernateManager implements JPAManager {
     private final EntityManagerFactory entityManagerFactory;
 
     public HibernateManager() {
-        entityManagerFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
+        entityManagerFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME,
+            System.getProperties());
     }
 
     @Override
