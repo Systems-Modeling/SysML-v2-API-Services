@@ -80,6 +80,7 @@ public abstract class MetadataUsageImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static volatile ListAttribute<MetadataUsageImpl, TextualRepresentation> textualRepresentation;
 	public static volatile SingularAttribute<MetadataUsageImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<MetadataUsageImpl, AttributeUsage> nestedAttribute;
+	public static volatile CollectionAttribute<MetadataUsageImpl, Annotation> ownedAnnotatingRelationship;
 	public static volatile ListAttribute<MetadataUsageImpl, EnumerationUsage> nestedEnumeration;
 	public static volatile ListAttribute<MetadataUsageImpl, Feature> ownedFeature;
 	public static volatile ListAttribute<MetadataUsageImpl, Documentation> documentation;
@@ -180,6 +181,7 @@ public abstract class MetadataUsageImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static final String TEXTUAL_REPRESENTATION = "textualRepresentation";
 	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String NESTED_ATTRIBUTE = "nestedAttribute";
+	public static final String OWNED_ANNOTATING_RELATIONSHIP = "ownedAnnotatingRelationship";
 	public static final String NESTED_ENUMERATION = "nestedEnumeration";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String DOCUMENTATION = "documentation";

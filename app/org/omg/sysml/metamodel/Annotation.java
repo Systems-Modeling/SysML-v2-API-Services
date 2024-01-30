@@ -32,4 +32,6 @@ public interface Annotation extends Relationship, SysMLType {
     Element getAnnotatedElement();
 
     Element getOwningAnnotatedElement();
+
+    AnnotatingElement getOwningAnnotatingElement();
 }

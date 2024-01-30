@@ -80,6 +80,7 @@
         "nestedViewpoint": {"@type": "@id"},
         "occurrenceDefinition": {"@type": "@id"},
         "output": {"@type": "@id"},
+        "ownedAnnotatingRelationship": {"@type": "@id"},
         "ownedAnnotation": {"@type": "@id"},
         "ownedConjugator": {"@type": "@id"},
         "ownedDifferencing": {"@type": "@id"},

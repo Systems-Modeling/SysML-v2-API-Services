@@ -176,7 +176,6 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<InterfaceUsageImpl, Element> target;
 	public static volatile ListAttribute<InterfaceUsageImpl, Type> differencingType;
 	public static volatile CollectionAttribute<InterfaceUsageImpl, VariantMembership> variantMembership;
-	public static volatile SingularAttribute<InterfaceUsageImpl, Boolean> isDirected;
 	public static volatile ListAttribute<InterfaceUsageImpl, Unioning> ownedUnioning;
 	public static volatile ListAttribute<InterfaceUsageImpl, Intersecting> ownedIntersecting;
 
@@ -287,7 +286,6 @@ public abstract class InterfaceUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String TARGET = "target";
 	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
-	public static final String IS_DIRECTED = "isDirected";
 	public static final String OWNED_UNIONING = "ownedUnioning";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 

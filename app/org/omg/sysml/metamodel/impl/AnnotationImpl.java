@@ -422,6 +422,27 @@ public class AnnotationImpl extends SysMLTypeImpl implements Annotation {
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("owningAnnotatingElement")
+    private AnnotatingElement owningAnnotatingElement;
+
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "AnnotatingElementMetaDef", metaColumn = @javax.persistence.Column(name = "owningAnnotatingElement_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningAnnotatingElement_id", table = "Annotation")
+    public AnnotatingElement getOwningAnnotatingElement() {
+        return owningAnnotatingElement;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = AnnotatingElementImpl.class)
+    public void setOwningAnnotatingElement(AnnotatingElement owningAnnotatingElement) {
+        this.owningAnnotatingElement = owningAnnotatingElement;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("owningMembership")
     private OwningMembership owningMembership;
 

@@ -174,7 +174,6 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<ConnectionUsageImpl, Element> target;
 	public static volatile ListAttribute<ConnectionUsageImpl, Type> differencingType;
 	public static volatile CollectionAttribute<ConnectionUsageImpl, VariantMembership> variantMembership;
-	public static volatile SingularAttribute<ConnectionUsageImpl, Boolean> isDirected;
 	public static volatile ListAttribute<ConnectionUsageImpl, Unioning> ownedUnioning;
 	public static volatile ListAttribute<ConnectionUsageImpl, Intersecting> ownedIntersecting;
 
@@ -284,7 +283,6 @@ public abstract class ConnectionUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String TARGET = "target";
 	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
-	public static final String IS_DIRECTED = "isDirected";
 	public static final String OWNED_UNIONING = "ownedUnioning";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 

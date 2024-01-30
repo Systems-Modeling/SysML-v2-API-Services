@@ -879,8 +879,15 @@
       ]
     },
     "targetArgument": {
-      "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
-      "$comment": "https://www.omg.org/spec/SysML/20230201/Expression"
+      "oneOf": [
+        {
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Expression"
+        },
+        {
+          "type": "null"
+        }
+      ]
     },
     "textualRepresentation": {
       "type": "array",
@@ -911,8 +918,15 @@
       }
     },
     "valueExpression": {
-      "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
-      "$comment": "https://www.omg.org/spec/SysML/20230201/Expression"
+      "oneOf": [
+        {
+          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20230201/Expression"
+        },
+        {
+          "type": "null"
+        }
+      ]
     },
     "variant": {
       "type": "array",

@@ -176,7 +176,6 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<AllocationUsageImpl, Element> target;
 	public static volatile ListAttribute<AllocationUsageImpl, Type> differencingType;
 	public static volatile CollectionAttribute<AllocationUsageImpl, VariantMembership> variantMembership;
-	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isDirected;
 	public static volatile ListAttribute<AllocationUsageImpl, Unioning> ownedUnioning;
 	public static volatile ListAttribute<AllocationUsageImpl, Intersecting> ownedIntersecting;
 
@@ -287,7 +286,6 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String TARGET = "target";
 	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
-	public static final String IS_DIRECTED = "isDirected";
 	public static final String OWNED_UNIONING = "ownedUnioning";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 

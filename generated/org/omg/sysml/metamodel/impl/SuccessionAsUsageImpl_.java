@@ -168,7 +168,6 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Element> target;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Type> differencingType;
 	public static volatile CollectionAttribute<SuccessionAsUsageImpl, VariantMembership> variantMembership;
-	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isDirected;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Unioning> ownedUnioning;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Intersecting> ownedIntersecting;
 
@@ -275,7 +274,6 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String TARGET = "target";
 	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
-	public static final String IS_DIRECTED = "isDirected";
 	public static final String OWNED_UNIONING = "ownedUnioning";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 
