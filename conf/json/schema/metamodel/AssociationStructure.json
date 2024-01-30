@@ -1432,19 +1432,19 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SysML/20230201/InterfaceDefinition"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/FlowConnectionDefinition"
         },
         {
           "$ref": "https://www.omg.org/spec/SysML/20230201/AllocationDefinition"
         },
         {
-          "$ref": "https://www.omg.org/spec/SysML/20230201/FlowConnectionDefinition"
+          "$ref": "https://www.omg.org/spec/SysML/20230201/InterfaceDefinition"
         }
       ]
     },
-    "InterfaceDefinition": {
-      "$id": "https://www.omg.org/spec/SysML/20230201/InterfaceDefinition",
-      "title": "InterfaceDefinition",
+    "FlowConnectionDefinition": {
+      "$id": "https://www.omg.org/spec/SysML/20230201/FlowConnectionDefinition",
+      "title": "FlowConnectionDefinition",
       "type": "object",
       "properties": {
         "@id": {
@@ -1453,7 +1453,14 @@
         },
         "@type": {
           "type": "string",
-          "const": "InterfaceDefinition"
+          "const": "FlowConnectionDefinition"
+        },
+        "action": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/ActionUsage"
+          }
         },
         "aliasIds": {
           "type": "array",
@@ -1580,13 +1587,6 @@
           "items": {
             "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
-          }
-        },
-        "interfaceEnd": {
-          "type": "array",
-          "items": {
-            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "https://www.omg.org/spec/SysML/20230201/PortUsage"
           }
         },
         "intersectingType": {
@@ -2096,6 +2096,13 @@
             }
           ]
         },
+        "parameter": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
+          }
+        },
         "qualifiedName": {
           "oneOf": [
             {
@@ -2147,6 +2154,13 @@
               "type": "null"
             }
           ]
+        },
+        "step": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Step"
+          }
         },
         "target": {
           "type": "array",
@@ -2201,6 +2215,7 @@
       "required": [
         "@id",
         "@type",
+        "action",
         "aliasIds",
         "associationEnd",
         "connectionEnd",
@@ -2218,7 +2233,6 @@
         "inheritedFeature",
         "inheritedMembership",
         "input",
-        "interfaceEnd",
         "intersectingType",
         "isAbstract",
         "isConjugated",
@@ -2283,12 +2297,14 @@
         "owningNamespace",
         "owningRelatedElement",
         "owningRelationship",
+        "parameter",
         "qualifiedName",
         "relatedElement",
         "relatedType",
         "shortName",
         "source",
         "sourceType",
+        "step",
         "target",
         "targetType",
         "textualRepresentation",
@@ -3156,9 +3172,9 @@
       ],
       "additionalProperties": false
     },
-    "FlowConnectionDefinition": {
-      "$id": "https://www.omg.org/spec/SysML/20230201/FlowConnectionDefinition",
-      "title": "FlowConnectionDefinition",
+    "InterfaceDefinition": {
+      "$id": "https://www.omg.org/spec/SysML/20230201/InterfaceDefinition",
+      "title": "InterfaceDefinition",
       "type": "object",
       "properties": {
         "@id": {
@@ -3167,14 +3183,7 @@
         },
         "@type": {
           "type": "string",
-          "const": "FlowConnectionDefinition"
-        },
-        "action": {
-          "type": "array",
-          "items": {
-            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "https://www.omg.org/spec/SysML/20230201/ActionUsage"
-          }
+          "const": "InterfaceDefinition"
         },
         "aliasIds": {
           "type": "array",
@@ -3301,6 +3310,13 @@
           "items": {
             "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
+          }
+        },
+        "interfaceEnd": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/PortUsage"
           }
         },
         "intersectingType": {
@@ -3810,13 +3826,6 @@
             }
           ]
         },
-        "parameter": {
-          "type": "array",
-          "items": {
-            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
-          }
-        },
         "qualifiedName": {
           "oneOf": [
             {
@@ -3868,13 +3877,6 @@
               "type": "null"
             }
           ]
-        },
-        "step": {
-          "type": "array",
-          "items": {
-            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
-            "$comment": "https://www.omg.org/spec/SysML/20230201/Step"
-          }
         },
         "target": {
           "type": "array",
@@ -3929,7 +3931,6 @@
       "required": [
         "@id",
         "@type",
-        "action",
         "aliasIds",
         "associationEnd",
         "connectionEnd",
@@ -3947,6 +3948,7 @@
         "inheritedFeature",
         "inheritedMembership",
         "input",
+        "interfaceEnd",
         "intersectingType",
         "isAbstract",
         "isConjugated",
@@ -4011,14 +4013,12 @@
         "owningNamespace",
         "owningRelatedElement",
         "owningRelationship",
-        "parameter",
         "qualifiedName",
         "relatedElement",
         "relatedType",
         "shortName",
         "source",
         "sourceType",
-        "step",
         "target",
         "targetType",
         "textualRepresentation",

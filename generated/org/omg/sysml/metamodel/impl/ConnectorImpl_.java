@@ -97,7 +97,6 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<ConnectorImpl, Feature> relatedFeature;
 	public static volatile ListAttribute<ConnectorImpl, Element> target;
 	public static volatile ListAttribute<ConnectorImpl, Type> differencingType;
-	public static volatile SingularAttribute<ConnectorImpl, Boolean> isDirected;
 	public static volatile ListAttribute<ConnectorImpl, Unioning> ownedUnioning;
 	public static volatile ListAttribute<ConnectorImpl, Type> unioningType;
 	public static volatile ListAttribute<ConnectorImpl, Specialization> ownedSpecialization;
@@ -167,7 +166,6 @@ public abstract class ConnectorImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String TARGET = "target";
 	public static final String DIFFERENCING_TYPE = "differencingType";
-	public static final String IS_DIRECTED = "isDirected";
 	public static final String OWNED_UNIONING = "ownedUnioning";
 	public static final String UNIONING_TYPE = "unioningType";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";

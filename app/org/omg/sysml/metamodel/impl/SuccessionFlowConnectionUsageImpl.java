@@ -895,22 +895,6 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
 
 
 
-    // @info.archinnov.achilles.annotations.Column("isDirected")
-    private Boolean isDirected;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isDirected", table = "SuccessionFlowConnectionUsage")
-    public Boolean getIsDirected() {
-        return isDirected;
-    }
-
-    @JsonSetter
-    public void setIsDirected(Boolean isDirected) {
-        this.isDirected = isDirected;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("isEnd")
     private Boolean isEnd;
 

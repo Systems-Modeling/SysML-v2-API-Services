@@ -312,6 +312,32 @@ public class TextualRepresentationImpl extends SysMLTypeImpl implements TextualR
 
 
     // @info.archinnov.achilles.annotations.Transient
+    // @info.archinnov.achilles.annotations.Column("ownedAnnotatingRelationship")
+    private Collection<Annotation> ownedAnnotatingRelationship;
+
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "TextualRepresentation_ownedAnnotatingRelationship",
+            joinColumns = @JoinColumn(name = "class_id"),
+            inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public Collection<Annotation> getOwnedAnnotatingRelationship() {
+        if (ownedAnnotatingRelationship == null) {
+            ownedAnnotatingRelationship = new ArrayList<>();
+        }
+        return ownedAnnotatingRelationship;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AnnotationImpl.class)
+    public void setOwnedAnnotatingRelationship(Collection<Annotation> ownedAnnotatingRelationship) {
+        this.ownedAnnotatingRelationship = ownedAnnotatingRelationship;
+    }
+
+
+
+    // @info.archinnov.achilles.annotations.Transient
     // @info.archinnov.achilles.annotations.Column("ownedAnnotation")
     private List<Annotation> ownedAnnotation;
 

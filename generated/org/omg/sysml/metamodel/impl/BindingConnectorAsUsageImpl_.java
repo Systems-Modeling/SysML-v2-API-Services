@@ -163,7 +163,6 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Element> target;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Type> differencingType;
 	public static volatile CollectionAttribute<BindingConnectorAsUsageImpl, VariantMembership> variantMembership;
-	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, Boolean> isDirected;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Unioning> ownedUnioning;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Intersecting> ownedIntersecting;
 
@@ -267,7 +266,6 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static final String TARGET = "target";
 	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
-	public static final String IS_DIRECTED = "isDirected";
 	public static final String OWNED_UNIONING = "ownedUnioning";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 

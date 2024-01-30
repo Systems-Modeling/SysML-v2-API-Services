@@ -31,8 +31,6 @@ public interface Connector extends Feature, Relationship, SysMLType {
 
     List<? extends Association> getAssociation();
 
-    Boolean getIsDirected();
-
     List<? extends Feature> getConnectorEnd();
 
     Feature getSourceFeature();

@@ -115,6 +115,13 @@
             }
           ]
         },
+        "ownedAnnotatingRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
+          }
+        },
         "ownedAnnotation": {
           "type": "array",
           "items": {
@@ -223,6 +230,7 @@
         "isLibraryElement",
         "locale",
         "name",
+        "ownedAnnotatingRelationship",
         "ownedAnnotation",
         "ownedElement",
         "ownedRelationship",
@@ -374,6 +382,13 @@
             }
           ]
         },
+        "ownedAnnotatingRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
+          }
+        },
         "ownedAnnotation": {
           "type": "array",
           "items": {
@@ -483,6 +498,7 @@
         "isLibraryElement",
         "locale",
         "name",
+        "ownedAnnotatingRelationship",
         "ownedAnnotation",
         "ownedElement",
         "ownedRelationship",

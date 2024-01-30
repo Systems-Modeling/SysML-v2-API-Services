@@ -105,7 +105,6 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static volatile ListAttribute<ItemFlowImpl, Feature> relatedFeature;
 	public static volatile ListAttribute<ItemFlowImpl, Element> target;
 	public static volatile ListAttribute<ItemFlowImpl, Type> differencingType;
-	public static volatile SingularAttribute<ItemFlowImpl, Boolean> isDirected;
 	public static volatile ListAttribute<ItemFlowImpl, Unioning> ownedUnioning;
 	public static volatile ListAttribute<ItemFlowImpl, Type> unioningType;
 	public static volatile ListAttribute<ItemFlowImpl, Interaction> interaction;
@@ -180,7 +179,6 @@ public abstract class ItemFlowImpl_ extends org.omg.sysml.lifecycle.impl.DataImp
 	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String TARGET = "target";
 	public static final String DIFFERENCING_TYPE = "differencingType";
-	public static final String IS_DIRECTED = "isDirected";
 	public static final String OWNED_UNIONING = "ownedUnioning";
 	public static final String UNIONING_TYPE = "unioningType";
 	public static final String INTERACTION = "interaction";

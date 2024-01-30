@@ -733,10 +733,10 @@
       "additionalProperties": false
     },
     {
-      "$ref": "https://www.omg.org/spec/SysML/20230201/SelectExpression"
+      "$ref": "https://www.omg.org/spec/SysML/20230201/CollectExpression"
     },
     {
-      "$ref": "https://www.omg.org/spec/SysML/20230201/CollectExpression"
+      "$ref": "https://www.omg.org/spec/SysML/20230201/SelectExpression"
     },
     {
       "$ref": "https://www.omg.org/spec/SysML/20230201/FeatureChainExpression"
@@ -768,9 +768,9 @@
         "out"
       ]
     },
-    "SelectExpression": {
-      "$id": "https://www.omg.org/spec/SysML/20230201/SelectExpression",
-      "title": "SelectExpression",
+    "CollectExpression": {
+      "$id": "https://www.omg.org/spec/SysML/20230201/CollectExpression",
+      "title": "CollectExpression",
       "type": "object",
       "properties": {
         "@id": {
@@ -779,7 +779,7 @@
         },
         "@type": {
           "type": "string",
-          "const": "SelectExpression"
+          "const": "CollectExpression"
         },
         "aliasIds": {
           "type": "array",
@@ -1499,9 +1499,9 @@
       ],
       "additionalProperties": false
     },
-    "CollectExpression": {
-      "$id": "https://www.omg.org/spec/SysML/20230201/CollectExpression",
-      "title": "CollectExpression",
+    "SelectExpression": {
+      "$id": "https://www.omg.org/spec/SysML/20230201/SelectExpression",
+      "title": "SelectExpression",
       "type": "object",
       "properties": {
         "@id": {
@@ -1510,7 +1510,7 @@
         },
         "@type": {
           "type": "string",
-          "const": "CollectExpression"
+          "const": "SelectExpression"
         },
         "aliasIds": {
           "type": "array",

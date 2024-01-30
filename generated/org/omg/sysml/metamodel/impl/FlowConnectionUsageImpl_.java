@@ -183,7 +183,6 @@ public abstract class FlowConnectionUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Element> target;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Type> differencingType;
 	public static volatile CollectionAttribute<FlowConnectionUsageImpl, VariantMembership> variantMembership;
-	public static volatile SingularAttribute<FlowConnectionUsageImpl, Boolean> isDirected;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Unioning> ownedUnioning;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Interaction> interaction;
 	public static volatile ListAttribute<FlowConnectionUsageImpl, Intersecting> ownedIntersecting;
@@ -300,7 +299,6 @@ public abstract class FlowConnectionUsageImpl_ extends org.omg.sysml.lifecycle.i
 	public static final String TARGET = "target";
 	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
-	public static final String IS_DIRECTED = "isDirected";
 	public static final String OWNED_UNIONING = "ownedUnioning";
 	public static final String INTERACTION = "interaction";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";

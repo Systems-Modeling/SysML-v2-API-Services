@@ -97,7 +97,6 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<BindingConnectorImpl, Feature> relatedFeature;
 	public static volatile ListAttribute<BindingConnectorImpl, Element> target;
 	public static volatile ListAttribute<BindingConnectorImpl, Type> differencingType;
-	public static volatile SingularAttribute<BindingConnectorImpl, Boolean> isDirected;
 	public static volatile ListAttribute<BindingConnectorImpl, Unioning> ownedUnioning;
 	public static volatile ListAttribute<BindingConnectorImpl, Type> unioningType;
 	public static volatile ListAttribute<BindingConnectorImpl, Specialization> ownedSpecialization;
@@ -167,7 +166,6 @@ public abstract class BindingConnectorImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String TARGET = "target";
 	public static final String DIFFERENCING_TYPE = "differencingType";
-	public static final String IS_DIRECTED = "isDirected";
 	public static final String OWNED_UNIONING = "ownedUnioning";
 	public static final String UNIONING_TYPE = "unioningType";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";

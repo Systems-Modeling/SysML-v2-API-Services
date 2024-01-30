@@ -843,22 +843,6 @@ public class FlowConnectionUsageImpl extends SysMLTypeImpl implements FlowConnec
 
 
 
-    // @info.archinnov.achilles.annotations.Column("isDirected")
-    private Boolean isDirected;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isDirected", table = "FlowConnectionUsage")
-    public Boolean getIsDirected() {
-        return isDirected;
-    }
-
-    @JsonSetter
-    public void setIsDirected(Boolean isDirected) {
-        this.isDirected = isDirected;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("isEnd")
     private Boolean isEnd;
 
