@@ -50,6 +50,7 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isLibraryElement;
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isDerived;
 	public static volatile ListAttribute<MetadataFeatureImpl, Annotation> ownedAnnotation;
+	public static volatile CollectionAttribute<MetadataFeatureImpl, Annotation> ownedAnnotatingRelationship;
 	public static volatile ListAttribute<MetadataFeatureImpl, Feature> ownedFeature;
 	public static volatile SingularAttribute<MetadataFeatureImpl, String> qualifiedName;
 	public static volatile ListAttribute<MetadataFeatureImpl, Documentation> documentation;
@@ -112,6 +113,7 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String IS_DERIVED = "isDerived";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
+	public static final String OWNED_ANNOTATING_RELATIONSHIP = "ownedAnnotatingRelationship";
 	public static final String OWNED_FEATURE = "ownedFeature";
 	public static final String QUALIFIED_NAME = "qualifiedName";
 	public static final String DOCUMENTATION = "documentation";

@@ -2,6 +2,7 @@ package org.omg.sysml.metamodel.impl;
 
 import java.util.UUID;
 import javax.annotation.processing.Generated;
+import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
@@ -22,6 +23,7 @@ public abstract class DocumentationImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static volatile SingularAttribute<DocumentationImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<DocumentationImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<DocumentationImpl, Element> ownedElement;
+	public static volatile CollectionAttribute<DocumentationImpl, Annotation> ownedAnnotatingRelationship;
 	public static volatile ListAttribute<DocumentationImpl, String> aliasIds;
 	public static volatile ListAttribute<DocumentationImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<DocumentationImpl, String> qualifiedName;
@@ -41,6 +43,7 @@ public abstract class DocumentationImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static final String IS_LIBRARY_ELEMENT = "isLibraryElement";
 	public static final String OWNED_ANNOTATION = "ownedAnnotation";
 	public static final String OWNED_ELEMENT = "ownedElement";
+	public static final String OWNED_ANNOTATING_RELATIONSHIP = "ownedAnnotatingRelationship";
 	public static final String ALIAS_IDS = "aliasIds";
 	public static final String OWNED_RELATIONSHIP = "ownedRelationship";
 	public static final String QUALIFIED_NAME = "qualifiedName";

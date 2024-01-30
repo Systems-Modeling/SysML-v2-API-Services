@@ -751,8 +751,15 @@
               ]
             },
             "owningFeature": {
-              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
-              "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
+              "oneOf": [
+                {
+                  "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                  "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
+                },
+                {
+                  "type": "null"
+                }
+              ]
             },
             "owningMembership": {
               "oneOf": [
@@ -1054,8 +1061,15 @@
           ]
         },
         "owningFeature": {
-          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "owningMembership": {
           "oneOf": [
@@ -1359,8 +1373,15 @@
           ]
         },
         "owningFeature": {
-          "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
-          "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "owningMembership": {
           "oneOf": [

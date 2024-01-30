@@ -102,7 +102,6 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile ListAttribute<SuccessionImpl, Feature> relatedFeature;
 	public static volatile ListAttribute<SuccessionImpl, Element> target;
 	public static volatile ListAttribute<SuccessionImpl, Type> differencingType;
-	public static volatile SingularAttribute<SuccessionImpl, Boolean> isDirected;
 	public static volatile ListAttribute<SuccessionImpl, Unioning> ownedUnioning;
 	public static volatile ListAttribute<SuccessionImpl, Type> unioningType;
 	public static volatile ListAttribute<SuccessionImpl, Specialization> ownedSpecialization;
@@ -175,7 +174,6 @@ public abstract class SuccessionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static final String RELATED_FEATURE = "relatedFeature";
 	public static final String TARGET = "target";
 	public static final String DIFFERENCING_TYPE = "differencingType";
-	public static final String IS_DIRECTED = "isDirected";
 	public static final String OWNED_UNIONING = "ownedUnioning";
 	public static final String UNIONING_TYPE = "unioningType";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";

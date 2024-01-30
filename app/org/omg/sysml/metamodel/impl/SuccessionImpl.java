@@ -692,22 +692,6 @@ public class SuccessionImpl extends SysMLTypeImpl implements Succession {
 
 
 
-    // @info.archinnov.achilles.annotations.Column("isDirected")
-    private Boolean isDirected;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isDirected", table = "Succession")
-    public Boolean getIsDirected() {
-        return isDirected;
-    }
-
-    @JsonSetter
-    public void setIsDirected(Boolean isDirected) {
-        this.isDirected = isDirected;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("isEnd")
     private Boolean isEnd;
 

@@ -188,7 +188,6 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Element> target;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Type> differencingType;
 	public static volatile CollectionAttribute<SuccessionFlowConnectionUsageImpl, VariantMembership> variantMembership;
-	public static volatile SingularAttribute<SuccessionFlowConnectionUsageImpl, Boolean> isDirected;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Unioning> ownedUnioning;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Interaction> interaction;
 	public static volatile ListAttribute<SuccessionFlowConnectionUsageImpl, Intersecting> ownedIntersecting;
@@ -308,7 +307,6 @@ public abstract class SuccessionFlowConnectionUsageImpl_ extends org.omg.sysml.l
 	public static final String TARGET = "target";
 	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
-	public static final String IS_DIRECTED = "isDirected";
 	public static final String OWNED_UNIONING = "ownedUnioning";
 	public static final String INTERACTION = "interaction";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";

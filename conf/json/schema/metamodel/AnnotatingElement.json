@@ -102,6 +102,13 @@
             }
           ]
         },
+        "ownedAnnotatingRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
+          }
+        },
         "ownedAnnotation": {
           "type": "array",
           "items": {
@@ -208,6 +215,7 @@
         "isImpliedIncluded",
         "isLibraryElement",
         "name",
+        "ownedAnnotatingRelationship",
         "ownedAnnotation",
         "ownedElement",
         "ownedRelationship",
@@ -598,6 +606,13 @@
                 "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
               }
             },
+            "ownedAnnotatingRelationship": {
+              "type": "array",
+              "items": {
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
+              }
+            },
             "ownedAnnotation": {
               "type": "array",
               "items": {
@@ -910,6 +925,7 @@
             "multiplicity",
             "name",
             "output",
+            "ownedAnnotatingRelationship",
             "ownedAnnotation",
             "ownedConjugator",
             "ownedDifferencing",
@@ -1579,6 +1595,13 @@
             "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
           }
         },
+        "ownedAnnotatingRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
+          }
+        },
         "ownedAnnotation": {
           "type": "array",
           "items": {
@@ -1980,6 +2003,7 @@
         "nestedViewpoint",
         "occurrenceDefinition",
         "output",
+        "ownedAnnotatingRelationship",
         "ownedAnnotation",
         "ownedConjugator",
         "ownedDifferencing",
@@ -2147,6 +2171,13 @@
                 }
               ]
             },
+            "ownedAnnotatingRelationship": {
+              "type": "array",
+              "items": {
+                "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+                "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
+              }
+            },
             "ownedAnnotation": {
               "type": "array",
               "items": {
@@ -2255,6 +2286,7 @@
             "isLibraryElement",
             "locale",
             "name",
+            "ownedAnnotatingRelationship",
             "ownedAnnotation",
             "ownedElement",
             "ownedRelationship",
@@ -2391,6 +2423,13 @@
             }
           ]
         },
+        "ownedAnnotatingRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
+          }
+        },
         "ownedAnnotation": {
           "type": "array",
           "items": {
@@ -2500,6 +2539,7 @@
         "isLibraryElement",
         "locale",
         "name",
+        "ownedAnnotatingRelationship",
         "ownedAnnotation",
         "ownedElement",
         "ownedRelationship",
@@ -2620,6 +2660,13 @@
             }
           ]
         },
+        "ownedAnnotatingRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
+          }
+        },
         "ownedAnnotation": {
           "type": "array",
           "items": {
@@ -2732,6 +2779,7 @@
         "isLibraryElement",
         "language",
         "name",
+        "ownedAnnotatingRelationship",
         "ownedAnnotation",
         "ownedElement",
         "ownedRelationship",

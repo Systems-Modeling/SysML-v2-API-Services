@@ -44,6 +44,7 @@
         "multiplicity": {"@type": "@id"},
         "name": {"@type": "xsd:string"},
         "output": {"@type": "@id"},
+        "ownedAnnotatingRelationship": {"@type": "@id"},
         "ownedAnnotation": {"@type": "@id"},
         "ownedConjugator": {"@type": "@id"},
         "ownedDifferencing": {"@type": "@id"},

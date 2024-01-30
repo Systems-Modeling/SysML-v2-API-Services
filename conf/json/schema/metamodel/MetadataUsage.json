@@ -617,6 +617,13 @@
         "$comment": "https://www.omg.org/spec/SysML/20230201/Feature"
       }
     },
+    "ownedAnnotatingRelationship": {
+      "type": "array",
+      "items": {
+        "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
+        "$comment": "https://www.omg.org/spec/SysML/20230201/Annotation"
+      }
+    },
     "ownedAnnotation": {
       "type": "array",
       "items": {
@@ -1018,6 +1025,7 @@
     "nestedViewpoint",
     "occurrenceDefinition",
     "output",
+    "ownedAnnotatingRelationship",
     "ownedAnnotation",
     "ownedConjugator",
     "ownedDifferencing",

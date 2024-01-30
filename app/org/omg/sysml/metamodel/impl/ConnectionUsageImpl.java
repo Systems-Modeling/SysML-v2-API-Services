@@ -739,22 +739,6 @@ public class ConnectionUsageImpl extends SysMLTypeImpl implements ConnectionUsag
 
 
 
-    // @info.archinnov.achilles.annotations.Column("isDirected")
-    private Boolean isDirected;
-
-    @JsonGetter
-    @javax.persistence.Column(name = "isDirected", table = "ConnectionUsage")
-    public Boolean getIsDirected() {
-        return isDirected;
-    }
-
-    @JsonSetter
-    public void setIsDirected(Boolean isDirected) {
-        this.isDirected = isDirected;
-    }
-
-
-
     // @info.archinnov.achilles.annotations.Column("isEnd")
     private Boolean isEnd;
 

@@ -253,16 +253,6 @@
         }
       ]
     },
-    "isDirected": {
-      "oneOf": [
-        {
-          "type": "boolean"
-        },
-        {
-          "type": "null"
-        }
-      ]
-    },
     "isEnd": {
       "oneOf": [
         {
@@ -1055,7 +1045,6 @@
     "isComposite",
     "isConjugated",
     "isDerived",
-    "isDirected",
     "isEnd",
     "isImplied",
     "isImpliedIncluded",

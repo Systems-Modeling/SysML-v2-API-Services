@@ -38,7 +38,6 @@
         "isComposite": {"@type": "xsd:boolean"},
         "isConjugated": {"@type": "xsd:boolean"},
         "isDerived": {"@type": "xsd:boolean"},
-        "isDirected": {"@type": "xsd:boolean"},
         "isEnd": {"@type": "xsd:boolean"},
         "isImplied": {"@type": "xsd:boolean"},
         "isImpliedIncluded": {"@type": "xsd:boolean"},

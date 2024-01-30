@@ -17,6 +17,7 @@
         "isLibraryElement": {"@type": "xsd:boolean"},
         "locale": {"@type": "xsd:string"},
         "name": {"@type": "xsd:string"},
+        "ownedAnnotatingRelationship": {"@type": "@id"},
         "ownedAnnotation": {"@type": "@id"},
         "ownedElement": {"@type": "@id"},
         "ownedRelationship": {"@type": "@id"},
