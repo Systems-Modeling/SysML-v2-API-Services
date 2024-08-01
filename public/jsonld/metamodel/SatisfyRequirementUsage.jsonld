@@ -4,7 +4,6 @@
         "sysml": "http://omg.org/ns/sysml/v2/metamodel#",
         "dcterms": "http://purl.org/dc/terms/",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
-
         "actorParameter": {"@type": "@id"},
         "aliasIds": {"@type": "xsd:string"},
         "assertedConstraint": {"@type": "@id"},
@@ -25,6 +24,7 @@
         "endOwningType": {"@type": "@id"},
         "feature": {"@type": "@id"},
         "featureMembership": {"@type": "@id"},
+        "featureTarget": {"@type": "@id"},
         "featuringType": {"@type": "@id"},
         "framedConcern": {"@type": "@id"},
         "function": {"@type": "@id"},
@@ -134,6 +134,5 @@
         "usage": {"@type": "@id"},
         "variant": {"@type": "@id"},
         "variantMembership": {"@type": "@id"}
-
     }
 }

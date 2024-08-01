@@ -4,7 +4,6 @@
         "sysml": "http://omg.org/ns/sysml/v2/metamodel#",
         "dcterms": "http://purl.org/dc/terms/",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
-
         "actionDefinition": {"@type": "@id"},
         "aliasIds": {"@type": "xsd:string"},
         "association": {"@type": "@id"},
@@ -25,6 +24,7 @@
         "endOwningType": {"@type": "@id"},
         "feature": {"@type": "@id"},
         "featureMembership": {"@type": "@id"},
+        "featureTarget": {"@type": "@id"},
         "featuringType": {"@type": "@id"},
         "flowConnectionDefinition": {"@type": "@id"},
         "importedMembership": {"@type": "@id"},
@@ -138,6 +138,5 @@
         "usage": {"@type": "@id"},
         "variant": {"@type": "@id"},
         "variantMembership": {"@type": "@id"}
-
     }
 }

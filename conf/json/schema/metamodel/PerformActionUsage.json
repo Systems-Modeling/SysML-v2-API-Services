@@ -152,6 +152,10 @@
             "$comment": "https://www.omg.org/spec/SysML/20240201/FeatureMembership"
           }
         },
+        "featureTarget": {
+          "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+        },
         "featuringType": {
           "type": "array",
           "items": {
@@ -948,6 +952,7 @@
         "eventOccurrence",
         "feature",
         "featureMembership",
+        "featureTarget",
         "featuringType",
         "importedMembership",
         "individualDefinition",
@@ -1276,6 +1281,10 @@
             "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20240201/FeatureMembership"
           }
+        },
+        "featureTarget": {
+          "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
         },
         "featuringType": {
           "type": "array",
@@ -2094,6 +2103,7 @@
         "exitAction",
         "feature",
         "featureMembership",
+        "featureTarget",
         "featuringType",
         "importedMembership",
         "individualDefinition",
@@ -2374,6 +2384,10 @@
             "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20240201/FeatureMembership"
           }
+        },
+        "featureTarget": {
+          "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
         },
         "featuringType": {
           "type": "array",
@@ -3236,6 +3250,7 @@
         "eventOccurrence",
         "feature",
         "featureMembership",
+        "featureTarget",
         "featuringType",
         "function",
         "importedMembership",

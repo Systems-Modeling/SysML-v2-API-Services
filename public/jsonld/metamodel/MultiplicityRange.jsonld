@@ -4,7 +4,6 @@
         "sysml": "http://omg.org/ns/sysml/v2/metamodel#",
         "dcterms": "http://purl.org/dc/terms/",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
-
         "aliasIds": {"@type": "xsd:string"},
         "bound": {"@type": "@id"},
         "chainingFeature": {"@type": "@id"},
@@ -19,6 +18,7 @@
         "endOwningType": {"@type": "@id"},
         "feature": {"@type": "@id"},
         "featureMembership": {"@type": "@id"},
+        "featureTarget": {"@type": "@id"},
         "featuringType": {"@type": "@id"},
         "importedMembership": {"@type": "@id"},
         "inheritedFeature": {"@type": "@id"},
@@ -77,6 +77,5 @@
         "type": {"@type": "@id"},
         "unioningType": {"@type": "@id"},
         "upperBound": {"@type": "@id"}
-
     }
 }

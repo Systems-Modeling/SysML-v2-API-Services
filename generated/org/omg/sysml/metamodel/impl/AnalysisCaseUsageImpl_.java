@@ -142,7 +142,6 @@ public abstract class AnalysisCaseUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile SingularAttribute<AnalysisCaseUsageImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<AnalysisCaseUsageImpl, String> name;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, Membership> ownedMembership;
-	public static volatile ListAttribute<AnalysisCaseUsageImpl, ActionUsage> analysisAction;
 	public static volatile CollectionAttribute<AnalysisCaseUsageImpl, FlowConnectionUsage> nestedFlow;
 	public static volatile ListAttribute<AnalysisCaseUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<AnalysisCaseUsageImpl, Disjoining> ownedDisjoining;
@@ -245,7 +244,6 @@ public abstract class AnalysisCaseUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String ANALYSIS_ACTION = "analysisAction";
 	public static final String NESTED_FLOW = "nestedFlow";
 	public static final String NESTED_CASE = "nestedCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";

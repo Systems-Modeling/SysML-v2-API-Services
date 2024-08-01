@@ -132,6 +132,10 @@
         "$comment": "https://www.omg.org/spec/SysML/20240201/FeatureMembership"
       }
     },
+    "featureTarget": {
+      "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+      "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+    },
     "featuringType": {
       "type": "array",
       "items": {
@@ -666,6 +670,7 @@
     "endOwningType",
     "feature",
     "featureMembership",
+    "featureTarget",
     "featuringType",
     "function",
     "importedMembership",

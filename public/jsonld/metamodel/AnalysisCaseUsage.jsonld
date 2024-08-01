@@ -4,11 +4,9 @@
         "sysml": "http://omg.org/ns/sysml/v2/metamodel#",
         "dcterms": "http://purl.org/dc/terms/",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
-
         "actionDefinition": {"@type": "@id"},
         "actorParameter": {"@type": "@id"},
         "aliasIds": {"@type": "xsd:string"},
-        "analysisAction": {"@type": "@id"},
         "analysisCaseDefinition": {"@type": "@id"},
         "behavior": {"@type": "@id"},
         "calculationDefinition": {"@type": "@id"},
@@ -27,6 +25,7 @@
         "endOwningType": {"@type": "@id"},
         "feature": {"@type": "@id"},
         "featureMembership": {"@type": "@id"},
+        "featureTarget": {"@type": "@id"},
         "featuringType": {"@type": "@id"},
         "function": {"@type": "@id"},
         "importedMembership": {"@type": "@id"},
@@ -128,6 +127,5 @@
         "usage": {"@type": "@id"},
         "variant": {"@type": "@id"},
         "variantMembership": {"@type": "@id"}
-
     }
 }

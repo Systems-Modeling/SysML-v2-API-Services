@@ -4,11 +4,9 @@
         "sysml": "http://omg.org/ns/sysml/v2/metamodel#",
         "dcterms": "http://purl.org/dc/terms/",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
-
         "action": {"@type": "@id"},
         "actorParameter": {"@type": "@id"},
         "aliasIds": {"@type": "xsd:string"},
-        "analysisAction": {"@type": "@id"},
         "calculation": {"@type": "@id"},
         "declaredName": {"@type": "xsd:string"},
         "declaredShortName": {"@type": "xsd:string"},
@@ -100,6 +98,5 @@
         "usage": {"@type": "@id"},
         "variant": {"@type": "@id"},
         "variantMembership": {"@type": "@id"}
-
     }
 }
