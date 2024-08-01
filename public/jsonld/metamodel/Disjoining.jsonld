@@ -4,7 +4,6 @@
         "sysml": "http://omg.org/ns/sysml/v2/metamodel#",
         "dcterms": "http://purl.org/dc/terms/",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
-
         "aliasIds": {"@type": "xsd:string"},
         "declaredName": {"@type": "xsd:string"},
         "declaredShortName": {"@type": "xsd:string"},
@@ -32,6 +31,5 @@
         "target": {"@type": "@id"},
         "textualRepresentation": {"@type": "@id"},
         "typeDisjoined": {"@type": "@id"}
-
     }
 }
