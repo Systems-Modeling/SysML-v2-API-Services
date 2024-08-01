@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.omg.org/spec/SysML/20240201/Identified",
+  "title": "Identified",
+  "type": "object",
+  "properties": {
+    "@id": {
+      "type": "string",
+      "format": "uuid"
+    }
+  },
+  "required": [
+    "@id"
+  ],
+  "additionalProperties": false
+}
