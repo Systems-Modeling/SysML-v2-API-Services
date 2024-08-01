@@ -32,13 +32,6 @@
         "type": "string"
       }
     },
-    "analysisAction": {
-      "type": "array",
-      "items": {
-        "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
-        "$comment": "https://www.omg.org/spec/SysML/20240201/ActionUsage"
-      }
-    },
     "analysisCaseDefinition": {
       "oneOf": [
         {
@@ -192,6 +185,10 @@
         "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
         "$comment": "https://www.omg.org/spec/SysML/20240201/FeatureMembership"
       }
+    },
+    "featureTarget": {
+      "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+      "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
     },
     "featuringType": {
       "type": "array",
@@ -1021,7 +1018,6 @@
     "actionDefinition",
     "actorParameter",
     "aliasIds",
-    "analysisAction",
     "analysisCaseDefinition",
     "behavior",
     "calculationDefinition",
@@ -1040,6 +1036,7 @@
     "endOwningType",
     "feature",
     "featureMembership",
+    "featureTarget",
     "featuringType",
     "function",
     "importedMembership",

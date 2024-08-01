@@ -108,27 +108,6 @@ public class AnalysisCaseUsageImpl extends SysMLTypeImpl implements AnalysisCase
         this.aliasIds = aliasIds;
     }
 
-    private List<ActionUsage> analysisAction;
-
-    @Override
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "AnalysisCaseUsage_analysisAction", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public List<ActionUsage> getAnalysisAction() {
-        if (analysisAction == null) {
-            analysisAction = new ArrayList<>();
-        }
-        return analysisAction;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ActionUsageImpl.class)
-    public void setAnalysisAction(List<ActionUsage> analysisAction) {
-        this.analysisAction = analysisAction;
-    }
-
     private AnalysisCaseDefinition analysisCaseDefinition;
 
     @Override
@@ -470,6 +449,24 @@ public class AnalysisCaseUsageImpl extends SysMLTypeImpl implements AnalysisCase
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureMembershipImpl.class)
     public void setFeatureMembership(List<FeatureMembership> featureMembership) {
         this.featureMembership = featureMembership;
+    }
+
+    private Feature featureTarget;
+
+    @Override
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "featureTarget_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "featureTarget_id", table = "AnalysisCaseUsage")
+    public Feature getFeatureTarget() {
+        return featureTarget;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
+    public void setFeatureTarget(Feature featureTarget) {
+        this.featureTarget = featureTarget;
     }
 
     private List<Type> featuringType;

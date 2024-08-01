@@ -593,4 +593,24 @@ public class NamespaceExposeImpl extends SysMLTypeImpl implements NamespaceExpos
     public void setVisibility(VisibilityKind visibility) {
         this.visibility = visibility;
     }
+
+    /*
+     * shadowed by `155791aa-94b7-4b0a-9bf5-face367e9a7f`
+
+    private VisibilityKind visibility;
+
+    @Override
+    @JsonGetter
+    @javax.persistence.Enumerated(EnumType.STRING)
+    @javax.persistence.Column(name = "visibility", table = "NamespaceExpose")
+    public VisibilityKind getVisibility() {
+        return visibility;
+    }
+
+    @JsonSetter
+    public void setVisibility(VisibilityKind visibility) {
+        this.visibility = visibility;
+    }
+
+    */
 }

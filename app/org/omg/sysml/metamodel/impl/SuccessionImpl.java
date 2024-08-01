@@ -355,6 +355,24 @@ public class SuccessionImpl extends SysMLTypeImpl implements Succession {
         this.featureMembership = featureMembership;
     }
 
+    private Feature featureTarget;
+
+    @Override
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "featureTarget_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "featureTarget_id", table = "Succession")
+    public Feature getFeatureTarget() {
+        return featureTarget;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
+    public void setFeatureTarget(Feature featureTarget) {
+        this.featureTarget = featureTarget;
+    }
+
     private List<Type> featuringType;
 
     @Override

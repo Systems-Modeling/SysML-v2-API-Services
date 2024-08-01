@@ -12,6 +12,8 @@ public interface Feature extends Type, SysMLType {
 
     Type getEndOwningType();
 
+    Feature getFeatureTarget();
+
     List<? extends Type> getFeaturingType();
 
     Boolean getIsComposite();
