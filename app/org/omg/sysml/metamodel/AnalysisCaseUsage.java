@@ -6,8 +6,6 @@ import java.util.List;
 import java.util.Set;
 
 public interface AnalysisCaseUsage extends CaseUsage, SysMLType {
-    List<? extends ActionUsage> getAnalysisAction();
-
     AnalysisCaseDefinition getAnalysisCaseDefinition();
 
     Expression getResultExpression();

@@ -8,4 +8,7 @@ import java.util.Set;
 public interface Expose extends Import, SysMLType {
     @Override
     Boolean getIsImportAll();
+
+    @Override
+    VisibilityKind getVisibility();
 }

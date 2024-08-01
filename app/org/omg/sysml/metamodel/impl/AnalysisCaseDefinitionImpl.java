@@ -108,27 +108,6 @@ public class AnalysisCaseDefinitionImpl extends SysMLTypeImpl implements Analysi
         this.aliasIds = aliasIds;
     }
 
-    private List<ActionUsage> analysisAction;
-
-    @Override
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ActionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "AnalysisCaseDefinition_analysisAction", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public List<ActionUsage> getAnalysisAction() {
-        if (analysisAction == null) {
-            analysisAction = new ArrayList<>();
-        }
-        return analysisAction;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ActionUsageImpl.class)
-    public void setAnalysisAction(List<ActionUsage> analysisAction) {
-        this.analysisAction = analysisAction;
-    }
-
     private List<CalculationUsage> calculation;
 
     @Override

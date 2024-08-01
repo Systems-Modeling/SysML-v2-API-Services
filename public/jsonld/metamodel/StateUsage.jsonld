@@ -24,6 +24,7 @@
         "exitAction": {"@type": "@id"},
         "feature": {"@type": "@id"},
         "featureMembership": {"@type": "@id"},
+        "featureTarget": {"@type": "@id"},
         "featuringType": {"@type": "@id"},
         "importedMembership": {"@type": "@id"},
         "individualDefinition": {"@type": "@id"},

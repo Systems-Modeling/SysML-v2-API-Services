@@ -32,13 +32,6 @@
         "type": "string"
       }
     },
-    "analysisAction": {
-      "type": "array",
-      "items": {
-        "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
-        "$comment": "https://www.omg.org/spec/SysML/20240201/ActionUsage"
-      }
-    },
     "calculation": {
       "type": "array",
       "items": {
@@ -755,7 +748,6 @@
     "action",
     "actorParameter",
     "aliasIds",
-    "analysisAction",
     "calculation",
     "declaredName",
     "declaredShortName",

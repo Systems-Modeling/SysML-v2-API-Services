@@ -7,7 +7,6 @@
         "action": {"@type": "@id"},
         "actorParameter": {"@type": "@id"},
         "aliasIds": {"@type": "xsd:string"},
-        "analysisAction": {"@type": "@id"},
         "calculation": {"@type": "@id"},
         "declaredName": {"@type": "xsd:string"},
         "declaredShortName": {"@type": "xsd:string"},

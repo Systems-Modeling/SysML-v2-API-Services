@@ -22,6 +22,7 @@
         "endOwningType": {"@type": "@id"},
         "feature": {"@type": "@id"},
         "featureMembership": {"@type": "@id"},
+        "featureTarget": {"@type": "@id"},
         "featuringType": {"@type": "@id"},
         "guardExpression": {"@type": "@id"},
         "importedMembership": {"@type": "@id"},

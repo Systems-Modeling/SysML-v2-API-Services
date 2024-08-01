@@ -102,7 +102,6 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.lifecycl
 	public static volatile SingularAttribute<AnalysisCaseDefinitionImpl, String> shortName;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Element> ownedMember;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, Membership> ownedMembership;
-	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, ActionUsage> analysisAction;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, UseCaseUsage> ownedUseCase;
 	public static volatile CollectionAttribute<AnalysisCaseDefinitionImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<AnalysisCaseDefinitionImpl, StateUsage> ownedState;
@@ -187,7 +186,6 @@ public abstract class AnalysisCaseDefinitionImpl_ extends org.omg.sysml.lifecycl
 	public static final String SHORT_NAME = "shortName";
 	public static final String OWNED_MEMBER = "ownedMember";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
-	public static final String ANALYSIS_ACTION = "analysisAction";
 	public static final String OWNED_USE_CASE = "ownedUseCase";
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String OWNED_STATE = "ownedState";

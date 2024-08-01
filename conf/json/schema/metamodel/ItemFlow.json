@@ -141,6 +141,10 @@
             "$comment": "https://www.omg.org/spec/SysML/20240201/FeatureMembership"
           }
         },
+        "featureTarget": {
+          "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+        },
         "featuringType": {
           "type": "array",
           "items": {
@@ -770,6 +774,7 @@
         "endOwningType",
         "feature",
         "featureMembership",
+        "featureTarget",
         "featuringType",
         "importedMembership",
         "inheritedFeature",
@@ -1026,6 +1031,10 @@
                 "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
                 "$comment": "https://www.omg.org/spec/SysML/20240201/FeatureMembership"
               }
+            },
+            "featureTarget": {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
             },
             "featuringType": {
               "type": "array",
@@ -1682,6 +1691,7 @@
             "endOwningType",
             "feature",
             "featureMembership",
+            "featureTarget",
             "featuringType",
             "guardExpression",
             "importedMembership",
@@ -1939,6 +1949,10 @@
             "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20240201/FeatureMembership"
           }
+        },
+        "featureTarget": {
+          "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
         },
         "featuringType": {
           "type": "array",
@@ -2910,6 +2924,7 @@
         "endOwningType",
         "feature",
         "featureMembership",
+        "featureTarget",
         "featuringType",
         "flowConnectionDefinition",
         "guardExpression",
@@ -3207,6 +3222,10 @@
                 "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
                 "$comment": "https://www.omg.org/spec/SysML/20240201/FeatureMembership"
               }
+            },
+            "featureTarget": {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
             },
             "featuringType": {
               "type": "array",
@@ -4152,6 +4171,7 @@
             "endOwningType",
             "feature",
             "featureMembership",
+            "featureTarget",
             "featuringType",
             "flowConnectionDefinition",
             "importedMembership",
