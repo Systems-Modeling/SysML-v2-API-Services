@@ -1120,13 +1120,13 @@
       "additionalProperties": false
     },
     {
-      "$ref": "https://www.omg.org/spec/SysML/20240201/AnalysisCaseUsage"
+      "$ref": "https://www.omg.org/spec/SysML/20240201/VerificationCaseUsage"
     },
     {
       "$ref": "https://www.omg.org/spec/SysML/20240201/UseCaseUsage"
     },
     {
-      "$ref": "https://www.omg.org/spec/SysML/20240201/VerificationCaseUsage"
+      "$ref": "https://www.omg.org/spec/SysML/20240201/AnalysisCaseUsage"
     }
   ],
   "$defs": {
@@ -1164,9 +1164,9 @@
         "snapshot"
       ]
     },
-    "AnalysisCaseUsage": {
-      "$id": "https://www.omg.org/spec/SysML/20240201/AnalysisCaseUsage",
-      "title": "AnalysisCaseUsage",
+    "VerificationCaseUsage": {
+      "$id": "https://www.omg.org/spec/SysML/20240201/VerificationCaseUsage",
+      "title": "VerificationCaseUsage",
       "type": "object",
       "properties": {
         "@id": {
@@ -1175,7 +1175,7 @@
         },
         "@type": {
           "type": "string",
-          "const": "AnalysisCaseUsage"
+          "const": "VerificationCaseUsage"
         },
         "actionDefinition": {
           "type": "array",
@@ -1196,17 +1196,6 @@
           "items": {
             "type": "string"
           }
-        },
-        "analysisCaseDefinition": {
-          "oneOf": [
-            {
-              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
-              "$comment": "https://www.omg.org/spec/SysML/20240201/AnalysisCaseDefinition"
-            },
-            {
-              "type": "null"
-            }
-          ]
         },
         "behavior": {
           "type": "array",
@@ -2109,17 +2098,6 @@
           "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
           "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
         },
-        "resultExpression": {
-          "oneOf": [
-            {
-              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
-              "$comment": "https://www.omg.org/spec/SysML/20240201/Expression"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
         "shortName": {
           "oneOf": [
             {
@@ -2175,6 +2153,24 @@
             "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20240201/VariantMembership"
           }
+        },
+        "verificationCaseDefinition": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/VerificationCaseDefinition"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "verifiedRequirement": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/RequirementUsage"
+          }
         }
       },
       "required": [
@@ -2183,7 +2179,6 @@
         "actionDefinition",
         "actorParameter",
         "aliasIds",
-        "analysisCaseDefinition",
         "behavior",
         "calculationDefinition",
         "caseDefinition",
@@ -2294,7 +2289,6 @@
         "portionKind",
         "qualifiedName",
         "result",
-        "resultExpression",
         "shortName",
         "subjectParameter",
         "textualRepresentation",
@@ -2302,7 +2296,9 @@
         "unioningType",
         "usage",
         "variant",
-        "variantMembership"
+        "variantMembership",
+        "verificationCaseDefinition",
+        "verifiedRequirement"
       ],
       "additionalProperties": false
     },
@@ -4604,9 +4600,9 @@
       ],
       "additionalProperties": false
     },
-    "VerificationCaseUsage": {
-      "$id": "https://www.omg.org/spec/SysML/20240201/VerificationCaseUsage",
-      "title": "VerificationCaseUsage",
+    "AnalysisCaseUsage": {
+      "$id": "https://www.omg.org/spec/SysML/20240201/AnalysisCaseUsage",
+      "title": "AnalysisCaseUsage",
       "type": "object",
       "properties": {
         "@id": {
@@ -4615,7 +4611,7 @@
         },
         "@type": {
           "type": "string",
-          "const": "VerificationCaseUsage"
+          "const": "AnalysisCaseUsage"
         },
         "actionDefinition": {
           "type": "array",
@@ -4636,6 +4632,17 @@
           "items": {
             "type": "string"
           }
+        },
+        "analysisCaseDefinition": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/AnalysisCaseDefinition"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "behavior": {
           "type": "array",
@@ -5538,6 +5545,17 @@
           "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
           "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
         },
+        "resultExpression": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Expression"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "shortName": {
           "oneOf": [
             {
@@ -5593,24 +5611,6 @@
             "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20240201/VariantMembership"
           }
-        },
-        "verificationCaseDefinition": {
-          "oneOf": [
-            {
-              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
-              "$comment": "https://www.omg.org/spec/SysML/20240201/VerificationCaseDefinition"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
-        "verifiedRequirement": {
-          "type": "array",
-          "items": {
-            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
-            "$comment": "https://www.omg.org/spec/SysML/20240201/RequirementUsage"
-          }
         }
       },
       "required": [
@@ -5619,6 +5619,7 @@
         "actionDefinition",
         "actorParameter",
         "aliasIds",
+        "analysisCaseDefinition",
         "behavior",
         "calculationDefinition",
         "caseDefinition",
@@ -5729,6 +5730,7 @@
         "portionKind",
         "qualifiedName",
         "result",
+        "resultExpression",
         "shortName",
         "subjectParameter",
         "textualRepresentation",
@@ -5736,9 +5738,7 @@
         "unioningType",
         "usage",
         "variant",
-        "variantMembership",
-        "verificationCaseDefinition",
-        "verifiedRequirement"
+        "variantMembership"
       ],
       "additionalProperties": false
     }
