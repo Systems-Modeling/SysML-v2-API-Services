@@ -4901,10 +4901,10 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SysML/20240201/AssertConstraintUsage"
+          "$ref": "https://www.omg.org/spec/SysML/20240201/RequirementUsage"
         },
         {
-          "$ref": "https://www.omg.org/spec/SysML/20240201/RequirementUsage"
+          "$ref": "https://www.omg.org/spec/SysML/20240201/AssertConstraintUsage"
         }
       ]
     },
@@ -6071,10 +6071,10 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SysML/20240201/SatisfyRequirementUsage"
+          "$ref": "https://www.omg.org/spec/SysML/20240201/ConcernUsage"
         },
         {
-          "$ref": "https://www.omg.org/spec/SysML/20240201/ConcernUsage"
+          "$ref": "https://www.omg.org/spec/SysML/20240201/SatisfyRequirementUsage"
         },
         {
           "$ref": "https://www.omg.org/spec/SysML/20240201/ViewpointUsage"
