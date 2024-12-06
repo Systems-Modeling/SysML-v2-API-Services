@@ -180,6 +180,7 @@
                         @MetaValue(value = "SuccessionAsUsage", targetEntity = SuccessionAsUsageImpl.class),
                         @MetaValue(value = "SuccessionFlowConnectionUsage", targetEntity = SuccessionFlowConnectionUsageImpl.class),
                         @MetaValue(value = "SuccessionItemFlow", targetEntity = SuccessionItemFlowImpl.class),
+                        @MetaValue(value = "TerminateActionUsage", targetEntity = TerminateActionUsageImpl.class),
                         @MetaValue(value = "TextualRepresentation", targetEntity = TextualRepresentationImpl.class),
                         @MetaValue(value = "TransitionFeatureMembership", targetEntity = TransitionFeatureMembershipImpl.class),
                         @MetaValue(value = "TransitionUsage", targetEntity = TransitionUsageImpl.class),

@@ -179,6 +179,7 @@
         <class>org.omg.sysml.metamodel.impl.SuccessionImpl</class>
         <class>org.omg.sysml.metamodel.impl.SuccessionItemFlowImpl</class>
         <class>org.omg.sysml.metamodel.impl.SysMLTypeImpl</class>
+        <class>org.omg.sysml.metamodel.impl.TerminateActionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.TextualRepresentationImpl</class>
         <class>org.omg.sysml.metamodel.impl.TransitionFeatureMembershipImpl</class>
         <class>org.omg.sysml.metamodel.impl.TransitionUsageImpl</class>
