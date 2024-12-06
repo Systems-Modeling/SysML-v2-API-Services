@@ -2614,13 +2614,13 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/CalculationDefinitionRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/StateDefinitionRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/FlowConnectionDefinitionRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/StateDefinitionRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/CalculationDefinitionRequest"
         }
       ]
     },
@@ -3554,28 +3554,10 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/CalculationUsageRequest"
-        },
-        {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/FlowConnectionUsageRequest"
-        },
-        {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/TransitionUsageRequest"
-        },
-        {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/StateUsageRequest"
-        },
-        {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/LoopActionUsageRequest"
-        },
-        {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/SendActionUsageRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/AcceptActionUsageRequest"
-        },
-        {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/IfActionUsageRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/PerformActionUsageRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/AssignmentActionUsageRequest"
@@ -3584,7 +3566,28 @@
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ControlNodeRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/PerformActionUsageRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/IfActionUsageRequest"
+        },
+        {
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/LoopActionUsageRequest"
+        },
+        {
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/TerminateActionUsageRequest"
+        },
+        {
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/AcceptActionUsageRequest"
+        },
+        {
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/StateUsageRequest"
+        },
+        {
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/TransitionUsageRequest"
+        },
+        {
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/FlowConnectionUsageRequest"
+        },
+        {
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/CalculationUsageRequest"
         }
       ]
     },
@@ -7688,10 +7691,10 @@
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/MetadataFeatureRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/CommentRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/TextualRepresentationRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/TextualRepresentationRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/CommentRequest"
         }
       ]
     },
@@ -10401,10 +10404,10 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/InteractionRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/AssociationStructureRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/AssociationStructureRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/InteractionRequest"
         }
       ]
     },
@@ -12883,10 +12886,10 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/InteractionRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/FunctionRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/FunctionRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/InteractionRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ActionDefinitionRequest"
@@ -17640,13 +17643,13 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/VerificationCaseDefinitionRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/AnalysisCaseDefinitionRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/UseCaseDefinitionRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/AnalysisCaseDefinitionRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/VerificationCaseDefinitionRequest"
         }
       ]
     },
@@ -18649,13 +18652,13 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/VerificationCaseUsageRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/AnalysisCaseUsageRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/UseCaseUsageRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/AnalysisCaseUsageRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/VerificationCaseUsageRequest"
         }
       ]
     },
@@ -19514,13 +19517,13 @@
           "additionalProperties": false
         },
         {
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/AssociationRequest"
+        },
+        {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/DataTypeRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ClassRequest"
-        },
-        {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/AssociationRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/DefinitionRequest"
@@ -24194,10 +24197,10 @@
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/FlowConnectionDefinitionRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/AllocationDefinitionRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/InterfaceDefinitionRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/InterfaceDefinitionRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/AllocationDefinitionRequest"
         }
       ]
     },
@@ -25222,10 +25225,10 @@
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/FlowConnectionUsageRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/AllocationUsageRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/InterfaceUsageRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/InterfaceUsageRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/AllocationUsageRequest"
         }
       ]
     },
@@ -25922,13 +25925,13 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ItemFlowRequest"
-        },
-        {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/SuccessionRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/BindingConnectorRequest"
+        },
+        {
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ItemFlowRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ConnectorAsUsageRequest"
@@ -26894,10 +26897,10 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/SuccessionAsUsageRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ConnectionUsageRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ConnectionUsageRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/SuccessionAsUsageRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/BindingConnectorAsUsageRequest"
@@ -28582,10 +28585,10 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/RequirementUsageRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/AssertConstraintUsageRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/AssertConstraintUsageRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/RequirementUsageRequest"
         }
       ]
     },
@@ -29519,16 +29522,16 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/DecisionNodeRequest"
-        },
-        {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ForkNodeRequest"
-        },
-        {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/MergeNodeRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/JoinNodeRequest"
+        },
+        {
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/DecisionNodeRequest"
+        },
+        {
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ForkNodeRequest"
         }
       ]
     },
@@ -37713,19 +37716,19 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/MetadataAccessExpressionRequest"
-        },
-        {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/FeatureReferenceExpressionRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/LiteralExpressionRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/InvocationExpressionRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/NullExpressionRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/NullExpressionRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/MetadataAccessExpressionRequest"
+        },
+        {
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/InvocationExpressionRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/BooleanExpressionRequest"
@@ -38340,7 +38343,10 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/MultiplicityRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/MetadataFeatureRequest"
+        },
+        {
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ConnectorRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/StepRequest"
@@ -38352,10 +38358,7 @@
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ItemFlowEndRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ConnectorRequest"
-        },
-        {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/MetadataFeatureRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/MultiplicityRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/UsageRequest"
@@ -39861,25 +39864,25 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/EndFeatureMembershipRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ResultExpressionMembershipRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ParameterMembershipRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ResultExpressionMembershipRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/EndFeatureMembershipRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/RequirementConstraintMembershipRequest"
-        },
-        {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ObjectiveMembershipRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/StateSubactionMembershipRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/TransitionFeatureMembershipRequest"
+        },
+        {
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ObjectiveMembershipRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ViewRenderingMembershipRequest"
@@ -58551,7 +58554,7 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/LiteralRationalRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/LiteralBooleanRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/LiteralIntegerRequest"
@@ -58560,7 +58563,7 @@
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/LiteralStringRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/LiteralBooleanRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/LiteralRationalRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/LiteralInfinityRequest"
@@ -68673,10 +68676,10 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/TypeRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/PackageRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/PackageRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/TypeRequest"
         }
       ]
     },
@@ -70882,16 +70885,16 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ItemDefinitionRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ConstraintDefinitionRequest"
+        },
+        {
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ActionDefinitionRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/PortDefinitionRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ConstraintDefinitionRequest"
-        },
-        {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ActionDefinitionRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ItemDefinitionRequest"
         }
       ]
     },
@@ -71804,19 +71807,19 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ItemUsageRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ConstraintUsageRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/EventOccurrenceUsageRequest"
         },
         {
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ActionUsageRequest"
+        },
+        {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/PortUsageRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ConstraintUsageRequest"
-        },
-        {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ActionUsageRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ItemUsageRequest"
         }
       ]
     },
@@ -72481,10 +72484,10 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/FeatureChainExpressionRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/SelectExpressionRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/SelectExpressionRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/FeatureChainExpressionRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/CollectExpressionRequest"
@@ -72809,13 +72812,13 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/FeatureMembershipRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/FeatureValueRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ElementFilterMembershipRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/FeatureValueRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/FeatureMembershipRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/VariantMembershipRequest"
@@ -73406,10 +73409,10 @@
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/SubjectMembershipRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/StakeholderMembershipRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ActorMembershipRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ActorMembershipRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/StakeholderMembershipRequest"
         }
       ]
     },
@@ -75018,10 +75021,10 @@
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ConnectionUsageRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/RenderingUsageRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ViewUsageRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ViewUsageRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/RenderingUsageRequest"
         }
       ]
     },
@@ -79958,13 +79961,25 @@
           "additionalProperties": false
         },
         {
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/AssociationRequest"
+        },
+        {
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ConnectorRequest"
+        },
+        {
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/FeatureInvertingRequest"
+        },
+        {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/FeaturingRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/FeatureChainingRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/FeatureInvertingRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/UnioningRequest"
+        },
+        {
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/DifferencingRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ConjugationRequest"
@@ -79979,25 +79994,13 @@
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/DisjoiningRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/UnioningRequest"
-        },
-        {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/DifferencingRequest"
-        },
-        {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ConnectorRequest"
-        },
-        {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/AssociationRequest"
-        },
-        {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/MembershipRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/DependencyRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ImportRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/DependencyRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/MembershipRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/AnnotationRequest"
@@ -87739,10 +87742,10 @@
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/SubclassificationRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/SubsettingRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/FeatureTypingRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/FeatureTypingRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/SubsettingRequest"
         }
       ]
     },
@@ -90780,10 +90783,10 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ItemFlowRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ExpressionRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ExpressionRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ItemFlowRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ActionUsageRequest"
@@ -91211,16 +91214,16 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/MetaclassRequest"
-        },
-        {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/AssociationStructureRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ItemDefinitionRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/MetaclassRequest"
         },
         {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/PortDefinitionRequest"
+        },
+        {
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ItemDefinitionRequest"
         }
       ]
     },
@@ -92108,10 +92111,10 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/RedefinitionRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ReferenceSubsettingRequest"
         },
         {
-          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/ReferenceSubsettingRequest"
+          "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/RedefinitionRequest"
         }
       ]
     },
@@ -95762,6 +95765,944 @@
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/SuccessionFlowConnectionUsageRequest"
         }
       ]
+    },
+    "TerminateActionUsageRequest": {
+      "$id": "https://www.omg.org/spec/SystemsModelingAPI/20240201/TerminateActionUsageRequest",
+      "title": "TerminateActionUsageRequest",
+      "type": "object",
+      "properties": {
+        "@id": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "@type": {
+          "type": "string",
+          "const": "TerminateActionUsage"
+        },
+        "actionDefinition": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Behavior"
+          }
+        },
+        "aliasIds": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "behavior": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Behavior"
+          }
+        },
+        "chainingFeature": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+          }
+        },
+        "declaredName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "declaredShortName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "definition": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Classifier"
+          }
+        },
+        "differencingType": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Type"
+          }
+        },
+        "directedFeature": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+          }
+        },
+        "directedUsage": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Usage"
+          }
+        },
+        "direction": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/FeatureDirectionKindRequest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "documentation": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Documentation"
+          }
+        },
+        "elementId": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "endFeature": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+          }
+        },
+        "endOwningType": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Type"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "feature": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+          }
+        },
+        "featureMembership": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/FeatureMembership"
+          }
+        },
+        "featureTarget": {
+          "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+        },
+        "featuringType": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Type"
+          }
+        },
+        "importedMembership": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Membership"
+          }
+        },
+        "individualDefinition": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/OccurrenceDefinition"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "inheritedFeature": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+          }
+        },
+        "inheritedMembership": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Membership"
+          }
+        },
+        "input": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+          }
+        },
+        "intersectingType": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Type"
+          }
+        },
+        "isAbstract": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "isComposite": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "isConjugated": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "isDerived": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "isEnd": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "isImpliedIncluded": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "isIndividual": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "isLibraryElement": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "isOrdered": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "isPortion": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "isReadOnly": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "isReference": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "isSufficient": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "isUnique": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "isVariation": {
+          "oneOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "member": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Element"
+          }
+        },
+        "membership": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Membership"
+          }
+        },
+        "multiplicity": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Multiplicity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "nestedAction": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/ActionUsage"
+          }
+        },
+        "nestedAllocation": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/AllocationUsage"
+          }
+        },
+        "nestedAnalysisCase": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/AnalysisCaseUsage"
+          }
+        },
+        "nestedAttribute": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/AttributeUsage"
+          }
+        },
+        "nestedCalculation": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/CalculationUsage"
+          }
+        },
+        "nestedCase": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/CaseUsage"
+          }
+        },
+        "nestedConcern": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/ConcernUsage"
+          }
+        },
+        "nestedConnection": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/ConnectorAsUsage"
+          }
+        },
+        "nestedConstraint": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/ConstraintUsage"
+          }
+        },
+        "nestedEnumeration": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/EnumerationUsage"
+          }
+        },
+        "nestedFlow": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/FlowConnectionUsage"
+          }
+        },
+        "nestedInterface": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/InterfaceUsage"
+          }
+        },
+        "nestedItem": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/ItemUsage"
+          }
+        },
+        "nestedMetadata": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/MetadataUsage"
+          }
+        },
+        "nestedOccurrence": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/OccurrenceUsage"
+          }
+        },
+        "nestedPart": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/PartUsage"
+          }
+        },
+        "nestedPort": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/PortUsage"
+          }
+        },
+        "nestedReference": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/ReferenceUsage"
+          }
+        },
+        "nestedRendering": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/RenderingUsage"
+          }
+        },
+        "nestedRequirement": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/RequirementUsage"
+          }
+        },
+        "nestedState": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/StateUsage"
+          }
+        },
+        "nestedTransition": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/TransitionUsage"
+          }
+        },
+        "nestedUsage": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Usage"
+          }
+        },
+        "nestedUseCase": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/UseCaseUsage"
+          }
+        },
+        "nestedVerificationCase": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/VerificationCaseUsage"
+          }
+        },
+        "nestedView": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/ViewUsage"
+          }
+        },
+        "nestedViewpoint": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/ViewpointUsage"
+          }
+        },
+        "occurrenceDefinition": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Class"
+          }
+        },
+        "output": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+          }
+        },
+        "ownedAnnotation": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Annotation"
+          }
+        },
+        "ownedConjugator": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Conjugation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ownedDifferencing": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Differencing"
+          }
+        },
+        "ownedDisjoining": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Disjoining"
+          }
+        },
+        "ownedElement": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Element"
+          }
+        },
+        "ownedEndFeature": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+          }
+        },
+        "ownedFeature": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+          }
+        },
+        "ownedFeatureChaining": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/FeatureChaining"
+          }
+        },
+        "ownedFeatureInverting": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/FeatureInverting"
+          }
+        },
+        "ownedFeatureMembership": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/FeatureMembership"
+          }
+        },
+        "ownedImport": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Import"
+          }
+        },
+        "ownedIntersecting": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Intersecting"
+          }
+        },
+        "ownedMember": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Element"
+          }
+        },
+        "ownedMembership": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Membership"
+          }
+        },
+        "ownedRedefinition": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Redefinition"
+          }
+        },
+        "ownedReferenceSubsetting": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/ReferenceSubsetting"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ownedRelationship": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Relationship"
+          }
+        },
+        "ownedSpecialization": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Specialization"
+          }
+        },
+        "ownedSubsetting": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Subsetting"
+          }
+        },
+        "ownedTypeFeaturing": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/TypeFeaturing"
+          }
+        },
+        "ownedTyping": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/FeatureTyping"
+          }
+        },
+        "ownedUnioning": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Unioning"
+          }
+        },
+        "owner": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Element"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "owningDefinition": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Definition"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "owningFeatureMembership": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/FeatureMembership"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "owningMembership": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/OwningMembership"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "owningNamespace": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Namespace"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "owningRelationship": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Relationship"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "owningType": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Type"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "owningUsage": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Usage"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "parameter": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+          }
+        },
+        "portionKind": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20240201/PortionKindRequest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "qualifiedName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "shortName": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "terminatedOccurrenceArgument": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Expression"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "textualRepresentation": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/TextualRepresentation"
+          }
+        },
+        "type": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Type"
+          }
+        },
+        "unioningType": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Type"
+          }
+        },
+        "usage": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Usage"
+          }
+        },
+        "variant": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Usage"
+          }
+        },
+        "variantMembership": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/VariantMembership"
+          }
+        }
+      },
+      "required": [
+        "@type"
+      ],
+      "additionalProperties": false
     },
     "TextualRepresentationRequest": {
       "$id": "https://www.omg.org/spec/SystemsModelingAPI/20240201/TextualRepresentationRequest",

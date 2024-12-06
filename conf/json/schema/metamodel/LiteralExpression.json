@@ -719,7 +719,7 @@
       "additionalProperties": false
     },
     {
-      "$ref": "https://www.omg.org/spec/SysML/20240201/LiteralRational"
+      "$ref": "https://www.omg.org/spec/SysML/20240201/LiteralBoolean"
     },
     {
       "$ref": "https://www.omg.org/spec/SysML/20240201/LiteralInteger"
@@ -728,7 +728,7 @@
       "$ref": "https://www.omg.org/spec/SysML/20240201/LiteralString"
     },
     {
-      "$ref": "https://www.omg.org/spec/SysML/20240201/LiteralBoolean"
+      "$ref": "https://www.omg.org/spec/SysML/20240201/LiteralRational"
     },
     {
       "$ref": "https://www.omg.org/spec/SysML/20240201/LiteralInfinity"
@@ -760,9 +760,9 @@
         "out"
       ]
     },
-    "LiteralRational": {
-      "$id": "https://www.omg.org/spec/SysML/20240201/LiteralRational",
-      "title": "LiteralRational",
+    "LiteralBoolean": {
+      "$id": "https://www.omg.org/spec/SysML/20240201/LiteralBoolean",
+      "title": "LiteralBoolean",
       "type": "object",
       "properties": {
         "@id": {
@@ -771,7 +771,7 @@
         },
         "@type": {
           "type": "string",
-          "const": "LiteralRational"
+          "const": "LiteralBoolean"
         },
         "aliasIds": {
           "type": "array",
@@ -1398,7 +1398,7 @@
         "value": {
           "oneOf": [
             {
-              "type": "number"
+              "type": "boolean"
             },
             {
               "type": "null"
@@ -2944,9 +2944,9 @@
       ],
       "additionalProperties": false
     },
-    "LiteralBoolean": {
-      "$id": "https://www.omg.org/spec/SysML/20240201/LiteralBoolean",
-      "title": "LiteralBoolean",
+    "LiteralRational": {
+      "$id": "https://www.omg.org/spec/SysML/20240201/LiteralRational",
+      "title": "LiteralRational",
       "type": "object",
       "properties": {
         "@id": {
@@ -2955,7 +2955,7 @@
         },
         "@type": {
           "type": "string",
-          "const": "LiteralBoolean"
+          "const": "LiteralRational"
         },
         "aliasIds": {
           "type": "array",
@@ -3582,7 +3582,7 @@
         "value": {
           "oneOf": [
             {
-              "type": "boolean"
+              "type": "number"
             },
             {
               "type": "null"
