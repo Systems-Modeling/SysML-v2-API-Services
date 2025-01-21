@@ -150,27 +150,6 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
         this.chainingFeature = chainingFeature;
     }
 
-    private List<AssociationStructure> connectionDefinition;
-
-    @Override
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "AssociationStructureMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SuccessionFlowConnectionUsage_connectionDefinition", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public List<AssociationStructure> getConnectionDefinition() {
-        if (connectionDefinition == null) {
-            connectionDefinition = new ArrayList<>();
-        }
-        return connectionDefinition;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AssociationStructureImpl.class)
-    public void setConnectionDefinition(List<AssociationStructure> connectionDefinition) {
-        this.connectionDefinition = connectionDefinition;
-    }
-
     private List<Feature> connectorEnd;
 
     @Override
@@ -190,6 +169,24 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setConnectorEnd(List<Feature> connectorEnd) {
         this.connectorEnd = connectorEnd;
+    }
+
+    private Feature crossFeature;
+
+    @Override
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "crossFeature_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "crossFeature_id", table = "SuccessionFlowConnectionUsage")
+    public Feature getCrossFeature() {
+        return crossFeature;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
+    public void setCrossFeature(Feature crossFeature) {
+        this.crossFeature = crossFeature;
     }
 
     private String declaredName;
@@ -910,27 +907,6 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
     @JsonSetter
     public void setIsVariation(Boolean isVariation) {
         this.isVariation = isVariation;
-    }
-
-    private List<Structure> itemDefinition;
-
-    @Override
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "StructureMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SuccessionFlowConnectionUsage_itemDefinition", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public List<Structure> getItemDefinition() {
-        if (itemDefinition == null) {
-            itemDefinition = new ArrayList<>();
-        }
-        return itemDefinition;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = StructureImpl.class)
-    public void setItemDefinition(List<Structure> itemDefinition) {
-        this.itemDefinition = itemDefinition;
     }
 
     private ItemFeature itemFeature;
@@ -1718,6 +1694,24 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
         this.ownedConjugator = ownedConjugator;
     }
 
+    private CrossSubsetting ownedCrossSubsetting;
+
+    @Override
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "CrossSubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "ownedCrossSubsetting_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedCrossSubsetting_id", table = "SuccessionFlowConnectionUsage")
+    public CrossSubsetting getOwnedCrossSubsetting() {
+        return ownedCrossSubsetting;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = CrossSubsettingImpl.class)
+    public void setOwnedCrossSubsetting(CrossSubsetting ownedCrossSubsetting) {
+        this.ownedCrossSubsetting = ownedCrossSubsetting;
+    }
+
     private List<Differencing> ownedDifferencing;
 
     @Override
@@ -2333,27 +2327,6 @@ public class SuccessionFlowConnectionUsageImpl extends SysMLTypeImpl implements 
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setParameter(List<Feature> parameter) {
         this.parameter = parameter;
-    }
-
-    private List<PartDefinition> partDefinition;
-
-    @Override
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "PartDefinitionMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "SuccessionFlowConnectionUsage_partDefinition", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public List<PartDefinition> getPartDefinition() {
-        if (partDefinition == null) {
-            partDefinition = new ArrayList<>();
-        }
-        return partDefinition;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = PartDefinitionImpl.class)
-    public void setPartDefinition(List<PartDefinition> partDefinition) {
-        this.partDefinition = partDefinition;
     }
 
     private PortionKind portionKind;

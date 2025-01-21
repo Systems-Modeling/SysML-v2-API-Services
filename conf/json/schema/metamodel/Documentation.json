@@ -156,6 +156,17 @@
         }
       ]
     },
+    "owningAnnotatingRelationship": {
+      "oneOf": [
+        {
+          "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20240201/Annotation"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
     "owningMembership": {
       "oneOf": [
         {
@@ -238,6 +249,7 @@
     "ownedElement",
     "ownedRelationship",
     "owner",
+    "owningAnnotatingRelationship",
     "owningMembership",
     "owningNamespace",
     "owningRelationship",

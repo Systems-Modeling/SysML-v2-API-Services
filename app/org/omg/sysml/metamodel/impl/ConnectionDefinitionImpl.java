@@ -506,6 +506,25 @@ public class ConnectionDefinitionImpl extends SysMLTypeImpl implements Connectio
         this.isSufficient = isSufficient;
     }
 
+    /*
+     * shadowed by `4d59a8b1-fd56-4252-aac9-8ac40e8a847c`
+
+    private Boolean isSufficient;
+
+    @Override
+    @JsonGetter
+    @javax.persistence.Column(name = "isSufficient", table = "ConnectionDefinition")
+    public Boolean getIsSufficient() {
+        return isSufficient;
+    }
+
+    @JsonSetter
+    public void setIsSufficient(Boolean isSufficient) {
+        this.isSufficient = isSufficient;
+    }
+
+    */
+
     private Boolean isVariation;
 
     @Override

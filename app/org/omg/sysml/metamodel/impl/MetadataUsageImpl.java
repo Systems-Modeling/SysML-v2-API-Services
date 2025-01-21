@@ -92,6 +92,7 @@ public class MetadataUsageImpl extends SysMLTypeImpl implements MetadataUsage {
     @Override
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "MetadataUsage_annotation", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Annotation> getAnnotation() {
@@ -126,6 +127,24 @@ public class MetadataUsageImpl extends SysMLTypeImpl implements MetadataUsage {
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureImpl.class)
     public void setChainingFeature(List<Feature> chainingFeature) {
         this.chainingFeature = chainingFeature;
+    }
+
+    private Feature crossFeature;
+
+    @Override
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "crossFeature_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "crossFeature_id", table = "MetadataUsage")
+    public Feature getCrossFeature() {
+        return crossFeature;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
+    public void setCrossFeature(Feature crossFeature) {
+        this.crossFeature = crossFeature;
     }
 
     private String declaredName;
@@ -1493,7 +1512,7 @@ public class MetadataUsageImpl extends SysMLTypeImpl implements MetadataUsage {
         this.output = output;
     }
 
-    private Collection<Annotation> ownedAnnotatingRelationship;
+    private List<Annotation> ownedAnnotatingRelationship;
 
     @Override
     @JsonGetter
@@ -1501,7 +1520,7 @@ public class MetadataUsageImpl extends SysMLTypeImpl implements MetadataUsage {
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "MetadataUsage_ownedAnnotatingRelationship", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public Collection<Annotation> getOwnedAnnotatingRelationship() {
+    public List<Annotation> getOwnedAnnotatingRelationship() {
         if (ownedAnnotatingRelationship == null) {
             ownedAnnotatingRelationship = new ArrayList<>();
         }
@@ -1510,7 +1529,7 @@ public class MetadataUsageImpl extends SysMLTypeImpl implements MetadataUsage {
 
     @JsonSetter
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AnnotationImpl.class)
-    public void setOwnedAnnotatingRelationship(Collection<Annotation> ownedAnnotatingRelationship) {
+    public void setOwnedAnnotatingRelationship(List<Annotation> ownedAnnotatingRelationship) {
         this.ownedAnnotatingRelationship = ownedAnnotatingRelationship;
     }
 
@@ -1551,6 +1570,24 @@ public class MetadataUsageImpl extends SysMLTypeImpl implements MetadataUsage {
     @JsonDeserialize(using = DataDeserializer.class, as = ConjugationImpl.class)
     public void setOwnedConjugator(Conjugation ownedConjugator) {
         this.ownedConjugator = ownedConjugator;
+    }
+
+    private CrossSubsetting ownedCrossSubsetting;
+
+    @Override
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "CrossSubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "ownedCrossSubsetting_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedCrossSubsetting_id", table = "MetadataUsage")
+    public CrossSubsetting getOwnedCrossSubsetting() {
+        return ownedCrossSubsetting;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = CrossSubsettingImpl.class)
+    public void setOwnedCrossSubsetting(CrossSubsetting ownedCrossSubsetting) {
+        this.ownedCrossSubsetting = ownedCrossSubsetting;
     }
 
     private List<Differencing> ownedDifferencing;
@@ -1985,6 +2022,24 @@ public class MetadataUsageImpl extends SysMLTypeImpl implements MetadataUsage {
     @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
     public void setOwner(Element owner) {
         this.owner = owner;
+    }
+
+    private Annotation owningAnnotatingRelationship;
+
+    @Override
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "owningAnnotatingRelationship_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningAnnotatingRelationship_id", table = "MetadataUsage")
+    public Annotation getOwningAnnotatingRelationship() {
+        return owningAnnotatingRelationship;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = AnnotationImpl.class)
+    public void setOwningAnnotatingRelationship(Annotation owningAnnotatingRelationship) {
+        this.owningAnnotatingRelationship = owningAnnotatingRelationship;
     }
 
     private Definition owningDefinition;

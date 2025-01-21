@@ -2,7 +2,6 @@ package org.omg.sysml.metamodel.impl;
 
 import java.util.UUID;
 import javax.annotation.processing.Generated;
-import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
@@ -23,7 +22,7 @@ public abstract class TextualRepresentationImpl_ extends org.omg.sysml.lifecycle
 	public static volatile SingularAttribute<TextualRepresentationImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<TextualRepresentationImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<TextualRepresentationImpl, Element> ownedElement;
-	public static volatile CollectionAttribute<TextualRepresentationImpl, Annotation> ownedAnnotatingRelationship;
+	public static volatile ListAttribute<TextualRepresentationImpl, Annotation> ownedAnnotatingRelationship;
 	public static volatile ListAttribute<TextualRepresentationImpl, String> aliasIds;
 	public static volatile ListAttribute<TextualRepresentationImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<TextualRepresentationImpl, String> qualifiedName;

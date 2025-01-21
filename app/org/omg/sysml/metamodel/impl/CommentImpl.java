@@ -92,6 +92,7 @@ public class CommentImpl extends SysMLTypeImpl implements Comment {
     @Override
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Comment_annotation", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "attribute_id"))
     public List<Annotation> getAnnotation() {
@@ -252,7 +253,7 @@ public class CommentImpl extends SysMLTypeImpl implements Comment {
         this.name = name;
     }
 
-    private Collection<Annotation> ownedAnnotatingRelationship;
+    private List<Annotation> ownedAnnotatingRelationship;
 
     @Override
     @JsonGetter
@@ -260,7 +261,7 @@ public class CommentImpl extends SysMLTypeImpl implements Comment {
     // @javax.persistence.Transient
     @ManyToAny(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "Comment_ownedAnnotatingRelationship", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public Collection<Annotation> getOwnedAnnotatingRelationship() {
+    public List<Annotation> getOwnedAnnotatingRelationship() {
         if (ownedAnnotatingRelationship == null) {
             ownedAnnotatingRelationship = new ArrayList<>();
         }
@@ -269,7 +270,7 @@ public class CommentImpl extends SysMLTypeImpl implements Comment {
 
     @JsonSetter
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = AnnotationImpl.class)
-    public void setOwnedAnnotatingRelationship(Collection<Annotation> ownedAnnotatingRelationship) {
+    public void setOwnedAnnotatingRelationship(List<Annotation> ownedAnnotatingRelationship) {
         this.ownedAnnotatingRelationship = ownedAnnotatingRelationship;
     }
 
@@ -351,6 +352,24 @@ public class CommentImpl extends SysMLTypeImpl implements Comment {
     @JsonDeserialize(using = DataDeserializer.class, as = ElementImpl.class)
     public void setOwner(Element owner) {
         this.owner = owner;
+    }
+
+    private Annotation owningAnnotatingRelationship;
+
+    @Override
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "AnnotationMetaDef", metaColumn = @javax.persistence.Column(name = "owningAnnotatingRelationship_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "owningAnnotatingRelationship_id", table = "Comment")
+    public Annotation getOwningAnnotatingRelationship() {
+        return owningAnnotatingRelationship;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = AnnotationImpl.class)
+    public void setOwningAnnotatingRelationship(Annotation owningAnnotatingRelationship) {
+        this.owningAnnotatingRelationship = owningAnnotatingRelationship;
     }
 
     private OwningMembership owningMembership;

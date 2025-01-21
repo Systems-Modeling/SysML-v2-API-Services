@@ -22,6 +22,7 @@
         "ownedElement": {"@type": "@id"},
         "ownedRelationship": {"@type": "@id"},
         "owner": {"@type": "@id"},
+        "owningAnnotatingRelationship": {"@type": "@id"},
         "owningMembership": {"@type": "@id"},
         "owningNamespace": {"@type": "@id"},
         "owningRelationship": {"@type": "@id"},
