@@ -14,6 +14,12 @@
           "type": "string",
           "const": "Project"
         },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "created": {
           "type": "string",
           "format": "date-time"
@@ -39,6 +45,7 @@
       "required": [
         "@id",
         "@type",
+        "alias",
         "created",
         "defaultBranch",
         "description",
@@ -54,6 +61,12 @@
         "@type": {
           "type": "string",
           "const": "Project"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "defaultBranch": {
           "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
@@ -91,6 +104,12 @@
           "type": "string",
           "const": "Branch"
         },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "created": {
           "type": "string",
           "format": "date-time"
@@ -121,6 +140,7 @@
       "required": [
         "@id",
         "@type",
+        "alias",
         "created",
         "head",
         "name",
@@ -137,6 +157,12 @@
         "@type": {
           "type": "string",
           "const": "Branch"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "head": {
           "oneOf": [
@@ -172,6 +198,12 @@
           "type": "string",
           "const": "Tag"
         },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "created": {
           "type": "string",
           "format": "date-time"
@@ -195,6 +227,7 @@
       "required": [
         "@id",
         "@type",
+        "alias",
         "created",
         "name",
         "owningProject",
@@ -211,6 +244,12 @@
         "@type": {
           "type": "string",
           "const": "Tag"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
         },
         "name": {
           "type": "string"
@@ -239,11 +278,27 @@
           "type": "string",
           "const": "Commit"
         },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "created": {
           "type": "string",
           "format": "date-time"
         },
         "description": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "name": {
           "oneOf": [
             {
               "type": "string"
@@ -268,8 +323,10 @@
       "required": [
         "@id",
         "@type",
+        "alias",
         "created",
         "description",
+        "name",
         "owningProject",
         "previousCommit"
       ],
@@ -284,6 +341,12 @@
           "type": "string",
           "const": "Commit"
         },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "change": {
           "type": "array",
           "items": {
@@ -291,6 +354,16 @@
           }
         },
         "description": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "name": {
           "oneOf": [
             {
               "type": "string"
@@ -319,8 +392,24 @@
           "type": "string",
           "const": "DataVersion"
         },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "identity": {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20230201/DataIdentity"
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "payload": {
           "oneOf": [
@@ -336,7 +425,9 @@
       "required": [
         "@id",
         "@type",
+        "alias",
         "identity",
+        "name",
         "payload"
       ],
       "additionalProperties": false
@@ -350,8 +441,24 @@
           "type": "string",
           "const": "DataVersion"
         },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
         "identity": {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20230201/DataIdentityRequest"
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "payload": {
           "oneOf": [
@@ -417,11 +524,29 @@
         "@type": {
           "type": "string",
           "const": "DataIdentity"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "required": [
         "@id",
-        "@type"
+        "@type",
+        "alias",
+        "name"
       ],
       "additionalProperties": false
     },
@@ -437,6 +562,22 @@
         "@type": {
           "type": "string",
           "const": "DataIdentity"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "required": [
@@ -698,6 +839,15 @@
           "type": "string",
           "const": "Query"
         },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "type": "string"
+        },
         "owningProject": {
           "$ref": "https://www.omg.org/spec/SysML/20230201/Identified",
           "$comment": "https://www.omg.org/spec/SystemsModelingAPI/20230201/Project"
@@ -722,6 +872,8 @@
       "required": [
         "@id",
         "@type",
+        "alias",
+        "name",
         "owningProject",
         "select",
         "where"
@@ -736,6 +888,15 @@
         "@type": {
           "type": "string",
           "const": "Query"
+        },
+        "alias": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "name": {
+          "type": "string"
         },
         "select": {
           "type": "array",
@@ -755,6 +916,7 @@
         }
       },
       "required": [
+        "name"
       ],
       "additionalProperties": false
     },
