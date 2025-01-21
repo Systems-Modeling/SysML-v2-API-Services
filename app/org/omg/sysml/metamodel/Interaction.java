@@ -5,4 +5,4 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Interaction extends Behavior, Association, SysMLType {}
+public interface Interaction extends Association, Behavior, SysMLType {}

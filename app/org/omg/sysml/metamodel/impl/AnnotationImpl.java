@@ -88,6 +88,7 @@ public class AnnotationImpl extends SysMLTypeImpl implements Annotation {
     @Override
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "AnnotatingElementMetaDef", metaColumn = @javax.persistence.Column(name = "annotatingElement_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "annotatingElement_id", table = "Annotation")
     public AnnotatingElement getAnnotatingElement() {
@@ -225,6 +226,24 @@ public class AnnotationImpl extends SysMLTypeImpl implements Annotation {
     @JsonSetter
     public void setName(String name) {
         this.name = name;
+    }
+
+    private AnnotatingElement ownedAnnotatingElement;
+
+    @Override
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "AnnotatingElementMetaDef", metaColumn = @javax.persistence.Column(name = "ownedAnnotatingElement_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedAnnotatingElement_id", table = "Annotation")
+    public AnnotatingElement getOwnedAnnotatingElement() {
+        return ownedAnnotatingElement;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = AnnotatingElementImpl.class)
+    public void setOwnedAnnotatingElement(AnnotatingElement ownedAnnotatingElement) {
+        this.ownedAnnotatingElement = ownedAnnotatingElement;
     }
 
     private List<Annotation> ownedAnnotation;

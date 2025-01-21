@@ -108,27 +108,6 @@ public class FlowConnectionDefinitionImpl extends SysMLTypeImpl implements FlowC
         this.associationEnd = associationEnd;
     }
 
-    private List<Usage> connectionEnd;
-
-    @Override
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "FlowConnectionDefinition_connectionEnd", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public List<Usage> getConnectionEnd() {
-        if (connectionEnd == null) {
-            connectionEnd = new ArrayList<>();
-        }
-        return connectionEnd;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = UsageImpl.class)
-    public void setConnectionEnd(List<Usage> connectionEnd) {
-        this.connectionEnd = connectionEnd;
-    }
-
     private String declaredName;
 
     @Override
@@ -320,6 +299,27 @@ public class FlowConnectionDefinitionImpl extends SysMLTypeImpl implements FlowC
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FeatureMembershipImpl.class)
     public void setFeatureMembership(List<FeatureMembership> featureMembership) {
         this.featureMembership = featureMembership;
+    }
+
+    private Collection<Usage> flowConnectionEnd;
+
+    @Override
+    @JsonGetter
+    @JsonSerialize(contentUsing = DataSerializer.class)
+    // @javax.persistence.Transient
+    @ManyToAny(metaDef = "UsageMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @JoinTable(name = "FlowConnectionDefinition_flowConnectionEnd", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "attribute_id"))
+    public Collection<Usage> getFlowConnectionEnd() {
+        if (flowConnectionEnd == null) {
+            flowConnectionEnd = new ArrayList<>();
+        }
+        return flowConnectionEnd;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = UsageImpl.class)
+    public void setFlowConnectionEnd(Collection<Usage> flowConnectionEnd) {
+        this.flowConnectionEnd = flowConnectionEnd;
     }
 
     private List<Membership> importedMembership;

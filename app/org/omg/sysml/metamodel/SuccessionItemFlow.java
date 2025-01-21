@@ -5,4 +5,4 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface SuccessionItemFlow extends Succession, ItemFlow, SysMLType {}
+public interface SuccessionItemFlow extends ItemFlow, Succession, SysMLType {}

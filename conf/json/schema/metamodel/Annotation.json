@@ -103,6 +103,17 @@
         }
       ]
     },
+    "ownedAnnotatingElement": {
+      "oneOf": [
+        {
+          "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+          "$comment": "https://www.omg.org/spec/SysML/20240201/AnnotatingElement"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
     "ownedAnnotation": {
       "type": "array",
       "items": {
@@ -271,6 +282,7 @@
     "isImpliedIncluded",
     "isLibraryElement",
     "name",
+    "ownedAnnotatingElement",
     "ownedAnnotation",
     "ownedElement",
     "ownedRelatedElement",

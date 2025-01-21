@@ -49,6 +49,17 @@
             }
           ]
         },
+        "crossFeature": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "declaredName": {
           "oneOf": [
             {
@@ -650,6 +661,17 @@
             }
           ]
         },
+        "ownedCrossSubsetting": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/CrossSubsetting"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "ownedDifferencing": {
           "type": "array",
           "items": {
@@ -985,6 +1007,7 @@
         "behavior",
         "chainingFeature",
         "constraintDefinition",
+        "crossFeature",
         "declaredName",
         "declaredShortName",
         "definition",
@@ -1059,6 +1082,7 @@
         "output",
         "ownedAnnotation",
         "ownedConjugator",
+        "ownedCrossSubsetting",
         "ownedDifferencing",
         "ownedDisjoining",
         "ownedElement",
@@ -1197,6 +1221,17 @@
             {
               "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
               "$comment": "https://www.omg.org/spec/SysML/20240201/Predicate"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "crossFeature": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
             },
             {
               "type": "null"
@@ -1811,6 +1846,17 @@
             }
           ]
         },
+        "ownedCrossSubsetting": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/CrossSubsetting"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "ownedDifferencing": {
           "type": "array",
           "items": {
@@ -2201,6 +2247,7 @@
         "behavior",
         "chainingFeature",
         "constraintDefinition",
+        "crossFeature",
         "declaredName",
         "declaredShortName",
         "definition",
@@ -2276,6 +2323,7 @@
         "output",
         "ownedAnnotation",
         "ownedConjugator",
+        "ownedCrossSubsetting",
         "ownedDifferencing",
         "ownedDisjoining",
         "ownedElement",

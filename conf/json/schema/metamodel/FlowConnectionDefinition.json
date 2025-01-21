@@ -32,13 +32,6 @@
         "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
       }
     },
-    "connectionEnd": {
-      "type": "array",
-      "items": {
-        "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
-        "$comment": "https://www.omg.org/spec/SysML/20240201/Usage"
-      }
-    },
     "declaredName": {
       "oneOf": [
         {
@@ -116,6 +109,13 @@
       "items": {
         "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
         "$comment": "https://www.omg.org/spec/SysML/20240201/FeatureMembership"
+      }
+    },
+    "flowConnectionEnd": {
+      "type": "array",
+      "items": {
+        "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+        "$comment": "https://www.omg.org/spec/SysML/20240201/Usage"
       }
     },
     "importedMembership": {
@@ -775,7 +775,6 @@
     "action",
     "aliasIds",
     "associationEnd",
-    "connectionEnd",
     "declaredName",
     "declaredShortName",
     "differencingType",
@@ -786,6 +785,7 @@
     "endFeature",
     "feature",
     "featureMembership",
+    "flowConnectionEnd",
     "importedMembership",
     "inheritedFeature",
     "inheritedMembership",

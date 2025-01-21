@@ -186,6 +186,24 @@ public class SatisfyRequirementUsageImpl extends SysMLTypeImpl implements Satisf
         this.constraintDefinition = constraintDefinition;
     }
 
+    private Feature crossFeature;
+
+    @Override
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "crossFeature_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "crossFeature_id", table = "SatisfyRequirementUsage")
+    public Feature getCrossFeature() {
+        return crossFeature;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
+    public void setCrossFeature(Feature crossFeature) {
+        this.crossFeature = crossFeature;
+    }
+
     private String declaredName;
 
     @Override
@@ -1599,6 +1617,24 @@ public class SatisfyRequirementUsageImpl extends SysMLTypeImpl implements Satisf
     @JsonDeserialize(using = DataDeserializer.class, as = ConjugationImpl.class)
     public void setOwnedConjugator(Conjugation ownedConjugator) {
         this.ownedConjugator = ownedConjugator;
+    }
+
+    private CrossSubsetting ownedCrossSubsetting;
+
+    @Override
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "CrossSubsettingMetaDef", metaColumn = @javax.persistence.Column(name = "ownedCrossSubsetting_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "ownedCrossSubsetting_id", table = "SatisfyRequirementUsage")
+    public CrossSubsetting getOwnedCrossSubsetting() {
+        return ownedCrossSubsetting;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = CrossSubsettingImpl.class)
+    public void setOwnedCrossSubsetting(CrossSubsetting ownedCrossSubsetting) {
+        this.ownedCrossSubsetting = ownedCrossSubsetting;
     }
 
     private List<Differencing> ownedDifferencing;

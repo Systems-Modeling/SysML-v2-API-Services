@@ -1663,13 +1663,6 @@
             "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
           }
         },
-        "connectionEnd": {
-          "type": "array",
-          "items": {
-            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
-            "$comment": "https://www.omg.org/spec/SysML/20240201/Usage"
-          }
-        },
         "declaredName": {
           "oneOf": [
             {
@@ -1747,6 +1740,13 @@
           "items": {
             "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20240201/FeatureMembership"
+          }
+        },
+        "flowConnectionEnd": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/Usage"
           }
         },
         "importedMembership": {
@@ -2406,7 +2406,6 @@
         "action",
         "aliasIds",
         "associationEnd",
-        "connectionEnd",
         "declaredName",
         "declaredShortName",
         "differencingType",
@@ -2417,6 +2416,7 @@
         "endFeature",
         "feature",
         "featureMembership",
+        "flowConnectionEnd",
         "importedMembership",
         "inheritedFeature",
         "inheritedMembership",
@@ -4150,19 +4150,19 @@
           "additionalProperties": false
         },
         {
-          "$ref": "https://www.omg.org/spec/SysML/20240201/AnalysisCaseDefinition"
+          "$ref": "https://www.omg.org/spec/SysML/20240201/VerificationCaseDefinition"
         },
         {
           "$ref": "https://www.omg.org/spec/SysML/20240201/UseCaseDefinition"
         },
         {
-          "$ref": "https://www.omg.org/spec/SysML/20240201/VerificationCaseDefinition"
+          "$ref": "https://www.omg.org/spec/SysML/20240201/AnalysisCaseDefinition"
         }
       ]
     },
-    "AnalysisCaseDefinition": {
-      "$id": "https://www.omg.org/spec/SysML/20240201/AnalysisCaseDefinition",
-      "title": "AnalysisCaseDefinition",
+    "VerificationCaseDefinition": {
+      "$id": "https://www.omg.org/spec/SysML/20240201/VerificationCaseDefinition",
+      "title": "VerificationCaseDefinition",
       "type": "object",
       "properties": {
         "@id": {
@@ -4171,7 +4171,7 @@
         },
         "@type": {
           "type": "string",
-          "const": "AnalysisCaseDefinition"
+          "const": "VerificationCaseDefinition"
         },
         "action": {
           "type": "array",
@@ -4835,17 +4835,6 @@
           "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
           "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
         },
-        "resultExpression": {
-          "oneOf": [
-            {
-              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
-              "$comment": "https://www.omg.org/spec/SysML/20240201/Expression"
-            },
-            {
-              "type": "null"
-            }
-          ]
-        },
         "shortName": {
           "oneOf": [
             {
@@ -4900,6 +4889,13 @@
           "items": {
             "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20240201/VariantMembership"
+          }
+        },
+        "verifiedRequirement": {
+          "type": "array",
+          "items": {
+            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+            "$comment": "https://www.omg.org/spec/SysML/20240201/RequirementUsage"
           }
         }
       },
@@ -4991,7 +4987,6 @@
         "parameter",
         "qualifiedName",
         "result",
-        "resultExpression",
         "shortName",
         "step",
         "subjectParameter",
@@ -4999,7 +4994,8 @@
         "unioningType",
         "usage",
         "variant",
-        "variantMembership"
+        "variantMembership",
+        "verifiedRequirement"
       ],
       "additionalProperties": false
     },
@@ -5842,9 +5838,9 @@
       ],
       "additionalProperties": false
     },
-    "VerificationCaseDefinition": {
-      "$id": "https://www.omg.org/spec/SysML/20240201/VerificationCaseDefinition",
-      "title": "VerificationCaseDefinition",
+    "AnalysisCaseDefinition": {
+      "$id": "https://www.omg.org/spec/SysML/20240201/AnalysisCaseDefinition",
+      "title": "AnalysisCaseDefinition",
       "type": "object",
       "properties": {
         "@id": {
@@ -5853,7 +5849,7 @@
         },
         "@type": {
           "type": "string",
-          "const": "VerificationCaseDefinition"
+          "const": "AnalysisCaseDefinition"
         },
         "action": {
           "type": "array",
@@ -6517,6 +6513,17 @@
           "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
           "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
         },
+        "resultExpression": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Expression"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "shortName": {
           "oneOf": [
             {
@@ -6571,13 +6578,6 @@
           "items": {
             "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20240201/VariantMembership"
-          }
-        },
-        "verifiedRequirement": {
-          "type": "array",
-          "items": {
-            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
-            "$comment": "https://www.omg.org/spec/SysML/20240201/RequirementUsage"
           }
         }
       },
@@ -6669,6 +6669,7 @@
         "parameter",
         "qualifiedName",
         "result",
+        "resultExpression",
         "shortName",
         "step",
         "subjectParameter",
@@ -6676,8 +6677,7 @@
         "unioningType",
         "usage",
         "variant",
-        "variantMembership",
-        "verifiedRequirement"
+        "variantMembership"
       ],
       "additionalProperties": false
     }
