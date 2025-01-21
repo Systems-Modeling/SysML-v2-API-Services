@@ -41,6 +41,17 @@
             "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
           }
         },
+        "crossFeature": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "declaredName": {
           "oneOf": [
             {
@@ -615,6 +626,17 @@
             }
           ]
         },
+        "ownedCrossSubsetting": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/CrossSubsetting"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "ownedDifferencing": {
           "type": "array",
           "items": {
@@ -938,6 +960,7 @@
         "aliasIds",
         "behavior",
         "chainingFeature",
+        "crossFeature",
         "declaredName",
         "declaredShortName",
         "definition",
@@ -1010,6 +1033,7 @@
         "output",
         "ownedAnnotation",
         "ownedConjugator",
+        "ownedCrossSubsetting",
         "ownedDifferencing",
         "ownedDisjoining",
         "ownedElement",
@@ -1133,6 +1157,17 @@
             "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
           }
+        },
+        "crossFeature": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "declaredName": {
           "oneOf": [
@@ -1755,6 +1790,17 @@
             }
           ]
         },
+        "ownedCrossSubsetting": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/CrossSubsetting"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "ownedDifferencing": {
           "type": "array",
           "items": {
@@ -2085,6 +2131,7 @@
         "aliasIds",
         "behavior",
         "chainingFeature",
+        "crossFeature",
         "declaredName",
         "declaredShortName",
         "definition",
@@ -2162,6 +2209,7 @@
         "output",
         "ownedAnnotation",
         "ownedConjugator",
+        "ownedCrossSubsetting",
         "ownedDifferencing",
         "ownedDisjoining",
         "ownedElement",
@@ -2273,6 +2321,17 @@
             "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
           }
+        },
+        "crossFeature": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "declaredName": {
           "oneOf": [
@@ -2887,6 +2946,17 @@
             }
           ]
         },
+        "ownedCrossSubsetting": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/CrossSubsetting"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "ownedDifferencing": {
           "type": "array",
           "items": {
@@ -3236,6 +3306,7 @@
         "calculationDefinition",
         "caseDefinition",
         "chainingFeature",
+        "crossFeature",
         "declaredName",
         "declaredShortName",
         "definition",
@@ -3312,6 +3383,7 @@
         "output",
         "ownedAnnotation",
         "ownedConjugator",
+        "ownedCrossSubsetting",
         "ownedDifferencing",
         "ownedDisjoining",
         "ownedElement",

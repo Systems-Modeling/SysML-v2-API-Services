@@ -10,5 +10,7 @@ public interface AnnotatingElement extends Element, SysMLType {
 
     List<? extends Annotation> getAnnotation();
 
-    Collection<? extends Annotation> getOwnedAnnotatingRelationship();
+    List<? extends Annotation> getOwnedAnnotatingRelationship();
+
+    Annotation getOwningAnnotatingRelationship();
 }

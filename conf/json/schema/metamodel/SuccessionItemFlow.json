@@ -48,6 +48,17 @@
             "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
           }
         },
+        "crossFeature": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "declaredName": {
           "oneOf": [
             {
@@ -418,6 +429,17 @@
             {
               "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
               "$comment": "https://www.omg.org/spec/SysML/20240201/Conjugation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ownedCrossSubsetting": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/CrossSubsetting"
             },
             {
               "type": "null"
@@ -795,6 +817,7 @@
         "behavior",
         "chainingFeature",
         "connectorEnd",
+        "crossFeature",
         "declaredName",
         "declaredShortName",
         "differencingType",
@@ -839,6 +862,7 @@
         "output",
         "ownedAnnotation",
         "ownedConjugator",
+        "ownedCrossSubsetting",
         "ownedDifferencing",
         "ownedDisjoining",
         "ownedElement",
@@ -963,19 +987,23 @@
             "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
           }
         },
-        "connectionDefinition": {
-          "type": "array",
-          "items": {
-            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
-            "$comment": "https://www.omg.org/spec/SysML/20240201/AssociationStructure"
-          }
-        },
         "connectorEnd": {
           "type": "array",
           "items": {
             "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
           }
+        },
+        "crossFeature": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "declaredName": {
           "oneOf": [
@@ -1329,13 +1357,6 @@
             }
           ]
         },
-        "itemDefinition": {
-          "type": "array",
-          "items": {
-            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
-            "$comment": "https://www.omg.org/spec/SysML/20240201/Structure"
-          }
-        },
         "itemFeature": {
           "oneOf": [
             {
@@ -1618,6 +1639,17 @@
             }
           ]
         },
+        "ownedCrossSubsetting": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/CrossSubsetting"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "ownedDifferencing": {
           "type": "array",
           "items": {
@@ -1875,13 +1907,6 @@
             "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
           }
         },
-        "partDefinition": {
-          "type": "array",
-          "items": {
-            "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
-            "$comment": "https://www.omg.org/spec/SysML/20240201/PartDefinition"
-          }
-        },
         "portionKind": {
           "oneOf": [
             {
@@ -2049,8 +2074,8 @@
         "association",
         "behavior",
         "chainingFeature",
-        "connectionDefinition",
         "connectorEnd",
+        "crossFeature",
         "declaredName",
         "declaredShortName",
         "definition",
@@ -2092,7 +2117,6 @@
         "isSufficient",
         "isUnique",
         "isVariation",
-        "itemDefinition",
         "itemFeature",
         "itemFlowEnd",
         "itemType",
@@ -2131,6 +2155,7 @@
         "output",
         "ownedAnnotation",
         "ownedConjugator",
+        "ownedCrossSubsetting",
         "ownedDifferencing",
         "ownedDisjoining",
         "ownedElement",
@@ -2162,7 +2187,6 @@
         "owningType",
         "owningUsage",
         "parameter",
-        "partDefinition",
         "portionKind",
         "qualifiedName",
         "relatedElement",

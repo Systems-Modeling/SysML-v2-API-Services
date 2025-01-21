@@ -136,8 +136,8 @@ public abstract class FlowConnectionDefinitionImpl_ extends org.omg.sysml.lifecy
 	public static volatile ListAttribute<FlowConnectionDefinitionImpl, Type> differencingType;
 	public static volatile CollectionAttribute<FlowConnectionDefinitionImpl, VariantMembership> variantMembership;
 	public static volatile ListAttribute<FlowConnectionDefinitionImpl, Unioning> ownedUnioning;
+	public static volatile CollectionAttribute<FlowConnectionDefinitionImpl, Usage> flowConnectionEnd;
 	public static volatile ListAttribute<FlowConnectionDefinitionImpl, Type> unioningType;
-	public static volatile ListAttribute<FlowConnectionDefinitionImpl, Usage> connectionEnd;
 	public static volatile ListAttribute<FlowConnectionDefinitionImpl, Specialization> ownedSpecialization;
 	public static volatile CollectionAttribute<FlowConnectionDefinitionImpl, ConcernUsage> ownedConcern;
 	public static volatile CollectionAttribute<FlowConnectionDefinitionImpl, Step> step;
@@ -225,8 +225,8 @@ public abstract class FlowConnectionDefinitionImpl_ extends org.omg.sysml.lifecy
 	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String OWNED_UNIONING = "ownedUnioning";
+	public static final String FLOW_CONNECTION_END = "flowConnectionEnd";
 	public static final String UNIONING_TYPE = "unioningType";
-	public static final String CONNECTION_END = "connectionEnd";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
 	public static final String OWNED_CONCERN = "ownedConcern";
 	public static final String STEP = "step";

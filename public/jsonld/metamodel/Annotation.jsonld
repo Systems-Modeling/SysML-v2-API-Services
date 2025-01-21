@@ -15,6 +15,7 @@
         "isImpliedIncluded": {"@type": "xsd:boolean"},
         "isLibraryElement": {"@type": "xsd:boolean"},
         "name": {"@type": "xsd:string"},
+        "ownedAnnotatingElement": {"@type": "@id"},
         "ownedAnnotation": {"@type": "@id"},
         "ownedElement": {"@type": "@id"},
         "ownedRelatedElement": {"@type": "@id"},

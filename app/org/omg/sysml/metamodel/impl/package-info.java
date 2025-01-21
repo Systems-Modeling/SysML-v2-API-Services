@@ -40,6 +40,7 @@
                 @MetaValue(value = "ConstraintDefinition", targetEntity = ConstraintDefinitionImpl.class),
                 @MetaValue(value = "ConstraintUsage", targetEntity = ConstraintUsageImpl.class),
                 @MetaValue(value = "ControlNode", targetEntity = ControlNodeImpl.class),
+                @MetaValue(value = "CrossSubsetting", targetEntity = CrossSubsettingImpl.class),
                 @MetaValue(value = "DataType", targetEntity = DataTypeImpl.class),
                 @MetaValue(value = "DecisionNode", targetEntity = DecisionNodeImpl.class),
                 @MetaValue(value = "Definition", targetEntity = DefinitionImpl.class),
@@ -74,6 +75,7 @@
                 @MetaValue(value = "IfActionUsage", targetEntity = IfActionUsageImpl.class),
                 @MetaValue(value = "Import", targetEntity = ImportImpl.class),
                 @MetaValue(value = "IncludeUseCaseUsage", targetEntity = IncludeUseCaseUsageImpl.class),
+                @MetaValue(value = "IndexExpression", targetEntity = IndexExpressionImpl.class),
                 @MetaValue(value = "Interaction", targetEntity = InteractionImpl.class),
                 @MetaValue(value = "InterfaceDefinition", targetEntity = InterfaceDefinitionImpl.class),
                 @MetaValue(value = "InterfaceUsage", targetEntity = InterfaceUsageImpl.class),
@@ -261,7 +263,6 @@
                 @MetaValue(value = "AllocationDefinition", targetEntity = AllocationDefinitionImpl.class), 
                 @MetaValue(value = "AssociationStructure", targetEntity = AssociationStructureImpl.class), 
                 @MetaValue(value = "ConnectionDefinition", targetEntity = ConnectionDefinitionImpl.class), 
-                @MetaValue(value = "FlowConnectionDefinition", targetEntity = FlowConnectionDefinitionImpl.class), 
                 @MetaValue(value = "InterfaceDefinition", targetEntity = InterfaceDefinitionImpl.class), 
         }),
         @AnyMetaDef(name = "AttributeDefinitionMetaDef", metaType = "string", idType = "java.util.UUID", metaValues = {
@@ -435,15 +436,12 @@
         @AnyMetaDef(name = "ConnectionDefinitionMetaDef", metaType = "string", idType = "java.util.UUID", metaValues = {
                 @MetaValue(value = "AllocationDefinition", targetEntity = AllocationDefinitionImpl.class), 
                 @MetaValue(value = "ConnectionDefinition", targetEntity = ConnectionDefinitionImpl.class), 
-                @MetaValue(value = "FlowConnectionDefinition", targetEntity = FlowConnectionDefinitionImpl.class), 
                 @MetaValue(value = "InterfaceDefinition", targetEntity = InterfaceDefinitionImpl.class), 
         }),
         @AnyMetaDef(name = "ConnectionUsageMetaDef", metaType = "string", idType = "java.util.UUID", metaValues = {
                 @MetaValue(value = "AllocationUsage", targetEntity = AllocationUsageImpl.class), 
                 @MetaValue(value = "ConnectionUsage", targetEntity = ConnectionUsageImpl.class), 
-                @MetaValue(value = "FlowConnectionUsage", targetEntity = FlowConnectionUsageImpl.class), 
                 @MetaValue(value = "InterfaceUsage", targetEntity = InterfaceUsageImpl.class), 
-                @MetaValue(value = "SuccessionFlowConnectionUsage", targetEntity = SuccessionFlowConnectionUsageImpl.class), 
         }),
         @AnyMetaDef(name = "ConnectorMetaDef", metaType = "string", idType = "java.util.UUID", metaValues = {
                 @MetaValue(value = "AllocationUsage", targetEntity = AllocationUsageImpl.class), 
@@ -490,6 +488,9 @@
                 @MetaValue(value = "ForkNode", targetEntity = ForkNodeImpl.class), 
                 @MetaValue(value = "JoinNode", targetEntity = JoinNodeImpl.class), 
                 @MetaValue(value = "MergeNode", targetEntity = MergeNodeImpl.class), 
+        }),
+        @AnyMetaDef(name = "CrossSubsettingMetaDef", metaType = "string", idType = "java.util.UUID", metaValues = {
+                @MetaValue(value = "CrossSubsetting", targetEntity = CrossSubsettingImpl.class), 
         }),
         @AnyMetaDef(name = "DataTypeMetaDef", metaType = "string", idType = "java.util.UUID", metaValues = {
                 @MetaValue(value = "AttributeDefinition", targetEntity = AttributeDefinitionImpl.class), 
@@ -580,6 +581,7 @@
                 @MetaValue(value = "ConstraintDefinition", targetEntity = ConstraintDefinitionImpl.class), 
                 @MetaValue(value = "ConstraintUsage", targetEntity = ConstraintUsageImpl.class), 
                 @MetaValue(value = "ControlNode", targetEntity = ControlNodeImpl.class), 
+                @MetaValue(value = "CrossSubsetting", targetEntity = CrossSubsettingImpl.class), 
                 @MetaValue(value = "DataType", targetEntity = DataTypeImpl.class), 
                 @MetaValue(value = "DecisionNode", targetEntity = DecisionNodeImpl.class), 
                 @MetaValue(value = "Definition", targetEntity = DefinitionImpl.class), 
@@ -614,6 +616,7 @@
                 @MetaValue(value = "IfActionUsage", targetEntity = IfActionUsageImpl.class), 
                 @MetaValue(value = "Import", targetEntity = ImportImpl.class), 
                 @MetaValue(value = "IncludeUseCaseUsage", targetEntity = IncludeUseCaseUsageImpl.class), 
+                @MetaValue(value = "IndexExpression", targetEntity = IndexExpressionImpl.class), 
                 @MetaValue(value = "Interaction", targetEntity = InteractionImpl.class), 
                 @MetaValue(value = "InterfaceDefinition", targetEntity = InterfaceDefinitionImpl.class), 
                 @MetaValue(value = "InterfaceUsage", targetEntity = InterfaceUsageImpl.class), 
@@ -753,6 +756,7 @@
                 @MetaValue(value = "FeatureChainExpression", targetEntity = FeatureChainExpressionImpl.class), 
                 @MetaValue(value = "FeatureReferenceExpression", targetEntity = FeatureReferenceExpressionImpl.class), 
                 @MetaValue(value = "IncludeUseCaseUsage", targetEntity = IncludeUseCaseUsageImpl.class), 
+                @MetaValue(value = "IndexExpression", targetEntity = IndexExpressionImpl.class), 
                 @MetaValue(value = "Invariant", targetEntity = InvariantImpl.class), 
                 @MetaValue(value = "InvocationExpression", targetEntity = InvocationExpressionImpl.class), 
                 @MetaValue(value = "LiteralBoolean", targetEntity = LiteralBooleanImpl.class), 
@@ -805,6 +809,7 @@
                 @MetaValue(value = "ForkNode", targetEntity = ForkNodeImpl.class), 
                 @MetaValue(value = "IfActionUsage", targetEntity = IfActionUsageImpl.class), 
                 @MetaValue(value = "IncludeUseCaseUsage", targetEntity = IncludeUseCaseUsageImpl.class), 
+                @MetaValue(value = "IndexExpression", targetEntity = IndexExpressionImpl.class), 
                 @MetaValue(value = "InterfaceUsage", targetEntity = InterfaceUsageImpl.class), 
                 @MetaValue(value = "Invariant", targetEntity = InvariantImpl.class), 
                 @MetaValue(value = "InvocationExpression", targetEntity = InvocationExpressionImpl.class), 
@@ -952,6 +957,9 @@
         @AnyMetaDef(name = "IncludeUseCaseUsageMetaDef", metaType = "string", idType = "java.util.UUID", metaValues = {
                 @MetaValue(value = "IncludeUseCaseUsage", targetEntity = IncludeUseCaseUsageImpl.class), 
         }),
+        @AnyMetaDef(name = "IndexExpressionMetaDef", metaType = "string", idType = "java.util.UUID", metaValues = {
+                @MetaValue(value = "IndexExpression", targetEntity = IndexExpressionImpl.class), 
+        }),
         @AnyMetaDef(name = "InteractionMetaDef", metaType = "string", idType = "java.util.UUID", metaValues = {
                 @MetaValue(value = "FlowConnectionDefinition", targetEntity = FlowConnectionDefinitionImpl.class), 
                 @MetaValue(value = "Interaction", targetEntity = InteractionImpl.class), 
@@ -973,6 +981,7 @@
         @AnyMetaDef(name = "InvocationExpressionMetaDef", metaType = "string", idType = "java.util.UUID", metaValues = {
                 @MetaValue(value = "CollectExpression", targetEntity = CollectExpressionImpl.class), 
                 @MetaValue(value = "FeatureChainExpression", targetEntity = FeatureChainExpressionImpl.class), 
+                @MetaValue(value = "IndexExpression", targetEntity = IndexExpressionImpl.class), 
                 @MetaValue(value = "InvocationExpression", targetEntity = InvocationExpressionImpl.class), 
                 @MetaValue(value = "OperatorExpression", targetEntity = OperatorExpressionImpl.class), 
                 @MetaValue(value = "SelectExpression", targetEntity = SelectExpressionImpl.class), 
@@ -981,7 +990,6 @@
         @AnyMetaDef(name = "ItemDefinitionMetaDef", metaType = "string", idType = "java.util.UUID", metaValues = {
                 @MetaValue(value = "AllocationDefinition", targetEntity = AllocationDefinitionImpl.class), 
                 @MetaValue(value = "ConnectionDefinition", targetEntity = ConnectionDefinitionImpl.class), 
-                @MetaValue(value = "FlowConnectionDefinition", targetEntity = FlowConnectionDefinitionImpl.class), 
                 @MetaValue(value = "InterfaceDefinition", targetEntity = InterfaceDefinitionImpl.class), 
                 @MetaValue(value = "ItemDefinition", targetEntity = ItemDefinitionImpl.class), 
                 @MetaValue(value = "MetadataDefinition", targetEntity = MetadataDefinitionImpl.class), 
@@ -1004,13 +1012,11 @@
         @AnyMetaDef(name = "ItemUsageMetaDef", metaType = "string", idType = "java.util.UUID", metaValues = {
                 @MetaValue(value = "AllocationUsage", targetEntity = AllocationUsageImpl.class), 
                 @MetaValue(value = "ConnectionUsage", targetEntity = ConnectionUsageImpl.class), 
-                @MetaValue(value = "FlowConnectionUsage", targetEntity = FlowConnectionUsageImpl.class), 
                 @MetaValue(value = "InterfaceUsage", targetEntity = InterfaceUsageImpl.class), 
                 @MetaValue(value = "ItemUsage", targetEntity = ItemUsageImpl.class), 
                 @MetaValue(value = "MetadataUsage", targetEntity = MetadataUsageImpl.class), 
                 @MetaValue(value = "PartUsage", targetEntity = PartUsageImpl.class), 
                 @MetaValue(value = "RenderingUsage", targetEntity = RenderingUsageImpl.class), 
-                @MetaValue(value = "SuccessionFlowConnectionUsage", targetEntity = SuccessionFlowConnectionUsageImpl.class), 
                 @MetaValue(value = "ViewUsage", targetEntity = ViewUsageImpl.class), 
         }),
         @AnyMetaDef(name = "JoinNodeMetaDef", metaType = "string", idType = "java.util.UUID", metaValues = {
@@ -1159,6 +1165,7 @@
                 @MetaValue(value = "Function", targetEntity = FunctionImpl.class), 
                 @MetaValue(value = "IfActionUsage", targetEntity = IfActionUsageImpl.class), 
                 @MetaValue(value = "IncludeUseCaseUsage", targetEntity = IncludeUseCaseUsageImpl.class), 
+                @MetaValue(value = "IndexExpression", targetEntity = IndexExpressionImpl.class), 
                 @MetaValue(value = "Interaction", targetEntity = InteractionImpl.class), 
                 @MetaValue(value = "InterfaceDefinition", targetEntity = InterfaceDefinitionImpl.class), 
                 @MetaValue(value = "InterfaceUsage", targetEntity = InterfaceUsageImpl.class), 
@@ -1316,6 +1323,7 @@
         @AnyMetaDef(name = "OperatorExpressionMetaDef", metaType = "string", idType = "java.util.UUID", metaValues = {
                 @MetaValue(value = "CollectExpression", targetEntity = CollectExpressionImpl.class), 
                 @MetaValue(value = "FeatureChainExpression", targetEntity = FeatureChainExpressionImpl.class), 
+                @MetaValue(value = "IndexExpression", targetEntity = IndexExpressionImpl.class), 
                 @MetaValue(value = "OperatorExpression", targetEntity = OperatorExpressionImpl.class), 
                 @MetaValue(value = "SelectExpression", targetEntity = SelectExpressionImpl.class), 
         }),
@@ -1354,7 +1362,6 @@
         @AnyMetaDef(name = "PartDefinitionMetaDef", metaType = "string", idType = "java.util.UUID", metaValues = {
                 @MetaValue(value = "AllocationDefinition", targetEntity = AllocationDefinitionImpl.class), 
                 @MetaValue(value = "ConnectionDefinition", targetEntity = ConnectionDefinitionImpl.class), 
-                @MetaValue(value = "FlowConnectionDefinition", targetEntity = FlowConnectionDefinitionImpl.class), 
                 @MetaValue(value = "InterfaceDefinition", targetEntity = InterfaceDefinitionImpl.class), 
                 @MetaValue(value = "PartDefinition", targetEntity = PartDefinitionImpl.class), 
                 @MetaValue(value = "RenderingDefinition", targetEntity = RenderingDefinitionImpl.class), 
@@ -1363,11 +1370,9 @@
         @AnyMetaDef(name = "PartUsageMetaDef", metaType = "string", idType = "java.util.UUID", metaValues = {
                 @MetaValue(value = "AllocationUsage", targetEntity = AllocationUsageImpl.class), 
                 @MetaValue(value = "ConnectionUsage", targetEntity = ConnectionUsageImpl.class), 
-                @MetaValue(value = "FlowConnectionUsage", targetEntity = FlowConnectionUsageImpl.class), 
                 @MetaValue(value = "InterfaceUsage", targetEntity = InterfaceUsageImpl.class), 
                 @MetaValue(value = "PartUsage", targetEntity = PartUsageImpl.class), 
                 @MetaValue(value = "RenderingUsage", targetEntity = RenderingUsageImpl.class), 
-                @MetaValue(value = "SuccessionFlowConnectionUsage", targetEntity = SuccessionFlowConnectionUsageImpl.class), 
                 @MetaValue(value = "ViewUsage", targetEntity = ViewUsageImpl.class), 
         }),
         @AnyMetaDef(name = "PerformActionUsageMetaDef", metaType = "string", idType = "java.util.UUID", metaValues = {
@@ -1416,6 +1421,7 @@
                 @MetaValue(value = "ConnectionUsage", targetEntity = ConnectionUsageImpl.class), 
                 @MetaValue(value = "Connector", targetEntity = ConnectorImpl.class), 
                 @MetaValue(value = "ConnectorAsUsage", targetEntity = ConnectorAsUsageImpl.class), 
+                @MetaValue(value = "CrossSubsetting", targetEntity = CrossSubsettingImpl.class), 
                 @MetaValue(value = "Dependency", targetEntity = DependencyImpl.class), 
                 @MetaValue(value = "Differencing", targetEntity = DifferencingImpl.class), 
                 @MetaValue(value = "Disjoining", targetEntity = DisjoiningImpl.class), 
@@ -1511,6 +1517,7 @@
         }),
         @AnyMetaDef(name = "SpecializationMetaDef", metaType = "string", idType = "java.util.UUID", metaValues = {
                 @MetaValue(value = "ConjugatedPortTyping", targetEntity = ConjugatedPortTypingImpl.class), 
+                @MetaValue(value = "CrossSubsetting", targetEntity = CrossSubsettingImpl.class), 
                 @MetaValue(value = "FeatureTyping", targetEntity = FeatureTypingImpl.class), 
                 @MetaValue(value = "Redefinition", targetEntity = RedefinitionImpl.class), 
                 @MetaValue(value = "ReferenceSubsetting", targetEntity = ReferenceSubsettingImpl.class), 
@@ -1554,6 +1561,7 @@
                 @MetaValue(value = "ForkNode", targetEntity = ForkNodeImpl.class), 
                 @MetaValue(value = "IfActionUsage", targetEntity = IfActionUsageImpl.class), 
                 @MetaValue(value = "IncludeUseCaseUsage", targetEntity = IncludeUseCaseUsageImpl.class), 
+                @MetaValue(value = "IndexExpression", targetEntity = IndexExpressionImpl.class), 
                 @MetaValue(value = "Invariant", targetEntity = InvariantImpl.class), 
                 @MetaValue(value = "InvocationExpression", targetEntity = InvocationExpressionImpl.class), 
                 @MetaValue(value = "ItemFlow", targetEntity = ItemFlowImpl.class), 
@@ -1591,7 +1599,6 @@
                 @MetaValue(value = "AssociationStructure", targetEntity = AssociationStructureImpl.class), 
                 @MetaValue(value = "ConjugatedPortDefinition", targetEntity = ConjugatedPortDefinitionImpl.class), 
                 @MetaValue(value = "ConnectionDefinition", targetEntity = ConnectionDefinitionImpl.class), 
-                @MetaValue(value = "FlowConnectionDefinition", targetEntity = FlowConnectionDefinitionImpl.class), 
                 @MetaValue(value = "InterfaceDefinition", targetEntity = InterfaceDefinitionImpl.class), 
                 @MetaValue(value = "ItemDefinition", targetEntity = ItemDefinitionImpl.class), 
                 @MetaValue(value = "Metaclass", targetEntity = MetaclassImpl.class), 
@@ -1609,6 +1616,7 @@
                 @MetaValue(value = "SubjectMembership", targetEntity = SubjectMembershipImpl.class), 
         }),
         @AnyMetaDef(name = "SubsettingMetaDef", metaType = "string", idType = "java.util.UUID", metaValues = {
+                @MetaValue(value = "CrossSubsetting", targetEntity = CrossSubsettingImpl.class), 
                 @MetaValue(value = "Redefinition", targetEntity = RedefinitionImpl.class), 
                 @MetaValue(value = "ReferenceSubsetting", targetEntity = ReferenceSubsettingImpl.class), 
                 @MetaValue(value = "Subsetting", targetEntity = SubsettingImpl.class), 
@@ -1697,6 +1705,7 @@
                 @MetaValue(value = "Function", targetEntity = FunctionImpl.class), 
                 @MetaValue(value = "IfActionUsage", targetEntity = IfActionUsageImpl.class), 
                 @MetaValue(value = "IncludeUseCaseUsage", targetEntity = IncludeUseCaseUsageImpl.class), 
+                @MetaValue(value = "IndexExpression", targetEntity = IndexExpressionImpl.class), 
                 @MetaValue(value = "Interaction", targetEntity = InteractionImpl.class), 
                 @MetaValue(value = "InterfaceDefinition", targetEntity = InterfaceDefinitionImpl.class), 
                 @MetaValue(value = "InterfaceUsage", targetEntity = InterfaceUsageImpl.class), 

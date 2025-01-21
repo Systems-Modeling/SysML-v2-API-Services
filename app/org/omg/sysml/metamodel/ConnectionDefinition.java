@@ -7,4 +7,7 @@ import java.util.Set;
 
 public interface ConnectionDefinition extends AssociationStructure, PartDefinition, SysMLType {
     List<? extends Usage> getConnectionEnd();
+
+    @Override
+    Boolean getIsSufficient();
 }

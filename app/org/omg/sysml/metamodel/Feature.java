@@ -8,6 +8,8 @@ import java.util.Set;
 public interface Feature extends Type, SysMLType {
     List<? extends Feature> getChainingFeature();
 
+    Feature getCrossFeature();
+
     FeatureDirectionKind getDirection();
 
     Type getEndOwningType();
@@ -29,6 +31,8 @@ public interface Feature extends Type, SysMLType {
     Boolean getIsReadOnly();
 
     Boolean getIsUnique();
+
+    CrossSubsetting getOwnedCrossSubsetting();
 
     List<? extends FeatureChaining> getOwnedFeatureChaining();
 

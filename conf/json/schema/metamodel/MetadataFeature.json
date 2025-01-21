@@ -42,6 +42,17 @@
             "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
           }
         },
+        "crossFeature": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "declaredName": {
           "oneOf": [
             {
@@ -379,6 +390,17 @@
             }
           ]
         },
+        "ownedCrossSubsetting": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/CrossSubsetting"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "ownedDifferencing": {
           "type": "array",
           "items": {
@@ -534,6 +556,17 @@
             }
           ]
         },
+        "owningAnnotatingRelationship": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Annotation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "owningFeatureMembership": {
           "oneOf": [
             {
@@ -638,6 +671,7 @@
         "annotatedElement",
         "annotation",
         "chainingFeature",
+        "crossFeature",
         "declaredName",
         "declaredShortName",
         "differencingType",
@@ -677,6 +711,7 @@
         "ownedAnnotatingRelationship",
         "ownedAnnotation",
         "ownedConjugator",
+        "ownedCrossSubsetting",
         "ownedDifferencing",
         "ownedDisjoining",
         "ownedElement",
@@ -698,6 +733,7 @@
         "ownedTyping",
         "ownedUnioning",
         "owner",
+        "owningAnnotatingRelationship",
         "owningFeatureMembership",
         "owningMembership",
         "owningNamespace",
@@ -781,6 +817,17 @@
             "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
             "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
           }
+        },
+        "crossFeature": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Feature"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "declaredName": {
           "oneOf": [
@@ -1388,6 +1435,17 @@
             }
           ]
         },
+        "ownedCrossSubsetting": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/CrossSubsetting"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "ownedDifferencing": {
           "type": "array",
           "items": {
@@ -1537,6 +1595,17 @@
             {
               "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
               "$comment": "https://www.omg.org/spec/SysML/20240201/Element"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "owningAnnotatingRelationship": {
+          "oneOf": [
+            {
+              "$ref": "https://www.omg.org/spec/SysML/20240201/Identified",
+              "$comment": "https://www.omg.org/spec/SysML/20240201/Annotation"
             },
             {
               "type": "null"
@@ -1700,6 +1769,7 @@
         "annotatedElement",
         "annotation",
         "chainingFeature",
+        "crossFeature",
         "declaredName",
         "declaredShortName",
         "definition",
@@ -1775,6 +1845,7 @@
         "ownedAnnotatingRelationship",
         "ownedAnnotation",
         "ownedConjugator",
+        "ownedCrossSubsetting",
         "ownedDifferencing",
         "ownedDisjoining",
         "ownedElement",
@@ -1796,6 +1867,7 @@
         "ownedTyping",
         "ownedUnioning",
         "owner",
+        "owningAnnotatingRelationship",
         "owningDefinition",
         "owningFeatureMembership",
         "owningMembership",

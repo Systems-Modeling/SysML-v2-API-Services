@@ -2,7 +2,6 @@ package org.omg.sysml.metamodel.impl;
 
 import java.util.UUID;
 import javax.annotation.processing.Generated;
-import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
@@ -23,7 +22,7 @@ public abstract class DocumentationImpl_ extends org.omg.sysml.lifecycle.impl.Da
 	public static volatile SingularAttribute<DocumentationImpl, Boolean> isLibraryElement;
 	public static volatile ListAttribute<DocumentationImpl, Annotation> ownedAnnotation;
 	public static volatile ListAttribute<DocumentationImpl, Element> ownedElement;
-	public static volatile CollectionAttribute<DocumentationImpl, Annotation> ownedAnnotatingRelationship;
+	public static volatile ListAttribute<DocumentationImpl, Annotation> ownedAnnotatingRelationship;
 	public static volatile ListAttribute<DocumentationImpl, String> aliasIds;
 	public static volatile ListAttribute<DocumentationImpl, Relationship> ownedRelationship;
 	public static volatile SingularAttribute<DocumentationImpl, String> qualifiedName;

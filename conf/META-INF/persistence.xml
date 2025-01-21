@@ -65,6 +65,7 @@
         <class>org.omg.sysml.metamodel.impl.ConstraintDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.ConstraintUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.ControlNodeImpl</class>
+        <class>org.omg.sysml.metamodel.impl.CrossSubsettingImpl</class>
         <class>org.omg.sysml.metamodel.impl.DataTypeImpl</class>
         <class>org.omg.sysml.metamodel.impl.DecisionNodeImpl</class>
         <class>org.omg.sysml.metamodel.impl.DefinitionImpl</class>
@@ -99,6 +100,7 @@
         <class>org.omg.sysml.metamodel.impl.IfActionUsageImpl</class>
         <class>org.omg.sysml.metamodel.impl.ImportImpl</class>
         <class>org.omg.sysml.metamodel.impl.IncludeUseCaseUsageImpl</class>
+        <class>org.omg.sysml.metamodel.impl.IndexExpressionImpl</class>
         <class>org.omg.sysml.metamodel.impl.InteractionImpl</class>
         <class>org.omg.sysml.metamodel.impl.InterfaceDefinitionImpl</class>
         <class>org.omg.sysml.metamodel.impl.InterfaceUsageImpl</class>
