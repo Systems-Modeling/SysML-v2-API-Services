@@ -22,10 +22,21 @@
 
 package org.omg.sysml.record;
 
+import javax.annotation.Nullable;
+import java.util.Set;
 import java.util.UUID;
 
 public interface Record {
     UUID getId();
 
     void setId(UUID id);
+
+    @Nullable
+    String getName();
+
+    void setName(@Nullable String name);
+
+    Set<String> getAlias();
+
+    void setAlias(Set<String> alias);
 }

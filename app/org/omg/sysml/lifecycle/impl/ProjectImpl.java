@@ -33,6 +33,7 @@ import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.record.impl.RecordImpl;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.ZonedDateTime;
 
 @Entity(name = "Project")
@@ -50,21 +51,16 @@ public class ProjectImpl extends RecordImpl implements Project {
         this.created = created;
     }
 
-    private String name;
-
+    @Override
     @JsonProperty(required = true)
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "name", table = "Project")
-    public String getName() {
-        return name;
+    public @NotNull String getName() {
+        return super.getName();
     }
 
+    @Override
     @JsonProperty(required = true)
-    @JsonSetter
-    public void setName(String name) {
-        this.name = name;
+    public void setName(@NotNull String name) {
+        super.setName(name);
     }
 
     private Branch defaultBranch;

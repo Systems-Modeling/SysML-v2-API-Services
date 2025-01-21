@@ -20,9 +20,7 @@
 
 package org.omg.sysml.lifecycle.impl;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jackson.RecordSerialization;
@@ -32,14 +30,26 @@ import org.omg.sysml.lifecycle.Tag;
 import org.omg.sysml.record.impl.RecordImpl;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.ZonedDateTime;
 
 @Entity(name = "Tag")
 public class TagImpl extends RecordImpl implements Tag {
     private Project owningProject;
     private Commit taggedCommit;
-    private String name;
     private ZonedDateTime created;
+
+    @Override
+    @JsonProperty(required = true)
+    public @NotNull String getName() {
+        return super.getName();
+    }
+
+    @Override
+    @JsonProperty(required = true)
+    public void setName(@NotNull String name) {
+        super.setName(name);
+    }
 
     @Override
     @ManyToOne(targetEntity = ProjectImpl.class, fetch = FetchType.LAZY)
@@ -69,21 +79,6 @@ public class TagImpl extends RecordImpl implements Tag {
     @JsonSerialize(as = CommitImpl.class, using = RecordSerialization.RecordSerializer.class)
     public Commit getReferencedCommit() {
         return Tag.super.getReferencedCommit();
-    }
-
-    @JsonProperty(required = true)
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @Column(name = "name", table = "Tag")
-    public String getName() {
-        return name;
-    }
-
-    @JsonProperty(required = true)
-    @JsonSetter
-    public void setName(String name) {
-        this.name = name;
     }
 
     @Override

@@ -25,9 +25,18 @@ package org.omg.sysml.query;
 import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.record.Record;
 
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 public interface Query extends Record {
+
+    @Override
+    @NotNull
+    String getName();
+
+    @Override
+    void setName(@NotNull String name);
+
     Project getOwningProject();
 
     void setOwningProject(Project owningProject);

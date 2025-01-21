@@ -11,9 +11,11 @@ import org.omg.sysml.lifecycle.impl.ProjectImpl;
 public abstract class QueryImpl_ extends org.omg.sysml.record.impl.RecordImpl_ {
 
 	public static volatile SetAttribute<QueryImpl, String> select;
+	public static volatile SingularAttribute<QueryImpl, String> name;
 	public static volatile SingularAttribute<QueryImpl, ProjectImpl> owningProject;
 
 	public static final String SELECT = "select";
+	public static final String NAME = "name";
 	public static final String OWNING_PROJECT = "owningProject";
 
 }

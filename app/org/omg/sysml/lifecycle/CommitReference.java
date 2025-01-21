@@ -22,13 +22,17 @@ package org.omg.sysml.lifecycle;
 
 import org.omg.sysml.record.Record;
 
+import javax.validation.constraints.NotNull;
 import java.time.ZonedDateTime;
 
 public interface CommitReference extends Record {
 
+    @Override
+    @NotNull
     String getName();
 
-    void setName(String name);
+    @Override
+    void setName(@NotNull String name);
 
     Project getOwningProject();
 

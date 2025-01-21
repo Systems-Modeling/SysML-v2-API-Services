@@ -24,6 +24,7 @@ package org.omg.sysml.lifecycle;
 
 import org.omg.sysml.record.Record;
 
+import javax.validation.constraints.NotNull;
 import java.time.ZonedDateTime;
 
 public interface Project extends Record {
@@ -43,7 +44,10 @@ public interface Project extends Record {
 
     void setDefaultBranch(Branch defaultBranch);
 
+    @Override
+    @NotNull
     String getName();
 
-    void setName(String name);
+    @Override
+    void setName(@NotNull String name);
 }

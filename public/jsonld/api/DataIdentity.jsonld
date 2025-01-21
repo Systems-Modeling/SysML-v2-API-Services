@@ -1,4 +1,6 @@
 {
     "@context": {
+        "alias": {"@type": "xsd:string"},
+        "name": {"@type": "xsd:string"}
     }
 }
