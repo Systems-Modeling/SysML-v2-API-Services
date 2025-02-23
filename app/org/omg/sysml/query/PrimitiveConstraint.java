@@ -2,7 +2,7 @@
  * SysML v2 REST/HTTP Pilot Implementation
  * Copyright (C) 2020  InterCAX LLC
  * Copyright (C) 2020  California Institute of Technology ("Caltech")
- * Copyright (C) 2023  Twingineer LLC
+ * Copyright (C) 2023-2025  Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -22,6 +22,9 @@
 
 package org.omg.sysml.query;
 
+import javax.annotation.Nullable;
+import java.util.List;
+
 public interface PrimitiveConstraint extends Constraint {
     Boolean getInverse();
 
@@ -31,7 +34,7 @@ public interface PrimitiveConstraint extends Constraint {
 
     void setProperty(String property);
 
-    String getValue();
+    @Nullable List<String> getValue();
 
 //    void setValue(String value);
 

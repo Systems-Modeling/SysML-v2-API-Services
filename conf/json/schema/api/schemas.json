@@ -1021,9 +1021,13 @@
         "operator": {
           "type": "string",
           "enum": [
+            "<",
+            "<=",
             "=",
             ">",
-            "<"
+            ">=",
+            "in",
+            "instanceOf"
           ]
         },
         "property": {
@@ -1032,16 +1036,27 @@
         "value": {
           "oneOf": [
             {
-              "type": "boolean"
-            },
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            },
-            {
-              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified"
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "$ref": "https://www.omg.org/spec/SysML/20230201/Identified"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "minItems": 1
             },
             {
               "type": "null"
@@ -1073,9 +1088,13 @@
         "operator": {
           "type": "string",
           "enum": [
+            "<",
+            "<=",
             "=",
             ">",
-            "<"
+            ">=",
+            "in",
+            "instanceOf"
           ]
         },
         "property": {
@@ -1084,16 +1103,27 @@
         "value": {
           "oneOf": [
             {
-              "type": "boolean"
-            },
-            {
-              "type": "number"
-            },
-            {
-              "type": "string"
-            },
-            {
-              "$ref": "https://www.omg.org/spec/SysML/20230201/Identified"
+              "type": "array",
+              "items": {
+                "oneOf": [
+                  {
+                    "type": "boolean"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "$ref": "https://www.omg.org/spec/SysML/20230201/Identified"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "minItems": 1
             },
             {
               "type": "null"
