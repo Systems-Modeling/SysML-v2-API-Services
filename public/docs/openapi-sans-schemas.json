@@ -2462,7 +2462,9 @@
             "inverse": false,
             "operator": "=",
             "property": "@type",
-            "value": "Element"
+            "value": [
+              "Element"
+            ]
           }
         }
       },
@@ -2484,7 +2486,9 @@
             "@type": "PrimitiveConstraint",
             "operator": "=",
             "property": "@type",
-            "value": "Element"
+            "value": [
+              "Element"
+            ]
           }
         }
       },
