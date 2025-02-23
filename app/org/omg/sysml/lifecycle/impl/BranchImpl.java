@@ -22,9 +22,7 @@
 
 package org.omg.sysml.lifecycle.impl;
 
-import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jackson.RecordSerialization;
@@ -34,14 +32,26 @@ import org.omg.sysml.lifecycle.Project;
 import org.omg.sysml.record.impl.RecordImpl;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.ZonedDateTime;
 
 @Entity(name = "Branch")
 public class BranchImpl extends RecordImpl implements Branch {
     private Project owningProject;
     private Commit head;
-    private String name;
     private ZonedDateTime created;
+
+    @Override
+    @JsonProperty(required = true)
+    public @NotNull String getName() {
+        return super.getName();
+    }
+
+    @Override
+    @JsonProperty(required = true)
+    public void setName(@NotNull String name) {
+        super.setName(name);
+    }
 
     @Override
     @ManyToOne(targetEntity = ProjectImpl.class, fetch = FetchType.LAZY)
@@ -72,21 +82,6 @@ public class BranchImpl extends RecordImpl implements Branch {
     @JsonSerialize(as = CommitImpl.class, using = RecordSerialization.RecordSerializer.class)
     public Commit getReferencedCommit() {
         return Branch.super.getReferencedCommit();
-    }
-
-    @JsonProperty(required = true)
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "name", table = "Branch")
-    public String getName() {
-        return name;
-    }
-
-    @JsonProperty(required = true)
-    @JsonSetter
-    public void setName(String name) {
-        this.name = name;
     }
 
     @Override

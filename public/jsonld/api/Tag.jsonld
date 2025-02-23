@@ -3,9 +3,9 @@
         "@vocab": "http://omg.org/ns/sysml/v2/api#",
         "xsd": "http://www.w3.org/2001/XMLSchema#",
         "alias": {"@type": "xsd:string"},
-        "created": {"@type": "xsd:dateTime"},
-        "head": {"@type": "@id"},
+        "created": {"@type": "xsd:dateTime"}
         "name": {"@type": "xsd:string"},
-        "owningProject": {"@type": "@id"}
+        "owningProject": {"@type": "@id"},
+        "taggedCommit": {"@type": "@id"}
     }
 }

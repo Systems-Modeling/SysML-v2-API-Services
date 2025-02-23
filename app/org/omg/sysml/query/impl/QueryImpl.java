@@ -29,16 +29,14 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import jackson.RecordSerialization;
 import org.hibernate.annotations.Any;
 import org.hibernate.annotations.Cascade;
-import org.omg.sysml.lifecycle.DataIdentity;
 import org.omg.sysml.lifecycle.Project;
-import org.omg.sysml.lifecycle.impl.DataIdentityImpl;
 import org.omg.sysml.lifecycle.impl.ProjectImpl;
 import org.omg.sysml.query.Constraint;
 import org.omg.sysml.query.Query;
 import org.omg.sysml.record.impl.RecordImpl;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -46,12 +44,24 @@ import java.util.Set;
 public class QueryImpl extends RecordImpl implements Query {
     private Project owningProject;
     private Set<String> select;
-/*
+    /*
     private Set<DataIdentity> scope;
     private Boolean recursiveInScope;
     private List<String> orderBy;
-*/
+    */
     private Constraint where;
+
+    @Override
+    @JsonProperty(required = true)
+    public @NotNull String getName() {
+        return super.getName();
+    }
+
+    @Override
+    @JsonProperty(required = true)
+    public void setName(@NotNull String name) {
+        super.setName(name);
+    }
 
     @Override
     @ManyToOne(targetEntity = ProjectImpl.class, fetch = FetchType.LAZY)
