@@ -2024,6 +2024,9 @@
         "value": {
           "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
           "@type": "Project",
+          "alias": [
+            "string"
+          ],
           "created": "1970-01-01T00:00:00.000Z",
           "defaultBranch": {
             "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
@@ -2042,9 +2045,6 @@
       "ProjectRequest": {
         "value": {
           "@type": "Project",
-          "defaultBranch": {
-            "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
-          },
           "description": "string",
           "name": "string"
         }
@@ -2053,6 +2053,9 @@
         "value": {
           "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
           "@type": "Branch",
+          "alias": [
+            "string"
+          ],
           "created": "1970-01-01T00:00:00.000Z",
           "head": {
             "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
@@ -2086,6 +2089,9 @@
         "value": {
           "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
           "@type": "Tag",
+          "alias": [
+            "string"
+          ],
           "created": "1970-01-01T00:00:00.000Z",
           "name": "string",
           "owningProject": {
@@ -2119,8 +2125,12 @@
         "value": {
           "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
           "@type": "Commit",
+          "alias": [
+            "string"
+          ],
           "created": "1970-01-01T00:00:00.000Z",
           "description": "string",
+          "name": "string",
           "owningProject": {
             "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           },
@@ -2360,9 +2370,13 @@
         "value": {
           "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
           "@type": "DataVersion",
+          "alias": [
+            "string"
+          ],
           "identity": {
             "$ref": "#/components/examples/DataIdentity/value"
           },
+          "name": "string",
           "payload": {
             "$ref": "#/components/examples/Element/value"
           }
@@ -2378,7 +2392,11 @@
       "DataIdentity": {
         "value": {
           "@type": "DataIdentity",
-          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
+          "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+          "alias": [
+            "string"
+          ],
+          "name": "string"
         }
       },
       "DataDifference": {
@@ -2429,6 +2447,10 @@
         "value": {
           "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
           "@type": "Query",
+          "alias": [
+            "string"
+          ],
+          "name": "string",
           "owningProject": {
             "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           },
@@ -2440,7 +2462,9 @@
             "inverse": false,
             "operator": "=",
             "property": "@type",
-            "value": "Element"
+            "value": [
+              "Element"
+            ]
           }
         }
       },
@@ -2454,6 +2478,7 @@
       "QueryRequest": {
         "value": {
           "@type": "Query",
+          "name": "string",
           "select": [
             "@id"
           ],
@@ -2461,7 +2486,9 @@
             "@type": "PrimitiveConstraint",
             "operator": "=",
             "property": "@type",
-            "value": "Element"
+            "value": [
+              "Element"
+            ]
           }
         }
       },

@@ -2,6 +2,7 @@
  * SysML v2 REST/HTTP Pilot Implementation
  * Copyright (C) 2020  InterCAX LLC
  * Copyright (C) 2020  California Institute of Technology ("Caltech")
+ * Copyright (C) 2025  Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -24,10 +25,18 @@ package org.omg.sysml.query;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public enum PrimitiveOperator {
+    @JsonProperty("<")
+    LESS_THAN,
+    @JsonProperty("<=")
+    LESS_THAN_OR_EQUALS,
     @JsonProperty("=")
     EQUALS,
     @JsonProperty(">")
     GREATER_THAN,
-    @JsonProperty("<")
-    LESS_THAN;
+    @JsonProperty(">=")
+    GREATER_THAN_OR_EQUALS,
+    @JsonProperty("in")
+    IN,
+    @JsonProperty("instanceOf")
+    INSTANCE_OF,
 }

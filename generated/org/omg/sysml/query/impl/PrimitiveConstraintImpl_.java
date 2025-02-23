@@ -1,6 +1,7 @@
 package org.omg.sysml.query.impl;
 
 import javax.annotation.processing.Generated;
+import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import org.omg.sysml.query.PrimitiveOperator;
@@ -11,7 +12,7 @@ public abstract class PrimitiveConstraintImpl_ extends org.omg.sysml.query.impl.
 
 	public static volatile SingularAttribute<PrimitiveConstraintImpl, Boolean> inverse;
 	public static volatile SingularAttribute<PrimitiveConstraintImpl, String> property;
-	public static volatile SingularAttribute<PrimitiveConstraintImpl, String> value;
+	public static volatile ListAttribute<PrimitiveConstraintImpl, String> value;
 	public static volatile SingularAttribute<PrimitiveConstraintImpl, PrimitiveOperator> operator;
 
 	public static final String INVERSE = "inverse";

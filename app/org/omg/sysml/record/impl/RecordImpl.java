@@ -26,10 +26,10 @@ import com.fasterxml.jackson.annotation.JsonGetter;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import org.omg.sysml.record.Record;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.annotation.Nullable;
+import javax.persistence.*;
+import java.util.LinkedHashSet;
+import java.util.Set;
 import java.util.UUID;
 
 import static jackson.RecordSerialization.IDENTITY_FIELD;
@@ -37,6 +37,8 @@ import static jackson.RecordSerialization.IDENTITY_FIELD;
 @MappedSuperclass
 public abstract class RecordImpl implements Record {
     private UUID id;
+    private String name;
+    private Set<String> alias = new LinkedHashSet<>();
 
     @Override
     @Id
@@ -50,5 +52,42 @@ public abstract class RecordImpl implements Record {
     @JsonSetter(value = IDENTITY_FIELD)
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    @Override
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @Column(name = "name")
+    public @Nullable String getName() {
+        return name;
+    }
+
+    @Override
+    @JsonSetter
+    public void setName(@Nullable String name) {
+        this.name = name;
+        if (name != null) {
+            this.alias.add(name);
+        }
+    }
+
+    @Override
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @ElementCollection(targetClass = String.class)
+    @CollectionTable
+    public Set<String> getAlias() {
+        return alias;
+    }
+
+    @Override
+    @JsonSetter
+    public void setAlias(Set<String> alias) {
+        this.alias = alias;
+        if (name != null) {
+            this.alias.add(name);
+        }
     }
 }

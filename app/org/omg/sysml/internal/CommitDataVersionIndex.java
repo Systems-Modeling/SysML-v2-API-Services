@@ -23,14 +23,15 @@
 package org.omg.sysml.internal;
 
 import org.omg.sysml.lifecycle.Commit;
-import org.omg.sysml.lifecycle.DataVersion;
-import org.omg.sysml.record.Record;
-import org.omg.sysml.record.impl.RecordImpl;
 
 import java.util.Set;
 import java.util.UUID;
 
-public interface CommitDataVersionIndex extends Record {
+public interface CommitDataVersionIndex {
+
+    UUID getId();
+
+    void setId(UUID id);
 
     Commit getCommit();
 

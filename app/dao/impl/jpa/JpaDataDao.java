@@ -1,6 +1,6 @@
 /*
  * SysML v2 REST/HTTP Pilot Implementation
- * Copyright (C) 2021-2023 Twingineer LLC
+ * Copyright (C) 2021-2025 Twingineer LLC
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU Lesser General Public License as published by
@@ -59,6 +59,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static dao.impl.jpa.JpaDao.paginateQuery;
+import static org.omg.sysml.query.impl.PrimitiveConstraintImpl.extractId;
 
 public class JpaDataDao implements DataDao {
 
@@ -239,7 +240,7 @@ public class JpaDataDao implements DataDao {
                 JsonNode constrainedValueJson;
                 try {
                     constrainedValueJson = primitiveConstraint.getValue() != null ?
-                            Json.mapper().readTree(primitiveConstraint.getValue()) :
+                            Json.mapper().readTree(primitiveConstraint.getValue().get(0)) :
                             null;
                 } catch (IOException e) {
                     throw new IllegalArgumentException(e);
@@ -279,13 +280,7 @@ public class JpaDataDao implements DataDao {
                         } else if (Data.class.isAssignableFrom(property.getPropertyType())) {
                             Object _actualValue = JavaBeanHelper.getBeanPropertyValue(data, property);
                             actualValue = _actualValue != null ? ((Data) _actualValue).getId() : null;
-                            constrainedValue = constrainedValueJson != null ?
-                                    JavaBeanHelper.convert(
-                                            // intentionally `textValue` instead of `asText` to get a null value for
-                                            // improved error reporting
-                                            constrainedValueJson.path("@id").textValue(),
-                                            UUID.class
-                                    ) : null;
+                            constrainedValue = constrainedValueJson != null ? extractId(constrainedValueJson) : null;
                             if (constrainedValue == null) {
                                 throw new IllegalArgumentException();
                             }
@@ -303,11 +298,17 @@ public class JpaDataDao implements DataDao {
                     case LESS_THAN:
                         comparisonResult = comparison < 0;
                         break;
+                    case LESS_THAN_OR_EQUALS:
+                        comparisonResult = comparison <= 0;
+                        break;
                     case EQUALS:
                         comparisonResult = comparison == 0;
                         break;
                     case GREATER_THAN:
                         comparisonResult = comparison > 0;
+                        break;
+                    case GREATER_THAN_OR_EQUALS:
+                        comparisonResult = comparison >= 0;
                         break;
                     default:
                         throw new UnsupportedOperationException("Unsupported primitive constraint operator: " + primitiveConstraint.getOperator().name());
