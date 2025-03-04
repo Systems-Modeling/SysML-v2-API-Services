@@ -1,0 +1,1493 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix oslc_am: <http://open-services.net/ns/am#> .
+@prefix oslc_kerml: <https://www.omg.org/spec/kerml/vocabulary#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+oslc_kerml:AnnotatingElement a rdfs:Class ;
+    rdfs:label "AnnotatingElement" ;
+    rdfs:comment "An AnnotatingElement is an Element that provides additional description of or metadata on some other Element. An AnnotatingElement is either attached to its annotatedElements by Annotation Relationships, or it implicitly annotates its owningNamespace." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Element .
+
+oslc_kerml:Annotation a rdfs:Class ;
+    rdfs:label "Annotation" ;
+    rdfs:comment "An Annotation is a Relationship between an AnnotatingElement and the Element that is annotated by that AnnotatingElement." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Relationship .
+
+oslc_kerml:Association a rdfs:Class ;
+    rdfs:label "Association" ;
+    rdfs:comment "An Association is a Relationship and a Classifier to enable classification of links between things (in the universe). The co-domains (types) of the associationEnd Features are the relatedTypes, as co-domain and participants (linked things) of an Association identify each other." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Classifier,
+        oslc_kerml:Relationship .
+
+oslc_kerml:AssociationStructure a rdfs:Class ;
+    rdfs:label "AssociationStructure" ;
+    rdfs:comment "An AssociationStructure is an Association that is also a Structure, classifying link objects that are both links and objects. As objects, link objects can be created and destroyed, and their non-end Features can change over time. However, the values of the end Features of a link object are fixed and cannot change over its lifetime." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Association,
+        oslc_kerml:Structure .
+
+oslc_kerml:Behavior a rdfs:Class ;
+    rdfs:label "Behavior" ;
+    rdfs:comment "A Behavior coordinates occurrences of other Behaviors, as well as changes in objects. Behaviors can be decomposed into Steps and be characterized by parameters." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Class .
+
+oslc_kerml:BindingConnector a rdfs:Class ;
+    rdfs:label "BindingConnector" ;
+    rdfs:comment "A BindingConnector is a binary Connector that requires its relatedFeatures to identify the same things (have the same values)." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Connector .
+
+oslc_kerml:BooleanExpression a rdfs:Class ;
+    rdfs:label "BooleanExpression" ;
+    rdfs:comment "A BooleanExpression is a Boolean-valued Expression whose type is a Predicate. It represents a logical condition resulting from the evaluation of the Predicate." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Expression .
+
+oslc_kerml:Class a rdfs:Class ;
+    rdfs:label "Class" ;
+    rdfs:comment "A Class is a Classifier of things (in the universe) that can be distinguished without regard to how they are related to other things (via Features). This means multiple things classified by the same Class can be distinguished, even when they are related other things in exactly the same way." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Classifier .
+
+oslc_kerml:Classifier a rdfs:Class ;
+    rdfs:label "Classifier" ;
+    rdfs:comment "A Classifier is a Type that classifies:." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Type .
+
+oslc_kerml:CollectExpression a rdfs:Class ;
+    rdfs:label "CollectExpression" ;
+    rdfs:comment "A CollectExpression is an OperatorExpression whose operator is \"collect\", which resolves to the Function ControlFunctions::collect from the Kernel Functions Library." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:OperatorExpression .
+
+oslc_kerml:Comment a rdfs:Class ;
+    rdfs:label "Comment" ;
+    rdfs:comment "A Comment is an AnnotatingElement whose body in some way describes its annotatedElements." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:AnnotatingElement .
+
+oslc_kerml:Conjugation a rdfs:Class ;
+    rdfs:label "Conjugation" ;
+    rdfs:comment "Conjugation is a Relationship between two types in which the conjugatedType inherits all the Features of the originalType, but with all input and output Features reversed. That is, any Features with a direction in relative to the originalType are considered to have an effective direction of out relative to the conjugatedType and, similarly, Features with direction out in the originalType are considered to have an effective direction of in in the conjugatedType. Features with direction inout, or with no direction, in the originalType, are inherited without change." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Relationship .
+
+oslc_kerml:Connector a rdfs:Class ;
+    rdfs:label "Connector" ;
+    rdfs:comment "A Connector is a usage of Associations, with links restricted according to instances of the Type in which they are used (domain of the Connector). The associations of the Connector restrict what kinds of things might be linked. The Connector further restricts these links to be between values of Features on instances of its domain." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Feature,
+        oslc_kerml:Relationship .
+
+oslc_kerml:ConstructorExpression a rdfs:Class ;
+    rdfs:label "ConstructorExpression" ;
+    rdfs:comment "A ConstructorExpression is an InstantiationExpression whose result specializes its instantiatedType, binding some or all of the features of the instantiatedType to the results of its argument Expressions." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:InstantiationExpression .
+
+oslc_kerml:CrossSubsetting a rdfs:Class ;
+    rdfs:label "CrossSubsetting" ;
+    rdfs:comment "CrossSubsetting is a kind of Subsetting for end Features, as identified by crossingFeature, to subset a chained Feature, identified by crossedFeature. It navigates to instances of the end Feature’s type from instances of other end Feature types on the same owningType (at least two end Features are required for any of them to have a CrossSubsetting)." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Subsetting .
+
+oslc_kerml:DataType a rdfs:Class ;
+    rdfs:label "DataType" ;
+    rdfs:comment "A DataType is a Classifier of things (in the universe) that can only be distinguished by how they are related to other things (via Features). This means multiple things classified by the same DataType." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Classifier .
+
+oslc_kerml:Dependency a rdfs:Class ;
+    rdfs:label "Dependency" ;
+    rdfs:comment "A Dependency is a Relationship that indicates that one or more client Elements require one more supplier Elements for their complete specification. In general, this means that a change to one of the supplier Elements may necessitate a change to, or re-specification of, the client Elements." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Relationship .
+
+oslc_kerml:Differencing a rdfs:Class ;
+    rdfs:label "Differencing" ;
+    rdfs:comment "Differencing is a Relationship that makes its differencingType one of the differencingTypes of its typeDifferenced." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Relationship .
+
+oslc_kerml:Disjoining a rdfs:Class ;
+    rdfs:label "Disjoining" ;
+    rdfs:comment "A Disjoining is a Relationship between Types asserted to have interpretations that are not shared (disjoint) between them, identified as typeDisjoined and disjoiningType. For example, a Classifier for mammals is disjoint from a Classifier for minerals, and a Feature for people's parents is disjoint from a Feature for their children." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Relationship .
+
+oslc_kerml:Documentation a rdfs:Class ;
+    rdfs:label "Documentation" ;
+    rdfs:comment "Documentation is a Comment that specifically documents a documentedElement, which must be its owner." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Comment .
+
+oslc_kerml:Element a rdfs:Class ;
+    rdfs:label "Element" ;
+    rdfs:comment "An Element is a constituent of a model that is uniquely identified relative to all other Elements. It can have Relationships with other Elements. Some of these Relationships might imply ownership of other Elements, which means that if an Element is deleted from a model, then so are all the Elements that it owns." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_am:Resource .
+
+oslc_kerml:ElementFilterMembership a rdfs:Class ;
+    rdfs:label "ElementFilterMembership" ;
+    rdfs:comment "ElementFilterMembership is a Membership between a Namespace and a model-level evaluable Boolean-valued Expression, asserting that imported members of the Namespace should be filtered using the condition Expression. A general Namespace does not define any specific filtering behavior, but such behavior may be defined for various specialized kinds of Namespaces." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:OwningMembership .
+
+oslc_kerml:EndFeatureMembership a rdfs:Class ;
+    rdfs:label "EndFeatureMembership" ;
+    rdfs:comment "EndFeatureMembership is a FeatureMembership that requires its memberFeature be owned and have isEnd = true." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:FeatureMembership .
+
+oslc_kerml:Expression a rdfs:Class ;
+    rdfs:label "Expression" ;
+    rdfs:comment "An Expression is a Step that is typed by a Function. An Expression that also has a Function as its featuringType is a computational step within that Function. An Expression always has a single result parameter, which redefines the result parameter of its defining function. This allows Expressions to be interconnected in tree structures, in which inputs to each Expression in the tree are determined as the results of other Expression in the tree." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Step .
+
+oslc_kerml:Feature a rdfs:Class ;
+    rdfs:label "Feature" ;
+    rdfs:comment """A Feature is a Type that classifies relations between multiple things (in the universe). The domain of the relation is the intersection of the featuringTypes of the Feature. (The domain of a Feature with no featuringTyps is implicitly the most general Type Base::Anything from the Kernel Semantic Library.) The co-domain of the relation is the intersection of the types of the Feature.
+
+.""" ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Type .
+
+oslc_kerml:FeatureChainExpression a rdfs:Class ;
+    rdfs:label "FeatureChainExpression" ;
+    rdfs:comment "A FeatureChainExpression is an OperatorExpression whose operator is \".\", which resolves to the Function ControlFunctions::'.' from the Kernel Functions Library. It evaluates to the result of chaining the result Feature of its single argument Expression with its targetFeature." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:OperatorExpression .
+
+oslc_kerml:FeatureChaining a rdfs:Class ;
+    rdfs:label "FeatureChaining" ;
+    rdfs:comment "FeatureChaining is a Relationship that makes its target Feature one of the chainingFeatures of its owning Feature." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Relationship .
+
+oslc_kerml:FeatureDirectionKind a rdfs:Class ;
+    rdfs:label "FeatureDirectionKind" ;
+    rdfs:comment "FeatureDirectionKind enumerates the possible kinds of direction that a Feature may be given as a member of a Type." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:FeatureInverting a rdfs:Class ;
+    rdfs:label "FeatureInverting" ;
+    rdfs:comment "A FeatureInverting is a Relationship between Features asserting that their interpretations (sequences) are the reverse of each other, identified as featureInverted and invertingFeature. For example, a Feature identifying each person's parents is the inverse of a Feature identifying each person's children. A person identified as a parent of another will identify that other as one of their children." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Relationship .
+
+oslc_kerml:FeatureMembership a rdfs:Class ;
+    rdfs:label "FeatureMembership" ;
+    rdfs:comment "A FeatureMembership is an OwningMembership between an ownedMemberFeature and an owningType. If the ownedMemberFeature has isVariable = false, then the FeatureMembership implies that the owningType is also a featuringType of the ownedMemberFeature. If the ownedMemberFeature has isVariable = true, then the FeatureMembership implies that the ownedMemberFeature is featured by the snapshots of the owningType, which must specialize the Kernel Semantic Library base class Occurrence." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:OwningMembership .
+
+oslc_kerml:FeatureReferenceExpression a rdfs:Class ;
+    rdfs:label "FeatureReferenceExpression" ;
+    rdfs:comment "A FeatureReferenceExpression is an Expression whose result is bound to a referent Feature." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Expression .
+
+oslc_kerml:FeatureTyping a rdfs:Class ;
+    rdfs:label "FeatureTyping" ;
+    rdfs:comment "FeatureTyping is Specialization in which the specific Type is a Feature. This means the set of instances of the (specific) typedFeature is a subset of the set of instances of the (general) type. In the simplest case, the type is a Classifier, whereupon the typedFeature has values that are instances of the Classifier." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Specialization .
+
+oslc_kerml:FeatureValue a rdfs:Class ;
+    rdfs:label "FeatureValue" ;
+    rdfs:comment "A FeatureValue is a Membership that identifies a particular member Expression that provides the value of the Feature that owns the FeatureValue. The value is specified as either a bound value or an initial value, and as either a concrete or default value. A Feature can have at most one FeatureValue." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:OwningMembership .
+
+oslc_kerml:Flow a rdfs:Class ;
+    rdfs:label "Flow" ;
+    rdfs:comment "An Flow is a Step that represents the transfer of values from one Feature to another. Flows can take non-zero time to complete." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Connector,
+        oslc_kerml:Step .
+
+oslc_kerml:FlowEnd a rdfs:Class ;
+    rdfs:label "FlowEnd" ;
+    rdfs:comment "A FlowEnd is a Feature that is one of the connectorEnds giving the source or target of a Flow. For Flows typed by FlowTransfer or its specializations, FlowEnds must have exactly one ownedFeature, which redefines Transfer::source::sourceOutput or Transfer::target::targetInput and redefines the corresponding feature of the relatedElement for its end." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Feature .
+
+oslc_kerml:Function a rdfs:Class ;
+    rdfs:label "Function" ;
+    rdfs:comment "A Function is a Behavior that has an out parameter that is identified as its result. A Function represents the performance of a calculation that produces the values of its result parameter. This calculation may be decomposed into Expressions that are steps of the Function." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Behavior .
+
+oslc_kerml:Import a rdfs:Class ;
+    rdfs:label "Import" ;
+    rdfs:comment "An Import is an Relationship between its importOwningNamespace and either a Membership (for a MembershipImport) or another Namespace (for a NamespaceImport), which determines a set of Memberships that become importedMemberships of the importOwningNamespace. If isImportAll = false (the default), then only public Memberships are considered \"visible\". If isImportAll = true, then all Memberships are considered \"visible\", regardless of their declared visibility. If isRecursive = true, then visible Memberships are also recursively imported from owned sub-Namespaces." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Relationship .
+
+oslc_kerml:IndexExpression a rdfs:Class ;
+    rdfs:label "IndexExpression" ;
+    rdfs:comment "An IndexExpression is an OperatorExpression whose operator is \"#\", which resolves to the Function BasicFunctions::'#' from the Kernel Functions Library." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:OperatorExpression .
+
+oslc_kerml:InstantiationExpression a rdfs:Class ;
+    rdfs:label "InstantiationExpression" ;
+    rdfs:comment "An InstantiationExpression is an Expression that instantiates its instantiatedType, binding some or all of the features of that Type to the results of its arguments." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Expression .
+
+oslc_kerml:Interaction a rdfs:Class ;
+    rdfs:label "Interaction" ;
+    rdfs:comment "An Interaction is a Behavior that is also an Association, providing a context for multiple objects that have behaviors that impact one another." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Association,
+        oslc_kerml:Behavior .
+
+oslc_kerml:Intersecting a rdfs:Class ;
+    rdfs:label "Intersecting" ;
+    rdfs:comment "Intersecting is a Relationship that makes its intersectingType one of the intersectingTypes of its typeIntersected." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Relationship .
+
+oslc_kerml:Invariant a rdfs:Class ;
+    rdfs:label "Invariant" ;
+    rdfs:comment "An Invariant is a BooleanExpression that is asserted to have a specific Boolean result value. If isNegated = false, then the result is asserted to be true. If isNegated = true, then the result is asserted to be false." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:BooleanExpression .
+
+oslc_kerml:InvocationExpression a rdfs:Class ;
+    rdfs:label "InvocationExpression" ;
+    rdfs:comment "An InvocationExpression is an InstantiationExpression whose instantiatedType must be a Behavior or a Feature typed by a single Behavior (such as a Step). Each of the input parameters of the instantiatedType are bound to the result of an argument Expression. If the instantiatedType is a Function or a Feature typed by a Function, then the result of the InvocationExpression is the result of the invoked Function. Otherwise, the result is an instance of the instantiatedType (essentially like a behavioral ConstructorExpression)." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:InstantiationExpression .
+
+oslc_kerml:LibraryPackage a rdfs:Class ;
+    rdfs:label "LibraryPackage" ;
+    rdfs:comment "A LibraryPackage is a Package that is the container for a model library. A LibraryPackage is itself a library Element as are all Elements that are directly or indirectly contained in it." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Package .
+
+oslc_kerml:LiteralBoolean a rdfs:Class ;
+    rdfs:label "LiteralBoolean" ;
+    rdfs:comment "LiteralBoolean is a LiteralExpression that provides a Boolean value as a result. Its result parameter must have type Boolean." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:LiteralExpression .
+
+oslc_kerml:LiteralExpression a rdfs:Class ;
+    rdfs:label "LiteralExpression" ;
+    rdfs:comment "A LiteralExpression is an Expression that provides a basic DataValue as a result." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Expression .
+
+oslc_kerml:LiteralInfinity a rdfs:Class ;
+    rdfs:label "LiteralInfinity" ;
+    rdfs:comment "A LiteralInfinity is a LiteralExpression that provides the positive infinity value (*). It's result must have the type Positive." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:LiteralExpression .
+
+oslc_kerml:LiteralInteger a rdfs:Class ;
+    rdfs:label "LiteralInteger" ;
+    rdfs:comment "A LiteralInteger is a LiteralExpression that provides an Integer value as a result. Its result parameter must have the type Integer." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:LiteralExpression .
+
+oslc_kerml:LiteralRational a rdfs:Class ;
+    rdfs:label "LiteralRational" ;
+    rdfs:comment "A LiteralRational is a LiteralExpression that provides a Rational value as a result. Its result parameter must have the type Rational." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:LiteralExpression .
+
+oslc_kerml:LiteralString a rdfs:Class ;
+    rdfs:label "LiteralString" ;
+    rdfs:comment "A LiteralString is a LiteralExpression that provides a String value as a result. Its result parameter must have the type String." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:LiteralExpression .
+
+oslc_kerml:Membership a rdfs:Class ;
+    rdfs:label "Membership" ;
+    rdfs:comment "A Membership is a Relationship between a Namespace and an Element that indicates the Element is a member of (i.e., is contained in) the Namespace. Any memberNames specify how the memberElement is identified in the Namespace and the visibility specifies whether or not the memberElement is publicly visible from outside the Namespace." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Relationship .
+
+oslc_kerml:MembershipImport a rdfs:Class ;
+    rdfs:label "MembershipImport" ;
+    rdfs:comment "A MembershipImport is an Import that imports its importedMembership into the importOwningNamespace. If isRecursive = true and the memberElement of the importedMembership is a Namespace, then the equivalent of a recursive NamespaceImport is also performed on that Namespace." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Import .
+
+oslc_kerml:Metaclass a rdfs:Class ;
+    rdfs:label "Metaclass" ;
+    rdfs:comment "A Metaclass is a Structure used to type MetadataFeatures." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Structure .
+
+oslc_kerml:MetadataAccessExpression a rdfs:Class ;
+    rdfs:label "MetadataAccessExpression" ;
+    rdfs:comment "A MetadataAccessExpression is an Expression whose result is a sequence of instances of Metaclasses representing all the MetadataFeature annotations of the referencedElement. In addition, the sequence includes an instance of the reflective Metaclass corresponding to the MOF class of the referencedElement, with values for all the abstract syntax properties of the referencedElement." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Expression .
+
+oslc_kerml:MetadataFeature a rdfs:Class ;
+    rdfs:label "MetadataFeature" ;
+    rdfs:comment "A MetadataFeature is a Feature that is an AnnotatingElement used to annotate another Element with metadata. It is typed by a Metaclass. All its ownedFeatures must redefine features of its metaclass and any feature bindings must be model-level evaluable." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:AnnotatingElement,
+        oslc_kerml:Feature .
+
+oslc_kerml:Multiplicity a rdfs:Class ;
+    rdfs:label "Multiplicity" ;
+    rdfs:comment """A Multiplicity is a Feature whose co-domain is a set of natural numbers giving the allowed cardinalities of each typeWithMultiplicity. The cardinality of a Type is defined as follows, depending on whether the Type is a Classifier or Feature.
+.""" ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Feature .
+
+oslc_kerml:MultiplicityRange a rdfs:Class ;
+    rdfs:label "MultiplicityRange" ;
+    rdfs:comment "A MultiplicityRange is a Multiplicity whose value is defined to be the (inclusive) range of natural numbers given by the result of a lowerBound Expression and the result of an upperBound Expression. The result of these Expressions shall be of type Natural. If the result of the upperBound Expression is the unbounded value *, then the specified range includes all natural numbers greater than or equal to the lowerBound value. If no lowerBound Expression, then the default is that the lower bound has the same value as the upper bound, except if the upperBound evaluates to *, in which case the default for the lower bound is 0." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Multiplicity .
+
+oslc_kerml:Namespace a rdfs:Class ;
+    rdfs:label "Namespace" ;
+    rdfs:comment "A Namespace is an Element that contains other Elements, known as its members, via Membership Relationships with those Elements. The members of a Namespace may be owned by the Namespace, aliased in the Namespace, or imported into the Namespace via Import Relationships." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Element .
+
+oslc_kerml:NamespaceImport a rdfs:Class ;
+    rdfs:label "NamespaceImport" ;
+    rdfs:comment "A NamespaceImport is an Import that imports Memberships from its importedNamespace into the importOwningNamespace. If  isRecursive = false, then only the visible Memberships of the importedNamespace are imported. If  isRecursive = true, then, in addition, Memberships are recursively imported from any ownedMembers of the importedNamespace that are Namespaces." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Import .
+
+oslc_kerml:NullExpression a rdfs:Class ;
+    rdfs:label "NullExpression" ;
+    rdfs:comment "A NullExpression is an Expression that results in a null value." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Expression .
+
+oslc_kerml:OperatorExpression a rdfs:Class ;
+    rdfs:label "OperatorExpression" ;
+    rdfs:comment "An OperatorExpression is an InvocationExpression whose function is determined by resolving its operator in the context of one of the standard packages from the Kernel Function Library." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:InvocationExpression .
+
+oslc_kerml:OwningMembership a rdfs:Class ;
+    rdfs:label "OwningMembership" ;
+    rdfs:comment "An OwningMembership is a Membership that owns its memberElement as a ownedRelatedElement. The ownedMemberElement becomes an ownedMember of the membershipOwningNamespace." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Membership .
+
+oslc_kerml:Package a rdfs:Class ;
+    rdfs:label "Package" ;
+    rdfs:comment "A Package is a Namespace used to group Elements, without any instance-level semantics. It may have one or more model-level evaluable filterCondition Expressions used to filter its importedMemberships. Any imported member must meet all of the filterConditions." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Namespace .
+
+oslc_kerml:ParameterMembership a rdfs:Class ;
+    rdfs:label "ParameterMembership" ;
+    rdfs:comment "A ParameterMembership is a FeatureMembership that identifies its memberFeature as a parameter, which is always owned, and must have a direction. A ParameterMembership must be owned by a Behavior, a Step, or the result parameter of a ConstructorExpression." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:FeatureMembership .
+
+oslc_kerml:PayloadFeature a rdfs:Class ;
+    rdfs:label "PayloadFeature" ;
+    rdfs:comment "A PayloadFeature is the ownedFeature of a Flow that identifies the things carried by the kinds of transfers that are instances of the Flow." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Feature .
+
+oslc_kerml:Predicate a rdfs:Class ;
+    rdfs:label "Predicate" ;
+    rdfs:comment "A Predicate is a Function whose result parameter has type Boolean and multiplicity 1..1." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Function .
+
+oslc_kerml:Redefinition a rdfs:Class ;
+    rdfs:label "Redefinition" ;
+    rdfs:comment "Redefinition is a kind of Subsetting that requires the redefinedFeature and the redefiningFeature to have the same values (on each instance of the domain of the redefiningFeature). This means any restrictions on the redefiningFeature, such as type or multiplicity, also apply to the redefinedFeature (on each instance of the domain of the redefiningFeature), and vice versa. The redefinedFeature might have values for instances of the domain of the redefiningFeature, but only as instances of the domain of the redefinedFeature that happen to also be instances of the domain of the redefiningFeature. This is supported by the constraints inherited from Subsetting on the domains of the redefiningFeature and redefinedFeature. However, these constraints are narrowed for Redefinition to require the owningTypes of the redefiningFeature and redefinedFeature to be different and the redefinedFeature to not be inherited into the owningNamespace of the redefiningFeature.This enables the redefiningFeature to have the same name as the redefinedFeature, if desired." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Subsetting .
+
+oslc_kerml:ReferenceSubsetting a rdfs:Class ;
+    rdfs:label "ReferenceSubsetting" ;
+    rdfs:comment "ReferenceSubsetting is a kind of Subsetting in which the referencedFeature is syntactically distinguished from other Features subsetted by the referencingFeature. ReferenceSubsetting has the same semantics as Subsetting, but the referencedFeature may have a special purpose relative to the referencingFeature. For instance, ReferenceSubsetting is used to identify the relatedFeatures of a Connector." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Subsetting .
+
+oslc_kerml:Relationship a rdfs:Class ;
+    rdfs:label "Relationship" ;
+    rdfs:comment "A Relationship is an Element that relates other Element. Some of its relatedElements may be owned, in which case those ownedRelatedElements will be deleted from a model if their owningRelationship is. A Relationship may also be owned by another Element, in which case the ownedRelatedElements of the Relationship are also considered to be transitively owned by the owningRelatedElement of the Relationship." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Element .
+
+oslc_kerml:ResultExpressionMembership a rdfs:Class ;
+    rdfs:label "ResultExpressionMembership" ;
+    rdfs:comment "A ResultExpressionMembership is a FeatureMembership that indicates that the ownedResultExpression provides the result values for the Function or Expression that owns it. The owning Function or Expression must contain a BindingConnector between the result parameter of the ownedResultExpression and the result parameter of the owning Function or Expression." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:FeatureMembership .
+
+oslc_kerml:ReturnParameterMembership a rdfs:Class ;
+    rdfs:label "ReturnParameterMembership" ;
+    rdfs:comment "A ReturnParameterMembership is a ParameterMembership that indicates that the ownedMemberParameter is the result parameter of a Function or Expression. The direction of the ownedMemberParameter must be out." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:ParameterMembership .
+
+oslc_kerml:SelectExpression a rdfs:Class ;
+    rdfs:label "SelectExpression" ;
+    rdfs:comment "A SelectExpression is an OperatorExpression whose operator is \"select\", which resolves to the Function ControlFunctions::select from the Kernel Functions Library." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:OperatorExpression .
+
+oslc_kerml:Specialization a rdfs:Class ;
+    rdfs:label "Specialization" ;
+    rdfs:comment "Specialization is a Relationship between two Types that requires all instances of the specific type to also be instances of the general Type (i.e., the set of instances of the specific Type is a subset of those of the general Type, which might be the same set)." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Relationship .
+
+oslc_kerml:Step a rdfs:Class ;
+    rdfs:label "Step" ;
+    rdfs:comment "A Step is a Feature that is typed by one or more Behaviors. Steps may be used by one Behavior to coordinate the performance of other Behaviors, supporting a steady refinement of behavioral descriptions. Steps can be ordered in time and can be connected using Flows to specify things flowing between their parameters." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Feature .
+
+oslc_kerml:Structure a rdfs:Class ;
+    rdfs:label "Structure" ;
+    rdfs:comment "A Structure is a Class of objects in the modeled universe that are primarily structural in nature. While such an object is not itself behavioral, it may be involved in and acted on by Behaviors, and it may be the performer of some of them." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Class .
+
+oslc_kerml:Subclassification a rdfs:Class ;
+    rdfs:label "Subclassification" ;
+    rdfs:comment "Subclassification is Specialization in which both the specific and general Types are Classifier. This means all instances of the specific Classifier are also instances of the general Classifier." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Specialization .
+
+oslc_kerml:Subsetting a rdfs:Class ;
+    rdfs:label "Subsetting" ;
+    rdfs:comment "Subsetting is Specialization in which the specific and general Types are Features. This means all values of the subsettingFeature (on instances of its domain, i.e., the intersection of its featuringTypes) are values of the subsettedFeature on instances of its domain. To support this the domain of the subsettingFeature must be the same or specialize (at least indirectly) the domain of the subsettedFeature (via Specialization), and the co-domain (intersection of the types) of the subsettingFeature must specialize the co-domain of the subsettedFeature." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Specialization .
+
+oslc_kerml:Succession a rdfs:Class ;
+    rdfs:label "Succession" ;
+    rdfs:comment "A Succession is a binary Connector that requires its relatedFeatures to happen separately in time." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Connector .
+
+oslc_kerml:SuccessionFlow a rdfs:Class ;
+    rdfs:label "SuccessionFlow" ;
+    rdfs:comment "A SuccessionFlow is a Flow that also provides temporal ordering. It classifies Transfers that cannot start until the source Occurrence has completed and that must complete before the target Occurrence can start." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Flow,
+        oslc_kerml:Succession .
+
+oslc_kerml:TextualRepresentation a rdfs:Class ;
+    rdfs:label "TextualRepresentation" ;
+    rdfs:comment "A TextualRepresentation is an AnnotatingElement whose body represents the representedElement in a given language. The representedElement must be the owner of the TextualRepresentation. The named language can be a natural language, in which case the body is an informal representation, or an artificial language, in which case the body is expected to be a formal, machine-parsable representation." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:AnnotatingElement .
+
+oslc_kerml:Type a rdfs:Class ;
+    rdfs:label "Type" ;
+    rdfs:comment "A Type is a Namespace that is the most general kind of Element supporting the semantics of classification. A Type may be a Classifier or a Feature, defining conditions on what is classified by the Type (see also the description of isSufficient)." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Namespace .
+
+oslc_kerml:TypeFeaturing a rdfs:Class ;
+    rdfs:label "TypeFeaturing" ;
+    rdfs:comment "A TypeFeaturing is a Featuring Relationship in which the featureOfType is the source and the featuringType is the target." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Relationship .
+
+oslc_kerml:Unioning a rdfs:Class ;
+    rdfs:label "Unioning" ;
+    rdfs:comment "Unioning is a Relationship that makes its unioningType one of the unioningTypes of its typeUnioned." ;
+    rdfs:isDefinedBy oslc_kerml: ;
+    rdfs:subClassOf oslc_kerml:Relationship .
+
+oslc_kerml:VisibilityKind a rdfs:Class ;
+    rdfs:label "VisibilityKind" ;
+    rdfs:comment "VisibilityKind is an enumeration whose literals specify the visibility of a Membership of an Element in a Namespace outside of that Namespace. Note that \"visibility\" specifically restricts whether an Element in a Namespace may be referenced by name from outside the Namespace and only otherwise restricts access to an Element as provided by specific constraints in the abstract syntax (e.g., preventing the import or inheritance of private Elements)." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:aliasIds a rdf:Property ;
+    rdfs:label "aliasIds" ;
+    rdfs:comment "Element: Various alternative identifiers for this Element. Generally, these will be set by tools." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:annotatedElement a rdf:Property ;
+    rdfs:label "annotatedElement" ;
+    rdfs:comment """AnnotatingElement: The Elements that are annotated by this AnnotatingElement. If annotation is not empty, these are the annotatedElements of the annotations. If annotation is empty, then it is the owningNamespace of the AnnotatingElement.
+Annotation: The Element that is annotated by the annotatingElement of this Annotation.""" ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:annotatingElement a rdf:Property ;
+    rdfs:label "annotatingElement" ;
+    rdfs:comment "Annotation: The AnnotatingElement that annotates the annotatedElement of this Annotation. This is always either the ownedAnnotatingElement or the owningAnnotatingElement." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:annotation a rdf:Property ;
+    rdfs:label "annotation" ;
+    rdfs:comment "AnnotatingElement: The Annotations that relate this AnnotatingElement to its annotatedElements. This includes the owningAnnotatingRelationship (if any) followed by all the ownedAnnotatingRelationshps." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:argument a rdf:Property ;
+    rdfs:label "argument" ;
+    rdfs:comment "InstantiationExpression: The Expressions whose results are bound to features of the instantiatedType. The arguments are ordered consistent with the order of the features, though they may not be one-to-one with all the features." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:association a rdf:Property ;
+    rdfs:label "association" ;
+    rdfs:comment "Connector: The Associations that type the Connector." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:associationEnd a rdf:Property ;
+    rdfs:label "associationEnd" ;
+    rdfs:comment "Association: The features of the Association that identify the things that can be related by it. A concrete Association must have at least two associationEnds. When it has exactly two, the Association is called a binary Association." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:behavior a rdf:Property ;
+    rdfs:label "behavior" ;
+    rdfs:comment "Step: The Behaviors that type this Step." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:body a rdf:Property ;
+    rdfs:label "body" ;
+    rdfs:comment """Comment: The annotation text for the Comment.
+TextualRepresentation: The textual representation of the representedElement in the given language.""" ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:bound a rdf:Property ;
+    rdfs:label "bound" ;
+    rdfs:comment "MultiplicityRange: The owned Expressions of the MultiplicityRange whose results provide its bounds. These must be the first ownedMembers of the MultiplicityRange." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:chainingFeature a rdf:Property ;
+    rdfs:label "chainingFeature" ;
+    rdfs:comment """Feature: The Feature that are chained together to determine the values of this Feature, derived from the chainingFeatures of the ownedFeatureChainings of this Feature, in the same order. The values of a Feature with chainingFeatures are the same as values of the last Feature in the chain, which can be found by starting with the values of the first Feature (for each instance of the domain of the original Feature), then using each of those as domain instances to find the values of the second Feature in chainingFeatures, and so on, to values of the last Feature.
+FeatureChaining: The Feature whose values partly determine values of featureChained, as described in Feature::chainingFeature.""" ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:client a rdf:Property ;
+    rdfs:label "client" ;
+    rdfs:comment "Dependency: The Element or Elements dependent on the supplier Elements." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:condition a rdf:Property ;
+    rdfs:label "condition" ;
+    rdfs:comment "ElementFilterMembership: The model-level evaluable Boolean-valued Expression used to filter the imported members of the membershipOwningNamespace of this ElementFilterMembership." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:conjugatedType a rdf:Property ;
+    rdfs:label "conjugatedType" ;
+    rdfs:comment "Conjugation: The Type that is the result of applying Conjugation to the originalType." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:connectorEnd a rdf:Property ;
+    rdfs:label "connectorEnd" ;
+    rdfs:comment "Connector: The endFeatures of a Connector, which redefine the endFeatures of the associations of the Connector. The connectorEnds determine via ReferenceSubsetting Relationships which Features are related by the Connector." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:crossFeature a rdf:Property ;
+    rdfs:label "crossFeature" ;
+    rdfs:comment """Feature: The second chainingFeature of the crossedFeature of the ownedCrossSubsetting of this Feature, if it has one. Semantically, the values of the crossFeature of an end Feature must include all values of the end Feature obtained when navigating from values of the other end Features of the same owningType.
+.""" ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:crossedFeature a rdf:Property ;
+    rdfs:label "crossedFeature" ;
+    rdfs:comment "CrossSubsetting: The chained Feature that is cross subset by the crossingFeature of this CrossSubsetting." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:crossingFeature a rdf:Property ;
+    rdfs:label "crossingFeature" ;
+    rdfs:comment "CrossSubsetting: The end Feature that owns this CrossSubsetting relationship and is also its subsettingFeature." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:declaredName a rdf:Property ;
+    rdfs:label "declaredName" ;
+    rdfs:comment "Element: The declared name of this Element." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:declaredShortName a rdf:Property ;
+    rdfs:label "declaredShortName" ;
+    rdfs:comment "Element: An optional alternative name for the Element that is intended to be shorter or in some way more succinct than its primary name. It may act as a modeler-specified identifier for the Element, though it is then the responsibility of the modeler to maintain the uniqueness of this identifier within a model or relative to some other context." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:defaultFeaturingType a rdf:Property ;
+    rdfs:label "defaultFeaturingType" ;
+    rdfs:comment "Connector: The innermost Type that is a common direct or indirect featuringType of the relatedFeatures, such that, if it exists and was the featuringType of this Connector, the Connector would satisfy the checkConnectorTypeFeaturing constraint." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:differencingType a rdf:Property ;
+    rdfs:label "differencingType" ;
+    rdfs:comment """Type: The interpretations of a Type with differencingTypes are asserted to be those of the first of those Types, but not including those of the remaining Types. For example, a Classifier might be the difference of a Classifier for people and another for people of a particular nationality, leaving people who are not of that nationality. Similarly, a feature of people might be the difference between a feature for their children and a Classifier for people of a particular sex, identifying their children not of that sex (because the interpretations of the children Feature that identify those of that sex are also interpretations of the Classifier for that sex).
+Differencing: Type that partly determines interpretations of typeDifferenced, as described in Type::differencingType.""" ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:directedFeature a rdf:Property ;
+    rdfs:label "directedFeature" ;
+    rdfs:comment "Type: The features of this Type that have a non-null direction." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:direction a rdf:Property ;
+    rdfs:label "direction" ;
+    rdfs:comment "Feature: Indicates how values of this Feature are determined or used (as specified for the FeatureDirectionKind)." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:disjoiningType a rdf:Property ;
+    rdfs:label "disjoiningType" ;
+    rdfs:comment "Disjoining: Type asserted to be disjoint with the typeDisjoined." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:documentation a rdf:Property ;
+    rdfs:label "documentation" ;
+    rdfs:comment "Element: The Documentation owned by this Element." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:documentedElement a rdf:Property ;
+    rdfs:label "documentedElement" ;
+    rdfs:comment "Documentation: The Element that is documented by this Documentation." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:elementId a rdf:Property ;
+    rdfs:label "elementId" ;
+    rdfs:comment "Element: The globally unique identifier for this Element. This is intended to be set by tooling, and it must not change during the lifetime of the Element." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:endFeature a rdf:Property ;
+    rdfs:label "endFeature" ;
+    rdfs:comment "Type: All features of this Type with isEnd = true." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:endOwningType a rdf:Property ;
+    rdfs:label "endOwningType" ;
+    rdfs:comment "Feature: The Type that is related to this Feature by an EndFeatureMembership in which the Feature is an ownedMemberFeature." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:expression a rdf:Property ;
+    rdfs:label "expression" ;
+    rdfs:comment "Function: The Expressions that are steps in the calculation of the result of this Function." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:feature a rdf:Property ;
+    rdfs:label "feature" ;
+    rdfs:comment "Type: The ownedMemberFeatures of the featureMemberships of this Type." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:featureChained a rdf:Property ;
+    rdfs:label "featureChained" ;
+    rdfs:comment "FeatureChaining: The Feature whose values are partly determined by values of the chainingFeature, as described in Feature::chainingFeature." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:featureInverted a rdf:Property ;
+    rdfs:label "featureInverted" ;
+    rdfs:comment "FeatureInverting: The Feature that is an inverse of the invertingFeature." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:featureMembership a rdf:Property ;
+    rdfs:label "featureMembership" ;
+    rdfs:comment "Type: The FeatureMemberships for features of this Type, which include all ownedFeatureMemberships and those inheritedMemberships that are FeatureMemberships (but does not include any importedMemberships)." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:featureOfType a rdf:Property ;
+    rdfs:label "featureOfType" ;
+    rdfs:comment "TypeFeaturing: The Feature that is featured by the featuringType. It is the source of the TypeFeaturing." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:featureTarget a rdf:Property ;
+    rdfs:label "featureTarget" ;
+    rdfs:comment "Feature: The last of the chainingFeatures of this Feature, if it has any. Otherwise, this Feature itself." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:featureWithValue a rdf:Property ;
+    rdfs:label "featureWithValue" ;
+    rdfs:comment "FeatureValue: The Feature to be provided a value." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:featuringType a rdf:Property ;
+    rdfs:label "featuringType" ;
+    rdfs:comment """Feature: Types that feature this Feature, such that any instance in the domain of the Feature must be classified by all of these Types, including at least all the featuringTypes of its typeFeaturings.  If the Feature is chained, then the featuringTypes of the first Feature in the chain are also featuringTypes of the chained Feature.
+TypeFeaturing: The Type that features the featureOfType. It is the target of the TypeFeaturing.""" ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:filterCondition a rdf:Property ;
+    rdfs:label "filterCondition" ;
+    rdfs:comment "Package: The model-level evaluable Boolean-valued Expression used to filter the members of this Package, which are owned by the Package are via ElementFilterMemberships." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:flowEnd a rdf:Property ;
+    rdfs:label "flowEnd" ;
+    rdfs:comment "Flow: The connectorEnds of this Flow that are FlowEnds." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:function a rdf:Property ;
+    rdfs:label "function" ;
+    rdfs:comment "Expression: The Function that types this Expression." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:general a rdf:Property ;
+    rdfs:label "general" ;
+    rdfs:comment "Specialization: A Type with a superset of all instances of the specific Type, which might be the same set." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:importOwningNamespace a rdf:Property ;
+    rdfs:label "importOwningNamespace" ;
+    rdfs:comment "Import: The Namespace into which Memberships are imported by this Import, which must be the owningRelatedElement of the Import." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:importedElement a rdf:Property ;
+    rdfs:label "importedElement" ;
+    rdfs:comment "Import: The effectively imported Element for this Import. For a MembershipImport, this is the memberElement of the importedMembership. For a NamespaceImport, it is the importedNamespace." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:importedMembership a rdf:Property ;
+    rdfs:label "importedMembership" ;
+    rdfs:comment """Namespace: The Memberships in this Namespace that result from the ownedImports of this Namespace.
+MembershipImport: The Membership to be imported.""" ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:importedNamespace a rdf:Property ;
+    rdfs:label "importedNamespace" ;
+    rdfs:comment "NamespaceImport: The Namespace whose visible Memberships are imported by this NamespaceImport." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:in a oslc_kerml:FeatureDirectionKind ;
+    rdfs:label "in" ;
+    rdfs:comment "Values of the Feature on each instance of its domain are determined externally to that instance and used internally." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:inheritedFeature a rdf:Property ;
+    rdfs:label "inheritedFeature" ;
+    rdfs:comment "Type: All the memberFeatures of the inheritedMemberships of this Type that are FeatureMemberships." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:inheritedMembership a rdf:Property ;
+    rdfs:label "inheritedMembership" ;
+    rdfs:comment "Type: All Memberships inherited by this Type via Specialization or Conjugation. These are included in the derived union for the memberships of the Type." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:inout a oslc_kerml:FeatureDirectionKind ;
+    rdfs:label "inout" ;
+    rdfs:comment "Values of the Feature on each instance are determined either as in or out directions, or both." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:input a rdf:Property ;
+    rdfs:label "input" ;
+    rdfs:comment "Type: All features related to this Type by FeatureMemberships that have direction in or inout." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:instantiatedType a rdf:Property ;
+    rdfs:label "instantiatedType" ;
+    rdfs:comment "InstantiationExpression: The Type that is being instantiated." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:interaction a rdf:Property ;
+    rdfs:label "interaction" ;
+    rdfs:comment "Flow: The Interactions that type this Flow. Interactions are both Associations and Behaviors, which can type Connectors and Steps, respectively." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:intersectingType a rdf:Property ;
+    rdfs:label "intersectingType" ;
+    rdfs:comment """Type: The interpretations of a Type with intersectingTypes are asserted to be those in common among the intersectingTypes, which are the Types derived from the intersectingType of the ownedIntersectings of this Type. For example, a Classifier might be an intersection of Classifiers for people of a particular sex and of a particular nationality. Similarly, a feature for people's children of a particular sex might be the intersection of a Feature for their children and a Classifier for people of that sex (because the interpretations of the children Feature that identify those of that sex are also interpretations of the Classifier for that sex).
+Intersecting: Type that partly determines interpretations of typeIntersected, as described in Type::intersectingType.""" ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:invertingFeature a rdf:Property ;
+    rdfs:label "invertingFeature" ;
+    rdfs:comment "FeatureInverting: The Feature that is an inverse of the invertedFeature." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:isAbstract a rdf:Property ;
+    rdfs:label "isAbstract" ;
+    rdfs:comment "Type: Indicates whether instances of this Type must also be instances of at least one of its specialized Types." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:isComposite a rdf:Property ;
+    rdfs:label "isComposite" ;
+    rdfs:comment "Feature: Whether the Feature is a composite feature of its featuringType. If so, the values of the Feature cannot exist after its featuring instance no longer does and cannot be values of another composite feature that is not on the same featuring instance." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:isConjugated a rdf:Property ;
+    rdfs:label "isConjugated" ;
+    rdfs:comment "Type: Indicates whether this Type has an ownedConjugator." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:isConstant a rdf:Property ;
+    rdfs:label "isConstant" ;
+    rdfs:comment "Feature: If isVariable is true, then whether the value of this Feature nevertheless does not change over all snapshots of its owningType." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:isDefault a rdf:Property ;
+    rdfs:label "isDefault" ;
+    rdfs:comment "FeatureValue: Whether this FeatureValue is a concrete specification of the bound or initial value of the featureWithValue, or just a default value that may be overridden." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:isDerived a rdf:Property ;
+    rdfs:label "isDerived" ;
+    rdfs:comment "Feature: Whether the values of this Feature can always be computed from the values of other Features." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:isEnd a rdf:Property ;
+    rdfs:label "isEnd" ;
+    rdfs:comment "Feature: Whether or not this Feature is an end Feature. An end Feature always has multiplicity 1, mapping each of its domain instances to a single co-domain instance. However, it may have a crossFeature, in which case values of the crossFeature must be the same as those found by navigation across instances of the owningType from values of other end Features to values of this Feature. If the owningType has n end Features, then the multiplicity, ordering, and uniqueness declared for the crossFeature of any one of these end Features constrains the cardinality, ordering, and uniqueness of the collection of values of that Feature reached by navigation when the values of the other n-1 end Features are held fixed." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:isImplied a rdf:Property ;
+    rdfs:label "isImplied" ;
+    rdfs:comment "Relationship: Whether this Relationship was generated by tooling to meet semantic rules, rather than being directly created by a modeler." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:isImpliedIncluded a rdf:Property ;
+    rdfs:label "isImpliedIncluded" ;
+    rdfs:comment "Element: Whether all necessary implied Relationships have been included in the ownedRelationships of this Element. This property may be true, even if there are not actually any ownedRelationships with isImplied = true, meaning that no such Relationships are actually implied for this Element. However, if it is false, then ownedRelationships may not contain any implied Relationships. That is, either all required implied Relationships must be included, or none of them." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:isImportAll a rdf:Property ;
+    rdfs:label "isImportAll" ;
+    rdfs:comment "Import: Whether to import memberships without regard to declared visibility." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:isInitial a rdf:Property ;
+    rdfs:label "isInitial" ;
+    rdfs:comment "FeatureValue: Whether this FeatureValue specifies a bound value or an initial value for the featureWithValue." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:isLibraryElement a rdf:Property ;
+    rdfs:label "isLibraryElement" ;
+    rdfs:comment "Element: Whether this Element is contained in the ownership tree of a library model." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:isModelLevelEvaluable a rdf:Property ;
+    rdfs:label "isModelLevelEvaluable" ;
+    rdfs:comment """Expression: Whether this Expression meets the constraints necessary to be evaluated at model level, that is, using metadata within the model.
+Function: Whether this Function can be used as the function of a model-level evaluable InvocationExpression. Certain Functions from the Kernel Functions Library are considered to have isModelLevelEvaluable = true. For all other Functions it is false.""" ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:isNegated a rdf:Property ;
+    rdfs:label "isNegated" ;
+    rdfs:comment "Invariant: Whether this Invariant is asserted to be false rather than true." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:isOrdered a rdf:Property ;
+    rdfs:label "isOrdered" ;
+    rdfs:comment "Feature: Whether an order exists for the values of this Feature or not." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:isPortion a rdf:Property ;
+    rdfs:label "isPortion" ;
+    rdfs:comment "Feature: Whether the values of this Feature are contained in the space and time of instances of the domain of the Feature and represent the same thing as those instances." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:isRecursive a rdf:Property ;
+    rdfs:label "isRecursive" ;
+    rdfs:comment "Import: Whether to recursively import Memberships from visible, owned sub-Namespaces." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:isStandard a rdf:Property ;
+    rdfs:label "isStandard" ;
+    rdfs:comment "LibraryPackage: Whether this LibraryPackage contains a standard library model. This should only be set to true for LibraryPackages in the standard Kernel Model Libraries or in normative model libraries for a language built on KerML." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:isSufficient a rdf:Property ;
+    rdfs:label "isSufficient" ;
+    rdfs:comment "Type: Whether all things that meet the classification conditions of this Type must be classified by the Type." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:isUnique a rdf:Property ;
+    rdfs:label "isUnique" ;
+    rdfs:comment "Feature: Whether or not values for this Feature must have no duplicates or not." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:isVariable a rdf:Property ;
+    rdfs:label "isVariable" ;
+    rdfs:comment "Feature: Whether the value of this Feature might vary over time. That is, whether the Feature may have a different value for each snapshot of an owningType that is an Occurrence." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:language a rdf:Property ;
+    rdfs:label "language" ;
+    rdfs:comment "TextualRepresentation: The natural or artifical language in which the body text is written." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:locale a rdf:Property ;
+    rdfs:label "locale" ;
+    rdfs:comment "Comment: Identification of the language of the body text and, optionally, the region and/or encoding. The format shall be a POSIX locale conformant to ISO/IEC 15897, with the format [language[_territory][.codeset][@modifier]]." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:lowerBound a rdf:Property ;
+    rdfs:label "lowerBound" ;
+    rdfs:comment "MultiplicityRange: The Expression whose result provides the lower bound of the MultiplicityRange. If no lowerBound Expression is given, then the lower bound shall have the same value as the upper bound, unless the upper bound is unbounded (*), in which case the lower bound shall be 0." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:member a rdf:Property ;
+    rdfs:label "member" ;
+    rdfs:comment "Namespace: The set of all member Elements of this Namespace, which are the memberElements of all memberships of the Namespace." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:memberElement a rdf:Property ;
+    rdfs:label "memberElement" ;
+    rdfs:comment "Membership: The Element that becomes a member of the membershipOwningNamespace due to this Membership." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:memberElementId a rdf:Property ;
+    rdfs:label "memberElementId" ;
+    rdfs:comment "Membership: The elementId of the memberElement." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:memberName a rdf:Property ;
+    rdfs:label "memberName" ;
+    rdfs:comment "Membership: The name of the memberElement relative to the membershipOwningNamespace." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:memberShortName a rdf:Property ;
+    rdfs:label "memberShortName" ;
+    rdfs:comment "Membership: The short name of the memberElement relative to the membershipOwningNamespace." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:membership a rdf:Property ;
+    rdfs:label "membership" ;
+    rdfs:comment "Namespace: All Memberships in this Namespace, including (at least) the union of ownedMemberships and importedMemberships." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:membershipOwningNamespace a rdf:Property ;
+    rdfs:label "membershipOwningNamespace" ;
+    rdfs:comment "Membership: The Namespace of which the memberElement becomes a member due to this Membership." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:metaclass a rdf:Property ;
+    rdfs:label "metaclass" ;
+    rdfs:comment "MetadataFeature: The type of this MetadataFeature, which must be a Metaclass." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:multiplicity a rdf:Property ;
+    rdfs:label "multiplicity" ;
+    rdfs:comment "Type: An ownedMember of this Type that is a Multiplicity, which constraints the cardinality of the Type. If there is no such ownedMember, then the cardinality of this Type is constrained by all the Multiplicity constraints applicable to any direct supertypes." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:name a rdf:Property ;
+    rdfs:label "name" ;
+    rdfs:comment "Element: The name to be used for this Element during name resolution within its owningNamespace. This is derived using the effectiveName() operation. By default, it is the same as the declaredName, but this is overridden for certain kinds of Elements to compute a name even when the declaredName is null." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:operator a rdf:Property ;
+    rdfs:label "operator" ;
+    rdfs:comment "OperatorExpression: An operator symbol that names a corresponding Function from one of the standard packages from the Kernel Function Library ." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:originalType a rdf:Property ;
+    rdfs:label "originalType" ;
+    rdfs:comment "Conjugation: The Type to be conjugated." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:out a oslc_kerml:FeatureDirectionKind ;
+    rdfs:label "out" ;
+    rdfs:comment "Values of the Feature on each instance of its domain are determined internally to that instance and used externally." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:output a rdf:Property ;
+    rdfs:label "output" ;
+    rdfs:comment "Type: All features related to this Type by FeatureMemberships that have direction out or inout." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedAnnotatingElement a rdf:Property ;
+    rdfs:label "ownedAnnotatingElement" ;
+    rdfs:comment "Annotation: The annotatingElement of this Annotation, when it is an ownedRelatedElement." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedAnnotatingRelationship a rdf:Property ;
+    rdfs:label "ownedAnnotatingRelationship" ;
+    rdfs:comment "AnnotatingElement: The ownedRelationships of this AnnotatingElement that are Annotations, for which this AnnotatingElement is the annotatingElement." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedAnnotation a rdf:Property ;
+    rdfs:label "ownedAnnotation" ;
+    rdfs:comment "Element: The ownedRelationships of this Element that are Annotations, for which this Element is the annotatedElement." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedConjugator a rdf:Property ;
+    rdfs:label "ownedConjugator" ;
+    rdfs:comment "Type: A Conjugation owned by this Type for which the Type is the originalType." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedCrossSubsetting a rdf:Property ;
+    rdfs:label "ownedCrossSubsetting" ;
+    rdfs:comment "Feature: The one ownedSubsetting of this Feature, if any, that is a CrossSubsetting}, for which the Feature is the crossingFeature." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedDifferencing a rdf:Property ;
+    rdfs:label "ownedDifferencing" ;
+    rdfs:comment "Type: The ownedRelationships of this Type that are Differencings, having this Type as their typeDifferenced." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedDisjoining a rdf:Property ;
+    rdfs:label "ownedDisjoining" ;
+    rdfs:comment "Type: The ownedRelationships of this Type that are Disjoinings, for which the Type is the typeDisjoined Type." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedElement a rdf:Property ;
+    rdfs:label "ownedElement" ;
+    rdfs:comment "Element: The Elements owned by this Element, derived as the ownedRelatedElements of the ownedRelationships of this Element." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedEndFeature a rdf:Property ;
+    rdfs:label "ownedEndFeature" ;
+    rdfs:comment "Type: All endFeatures of this Type that are ownedFeatures." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedFeature a rdf:Property ;
+    rdfs:label "ownedFeature" ;
+    rdfs:comment "Type: The ownedMemberFeatures of the ownedFeatureMemberships of this Type." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedFeatureChaining a rdf:Property ;
+    rdfs:label "ownedFeatureChaining" ;
+    rdfs:comment "Feature: The ownedRelationships of this Feature that are FeatureChainings, for which the Feature will be the featureChained." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedFeatureInverting a rdf:Property ;
+    rdfs:label "ownedFeatureInverting" ;
+    rdfs:comment "Feature: The ownedRelationships of this Feature that are FeatureInvertings and for which the Feature is the featureInverted." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedFeatureMembership a rdf:Property ;
+    rdfs:label "ownedFeatureMembership" ;
+    rdfs:comment "Type: The ownedMemberships of this Type that are FeatureMemberships, for which the Type is the owningType. Each such FeatureMembership identifies an ownedFeature of the Type." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedImport a rdf:Property ;
+    rdfs:label "ownedImport" ;
+    rdfs:comment "Namespace: The ownedRelationships of this Namespace that are Imports, for which the Namespace is the importOwningNamespace." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedIntersecting a rdf:Property ;
+    rdfs:label "ownedIntersecting" ;
+    rdfs:comment "Type: The ownedRelationships of this Type that are Intersectings, have the Type as their typeIntersected." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedMember a rdf:Property ;
+    rdfs:label "ownedMember" ;
+    rdfs:comment "Namespace: The owned members of this Namespace, which are the ownedMemberElements of the ownedMemberships of the Namespace." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedMemberElement a rdf:Property ;
+    rdfs:label "ownedMemberElement" ;
+    rdfs:comment "OwningMembership: The Element that becomes an ownedMember of the membershipOwningNamespace due to this OwningMembership." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedMemberElementId a rdf:Property ;
+    rdfs:label "ownedMemberElementId" ;
+    rdfs:comment "OwningMembership: The elementId of the ownedMemberElement." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedMemberFeature a rdf:Property ;
+    rdfs:label "ownedMemberFeature" ;
+    rdfs:comment "FeatureMembership: The Feature that this FeatureMembership relates to its owningType, making it an ownedFeature of the owningType." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedMemberName a rdf:Property ;
+    rdfs:label "ownedMemberName" ;
+    rdfs:comment "OwningMembership: The name of the ownedMemberElement." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedMemberParameter a rdf:Property ;
+    rdfs:label "ownedMemberParameter" ;
+    rdfs:comment "ParameterMembership: The Feature that is identified as a parameter by this ParameterMembership." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedMemberShortName a rdf:Property ;
+    rdfs:label "ownedMemberShortName" ;
+    rdfs:comment "OwningMembership: The shortName of the ownedMemberElement." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedMembership a rdf:Property ;
+    rdfs:label "ownedMembership" ;
+    rdfs:comment "Namespace: The ownedRelationships of this Namespace that are Memberships, for which the Namespace is the membershipOwningNamespace." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedRedefinition a rdf:Property ;
+    rdfs:label "ownedRedefinition" ;
+    rdfs:comment "Feature: The ownedSubsettings of this Feature that are Redefinitions, for which the Feature is the redefiningFeature." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedReferenceSubsetting a rdf:Property ;
+    rdfs:label "ownedReferenceSubsetting" ;
+    rdfs:comment "Feature: The one ownedSubsetting of this Feature, if any, that is a ReferenceSubsetting, for which the Feature is the referencingFeature." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedRelatedElement a rdf:Property ;
+    rdfs:label "ownedRelatedElement" ;
+    rdfs:comment "Relationship: The relatedElements of this Relationship that are owned by the Relationship." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedRelationship a rdf:Property ;
+    rdfs:label "ownedRelationship" ;
+    rdfs:comment "Element: The Relationships for which this Element is the owningRelatedElement." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedResultExpression a rdf:Property ;
+    rdfs:label "ownedResultExpression" ;
+    rdfs:comment "ResultExpressionMembership: The Expression that provides the result for the owner of the ResultExpressionMembership." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedSpecialization a rdf:Property ;
+    rdfs:label "ownedSpecialization" ;
+    rdfs:comment "Type: The ownedRelationships of this Type that are Specializations, for which the Type is the specific Type." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedSubclassification a rdf:Property ;
+    rdfs:label "ownedSubclassification" ;
+    rdfs:comment "Classifier: The ownedSpecializations of this Classifier that are Subclassifications, for which this Classifier is the subclassifier." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedSubsetting a rdf:Property ;
+    rdfs:label "ownedSubsetting" ;
+    rdfs:comment "Feature: The ownedSpecializations of this Feature that are Subsettings, for which the Feature is the subsettingFeature." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedTypeFeaturing a rdf:Property ;
+    rdfs:label "ownedTypeFeaturing" ;
+    rdfs:comment "Feature: The ownedRelationships of this Feature that are TypeFeaturings and for which the Feature is the featureOfType." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedTyping a rdf:Property ;
+    rdfs:label "ownedTyping" ;
+    rdfs:comment "Feature: The ownedSpecializations of this Feature that are FeatureTypings, for which the Feature is the typedFeature." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:ownedUnioning a rdf:Property ;
+    rdfs:label "ownedUnioning" ;
+    rdfs:comment "Type: The ownedRelationships of this Type that are Unionings, having the Type as their typeUnioned." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:owner a rdf:Property ;
+    rdfs:label "owner" ;
+    rdfs:comment "Element: The owner of this Element, derived as the owningRelatedElement of the owningRelationship of this Element, if any." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:owningAnnotatedElement a rdf:Property ;
+    rdfs:label "owningAnnotatedElement" ;
+    rdfs:comment "Annotation: The annotatedElement of this Annotation, when it is also the owningRelatedElement." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:owningAnnotatingElement a rdf:Property ;
+    rdfs:label "owningAnnotatingElement" ;
+    rdfs:comment "Annotation: The annotatingElement of this Annotation, when it is the owningRelatedElement." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:owningAnnotatingRelationship a rdf:Property ;
+    rdfs:label "owningAnnotatingRelationship" ;
+    rdfs:comment "AnnotatingElement: The owningRelationship of this AnnotatingRelationship, if it is an Annotation." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:owningClassifier a rdf:Property ;
+    rdfs:label "owningClassifier" ;
+    rdfs:comment "Subclassification: The Classifier that owns this Subclassification relationship, which must also be its subclassifier." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:owningFeature a rdf:Property ;
+    rdfs:label "owningFeature" ;
+    rdfs:comment """Subsetting: A subsettingFeature that is also the owningRelatedElement of this Subsetting.
+FeatureTyping: A typedFeature that is also the owningRelatedElement of this FeatureTyping.
+FeatureInverting: A featureInverted that is also the owningRelatedElement of this FeatureInverting.""" ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:owningFeatureMembership a rdf:Property ;
+    rdfs:label "owningFeatureMembership" ;
+    rdfs:comment "Feature: The FeatureMembership that owns this Feature as an ownedMemberFeature, determining its owningType." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:owningFeatureOfType a rdf:Property ;
+    rdfs:label "owningFeatureOfType" ;
+    rdfs:comment "TypeFeaturing: A featureOfType that is also the owningRelatedElement of this TypeFeaturing." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:owningMembership a rdf:Property ;
+    rdfs:label "owningMembership" ;
+    rdfs:comment "Element: The owningRelationship of this Element, if that Relationship is a Membership." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:owningNamespace a rdf:Property ;
+    rdfs:label "owningNamespace" ;
+    rdfs:comment "Element: The Namespace that owns this Element, which is the membershipOwningNamespace of the owningMembership of this Element, if any." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:owningRelatedElement a rdf:Property ;
+    rdfs:label "owningRelatedElement" ;
+    rdfs:comment "Relationship: The relatedElement of this Relationship that owns the Relationship, if any." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:owningRelationship a rdf:Property ;
+    rdfs:label "owningRelationship" ;
+    rdfs:comment "Element: The Relationship for which this Element is an ownedRelatedElement, if any." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:owningType a rdf:Property ;
+    rdfs:label "owningType" ;
+    rdfs:comment """Specialization: The Type that is the specific Type of this Specialization and owns it as its owningRelatedElement.
+FeatureMembership: The Type that owns this FeatureMembership.
+Feature: The Type that is the owningType of the owningFeatureMembership of this Feature.
+Conjugation: The conjugatedType of this Conjugation that is also its owningRelatedElement.
+Disjoining: A typeDisjoined that is also an owningRelatedElement.""" ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:parameter a rdf:Property ;
+    rdfs:label "parameter" ;
+    rdfs:comment """Behavior: The parameters of this Behavior, which are defined as its directedFeatures, whose values are passed into and/or out of a performance of the Behavior.
+Step: The parameters of this Step, which are defined as its directedFeatures, whose values are passed into and/or out of a performance of the Step.""" ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:payloadFeature a rdf:Property ;
+    rdfs:label "payloadFeature" ;
+    rdfs:comment "Flow: The ownedFeature of the Flow that is a PayloadFeature (if any)." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:payloadType a rdf:Property ;
+    rdfs:label "payloadType" ;
+    rdfs:comment "Flow: The type of values transferred, which is the type of the payloadFeature of the Flow." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:predicate a rdf:Property ;
+    rdfs:label "predicate" ;
+    rdfs:comment "BooleanExpression: The Predicate that types the Expression." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:private a oslc_kerml:VisibilityKind ;
+    rdfs:label "private" ;
+    rdfs:comment "Indicates a Membership is not visible outside its owning Namespace." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:protected a oslc_kerml:VisibilityKind ;
+    rdfs:label "protected" ;
+    rdfs:comment "An intermediate level of visibility between public and private. By default, it is equivalent to private for the purposes of normal access to and import of Elements from a Namespace. However, other Relationships may be specified to include Memberships with protected visibility in the list of memberships for a Namespace (e.g., Specialization)." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:public a oslc_kerml:VisibilityKind ;
+    rdfs:label "public" ;
+    rdfs:comment "Indicates that a Membership is publicly visible outside its owning Namespace." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:qualifiedName a rdf:Property ;
+    rdfs:label "qualifiedName" ;
+    rdfs:comment "Element: The full ownership-qualified name of this Element, represented in a form that is valid according to the KerML textual concrete syntax for qualified names (including use of unrestricted name notation and escaped characters, as necessary). The qualifiedName is null if this Element has no owningNamespace or if there is not a complete ownership chain of named Namespaces from a root Namespace to this Element. If the owningNamespace has other Elements with the same name as this one, then the qualifiedName is null for all such Elements other than the first." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:redefinedFeature a rdf:Property ;
+    rdfs:label "redefinedFeature" ;
+    rdfs:comment "Redefinition: The Feature that is redefined by the redefiningFeature of this Redefinition." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:redefiningFeature a rdf:Property ;
+    rdfs:label "redefiningFeature" ;
+    rdfs:comment "Redefinition: The Feature that is redefining the redefinedFeature of this Redefinition." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:referencedElement a rdf:Property ;
+    rdfs:label "referencedElement" ;
+    rdfs:comment "MetadataAccessExpression: The Element whose metadata is being accessed." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:referencedFeature a rdf:Property ;
+    rdfs:label "referencedFeature" ;
+    rdfs:comment "ReferenceSubsetting: The Feature that is referenced by the referencingFeature of this ReferenceSubsetting." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:referencingFeature a rdf:Property ;
+    rdfs:label "referencingFeature" ;
+    rdfs:comment "ReferenceSubsetting: The Feature that owns this ReferenceSubsetting relationship, which is also its subsettingFeature." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:referent a rdf:Property ;
+    rdfs:label "referent" ;
+    rdfs:comment "FeatureReferenceExpression: The Feature that is referenced by this FeatureReferenceExpression, which is its first non-parameter member." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:relatedElement a rdf:Property ;
+    rdfs:label "relatedElement" ;
+    rdfs:comment "Relationship: The Elements that are related by this Relationship, derived as the union of the source and target Elements of the Relationship." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:relatedFeature a rdf:Property ;
+    rdfs:label "relatedFeature" ;
+    rdfs:comment "Connector: The Features that are related by this Connector considered as a Relationship and that restrict the links it identifies, given by the referenced Features of the connectorEnds of the Connector." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:relatedType a rdf:Property ;
+    rdfs:label "relatedType" ;
+    rdfs:comment "Association: The types of the associationEnds of the Association, which are the relatedElements of the Association considered as a Relationship." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:representedElement a rdf:Property ;
+    rdfs:label "representedElement" ;
+    rdfs:comment "TextualRepresentation: The Element that is represented by this TextualRepresentation." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:result a rdf:Property ;
+    rdfs:label "result" ;
+    rdfs:comment """Expression: result.
+Function: The object or value that is the result of evaluating the Function.""" ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:shortName a rdf:Property ;
+    rdfs:label "shortName" ;
+    rdfs:comment "Element: The short name to be used for this Element during name resolution within its owningNamespace. This is derived using the effectiveShortName() operation. By default, it is the same as the declaredShortName, but this is overridden for certain kinds of Elements to compute a shortName even when the declaredName is null." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:source a rdf:Property ;
+    rdfs:label "source" ;
+    rdfs:comment "Relationship: The relatedElements from which this Relationship is considered to be directed." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:sourceFeature a rdf:Property ;
+    rdfs:label "sourceFeature" ;
+    rdfs:comment "Connector: The source relatedFeature for this Connector. It is the first relatedFeature." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:sourceOutputFeature a rdf:Property ;
+    rdfs:label "sourceOutputFeature" ;
+    rdfs:comment "Flow: The Feature that provides the items carried by the Flow. It must be a feature of the source of the Flow." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:sourceType a rdf:Property ;
+    rdfs:label "sourceType" ;
+    rdfs:comment "Association: The source relatedType for this Association. It is the first relatedType of the Association." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:specific a rdf:Property ;
+    rdfs:label "specific" ;
+    rdfs:comment "Specialization: A Type with a subset of all instances of the general Type, which might be the same set." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:step a rdf:Property ;
+    rdfs:label "step" ;
+    rdfs:comment "Behavior: The Steps that make up this Behavior." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:subclassifier a rdf:Property ;
+    rdfs:label "subclassifier" ;
+    rdfs:comment "Subclassification: The more specific Classifier in this Subclassification." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:subsettedFeature a rdf:Property ;
+    rdfs:label "subsettedFeature" ;
+    rdfs:comment "Subsetting: The Feature that is subsetted by the subsettingFeature of this Subsetting." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:subsettingFeature a rdf:Property ;
+    rdfs:label "subsettingFeature" ;
+    rdfs:comment "Subsetting: The Feature that is a subset of the subsettedFeature of this Subsetting." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:superclassifier a rdf:Property ;
+    rdfs:label "superclassifier" ;
+    rdfs:comment "Subclassification: The more general Classifier in this Subclassification." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:supplier a rdf:Property ;
+    rdfs:label "supplier" ;
+    rdfs:comment "Dependency: The Element or Elements on which the client Elements depend in some respect." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:target a rdf:Property ;
+    rdfs:label "target" ;
+    rdfs:comment "Relationship: The relatedElements to which this Relationship is considered to be directed." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:targetFeature a rdf:Property ;
+    rdfs:label "targetFeature" ;
+    rdfs:comment """Connector: The target relatedFeatures for this Connector. This includes all the relatedFeatures other than the sourceFeature.
+FeatureChainExpression: The Feature that is accessed by this FeatureChainExpression, which is its first non-parameter member.""" ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:targetInputFeature a rdf:Property ;
+    rdfs:label "targetInputFeature" ;
+    rdfs:comment "Flow: The Feature that receives the values carried by the Flow. It must be a feature of the target of the Flow." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:targetType a rdf:Property ;
+    rdfs:label "targetType" ;
+    rdfs:comment "Association: The target relatedTypes for this Association. This includes all the relatedTypes other than the sourceType." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:textualRepresentation a rdf:Property ;
+    rdfs:label "textualRepresentation" ;
+    rdfs:comment "Element: The TextualRepresentations that annotate this Element." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:type a rdf:Property ;
+    rdfs:label "type" ;
+    rdfs:comment """Feature: Types that restrict the values of this Feature, such that the values must be instances of all the types. The types of a Feature are derived from its typings and the types of its subsettings. If the Feature is chained, then the types of the last Feature in the chain are also types of the chained Feature.
+FeatureTyping: The Type that is being applied by this FeatureTyping.""" ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:typeDifferenced a rdf:Property ;
+    rdfs:label "typeDifferenced" ;
+    rdfs:comment "Differencing: Type with interpretations partly determined by differencingType, as described in Type::differencingType." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:typeDisjoined a rdf:Property ;
+    rdfs:label "typeDisjoined" ;
+    rdfs:comment "Disjoining: Type asserted to be disjoint with the disjoiningType." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:typeIntersected a rdf:Property ;
+    rdfs:label "typeIntersected" ;
+    rdfs:comment "Intersecting: Type with interpretations partly determined by intersectingType, as described in Type::intersectingType." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:typeUnioned a rdf:Property ;
+    rdfs:label "typeUnioned" ;
+    rdfs:comment "Unioning: Type with interpretations partly determined by unioningType, as described in Type::unioningType." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:typedFeature a rdf:Property ;
+    rdfs:label "typedFeature" ;
+    rdfs:comment "FeatureTyping: The Feature that has a type determined by this FeatureTyping." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:unioningType a rdf:Property ;
+    rdfs:label "unioningType" ;
+    rdfs:comment """Type: The interpretations of a Type with unioningTypes are asserted to be the same as those of all the unioningTypes together, which are the Types derived from the unioningType of the ownedUnionings of this Type. For example, a Classifier for people might be the union of Classifiers for all the sexes. Similarly, a feature for people's children might be the union of features dividing them in the same ways as people in general.
+Unioning: Type that partly determines interpretations of typeUnioned, as described in Type::unioningType.""" ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:upperBound a rdf:Property ;
+    rdfs:label "upperBound" ;
+    rdfs:comment "MultiplicityRange: The Expression whose result is the upper bound of the MultiplicityRange." ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:value a rdf:Property ;
+    rdfs:label "value" ;
+    rdfs:comment """FeatureValue: The Expression that provides the value as a result.
+LiteralBoolean: The Boolean value that is the result of evaluating this LiteralBoolean.
+LiteralInteger: The Integer value that is the result of evaluating this LiteralInteger.
+LiteralString: The String value that is the result of evaluating this Expression.
+LiteralRational: The value whose rational approximation is the result of evaluating this LiteralRational.""" ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml:visibility a rdf:Property ;
+    rdfs:label "visibility" ;
+    rdfs:comment """Membership: Whether or not the Membership of the memberElement in the membershipOwningNamespace is publicly visible outside that Namespace.
+Import: The visibility level of the imported members from this Import relative to the importOwningNamespace. The default is private.""" ;
+    rdfs:isDefinedBy oslc_kerml: .
+
+oslc_kerml: a owl:Ontology ;
+    rdfs:label "OSLC KerML Vocabulary" ;
+    dcterms:description "All vocabulary URIs defined in the OSLC KerML namespace."^^rdf:XMLLiteral ;
+    dcterms:hasVersion "V2" ;
+    dcterms:isPartOf <https://www.omg.org/spec/KerML> ;
+    dcterms:issued "2025-02-01"^^xsd:date ;
+    dcterms:license <> ;
+    dcterms:publisher <https://www.omg.org> ;
+    dcterms:source <https://github.com/Systems-Modeling/SysML-v2-API-Services/tree/master/public/oslc/KerML-vocab.ttl> ;
+    dcterms:title "OSLC KerML Vocabulary" ;
+    vann:preferredNamespacePrefix "oslc_kerml" .
+
