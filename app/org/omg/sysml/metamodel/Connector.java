@@ -10,6 +10,8 @@ public interface Connector extends Feature, Relationship, SysMLType {
 
     List<? extends Feature> getConnectorEnd();
 
+    Type getDefaultFeaturingType();
+
     List<? extends Feature> getRelatedFeature();
 
     Feature getSourceFeature();

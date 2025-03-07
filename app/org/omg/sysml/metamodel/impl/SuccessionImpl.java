@@ -179,6 +179,24 @@ public class SuccessionImpl extends SysMLTypeImpl implements Succession {
         this.declaredShortName = declaredShortName;
     }
 
+    private Type defaultFeaturingType;
+
+    @Override
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "defaultFeaturingType_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "defaultFeaturingType_id", table = "Succession")
+    public Type getDefaultFeaturingType() {
+        return defaultFeaturingType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
+    public void setDefaultFeaturingType(Type defaultFeaturingType) {
+        this.defaultFeaturingType = defaultFeaturingType;
+    }
+
     private List<Type> differencingType;
 
     @Override
@@ -255,27 +273,6 @@ public class SuccessionImpl extends SysMLTypeImpl implements Succession {
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = DocumentationImpl.class)
     public void setDocumentation(List<Documentation> documentation) {
         this.documentation = documentation;
-    }
-
-    private Collection<Step> effectStep;
-
-    @Override
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "StepMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Succession_effectStep", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public Collection<Step> getEffectStep() {
-        if (effectStep == null) {
-            effectStep = new ArrayList<>();
-        }
-        return effectStep;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = StepImpl.class)
-    public void setEffectStep(Collection<Step> effectStep) {
-        this.effectStep = effectStep;
     }
 
     private java.util.UUID elementId;
@@ -410,27 +407,6 @@ public class SuccessionImpl extends SysMLTypeImpl implements Succession {
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TypeImpl.class)
     public void setFeaturingType(List<Type> featuringType) {
         this.featuringType = featuringType;
-    }
-
-    private Collection<Expression> guardExpression;
-
-    @Override
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "ExpressionMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Succession_guardExpression", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public Collection<Expression> getGuardExpression() {
-        if (guardExpression == null) {
-            guardExpression = new ArrayList<>();
-        }
-        return guardExpression;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = ExpressionImpl.class)
-    public void setGuardExpression(Collection<Expression> guardExpression) {
-        this.guardExpression = guardExpression;
     }
 
     private List<Membership> importedMembership;
@@ -581,6 +557,20 @@ public class SuccessionImpl extends SysMLTypeImpl implements Succession {
         this.isConjugated = isConjugated;
     }
 
+    private Boolean isConstant;
+
+    @Override
+    @JsonGetter
+    @javax.persistence.Column(name = "isConstant", table = "Succession")
+    public Boolean getIsConstant() {
+        return isConstant;
+    }
+
+    @JsonSetter
+    public void setIsConstant(Boolean isConstant) {
+        this.isConstant = isConstant;
+    }
+
     private Boolean isDerived;
 
     @Override
@@ -680,20 +670,6 @@ public class SuccessionImpl extends SysMLTypeImpl implements Succession {
         this.isPortion = isPortion;
     }
 
-    private Boolean isReadOnly;
-
-    @Override
-    @JsonGetter
-    @javax.persistence.Column(name = "isReadOnly", table = "Succession")
-    public Boolean getIsReadOnly() {
-        return isReadOnly;
-    }
-
-    @JsonSetter
-    public void setIsReadOnly(Boolean isReadOnly) {
-        this.isReadOnly = isReadOnly;
-    }
-
     private Boolean isSufficient;
 
     @Override
@@ -720,6 +696,20 @@ public class SuccessionImpl extends SysMLTypeImpl implements Succession {
     @JsonSetter
     public void setIsUnique(Boolean isUnique) {
         this.isUnique = isUnique;
+    }
+
+    private Boolean isVariable;
+
+    @Override
+    @JsonGetter
+    @javax.persistence.Column(name = "isVariable", table = "Succession")
+    public Boolean getIsVariable() {
+        return isVariable;
+    }
+
+    @JsonSetter
+    public void setIsVariable(Boolean isVariable) {
+        this.isVariable = isVariable;
     }
 
     private List<Element> member;
@@ -1611,45 +1601,6 @@ public class SuccessionImpl extends SysMLTypeImpl implements Succession {
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TextualRepresentationImpl.class)
     public void setTextualRepresentation(List<TextualRepresentation> textualRepresentation) {
         this.textualRepresentation = textualRepresentation;
-    }
-
-    private Step transitionStep;
-
-    @Override
-    @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "StepMetaDef", metaColumn = @javax.persistence.Column(name = "transitionStep_type"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "transitionStep_id", table = "Succession")
-    public Step getTransitionStep() {
-        return transitionStep;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = StepImpl.class)
-    public void setTransitionStep(Step transitionStep) {
-        this.transitionStep = transitionStep;
-    }
-
-    private Collection<Step> triggerStep;
-
-    @Override
-    @JsonGetter
-    @JsonSerialize(contentUsing = DataSerializer.class)
-    // @javax.persistence.Transient
-    @ManyToAny(metaDef = "StepMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
-    @JoinTable(name = "Succession_triggerStep", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public Collection<Step> getTriggerStep() {
-        if (triggerStep == null) {
-            triggerStep = new ArrayList<>();
-        }
-        return triggerStep;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = StepImpl.class)
-    public void setTriggerStep(Collection<Step> triggerStep) {
-        this.triggerStep = triggerStep;
     }
 
     private List<Type> type;

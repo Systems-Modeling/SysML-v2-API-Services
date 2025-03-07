@@ -63,6 +63,7 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isEnd;
 	public static volatile ListAttribute<OperatorExpressionImpl, Type> featuringType;
 	public static volatile ListAttribute<OperatorExpressionImpl, Feature> input;
+	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isConstant;
 	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<OperatorExpressionImpl, String> name;
 	public static volatile SingularAttribute<OperatorExpressionImpl, String> shortName;
@@ -73,7 +74,6 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isImpliedIncluded;
 	public static volatile ListAttribute<OperatorExpressionImpl, FeatureChaining> ownedFeatureChaining;
-	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isReadOnly;
 	public static volatile ListAttribute<OperatorExpressionImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<OperatorExpressionImpl, Feature> feature;
 	public static volatile ListAttribute<OperatorExpressionImpl, Membership> inheritedMembership;
@@ -97,6 +97,7 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.lifecycle.im
 	public static volatile ListAttribute<OperatorExpressionImpl, Unioning> ownedUnioning;
 	public static volatile ListAttribute<OperatorExpressionImpl, Type> unioningType;
 	public static volatile ListAttribute<OperatorExpressionImpl, Specialization> ownedSpecialization;
+	public static volatile SingularAttribute<OperatorExpressionImpl, Boolean> isVariable;
 	public static volatile ListAttribute<OperatorExpressionImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<OperatorExpressionImpl, FeatureInverting> ownedFeatureInverting;
 
@@ -128,6 +129,7 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.lifecycle.im
 	public static final String IS_END = "isEnd";
 	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
+	public static final String IS_CONSTANT = "isConstant";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NAME = "name";
 	public static final String SHORT_NAME = "shortName";
@@ -138,7 +140,6 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.lifecycle.im
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
-	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
@@ -162,6 +163,7 @@ public abstract class OperatorExpressionImpl_ extends org.omg.sysml.lifecycle.im
 	public static final String OWNED_UNIONING = "ownedUnioning";
 	public static final String UNIONING_TYPE = "unioningType";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
+	public static final String IS_VARIABLE = "isVariable";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 

@@ -60,6 +60,7 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isEnd;
 	public static volatile ListAttribute<LiteralBooleanImpl, Type> featuringType;
 	public static volatile ListAttribute<LiteralBooleanImpl, Feature> input;
+	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isConstant;
 	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<LiteralBooleanImpl, String> name;
 	public static volatile SingularAttribute<LiteralBooleanImpl, String> shortName;
@@ -70,7 +71,6 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isImpliedIncluded;
 	public static volatile ListAttribute<LiteralBooleanImpl, FeatureChaining> ownedFeatureChaining;
-	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isReadOnly;
 	public static volatile ListAttribute<LiteralBooleanImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<LiteralBooleanImpl, Feature> feature;
 	public static volatile ListAttribute<LiteralBooleanImpl, Membership> inheritedMembership;
@@ -95,6 +95,7 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<LiteralBooleanImpl, Unioning> ownedUnioning;
 	public static volatile ListAttribute<LiteralBooleanImpl, Type> unioningType;
 	public static volatile ListAttribute<LiteralBooleanImpl, Specialization> ownedSpecialization;
+	public static volatile SingularAttribute<LiteralBooleanImpl, Boolean> isVariable;
 	public static volatile ListAttribute<LiteralBooleanImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<LiteralBooleanImpl, FeatureInverting> ownedFeatureInverting;
 
@@ -124,6 +125,7 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String IS_END = "isEnd";
 	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
+	public static final String IS_CONSTANT = "isConstant";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NAME = "name";
 	public static final String SHORT_NAME = "shortName";
@@ -134,7 +136,6 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
-	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
@@ -159,6 +160,7 @@ public abstract class LiteralBooleanImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String OWNED_UNIONING = "ownedUnioning";
 	public static final String UNIONING_TYPE = "unioningType";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
+	public static final String IS_VARIABLE = "isVariable";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 

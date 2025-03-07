@@ -24,7 +24,7 @@ import org.omg.sysml.metamodel.EnumerationUsage;
 import org.omg.sysml.metamodel.Expression;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
-import org.omg.sysml.metamodel.FlowConnectionUsage;
+import org.omg.sysml.metamodel.FlowUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
@@ -90,7 +90,7 @@ public abstract class CaseDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<CaseDefinitionImpl, AllocationUsage> ownedAllocation;
 	public static volatile ListAttribute<CaseDefinitionImpl, InterfaceUsage> ownedInterface;
 	public static volatile ListAttribute<CaseDefinitionImpl, Feature> input;
-	public static volatile CollectionAttribute<CaseDefinitionImpl, FlowConnectionUsage> ownedFlow;
+	public static volatile CollectionAttribute<CaseDefinitionImpl, FlowUsage> ownedFlow;
 	public static volatile ListAttribute<CaseDefinitionImpl, ActionUsage> ownedAction;
 	public static volatile ListAttribute<CaseDefinitionImpl, CaseUsage> ownedCase;
 	public static volatile ListAttribute<CaseDefinitionImpl, PartUsage> actorParameter;

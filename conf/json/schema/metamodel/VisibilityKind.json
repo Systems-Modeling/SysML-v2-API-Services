@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://www.omg.org/spec/SysML/20240201/VisibilityKind",
+  "$id": "https://www.omg.org/spec/SysML/20250201/VisibilityKind",
   "title": "VisibilityKind",
   "type": "string",
   "enum": [

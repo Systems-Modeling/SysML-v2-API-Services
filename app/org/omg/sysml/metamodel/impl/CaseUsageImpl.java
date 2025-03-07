@@ -674,6 +674,20 @@ public class CaseUsageImpl extends SysMLTypeImpl implements CaseUsage {
         this.isConjugated = isConjugated;
     }
 
+    private Boolean isConstant;
+
+    @Override
+    @JsonGetter
+    @javax.persistence.Column(name = "isConstant", table = "CaseUsage")
+    public Boolean getIsConstant() {
+        return isConstant;
+    }
+
+    @JsonSetter
+    public void setIsConstant(Boolean isConstant) {
+        this.isConstant = isConstant;
+    }
+
     private Boolean isDerived;
 
     @Override
@@ -788,20 +802,6 @@ public class CaseUsageImpl extends SysMLTypeImpl implements CaseUsage {
         this.isPortion = isPortion;
     }
 
-    private Boolean isReadOnly;
-
-    @Override
-    @JsonGetter
-    @javax.persistence.Column(name = "isReadOnly", table = "CaseUsage")
-    public Boolean getIsReadOnly() {
-        return isReadOnly;
-    }
-
-    @JsonSetter
-    public void setIsReadOnly(Boolean isReadOnly) {
-        this.isReadOnly = isReadOnly;
-    }
-
     private Boolean isReference;
 
     @Override
@@ -845,6 +845,20 @@ public class CaseUsageImpl extends SysMLTypeImpl implements CaseUsage {
         this.isUnique = isUnique;
     }
 
+    private Boolean isVariable;
+
+    @Override
+    @JsonGetter
+    @javax.persistence.Column(name = "isVariable", table = "CaseUsage")
+    public Boolean getIsVariable() {
+        return isVariable;
+    }
+
+    @JsonSetter
+    public void setIsVariable(Boolean isVariable) {
+        this.isVariable = isVariable;
+    }
+
     private Boolean isVariation;
 
     @Override
@@ -857,6 +871,21 @@ public class CaseUsageImpl extends SysMLTypeImpl implements CaseUsage {
     @JsonSetter
     public void setIsVariation(Boolean isVariation) {
         this.isVariation = isVariation;
+    }
+
+    private Boolean mayTimeVary;
+
+    @Override
+    @JsonGetter
+    // @javax.persistence.Transient
+    @javax.persistence.Column(name = "mayTimeVary", table = "CaseUsage")
+    public Boolean getMayTimeVary() {
+        return mayTimeVary;
+    }
+
+    @JsonSetter
+    public void setMayTimeVary(Boolean mayTimeVary) {
+        this.mayTimeVary = mayTimeVary;
     }
 
     private List<Element> member;
@@ -1146,15 +1175,15 @@ public class CaseUsageImpl extends SysMLTypeImpl implements CaseUsage {
         this.nestedEnumeration = nestedEnumeration;
     }
 
-    private Collection<FlowConnectionUsage> nestedFlow;
+    private Collection<FlowUsage> nestedFlow;
 
     @Override
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FlowConnectionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FlowUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "CaseUsage_nestedFlow", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public Collection<FlowConnectionUsage> getNestedFlow() {
+    public Collection<FlowUsage> getNestedFlow() {
         if (nestedFlow == null) {
             nestedFlow = new ArrayList<>();
         }
@@ -1162,8 +1191,8 @@ public class CaseUsageImpl extends SysMLTypeImpl implements CaseUsage {
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FlowConnectionUsageImpl.class)
-    public void setNestedFlow(Collection<FlowConnectionUsage> nestedFlow) {
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FlowUsageImpl.class)
+    public void setNestedFlow(Collection<FlowUsage> nestedFlow) {
         this.nestedFlow = nestedFlow;
     }
 

@@ -179,6 +179,24 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
         this.declaredShortName = declaredShortName;
     }
 
+    private Type defaultFeaturingType;
+
+    @Override
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "defaultFeaturingType_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "defaultFeaturingType_id", table = "Connector")
+    public Type getDefaultFeaturingType() {
+        return defaultFeaturingType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
+    public void setDefaultFeaturingType(Type defaultFeaturingType) {
+        this.defaultFeaturingType = defaultFeaturingType;
+    }
+
     private List<Type> differencingType;
 
     @Override
@@ -539,6 +557,20 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
         this.isConjugated = isConjugated;
     }
 
+    private Boolean isConstant;
+
+    @Override
+    @JsonGetter
+    @javax.persistence.Column(name = "isConstant", table = "Connector")
+    public Boolean getIsConstant() {
+        return isConstant;
+    }
+
+    @JsonSetter
+    public void setIsConstant(Boolean isConstant) {
+        this.isConstant = isConstant;
+    }
+
     private Boolean isDerived;
 
     @Override
@@ -638,20 +670,6 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
         this.isPortion = isPortion;
     }
 
-    private Boolean isReadOnly;
-
-    @Override
-    @JsonGetter
-    @javax.persistence.Column(name = "isReadOnly", table = "Connector")
-    public Boolean getIsReadOnly() {
-        return isReadOnly;
-    }
-
-    @JsonSetter
-    public void setIsReadOnly(Boolean isReadOnly) {
-        this.isReadOnly = isReadOnly;
-    }
-
     private Boolean isSufficient;
 
     @Override
@@ -678,6 +696,20 @@ public class ConnectorImpl extends SysMLTypeImpl implements Connector {
     @JsonSetter
     public void setIsUnique(Boolean isUnique) {
         this.isUnique = isUnique;
+    }
+
+    private Boolean isVariable;
+
+    @Override
+    @JsonGetter
+    @javax.persistence.Column(name = "isVariable", table = "Connector")
+    public Boolean getIsVariable() {
+        return isVariable;
+    }
+
+    @JsonSetter
+    public void setIsVariable(Boolean isVariable) {
+        this.isVariable = isVariable;
     }
 
     private List<Element> member;

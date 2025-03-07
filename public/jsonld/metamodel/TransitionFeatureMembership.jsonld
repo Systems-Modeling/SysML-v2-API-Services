@@ -9,7 +9,6 @@
         "declaredShortName": {"@type": "xsd:string"},
         "documentation": {"@type": "@id"},
         "elementId": {"@type": "dcterms:identifier"},
-        "feature": {"@type": "@id"},
         "isImplied": {"@type": "xsd:boolean"},
         "isImpliedIncluded": {"@type": "xsd:boolean"},
         "isLibraryElement": {"@type": "xsd:boolean"},
@@ -42,7 +41,6 @@
         "target": {"@type": "@id"},
         "textualRepresentation": {"@type": "@id"},
         "transitionFeature": {"@type": "@id"},
-        "type": {"@type": "@id"},
         "visibility": {"@type": "@vocab"}
     }
 }
