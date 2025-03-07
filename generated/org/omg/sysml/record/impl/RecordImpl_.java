@@ -12,10 +12,12 @@ public abstract class RecordImpl_ {
 
 	public static volatile SingularAttribute<RecordImpl, String> name;
 	public static volatile SetAttribute<RecordImpl, String> alias;
+	public static volatile SingularAttribute<RecordImpl, String> description;
 	public static volatile SingularAttribute<RecordImpl, UUID> id;
 
 	public static final String NAME = "name";
 	public static final String ALIAS = "alias";
+	public static final String DESCRIPTION = "description";
 	public static final String ID = "id";
 
 }

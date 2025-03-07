@@ -125,6 +125,16 @@
             }
           ]
         },
+        "description": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "head": {
           "oneOf": [
             {
@@ -154,6 +164,7 @@
         "alias",
         "created",
         "deleted",
+        "description",
         "head",
         "name",
         "owningProject",
@@ -175,6 +186,16 @@
           "items": {
             "type": "string"
           }
+        },
+        "description": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "head": {
           "oneOf": [
@@ -231,6 +252,16 @@
             }
           ]
         },
+        "description": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "name": {
           "type": "string"
         },
@@ -253,6 +284,7 @@
         "alias",
         "created",
         "deleted",
+        "description",
         "name",
         "owningProject",
         "referencedCommit",
@@ -274,6 +306,16 @@
           "items": {
             "type": "string"
           }
+        },
+        "description": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "name": {
           "type": "string"
@@ -422,6 +464,16 @@
             "type": "string"
           }
         },
+        "description": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "identity": {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20230201/DataIdentity"
         },
@@ -450,6 +502,7 @@
         "@id",
         "@type",
         "alias",
+        "description",
         "identity",
         "name",
         "payload"
@@ -470,6 +523,16 @@
           "items": {
             "type": "string"
           }
+        },
+        "description": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "identity": {
           "$ref": "https://www.omg.org/spec/SystemsModelingAPI/20230201/DataIdentityRequest"
@@ -555,6 +618,16 @@
             "type": "string"
           }
         },
+        "description": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "name": {
           "oneOf": [
             {
@@ -570,6 +643,7 @@
         "@id",
         "@type",
         "alias",
+        "description",
         "name"
       ],
       "additionalProperties": false
@@ -592,6 +666,16 @@
           "items": {
             "type": "string"
           }
+        },
+        "description": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "name": {
           "oneOf": [
@@ -869,6 +953,16 @@
             "type": "string"
           }
         },
+        "description": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "name": {
           "type": "string"
         },
@@ -897,6 +991,7 @@
         "@id",
         "@type",
         "alias",
+        "description",
         "name",
         "owningProject",
         "select",
@@ -918,6 +1013,16 @@
           "items": {
             "type": "string"
           }
+        },
+        "description": {
+          "oneOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "name": {
           "type": "string"
