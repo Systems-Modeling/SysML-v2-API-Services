@@ -23,7 +23,7 @@ import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.EnumerationUsage;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
-import org.omg.sysml.metamodel.FlowConnectionUsage;
+import org.omg.sysml.metamodel.FlowUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
@@ -86,7 +86,7 @@ public abstract class DefinitionImpl_ extends org.omg.sysml.lifecycle.impl.DataI
 	public static volatile ListAttribute<DefinitionImpl, AllocationUsage> ownedAllocation;
 	public static volatile ListAttribute<DefinitionImpl, InterfaceUsage> ownedInterface;
 	public static volatile ListAttribute<DefinitionImpl, Feature> input;
-	public static volatile CollectionAttribute<DefinitionImpl, FlowConnectionUsage> ownedFlow;
+	public static volatile CollectionAttribute<DefinitionImpl, FlowUsage> ownedFlow;
 	public static volatile ListAttribute<DefinitionImpl, ActionUsage> ownedAction;
 	public static volatile ListAttribute<DefinitionImpl, CaseUsage> ownedCase;
 	public static volatile ListAttribute<DefinitionImpl, CalculationUsage> ownedCalculation;

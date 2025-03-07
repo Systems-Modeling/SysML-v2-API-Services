@@ -28,7 +28,7 @@ import org.omg.sysml.metamodel.FeatureDirectionKind;
 import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
-import org.omg.sysml.metamodel.FlowConnectionUsage;
+import org.omg.sysml.metamodel.FlowUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
@@ -103,6 +103,8 @@ public abstract class UsageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ 
 	public static volatile ListAttribute<UsageImpl, ItemUsage> nestedItem;
 	public static volatile ListAttribute<UsageImpl, Type> featuringType;
 	public static volatile ListAttribute<UsageImpl, Feature> input;
+	public static volatile SingularAttribute<UsageImpl, Boolean> isConstant;
+	public static volatile SingularAttribute<UsageImpl, Boolean> mayTimeVary;
 	public static volatile ListAttribute<UsageImpl, CalculationUsage> nestedCalculation;
 	public static volatile SingularAttribute<UsageImpl, Boolean> isComposite;
 	public static volatile ListAttribute<UsageImpl, ViewUsage> nestedView;
@@ -111,7 +113,7 @@ public abstract class UsageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ 
 	public static volatile ListAttribute<UsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<UsageImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<UsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<UsageImpl, FlowConnectionUsage> nestedFlow;
+	public static volatile CollectionAttribute<UsageImpl, FlowUsage> nestedFlow;
 	public static volatile ListAttribute<UsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<UsageImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<UsageImpl, AllocationUsage> nestedAllocation;
@@ -120,7 +122,6 @@ public abstract class UsageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ 
 	public static volatile SingularAttribute<UsageImpl, Boolean> isImpliedIncluded;
 	public static volatile ListAttribute<UsageImpl, ReferenceUsage> nestedReference;
 	public static volatile ListAttribute<UsageImpl, FeatureChaining> ownedFeatureChaining;
-	public static volatile SingularAttribute<UsageImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<UsageImpl, Boolean> isVariation;
 	public static volatile ListAttribute<UsageImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<UsageImpl, Feature> feature;
@@ -152,6 +153,7 @@ public abstract class UsageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ 
 	public static volatile ListAttribute<UsageImpl, Type> unioningType;
 	public static volatile ListAttribute<UsageImpl, InterfaceUsage> nestedInterface;
 	public static volatile ListAttribute<UsageImpl, Specialization> ownedSpecialization;
+	public static volatile SingularAttribute<UsageImpl, Boolean> isVariable;
 	public static volatile ListAttribute<UsageImpl, Intersecting> ownedIntersecting;
 	public static volatile ListAttribute<UsageImpl, ViewpointUsage> nestedViewpoint;
 	public static volatile CollectionAttribute<UsageImpl, FeatureInverting> ownedFeatureInverting;
@@ -197,6 +199,8 @@ public abstract class UsageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ 
 	public static final String NESTED_ITEM = "nestedItem";
 	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
+	public static final String IS_CONSTANT = "isConstant";
+	public static final String MAY_TIME_VARY = "mayTimeVary";
 	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NESTED_VIEW = "nestedView";
@@ -214,7 +218,6 @@ public abstract class UsageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ 
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String NESTED_REFERENCE = "nestedReference";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
-	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String IS_VARIATION = "isVariation";
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
@@ -246,6 +249,7 @@ public abstract class UsageImpl_ extends org.omg.sysml.lifecycle.impl.DataImpl_ 
 	public static final String UNIONING_TYPE = "unioningType";
 	public static final String NESTED_INTERFACE = "nestedInterface";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
+	public static final String IS_VARIABLE = "isVariable";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";

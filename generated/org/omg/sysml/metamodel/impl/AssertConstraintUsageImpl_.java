@@ -30,7 +30,7 @@ import org.omg.sysml.metamodel.FeatureDirectionKind;
 import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
-import org.omg.sysml.metamodel.FlowConnectionUsage;
+import org.omg.sysml.metamodel.FlowUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
@@ -86,6 +86,7 @@ public abstract class AssertConstraintUsageImpl_ extends org.omg.sysml.lifecycle
 	public static volatile ListAttribute<AssertConstraintUsageImpl, AnalysisCaseUsage> nestedAnalysisCase;
 	public static volatile ListAttribute<AssertConstraintUsageImpl, Feature> directedFeature;
 	public static volatile ListAttribute<AssertConstraintUsageImpl, Feature> input;
+	public static volatile SingularAttribute<AssertConstraintUsageImpl, Boolean> isConstant;
 	public static volatile ListAttribute<AssertConstraintUsageImpl, CalculationUsage> nestedCalculation;
 	public static volatile ListAttribute<AssertConstraintUsageImpl, ViewUsage> nestedView;
 	public static volatile SingularAttribute<AssertConstraintUsageImpl, String> shortName;
@@ -94,7 +95,6 @@ public abstract class AssertConstraintUsageImpl_ extends org.omg.sysml.lifecycle
 	public static volatile ListAttribute<AssertConstraintUsageImpl, AllocationUsage> nestedAllocation;
 	public static volatile SingularAttribute<AssertConstraintUsageImpl, Boolean> isPortion;
 	public static volatile ListAttribute<AssertConstraintUsageImpl, ReferenceUsage> nestedReference;
-	public static volatile SingularAttribute<AssertConstraintUsageImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<AssertConstraintUsageImpl, Boolean> isVariation;
 	public static volatile ListAttribute<AssertConstraintUsageImpl, Feature> feature;
 	public static volatile ListAttribute<AssertConstraintUsageImpl, Element> member;
@@ -138,10 +138,11 @@ public abstract class AssertConstraintUsageImpl_ extends org.omg.sysml.lifecycle
 	public static volatile SingularAttribute<AssertConstraintUsageImpl, Boolean> isEnd;
 	public static volatile ListAttribute<AssertConstraintUsageImpl, ItemUsage> nestedItem;
 	public static volatile ListAttribute<AssertConstraintUsageImpl, Type> featuringType;
+	public static volatile SingularAttribute<AssertConstraintUsageImpl, Boolean> mayTimeVary;
 	public static volatile SingularAttribute<AssertConstraintUsageImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<AssertConstraintUsageImpl, String> name;
 	public static volatile ListAttribute<AssertConstraintUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<AssertConstraintUsageImpl, FlowConnectionUsage> nestedFlow;
+	public static volatile CollectionAttribute<AssertConstraintUsageImpl, FlowUsage> nestedFlow;
 	public static volatile ListAttribute<AssertConstraintUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<AssertConstraintUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile SingularAttribute<AssertConstraintUsageImpl, Boolean> isIndividual;
@@ -164,6 +165,7 @@ public abstract class AssertConstraintUsageImpl_ extends org.omg.sysml.lifecycle
 	public static volatile ListAttribute<AssertConstraintUsageImpl, Type> differencingType;
 	public static volatile CollectionAttribute<AssertConstraintUsageImpl, VariantMembership> variantMembership;
 	public static volatile ListAttribute<AssertConstraintUsageImpl, Unioning> ownedUnioning;
+	public static volatile SingularAttribute<AssertConstraintUsageImpl, Boolean> isVariable;
 	public static volatile ListAttribute<AssertConstraintUsageImpl, Intersecting> ownedIntersecting;
 
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
@@ -187,6 +189,7 @@ public abstract class AssertConstraintUsageImpl_ extends org.omg.sysml.lifecycle
 	public static final String NESTED_ANALYSIS_CASE = "nestedAnalysisCase";
 	public static final String DIRECTED_FEATURE = "directedFeature";
 	public static final String INPUT = "input";
+	public static final String IS_CONSTANT = "isConstant";
 	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String NESTED_VIEW = "nestedView";
 	public static final String SHORT_NAME = "shortName";
@@ -195,7 +198,6 @@ public abstract class AssertConstraintUsageImpl_ extends org.omg.sysml.lifecycle
 	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String IS_PORTION = "isPortion";
 	public static final String NESTED_REFERENCE = "nestedReference";
-	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String MEMBER = "member";
@@ -239,6 +241,7 @@ public abstract class AssertConstraintUsageImpl_ extends org.omg.sysml.lifecycle
 	public static final String IS_END = "isEnd";
 	public static final String NESTED_ITEM = "nestedItem";
 	public static final String FEATURING_TYPE = "featuringType";
+	public static final String MAY_TIME_VARY = "mayTimeVary";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
@@ -265,6 +268,7 @@ public abstract class AssertConstraintUsageImpl_ extends org.omg.sysml.lifecycle
 	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String OWNED_UNIONING = "ownedUnioning";
+	public static final String IS_VARIABLE = "isVariable";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 
 }

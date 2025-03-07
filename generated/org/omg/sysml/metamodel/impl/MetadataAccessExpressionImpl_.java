@@ -60,6 +60,7 @@ public abstract class MetadataAccessExpressionImpl_ extends org.omg.sysml.lifecy
 	public static volatile SingularAttribute<MetadataAccessExpressionImpl, Boolean> isEnd;
 	public static volatile ListAttribute<MetadataAccessExpressionImpl, Type> featuringType;
 	public static volatile ListAttribute<MetadataAccessExpressionImpl, Feature> input;
+	public static volatile SingularAttribute<MetadataAccessExpressionImpl, Boolean> isConstant;
 	public static volatile SingularAttribute<MetadataAccessExpressionImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<MetadataAccessExpressionImpl, String> name;
 	public static volatile SingularAttribute<MetadataAccessExpressionImpl, String> shortName;
@@ -70,7 +71,6 @@ public abstract class MetadataAccessExpressionImpl_ extends org.omg.sysml.lifecy
 	public static volatile SingularAttribute<MetadataAccessExpressionImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<MetadataAccessExpressionImpl, Boolean> isImpliedIncluded;
 	public static volatile ListAttribute<MetadataAccessExpressionImpl, FeatureChaining> ownedFeatureChaining;
-	public static volatile SingularAttribute<MetadataAccessExpressionImpl, Boolean> isReadOnly;
 	public static volatile ListAttribute<MetadataAccessExpressionImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<MetadataAccessExpressionImpl, Feature> feature;
 	public static volatile ListAttribute<MetadataAccessExpressionImpl, Membership> inheritedMembership;
@@ -94,6 +94,7 @@ public abstract class MetadataAccessExpressionImpl_ extends org.omg.sysml.lifecy
 	public static volatile ListAttribute<MetadataAccessExpressionImpl, Unioning> ownedUnioning;
 	public static volatile ListAttribute<MetadataAccessExpressionImpl, Type> unioningType;
 	public static volatile ListAttribute<MetadataAccessExpressionImpl, Specialization> ownedSpecialization;
+	public static volatile SingularAttribute<MetadataAccessExpressionImpl, Boolean> isVariable;
 	public static volatile ListAttribute<MetadataAccessExpressionImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<MetadataAccessExpressionImpl, FeatureInverting> ownedFeatureInverting;
 
@@ -123,6 +124,7 @@ public abstract class MetadataAccessExpressionImpl_ extends org.omg.sysml.lifecy
 	public static final String IS_END = "isEnd";
 	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
+	public static final String IS_CONSTANT = "isConstant";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NAME = "name";
 	public static final String SHORT_NAME = "shortName";
@@ -133,7 +135,6 @@ public abstract class MetadataAccessExpressionImpl_ extends org.omg.sysml.lifecy
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
-	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
@@ -157,6 +158,7 @@ public abstract class MetadataAccessExpressionImpl_ extends org.omg.sysml.lifecy
 	public static final String OWNED_UNIONING = "ownedUnioning";
 	public static final String UNIONING_TYPE = "unioningType";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
+	public static final String IS_VARIABLE = "isVariable";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 

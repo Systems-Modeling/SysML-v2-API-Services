@@ -14,6 +14,8 @@ public interface Usage extends Feature, SysMLType {
 
     Boolean getIsVariation();
 
+    Boolean getMayTimeVary();
+
     List<? extends ActionUsage> getNestedAction();
 
     List<? extends AllocationUsage> getNestedAllocation();
@@ -34,7 +36,7 @@ public interface Usage extends Feature, SysMLType {
 
     List<? extends EnumerationUsage> getNestedEnumeration();
 
-    Collection<? extends FlowConnectionUsage> getNestedFlow();
+    Collection<? extends FlowUsage> getNestedFlow();
 
     List<? extends InterfaceUsage> getNestedInterface();
 

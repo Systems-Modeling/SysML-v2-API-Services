@@ -536,6 +536,20 @@ public class MetadataAccessExpressionImpl extends SysMLTypeImpl implements Metad
         this.isConjugated = isConjugated;
     }
 
+    private Boolean isConstant;
+
+    @Override
+    @JsonGetter
+    @javax.persistence.Column(name = "isConstant", table = "MetadataAccessExpression")
+    public Boolean getIsConstant() {
+        return isConstant;
+    }
+
+    @JsonSetter
+    public void setIsConstant(Boolean isConstant) {
+        this.isConstant = isConstant;
+    }
+
     private Boolean isDerived;
 
     @Override
@@ -636,20 +650,6 @@ public class MetadataAccessExpressionImpl extends SysMLTypeImpl implements Metad
         this.isPortion = isPortion;
     }
 
-    private Boolean isReadOnly;
-
-    @Override
-    @JsonGetter
-    @javax.persistence.Column(name = "isReadOnly", table = "MetadataAccessExpression")
-    public Boolean getIsReadOnly() {
-        return isReadOnly;
-    }
-
-    @JsonSetter
-    public void setIsReadOnly(Boolean isReadOnly) {
-        this.isReadOnly = isReadOnly;
-    }
-
     private Boolean isSufficient;
 
     @Override
@@ -676,6 +676,20 @@ public class MetadataAccessExpressionImpl extends SysMLTypeImpl implements Metad
     @JsonSetter
     public void setIsUnique(Boolean isUnique) {
         this.isUnique = isUnique;
+    }
+
+    private Boolean isVariable;
+
+    @Override
+    @JsonGetter
+    @javax.persistence.Column(name = "isVariable", table = "MetadataAccessExpression")
+    public Boolean getIsVariable() {
+        return isVariable;
+    }
+
+    @JsonSetter
+    public void setIsVariable(Boolean isVariable) {
+        this.isVariable = isVariable;
     }
 
     private List<Element> member;
@@ -1399,6 +1413,7 @@ public class MetadataAccessExpressionImpl extends SysMLTypeImpl implements Metad
     @Override
     @JsonGetter
     @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
     @Any(metaDef = "ElementMetaDef", metaColumn = @javax.persistence.Column(name = "referencedElement_type"), fetch = FetchType.LAZY)
     @JoinColumn(name = "referencedElement_id", table = "MetadataAccessExpression")
     public Element getReferencedElement() {

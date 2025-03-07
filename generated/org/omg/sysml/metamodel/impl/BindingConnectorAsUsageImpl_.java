@@ -29,7 +29,7 @@ import org.omg.sysml.metamodel.FeatureDirectionKind;
 import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
-import org.omg.sysml.metamodel.FlowConnectionUsage;
+import org.omg.sysml.metamodel.FlowUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
@@ -85,6 +85,7 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, AnalysisCaseUsage> nestedAnalysisCase;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Feature> directedFeature;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Feature> input;
+	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, Boolean> isConstant;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, CalculationUsage> nestedCalculation;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Element> relatedElement;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, ViewUsage> nestedView;
@@ -95,7 +96,6 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Association> association;
 	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, Boolean> isPortion;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, ReferenceUsage> nestedReference;
-	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, Boolean> isVariation;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Feature> feature;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Element> member;
@@ -137,11 +137,12 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, Boolean> isEnd;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, ItemUsage> nestedItem;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Type> featuringType;
+	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, Boolean> mayTimeVary;
 	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, String> name;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Feature> connectorEnd;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<BindingConnectorAsUsageImpl, FlowConnectionUsage> nestedFlow;
+	public static volatile CollectionAttribute<BindingConnectorAsUsageImpl, FlowUsage> nestedFlow;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<BindingConnectorAsUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Membership> membership;
@@ -164,6 +165,7 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Type> differencingType;
 	public static volatile CollectionAttribute<BindingConnectorAsUsageImpl, VariantMembership> variantMembership;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Unioning> ownedUnioning;
+	public static volatile SingularAttribute<BindingConnectorAsUsageImpl, Boolean> isVariable;
 	public static volatile ListAttribute<BindingConnectorAsUsageImpl, Intersecting> ownedIntersecting;
 
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
@@ -188,6 +190,7 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static final String NESTED_ANALYSIS_CASE = "nestedAnalysisCase";
 	public static final String DIRECTED_FEATURE = "directedFeature";
 	public static final String INPUT = "input";
+	public static final String IS_CONSTANT = "isConstant";
 	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NESTED_VIEW = "nestedView";
@@ -198,7 +201,6 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static final String ASSOCIATION = "association";
 	public static final String IS_PORTION = "isPortion";
 	public static final String NESTED_REFERENCE = "nestedReference";
-	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String MEMBER = "member";
@@ -240,6 +242,7 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static final String IS_END = "isEnd";
 	public static final String NESTED_ITEM = "nestedItem";
 	public static final String FEATURING_TYPE = "featuringType";
+	public static final String MAY_TIME_VARY = "mayTimeVary";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NAME = "name";
 	public static final String CONNECTOR_END = "connectorEnd";
@@ -267,6 +270,7 @@ public abstract class BindingConnectorAsUsageImpl_ extends org.omg.sysml.lifecyc
 	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String OWNED_UNIONING = "ownedUnioning";
+	public static final String IS_VARIABLE = "isVariable";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 
 }

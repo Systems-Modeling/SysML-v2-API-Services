@@ -23,7 +23,7 @@ import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.EnumerationUsage;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
-import org.omg.sysml.metamodel.FlowConnectionUsage;
+import org.omg.sysml.metamodel.FlowUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
@@ -88,7 +88,7 @@ public abstract class ConnectionDefinitionImpl_ extends org.omg.sysml.lifecycle.
 	public static volatile ListAttribute<ConnectionDefinitionImpl, AllocationUsage> ownedAllocation;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, InterfaceUsage> ownedInterface;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, Feature> input;
-	public static volatile CollectionAttribute<ConnectionDefinitionImpl, FlowConnectionUsage> ownedFlow;
+	public static volatile CollectionAttribute<ConnectionDefinitionImpl, FlowUsage> ownedFlow;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, ActionUsage> ownedAction;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, CaseUsage> ownedCase;
 	public static volatile ListAttribute<ConnectionDefinitionImpl, Element> relatedElement;

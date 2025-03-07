@@ -2057,6 +2057,8 @@
             "string"
           ],
           "created": "1970-01-01T00:00:00.000Z",
+          "deleted": null,
+          "description": "string",
           "head": {
             "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
           },
@@ -2093,6 +2095,8 @@
             "string"
           ],
           "created": "1970-01-01T00:00:00.000Z",
+          "deleted": null,
+          "description": "string",
           "name": "string",
           "owningProject": {
             "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"
@@ -2264,7 +2268,7 @@
       "Relationship": {
         "value": {
           "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-          "@type": "Relationship",
+          "@type": "Dependency",
           "aliasIds": [
             "string"
           ],
@@ -2373,6 +2377,7 @@
           "alias": [
             "string"
           ],
+          "description": "string",
           "identity": {
             "$ref": "#/components/examples/DataIdentity/value"
           },
@@ -2396,6 +2401,7 @@
           "alias": [
             "string"
           ],
+          "description": "string",
           "name": "string"
         }
       },
@@ -2450,6 +2456,7 @@
           "alias": [
             "string"
           ],
+          "description": "string",
           "name": "string",
           "owningProject": {
             "@id": "3fa85f64-5717-4562-b3fc-2c963f66afa6"

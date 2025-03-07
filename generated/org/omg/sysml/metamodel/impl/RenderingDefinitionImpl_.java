@@ -23,7 +23,7 @@ import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.EnumerationUsage;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
-import org.omg.sysml.metamodel.FlowConnectionUsage;
+import org.omg.sysml.metamodel.FlowUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
@@ -87,7 +87,7 @@ public abstract class RenderingDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile ListAttribute<RenderingDefinitionImpl, AllocationUsage> ownedAllocation;
 	public static volatile ListAttribute<RenderingDefinitionImpl, InterfaceUsage> ownedInterface;
 	public static volatile ListAttribute<RenderingDefinitionImpl, Feature> input;
-	public static volatile CollectionAttribute<RenderingDefinitionImpl, FlowConnectionUsage> ownedFlow;
+	public static volatile CollectionAttribute<RenderingDefinitionImpl, FlowUsage> ownedFlow;
 	public static volatile ListAttribute<RenderingDefinitionImpl, ActionUsage> ownedAction;
 	public static volatile ListAttribute<RenderingDefinitionImpl, CaseUsage> ownedCase;
 	public static volatile ListAttribute<RenderingDefinitionImpl, CalculationUsage> ownedCalculation;

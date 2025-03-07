@@ -5,6 +5,4 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface InvocationExpression extends Expression, SysMLType {
-    List<? extends Expression> getArgument();
-}
+public interface InvocationExpression extends InstantiationExpression, SysMLType {}

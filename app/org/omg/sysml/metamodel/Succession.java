@@ -5,12 +5,4 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface Succession extends Connector, SysMLType {
-    Collection<? extends Step> getEffectStep();
-
-    Collection<? extends Expression> getGuardExpression();
-
-    Step getTransitionStep();
-
-    Collection<? extends Step> getTriggerStep();
-}
+public interface Succession extends Connector, SysMLType {}

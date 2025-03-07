@@ -30,7 +30,7 @@ import org.omg.sysml.metamodel.FeatureDirectionKind;
 import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
-import org.omg.sysml.metamodel.FlowConnectionUsage;
+import org.omg.sysml.metamodel.FlowUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
@@ -91,6 +91,7 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile SingularAttribute<ViewpointUsageImpl, String> reqId;
 	public static volatile ListAttribute<ViewpointUsageImpl, PartUsage> stakeholderParameter;
 	public static volatile ListAttribute<ViewpointUsageImpl, Feature> input;
+	public static volatile SingularAttribute<ViewpointUsageImpl, Boolean> isConstant;
 	public static volatile ListAttribute<ViewpointUsageImpl, CalculationUsage> nestedCalculation;
 	public static volatile ListAttribute<ViewpointUsageImpl, PartUsage> actorParameter;
 	public static volatile ListAttribute<ViewpointUsageImpl, ViewUsage> nestedView;
@@ -100,7 +101,6 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<ViewpointUsageImpl, AllocationUsage> nestedAllocation;
 	public static volatile SingularAttribute<ViewpointUsageImpl, Boolean> isPortion;
 	public static volatile ListAttribute<ViewpointUsageImpl, ReferenceUsage> nestedReference;
-	public static volatile SingularAttribute<ViewpointUsageImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<ViewpointUsageImpl, Boolean> isVariation;
 	public static volatile ListAttribute<ViewpointUsageImpl, Feature> feature;
 	public static volatile ListAttribute<ViewpointUsageImpl, PartUsage> viewpointStakeholder;
@@ -144,11 +144,12 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile SingularAttribute<ViewpointUsageImpl, Boolean> isEnd;
 	public static volatile ListAttribute<ViewpointUsageImpl, ItemUsage> nestedItem;
 	public static volatile ListAttribute<ViewpointUsageImpl, Type> featuringType;
+	public static volatile SingularAttribute<ViewpointUsageImpl, Boolean> mayTimeVary;
 	public static volatile SingularAttribute<ViewpointUsageImpl, Boolean> isComposite;
 	public static volatile ListAttribute<ViewpointUsageImpl, ConstraintUsage> assumedConstraint;
 	public static volatile SingularAttribute<ViewpointUsageImpl, String> name;
 	public static volatile ListAttribute<ViewpointUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<ViewpointUsageImpl, FlowConnectionUsage> nestedFlow;
+	public static volatile CollectionAttribute<ViewpointUsageImpl, FlowUsage> nestedFlow;
 	public static volatile ListAttribute<ViewpointUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<ViewpointUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile SingularAttribute<ViewpointUsageImpl, Boolean> isIndividual;
@@ -171,6 +172,7 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<ViewpointUsageImpl, Type> differencingType;
 	public static volatile CollectionAttribute<ViewpointUsageImpl, VariantMembership> variantMembership;
 	public static volatile ListAttribute<ViewpointUsageImpl, Unioning> ownedUnioning;
+	public static volatile SingularAttribute<ViewpointUsageImpl, Boolean> isVariable;
 	public static volatile ListAttribute<ViewpointUsageImpl, Intersecting> ownedIntersecting;
 
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
@@ -199,6 +201,7 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String REQ_ID = "reqId";
 	public static final String STAKEHOLDER_PARAMETER = "stakeholderParameter";
 	public static final String INPUT = "input";
+	public static final String IS_CONSTANT = "isConstant";
 	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String ACTOR_PARAMETER = "actorParameter";
 	public static final String NESTED_VIEW = "nestedView";
@@ -208,7 +211,6 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String IS_PORTION = "isPortion";
 	public static final String NESTED_REFERENCE = "nestedReference";
-	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String VIEWPOINT_STAKEHOLDER = "viewpointStakeholder";
@@ -252,6 +254,7 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String IS_END = "isEnd";
 	public static final String NESTED_ITEM = "nestedItem";
 	public static final String FEATURING_TYPE = "featuringType";
+	public static final String MAY_TIME_VARY = "mayTimeVary";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String ASSUMED_CONSTRAINT = "assumedConstraint";
 	public static final String NAME = "name";
@@ -279,6 +282,7 @@ public abstract class ViewpointUsageImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String OWNED_UNIONING = "ownedUnioning";
+	public static final String IS_VARIABLE = "isVariable";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 
 }
