@@ -39,4 +39,9 @@ public interface Record {
     Set<String> getAlias();
 
     void setAlias(Set<String> alias);
+
+    @Nullable
+    String getDescription();
+
+    void setDescription(@Nullable String description);
 }
