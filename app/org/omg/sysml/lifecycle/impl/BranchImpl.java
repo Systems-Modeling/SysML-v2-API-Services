@@ -94,6 +94,12 @@ public class BranchImpl extends RecordImpl implements Branch {
         this.created = created;
     }
 
+    @Override
+    @Transient
+    public ZonedDateTime getDeleted() {
+        return null;
+    }
+
     @Transient
     @JsonProperty("@type")
     public String getType() {
