@@ -114,6 +114,17 @@
           "type": "string",
           "format": "date-time"
         },
+        "deleted": {
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "head": {
           "oneOf": [
             {
@@ -142,6 +153,7 @@
         "@type",
         "alias",
         "created",
+        "deleted",
         "head",
         "name",
         "owningProject",
@@ -208,6 +220,17 @@
           "type": "string",
           "format": "date-time"
         },
+        "deleted": {
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "name": {
           "type": "string"
         },
@@ -229,6 +252,7 @@
         "@type",
         "alias",
         "created",
+        "deleted",
         "name",
         "owningProject",
         "referencedCommit",
