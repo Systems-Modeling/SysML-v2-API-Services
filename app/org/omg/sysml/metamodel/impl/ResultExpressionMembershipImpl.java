@@ -133,23 +133,6 @@ public class ResultExpressionMembershipImpl extends SysMLTypeImpl implements Res
         this.elementId = elementId;
     }
 
-    private Feature feature;
-
-    @Override
-    @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "feature_type"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "feature_id", table = "ResultExpressionMembership")
-    public Feature getFeature() {
-        return feature;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
-    public void setFeature(Feature feature) {
-        this.feature = feature;
-    }
-
     private Boolean isImplied;
 
     @Override
@@ -701,23 +684,6 @@ public class ResultExpressionMembershipImpl extends SysMLTypeImpl implements Res
     @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = TextualRepresentationImpl.class)
     public void setTextualRepresentation(List<TextualRepresentation> textualRepresentation) {
         this.textualRepresentation = textualRepresentation;
-    }
-
-    private Type type;
-
-    @Override
-    @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "type_type"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "type_id", table = "ResultExpressionMembership")
-    public Type getType() {
-        return type;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
-    public void setType(Type type) {
-        this.type = type;
     }
 
     private VisibilityKind visibility;

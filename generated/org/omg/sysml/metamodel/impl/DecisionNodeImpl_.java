@@ -30,7 +30,7 @@ import org.omg.sysml.metamodel.FeatureDirectionKind;
 import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
-import org.omg.sysml.metamodel.FlowConnectionUsage;
+import org.omg.sysml.metamodel.FlowUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
@@ -87,6 +87,7 @@ public abstract class DecisionNodeImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static volatile ListAttribute<DecisionNodeImpl, Behavior> actionDefinition;
 	public static volatile ListAttribute<DecisionNodeImpl, Feature> directedFeature;
 	public static volatile ListAttribute<DecisionNodeImpl, Feature> input;
+	public static volatile SingularAttribute<DecisionNodeImpl, Boolean> isConstant;
 	public static volatile ListAttribute<DecisionNodeImpl, CalculationUsage> nestedCalculation;
 	public static volatile ListAttribute<DecisionNodeImpl, ViewUsage> nestedView;
 	public static volatile SingularAttribute<DecisionNodeImpl, String> shortName;
@@ -95,7 +96,6 @@ public abstract class DecisionNodeImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static volatile ListAttribute<DecisionNodeImpl, AllocationUsage> nestedAllocation;
 	public static volatile SingularAttribute<DecisionNodeImpl, Boolean> isPortion;
 	public static volatile ListAttribute<DecisionNodeImpl, ReferenceUsage> nestedReference;
-	public static volatile SingularAttribute<DecisionNodeImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<DecisionNodeImpl, Boolean> isVariation;
 	public static volatile ListAttribute<DecisionNodeImpl, Feature> feature;
 	public static volatile ListAttribute<DecisionNodeImpl, Element> member;
@@ -137,10 +137,11 @@ public abstract class DecisionNodeImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static volatile SingularAttribute<DecisionNodeImpl, Boolean> isEnd;
 	public static volatile ListAttribute<DecisionNodeImpl, ItemUsage> nestedItem;
 	public static volatile ListAttribute<DecisionNodeImpl, Type> featuringType;
+	public static volatile SingularAttribute<DecisionNodeImpl, Boolean> mayTimeVary;
 	public static volatile SingularAttribute<DecisionNodeImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<DecisionNodeImpl, String> name;
 	public static volatile ListAttribute<DecisionNodeImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<DecisionNodeImpl, FlowConnectionUsage> nestedFlow;
+	public static volatile CollectionAttribute<DecisionNodeImpl, FlowUsage> nestedFlow;
 	public static volatile ListAttribute<DecisionNodeImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<DecisionNodeImpl, Disjoining> ownedDisjoining;
 	public static volatile SingularAttribute<DecisionNodeImpl, Boolean> isIndividual;
@@ -163,6 +164,7 @@ public abstract class DecisionNodeImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static volatile ListAttribute<DecisionNodeImpl, Type> differencingType;
 	public static volatile CollectionAttribute<DecisionNodeImpl, VariantMembership> variantMembership;
 	public static volatile ListAttribute<DecisionNodeImpl, Unioning> ownedUnioning;
+	public static volatile SingularAttribute<DecisionNodeImpl, Boolean> isVariable;
 	public static volatile ListAttribute<DecisionNodeImpl, Intersecting> ownedIntersecting;
 
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
@@ -187,6 +189,7 @@ public abstract class DecisionNodeImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static final String ACTION_DEFINITION = "actionDefinition";
 	public static final String DIRECTED_FEATURE = "directedFeature";
 	public static final String INPUT = "input";
+	public static final String IS_CONSTANT = "isConstant";
 	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String NESTED_VIEW = "nestedView";
 	public static final String SHORT_NAME = "shortName";
@@ -195,7 +198,6 @@ public abstract class DecisionNodeImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String IS_PORTION = "isPortion";
 	public static final String NESTED_REFERENCE = "nestedReference";
-	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String MEMBER = "member";
@@ -237,6 +239,7 @@ public abstract class DecisionNodeImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static final String IS_END = "isEnd";
 	public static final String NESTED_ITEM = "nestedItem";
 	public static final String FEATURING_TYPE = "featuringType";
+	public static final String MAY_TIME_VARY = "mayTimeVary";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
@@ -263,6 +266,7 @@ public abstract class DecisionNodeImpl_ extends org.omg.sysml.lifecycle.impl.Dat
 	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String OWNED_UNIONING = "ownedUnioning";
+	public static final String IS_VARIABLE = "isVariable";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 
 }

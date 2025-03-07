@@ -30,7 +30,7 @@ public interface Definition extends Classifier, SysMLType {
 
     List<? extends EnumerationUsage> getOwnedEnumeration();
 
-    Collection<? extends FlowConnectionUsage> getOwnedFlow();
+    Collection<? extends FlowUsage> getOwnedFlow();
 
     List<? extends InterfaceUsage> getOwnedInterface();
 

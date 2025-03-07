@@ -24,7 +24,7 @@ import org.omg.sysml.metamodel.EnumerationUsage;
 import org.omg.sysml.metamodel.Expression;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
-import org.omg.sysml.metamodel.FlowConnectionUsage;
+import org.omg.sysml.metamodel.FlowUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
@@ -90,7 +90,7 @@ public abstract class CalculationDefinitionImpl_ extends org.omg.sysml.lifecycle
 	public static volatile ListAttribute<CalculationDefinitionImpl, AllocationUsage> ownedAllocation;
 	public static volatile ListAttribute<CalculationDefinitionImpl, InterfaceUsage> ownedInterface;
 	public static volatile ListAttribute<CalculationDefinitionImpl, Feature> input;
-	public static volatile CollectionAttribute<CalculationDefinitionImpl, FlowConnectionUsage> ownedFlow;
+	public static volatile CollectionAttribute<CalculationDefinitionImpl, FlowUsage> ownedFlow;
 	public static volatile ListAttribute<CalculationDefinitionImpl, ActionUsage> ownedAction;
 	public static volatile ListAttribute<CalculationDefinitionImpl, CaseUsage> ownedCase;
 	public static volatile ListAttribute<CalculationDefinitionImpl, CalculationUsage> ownedCalculation;

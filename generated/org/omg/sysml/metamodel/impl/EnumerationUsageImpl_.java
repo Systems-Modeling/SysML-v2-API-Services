@@ -29,7 +29,7 @@ import org.omg.sysml.metamodel.FeatureDirectionKind;
 import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
-import org.omg.sysml.metamodel.FlowConnectionUsage;
+import org.omg.sysml.metamodel.FlowUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
@@ -104,6 +104,8 @@ public abstract class EnumerationUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<EnumerationUsageImpl, ItemUsage> nestedItem;
 	public static volatile ListAttribute<EnumerationUsageImpl, Type> featuringType;
 	public static volatile ListAttribute<EnumerationUsageImpl, Feature> input;
+	public static volatile SingularAttribute<EnumerationUsageImpl, Boolean> isConstant;
+	public static volatile SingularAttribute<EnumerationUsageImpl, Boolean> mayTimeVary;
 	public static volatile ListAttribute<EnumerationUsageImpl, CalculationUsage> nestedCalculation;
 	public static volatile SingularAttribute<EnumerationUsageImpl, Boolean> isComposite;
 	public static volatile ListAttribute<EnumerationUsageImpl, ViewUsage> nestedView;
@@ -112,7 +114,7 @@ public abstract class EnumerationUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<EnumerationUsageImpl, Element> ownedMember;
 	public static volatile ListAttribute<EnumerationUsageImpl, OccurrenceUsage> nestedOccurrence;
 	public static volatile ListAttribute<EnumerationUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<EnumerationUsageImpl, FlowConnectionUsage> nestedFlow;
+	public static volatile CollectionAttribute<EnumerationUsageImpl, FlowUsage> nestedFlow;
 	public static volatile ListAttribute<EnumerationUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<EnumerationUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<EnumerationUsageImpl, AllocationUsage> nestedAllocation;
@@ -121,7 +123,6 @@ public abstract class EnumerationUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile SingularAttribute<EnumerationUsageImpl, Boolean> isImpliedIncluded;
 	public static volatile ListAttribute<EnumerationUsageImpl, ReferenceUsage> nestedReference;
 	public static volatile ListAttribute<EnumerationUsageImpl, FeatureChaining> ownedFeatureChaining;
-	public static volatile SingularAttribute<EnumerationUsageImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<EnumerationUsageImpl, Boolean> isVariation;
 	public static volatile ListAttribute<EnumerationUsageImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<EnumerationUsageImpl, Feature> feature;
@@ -153,6 +154,7 @@ public abstract class EnumerationUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static volatile ListAttribute<EnumerationUsageImpl, Type> unioningType;
 	public static volatile ListAttribute<EnumerationUsageImpl, InterfaceUsage> nestedInterface;
 	public static volatile ListAttribute<EnumerationUsageImpl, Specialization> ownedSpecialization;
+	public static volatile SingularAttribute<EnumerationUsageImpl, Boolean> isVariable;
 	public static volatile ListAttribute<EnumerationUsageImpl, DataType> attributeDefinition;
 	public static volatile ListAttribute<EnumerationUsageImpl, Intersecting> ownedIntersecting;
 	public static volatile ListAttribute<EnumerationUsageImpl, ViewpointUsage> nestedViewpoint;
@@ -199,6 +201,8 @@ public abstract class EnumerationUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String NESTED_ITEM = "nestedItem";
 	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
+	public static final String IS_CONSTANT = "isConstant";
+	public static final String MAY_TIME_VARY = "mayTimeVary";
 	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NESTED_VIEW = "nestedView";
@@ -216,7 +220,6 @@ public abstract class EnumerationUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String NESTED_REFERENCE = "nestedReference";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
-	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String IS_VARIATION = "isVariation";
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
@@ -248,6 +251,7 @@ public abstract class EnumerationUsageImpl_ extends org.omg.sysml.lifecycle.impl
 	public static final String UNIONING_TYPE = "unioningType";
 	public static final String NESTED_INTERFACE = "nestedInterface";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
+	public static final String IS_VARIABLE = "isVariable";
 	public static final String ATTRIBUTE_DEFINITION = "attributeDefinition";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 	public static final String NESTED_VIEWPOINT = "nestedViewpoint";

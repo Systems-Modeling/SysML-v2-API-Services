@@ -30,7 +30,7 @@ import org.omg.sysml.metamodel.FeatureDirectionKind;
 import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
-import org.omg.sysml.metamodel.FlowConnectionUsage;
+import org.omg.sysml.metamodel.FlowUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
@@ -87,6 +87,7 @@ public abstract class MergeNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<MergeNodeImpl, Behavior> actionDefinition;
 	public static volatile ListAttribute<MergeNodeImpl, Feature> directedFeature;
 	public static volatile ListAttribute<MergeNodeImpl, Feature> input;
+	public static volatile SingularAttribute<MergeNodeImpl, Boolean> isConstant;
 	public static volatile ListAttribute<MergeNodeImpl, CalculationUsage> nestedCalculation;
 	public static volatile ListAttribute<MergeNodeImpl, ViewUsage> nestedView;
 	public static volatile SingularAttribute<MergeNodeImpl, String> shortName;
@@ -95,7 +96,6 @@ public abstract class MergeNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<MergeNodeImpl, AllocationUsage> nestedAllocation;
 	public static volatile SingularAttribute<MergeNodeImpl, Boolean> isPortion;
 	public static volatile ListAttribute<MergeNodeImpl, ReferenceUsage> nestedReference;
-	public static volatile SingularAttribute<MergeNodeImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<MergeNodeImpl, Boolean> isVariation;
 	public static volatile ListAttribute<MergeNodeImpl, Feature> feature;
 	public static volatile ListAttribute<MergeNodeImpl, Element> member;
@@ -137,10 +137,11 @@ public abstract class MergeNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile SingularAttribute<MergeNodeImpl, Boolean> isEnd;
 	public static volatile ListAttribute<MergeNodeImpl, ItemUsage> nestedItem;
 	public static volatile ListAttribute<MergeNodeImpl, Type> featuringType;
+	public static volatile SingularAttribute<MergeNodeImpl, Boolean> mayTimeVary;
 	public static volatile SingularAttribute<MergeNodeImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<MergeNodeImpl, String> name;
 	public static volatile ListAttribute<MergeNodeImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<MergeNodeImpl, FlowConnectionUsage> nestedFlow;
+	public static volatile CollectionAttribute<MergeNodeImpl, FlowUsage> nestedFlow;
 	public static volatile ListAttribute<MergeNodeImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<MergeNodeImpl, Disjoining> ownedDisjoining;
 	public static volatile SingularAttribute<MergeNodeImpl, Boolean> isIndividual;
@@ -163,6 +164,7 @@ public abstract class MergeNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<MergeNodeImpl, Type> differencingType;
 	public static volatile CollectionAttribute<MergeNodeImpl, VariantMembership> variantMembership;
 	public static volatile ListAttribute<MergeNodeImpl, Unioning> ownedUnioning;
+	public static volatile SingularAttribute<MergeNodeImpl, Boolean> isVariable;
 	public static volatile ListAttribute<MergeNodeImpl, Intersecting> ownedIntersecting;
 
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
@@ -187,6 +189,7 @@ public abstract class MergeNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String ACTION_DEFINITION = "actionDefinition";
 	public static final String DIRECTED_FEATURE = "directedFeature";
 	public static final String INPUT = "input";
+	public static final String IS_CONSTANT = "isConstant";
 	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String NESTED_VIEW = "nestedView";
 	public static final String SHORT_NAME = "shortName";
@@ -195,7 +198,6 @@ public abstract class MergeNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String IS_PORTION = "isPortion";
 	public static final String NESTED_REFERENCE = "nestedReference";
-	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String MEMBER = "member";
@@ -237,6 +239,7 @@ public abstract class MergeNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String IS_END = "isEnd";
 	public static final String NESTED_ITEM = "nestedItem";
 	public static final String FEATURING_TYPE = "featuringType";
+	public static final String MAY_TIME_VARY = "mayTimeVary";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
@@ -263,6 +266,7 @@ public abstract class MergeNodeImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String OWNED_UNIONING = "ownedUnioning";
+	public static final String IS_VARIABLE = "isVariable";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 
 }

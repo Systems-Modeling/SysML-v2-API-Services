@@ -32,7 +32,7 @@ import org.omg.sysml.metamodel.FeatureDirectionKind;
 import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
-import org.omg.sysml.metamodel.FlowConnectionUsage;
+import org.omg.sysml.metamodel.FlowUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
@@ -91,6 +91,7 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<AllocationUsageImpl, AnalysisCaseUsage> nestedAnalysisCase;
 	public static volatile ListAttribute<AllocationUsageImpl, Feature> directedFeature;
 	public static volatile ListAttribute<AllocationUsageImpl, Feature> input;
+	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isConstant;
 	public static volatile ListAttribute<AllocationUsageImpl, CalculationUsage> nestedCalculation;
 	public static volatile ListAttribute<AllocationUsageImpl, Element> relatedElement;
 	public static volatile ListAttribute<AllocationUsageImpl, ViewUsage> nestedView;
@@ -101,7 +102,6 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<AllocationUsageImpl, Association> association;
 	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isPortion;
 	public static volatile ListAttribute<AllocationUsageImpl, ReferenceUsage> nestedReference;
-	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isVariation;
 	public static volatile ListAttribute<AllocationUsageImpl, Feature> feature;
 	public static volatile ListAttribute<AllocationUsageImpl, Element> member;
@@ -146,12 +146,13 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isEnd;
 	public static volatile ListAttribute<AllocationUsageImpl, ItemUsage> nestedItem;
 	public static volatile ListAttribute<AllocationUsageImpl, Type> featuringType;
+	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> mayTimeVary;
 	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<AllocationUsageImpl, String> name;
 	public static volatile ListAttribute<AllocationUsageImpl, Feature> connectorEnd;
 	public static volatile ListAttribute<AllocationUsageImpl, AssociationStructure> connectionDefinition;
 	public static volatile ListAttribute<AllocationUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<AllocationUsageImpl, FlowConnectionUsage> nestedFlow;
+	public static volatile CollectionAttribute<AllocationUsageImpl, FlowUsage> nestedFlow;
 	public static volatile ListAttribute<AllocationUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<AllocationUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isIndividual;
@@ -177,6 +178,7 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<AllocationUsageImpl, Type> differencingType;
 	public static volatile CollectionAttribute<AllocationUsageImpl, VariantMembership> variantMembership;
 	public static volatile ListAttribute<AllocationUsageImpl, Unioning> ownedUnioning;
+	public static volatile SingularAttribute<AllocationUsageImpl, Boolean> isVariable;
 	public static volatile ListAttribute<AllocationUsageImpl, Intersecting> ownedIntersecting;
 
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
@@ -201,6 +203,7 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String NESTED_ANALYSIS_CASE = "nestedAnalysisCase";
 	public static final String DIRECTED_FEATURE = "directedFeature";
 	public static final String INPUT = "input";
+	public static final String IS_CONSTANT = "isConstant";
 	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NESTED_VIEW = "nestedView";
@@ -211,7 +214,6 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String ASSOCIATION = "association";
 	public static final String IS_PORTION = "isPortion";
 	public static final String NESTED_REFERENCE = "nestedReference";
-	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String MEMBER = "member";
@@ -256,6 +258,7 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String IS_END = "isEnd";
 	public static final String NESTED_ITEM = "nestedItem";
 	public static final String FEATURING_TYPE = "featuringType";
+	public static final String MAY_TIME_VARY = "mayTimeVary";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NAME = "name";
 	public static final String CONNECTOR_END = "connectorEnd";
@@ -287,6 +290,7 @@ public abstract class AllocationUsageImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String OWNED_UNIONING = "ownedUnioning";
+	public static final String IS_VARIABLE = "isVariable";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 
 }

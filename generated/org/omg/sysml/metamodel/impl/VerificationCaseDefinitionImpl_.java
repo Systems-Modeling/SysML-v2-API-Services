@@ -24,7 +24,7 @@ import org.omg.sysml.metamodel.EnumerationUsage;
 import org.omg.sysml.metamodel.Expression;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
-import org.omg.sysml.metamodel.FlowConnectionUsage;
+import org.omg.sysml.metamodel.FlowUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
@@ -90,7 +90,7 @@ public abstract class VerificationCaseDefinitionImpl_ extends org.omg.sysml.life
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, AllocationUsage> ownedAllocation;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, InterfaceUsage> ownedInterface;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, Feature> input;
-	public static volatile CollectionAttribute<VerificationCaseDefinitionImpl, FlowConnectionUsage> ownedFlow;
+	public static volatile CollectionAttribute<VerificationCaseDefinitionImpl, FlowUsage> ownedFlow;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, ActionUsage> ownedAction;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, CaseUsage> ownedCase;
 	public static volatile ListAttribute<VerificationCaseDefinitionImpl, PartUsage> actorParameter;

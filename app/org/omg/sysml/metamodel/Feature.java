@@ -20,6 +20,8 @@ public interface Feature extends Type, SysMLType {
 
     Boolean getIsComposite();
 
+    Boolean getIsConstant();
+
     Boolean getIsDerived();
 
     Boolean getIsEnd();
@@ -28,9 +30,9 @@ public interface Feature extends Type, SysMLType {
 
     Boolean getIsPortion();
 
-    Boolean getIsReadOnly();
-
     Boolean getIsUnique();
+
+    Boolean getIsVariable();
 
     CrossSubsetting getOwnedCrossSubsetting();
 

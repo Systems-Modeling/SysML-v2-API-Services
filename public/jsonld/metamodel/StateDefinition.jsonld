@@ -32,7 +32,6 @@
         "isParallel": {"@type": "xsd:boolean"},
         "isSufficient": {"@type": "xsd:boolean"},
         "isVariation": {"@type": "xsd:boolean"},
-        "lifeClass": {"@type": "@id"},
         "member": {"@type": "@id"},
         "membership": {"@type": "@id"},
         "multiplicity": {"@type": "@id"},

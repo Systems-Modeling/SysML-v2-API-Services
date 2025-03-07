@@ -963,15 +963,15 @@ public class EnumerationDefinitionImpl extends SysMLTypeImpl implements Enumerat
         this.ownedFeatureMembership = ownedFeatureMembership;
     }
 
-    private Collection<FlowConnectionUsage> ownedFlow;
+    private Collection<FlowUsage> ownedFlow;
 
     @Override
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FlowConnectionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FlowUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "EnumerationDefinition_ownedFlow", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public Collection<FlowConnectionUsage> getOwnedFlow() {
+    public Collection<FlowUsage> getOwnedFlow() {
         if (ownedFlow == null) {
             ownedFlow = new ArrayList<>();
         }
@@ -979,8 +979,8 @@ public class EnumerationDefinitionImpl extends SysMLTypeImpl implements Enumerat
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FlowConnectionUsageImpl.class)
-    public void setOwnedFlow(Collection<FlowConnectionUsage> ownedFlow) {
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FlowUsageImpl.class)
+    public void setOwnedFlow(Collection<FlowUsage> ownedFlow) {
         this.ownedFlow = ownedFlow;
     }
 

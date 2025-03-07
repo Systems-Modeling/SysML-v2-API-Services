@@ -493,6 +493,24 @@ public class IndexExpressionImpl extends SysMLTypeImpl implements IndexExpressio
         this.input = input;
     }
 
+    private Type instantiatedType;
+
+    @Override
+    @JsonGetter
+    @JsonSerialize(using = DataSerializer.class)
+    // @javax.persistence.Transient
+    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "instantiatedType_type"), fetch = FetchType.LAZY)
+    @JoinColumn(name = "instantiatedType_id", table = "IndexExpression")
+    public Type getInstantiatedType() {
+        return instantiatedType;
+    }
+
+    @JsonSetter
+    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
+    public void setInstantiatedType(Type instantiatedType) {
+        this.instantiatedType = instantiatedType;
+    }
+
     private List<Type> intersectingType;
 
     @Override
@@ -555,6 +573,20 @@ public class IndexExpressionImpl extends SysMLTypeImpl implements IndexExpressio
     @JsonSetter
     public void setIsConjugated(Boolean isConjugated) {
         this.isConjugated = isConjugated;
+    }
+
+    private Boolean isConstant;
+
+    @Override
+    @JsonGetter
+    @javax.persistence.Column(name = "isConstant", table = "IndexExpression")
+    public Boolean getIsConstant() {
+        return isConstant;
+    }
+
+    @JsonSetter
+    public void setIsConstant(Boolean isConstant) {
+        this.isConstant = isConstant;
     }
 
     private Boolean isDerived;
@@ -657,20 +689,6 @@ public class IndexExpressionImpl extends SysMLTypeImpl implements IndexExpressio
         this.isPortion = isPortion;
     }
 
-    private Boolean isReadOnly;
-
-    @Override
-    @JsonGetter
-    @javax.persistence.Column(name = "isReadOnly", table = "IndexExpression")
-    public Boolean getIsReadOnly() {
-        return isReadOnly;
-    }
-
-    @JsonSetter
-    public void setIsReadOnly(Boolean isReadOnly) {
-        this.isReadOnly = isReadOnly;
-    }
-
     private Boolean isSufficient;
 
     @Override
@@ -697,6 +715,20 @@ public class IndexExpressionImpl extends SysMLTypeImpl implements IndexExpressio
     @JsonSetter
     public void setIsUnique(Boolean isUnique) {
         this.isUnique = isUnique;
+    }
+
+    private Boolean isVariable;
+
+    @Override
+    @JsonGetter
+    @javax.persistence.Column(name = "isVariable", table = "IndexExpression")
+    public Boolean getIsVariable() {
+        return isVariable;
+    }
+
+    @JsonSetter
+    public void setIsVariable(Boolean isVariable) {
+        this.isVariable = isVariable;
     }
 
     private List<Element> member;

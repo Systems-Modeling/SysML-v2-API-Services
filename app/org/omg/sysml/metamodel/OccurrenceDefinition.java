@@ -7,6 +7,4 @@ import java.util.Set;
 
 public interface OccurrenceDefinition extends Definition, Class, SysMLType {
     Boolean getIsIndividual();
-
-    LifeClass getLifeClass();
 }
