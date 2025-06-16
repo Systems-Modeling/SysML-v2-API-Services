@@ -584,24 +584,6 @@ public class UseCaseDefinitionImpl extends SysMLTypeImpl implements UseCaseDefin
         this.isVariation = isVariation;
     }
 
-    private LifeClass lifeClass;
-
-    @Override
-    @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    // @javax.persistence.Transient
-    @Any(metaDef = "LifeClassMetaDef", metaColumn = @javax.persistence.Column(name = "lifeClass_type"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "lifeClass_id", table = "UseCaseDefinition")
-    public LifeClass getLifeClass() {
-        return lifeClass;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = LifeClassImpl.class)
-    public void setLifeClass(LifeClass lifeClass) {
-        this.lifeClass = lifeClass;
-    }
-
     private List<Element> member;
 
     @Override
@@ -1093,15 +1075,15 @@ public class UseCaseDefinitionImpl extends SysMLTypeImpl implements UseCaseDefin
         this.ownedFeatureMembership = ownedFeatureMembership;
     }
 
-    private Collection<FlowConnectionUsage> ownedFlow;
+    private Collection<FlowUsage> ownedFlow;
 
     @Override
     @JsonGetter
     @JsonSerialize(contentUsing = DataSerializer.class)
     // @javax.persistence.Transient
-    @ManyToAny(metaDef = "FlowConnectionUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
+    @ManyToAny(metaDef = "FlowUsageMetaDef", metaColumn = @javax.persistence.Column(name = "attribute_type"), fetch = FetchType.LAZY)
     @JoinTable(name = "UseCaseDefinition_ownedFlow", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "attribute_id"))
-    public Collection<FlowConnectionUsage> getOwnedFlow() {
+    public Collection<FlowUsage> getOwnedFlow() {
         if (ownedFlow == null) {
             ownedFlow = new ArrayList<>();
         }
@@ -1109,8 +1091,8 @@ public class UseCaseDefinitionImpl extends SysMLTypeImpl implements UseCaseDefin
     }
 
     @JsonSetter
-    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FlowConnectionUsageImpl.class)
-    public void setOwnedFlow(Collection<FlowConnectionUsage> ownedFlow) {
+    @JsonDeserialize(contentUsing = DataDeserializer.class, contentAs = FlowUsageImpl.class)
+    public void setOwnedFlow(Collection<FlowUsage> ownedFlow) {
         this.ownedFlow = ownedFlow;
     }
 

@@ -23,14 +23,13 @@ import org.omg.sysml.metamodel.Disjoining;
 import org.omg.sysml.metamodel.Documentation;
 import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.EnumerationUsage;
-import org.omg.sysml.metamodel.Expression;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureChaining;
 import org.omg.sysml.metamodel.FeatureDirectionKind;
 import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
-import org.omg.sysml.metamodel.FlowConnectionUsage;
+import org.omg.sysml.metamodel.FlowUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
@@ -47,7 +46,6 @@ import org.omg.sysml.metamodel.RenderingUsage;
 import org.omg.sysml.metamodel.RequirementUsage;
 import org.omg.sysml.metamodel.Specialization;
 import org.omg.sysml.metamodel.StateUsage;
-import org.omg.sysml.metamodel.Step;
 import org.omg.sysml.metamodel.Subsetting;
 import org.omg.sysml.metamodel.TextualRepresentation;
 import org.omg.sysml.metamodel.TransitionUsage;
@@ -87,6 +85,7 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<SuccessionAsUsageImpl, AnalysisCaseUsage> nestedAnalysisCase;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Feature> directedFeature;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Feature> input;
+	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isConstant;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, CalculationUsage> nestedCalculation;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Element> relatedElement;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, ViewUsage> nestedView;
@@ -97,7 +96,6 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Association> association;
 	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isPortion;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, ReferenceUsage> nestedReference;
-	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isVariation;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Feature> feature;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Element> member;
@@ -126,7 +124,6 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isUnique;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Usage> nestedUsage;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Element> source;
-	public static volatile CollectionAttribute<SuccessionAsUsageImpl, Expression> guardExpression;
 	public static volatile CollectionAttribute<SuccessionAsUsageImpl, Usage> variant;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, StateUsage> nestedState;
 	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isOrdered;
@@ -140,17 +137,16 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isEnd;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, ItemUsage> nestedItem;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Type> featuringType;
+	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> mayTimeVary;
 	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isComposite;
-	public static volatile CollectionAttribute<SuccessionAsUsageImpl, Step> effectStep;
 	public static volatile SingularAttribute<SuccessionAsUsageImpl, String> name;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Feature> connectorEnd;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<SuccessionAsUsageImpl, FlowConnectionUsage> nestedFlow;
+	public static volatile CollectionAttribute<SuccessionAsUsageImpl, FlowUsage> nestedFlow;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<SuccessionAsUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Membership> membership;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Element> ownedRelatedElement;
-	public static volatile CollectionAttribute<SuccessionAsUsageImpl, Step> triggerStep;
 	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isImpliedIncluded;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Feature> targetFeature;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, FeatureChaining> ownedFeatureChaining;
@@ -169,6 +165,7 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Type> differencingType;
 	public static volatile CollectionAttribute<SuccessionAsUsageImpl, VariantMembership> variantMembership;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Unioning> ownedUnioning;
+	public static volatile SingularAttribute<SuccessionAsUsageImpl, Boolean> isVariable;
 	public static volatile ListAttribute<SuccessionAsUsageImpl, Intersecting> ownedIntersecting;
 
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
@@ -193,6 +190,7 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String NESTED_ANALYSIS_CASE = "nestedAnalysisCase";
 	public static final String DIRECTED_FEATURE = "directedFeature";
 	public static final String INPUT = "input";
+	public static final String IS_CONSTANT = "isConstant";
 	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String RELATED_ELEMENT = "relatedElement";
 	public static final String NESTED_VIEW = "nestedView";
@@ -203,7 +201,6 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String ASSOCIATION = "association";
 	public static final String IS_PORTION = "isPortion";
 	public static final String NESTED_REFERENCE = "nestedReference";
-	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String MEMBER = "member";
@@ -232,7 +229,6 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String IS_UNIQUE = "isUnique";
 	public static final String NESTED_USAGE = "nestedUsage";
 	public static final String SOURCE = "source";
-	public static final String GUARD_EXPRESSION = "guardExpression";
 	public static final String VARIANT = "variant";
 	public static final String NESTED_STATE = "nestedState";
 	public static final String IS_ORDERED = "isOrdered";
@@ -246,8 +242,8 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String IS_END = "isEnd";
 	public static final String NESTED_ITEM = "nestedItem";
 	public static final String FEATURING_TYPE = "featuringType";
+	public static final String MAY_TIME_VARY = "mayTimeVary";
 	public static final String IS_COMPOSITE = "isComposite";
-	public static final String EFFECT_STEP = "effectStep";
 	public static final String NAME = "name";
 	public static final String CONNECTOR_END = "connectorEnd";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
@@ -256,7 +252,6 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String OWNED_DISJOINING = "ownedDisjoining";
 	public static final String MEMBERSHIP = "membership";
 	public static final String OWNED_RELATED_ELEMENT = "ownedRelatedElement";
-	public static final String TRIGGER_STEP = "triggerStep";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String TARGET_FEATURE = "targetFeature";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
@@ -275,6 +270,7 @@ public abstract class SuccessionAsUsageImpl_ extends org.omg.sysml.lifecycle.imp
 	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String OWNED_UNIONING = "ownedUnioning";
+	public static final String IS_VARIABLE = "isVariable";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 
 }

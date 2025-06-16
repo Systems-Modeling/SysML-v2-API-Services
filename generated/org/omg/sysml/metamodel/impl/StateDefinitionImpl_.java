@@ -23,7 +23,7 @@ import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.EnumerationUsage;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
-import org.omg.sysml.metamodel.FlowConnectionUsage;
+import org.omg.sysml.metamodel.FlowUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
@@ -89,7 +89,7 @@ public abstract class StateDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<StateDefinitionImpl, AllocationUsage> ownedAllocation;
 	public static volatile ListAttribute<StateDefinitionImpl, InterfaceUsage> ownedInterface;
 	public static volatile ListAttribute<StateDefinitionImpl, Feature> input;
-	public static volatile CollectionAttribute<StateDefinitionImpl, FlowConnectionUsage> ownedFlow;
+	public static volatile CollectionAttribute<StateDefinitionImpl, FlowUsage> ownedFlow;
 	public static volatile ListAttribute<StateDefinitionImpl, ActionUsage> ownedAction;
 	public static volatile ListAttribute<StateDefinitionImpl, CaseUsage> ownedCase;
 	public static volatile ListAttribute<StateDefinitionImpl, CalculationUsage> ownedCalculation;

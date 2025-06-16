@@ -23,7 +23,7 @@ import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.EnumerationUsage;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
-import org.omg.sysml.metamodel.FlowConnectionUsage;
+import org.omg.sysml.metamodel.FlowUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
@@ -86,7 +86,7 @@ public abstract class ConjugatedPortDefinitionImpl_ extends org.omg.sysml.lifecy
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, AllocationUsage> ownedAllocation;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, InterfaceUsage> ownedInterface;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, Feature> input;
-	public static volatile CollectionAttribute<ConjugatedPortDefinitionImpl, FlowConnectionUsage> ownedFlow;
+	public static volatile CollectionAttribute<ConjugatedPortDefinitionImpl, FlowUsage> ownedFlow;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, ActionUsage> ownedAction;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, CaseUsage> ownedCase;
 	public static volatile ListAttribute<ConjugatedPortDefinitionImpl, CalculationUsage> ownedCalculation;

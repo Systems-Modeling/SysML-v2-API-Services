@@ -60,6 +60,7 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isEnd;
 	public static volatile ListAttribute<MetadataFeatureImpl, Type> featuringType;
 	public static volatile ListAttribute<MetadataFeatureImpl, Feature> input;
+	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isConstant;
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<MetadataFeatureImpl, String> name;
 	public static volatile SingularAttribute<MetadataFeatureImpl, String> shortName;
@@ -70,7 +71,6 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isPortion;
 	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isImpliedIncluded;
 	public static volatile ListAttribute<MetadataFeatureImpl, FeatureChaining> ownedFeatureChaining;
-	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isReadOnly;
 	public static volatile ListAttribute<MetadataFeatureImpl, FeatureTyping> ownedTyping;
 	public static volatile ListAttribute<MetadataFeatureImpl, Feature> feature;
 	public static volatile ListAttribute<MetadataFeatureImpl, Membership> inheritedMembership;
@@ -93,6 +93,7 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static volatile ListAttribute<MetadataFeatureImpl, Unioning> ownedUnioning;
 	public static volatile ListAttribute<MetadataFeatureImpl, Type> unioningType;
 	public static volatile ListAttribute<MetadataFeatureImpl, Specialization> ownedSpecialization;
+	public static volatile SingularAttribute<MetadataFeatureImpl, Boolean> isVariable;
 	public static volatile ListAttribute<MetadataFeatureImpl, Intersecting> ownedIntersecting;
 	public static volatile CollectionAttribute<MetadataFeatureImpl, FeatureInverting> ownedFeatureInverting;
 
@@ -123,6 +124,7 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String IS_END = "isEnd";
 	public static final String FEATURING_TYPE = "featuringType";
 	public static final String INPUT = "input";
+	public static final String IS_CONSTANT = "isConstant";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NAME = "name";
 	public static final String SHORT_NAME = "shortName";
@@ -133,7 +135,6 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String IS_PORTION = "isPortion";
 	public static final String IS_IMPLIED_INCLUDED = "isImpliedIncluded";
 	public static final String OWNED_FEATURE_CHAINING = "ownedFeatureChaining";
-	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String OWNED_TYPING = "ownedTyping";
 	public static final String FEATURE = "feature";
 	public static final String INHERITED_MEMBERSHIP = "inheritedMembership";
@@ -156,6 +157,7 @@ public abstract class MetadataFeatureImpl_ extends org.omg.sysml.lifecycle.impl.
 	public static final String OWNED_UNIONING = "ownedUnioning";
 	public static final String UNIONING_TYPE = "unioningType";
 	public static final String OWNED_SPECIALIZATION = "ownedSpecialization";
+	public static final String IS_VARIABLE = "isVariable";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 	public static final String OWNED_FEATURE_INVERTING = "ownedFeatureInverting";
 

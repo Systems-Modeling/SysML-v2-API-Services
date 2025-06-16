@@ -5,7 +5,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
-public interface TypeFeaturing extends Featuring, SysMLType {
+public interface TypeFeaturing extends Relationship, SysMLType {
     Feature getFeatureOfType();
 
     Type getFeaturingType();

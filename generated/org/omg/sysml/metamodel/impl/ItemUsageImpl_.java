@@ -29,7 +29,7 @@ import org.omg.sysml.metamodel.FeatureDirectionKind;
 import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
-import org.omg.sysml.metamodel.FlowConnectionUsage;
+import org.omg.sysml.metamodel.FlowUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
@@ -86,6 +86,7 @@ public abstract class ItemUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<ItemUsageImpl, AnalysisCaseUsage> nestedAnalysisCase;
 	public static volatile ListAttribute<ItemUsageImpl, Feature> directedFeature;
 	public static volatile ListAttribute<ItemUsageImpl, Feature> input;
+	public static volatile SingularAttribute<ItemUsageImpl, Boolean> isConstant;
 	public static volatile ListAttribute<ItemUsageImpl, CalculationUsage> nestedCalculation;
 	public static volatile ListAttribute<ItemUsageImpl, ViewUsage> nestedView;
 	public static volatile SingularAttribute<ItemUsageImpl, String> shortName;
@@ -94,7 +95,6 @@ public abstract class ItemUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<ItemUsageImpl, AllocationUsage> nestedAllocation;
 	public static volatile SingularAttribute<ItemUsageImpl, Boolean> isPortion;
 	public static volatile ListAttribute<ItemUsageImpl, ReferenceUsage> nestedReference;
-	public static volatile SingularAttribute<ItemUsageImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<ItemUsageImpl, Boolean> isVariation;
 	public static volatile ListAttribute<ItemUsageImpl, Feature> feature;
 	public static volatile ListAttribute<ItemUsageImpl, Element> member;
@@ -135,10 +135,11 @@ public abstract class ItemUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile SingularAttribute<ItemUsageImpl, Boolean> isEnd;
 	public static volatile ListAttribute<ItemUsageImpl, ItemUsage> nestedItem;
 	public static volatile ListAttribute<ItemUsageImpl, Type> featuringType;
+	public static volatile SingularAttribute<ItemUsageImpl, Boolean> mayTimeVary;
 	public static volatile SingularAttribute<ItemUsageImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<ItemUsageImpl, String> name;
 	public static volatile ListAttribute<ItemUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<ItemUsageImpl, FlowConnectionUsage> nestedFlow;
+	public static volatile CollectionAttribute<ItemUsageImpl, FlowUsage> nestedFlow;
 	public static volatile ListAttribute<ItemUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<ItemUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile SingularAttribute<ItemUsageImpl, Boolean> isIndividual;
@@ -161,6 +162,7 @@ public abstract class ItemUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static volatile ListAttribute<ItemUsageImpl, Type> differencingType;
 	public static volatile CollectionAttribute<ItemUsageImpl, VariantMembership> variantMembership;
 	public static volatile ListAttribute<ItemUsageImpl, Unioning> ownedUnioning;
+	public static volatile SingularAttribute<ItemUsageImpl, Boolean> isVariable;
 	public static volatile ListAttribute<ItemUsageImpl, Intersecting> ownedIntersecting;
 
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
@@ -184,6 +186,7 @@ public abstract class ItemUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String NESTED_ANALYSIS_CASE = "nestedAnalysisCase";
 	public static final String DIRECTED_FEATURE = "directedFeature";
 	public static final String INPUT = "input";
+	public static final String IS_CONSTANT = "isConstant";
 	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String NESTED_VIEW = "nestedView";
 	public static final String SHORT_NAME = "shortName";
@@ -192,7 +195,6 @@ public abstract class ItemUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String IS_PORTION = "isPortion";
 	public static final String NESTED_REFERENCE = "nestedReference";
-	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String MEMBER = "member";
@@ -233,6 +235,7 @@ public abstract class ItemUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String IS_END = "isEnd";
 	public static final String NESTED_ITEM = "nestedItem";
 	public static final String FEATURING_TYPE = "featuringType";
+	public static final String MAY_TIME_VARY = "mayTimeVary";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
@@ -259,6 +262,7 @@ public abstract class ItemUsageImpl_ extends org.omg.sysml.lifecycle.impl.DataIm
 	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String OWNED_UNIONING = "ownedUnioning";
+	public static final String IS_VARIABLE = "isVariable";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 
 }

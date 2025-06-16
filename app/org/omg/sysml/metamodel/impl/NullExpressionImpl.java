@@ -536,6 +536,20 @@ public class NullExpressionImpl extends SysMLTypeImpl implements NullExpression 
         this.isConjugated = isConjugated;
     }
 
+    private Boolean isConstant;
+
+    @Override
+    @JsonGetter
+    @javax.persistence.Column(name = "isConstant", table = "NullExpression")
+    public Boolean getIsConstant() {
+        return isConstant;
+    }
+
+    @JsonSetter
+    public void setIsConstant(Boolean isConstant) {
+        this.isConstant = isConstant;
+    }
+
     private Boolean isDerived;
 
     @Override
@@ -636,20 +650,6 @@ public class NullExpressionImpl extends SysMLTypeImpl implements NullExpression 
         this.isPortion = isPortion;
     }
 
-    private Boolean isReadOnly;
-
-    @Override
-    @JsonGetter
-    @javax.persistence.Column(name = "isReadOnly", table = "NullExpression")
-    public Boolean getIsReadOnly() {
-        return isReadOnly;
-    }
-
-    @JsonSetter
-    public void setIsReadOnly(Boolean isReadOnly) {
-        this.isReadOnly = isReadOnly;
-    }
-
     private Boolean isSufficient;
 
     @Override
@@ -676,6 +676,20 @@ public class NullExpressionImpl extends SysMLTypeImpl implements NullExpression 
     @JsonSetter
     public void setIsUnique(Boolean isUnique) {
         this.isUnique = isUnique;
+    }
+
+    private Boolean isVariable;
+
+    @Override
+    @JsonGetter
+    @javax.persistence.Column(name = "isVariable", table = "NullExpression")
+    public Boolean getIsVariable() {
+        return isVariable;
+    }
+
+    @JsonSetter
+    public void setIsVariable(Boolean isVariable) {
+        this.isVariable = isVariable;
     }
 
     private List<Element> member;

@@ -30,7 +30,7 @@ import org.omg.sysml.metamodel.FeatureDirectionKind;
 import org.omg.sysml.metamodel.FeatureInverting;
 import org.omg.sysml.metamodel.FeatureMembership;
 import org.omg.sysml.metamodel.FeatureTyping;
-import org.omg.sysml.metamodel.FlowConnectionUsage;
+import org.omg.sysml.metamodel.FlowUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
@@ -87,6 +87,7 @@ public abstract class VerificationCaseUsageImpl_ extends org.omg.sysml.lifecycle
 	public static volatile ListAttribute<VerificationCaseUsageImpl, Behavior> actionDefinition;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, Feature> directedFeature;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, Feature> input;
+	public static volatile SingularAttribute<VerificationCaseUsageImpl, Boolean> isConstant;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, CalculationUsage> nestedCalculation;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, PartUsage> actorParameter;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, ViewUsage> nestedView;
@@ -97,7 +98,6 @@ public abstract class VerificationCaseUsageImpl_ extends org.omg.sysml.lifecycle
 	public static volatile ListAttribute<VerificationCaseUsageImpl, AllocationUsage> nestedAllocation;
 	public static volatile SingularAttribute<VerificationCaseUsageImpl, Boolean> isPortion;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, ReferenceUsage> nestedReference;
-	public static volatile SingularAttribute<VerificationCaseUsageImpl, Boolean> isReadOnly;
 	public static volatile SingularAttribute<VerificationCaseUsageImpl, Boolean> isVariation;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, Feature> feature;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, Element> member;
@@ -140,10 +140,11 @@ public abstract class VerificationCaseUsageImpl_ extends org.omg.sysml.lifecycle
 	public static volatile SingularAttribute<VerificationCaseUsageImpl, Boolean> isEnd;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, ItemUsage> nestedItem;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, Type> featuringType;
+	public static volatile SingularAttribute<VerificationCaseUsageImpl, Boolean> mayTimeVary;
 	public static volatile SingularAttribute<VerificationCaseUsageImpl, Boolean> isComposite;
 	public static volatile SingularAttribute<VerificationCaseUsageImpl, String> name;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, Membership> ownedMembership;
-	public static volatile CollectionAttribute<VerificationCaseUsageImpl, FlowConnectionUsage> nestedFlow;
+	public static volatile CollectionAttribute<VerificationCaseUsageImpl, FlowUsage> nestedFlow;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, CaseUsage> nestedCase;
 	public static volatile CollectionAttribute<VerificationCaseUsageImpl, Disjoining> ownedDisjoining;
 	public static volatile SingularAttribute<VerificationCaseUsageImpl, Boolean> isIndividual;
@@ -166,6 +167,7 @@ public abstract class VerificationCaseUsageImpl_ extends org.omg.sysml.lifecycle
 	public static volatile ListAttribute<VerificationCaseUsageImpl, Type> differencingType;
 	public static volatile CollectionAttribute<VerificationCaseUsageImpl, VariantMembership> variantMembership;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, Unioning> ownedUnioning;
+	public static volatile SingularAttribute<VerificationCaseUsageImpl, Boolean> isVariable;
 	public static volatile ListAttribute<VerificationCaseUsageImpl, Intersecting> ownedIntersecting;
 
 	public static final String OWNED_TYPE_FEATURING = "ownedTypeFeaturing";
@@ -190,6 +192,7 @@ public abstract class VerificationCaseUsageImpl_ extends org.omg.sysml.lifecycle
 	public static final String ACTION_DEFINITION = "actionDefinition";
 	public static final String DIRECTED_FEATURE = "directedFeature";
 	public static final String INPUT = "input";
+	public static final String IS_CONSTANT = "isConstant";
 	public static final String NESTED_CALCULATION = "nestedCalculation";
 	public static final String ACTOR_PARAMETER = "actorParameter";
 	public static final String NESTED_VIEW = "nestedView";
@@ -200,7 +203,6 @@ public abstract class VerificationCaseUsageImpl_ extends org.omg.sysml.lifecycle
 	public static final String NESTED_ALLOCATION = "nestedAllocation";
 	public static final String IS_PORTION = "isPortion";
 	public static final String NESTED_REFERENCE = "nestedReference";
-	public static final String IS_READ_ONLY = "isReadOnly";
 	public static final String IS_VARIATION = "isVariation";
 	public static final String FEATURE = "feature";
 	public static final String MEMBER = "member";
@@ -243,6 +245,7 @@ public abstract class VerificationCaseUsageImpl_ extends org.omg.sysml.lifecycle
 	public static final String IS_END = "isEnd";
 	public static final String NESTED_ITEM = "nestedItem";
 	public static final String FEATURING_TYPE = "featuringType";
+	public static final String MAY_TIME_VARY = "mayTimeVary";
 	public static final String IS_COMPOSITE = "isComposite";
 	public static final String NAME = "name";
 	public static final String OWNED_MEMBERSHIP = "ownedMembership";
@@ -269,6 +272,7 @@ public abstract class VerificationCaseUsageImpl_ extends org.omg.sysml.lifecycle
 	public static final String DIFFERENCING_TYPE = "differencingType";
 	public static final String VARIANT_MEMBERSHIP = "variantMembership";
 	public static final String OWNED_UNIONING = "ownedUnioning";
+	public static final String IS_VARIABLE = "isVariable";
 	public static final String OWNED_INTERSECTING = "ownedIntersecting";
 
 }

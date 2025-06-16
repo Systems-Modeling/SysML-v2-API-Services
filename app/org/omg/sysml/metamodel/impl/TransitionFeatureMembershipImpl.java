@@ -133,23 +133,6 @@ public class TransitionFeatureMembershipImpl extends SysMLTypeImpl implements Tr
         this.elementId = elementId;
     }
 
-    private Feature feature;
-
-    @Override
-    @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "FeatureMetaDef", metaColumn = @javax.persistence.Column(name = "feature_type"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "feature_id", table = "TransitionFeatureMembership")
-    public Feature getFeature() {
-        return feature;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = FeatureImpl.class)
-    public void setFeature(Feature feature) {
-        this.feature = feature;
-    }
-
     private Boolean isImplied;
 
     @Override
@@ -716,23 +699,6 @@ public class TransitionFeatureMembershipImpl extends SysMLTypeImpl implements Tr
     @JsonDeserialize(using = DataDeserializer.class, as = StepImpl.class)
     public void setTransitionFeature(Step transitionFeature) {
         this.transitionFeature = transitionFeature;
-    }
-
-    private Type type;
-
-    @Override
-    @JsonGetter
-    @JsonSerialize(using = DataSerializer.class)
-    @Any(metaDef = "TypeMetaDef", metaColumn = @javax.persistence.Column(name = "type_type"), fetch = FetchType.LAZY)
-    @JoinColumn(name = "type_id", table = "TransitionFeatureMembership")
-    public Type getType() {
-        return type;
-    }
-
-    @JsonSetter
-    @JsonDeserialize(using = DataDeserializer.class, as = TypeImpl.class)
-    public void setType(Type type) {
-        this.type = type;
     }
 
     private VisibilityKind visibility;

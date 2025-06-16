@@ -42,5 +42,7 @@ public interface CommitReference extends Record {
 
     ZonedDateTime getCreated();
 
+    ZonedDateTime getDeleted();
+
     void setCreated(ZonedDateTime created);
 }

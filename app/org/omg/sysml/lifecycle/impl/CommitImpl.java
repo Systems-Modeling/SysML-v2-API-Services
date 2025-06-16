@@ -44,7 +44,6 @@ public class CommitImpl extends RecordImpl implements Commit {
     private Project owningProject;
     private Set<DataVersion> change;
     private ZonedDateTime created;
-    private String description;
     private Commit previousCommit;
 
     @Override
@@ -81,21 +80,6 @@ public class CommitImpl extends RecordImpl implements Commit {
 
     public void setCreated(ZonedDateTime created) {
         this.created = created;
-    }
-
-    @JsonProperty(required = true)
-    @JsonGetter
-    @Lob
-    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
-    @javax.persistence.Column(name = "description", table = "Commit")
-    public String getDescription() {
-        return description;
-    }
-
-    @JsonProperty(required = true)
-    @JsonSetter
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     @ManyToOne(targetEntity = CommitImpl.class, fetch = FetchType.LAZY)

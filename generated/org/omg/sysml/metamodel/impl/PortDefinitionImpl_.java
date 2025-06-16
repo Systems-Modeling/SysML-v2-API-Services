@@ -23,7 +23,7 @@ import org.omg.sysml.metamodel.Element;
 import org.omg.sysml.metamodel.EnumerationUsage;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
-import org.omg.sysml.metamodel.FlowConnectionUsage;
+import org.omg.sysml.metamodel.FlowUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
@@ -86,7 +86,7 @@ public abstract class PortDefinitionImpl_ extends org.omg.sysml.lifecycle.impl.D
 	public static volatile ListAttribute<PortDefinitionImpl, AllocationUsage> ownedAllocation;
 	public static volatile ListAttribute<PortDefinitionImpl, InterfaceUsage> ownedInterface;
 	public static volatile ListAttribute<PortDefinitionImpl, Feature> input;
-	public static volatile CollectionAttribute<PortDefinitionImpl, FlowConnectionUsage> ownedFlow;
+	public static volatile CollectionAttribute<PortDefinitionImpl, FlowUsage> ownedFlow;
 	public static volatile ListAttribute<PortDefinitionImpl, ActionUsage> ownedAction;
 	public static volatile ListAttribute<PortDefinitionImpl, CaseUsage> ownedCase;
 	public static volatile ListAttribute<PortDefinitionImpl, CalculationUsage> ownedCalculation;

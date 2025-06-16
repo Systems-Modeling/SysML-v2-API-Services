@@ -23,6 +23,7 @@
 package org.omg.sysml.record.impl;
 
 import com.fasterxml.jackson.annotation.JsonGetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import org.omg.sysml.record.Record;
 
@@ -39,6 +40,7 @@ public abstract class RecordImpl implements Record {
     private UUID id;
     private String name;
     private Set<String> alias = new LinkedHashSet<>();
+    private String description;
 
     @Override
     @Id
@@ -89,5 +91,20 @@ public abstract class RecordImpl implements Record {
         if (name != null) {
             this.alias.add(name);
         }
+    }
+
+    @Override
+    @JsonGetter
+    @Lob
+    @org.hibernate.annotations.Type(type = "org.hibernate.type.TextType")
+    @Column(name = "description")
+    public @Nullable String getDescription() {
+        return description;
+    }
+
+    @Override
+    @JsonSetter
+    public void setDescription(@Nullable String description) {
+        this.description = description;
     }
 }

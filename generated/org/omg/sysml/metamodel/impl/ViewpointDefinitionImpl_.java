@@ -24,7 +24,7 @@ import org.omg.sysml.metamodel.EnumerationUsage;
 import org.omg.sysml.metamodel.Expression;
 import org.omg.sysml.metamodel.Feature;
 import org.omg.sysml.metamodel.FeatureMembership;
-import org.omg.sysml.metamodel.FlowConnectionUsage;
+import org.omg.sysml.metamodel.FlowUsage;
 import org.omg.sysml.metamodel.Import;
 import org.omg.sysml.metamodel.InterfaceUsage;
 import org.omg.sysml.metamodel.Intersecting;
@@ -93,7 +93,7 @@ public abstract class ViewpointDefinitionImpl_ extends org.omg.sysml.lifecycle.i
 	public static volatile SingularAttribute<ViewpointDefinitionImpl, String> reqId;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, PartUsage> stakeholderParameter;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, Feature> input;
-	public static volatile CollectionAttribute<ViewpointDefinitionImpl, FlowConnectionUsage> ownedFlow;
+	public static volatile CollectionAttribute<ViewpointDefinitionImpl, FlowUsage> ownedFlow;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, ActionUsage> ownedAction;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, ConstraintUsage> assumedConstraint;
 	public static volatile ListAttribute<ViewpointDefinitionImpl, CaseUsage> ownedCase;
