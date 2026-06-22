@@ -1,0 +1,31 @@
+services:
+
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: sysml2
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d sysml2"]
+      interval: 5s
+      timeout: 5s
+      retries: 15
+
+  app:
+    build: .
+    ports:
+      - "8082:9000"
+    environment:
+      DB_URL: jdbc:postgresql://postgres:5432/sysml2
+      DB_USERNAME: postgres
+      DB_PASSWORD: mysecretpassword
+      PLAY_SECRET: SysMLv2APIServicesLocalDockerSecretKeyDoNotUseInProd
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  pgdata:
