@@ -2019,7 +2019,6 @@
     },
     "schemas": {
       "Project": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/Project",
         "title": "Project",
         "type": "object",
         "properties": {
@@ -2071,7 +2070,6 @@
         "additionalProperties": false
       },
       "ProjectRequest": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/ProjectRequest",
         "title": "ProjectRequest",
         "type": "object",
         "properties": {
@@ -2109,7 +2107,6 @@
         "additionalProperties": false
       },
       "Branch": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/Branch",
         "title": "Branch",
         "type": "object",
         "properties": {
@@ -2190,7 +2187,6 @@
         "additionalProperties": false
       },
       "BranchRequest": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/BranchRequest",
         "title": "BranchRequest",
         "type": "object",
         "properties": {
@@ -2236,7 +2232,6 @@
         "additionalProperties": false
       },
       "Tag": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/Tag",
         "title": "Tag",
         "type": "object",
         "properties": {
@@ -2310,7 +2305,6 @@
         "additionalProperties": false
       },
       "TagRequest": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/TagRequest",
         "title": "TagRequest",
         "type": "object",
         "properties": {
@@ -2349,7 +2343,6 @@
         "additionalProperties": false
       },
       "Commit": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/Commit",
         "title": "Commit",
         "type": "object",
         "properties": {
@@ -2416,7 +2409,6 @@
         "additionalProperties": false
       },
       "CommitRequest": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/CommitRequest",
         "title": "CommitRequest",
         "type": "object",
         "properties": {
@@ -2463,7 +2455,6 @@
         "additionalProperties": false
       },
       "DataVersion": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/DataVersion",
         "title": "DataVersion",
         "type": "object",
         "properties": {
@@ -2527,7 +2518,6 @@
         "additionalProperties": false
       },
       "DataVersionRequest": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/DataVersionRequest",
         "title": "DataVersionRequest",
         "type": "object",
         "properties": {
@@ -2581,7 +2571,6 @@
         "additionalProperties": false
       },
       "Data": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/Data",
         "title": "Data",
         "oneOf": [
           {
@@ -2599,7 +2588,6 @@
         ]
       },
       "DataRequest": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/DataRequest",
         "title": "DataRequest",
         "oneOf": [
           {
@@ -2617,7 +2605,6 @@
         ]
       },
       "DataIdentity": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/DataIdentity",
         "title": "DataIdentity",
         "type": "object",
         "properties": {
@@ -2666,7 +2653,6 @@
         "additionalProperties": false
       },
       "DataIdentityRequest": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/DataIdentityRequest",
         "title": "DataIdentityRequest",
         "type": "object",
         "properties": {
@@ -2711,7 +2697,6 @@
         "additionalProperties": false
       },
       "ProjectUsage": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/ProjectUsage",
         "title": "ProjectUsage",
         "type": "object",
         "properties": {
@@ -2741,7 +2726,6 @@
         "additionalProperties": false
       },
       "ProjectUsageRequest": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/ProjectUsageRequest",
         "title": "ProjectUsageRequest",
         "type": "object",
         "properties": {
@@ -2768,7 +2752,6 @@
         "additionalProperties": false
       },
       "ExternalData": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/ExternalData",
         "title": "ExternalData",
         "type": "object",
         "properties": {
@@ -2793,7 +2776,6 @@
         "additionalProperties": false
       },
       "ExternalDataRequest": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/ExternalDataRequest",
         "title": "ExternalDataRequest",
         "type": "object",
         "properties": {
@@ -2816,7 +2798,6 @@
         "additionalProperties": false
       },
       "ExternalRelationship": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/ExternalRelationship",
         "title": "ExternalRelationship",
         "type": "object",
         "properties": {
@@ -2868,7 +2849,6 @@
         "additionalProperties": false
       },
       "ExternalRelationshipRequest": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/ExternalRelationshipRequest",
         "title": "ExternalRelationshipRequest",
         "type": "object",
         "properties": {
@@ -2915,7 +2895,6 @@
         "additionalProperties": false
       },
       "DataDifference": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/DataDifference",
         "title": "DataDifference",
         "type": "object",
         "properties": {
@@ -2952,7 +2931,6 @@
         "additionalProperties": false
       },
       "Query": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/Query",
         "title": "Query",
         "type": "object",
         "properties": {
@@ -3017,7 +2995,6 @@
         "additionalProperties": false
       },
       "QueryRequest": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/QueryRequest",
         "title": "QueryRequest",
         "type": "object",
         "properties": {
@@ -3067,7 +3044,6 @@
         "additionalProperties": false
       },
       "Constraint": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/Constraint",
         "title": "Constraint",
         "oneOf": [
           {
@@ -3079,7 +3055,6 @@
         ]
       },
       "ConstraintRequest": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/ConstraintRequest",
         "title": "ConstraintRequest",
         "oneOf": [
           {
@@ -3091,7 +3066,6 @@
         ]
       },
       "CompositeConstraint": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/CompositeConstraint",
         "title": "CompositeConstraint",
         "type": "object",
         "properties": {
@@ -3122,7 +3096,6 @@
         "additionalProperties": false
       },
       "CompositeConstraintRequest": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/CompositeConstraintRequest",
         "title": "CompositeConstraintRequest",
         "type": "object",
         "properties": {
@@ -3153,7 +3126,6 @@
         "additionalProperties": false
       },
       "PrimitiveConstraint": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/PrimitiveConstraint",
         "title": "PrimitiveConstraint",
         "type": "object",
         "properties": {
@@ -3220,7 +3192,6 @@
         "additionalProperties": false
       },
       "PrimitiveConstraintRequest": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/PrimitiveConstraint",
         "title": "PrimitiveConstraint",
         "type": "object",
         "properties": {
@@ -3286,7 +3257,6 @@
         "additionalProperties": false
       },
       "Error": {
-        "$id": "https://www.omg.org/spec/SystemsModelingAPI/20230201/Error",
         "type": "object",
         "properties": {
           "@type": {
@@ -3311,7 +3281,6 @@
         "additionalProperties": true
       },
       "AcceptActionUsageRequest": {
-        "$id": "20250201/AcceptActionUsageRequest",
         "title": "AcceptActionUsageRequest",
         "type": "object",
         "properties": {
@@ -3412,7 +3381,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -4219,7 +4188,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -4306,7 +4275,6 @@
         "additionalProperties": false
       },
       "ActionDefinitionRequest": {
-        "$id": "20250201/ActionDefinitionRequest",
         "title": "ActionDefinitionRequest",
         "anyOf": [
           {
@@ -4984,18 +4952,17 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/StateDefinitionRequest"
+            "$ref": "#/components/schemas/StateDefinitionRequest"
           },
           {
-            "$ref": "20250201/CalculationDefinitionRequest"
+            "$ref": "#/components/schemas/CalculationDefinitionRequest"
           },
           {
-            "$ref": "20250201/FlowDefinitionRequest"
+            "$ref": "#/components/schemas/FlowDefinitionRequest"
           }
         ]
       },
       "ActionUsageRequest": {
-        "$id": "20250201/ActionUsageRequest",
         "title": "ActionUsageRequest",
         "anyOf": [
           {
@@ -5098,7 +5065,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -5890,7 +5857,7 @@
               "portionKind": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/PortionKindRequest"
+                    "$ref": "#/components/schemas/PortionKindRequest"
                   },
                   {
                     "type": "null"
@@ -5966,45 +5933,44 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/StateUsageRequest"
+            "$ref": "#/components/schemas/StateUsageRequest"
           },
           {
-            "$ref": "20250201/TransitionUsageRequest"
+            "$ref": "#/components/schemas/TransitionUsageRequest"
           },
           {
-            "$ref": "20250201/CalculationUsageRequest"
+            "$ref": "#/components/schemas/CalculationUsageRequest"
           },
           {
-            "$ref": "20250201/IfActionUsageRequest"
+            "$ref": "#/components/schemas/IfActionUsageRequest"
           },
           {
-            "$ref": "20250201/TerminateActionUsageRequest"
+            "$ref": "#/components/schemas/TerminateActionUsageRequest"
           },
           {
-            "$ref": "20250201/AcceptActionUsageRequest"
+            "$ref": "#/components/schemas/AcceptActionUsageRequest"
           },
           {
-            "$ref": "20250201/SendActionUsageRequest"
+            "$ref": "#/components/schemas/SendActionUsageRequest"
           },
           {
-            "$ref": "20250201/ControlNodeRequest"
+            "$ref": "#/components/schemas/ControlNodeRequest"
           },
           {
-            "$ref": "20250201/PerformActionUsageRequest"
+            "$ref": "#/components/schemas/PerformActionUsageRequest"
           },
           {
-            "$ref": "20250201/LoopActionUsageRequest"
+            "$ref": "#/components/schemas/LoopActionUsageRequest"
           },
           {
-            "$ref": "20250201/AssignmentActionUsageRequest"
+            "$ref": "#/components/schemas/AssignmentActionUsageRequest"
           },
           {
-            "$ref": "20250201/FlowUsageRequest"
+            "$ref": "#/components/schemas/FlowUsageRequest"
           }
         ]
       },
       "ActorMembershipRequest": {
-        "$id": "20250201/ActorMembershipRequest",
         "title": "ActorMembershipRequest",
         "type": "object",
         "properties": {
@@ -6321,7 +6287,7 @@
           "visibility": {
             "oneOf": [
               {
-                "$ref": "20250201/VisibilityKindRequest"
+                "$ref": "#/components/schemas/VisibilityKindRequest"
               },
               {
                 "type": "null"
@@ -6335,7 +6301,6 @@
         "additionalProperties": false
       },
       "AllocationDefinitionRequest": {
-        "$id": "20250201/AllocationDefinitionRequest",
         "title": "AllocationDefinitionRequest",
         "type": "object",
         "properties": {
@@ -7085,7 +7050,6 @@
         "additionalProperties": false
       },
       "AllocationUsageRequest": {
-        "$id": "20250201/AllocationUsageRequest",
         "title": "AllocationUsageRequest",
         "type": "object",
         "properties": {
@@ -7211,7 +7175,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -8038,7 +8002,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -8160,7 +8124,6 @@
         "additionalProperties": false
       },
       "AnalysisCaseDefinitionRequest": {
-        "$id": "20250201/AnalysisCaseDefinitionRequest",
         "title": "AnalysisCaseDefinitionRequest",
         "type": "object",
         "properties": {
@@ -8897,7 +8860,6 @@
         "additionalProperties": false
       },
       "AnalysisCaseUsageRequest": {
-        "$id": "20250201/AnalysisCaseUsageRequest",
         "title": "AnalysisCaseUsageRequest",
         "type": "object",
         "properties": {
@@ -9038,7 +9000,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -9862,7 +9824,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -9957,7 +9919,6 @@
         "additionalProperties": false
       },
       "AnnotatingElementRequest": {
-        "$id": "20250201/AnnotatingElementRequest",
         "title": "AnnotatingElementRequest",
         "anyOf": [
           {
@@ -10176,18 +10137,17 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/MetadataFeatureRequest"
+            "$ref": "#/components/schemas/MetadataFeatureRequest"
           },
           {
-            "$ref": "20250201/TextualRepresentationRequest"
+            "$ref": "#/components/schemas/TextualRepresentationRequest"
           },
           {
-            "$ref": "20250201/CommentRequest"
+            "$ref": "#/components/schemas/CommentRequest"
           }
         ]
       },
       "AnnotationRequest": {
-        "$id": "20250201/AnnotationRequest",
         "title": "AnnotationRequest",
         "type": "object",
         "properties": {
@@ -10461,7 +10421,6 @@
         "additionalProperties": false
       },
       "AssertConstraintUsageRequest": {
-        "$id": "20250201/AssertConstraintUsageRequest",
         "title": "AssertConstraintUsageRequest",
         "anyOf": [
           {
@@ -10572,7 +10531,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -11395,7 +11354,7 @@
               "portionKind": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/PortionKindRequest"
+                    "$ref": "#/components/schemas/PortionKindRequest"
                   },
                   {
                     "type": "null"
@@ -11486,12 +11445,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/SatisfyRequirementUsageRequest"
+            "$ref": "#/components/schemas/SatisfyRequirementUsageRequest"
           }
         ]
       },
       "AssignmentActionUsageRequest": {
-        "$id": "20250201/AssignmentActionUsageRequest",
         "title": "AssignmentActionUsageRequest",
         "type": "object",
         "properties": {
@@ -11592,7 +11550,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -12384,7 +12342,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -12486,7 +12444,6 @@
         "additionalProperties": false
       },
       "AssociationRequest": {
-        "$id": "20250201/AssociationRequest",
         "title": "AssociationRequest",
         "anyOf": [
           {
@@ -12987,15 +12944,14 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/InteractionRequest"
+            "$ref": "#/components/schemas/InteractionRequest"
           },
           {
-            "$ref": "20250201/AssociationStructureRequest"
+            "$ref": "#/components/schemas/AssociationStructureRequest"
           }
         ]
       },
       "AssociationStructureRequest": {
-        "$id": "20250201/AssociationStructureRequest",
         "title": "AssociationStructureRequest",
         "anyOf": [
           {
@@ -13496,12 +13452,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/ConnectionDefinitionRequest"
+            "$ref": "#/components/schemas/ConnectionDefinitionRequest"
           }
         ]
       },
       "AttributeDefinitionRequest": {
-        "$id": "20250201/AttributeDefinitionRequest",
         "title": "AttributeDefinitionRequest",
         "anyOf": [
           {
@@ -14148,12 +14103,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/EnumerationDefinitionRequest"
+            "$ref": "#/components/schemas/EnumerationDefinitionRequest"
           }
         ]
       },
       "AttributeUsageRequest": {
-        "$id": "20250201/AttributeUsageRequest",
         "title": "AttributeUsageRequest",
         "anyOf": [
           {
@@ -14249,7 +14203,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -15072,12 +15026,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/EnumerationUsageRequest"
+            "$ref": "#/components/schemas/EnumerationUsageRequest"
           }
         ]
       },
       "BehaviorRequest": {
-        "$id": "20250201/BehaviorRequest",
         "title": "BehaviorRequest",
         "anyOf": [
           {
@@ -15511,18 +15464,17 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/InteractionRequest"
+            "$ref": "#/components/schemas/InteractionRequest"
           },
           {
-            "$ref": "20250201/FunctionRequest"
+            "$ref": "#/components/schemas/FunctionRequest"
           },
           {
-            "$ref": "20250201/ActionDefinitionRequest"
+            "$ref": "#/components/schemas/ActionDefinitionRequest"
           }
         ]
       },
       "BindingConnectorRequest": {
-        "$id": "20250201/BindingConnectorRequest",
         "title": "BindingConnectorRequest",
         "anyOf": [
           {
@@ -15622,7 +15574,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -16257,12 +16209,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/BindingConnectorAsUsageRequest"
+            "$ref": "#/components/schemas/BindingConnectorAsUsageRequest"
           }
         ]
       },
       "BindingConnectorAsUsageRequest": {
-        "$id": "20250201/BindingConnectorAsUsageRequest",
         "title": "BindingConnectorAsUsageRequest",
         "type": "object",
         "properties": {
@@ -16374,7 +16325,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -17271,7 +17222,6 @@
         "additionalProperties": false
       },
       "BooleanExpressionRequest": {
-        "$id": "20250201/BooleanExpressionRequest",
         "title": "BooleanExpressionRequest",
         "anyOf": [
           {
@@ -17353,7 +17303,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -17957,15 +17907,14 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/InvariantRequest"
+            "$ref": "#/components/schemas/InvariantRequest"
           },
           {
-            "$ref": "20250201/ConstraintUsageRequest"
+            "$ref": "#/components/schemas/ConstraintUsageRequest"
           }
         ]
       },
       "CalculationDefinitionRequest": {
-        "$id": "20250201/CalculationDefinitionRequest",
         "title": "CalculationDefinitionRequest",
         "anyOf": [
           {
@@ -18671,12 +18620,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/CaseDefinitionRequest"
+            "$ref": "#/components/schemas/CaseDefinitionRequest"
           }
         ]
       },
       "CalculationUsageRequest": {
-        "$id": "20250201/CalculationUsageRequest",
         "title": "CalculationUsageRequest",
         "anyOf": [
           {
@@ -18790,7 +18738,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -19603,7 +19551,7 @@
               "portionKind": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/PortionKindRequest"
+                    "$ref": "#/components/schemas/PortionKindRequest"
                   },
                   {
                     "type": "null"
@@ -19683,12 +19631,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/CaseUsageRequest"
+            "$ref": "#/components/schemas/CaseUsageRequest"
           }
         ]
       },
       "CaseDefinitionRequest": {
-        "$id": "20250201/CaseDefinitionRequest",
         "title": "CaseDefinitionRequest",
         "anyOf": [
           {
@@ -20416,18 +20363,17 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/AnalysisCaseDefinitionRequest"
+            "$ref": "#/components/schemas/AnalysisCaseDefinitionRequest"
           },
           {
-            "$ref": "20250201/VerificationCaseDefinitionRequest"
+            "$ref": "#/components/schemas/VerificationCaseDefinitionRequest"
           },
           {
-            "$ref": "20250201/UseCaseDefinitionRequest"
+            "$ref": "#/components/schemas/UseCaseDefinitionRequest"
           }
         ]
       },
       "CaseUsageRequest": {
-        "$id": "20250201/CaseUsageRequest",
         "title": "CaseUsageRequest",
         "anyOf": [
           {
@@ -20559,7 +20505,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -21383,7 +21329,7 @@
               "portionKind": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/PortionKindRequest"
+                    "$ref": "#/components/schemas/PortionKindRequest"
                   },
                   {
                     "type": "null"
@@ -21467,18 +21413,17 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/AnalysisCaseUsageRequest"
+            "$ref": "#/components/schemas/AnalysisCaseUsageRequest"
           },
           {
-            "$ref": "20250201/VerificationCaseUsageRequest"
+            "$ref": "#/components/schemas/VerificationCaseUsageRequest"
           },
           {
-            "$ref": "20250201/UseCaseUsageRequest"
+            "$ref": "#/components/schemas/UseCaseUsageRequest"
           }
         ]
       },
       "ClassRequest": {
-        "$id": "20250201/ClassRequest",
         "title": "ClassRequest",
         "anyOf": [
           {
@@ -21898,18 +21843,17 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/StructureRequest"
+            "$ref": "#/components/schemas/StructureRequest"
           },
           {
-            "$ref": "20250201/BehaviorRequest"
+            "$ref": "#/components/schemas/BehaviorRequest"
           },
           {
-            "$ref": "20250201/OccurrenceDefinitionRequest"
+            "$ref": "#/components/schemas/OccurrenceDefinitionRequest"
           }
         ]
       },
       "ClassifierRequest": {
-        "$id": "20250201/ClassifierRequest",
         "title": "ClassifierRequest",
         "anyOf": [
           {
@@ -22329,21 +22273,20 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/DataTypeRequest"
+            "$ref": "#/components/schemas/DataTypeRequest"
           },
           {
-            "$ref": "20250201/AssociationRequest"
+            "$ref": "#/components/schemas/AssociationRequest"
           },
           {
-            "$ref": "20250201/ClassRequest"
+            "$ref": "#/components/schemas/ClassRequest"
           },
           {
-            "$ref": "20250201/DefinitionRequest"
+            "$ref": "#/components/schemas/DefinitionRequest"
           }
         ]
       },
       "CollectExpressionRequest": {
-        "$id": "20250201/CollectExpressionRequest",
         "title": "CollectExpressionRequest",
         "type": "object",
         "properties": {
@@ -22430,7 +22373,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -23037,7 +22980,6 @@
         "additionalProperties": false
       },
       "CommentRequest": {
-        "$id": "20250201/CommentRequest",
         "title": "CommentRequest",
         "anyOf": [
           {
@@ -23269,12 +23211,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/DocumentationRequest"
+            "$ref": "#/components/schemas/DocumentationRequest"
           }
         ]
       },
       "ConcernDefinitionRequest": {
-        "$id": "20250201/ConcernDefinitionRequest",
         "title": "ConcernDefinitionRequest",
         "type": "object",
         "properties": {
@@ -24019,7 +23960,6 @@
         "additionalProperties": false
       },
       "ConcernUsageRequest": {
-        "$id": "20250201/ConcernUsageRequest",
         "title": "ConcernUsageRequest",
         "type": "object",
         "properties": {
@@ -24149,7 +24089,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -24969,7 +24909,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -25105,7 +25045,6 @@
         "additionalProperties": false
       },
       "ConjugatedPortDefinitionRequest": {
-        "$id": "20250201/ConjugatedPortDefinitionRequest",
         "title": "ConjugatedPortDefinitionRequest",
         "type": "object",
         "properties": {
@@ -25779,7 +25718,6 @@
         "additionalProperties": false
       },
       "ConjugatedPortTypingRequest": {
-        "$id": "20250201/ConjugatedPortTypingRequest",
         "title": "ConjugatedPortTypingRequest",
         "type": "object",
         "properties": {
@@ -26058,7 +25996,6 @@
         "additionalProperties": false
       },
       "ConjugationRequest": {
-        "$id": "20250201/ConjugationRequest",
         "title": "ConjugationRequest",
         "anyOf": [
           {
@@ -26312,12 +26249,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/PortConjugationRequest"
+            "$ref": "#/components/schemas/PortConjugationRequest"
           }
         ]
       },
       "ConnectionDefinitionRequest": {
-        "$id": "20250201/ConnectionDefinitionRequest",
         "title": "ConnectionDefinitionRequest",
         "anyOf": [
           {
@@ -27062,15 +26998,14 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/InterfaceDefinitionRequest"
+            "$ref": "#/components/schemas/InterfaceDefinitionRequest"
           },
           {
-            "$ref": "20250201/AllocationDefinitionRequest"
+            "$ref": "#/components/schemas/AllocationDefinitionRequest"
           }
         ]
       },
       "ConnectionUsageRequest": {
-        "$id": "20250201/ConnectionUsageRequest",
         "title": "ConnectionUsageRequest",
         "anyOf": [
           {
@@ -27191,7 +27126,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -28018,7 +27953,7 @@
               "portionKind": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/PortionKindRequest"
+                    "$ref": "#/components/schemas/PortionKindRequest"
                   },
                   {
                     "type": "null"
@@ -28140,15 +28075,14 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/InterfaceUsageRequest"
+            "$ref": "#/components/schemas/InterfaceUsageRequest"
           },
           {
-            "$ref": "20250201/AllocationUsageRequest"
+            "$ref": "#/components/schemas/AllocationUsageRequest"
           }
         ]
       },
       "ConnectorRequest": {
-        "$id": "20250201/ConnectorRequest",
         "title": "ConnectorRequest",
         "anyOf": [
           {
@@ -28248,7 +28182,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -28883,21 +28817,20 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/FlowRequest"
+            "$ref": "#/components/schemas/FlowRequest"
           },
           {
-            "$ref": "20250201/SuccessionRequest"
+            "$ref": "#/components/schemas/SuccessionRequest"
           },
           {
-            "$ref": "20250201/BindingConnectorRequest"
+            "$ref": "#/components/schemas/BindingConnectorRequest"
           },
           {
-            "$ref": "20250201/ConnectorAsUsageRequest"
+            "$ref": "#/components/schemas/ConnectorAsUsageRequest"
           }
         ]
       },
       "ConnectorAsUsageRequest": {
-        "$id": "20250201/ConnectorAsUsageRequest",
         "title": "ConnectorAsUsageRequest",
         "anyOf": [
           {
@@ -29011,7 +28944,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -29908,21 +29841,20 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/BindingConnectorAsUsageRequest"
+            "$ref": "#/components/schemas/BindingConnectorAsUsageRequest"
           },
           {
-            "$ref": "20250201/ConnectionUsageRequest"
+            "$ref": "#/components/schemas/ConnectionUsageRequest"
           },
           {
-            "$ref": "20250201/SuccessionAsUsageRequest"
+            "$ref": "#/components/schemas/SuccessionAsUsageRequest"
           },
           {
-            "$ref": "20250201/FlowUsageRequest"
+            "$ref": "#/components/schemas/FlowUsageRequest"
           }
         ]
       },
       "ConstraintDefinitionRequest": {
-        "$id": "20250201/ConstraintDefinitionRequest",
         "title": "ConstraintDefinitionRequest",
         "anyOf": [
           {
@@ -30614,12 +30546,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/RequirementDefinitionRequest"
+            "$ref": "#/components/schemas/RequirementDefinitionRequest"
           }
         ]
       },
       "ConstraintUsageRequest": {
-        "$id": "20250201/ConstraintUsageRequest",
         "title": "ConstraintUsageRequest",
         "anyOf": [
           {
@@ -30726,7 +30657,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -31539,7 +31470,7 @@
               "portionKind": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/PortionKindRequest"
+                    "$ref": "#/components/schemas/PortionKindRequest"
                   },
                   {
                     "type": "null"
@@ -31630,15 +31561,14 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/AssertConstraintUsageRequest"
+            "$ref": "#/components/schemas/AssertConstraintUsageRequest"
           },
           {
-            "$ref": "20250201/RequirementUsageRequest"
+            "$ref": "#/components/schemas/RequirementUsageRequest"
           }
         ]
       },
       "ConstructorExpressionRequest": {
-        "$id": "20250201/ConstructorExpressionRequest",
         "title": "ConstructorExpressionRequest",
         "type": "object",
         "properties": {
@@ -31725,7 +31655,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -32322,7 +32252,6 @@
         "additionalProperties": false
       },
       "ControlNodeRequest": {
-        "$id": "20250201/ControlNodeRequest",
         "title": "ControlNodeRequest",
         "anyOf": [
           {
@@ -32425,7 +32354,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -33217,7 +33146,7 @@
               "portionKind": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/PortionKindRequest"
+                    "$ref": "#/components/schemas/PortionKindRequest"
                   },
                   {
                     "type": "null"
@@ -33293,21 +33222,20 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/DecisionNodeRequest"
+            "$ref": "#/components/schemas/DecisionNodeRequest"
           },
           {
-            "$ref": "20250201/ForkNodeRequest"
+            "$ref": "#/components/schemas/ForkNodeRequest"
           },
           {
-            "$ref": "20250201/MergeNodeRequest"
+            "$ref": "#/components/schemas/MergeNodeRequest"
           },
           {
-            "$ref": "20250201/JoinNodeRequest"
+            "$ref": "#/components/schemas/JoinNodeRequest"
           }
         ]
       },
       "CrossSubsettingRequest": {
-        "$id": "20250201/CrossSubsettingRequest",
         "title": "CrossSubsettingRequest",
         "type": "object",
         "properties": {
@@ -33586,7 +33514,6 @@
         "additionalProperties": false
       },
       "DataTypeRequest": {
-        "$id": "20250201/DataTypeRequest",
         "title": "DataTypeRequest",
         "anyOf": [
           {
@@ -34006,12 +33933,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/AttributeDefinitionRequest"
+            "$ref": "#/components/schemas/AttributeDefinitionRequest"
           }
         ]
       },
       "DecisionNodeRequest": {
-        "$id": "20250201/DecisionNodeRequest",
         "title": "DecisionNodeRequest",
         "type": "object",
         "properties": {
@@ -34112,7 +34038,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -34904,7 +34830,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -34980,7 +34906,6 @@
         "additionalProperties": false
       },
       "DefinitionRequest": {
-        "$id": "20250201/DefinitionRequest",
         "title": "DefinitionRequest",
         "anyOf": [
           {
@@ -35627,15 +35552,14 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/AttributeDefinitionRequest"
+            "$ref": "#/components/schemas/AttributeDefinitionRequest"
           },
           {
-            "$ref": "20250201/OccurrenceDefinitionRequest"
+            "$ref": "#/components/schemas/OccurrenceDefinitionRequest"
           }
         ]
       },
       "DependencyRequest": {
-        "$id": "20250201/DependencyRequest",
         "title": "DependencyRequest",
         "type": "object",
         "properties": {
@@ -35884,7 +35808,6 @@
         "additionalProperties": false
       },
       "DifferencingRequest": {
-        "$id": "20250201/DifferencingRequest",
         "title": "DifferencingRequest",
         "type": "object",
         "properties": {
@@ -36125,7 +36048,6 @@
         "additionalProperties": false
       },
       "DisjoiningRequest": {
-        "$id": "20250201/DisjoiningRequest",
         "title": "DisjoiningRequest",
         "type": "object",
         "properties": {
@@ -36377,7 +36299,6 @@
         "additionalProperties": false
       },
       "DocumentationRequest": {
-        "$id": "20250201/DocumentationRequest",
         "title": "DocumentationRequest",
         "type": "object",
         "properties": {
@@ -36611,7 +36532,6 @@
         "additionalProperties": false
       },
       "ElementRequest": {
-        "$id": "20250201/ElementRequest",
         "title": "ElementRequest",
         "anyOf": [
           {
@@ -36797,18 +36717,17 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/NamespaceRequest"
+            "$ref": "#/components/schemas/NamespaceRequest"
           },
           {
-            "$ref": "20250201/AnnotatingElementRequest"
+            "$ref": "#/components/schemas/AnnotatingElementRequest"
           },
           {
-            "$ref": "20250201/RelationshipRequest"
+            "$ref": "#/components/schemas/RelationshipRequest"
           }
         ]
       },
       "ElementFilterMembershipRequest": {
-        "$id": "20250201/ElementFilterMembershipRequest",
         "title": "ElementFilterMembershipRequest",
         "type": "object",
         "properties": {
@@ -37113,7 +37032,7 @@
           "visibility": {
             "oneOf": [
               {
-                "$ref": "20250201/VisibilityKindRequest"
+                "$ref": "#/components/schemas/VisibilityKindRequest"
               },
               {
                 "type": "null"
@@ -37127,7 +37046,6 @@
         "additionalProperties": false
       },
       "EndFeatureMembershipRequest": {
-        "$id": "20250201/EndFeatureMembershipRequest",
         "title": "EndFeatureMembershipRequest",
         "type": "object",
         "properties": {
@@ -37436,7 +37354,7 @@
           "visibility": {
             "oneOf": [
               {
-                "$ref": "20250201/VisibilityKindRequest"
+                "$ref": "#/components/schemas/VisibilityKindRequest"
               },
               {
                 "type": "null"
@@ -37450,7 +37368,6 @@
         "additionalProperties": false
       },
       "EnumerationDefinitionRequest": {
-        "$id": "20250201/EnumerationDefinitionRequest",
         "title": "EnumerationDefinitionRequest",
         "type": "object",
         "properties": {
@@ -38102,7 +38019,6 @@
         "additionalProperties": false
       },
       "EnumerationUsageRequest": {
-        "$id": "20250201/EnumerationUsageRequest",
         "title": "EnumerationUsageRequest",
         "type": "object",
         "properties": {
@@ -38196,7 +38112,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -39023,7 +38939,6 @@
         "additionalProperties": false
       },
       "EventOccurrenceUsageRequest": {
-        "$id": "20250201/EventOccurrenceUsageRequest",
         "title": "EventOccurrenceUsageRequest",
         "anyOf": [
           {
@@ -39112,7 +39027,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -39901,7 +39816,7 @@
               "portionKind": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/PortionKindRequest"
+                    "$ref": "#/components/schemas/PortionKindRequest"
                   },
                   {
                     "type": "null"
@@ -39977,12 +39892,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/PerformActionUsageRequest"
+            "$ref": "#/components/schemas/PerformActionUsageRequest"
           }
         ]
       },
       "ExhibitStateUsageRequest": {
-        "$id": "20250201/ExhibitStateUsageRequest",
         "title": "ExhibitStateUsageRequest",
         "type": "object",
         "properties": {
@@ -40083,7 +39997,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -40930,7 +40844,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -41013,7 +40927,6 @@
         "additionalProperties": false
       },
       "ExposeRequest": {
-        "$id": "20250201/ExposeRequest",
         "title": "ExposeRequest",
         "anyOf": [
           {
@@ -41272,7 +41185,7 @@
               "visibility": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/VisibilityKindRequest"
+                    "$ref": "#/components/schemas/VisibilityKindRequest"
                   },
                   {
                     "type": "null"
@@ -41286,15 +41199,14 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/NamespaceExposeRequest"
+            "$ref": "#/components/schemas/NamespaceExposeRequest"
           },
           {
-            "$ref": "20250201/MembershipExposeRequest"
+            "$ref": "#/components/schemas/MembershipExposeRequest"
           }
         ]
       },
       "ExpressionRequest": {
-        "$id": "20250201/ExpressionRequest",
         "title": "ExpressionRequest",
         "anyOf": [
           {
@@ -41376,7 +41288,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -41969,30 +41881,29 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/LiteralExpressionRequest"
+            "$ref": "#/components/schemas/LiteralExpressionRequest"
           },
           {
-            "$ref": "20250201/NullExpressionRequest"
+            "$ref": "#/components/schemas/NullExpressionRequest"
           },
           {
-            "$ref": "20250201/InstantiationExpressionRequest"
+            "$ref": "#/components/schemas/InstantiationExpressionRequest"
           },
           {
-            "$ref": "20250201/FeatureReferenceExpressionRequest"
+            "$ref": "#/components/schemas/FeatureReferenceExpressionRequest"
           },
           {
-            "$ref": "20250201/MetadataAccessExpressionRequest"
+            "$ref": "#/components/schemas/MetadataAccessExpressionRequest"
           },
           {
-            "$ref": "20250201/BooleanExpressionRequest"
+            "$ref": "#/components/schemas/BooleanExpressionRequest"
           },
           {
-            "$ref": "20250201/CalculationUsageRequest"
+            "$ref": "#/components/schemas/CalculationUsageRequest"
           }
         ]
       },
       "FeatureRequest": {
-        "$id": "20250201/FeatureRequest",
         "title": "FeatureRequest",
         "anyOf": [
           {
@@ -42067,7 +41978,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -42628,30 +42539,29 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/FlowEndRequest"
+            "$ref": "#/components/schemas/FlowEndRequest"
           },
           {
-            "$ref": "20250201/PayloadFeatureRequest"
+            "$ref": "#/components/schemas/PayloadFeatureRequest"
           },
           {
-            "$ref": "20250201/MetadataFeatureRequest"
+            "$ref": "#/components/schemas/MetadataFeatureRequest"
           },
           {
-            "$ref": "20250201/ConnectorRequest"
+            "$ref": "#/components/schemas/ConnectorRequest"
           },
           {
-            "$ref": "20250201/StepRequest"
+            "$ref": "#/components/schemas/StepRequest"
           },
           {
-            "$ref": "20250201/MultiplicityRequest"
+            "$ref": "#/components/schemas/MultiplicityRequest"
           },
           {
-            "$ref": "20250201/UsageRequest"
+            "$ref": "#/components/schemas/UsageRequest"
           }
         ]
       },
       "FeatureChainExpressionRequest": {
-        "$id": "20250201/FeatureChainExpressionRequest",
         "title": "FeatureChainExpressionRequest",
         "type": "object",
         "properties": {
@@ -42738,7 +42648,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -43349,7 +43259,6 @@
         "additionalProperties": false
       },
       "FeatureChainingRequest": {
-        "$id": "20250201/FeatureChainingRequest",
         "title": "FeatureChainingRequest",
         "type": "object",
         "properties": {
@@ -43590,7 +43499,6 @@
         "additionalProperties": false
       },
       "FeatureDirectionKindRequest": {
-        "$id": "20250201/FeatureDirectionKindRequest",
         "title": "FeatureDirectionKindRequest",
         "type": "string",
         "enum": [
@@ -43600,7 +43508,6 @@
         ]
       },
       "FeatureInvertingRequest": {
-        "$id": "20250201/FeatureInvertingRequest",
         "title": "FeatureInvertingRequest",
         "type": "object",
         "properties": {
@@ -43852,7 +43759,6 @@
         "additionalProperties": false
       },
       "FeatureMembershipRequest": {
-        "$id": "20250201/FeatureMembershipRequest",
         "title": "FeatureMembershipRequest",
         "anyOf": [
           {
@@ -44163,7 +44069,7 @@
               "visibility": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/VisibilityKindRequest"
+                    "$ref": "#/components/schemas/VisibilityKindRequest"
                   },
                   {
                     "type": "null"
@@ -44177,33 +44083,32 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/ResultExpressionMembershipRequest"
+            "$ref": "#/components/schemas/ResultExpressionMembershipRequest"
           },
           {
-            "$ref": "20250201/ParameterMembershipRequest"
+            "$ref": "#/components/schemas/ParameterMembershipRequest"
           },
           {
-            "$ref": "20250201/EndFeatureMembershipRequest"
+            "$ref": "#/components/schemas/EndFeatureMembershipRequest"
           },
           {
-            "$ref": "20250201/StateSubactionMembershipRequest"
+            "$ref": "#/components/schemas/StateSubactionMembershipRequest"
           },
           {
-            "$ref": "20250201/TransitionFeatureMembershipRequest"
+            "$ref": "#/components/schemas/TransitionFeatureMembershipRequest"
           },
           {
-            "$ref": "20250201/RequirementConstraintMembershipRequest"
+            "$ref": "#/components/schemas/RequirementConstraintMembershipRequest"
           },
           {
-            "$ref": "20250201/ObjectiveMembershipRequest"
+            "$ref": "#/components/schemas/ObjectiveMembershipRequest"
           },
           {
-            "$ref": "20250201/ViewRenderingMembershipRequest"
+            "$ref": "#/components/schemas/ViewRenderingMembershipRequest"
           }
         ]
       },
       "FeatureReferenceExpressionRequest": {
-        "$id": "20250201/FeatureReferenceExpressionRequest",
         "title": "FeatureReferenceExpressionRequest",
         "type": "object",
         "properties": {
@@ -44283,7 +44188,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -44880,7 +44785,6 @@
         "additionalProperties": false
       },
       "FeatureTypingRequest": {
-        "$id": "20250201/FeatureTypingRequest",
         "title": "FeatureTypingRequest",
         "anyOf": [
           {
@@ -45153,12 +45057,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/ConjugatedPortTypingRequest"
+            "$ref": "#/components/schemas/ConjugatedPortTypingRequest"
           }
         ]
       },
       "FeatureValueRequest": {
-        "$id": "20250201/FeatureValueRequest",
         "title": "FeatureValueRequest",
         "type": "object",
         "properties": {
@@ -45487,7 +45390,7 @@
           "visibility": {
             "oneOf": [
               {
-                "$ref": "20250201/VisibilityKindRequest"
+                "$ref": "#/components/schemas/VisibilityKindRequest"
               },
               {
                 "type": "null"
@@ -45501,7 +45404,6 @@
         "additionalProperties": false
       },
       "FlowRequest": {
-        "$id": "20250201/FlowRequest",
         "title": "FlowRequest",
         "anyOf": [
           {
@@ -45608,7 +45510,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -46305,15 +46207,14 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/SuccessionFlowRequest"
+            "$ref": "#/components/schemas/SuccessionFlowRequest"
           },
           {
-            "$ref": "20250201/FlowUsageRequest"
+            "$ref": "#/components/schemas/FlowUsageRequest"
           }
         ]
       },
       "FlowDefinitionRequest": {
-        "$id": "20250201/FlowDefinitionRequest",
         "title": "FlowDefinitionRequest",
         "type": "object",
         "properties": {
@@ -47077,7 +46978,6 @@
         "additionalProperties": false
       },
       "FlowEndRequest": {
-        "$id": "20250201/FlowEndRequest",
         "title": "FlowEndRequest",
         "type": "object",
         "properties": {
@@ -47150,7 +47050,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -47711,7 +47611,6 @@
         "additionalProperties": false
       },
       "FlowUsageRequest": {
-        "$id": "20250201/FlowUsageRequest",
         "title": "FlowUsageRequest",
         "anyOf": [
           {
@@ -47839,7 +47738,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -48699,7 +48598,7 @@
               "portionKind": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/PortionKindRequest"
+                    "$ref": "#/components/schemas/PortionKindRequest"
                   },
                   {
                     "type": "null"
@@ -48843,12 +48742,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/SuccessionFlowUsageRequest"
+            "$ref": "#/components/schemas/SuccessionFlowUsageRequest"
           }
         ]
       },
       "ForLoopActionUsageRequest": {
-        "$id": "20250201/ForLoopActionUsageRequest",
         "title": "ForLoopActionUsageRequest",
         "type": "object",
         "properties": {
@@ -48953,7 +48851,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -49749,7 +49647,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -49829,7 +49727,6 @@
         "additionalProperties": false
       },
       "ForkNodeRequest": {
-        "$id": "20250201/ForkNodeRequest",
         "title": "ForkNodeRequest",
         "type": "object",
         "properties": {
@@ -49930,7 +49827,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -50722,7 +50619,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -50798,7 +50695,6 @@
         "additionalProperties": false
       },
       "FramedConcernMembershipRequest": {
-        "$id": "20250201/FramedConcernMembershipRequest",
         "title": "FramedConcernMembershipRequest",
         "type": "object",
         "properties": {
@@ -50886,7 +50782,7 @@
           "kind": {
             "oneOf": [
               {
-                "$ref": "20250201/RequirementConstraintKindRequest"
+                "$ref": "#/components/schemas/RequirementConstraintKindRequest"
               },
               {
                 "type": "null"
@@ -51133,7 +51029,7 @@
           "visibility": {
             "oneOf": [
               {
-                "$ref": "20250201/VisibilityKindRequest"
+                "$ref": "#/components/schemas/VisibilityKindRequest"
               },
               {
                 "type": "null"
@@ -51147,7 +51043,6 @@
         "additionalProperties": false
       },
       "FunctionRequest": {
-        "$id": "20250201/FunctionRequest",
         "title": "FunctionRequest",
         "anyOf": [
           {
@@ -51602,15 +51497,14 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/PredicateRequest"
+            "$ref": "#/components/schemas/PredicateRequest"
           },
           {
-            "$ref": "20250201/CalculationDefinitionRequest"
+            "$ref": "#/components/schemas/CalculationDefinitionRequest"
           }
         ]
       },
       "IfActionUsageRequest": {
-        "$id": "20250201/IfActionUsageRequest",
         "title": "IfActionUsageRequest",
         "type": "object",
         "properties": {
@@ -51711,7 +51605,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -52518,7 +52412,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -52598,7 +52492,6 @@
         "additionalProperties": false
       },
       "ImportRequest": {
-        "$id": "20250201/ImportRequest",
         "title": "ImportRequest",
         "anyOf": [
           {
@@ -52857,7 +52750,7 @@
               "visibility": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/VisibilityKindRequest"
+                    "$ref": "#/components/schemas/VisibilityKindRequest"
                   },
                   {
                     "type": "null"
@@ -52871,18 +52764,17 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/MembershipImportRequest"
+            "$ref": "#/components/schemas/MembershipImportRequest"
           },
           {
-            "$ref": "20250201/NamespaceImportRequest"
+            "$ref": "#/components/schemas/NamespaceImportRequest"
           },
           {
-            "$ref": "20250201/ExposeRequest"
+            "$ref": "#/components/schemas/ExposeRequest"
           }
         ]
       },
       "IncludeUseCaseUsageRequest": {
-        "$id": "20250201/IncludeUseCaseUsageRequest",
         "title": "IncludeUseCaseUsageRequest",
         "type": "object",
         "properties": {
@@ -53012,7 +52904,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -53851,7 +53743,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -53950,7 +53842,6 @@
         "additionalProperties": false
       },
       "IndexExpressionRequest": {
-        "$id": "20250201/IndexExpressionRequest",
         "title": "IndexExpressionRequest",
         "type": "object",
         "properties": {
@@ -54037,7 +53928,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -54644,7 +54535,6 @@
         "additionalProperties": false
       },
       "InstantiationExpressionRequest": {
-        "$id": "20250201/InstantiationExpressionRequest",
         "title": "InstantiationExpressionRequest",
         "anyOf": [
           {
@@ -54733,7 +54623,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -55330,15 +55220,14 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/InvocationExpressionRequest"
+            "$ref": "#/components/schemas/InvocationExpressionRequest"
           },
           {
-            "$ref": "20250201/ConstructorExpressionRequest"
+            "$ref": "#/components/schemas/ConstructorExpressionRequest"
           }
         ]
       },
       "InteractionRequest": {
-        "$id": "20250201/InteractionRequest",
         "title": "InteractionRequest",
         "anyOf": [
           {
@@ -55853,12 +55742,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/FlowDefinitionRequest"
+            "$ref": "#/components/schemas/FlowDefinitionRequest"
           }
         ]
       },
       "InterfaceDefinitionRequest": {
-        "$id": "20250201/InterfaceDefinitionRequest",
         "title": "InterfaceDefinitionRequest",
         "type": "object",
         "properties": {
@@ -56608,7 +56496,6 @@
         "additionalProperties": false
       },
       "InterfaceUsageRequest": {
-        "$id": "20250201/InterfaceUsageRequest",
         "title": "InterfaceUsageRequest",
         "type": "object",
         "properties": {
@@ -56727,7 +56614,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -57561,7 +57448,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -57683,7 +57570,6 @@
         "additionalProperties": false
       },
       "IntersectingRequest": {
-        "$id": "20250201/IntersectingRequest",
         "title": "IntersectingRequest",
         "type": "object",
         "properties": {
@@ -57924,7 +57810,6 @@
         "additionalProperties": false
       },
       "InvariantRequest": {
-        "$id": "20250201/InvariantRequest",
         "title": "InvariantRequest",
         "anyOf": [
           {
@@ -58006,7 +57891,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -58620,12 +58505,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/AssertConstraintUsageRequest"
+            "$ref": "#/components/schemas/AssertConstraintUsageRequest"
           }
         ]
       },
       "InvocationExpressionRequest": {
-        "$id": "20250201/InvocationExpressionRequest",
         "title": "InvocationExpressionRequest",
         "anyOf": [
           {
@@ -58714,7 +58598,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -59311,15 +59195,14 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/OperatorExpressionRequest"
+            "$ref": "#/components/schemas/OperatorExpressionRequest"
           },
           {
-            "$ref": "20250201/TriggerInvocationExpressionRequest"
+            "$ref": "#/components/schemas/TriggerInvocationExpressionRequest"
           }
         ]
       },
       "ItemDefinitionRequest": {
-        "$id": "20250201/ItemDefinitionRequest",
         "title": "ItemDefinitionRequest",
         "anyOf": [
           {
@@ -59976,15 +59859,14 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/PartDefinitionRequest"
+            "$ref": "#/components/schemas/PartDefinitionRequest"
           },
           {
-            "$ref": "20250201/MetadataDefinitionRequest"
+            "$ref": "#/components/schemas/MetadataDefinitionRequest"
           }
         ]
       },
       "ItemUsageRequest": {
-        "$id": "20250201/ItemUsageRequest",
         "title": "ItemUsageRequest",
         "anyOf": [
           {
@@ -60073,7 +59955,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -60865,7 +60747,7 @@
               "portionKind": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/PortionKindRequest"
+                    "$ref": "#/components/schemas/PortionKindRequest"
                   },
                   {
                     "type": "null"
@@ -60941,15 +60823,14 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/PartUsageRequest"
+            "$ref": "#/components/schemas/PartUsageRequest"
           },
           {
-            "$ref": "20250201/MetadataUsageRequest"
+            "$ref": "#/components/schemas/MetadataUsageRequest"
           }
         ]
       },
       "JoinNodeRequest": {
-        "$id": "20250201/JoinNodeRequest",
         "title": "JoinNodeRequest",
         "type": "object",
         "properties": {
@@ -61050,7 +60931,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -61842,7 +61723,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -61918,7 +61799,6 @@
         "additionalProperties": false
       },
       "LibraryPackageRequest": {
-        "$id": "20250201/LibraryPackageRequest",
         "title": "LibraryPackageRequest",
         "type": "object",
         "properties": {
@@ -62161,7 +62041,6 @@
         "additionalProperties": false
       },
       "LiteralBooleanRequest": {
-        "$id": "20250201/LiteralBooleanRequest",
         "title": "LiteralBooleanRequest",
         "type": "object",
         "properties": {
@@ -62241,7 +62120,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -62844,7 +62723,6 @@
         "additionalProperties": false
       },
       "LiteralExpressionRequest": {
-        "$id": "20250201/LiteralExpressionRequest",
         "title": "LiteralExpressionRequest",
         "anyOf": [
           {
@@ -62926,7 +62804,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -63519,24 +63397,23 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/LiteralIntegerRequest"
+            "$ref": "#/components/schemas/LiteralIntegerRequest"
           },
           {
-            "$ref": "20250201/LiteralInfinityRequest"
+            "$ref": "#/components/schemas/LiteralInfinityRequest"
           },
           {
-            "$ref": "20250201/LiteralStringRequest"
+            "$ref": "#/components/schemas/LiteralStringRequest"
           },
           {
-            "$ref": "20250201/LiteralRationalRequest"
+            "$ref": "#/components/schemas/LiteralRationalRequest"
           },
           {
-            "$ref": "20250201/LiteralBooleanRequest"
+            "$ref": "#/components/schemas/LiteralBooleanRequest"
           }
         ]
       },
       "LiteralInfinityRequest": {
-        "$id": "20250201/LiteralInfinityRequest",
         "title": "LiteralInfinityRequest",
         "type": "object",
         "properties": {
@@ -63616,7 +63493,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -64209,7 +64086,6 @@
         "additionalProperties": false
       },
       "LiteralIntegerRequest": {
-        "$id": "20250201/LiteralIntegerRequest",
         "title": "LiteralIntegerRequest",
         "type": "object",
         "properties": {
@@ -64289,7 +64165,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -64892,7 +64768,6 @@
         "additionalProperties": false
       },
       "LiteralRationalRequest": {
-        "$id": "20250201/LiteralRationalRequest",
         "title": "LiteralRationalRequest",
         "type": "object",
         "properties": {
@@ -64972,7 +64847,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -65575,7 +65450,6 @@
         "additionalProperties": false
       },
       "LiteralStringRequest": {
-        "$id": "20250201/LiteralStringRequest",
         "title": "LiteralStringRequest",
         "type": "object",
         "properties": {
@@ -65655,7 +65529,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -66258,7 +66132,6 @@
         "additionalProperties": false
       },
       "LoopActionUsageRequest": {
-        "$id": "20250201/LoopActionUsageRequest",
         "title": "LoopActionUsageRequest",
         "anyOf": [
           {
@@ -66365,7 +66238,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -67157,7 +67030,7 @@
               "portionKind": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/PortionKindRequest"
+                    "$ref": "#/components/schemas/PortionKindRequest"
                   },
                   {
                     "type": "null"
@@ -67233,15 +67106,14 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/ForLoopActionUsageRequest"
+            "$ref": "#/components/schemas/ForLoopActionUsageRequest"
           },
           {
-            "$ref": "20250201/WhileLoopActionUsageRequest"
+            "$ref": "#/components/schemas/WhileLoopActionUsageRequest"
           }
         ]
       },
       "MembershipRequest": {
-        "$id": "20250201/MembershipRequest",
         "title": "MembershipRequest",
         "anyOf": [
           {
@@ -67510,7 +67382,7 @@
               "visibility": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/VisibilityKindRequest"
+                    "$ref": "#/components/schemas/VisibilityKindRequest"
                   },
                   {
                     "type": "null"
@@ -67524,12 +67396,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/OwningMembershipRequest"
+            "$ref": "#/components/schemas/OwningMembershipRequest"
           }
         ]
       },
       "MembershipExposeRequest": {
-        "$id": "20250201/MembershipExposeRequest",
         "title": "MembershipExposeRequest",
         "type": "object",
         "properties": {
@@ -67790,7 +67661,7 @@
           "visibility": {
             "oneOf": [
               {
-                "$ref": "20250201/VisibilityKindRequest"
+                "$ref": "#/components/schemas/VisibilityKindRequest"
               },
               {
                 "type": "null"
@@ -67804,7 +67675,6 @@
         "additionalProperties": false
       },
       "MembershipImportRequest": {
-        "$id": "20250201/MembershipImportRequest",
         "title": "MembershipImportRequest",
         "anyOf": [
           {
@@ -68067,7 +67937,7 @@
               "visibility": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/VisibilityKindRequest"
+                    "$ref": "#/components/schemas/VisibilityKindRequest"
                   },
                   {
                     "type": "null"
@@ -68081,12 +67951,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/MembershipExposeRequest"
+            "$ref": "#/components/schemas/MembershipExposeRequest"
           }
         ]
       },
       "MergeNodeRequest": {
-        "$id": "20250201/MergeNodeRequest",
         "title": "MergeNodeRequest",
         "type": "object",
         "properties": {
@@ -68187,7 +68056,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -68979,7 +68848,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -69055,7 +68924,6 @@
         "additionalProperties": false
       },
       "MetaclassRequest": {
-        "$id": "20250201/MetaclassRequest",
         "title": "MetaclassRequest",
         "anyOf": [
           {
@@ -69475,12 +69343,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/MetadataDefinitionRequest"
+            "$ref": "#/components/schemas/MetadataDefinitionRequest"
           }
         ]
       },
       "MetadataAccessExpressionRequest": {
-        "$id": "20250201/MetadataAccessExpressionRequest",
         "title": "MetadataAccessExpressionRequest",
         "type": "object",
         "properties": {
@@ -69560,7 +69427,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -70157,7 +70024,6 @@
         "additionalProperties": false
       },
       "MetadataDefinitionRequest": {
-        "$id": "20250201/MetadataDefinitionRequest",
         "title": "MetadataDefinitionRequest",
         "type": "object",
         "properties": {
@@ -70812,7 +70678,6 @@
         "additionalProperties": false
       },
       "MetadataFeatureRequest": {
-        "$id": "20250201/MetadataFeatureRequest",
         "title": "MetadataFeatureRequest",
         "anyOf": [
           {
@@ -70902,7 +70767,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -71492,12 +71357,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/MetadataUsageRequest"
+            "$ref": "#/components/schemas/MetadataUsageRequest"
           }
         ]
       },
       "MetadataUsageRequest": {
-        "$id": "20250201/MetadataUsageRequest",
         "title": "MetadataUsageRequest",
         "type": "object",
         "properties": {
@@ -71599,7 +71463,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -72431,7 +72295,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -72507,7 +72371,6 @@
         "additionalProperties": false
       },
       "MultiplicityRequest": {
-        "$id": "20250201/MultiplicityRequest",
         "title": "MultiplicityRequest",
         "anyOf": [
           {
@@ -72582,7 +72445,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -73143,12 +73006,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/MultiplicityRangeRequest"
+            "$ref": "#/components/schemas/MultiplicityRangeRequest"
           }
         ]
       },
       "MultiplicityRangeRequest": {
-        "$id": "20250201/MultiplicityRangeRequest",
         "title": "MultiplicityRangeRequest",
         "type": "object",
         "properties": {
@@ -73230,7 +73092,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -73806,7 +73668,6 @@
         "additionalProperties": false
       },
       "NamespaceRequest": {
-        "$id": "20250201/NamespaceRequest",
         "title": "NamespaceRequest",
         "anyOf": [
           {
@@ -74034,15 +73895,14 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/PackageRequest"
+            "$ref": "#/components/schemas/PackageRequest"
           },
           {
-            "$ref": "20250201/TypeRequest"
+            "$ref": "#/components/schemas/TypeRequest"
           }
         ]
       },
       "NamespaceExposeRequest": {
-        "$id": "20250201/NamespaceExposeRequest",
         "title": "NamespaceExposeRequest",
         "type": "object",
         "properties": {
@@ -74303,7 +74163,7 @@
           "visibility": {
             "oneOf": [
               {
-                "$ref": "20250201/VisibilityKindRequest"
+                "$ref": "#/components/schemas/VisibilityKindRequest"
               },
               {
                 "type": "null"
@@ -74317,7 +74177,6 @@
         "additionalProperties": false
       },
       "NamespaceImportRequest": {
-        "$id": "20250201/NamespaceImportRequest",
         "title": "NamespaceImportRequest",
         "anyOf": [
           {
@@ -74580,7 +74439,7 @@
               "visibility": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/VisibilityKindRequest"
+                    "$ref": "#/components/schemas/VisibilityKindRequest"
                   },
                   {
                     "type": "null"
@@ -74594,12 +74453,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/NamespaceExposeRequest"
+            "$ref": "#/components/schemas/NamespaceExposeRequest"
           }
         ]
       },
       "NullExpressionRequest": {
-        "$id": "20250201/NullExpressionRequest",
         "title": "NullExpressionRequest",
         "type": "object",
         "properties": {
@@ -74679,7 +74537,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -75272,7 +75130,6 @@
         "additionalProperties": false
       },
       "ObjectiveMembershipRequest": {
-        "$id": "20250201/ObjectiveMembershipRequest",
         "title": "ObjectiveMembershipRequest",
         "type": "object",
         "properties": {
@@ -75585,7 +75442,7 @@
           "visibility": {
             "oneOf": [
               {
-                "$ref": "20250201/VisibilityKindRequest"
+                "$ref": "#/components/schemas/VisibilityKindRequest"
               },
               {
                 "type": "null"
@@ -75599,7 +75456,6 @@
         "additionalProperties": false
       },
       "OccurrenceDefinitionRequest": {
-        "$id": "20250201/OccurrenceDefinitionRequest",
         "title": "OccurrenceDefinitionRequest",
         "anyOf": [
           {
@@ -76256,21 +76112,20 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/ConstraintDefinitionRequest"
+            "$ref": "#/components/schemas/ConstraintDefinitionRequest"
           },
           {
-            "$ref": "20250201/ActionDefinitionRequest"
+            "$ref": "#/components/schemas/ActionDefinitionRequest"
           },
           {
-            "$ref": "20250201/ItemDefinitionRequest"
+            "$ref": "#/components/schemas/ItemDefinitionRequest"
           },
           {
-            "$ref": "20250201/PortDefinitionRequest"
+            "$ref": "#/components/schemas/PortDefinitionRequest"
           }
         ]
       },
       "OccurrenceUsageRequest": {
-        "$id": "20250201/OccurrenceUsageRequest",
         "title": "OccurrenceUsageRequest",
         "anyOf": [
           {
@@ -76359,7 +76214,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -77144,7 +76999,7 @@
               "portionKind": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/PortionKindRequest"
+                    "$ref": "#/components/schemas/PortionKindRequest"
                   },
                   {
                     "type": "null"
@@ -77220,24 +77075,23 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/ConstraintUsageRequest"
+            "$ref": "#/components/schemas/ConstraintUsageRequest"
           },
           {
-            "$ref": "20250201/EventOccurrenceUsageRequest"
+            "$ref": "#/components/schemas/EventOccurrenceUsageRequest"
           },
           {
-            "$ref": "20250201/ActionUsageRequest"
+            "$ref": "#/components/schemas/ActionUsageRequest"
           },
           {
-            "$ref": "20250201/ItemUsageRequest"
+            "$ref": "#/components/schemas/ItemUsageRequest"
           },
           {
-            "$ref": "20250201/PortUsageRequest"
+            "$ref": "#/components/schemas/PortUsageRequest"
           }
         ]
       },
       "OperatorExpressionRequest": {
-        "$id": "20250201/OperatorExpressionRequest",
         "title": "OperatorExpressionRequest",
         "anyOf": [
           {
@@ -77326,7 +77180,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -77933,21 +77787,20 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/CollectExpressionRequest"
+            "$ref": "#/components/schemas/CollectExpressionRequest"
           },
           {
-            "$ref": "20250201/IndexExpressionRequest"
+            "$ref": "#/components/schemas/IndexExpressionRequest"
           },
           {
-            "$ref": "20250201/SelectExpressionRequest"
+            "$ref": "#/components/schemas/SelectExpressionRequest"
           },
           {
-            "$ref": "20250201/FeatureChainExpressionRequest"
+            "$ref": "#/components/schemas/FeatureChainExpressionRequest"
           }
         ]
       },
       "OwningMembershipRequest": {
-        "$id": "20250201/OwningMembershipRequest",
         "title": "OwningMembershipRequest",
         "anyOf": [
           {
@@ -78250,7 +78103,7 @@
               "visibility": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/VisibilityKindRequest"
+                    "$ref": "#/components/schemas/VisibilityKindRequest"
                   },
                   {
                     "type": "null"
@@ -78264,21 +78117,20 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/FeatureValueRequest"
+            "$ref": "#/components/schemas/FeatureValueRequest"
           },
           {
-            "$ref": "20250201/ElementFilterMembershipRequest"
+            "$ref": "#/components/schemas/ElementFilterMembershipRequest"
           },
           {
-            "$ref": "20250201/FeatureMembershipRequest"
+            "$ref": "#/components/schemas/FeatureMembershipRequest"
           },
           {
-            "$ref": "20250201/VariantMembershipRequest"
+            "$ref": "#/components/schemas/VariantMembershipRequest"
           }
         ]
       },
       "PackageRequest": {
-        "$id": "20250201/PackageRequest",
         "title": "PackageRequest",
         "anyOf": [
           {
@@ -78513,12 +78365,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/LibraryPackageRequest"
+            "$ref": "#/components/schemas/LibraryPackageRequest"
           }
         ]
       },
       "ParameterMembershipRequest": {
-        "$id": "20250201/ParameterMembershipRequest",
         "title": "ParameterMembershipRequest",
         "anyOf": [
           {
@@ -78833,7 +78684,7 @@
               "visibility": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/VisibilityKindRequest"
+                    "$ref": "#/components/schemas/VisibilityKindRequest"
                   },
                   {
                     "type": "null"
@@ -78847,21 +78698,20 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/ReturnParameterMembershipRequest"
+            "$ref": "#/components/schemas/ReturnParameterMembershipRequest"
           },
           {
-            "$ref": "20250201/ActorMembershipRequest"
+            "$ref": "#/components/schemas/ActorMembershipRequest"
           },
           {
-            "$ref": "20250201/StakeholderMembershipRequest"
+            "$ref": "#/components/schemas/StakeholderMembershipRequest"
           },
           {
-            "$ref": "20250201/SubjectMembershipRequest"
+            "$ref": "#/components/schemas/SubjectMembershipRequest"
           }
         ]
       },
       "PartDefinitionRequest": {
-        "$id": "20250201/PartDefinitionRequest",
         "title": "PartDefinitionRequest",
         "anyOf": [
           {
@@ -79518,18 +79368,17 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/ConnectionDefinitionRequest"
+            "$ref": "#/components/schemas/ConnectionDefinitionRequest"
           },
           {
-            "$ref": "20250201/RenderingDefinitionRequest"
+            "$ref": "#/components/schemas/RenderingDefinitionRequest"
           },
           {
-            "$ref": "20250201/ViewDefinitionRequest"
+            "$ref": "#/components/schemas/ViewDefinitionRequest"
           }
         ]
       },
       "PartUsageRequest": {
-        "$id": "20250201/PartUsageRequest",
         "title": "PartUsageRequest",
         "anyOf": [
           {
@@ -79618,7 +79467,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -80417,7 +80266,7 @@
               "portionKind": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/PortionKindRequest"
+                    "$ref": "#/components/schemas/PortionKindRequest"
                   },
                   {
                     "type": "null"
@@ -80493,18 +80342,17 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/ConnectionUsageRequest"
+            "$ref": "#/components/schemas/ConnectionUsageRequest"
           },
           {
-            "$ref": "20250201/ViewUsageRequest"
+            "$ref": "#/components/schemas/ViewUsageRequest"
           },
           {
-            "$ref": "20250201/RenderingUsageRequest"
+            "$ref": "#/components/schemas/RenderingUsageRequest"
           }
         ]
       },
       "PayloadFeatureRequest": {
-        "$id": "20250201/PayloadFeatureRequest",
         "title": "PayloadFeatureRequest",
         "type": "object",
         "properties": {
@@ -80577,7 +80425,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -81138,7 +80986,6 @@
         "additionalProperties": false
       },
       "PerformActionUsageRequest": {
-        "$id": "20250201/PerformActionUsageRequest",
         "title": "PerformActionUsageRequest",
         "anyOf": [
           {
@@ -81241,7 +81088,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -82041,7 +81888,7 @@
               "portionKind": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/PortionKindRequest"
+                    "$ref": "#/components/schemas/PortionKindRequest"
                   },
                   {
                     "type": "null"
@@ -82117,15 +81964,14 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/ExhibitStateUsageRequest"
+            "$ref": "#/components/schemas/ExhibitStateUsageRequest"
           },
           {
-            "$ref": "20250201/IncludeUseCaseUsageRequest"
+            "$ref": "#/components/schemas/IncludeUseCaseUsageRequest"
           }
         ]
       },
       "PortConjugationRequest": {
-        "$id": "20250201/PortConjugationRequest",
         "title": "PortConjugationRequest",
         "type": "object",
         "properties": {
@@ -82385,7 +82231,6 @@
         "additionalProperties": false
       },
       "PortDefinitionRequest": {
-        "$id": "20250201/PortDefinitionRequest",
         "title": "PortDefinitionRequest",
         "anyOf": [
           {
@@ -83053,12 +82898,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/ConjugatedPortDefinitionRequest"
+            "$ref": "#/components/schemas/ConjugatedPortDefinitionRequest"
           }
         ]
       },
       "PortUsageRequest": {
-        "$id": "20250201/PortUsageRequest",
         "title": "PortUsageRequest",
         "type": "object",
         "properties": {
@@ -83145,7 +82989,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -83937,7 +83781,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -84013,7 +83857,6 @@
         "additionalProperties": false
       },
       "PortionKindRequest": {
-        "$id": "20250201/PortionKindRequest",
         "title": "PortionKindRequest",
         "type": "string",
         "enum": [
@@ -84022,7 +83865,6 @@
         ]
       },
       "PredicateRequest": {
-        "$id": "20250201/PredicateRequest",
         "title": "PredicateRequest",
         "anyOf": [
           {
@@ -84477,12 +84319,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/ConstraintDefinitionRequest"
+            "$ref": "#/components/schemas/ConstraintDefinitionRequest"
           }
         ]
       },
       "RedefinitionRequest": {
-        "$id": "20250201/RedefinitionRequest",
         "title": "RedefinitionRequest",
         "type": "object",
         "properties": {
@@ -84761,7 +84602,6 @@
         "additionalProperties": false
       },
       "ReferenceSubsettingRequest": {
-        "$id": "20250201/ReferenceSubsettingRequest",
         "title": "ReferenceSubsettingRequest",
         "type": "object",
         "properties": {
@@ -85040,7 +84880,6 @@
         "additionalProperties": false
       },
       "ReferenceUsageRequest": {
-        "$id": "20250201/ReferenceUsageRequest",
         "title": "ReferenceUsageRequest",
         "type": "object",
         "properties": {
@@ -85127,7 +84966,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -85950,7 +85789,6 @@
         "additionalProperties": false
       },
       "RelationshipRequest": {
-        "$id": "20250201/RelationshipRequest",
         "title": "RelationshipRequest",
         "anyOf": [
           {
@@ -86185,54 +86023,53 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/ConnectorRequest"
+            "$ref": "#/components/schemas/ConnectorRequest"
           },
           {
-            "$ref": "20250201/AssociationRequest"
+            "$ref": "#/components/schemas/AssociationRequest"
           },
           {
-            "$ref": "20250201/DisjoiningRequest"
+            "$ref": "#/components/schemas/DisjoiningRequest"
           },
           {
-            "$ref": "20250201/DifferencingRequest"
+            "$ref": "#/components/schemas/DifferencingRequest"
           },
           {
-            "$ref": "20250201/ConjugationRequest"
+            "$ref": "#/components/schemas/ConjugationRequest"
           },
           {
-            "$ref": "20250201/SpecializationRequest"
+            "$ref": "#/components/schemas/SpecializationRequest"
           },
           {
-            "$ref": "20250201/UnioningRequest"
+            "$ref": "#/components/schemas/UnioningRequest"
           },
           {
-            "$ref": "20250201/IntersectingRequest"
+            "$ref": "#/components/schemas/IntersectingRequest"
           },
           {
-            "$ref": "20250201/TypeFeaturingRequest"
+            "$ref": "#/components/schemas/TypeFeaturingRequest"
           },
           {
-            "$ref": "20250201/FeatureInvertingRequest"
+            "$ref": "#/components/schemas/FeatureInvertingRequest"
           },
           {
-            "$ref": "20250201/FeatureChainingRequest"
+            "$ref": "#/components/schemas/FeatureChainingRequest"
           },
           {
-            "$ref": "20250201/DependencyRequest"
+            "$ref": "#/components/schemas/DependencyRequest"
           },
           {
-            "$ref": "20250201/MembershipRequest"
+            "$ref": "#/components/schemas/MembershipRequest"
           },
           {
-            "$ref": "20250201/ImportRequest"
+            "$ref": "#/components/schemas/ImportRequest"
           },
           {
-            "$ref": "20250201/AnnotationRequest"
+            "$ref": "#/components/schemas/AnnotationRequest"
           }
         ]
       },
       "RenderingDefinitionRequest": {
-        "$id": "20250201/RenderingDefinitionRequest",
         "title": "RenderingDefinitionRequest",
         "type": "object",
         "properties": {
@@ -86894,7 +86731,6 @@
         "additionalProperties": false
       },
       "RenderingUsageRequest": {
-        "$id": "20250201/RenderingUsageRequest",
         "title": "RenderingUsageRequest",
         "type": "object",
         "properties": {
@@ -86981,7 +86817,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -87780,7 +87616,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -87867,7 +87703,6 @@
         "additionalProperties": false
       },
       "RequirementConstraintKindRequest": {
-        "$id": "20250201/RequirementConstraintKindRequest",
         "title": "RequirementConstraintKindRequest",
         "type": "string",
         "enum": [
@@ -87876,7 +87711,6 @@
         ]
       },
       "RequirementConstraintMembershipRequest": {
-        "$id": "20250201/RequirementConstraintMembershipRequest",
         "title": "RequirementConstraintMembershipRequest",
         "anyOf": [
           {
@@ -87966,7 +87800,7 @@
               "kind": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/RequirementConstraintKindRequest"
+                    "$ref": "#/components/schemas/RequirementConstraintKindRequest"
                   },
                   {
                     "type": "null"
@@ -88205,7 +88039,7 @@
               "visibility": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/VisibilityKindRequest"
+                    "$ref": "#/components/schemas/VisibilityKindRequest"
                   },
                   {
                     "type": "null"
@@ -88219,15 +88053,14 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/RequirementVerificationMembershipRequest"
+            "$ref": "#/components/schemas/RequirementVerificationMembershipRequest"
           },
           {
-            "$ref": "20250201/FramedConcernMembershipRequest"
+            "$ref": "#/components/schemas/FramedConcernMembershipRequest"
           }
         ]
       },
       "RequirementDefinitionRequest": {
-        "$id": "20250201/RequirementDefinitionRequest",
         "title": "RequirementDefinitionRequest",
         "anyOf": [
           {
@@ -88974,15 +88807,14 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/ConcernDefinitionRequest"
+            "$ref": "#/components/schemas/ConcernDefinitionRequest"
           },
           {
-            "$ref": "20250201/ViewpointDefinitionRequest"
+            "$ref": "#/components/schemas/ViewpointDefinitionRequest"
           }
         ]
       },
       "RequirementUsageRequest": {
-        "$id": "20250201/RequirementUsageRequest",
         "title": "RequirementUsageRequest",
         "anyOf": [
           {
@@ -89103,7 +88935,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -89923,7 +89755,7 @@
               "portionKind": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/PortionKindRequest"
+                    "$ref": "#/components/schemas/PortionKindRequest"
                   },
                   {
                     "type": "null"
@@ -90059,18 +89891,17 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/SatisfyRequirementUsageRequest"
+            "$ref": "#/components/schemas/SatisfyRequirementUsageRequest"
           },
           {
-            "$ref": "20250201/ConcernUsageRequest"
+            "$ref": "#/components/schemas/ConcernUsageRequest"
           },
           {
-            "$ref": "20250201/ViewpointUsageRequest"
+            "$ref": "#/components/schemas/ViewpointUsageRequest"
           }
         ]
       },
       "RequirementVerificationMembershipRequest": {
-        "$id": "20250201/RequirementVerificationMembershipRequest",
         "title": "RequirementVerificationMembershipRequest",
         "type": "object",
         "properties": {
@@ -90158,7 +89989,7 @@
           "kind": {
             "oneOf": [
               {
-                "$ref": "20250201/RequirementConstraintKindRequest"
+                "$ref": "#/components/schemas/RequirementConstraintKindRequest"
               },
               {
                 "type": "null"
@@ -90405,7 +90236,7 @@
           "visibility": {
             "oneOf": [
               {
-                "$ref": "20250201/VisibilityKindRequest"
+                "$ref": "#/components/schemas/VisibilityKindRequest"
               },
               {
                 "type": "null"
@@ -90419,7 +90250,6 @@
         "additionalProperties": false
       },
       "ResultExpressionMembershipRequest": {
-        "$id": "20250201/ResultExpressionMembershipRequest",
         "title": "ResultExpressionMembershipRequest",
         "type": "object",
         "properties": {
@@ -90732,7 +90562,7 @@
           "visibility": {
             "oneOf": [
               {
-                "$ref": "20250201/VisibilityKindRequest"
+                "$ref": "#/components/schemas/VisibilityKindRequest"
               },
               {
                 "type": "null"
@@ -90746,7 +90576,6 @@
         "additionalProperties": false
       },
       "ReturnParameterMembershipRequest": {
-        "$id": "20250201/ReturnParameterMembershipRequest",
         "title": "ReturnParameterMembershipRequest",
         "type": "object",
         "properties": {
@@ -91059,7 +90888,7 @@
           "visibility": {
             "oneOf": [
               {
-                "$ref": "20250201/VisibilityKindRequest"
+                "$ref": "#/components/schemas/VisibilityKindRequest"
               },
               {
                 "type": "null"
@@ -91073,7 +90902,6 @@
         "additionalProperties": false
       },
       "SatisfyRequirementUsageRequest": {
-        "$id": "20250201/SatisfyRequirementUsageRequest",
         "title": "SatisfyRequirementUsageRequest",
         "type": "object",
         "properties": {
@@ -91196,7 +91024,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -92026,7 +91854,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -92170,7 +91998,6 @@
         "additionalProperties": false
       },
       "SelectExpressionRequest": {
-        "$id": "20250201/SelectExpressionRequest",
         "title": "SelectExpressionRequest",
         "type": "object",
         "properties": {
@@ -92257,7 +92084,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -92864,7 +92691,6 @@
         "additionalProperties": false
       },
       "SendActionUsageRequest": {
-        "$id": "20250201/SendActionUsageRequest",
         "title": "SendActionUsageRequest",
         "type": "object",
         "properties": {
@@ -92965,7 +92791,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -93761,7 +93587,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -93859,7 +93685,6 @@
         "additionalProperties": false
       },
       "SpecializationRequest": {
-        "$id": "20250201/SpecializationRequest",
         "title": "SpecializationRequest",
         "anyOf": [
           {
@@ -94113,18 +93938,17 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/FeatureTypingRequest"
+            "$ref": "#/components/schemas/FeatureTypingRequest"
           },
           {
-            "$ref": "20250201/SubsettingRequest"
+            "$ref": "#/components/schemas/SubsettingRequest"
           },
           {
-            "$ref": "20250201/SubclassificationRequest"
+            "$ref": "#/components/schemas/SubclassificationRequest"
           }
         ]
       },
       "StakeholderMembershipRequest": {
-        "$id": "20250201/StakeholderMembershipRequest",
         "title": "StakeholderMembershipRequest",
         "type": "object",
         "properties": {
@@ -94441,7 +94265,7 @@
           "visibility": {
             "oneOf": [
               {
-                "$ref": "20250201/VisibilityKindRequest"
+                "$ref": "#/components/schemas/VisibilityKindRequest"
               },
               {
                 "type": "null"
@@ -94455,7 +94279,6 @@
         "additionalProperties": false
       },
       "StateDefinitionRequest": {
-        "$id": "20250201/StateDefinitionRequest",
         "title": "StateDefinitionRequest",
         "type": "object",
         "properties": {
@@ -95181,7 +95004,6 @@
         "additionalProperties": false
       },
       "StateSubactionKindRequest": {
-        "$id": "20250201/StateSubactionKindRequest",
         "title": "StateSubactionKindRequest",
         "type": "string",
         "enum": [
@@ -95191,7 +95013,6 @@
         ]
       },
       "StateSubactionMembershipRequest": {
-        "$id": "20250201/StateSubactionMembershipRequest",
         "title": "StateSubactionMembershipRequest",
         "type": "object",
         "properties": {
@@ -95283,7 +95104,7 @@
           "kind": {
             "oneOf": [
               {
-                "$ref": "20250201/StateSubactionKindRequest"
+                "$ref": "#/components/schemas/StateSubactionKindRequest"
               },
               {
                 "type": "null"
@@ -95514,7 +95335,7 @@
           "visibility": {
             "oneOf": [
               {
-                "$ref": "20250201/VisibilityKindRequest"
+                "$ref": "#/components/schemas/VisibilityKindRequest"
               },
               {
                 "type": "null"
@@ -95528,7 +95349,6 @@
         "additionalProperties": false
       },
       "StateUsageRequest": {
-        "$id": "20250201/StateUsageRequest",
         "title": "StateUsageRequest",
         "anyOf": [
           {
@@ -95631,7 +95451,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -96466,7 +96286,7 @@
               "portionKind": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/PortionKindRequest"
+                    "$ref": "#/components/schemas/PortionKindRequest"
                   },
                   {
                     "type": "null"
@@ -96549,12 +96369,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/ExhibitStateUsageRequest"
+            "$ref": "#/components/schemas/ExhibitStateUsageRequest"
           }
         ]
       },
       "StepRequest": {
-        "$id": "20250201/StepRequest",
         "title": "StepRequest",
         "anyOf": [
           {
@@ -96636,7 +96455,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -97204,18 +97023,17 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/FlowRequest"
+            "$ref": "#/components/schemas/FlowRequest"
           },
           {
-            "$ref": "20250201/ExpressionRequest"
+            "$ref": "#/components/schemas/ExpressionRequest"
           },
           {
-            "$ref": "20250201/ActionUsageRequest"
+            "$ref": "#/components/schemas/ActionUsageRequest"
           }
         ]
       },
       "StructureRequest": {
-        "$id": "20250201/StructureRequest",
         "title": "StructureRequest",
         "anyOf": [
           {
@@ -97635,21 +97453,20 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/MetaclassRequest"
+            "$ref": "#/components/schemas/MetaclassRequest"
           },
           {
-            "$ref": "20250201/AssociationStructureRequest"
+            "$ref": "#/components/schemas/AssociationStructureRequest"
           },
           {
-            "$ref": "20250201/ItemDefinitionRequest"
+            "$ref": "#/components/schemas/ItemDefinitionRequest"
           },
           {
-            "$ref": "20250201/PortDefinitionRequest"
+            "$ref": "#/components/schemas/PortDefinitionRequest"
           }
         ]
       },
       "SubclassificationRequest": {
-        "$id": "20250201/SubclassificationRequest",
         "title": "SubclassificationRequest",
         "type": "object",
         "properties": {
@@ -97920,7 +97737,6 @@
         "additionalProperties": false
       },
       "SubjectMembershipRequest": {
-        "$id": "20250201/SubjectMembershipRequest",
         "title": "SubjectMembershipRequest",
         "type": "object",
         "properties": {
@@ -98237,7 +98053,7 @@
           "visibility": {
             "oneOf": [
               {
-                "$ref": "20250201/VisibilityKindRequest"
+                "$ref": "#/components/schemas/VisibilityKindRequest"
               },
               {
                 "type": "null"
@@ -98251,7 +98067,6 @@
         "additionalProperties": false
       },
       "SubsettingRequest": {
-        "$id": "20250201/SubsettingRequest",
         "title": "SubsettingRequest",
         "anyOf": [
           {
@@ -98524,18 +98339,17 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/RedefinitionRequest"
+            "$ref": "#/components/schemas/RedefinitionRequest"
           },
           {
-            "$ref": "20250201/CrossSubsettingRequest"
+            "$ref": "#/components/schemas/CrossSubsettingRequest"
           },
           {
-            "$ref": "20250201/ReferenceSubsettingRequest"
+            "$ref": "#/components/schemas/ReferenceSubsettingRequest"
           }
         ]
       },
       "SuccessionRequest": {
-        "$id": "20250201/SuccessionRequest",
         "title": "SuccessionRequest",
         "anyOf": [
           {
@@ -98635,7 +98449,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -99270,15 +99084,14 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/SuccessionFlowRequest"
+            "$ref": "#/components/schemas/SuccessionFlowRequest"
           },
           {
-            "$ref": "20250201/SuccessionAsUsageRequest"
+            "$ref": "#/components/schemas/SuccessionAsUsageRequest"
           }
         ]
       },
       "SuccessionAsUsageRequest": {
-        "$id": "20250201/SuccessionAsUsageRequest",
         "title": "SuccessionAsUsageRequest",
         "type": "object",
         "properties": {
@@ -99390,7 +99203,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -100287,7 +100100,6 @@
         "additionalProperties": false
       },
       "SuccessionFlowRequest": {
-        "$id": "20250201/SuccessionFlowRequest",
         "title": "SuccessionFlowRequest",
         "anyOf": [
           {
@@ -100394,7 +100206,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -101091,12 +100903,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/SuccessionFlowUsageRequest"
+            "$ref": "#/components/schemas/SuccessionFlowUsageRequest"
           }
         ]
       },
       "SuccessionFlowUsageRequest": {
-        "$id": "20250201/SuccessionFlowUsageRequest",
         "title": "SuccessionFlowUsageRequest",
         "type": "object",
         "properties": {
@@ -101222,7 +101033,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -102082,7 +101893,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -102226,7 +102037,6 @@
         "additionalProperties": false
       },
       "TerminateActionUsageRequest": {
-        "$id": "20250201/TerminateActionUsageRequest",
         "title": "TerminateActionUsageRequest",
         "type": "object",
         "properties": {
@@ -102327,7 +102137,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -103119,7 +102929,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -103206,7 +103016,6 @@
         "additionalProperties": false
       },
       "TextualRepresentationRequest": {
-        "$id": "20250201/TextualRepresentationRequest",
         "title": "TextualRepresentationRequest",
         "type": "object",
         "properties": {
@@ -103433,7 +103242,6 @@
         "additionalProperties": false
       },
       "TransitionFeatureKindRequest": {
-        "$id": "20250201/TransitionFeatureKindRequest",
         "title": "TransitionFeatureKindRequest",
         "type": "string",
         "enum": [
@@ -103443,7 +103251,6 @@
         ]
       },
       "TransitionFeatureMembershipRequest": {
-        "$id": "20250201/TransitionFeatureMembershipRequest",
         "title": "TransitionFeatureMembershipRequest",
         "type": "object",
         "properties": {
@@ -103531,7 +103338,7 @@
           "kind": {
             "oneOf": [
               {
-                "$ref": "20250201/TransitionFeatureKindRequest"
+                "$ref": "#/components/schemas/TransitionFeatureKindRequest"
               },
               {
                 "type": "null"
@@ -103766,7 +103573,7 @@
           "visibility": {
             "oneOf": [
               {
-                "$ref": "20250201/VisibilityKindRequest"
+                "$ref": "#/components/schemas/VisibilityKindRequest"
               },
               {
                 "type": "null"
@@ -103780,7 +103587,6 @@
         "additionalProperties": false
       },
       "TransitionUsageRequest": {
-        "$id": "20250201/TransitionUsageRequest",
         "title": "TransitionUsageRequest",
         "type": "object",
         "properties": {
@@ -103881,7 +103687,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -104687,7 +104493,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -104782,7 +104588,6 @@
         "additionalProperties": false
       },
       "TriggerInvocationExpressionRequest": {
-        "$id": "20250201/TriggerInvocationExpressionRequest",
         "title": "TriggerInvocationExpressionRequest",
         "type": "object",
         "properties": {
@@ -104869,7 +104674,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -105129,7 +104934,7 @@
           "kind": {
             "oneOf": [
               {
-                "$ref": "20250201/TriggerKindRequest"
+                "$ref": "#/components/schemas/TriggerKindRequest"
               },
               {
                 "type": "null"
@@ -105476,7 +105281,6 @@
         "additionalProperties": false
       },
       "TriggerKindRequest": {
-        "$id": "20250201/TriggerKindRequest",
         "title": "TriggerKindRequest",
         "type": "string",
         "enum": [
@@ -105486,7 +105290,6 @@
         ]
       },
       "TypeRequest": {
-        "$id": "20250201/TypeRequest",
         "title": "TypeRequest",
         "anyOf": [
           {
@@ -105899,15 +105702,14 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/FeatureRequest"
+            "$ref": "#/components/schemas/FeatureRequest"
           },
           {
-            "$ref": "20250201/ClassifierRequest"
+            "$ref": "#/components/schemas/ClassifierRequest"
           }
         ]
       },
       "TypeFeaturingRequest": {
-        "$id": "20250201/TypeFeaturingRequest",
         "title": "TypeFeaturingRequest",
         "type": "object",
         "properties": {
@@ -106159,7 +105961,6 @@
         "additionalProperties": false
       },
       "UnioningRequest": {
-        "$id": "20250201/UnioningRequest",
         "title": "UnioningRequest",
         "type": "object",
         "properties": {
@@ -106400,7 +106201,6 @@
         "additionalProperties": false
       },
       "UsageRequest": {
-        "$id": "20250201/UsageRequest",
         "title": "UsageRequest",
         "anyOf": [
           {
@@ -106489,7 +106289,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -107312,21 +107112,20 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/AttributeUsageRequest"
+            "$ref": "#/components/schemas/AttributeUsageRequest"
           },
           {
-            "$ref": "20250201/ReferenceUsageRequest"
+            "$ref": "#/components/schemas/ReferenceUsageRequest"
           },
           {
-            "$ref": "20250201/OccurrenceUsageRequest"
+            "$ref": "#/components/schemas/OccurrenceUsageRequest"
           },
           {
-            "$ref": "20250201/ConnectorAsUsageRequest"
+            "$ref": "#/components/schemas/ConnectorAsUsageRequest"
           }
         ]
       },
       "UseCaseDefinitionRequest": {
-        "$id": "20250201/UseCaseDefinitionRequest",
         "title": "UseCaseDefinitionRequest",
         "type": "object",
         "properties": {
@@ -108059,7 +107858,6 @@
         "additionalProperties": false
       },
       "UseCaseUsageRequest": {
-        "$id": "20250201/UseCaseUsageRequest",
         "title": "UseCaseUsageRequest",
         "anyOf": [
           {
@@ -108191,7 +107989,7 @@
               "direction": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/FeatureDirectionKindRequest"
+                    "$ref": "#/components/schemas/FeatureDirectionKindRequest"
                   },
                   {
                     "type": "null"
@@ -109022,7 +108820,7 @@
               "portionKind": {
                 "oneOf": [
                   {
-                    "$ref": "20250201/PortionKindRequest"
+                    "$ref": "#/components/schemas/PortionKindRequest"
                   },
                   {
                     "type": "null"
@@ -109117,12 +108915,11 @@
             "additionalProperties": false
           },
           {
-            "$ref": "20250201/IncludeUseCaseUsageRequest"
+            "$ref": "#/components/schemas/IncludeUseCaseUsageRequest"
           }
         ]
       },
       "VariantMembershipRequest": {
-        "$id": "20250201/VariantMembershipRequest",
         "title": "VariantMembershipRequest",
         "type": "object",
         "properties": {
@@ -109427,7 +109224,7 @@
           "visibility": {
             "oneOf": [
               {
-                "$ref": "20250201/VisibilityKindRequest"
+                "$ref": "#/components/schemas/VisibilityKindRequest"
               },
               {
                 "type": "null"
@@ -109441,7 +109238,6 @@
         "additionalProperties": false
       },
       "VerificationCaseDefinitionRequest": {
-        "$id": "20250201/VerificationCaseDefinitionRequest",
         "title": "VerificationCaseDefinitionRequest",
         "type": "object",
         "properties": {
@@ -110174,7 +109970,6 @@
         "additionalProperties": false
       },
       "VerificationCaseUsageRequest": {
-        "$id": "20250201/VerificationCaseUsageRequest",
         "title": "VerificationCaseUsageRequest",
         "type": "object",
         "properties": {
@@ -110304,7 +110099,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -111128,7 +110923,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -111230,7 +111025,6 @@
         "additionalProperties": false
       },
       "ViewDefinitionRequest": {
-        "$id": "20250201/ViewDefinitionRequest",
         "title": "ViewDefinitionRequest",
         "type": "object",
         "properties": {
@@ -111917,7 +111711,6 @@
         "additionalProperties": false
       },
       "ViewRenderingMembershipRequest": {
-        "$id": "20250201/ViewRenderingMembershipRequest",
         "title": "ViewRenderingMembershipRequest",
         "type": "object",
         "properties": {
@@ -112234,7 +112027,7 @@
           "visibility": {
             "oneOf": [
               {
-                "$ref": "20250201/VisibilityKindRequest"
+                "$ref": "#/components/schemas/VisibilityKindRequest"
               },
               {
                 "type": "null"
@@ -112248,7 +112041,6 @@
         "additionalProperties": false
       },
       "ViewUsageRequest": {
-        "$id": "20250201/ViewUsageRequest",
         "title": "ViewUsageRequest",
         "type": "object",
         "properties": {
@@ -112335,7 +112127,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -113141,7 +112933,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -113253,7 +113045,6 @@
         "additionalProperties": false
       },
       "ViewpointDefinitionRequest": {
-        "$id": "20250201/ViewpointDefinitionRequest",
         "title": "ViewpointDefinitionRequest",
         "type": "object",
         "properties": {
@@ -114005,7 +113796,6 @@
         "additionalProperties": false
       },
       "ViewpointUsageRequest": {
-        "$id": "20250201/ViewpointUsageRequest",
         "title": "ViewpointUsageRequest",
         "type": "object",
         "properties": {
@@ -114124,7 +113914,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -114944,7 +114734,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -115098,7 +114888,6 @@
         "additionalProperties": false
       },
       "VisibilityKindRequest": {
-        "$id": "20250201/VisibilityKindRequest",
         "title": "VisibilityKindRequest",
         "type": "string",
         "enum": [
@@ -115108,7 +114897,6 @@
         ]
       },
       "WhileLoopActionUsageRequest": {
-        "$id": "20250201/WhileLoopActionUsageRequest",
         "title": "WhileLoopActionUsageRequest",
         "type": "object",
         "properties": {
@@ -115213,7 +115001,7 @@
           "direction": {
             "oneOf": [
               {
-                "$ref": "20250201/FeatureDirectionKindRequest"
+                "$ref": "#/components/schemas/FeatureDirectionKindRequest"
               },
               {
                 "type": "null"
@@ -116005,7 +115793,7 @@
           "portionKind": {
             "oneOf": [
               {
-                "$ref": "20250201/PortionKindRequest"
+                "$ref": "#/components/schemas/PortionKindRequest"
               },
               {
                 "type": "null"
@@ -116096,7 +115884,6 @@
         "additionalProperties": false
       },
       "Identified": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Identified",
         "title": "Identified",
         "type": "object",
         "properties": {
@@ -116111,7 +115898,6 @@
         "additionalProperties": false
       },
       "AcceptActionUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/AcceptActionUsage",
         "title": "AcceptActionUsage",
         "type": "object",
         "properties": {
@@ -117227,7 +117013,6 @@
         "additionalProperties": false
       },
       "ActionDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ActionDefinition",
         "title": "ActionDefinition",
         "anyOf": [
           {
@@ -118002,7 +117787,6 @@
         ]
       },
       "ActionUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ActionUsage",
         "title": "ActionUsage",
         "anyOf": [
           {
@@ -119129,7 +118913,6 @@
         ]
       },
       "ActorMembership": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ActorMembership",
         "title": "ActorMembership",
         "type": "object",
         "properties": {
@@ -119499,7 +119282,6 @@
         "additionalProperties": false
       },
       "AllocationDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/AllocationDefinition",
         "title": "AllocationDefinition",
         "type": "object",
         "properties": {
@@ -120344,7 +120126,6 @@
         "additionalProperties": false
       },
       "AllocationUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/AllocationUsage",
         "title": "AllocationUsage",
         "type": "object",
         "properties": {
@@ -121550,7 +121331,6 @@
         "additionalProperties": false
       },
       "AnalysisCaseDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/AnalysisCaseDefinition",
         "title": "AnalysisCaseDefinition",
         "type": "object",
         "properties": {
@@ -122381,7 +122161,6 @@
         "additionalProperties": false
       },
       "AnalysisCaseUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/AnalysisCaseUsage",
         "title": "AnalysisCaseUsage",
         "type": "object",
         "properties": {
@@ -123569,7 +123348,6 @@
         "additionalProperties": false
       },
       "AnnotatingElement": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/AnnotatingElement",
         "title": "AnnotatingElement",
         "anyOf": [
           {
@@ -123822,7 +123600,6 @@
         ]
       },
       "Annotation": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Annotation",
         "title": "Annotation",
         "type": "object",
         "properties": {
@@ -124126,7 +123903,6 @@
         "additionalProperties": false
       },
       "AssertConstraintUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/AssertConstraintUsage",
         "title": "AssertConstraintUsage",
         "anyOf": [
           {
@@ -125280,7 +125056,6 @@
         ]
       },
       "AssignmentActionUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/AssignmentActionUsage",
         "title": "AssignmentActionUsage",
         "type": "object",
         "properties": {
@@ -126396,7 +126171,6 @@
         "additionalProperties": false
       },
       "Association": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Association",
         "title": "Association",
         "anyOf": [
           {
@@ -126965,7 +126739,6 @@
         ]
       },
       "AssociationStructure": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/AssociationStructure",
         "title": "AssociationStructure",
         "anyOf": [
           {
@@ -127531,7 +127304,6 @@
         ]
       },
       "AttributeDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/AttributeDefinition",
         "title": "AttributeDefinition",
         "anyOf": [
           {
@@ -128265,7 +128037,6 @@
         ]
       },
       "AttributeUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/AttributeUsage",
         "title": "AttributeUsage",
         "anyOf": [
           {
@@ -129301,7 +129072,6 @@
         ]
       },
       "Behavior": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Behavior",
         "title": "Behavior",
         "anyOf": [
           {
@@ -129798,7 +129568,6 @@
         ]
       },
       "BindingConnector": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/BindingConnector",
         "title": "BindingConnector",
         "anyOf": [
           {
@@ -130624,7 +130393,6 @@
         ]
       },
       "BindingConnectorAsUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/BindingConnectorAsUsage",
         "title": "BindingConnectorAsUsage",
         "type": "object",
         "properties": {
@@ -131756,7 +131524,6 @@
         "additionalProperties": false
       },
       "BooleanExpression": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/BooleanExpression",
         "title": "BooleanExpression",
         "anyOf": [
           {
@@ -132530,7 +132297,6 @@
         ]
       },
       "CalculationDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/CalculationDefinition",
         "title": "CalculationDefinition",
         "anyOf": [
           {
@@ -133331,7 +133097,6 @@
         ]
       },
       "CalculationUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/CalculationUsage",
         "title": "CalculationUsage",
         "anyOf": [
           {
@@ -134465,7 +134230,6 @@
         ]
       },
       "CaseDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/CaseDefinition",
         "title": "CaseDefinition",
         "anyOf": [
           {
@@ -135297,7 +135061,6 @@
         ]
       },
       "CaseUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/CaseUsage",
         "title": "CaseUsage",
         "anyOf": [
           {
@@ -136474,7 +136237,6 @@
         ]
       },
       "Class": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Class",
         "title": "Class",
         "anyOf": [
           {
@@ -136955,7 +136717,6 @@
         ]
       },
       "Classifier": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Classifier",
         "title": "Classifier",
         "anyOf": [
           {
@@ -137439,7 +137200,6 @@
         ]
       },
       "CollectExpression": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/CollectExpression",
         "title": "CollectExpression",
         "type": "object",
         "properties": {
@@ -138215,7 +137975,6 @@
         "additionalProperties": false
       },
       "Comment": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Comment",
         "title": "Comment",
         "anyOf": [
           {
@@ -138477,7 +138236,6 @@
         ]
       },
       "ConcernDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ConcernDefinition",
         "title": "ConcernDefinition",
         "type": "object",
         "properties": {
@@ -139318,7 +139076,6 @@
         "additionalProperties": false
       },
       "ConcernUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ConcernUsage",
         "title": "ConcernUsage",
         "type": "object",
         "properties": {
@@ -140536,7 +140293,6 @@
         "additionalProperties": false
       },
       "ConjugatedPortDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ConjugatedPortDefinition",
         "title": "ConjugatedPortDefinition",
         "type": "object",
         "properties": {
@@ -141296,7 +141052,6 @@
         "additionalProperties": false
       },
       "ConjugatedPortTyping": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ConjugatedPortTyping",
         "title": "ConjugatedPortTyping",
         "type": "object",
         "properties": {
@@ -141608,7 +141363,6 @@
         "additionalProperties": false
       },
       "Conjugation": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Conjugation",
         "title": "Conjugation",
         "anyOf": [
           {
@@ -141895,7 +141649,6 @@
         ]
       },
       "ConnectionDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ConnectionDefinition",
         "title": "ConnectionDefinition",
         "anyOf": [
           {
@@ -142742,7 +142495,6 @@
         ]
       },
       "ConnectionUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ConnectionUsage",
         "title": "ConnectionUsage",
         "anyOf": [
           {
@@ -143950,7 +143702,6 @@
         ]
       },
       "Connector": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Connector",
         "title": "Connector",
         "anyOf": [
           {
@@ -144785,7 +144536,6 @@
         ]
       },
       "ConnectorAsUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ConnectorAsUsage",
         "title": "ConnectorAsUsage",
         "anyOf": [
           {
@@ -145933,7 +145683,6 @@
         ]
       },
       "ConstraintDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ConstraintDefinition",
         "title": "ConstraintDefinition",
         "anyOf": [
           {
@@ -146718,7 +146467,6 @@
         ]
       },
       "ConstraintUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ConstraintUsage",
         "title": "ConstraintUsage",
         "anyOf": [
           {
@@ -147859,7 +147607,6 @@
         ]
       },
       "ConstructorExpression": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ConstructorExpression",
         "title": "ConstructorExpression",
         "type": "object",
         "properties": {
@@ -148624,7 +148371,6 @@
         "additionalProperties": false
       },
       "ControlNode": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ControlNode",
         "title": "ControlNode",
         "anyOf": [
           {
@@ -149727,7 +149473,6 @@
         ]
       },
       "CrossSubsetting": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/CrossSubsetting",
         "title": "CrossSubsetting",
         "type": "object",
         "properties": {
@@ -150039,7 +149784,6 @@
         "additionalProperties": false
       },
       "DataType": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/DataType",
         "title": "DataType",
         "anyOf": [
           {
@@ -150514,7 +150258,6 @@
         ]
       },
       "DecisionNode": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/DecisionNode",
         "title": "DecisionNode",
         "type": "object",
         "properties": {
@@ -151601,7 +151344,6 @@
         "additionalProperties": false
       },
       "Definition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Definition",
         "title": "Definition",
         "anyOf": [
           {
@@ -152338,7 +152080,6 @@
         ]
       },
       "Dependency": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Dependency",
         "title": "Dependency",
         "type": "object",
         "properties": {
@@ -152614,7 +152355,6 @@
         "additionalProperties": false
       },
       "Differencing": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Differencing",
         "title": "Differencing",
         "type": "object",
         "properties": {
@@ -152882,7 +152622,6 @@
         "additionalProperties": false
       },
       "Disjoining": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Disjoining",
         "title": "Disjoining",
         "type": "object",
         "properties": {
@@ -153162,7 +152901,6 @@
         "additionalProperties": false
       },
       "Documentation": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Documentation",
         "title": "Documentation",
         "type": "object",
         "properties": {
@@ -153422,7 +153160,6 @@
         "additionalProperties": false
       },
       "Element": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Element",
         "title": "Element",
         "anyOf": [
           {
@@ -153638,7 +153375,6 @@
         ]
       },
       "ElementFilterMembership": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ElementFilterMembership",
         "title": "ElementFilterMembership",
         "type": "object",
         "properties": {
@@ -153993,7 +153729,6 @@
         "additionalProperties": false
       },
       "EndFeatureMembership": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/EndFeatureMembership",
         "title": "EndFeatureMembership",
         "type": "object",
         "properties": {
@@ -154353,7 +154088,6 @@
         "additionalProperties": false
       },
       "EnumerationDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/EnumerationDefinition",
         "title": "EnumerationDefinition",
         "type": "object",
         "properties": {
@@ -155088,7 +154822,6 @@
         "additionalProperties": false
       },
       "EnumerationUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/EnumerationUsage",
         "title": "EnumerationUsage",
         "type": "object",
         "properties": {
@@ -156122,7 +155855,6 @@
         "additionalProperties": false
       },
       "EventOccurrenceUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/EventOccurrenceUsage",
         "title": "EventOccurrenceUsage",
         "anyOf": [
           {
@@ -157197,7 +156929,6 @@
         ]
       },
       "ExhibitStateUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ExhibitStateUsage",
         "title": "ExhibitStateUsage",
         "type": "object",
         "properties": {
@@ -158354,7 +158085,6 @@
         "additionalProperties": false
       },
       "Expose": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Expose",
         "title": "Expose",
         "anyOf": [
           {
@@ -158665,7 +158395,6 @@
         ]
       },
       "Expression": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Expression",
         "title": "Expression",
         "anyOf": [
           {
@@ -159442,7 +159171,6 @@
         ]
       },
       "Feature": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Feature",
         "title": "Feature",
         "anyOf": [
           {
@@ -160175,7 +159903,6 @@
         ]
       },
       "FeatureChainExpression": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/FeatureChainExpression",
         "title": "FeatureChainExpression",
         "type": "object",
         "properties": {
@@ -160956,7 +160683,6 @@
         "additionalProperties": false
       },
       "FeatureChaining": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/FeatureChaining",
         "title": "FeatureChaining",
         "type": "object",
         "properties": {
@@ -161224,7 +160950,6 @@
         "additionalProperties": false
       },
       "FeatureDirectionKind": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/FeatureDirectionKind",
         "title": "FeatureDirectionKind",
         "type": "string",
         "enum": [
@@ -161234,7 +160959,6 @@
         ]
       },
       "FeatureInverting": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/FeatureInverting",
         "title": "FeatureInverting",
         "type": "object",
         "properties": {
@@ -161514,7 +161238,6 @@
         "additionalProperties": false
       },
       "FeatureMembership": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/FeatureMembership",
         "title": "FeatureMembership",
         "anyOf": [
           {
@@ -161902,7 +161625,6 @@
         ]
       },
       "FeatureReferenceExpression": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/FeatureReferenceExpression",
         "title": "FeatureReferenceExpression",
         "type": "object",
         "properties": {
@@ -162659,7 +162381,6 @@
         "additionalProperties": false
       },
       "FeatureTyping": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/FeatureTyping",
         "title": "FeatureTyping",
         "anyOf": [
           {
@@ -162968,7 +162689,6 @@
         ]
       },
       "FeatureValue": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/FeatureValue",
         "title": "FeatureValue",
         "type": "object",
         "properties": {
@@ -163350,7 +163070,6 @@
         "additionalProperties": false
       },
       "Flow": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Flow",
         "title": "Flow",
         "anyOf": [
           {
@@ -164256,7 +163975,6 @@
         ]
       },
       "FlowDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/FlowDefinition",
         "title": "FlowDefinition",
         "type": "object",
         "properties": {
@@ -165117,7 +164835,6 @@
         "additionalProperties": false
       },
       "FlowEnd": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/FlowEnd",
         "title": "FlowEnd",
         "type": "object",
         "properties": {
@@ -165825,7 +165542,6 @@
         "additionalProperties": false
       },
       "FlowUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/FlowUsage",
         "title": "FlowUsage",
         "anyOf": [
           {
@@ -167099,7 +166815,6 @@
         ]
       },
       "ForLoopActionUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ForLoopActionUsage",
         "title": "ForLoopActionUsage",
         "type": "object",
         "properties": {
@@ -168201,7 +167916,6 @@
         "additionalProperties": false
       },
       "ForkNode": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ForkNode",
         "title": "ForkNode",
         "type": "object",
         "properties": {
@@ -169288,7 +169002,6 @@
         "additionalProperties": false
       },
       "FramedConcernMembership": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/FramedConcernMembership",
         "title": "FramedConcernMembership",
         "type": "object",
         "properties": {
@@ -169679,7 +169392,6 @@
         "additionalProperties": false
       },
       "Function": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Function",
         "title": "Function",
         "anyOf": [
           {
@@ -170197,7 +169909,6 @@
         ]
       },
       "IfActionUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/IfActionUsage",
         "title": "IfActionUsage",
         "type": "object",
         "properties": {
@@ -171306,7 +171017,6 @@
         "additionalProperties": false
       },
       "Import": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Import",
         "title": "Import",
         "anyOf": [
           {
@@ -171620,7 +171330,6 @@
         ]
       },
       "IncludeUseCaseUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/IncludeUseCaseUsage",
         "title": "IncludeUseCaseUsage",
         "type": "object",
         "properties": {
@@ -172819,7 +172528,6 @@
         "additionalProperties": false
       },
       "IndexExpression": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/IndexExpression",
         "title": "IndexExpression",
         "type": "object",
         "properties": {
@@ -173595,7 +173303,6 @@
         "additionalProperties": false
       },
       "InstantiationExpression": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/InstantiationExpression",
         "title": "InstantiationExpression",
         "anyOf": [
           {
@@ -174370,7 +174077,6 @@
         ]
       },
       "Interaction": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Interaction",
         "title": "Interaction",
         "anyOf": [
           {
@@ -174952,7 +174658,6 @@
         ]
       },
       "InterfaceDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/InterfaceDefinition",
         "title": "InterfaceDefinition",
         "type": "object",
         "properties": {
@@ -175797,7 +175502,6 @@
         "additionalProperties": false
       },
       "InterfaceUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/InterfaceUsage",
         "title": "InterfaceUsage",
         "type": "object",
         "properties": {
@@ -177003,7 +176707,6 @@
         "additionalProperties": false
       },
       "Intersecting": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Intersecting",
         "title": "Intersecting",
         "type": "object",
         "properties": {
@@ -177271,7 +176974,6 @@
         "additionalProperties": false
       },
       "Invariant": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Invariant",
         "title": "Invariant",
         "anyOf": [
           {
@@ -178053,7 +177755,6 @@
         ]
       },
       "InvocationExpression": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/InvocationExpression",
         "title": "InvocationExpression",
         "anyOf": [
           {
@@ -178828,7 +178529,6 @@
         ]
       },
       "ItemDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ItemDefinition",
         "title": "ItemDefinition",
         "anyOf": [
           {
@@ -179576,7 +179276,6 @@
         ]
       },
       "ItemUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ItemUsage",
         "title": "ItemUsage",
         "anyOf": [
           {
@@ -180657,7 +180356,6 @@
         ]
       },
       "JoinNode": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/JoinNode",
         "title": "JoinNode",
         "type": "object",
         "properties": {
@@ -181744,7 +181442,6 @@
         "additionalProperties": false
       },
       "LibraryPackage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/LibraryPackage",
         "title": "LibraryPackage",
         "type": "object",
         "properties": {
@@ -182014,7 +181711,6 @@
         "additionalProperties": false
       },
       "LiteralBoolean": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/LiteralBoolean",
         "title": "LiteralBoolean",
         "type": "object",
         "properties": {
@@ -182777,7 +182473,6 @@
         "additionalProperties": false
       },
       "LiteralExpression": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/LiteralExpression",
         "title": "LiteralExpression",
         "anyOf": [
           {
@@ -183548,7 +183243,6 @@
         ]
       },
       "LiteralInfinity": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/LiteralInfinity",
         "title": "LiteralInfinity",
         "type": "object",
         "properties": {
@@ -184300,7 +183994,6 @@
         "additionalProperties": false
       },
       "LiteralInteger": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/LiteralInteger",
         "title": "LiteralInteger",
         "type": "object",
         "properties": {
@@ -185063,7 +184756,6 @@
         "additionalProperties": false
       },
       "LiteralRational": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/LiteralRational",
         "title": "LiteralRational",
         "type": "object",
         "properties": {
@@ -185826,7 +185518,6 @@
         "additionalProperties": false
       },
       "LiteralString": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/LiteralString",
         "title": "LiteralString",
         "type": "object",
         "properties": {
@@ -186589,7 +186280,6 @@
         "additionalProperties": false
       },
       "LoopActionUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/LoopActionUsage",
         "title": "LoopActionUsage",
         "anyOf": [
           {
@@ -187691,7 +187381,6 @@
         ]
       },
       "Membership": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Membership",
         "title": "Membership",
         "anyOf": [
           {
@@ -188010,7 +187699,6 @@
         ]
       },
       "MembershipExpose": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/MembershipExpose",
         "title": "MembershipExpose",
         "type": "object",
         "properties": {
@@ -188316,7 +188004,6 @@
         "additionalProperties": false
       },
       "MembershipImport": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/MembershipImport",
         "title": "MembershipImport",
         "anyOf": [
           {
@@ -188629,7 +188316,6 @@
         ]
       },
       "MergeNode": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/MergeNode",
         "title": "MergeNode",
         "type": "object",
         "properties": {
@@ -189716,7 +189402,6 @@
         "additionalProperties": false
       },
       "Metaclass": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Metaclass",
         "title": "Metaclass",
         "anyOf": [
           {
@@ -190191,7 +189876,6 @@
         ]
       },
       "MetadataAccessExpression": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/MetadataAccessExpression",
         "title": "MetadataAccessExpression",
         "type": "object",
         "properties": {
@@ -190948,7 +190632,6 @@
         "additionalProperties": false
       },
       "MetadataDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/MetadataDefinition",
         "title": "MetadataDefinition",
         "type": "object",
         "properties": {
@@ -191686,7 +191369,6 @@
         "additionalProperties": false
       },
       "MetadataFeature": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/MetadataFeature",
         "title": "MetadataFeature",
         "anyOf": [
           {
@@ -192450,7 +192132,6 @@
         ]
       },
       "MetadataUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/MetadataUsage",
         "title": "MetadataUsage",
         "type": "object",
         "properties": {
@@ -193582,7 +193263,6 @@
         "additionalProperties": false
       },
       "Multiplicity": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Multiplicity",
         "title": "Multiplicity",
         "anyOf": [
           {
@@ -194297,7 +193977,6 @@
         ]
       },
       "MultiplicityRange": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/MultiplicityRange",
         "title": "MultiplicityRange",
         "type": "object",
         "properties": {
@@ -195032,7 +194711,6 @@
         "additionalProperties": false
       },
       "Namespace": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Namespace",
         "title": "Namespace",
         "anyOf": [
           {
@@ -195293,7 +194971,6 @@
         ]
       },
       "NamespaceExpose": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/NamespaceExpose",
         "title": "NamespaceExpose",
         "type": "object",
         "properties": {
@@ -195599,7 +195276,6 @@
         "additionalProperties": false
       },
       "NamespaceImport": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/NamespaceImport",
         "title": "NamespaceImport",
         "anyOf": [
           {
@@ -195912,7 +195588,6 @@
         ]
       },
       "NullExpression": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/NullExpression",
         "title": "NullExpression",
         "type": "object",
         "properties": {
@@ -196664,7 +196339,6 @@
         "additionalProperties": false
       },
       "ObjectiveMembership": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ObjectiveMembership",
         "title": "ObjectiveMembership",
         "type": "object",
         "properties": {
@@ -197029,7 +196703,6 @@
         "additionalProperties": false
       },
       "OccurrenceDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/OccurrenceDefinition",
         "title": "OccurrenceDefinition",
         "anyOf": [
           {
@@ -197783,7 +197456,6 @@
         ]
       },
       "OccurrenceUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/OccurrenceUsage",
         "title": "OccurrenceUsage",
         "anyOf": [
           {
@@ -198865,7 +198537,6 @@
         ]
       },
       "OperatorExpression": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/OperatorExpression",
         "title": "OperatorExpression",
         "anyOf": [
           {
@@ -199657,7 +199328,6 @@
         ]
       },
       "OwningMembership": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/OwningMembership",
         "title": "OwningMembership",
         "anyOf": [
           {
@@ -200023,7 +199693,6 @@
         ]
       },
       "Package": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Package",
         "title": "Package",
         "anyOf": [
           {
@@ -200289,7 +199958,6 @@
         ]
       },
       "ParameterMembership": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ParameterMembership",
         "title": "ParameterMembership",
         "anyOf": [
           {
@@ -200670,7 +200338,6 @@
         ]
       },
       "PartDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/PartDefinition",
         "title": "PartDefinition",
         "anyOf": [
           {
@@ -201421,7 +201088,6 @@
         ]
       },
       "PartUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/PartUsage",
         "title": "PartUsage",
         "anyOf": [
           {
@@ -202513,7 +202179,6 @@
         ]
       },
       "PayloadFeature": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/PayloadFeature",
         "title": "PayloadFeature",
         "type": "object",
         "properties": {
@@ -203221,7 +202886,6 @@
         "additionalProperties": false
       },
       "PerformActionUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/PerformActionUsage",
         "title": "PerformActionUsage",
         "anyOf": [
           {
@@ -204328,7 +203992,6 @@
         ]
       },
       "PortConjugation": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/PortConjugation",
         "title": "PortConjugation",
         "type": "object",
         "properties": {
@@ -204618,7 +204281,6 @@
         "additionalProperties": false
       },
       "PortDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/PortDefinition",
         "title": "PortDefinition",
         "anyOf": [
           {
@@ -205375,7 +205037,6 @@
         ]
       },
       "PortUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/PortUsage",
         "title": "PortUsage",
         "type": "object",
         "properties": {
@@ -206446,7 +206107,6 @@
         "additionalProperties": false
       },
       "PortionKind": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/PortionKind",
         "title": "PortionKind",
         "type": "string",
         "enum": [
@@ -206455,7 +206115,6 @@
         ]
       },
       "Predicate": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Predicate",
         "title": "Predicate",
         "anyOf": [
           {
@@ -206970,7 +206629,6 @@
         ]
       },
       "Redefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Redefinition",
         "title": "Redefinition",
         "type": "object",
         "properties": {
@@ -207282,7 +206940,6 @@
         "additionalProperties": false
       },
       "ReferenceSubsetting": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ReferenceSubsetting",
         "title": "ReferenceSubsetting",
         "type": "object",
         "properties": {
@@ -207594,7 +207251,6 @@
         "additionalProperties": false
       },
       "ReferenceUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ReferenceUsage",
         "title": "ReferenceUsage",
         "type": "object",
         "properties": {
@@ -208615,7 +208271,6 @@
         "additionalProperties": false
       },
       "Relationship": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Relationship",
         "title": "Relationship",
         "anyOf": [
           {
@@ -208922,7 +208577,6 @@
         ]
       },
       "RenderingDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/RenderingDefinition",
         "title": "RenderingDefinition",
         "type": "object",
         "properties": {
@@ -209668,7 +209322,6 @@
         "additionalProperties": false
       },
       "RenderingUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/RenderingUsage",
         "title": "RenderingUsage",
         "type": "object",
         "properties": {
@@ -210759,7 +210412,6 @@
         "additionalProperties": false
       },
       "RequirementConstraintKind": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/RequirementConstraintKind",
         "title": "RequirementConstraintKind",
         "type": "string",
         "enum": [
@@ -210768,7 +210420,6 @@
         ]
       },
       "RequirementConstraintMembership": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/RequirementConstraintMembership",
         "title": "RequirementConstraintMembership",
         "anyOf": [
           {
@@ -211159,7 +210810,6 @@
         ]
       },
       "RequirementDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/RequirementDefinition",
         "title": "RequirementDefinition",
         "anyOf": [
           {
@@ -212010,7 +211660,6 @@
         ]
       },
       "RequirementUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/RequirementUsage",
         "title": "RequirementUsage",
         "anyOf": [
           {
@@ -213229,7 +212878,6 @@
         ]
       },
       "RequirementVerificationMembership": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/RequirementVerificationMembership",
         "title": "RequirementVerificationMembership",
         "type": "object",
         "properties": {
@@ -213620,7 +213268,6 @@
         "additionalProperties": false
       },
       "ResultExpressionMembership": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ResultExpressionMembership",
         "title": "ResultExpressionMembership",
         "type": "object",
         "properties": {
@@ -213985,7 +213632,6 @@
         "additionalProperties": false
       },
       "ReturnParameterMembership": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ReturnParameterMembership",
         "title": "ReturnParameterMembership",
         "type": "object",
         "properties": {
@@ -214350,7 +213996,6 @@
         "additionalProperties": false
       },
       "SatisfyRequirementUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/SatisfyRequirementUsage",
         "title": "SatisfyRequirementUsage",
         "type": "object",
         "properties": {
@@ -215582,7 +215227,6 @@
         "additionalProperties": false
       },
       "SelectExpression": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/SelectExpression",
         "title": "SelectExpression",
         "type": "object",
         "properties": {
@@ -216358,7 +216002,6 @@
         "additionalProperties": false
       },
       "SendActionUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/SendActionUsage",
         "title": "SendActionUsage",
         "type": "object",
         "properties": {
@@ -217474,7 +217117,6 @@
         "additionalProperties": false
       },
       "Specialization": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Specialization",
         "title": "Specialization",
         "anyOf": [
           {
@@ -217767,7 +217409,6 @@
         ]
       },
       "StakeholderMembership": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/StakeholderMembership",
         "title": "StakeholderMembership",
         "type": "object",
         "properties": {
@@ -218137,7 +217778,6 @@
         "additionalProperties": false
       },
       "StateDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/StateDefinition",
         "title": "StateDefinition",
         "type": "object",
         "properties": {
@@ -218954,7 +218594,6 @@
         "additionalProperties": false
       },
       "StateSubactionKind": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/StateSubactionKind",
         "title": "StateSubactionKind",
         "type": "string",
         "enum": [
@@ -218964,7 +218603,6 @@
         ]
       },
       "StateSubactionMembership": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/StateSubactionMembership",
         "title": "StateSubactionMembership",
         "type": "object",
         "properties": {
@@ -219340,7 +218978,6 @@
         "additionalProperties": false
       },
       "StateUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/StateUsage",
         "title": "StateUsage",
         "anyOf": [
           {
@@ -220489,7 +220126,6 @@
         ]
       },
       "Step": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Step",
         "title": "Step",
         "anyOf": [
           {
@@ -221226,7 +220862,6 @@
         ]
       },
       "Structure": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Structure",
         "title": "Structure",
         "anyOf": [
           {
@@ -221710,7 +221345,6 @@
         ]
       },
       "Subclassification": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Subclassification",
         "title": "Subclassification",
         "type": "object",
         "properties": {
@@ -222012,7 +221646,6 @@
         "additionalProperties": false
       },
       "SubjectMembership": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/SubjectMembership",
         "title": "SubjectMembership",
         "type": "object",
         "properties": {
@@ -222382,7 +222015,6 @@
         "additionalProperties": false
       },
       "Subsetting": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Subsetting",
         "title": "Subsetting",
         "anyOf": [
           {
@@ -222697,7 +222329,6 @@
         ]
       },
       "Succession": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Succession",
         "title": "Succession",
         "anyOf": [
           {
@@ -223526,7 +223157,6 @@
         ]
       },
       "SuccessionAsUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/SuccessionAsUsage",
         "title": "SuccessionAsUsage",
         "type": "object",
         "properties": {
@@ -224658,7 +224288,6 @@
         "additionalProperties": false
       },
       "SuccessionFlow": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/SuccessionFlow",
         "title": "SuccessionFlow",
         "anyOf": [
           {
@@ -225561,7 +225190,6 @@
         ]
       },
       "SuccessionFlowUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/SuccessionFlowUsage",
         "title": "SuccessionFlowUsage",
         "type": "object",
         "properties": {
@@ -226828,7 +226456,6 @@
         "additionalProperties": false
       },
       "TerminateActionUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/TerminateActionUsage",
         "title": "TerminateActionUsage",
         "type": "object",
         "properties": {
@@ -227927,7 +227554,6 @@
         "additionalProperties": false
       },
       "TextualRepresentation": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/TextualRepresentation",
         "title": "TextualRepresentation",
         "type": "object",
         "properties": {
@@ -228180,7 +227806,6 @@
         "additionalProperties": false
       },
       "TransitionFeatureKind": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/TransitionFeatureKind",
         "title": "TransitionFeatureKind",
         "type": "string",
         "enum": [
@@ -228190,7 +227815,6 @@
         ]
       },
       "TransitionFeatureMembership": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/TransitionFeatureMembership",
         "title": "TransitionFeatureMembership",
         "type": "object",
         "properties": {
@@ -228566,7 +228190,6 @@
         "additionalProperties": false
       },
       "TransitionUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/TransitionUsage",
         "title": "TransitionUsage",
         "type": "object",
         "properties": {
@@ -229692,7 +229315,6 @@
         "additionalProperties": false
       },
       "TriggerInvocationExpression": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/TriggerInvocationExpression",
         "title": "TriggerInvocationExpression",
         "type": "object",
         "properties": {
@@ -230468,7 +230090,6 @@
         "additionalProperties": false
       },
       "TriggerKind": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/TriggerKind",
         "title": "TriggerKind",
         "type": "string",
         "enum": [
@@ -230478,7 +230099,6 @@
         ]
       },
       "Type": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Type",
         "title": "Type",
         "anyOf": [
           {
@@ -230948,7 +230568,6 @@
         ]
       },
       "TypeFeaturing": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/TypeFeaturing",
         "title": "TypeFeaturing",
         "type": "object",
         "properties": {
@@ -231228,7 +230847,6 @@
         "additionalProperties": false
       },
       "Unioning": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Unioning",
         "title": "Unioning",
         "type": "object",
         "properties": {
@@ -231496,7 +231114,6 @@
         "additionalProperties": false
       },
       "Usage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/Usage",
         "title": "Usage",
         "anyOf": [
           {
@@ -232533,7 +232150,6 @@
         ]
       },
       "UseCaseDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/UseCaseDefinition",
         "title": "UseCaseDefinition",
         "type": "object",
         "properties": {
@@ -233360,7 +232976,6 @@
         "additionalProperties": false
       },
       "UseCaseUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/UseCaseUsage",
         "title": "UseCaseUsage",
         "anyOf": [
           {
@@ -234551,7 +234166,6 @@
         ]
       },
       "VariantMembership": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/VariantMembership",
         "title": "VariantMembership",
         "type": "object",
         "properties": {
@@ -234906,7 +234520,6 @@
         "additionalProperties": false
       },
       "VerificationCaseDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/VerificationCaseDefinition",
         "title": "VerificationCaseDefinition",
         "type": "object",
         "properties": {
@@ -235733,7 +235346,6 @@
         "additionalProperties": false
       },
       "VerificationCaseUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/VerificationCaseUsage",
         "title": "VerificationCaseUsage",
         "type": "object",
         "properties": {
@@ -236917,7 +236529,6 @@
         "additionalProperties": false
       },
       "ViewDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ViewDefinition",
         "title": "ViewDefinition",
         "type": "object",
         "properties": {
@@ -237691,7 +237302,6 @@
         "additionalProperties": false
       },
       "ViewRenderingMembership": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ViewRenderingMembership",
         "title": "ViewRenderingMembership",
         "type": "object",
         "properties": {
@@ -238061,7 +237671,6 @@
         "additionalProperties": false
       },
       "ViewUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ViewUsage",
         "title": "ViewUsage",
         "type": "object",
         "properties": {
@@ -239188,7 +238797,6 @@
         "additionalProperties": false
       },
       "ViewpointDefinition": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ViewpointDefinition",
         "title": "ViewpointDefinition",
         "type": "object",
         "properties": {
@@ -240037,7 +239645,6 @@
         "additionalProperties": false
       },
       "ViewpointUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/ViewpointUsage",
         "title": "ViewpointUsage",
         "type": "object",
         "properties": {
@@ -241263,7 +240870,6 @@
         "additionalProperties": false
       },
       "VisibilityKind": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/VisibilityKind",
         "title": "VisibilityKind",
         "type": "string",
         "enum": [
@@ -241273,7 +240879,6 @@
         ]
       },
       "WhileLoopActionUsage": {
-        "$id": "https://www.omg.org/spec/SysML/20250201/WhileLoopActionUsage",
         "title": "WhileLoopActionUsage",
         "type": "object",
         "properties": {
